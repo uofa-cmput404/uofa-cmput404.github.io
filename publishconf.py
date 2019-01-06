@@ -14,10 +14,10 @@ from pelicanconf import * # pylint: disable=W0614
 SITEURL = 'https://uofa-cmput404.github.io'
 RELATIVE_URLS = False
 
-FEED_ALL_ATOM = 'feeds/all.atom.xml'
-CATEGORY_FEED_ATOM = 'feeds/{slug}.atom.xml'
+FEED_ALL_ATOM = None
+CATEGORY_FEED_ATOM = None
 
-DELETE_OUTPUT_DIRECTORY = True
+# DELETE_OUTPUT_DIRECTORY = True
 
 # Following items are often useful when publishing
 

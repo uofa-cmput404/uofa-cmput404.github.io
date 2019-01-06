@@ -4,6 +4,9 @@ save_as: index.html
 
 Lab material for CMPUT 404 (Winter 2019 LAB H01 H02 LEC B1).
 
+* [Lab 1: Virtualenv & curl]({filename}../labs/lab-1.md)
+
+
 | Lab | Day | Time             | Capacity | Room    |
 |-----|-----|------------------|:--------:|---------|
 | H03 | TUE | 8:00AM - 10:50AM | /20      | CSC 219 |
