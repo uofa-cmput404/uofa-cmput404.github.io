@@ -34,7 +34,7 @@
     <time class="published" datetime="2019-01-07T08:40:00-07:00">
       Mon 07 January 2019
     </time>
-    <time class="modified" datetime="2019-01-07T08:45:00-07:00">
+    <time class="modified" datetime="2019-01-07T11:50:00-07:00">
       Mon 07 January 2019
     </time>
     <address class="vcard author">
@@ -53,74 +53,51 @@
     <hr>
 <p>Explore the Common Gateway Interface.</p>
 <p>Create a text file <code>lab3-${ccid}.txt</code> containing answers to the questions and submit to <em>Lab 3</em> on eClass.</p>
-<h2>Common Gateway Interface</h2>
-<ol>
-<li>
+<h3>Common Gateway Interface</h3>
 <p>Fork and clone the lab repository. <a href="https://github.com/uofa-cmput404/cgi-lab">https://github.com/uofa-cmput404/cgi-lab</a></p>
-<ul>
-<li>(Reccomended) Activate a python3 virtual environment</li>
-</ul>
-</li>
-<li>
+<p>Activate a python3 virtual environment.</p>
 <p>Start the <code>cgi_server.py</code> in a background terminal window.</p>
-</li>
-<li>
 <p>Initialize an empty file (this will be your CGI script).</p>
-<p><code>touch hello.py</code></p>
-</li>
-<li>
+<div class="highlight"><pre><span></span>touch hello.py
+</pre></div>
+
+
 <p>Make your CGI script executable.</p>
-<p><code>chmod +x hello.py</code></p>
-</li>
-<li>
+<div class="highlight"><pre><span></span>chmod +x hello.py
+</pre></div>
+
+
 <p>Make the very first line of your CGI script the shebang:</p>
-<p><code>#!/usr/bin/env python</code></p>
-</li>
-<li>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+</pre></div>
+
+
 <p>Examine the environment variables given to the CGI script.</p>
 <p><strong>Question 1</strong>: How do you inspect all environment variables in Python?</p>
-</li>
-<li>
-<p>Make your CGI script serve the environment back as JSON.</p>
-</li>
-<li>What changes if we add query parameters?</li>
-<li>
+<hr>
+<p>Make your CGI script serve the environment back as JSON. What changes if we add query parameters?</p>
 <p>Modify your CGI script to report the values of the query parameters in the HTML.</p>
 <p><strong>Question 2</strong>: What environment variable contains the query parameter data?</p>
-</li>
-<li>
+<hr>
 <p>Modify your CGI script to report the user’s browser in the HTML.</p>
 <p><strong>Question 3</strong>: What environment variable contains information about the user’s browser?</p>
-</li>
-<li>
-<p>Modify your CGI script to contain a login form that POSTs to itself. You may use <code>login_page()</code> in templates.py.</p>
-</li>
-<li>
+<hr>
+<p>Modify your CGI script to contain a login form that POSTs to itself. You may use <code>login_page()</code> in <em>templates.py</em>.</p>
 <p>Modify your CGI script to report the values of the POSTed data in the HTML.</p>
 <p><strong>Question 4</strong>: How does the POSTed data come to the CGI script?</p>
-</li>
-<li>
-<p>Edit the username and password in secret.pyand delete the raiseline; then import it in your login CGI script.</p>
-</li>
-<li>
+<hr>
+<p>Edit the username and password in <code>secret.py</code> and delete the <code>raise</code> line; then import it in your login CGI script.</p>
 <p>Modify your CGI script to set a cookie if the login is correct.</p>
 <p><strong>Question 5</strong>: What is the HTTP header syntax to set a cookie from the server?</p>
-</li>
-<li>
-<p>Modify your CGI script so it displays a secret message if the cookie says the user is logged in. You may use <code>secret_page()</code> from templates.py.</p>
-</li>
-<li>
-<p>Steal the cookie using proxy.py.</p>
+<hr>
+<p>Modify your CGI script so it displays a secret message if the cookie says the user is logged in. You may use <code>secret_page()</code> from <em>templates.py</em>.</p>
+<p>Capture the cookie using <em>proxy.py</em>.</p>
 <p><strong>Question 6</strong>: What is the HTTP header syntax the browser uses to send the cookie back?</p>
-</li>
-<li>
+<hr>
 <p>Clear the cookie in the browser or use a private/incognito browser window</p>
-</li>
-<li>Use the cookie to appear to be logged in to the CGI script without logging in.<ul>
-<li>Within the JavaScript console, enter: <code>document.cookie = "key=value"</code></li>
-</ul>
-</li>
-</ol>
+<p>Use the cookie to appear to be logged in to the CGI script without logging in.
+    * Within the JavaScript console, enter: <code>document.cookie = "key=value"</code></p>
+<p><strong>Question 7</strong>: In your own words, what are cookies used for?</p>
   </div><!-- /.entry-content -->
 </section>
         <footer id="contentinfo" class="body">
