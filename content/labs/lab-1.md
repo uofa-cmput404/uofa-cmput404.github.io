@@ -9,7 +9,7 @@ Authors: Alexander Wong
 
 Introduction to CMPUT 404 labs. Setup [virtualenv](https://docs.python-guide.org/dev/virtualenvs/) and understand basic usage of [curl](https://curl.haxx.se/).
 
-Create a text file `lab1-${ccid}.txt` containing answers to the questions and submit to *Lab 1* on eClass. For example, if your ccid is `bob`, the text file should be `lab1-bob.txt`.
+Answers to the questions should be submitted to *Lab 1* on eClass.
 
 ### Git and GitHub
 

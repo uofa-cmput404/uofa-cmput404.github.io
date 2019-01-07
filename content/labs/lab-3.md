@@ -9,7 +9,7 @@ Authors: Alexander Wong
 
 Explore the Common Gateway Interface.
 
-Create a text file `lab3-${ccid}.txt` containing answers to the questions and submit to *Lab 3* on eClass.
+Answers to the questions should be submitted to *Lab 3* on eClass.
 
 ### Common Gateway Interface
 

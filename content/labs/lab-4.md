@@ -9,7 +9,7 @@ Authors: Alexander Wong
 
 Big lab! Build a simple [Django](https://www.djangoproject.com/) website. Understand the fundamentals of Django's MVC architecture using the built in models and views.
 
-Create a text file `lab4-${ccid}.txt` containing answers to the questions and submit to *Lab 4* on eClass. You may also follow along with the [official documentation](https://docs.djangoproject.com/en/2.1/intro/tutorial01/#writing-your-first-django-app-part-1).
+Answers to the questions should be submitted to *Lab 4* on eClass. You may also follow along with the [official documentation](https://docs.djangoproject.com/en/2.1/intro/tutorial01/#writing-your-first-django-app-part-1).
 
 ### Creating a Django Project
 

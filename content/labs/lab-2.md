@@ -9,7 +9,7 @@ Authors: Alexander Wong
 
 Create a multi-client tcp proxy client in Python.
 
-Create a text file `lab2-${ccid}.txt` containing answers to the questions and submit to *Lab 2* on eClass.
+Answers to the questions should be submitted to *Lab 2* on eClass.
 
 ### Sockets
 

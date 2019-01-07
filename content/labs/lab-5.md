@@ -9,7 +9,7 @@ Authors: Alexander Wong
 
 Create a static page using [Pelican](https://blog.getpelican.com/), or write plain html. Deploy using [GitHub pages](https://pages.github.com/). Learn to style the basic theme.
 
-Create a text file `lab5-${ccid}.txt` containing answers to the questions and submit to *Lab 5* on eClass. Feel free to follow along with the [official documentation](https://docs.getpelican.com/en/stable/quickstart.html).
+Answers to the questions should be submitted to *Lab 5* on eClass. Feel free to follow along with the [official documentation](https://docs.getpelican.com/en/stable/quickstart.html).
 
 *aside*: These lab instructions are currently using Pelican and hosted on Github Pages!
 
