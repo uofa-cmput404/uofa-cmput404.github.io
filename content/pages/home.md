@@ -7,6 +7,7 @@ Lab material for CMPUT 404 (Winter 2019 LAB H01 H02 LEC B1).
 * [Lab 1: Virtualenv & cURL]({filename}../labs/lab-1.md)
 * [Lab 2: TCP Proxy]({filename}../labs/lab-2.md)
 * [Lab 3: Common Gateway Interface]({filename}../labs/lab-3.md)
+* [Lab 4: Django]({filename}../labs/lab-4.md)
 
 ## Sections
 
