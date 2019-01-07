@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+          <title>CMPUT 404 - Lab 2 - TCP Proxy</title>
+        <meta charset="utf-8" />
+
+  <link rel="icon" href="https://uofa-cmput404.github.io/theme/favicon.ico" />
+  <link rel="stylesheet" type="text/css" href="https://uofa-cmput404.github.io/theme/style.css" />
+
+
+
+
+    <meta name="tags" content="tcp" />
+    <meta name="tags" content="proxy" />
+    <meta name="tags" content="socket" />
+
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="https://uofa-cmput404.github.io/">CMPUT 404 <strong></strong></a></h1>
+        </header><!-- /#banner -->
+        <nav id="menu"><ul>
+            <li><a href="https://uofa-cmput404.github.io/">Home</a></li>
+            <li class="active"><a href="https://uofa-cmput404.github.io/category/lab.html">Lab</a></li>
+        </ul></nav><!-- /#menu -->
+<section id="content" class="body">
+  <header>
+    <h2 class="entry-title">
+      <a href="https://uofa-cmput404.github.io/lab-2-tcp-proxy.html" rel="bookmark"
+         title="Permalink to Lab 2 - TCP Proxy">Lab 2 - TCP Proxy</a></h2>
+ 
+  </header>
+  <footer class="post-info">
+    <time class="published" datetime="2019-01-07T08:30:00-07:00">
+      Mon 07 January 2019
+    </time>
+    <time class="modified" datetime="2019-01-07T08:34:00-07:00">
+      Mon 07 January 2019
+    </time>
+    <address class="vcard author">
+      By           <a class="url fn" href="https://uofa-cmput404.github.io/author/alexander-wong.html">Alexander Wong</a>
+    </address>
+    <div class="category">
+        Category: <a href="https://uofa-cmput404.github.io/category/lab.html">Lab</a>
+    </div>
+    <div class="tags">
+        Tags:
+            <a href="https://uofa-cmput404.github.io/tag/tcp.html">tcp</a>
+            <a href="https://uofa-cmput404.github.io/tag/proxy.html">proxy</a>
+            <a href="https://uofa-cmput404.github.io/tag/socket.html">socket</a>
+    </div>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <hr>
+<p>Create a multi-client tcp proxy client in Python.</p>
+<p>Create a text file <code>lab2-${ccid}.txt</code> containing answers to the questions and submit to <em>Lab 2</em> on eClass.</p>
+<h3>Sockets</h3>
+<ol>
+<li>Make a socket client in Python that connects to google and requests a page.</li>
+<li>
+<p>Make your program output whatever was sent to it onto the terminal.</p>
+<p><strong>Question 1</strong>: How do you specify a TCP socket in Python?</p>
+</li>
+<li>
+<p>Make a new program that listens for incoming connections.</p>
+<p><strong>Question 2</strong>: What is the difference between a client socket and a server socket in Python?</p>
+</li>
+<li>
+<p>Print out information about what is connected to the server socket to the terminal.</p>
+<p><strong>Question 3</strong>: How do we instruct the OS to let us reuse the same bind port?</p>
+<p><strong>Question 4</strong>: What information do we get about incoming connections?</p>
+</li>
+<li>
+<p>Print out whatever is sent to your server program.</p>
+</li>
+<li>Connect a client socket to Google.</li>
+<li>Forward whatever is received on the server socket to the client socket.</li>
+<li>
+<p>Forward whatever is received on the client socket to the server socket.</p>
+<p><strong>Question 5</strong>: What is returned by recv() from the server after it is done sending the HTTP request?</p>
+</li>
+<li>
+<p>Make your proxy server forking so multiple programs can use it.</p>
+</li>
+<li>
+<p>Push your code to GitHub.</p>
+<p><strong>Question 6</strong>: Provide a link to your code on GitHub.</p>
+</li>
+</ol>
+  </div><!-- /.entry-content -->
+</section>
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+</body>
+</html>

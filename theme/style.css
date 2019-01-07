@@ -18,10 +18,9 @@ a:hover {
   text-decoration: underline;
 }
 code, pre {
-  white-space: pre;
+  background-color: #eeeeee;
   padding: 0.1em;
   margin: 0 0.1em 0 0.1em;
-  border: 1px solid #000000;
   white-space: pre-wrap;
   word-break: keep-all;
 }
