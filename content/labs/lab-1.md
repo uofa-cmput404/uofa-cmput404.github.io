@@ -1,6 +1,9 @@
-Title: Lab 1 - virtualenv & curl
+Title: Lab 1 - Virtualenv & cURL
 Date: 2019-01-04 15:24
+Modified: 2019-01-07 8:34
 Category: Lab
+Tags: virtualenv, curl
+Authors: Alexander Wong
 
 ----
 

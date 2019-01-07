@@ -12,10 +12,6 @@ from pelicanconf import * # pylint: disable=W0614
 
 # If your site is available via HTTPS, make sure SITEURL begins with https://
 SITEURL = 'https://uofa-cmput404.github.io'
-RELATIVE_URLS = False
-
-FEED_ALL_ATOM = None
-CATEGORY_FEED_ATOM = None
 
 # DELETE_OUTPUT_DIRECTORY = True
 

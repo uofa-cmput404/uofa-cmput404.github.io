@@ -31,7 +31,4 @@ LINKS = ()
 #           ('Another social link', '#'),)
 SOCIAL = ()
 
-DEFAULT_PAGINATION = False
-
-# Uncomment following line if you want document-relative URLs when developing
-RELATIVE_URLS = True
+DEFAULT_PAGINATION = 20
