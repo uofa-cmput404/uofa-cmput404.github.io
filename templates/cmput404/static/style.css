@@ -1,5 +1,87 @@
 @import url('https://fonts.googleapis.com/css?family=Lato');
 
+/** Site wide styles */
+html, body {
+  padding: 0 0.4em 0 0.4em;
+  margin: 0;
+  border: 0;
+  font-size: 100%;
+  font-family : 'Lato', monospace ;
+  word-wrap: break-word;
+}
+h1, h2, h3, h4, h5, h6 {
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+a:hover {
+  font-weight: bold;
+  text-decoration: underline;
+}
+code, pre {
+  background-color: #eeeeee;
+  padding: 0.1em;
+  margin: 0 0.1em 0 0.1em;
+  white-space: pre-wrap;
+  word-break: keep-all;
+}
+table {
+  border-spacing: 0.2em;
+}
+em, strong {
+  margin-right: 0.1em;
+}
+
+/** Title, Site Banner */
+#banner > h1 > a {
+  color: #000000;
+  text-decoration: none;
+}
+
+/** Primary site navigation */
+#menu > ul {
+  margin-top: 0.4em;
+  list-style-type: none;
+  padding-bottom: 0.2em;
+  border-bottom: 2px dashed #000000;
+}
+#menu > ul > li {
+  display: inline;
+  font-size: large;
+}
+#menu > ul > li + li {
+  padding-left: 1em;
+}
+#menu > ul > li.active {
+  font-weight: bold;
+}
+
+/** Pagination page contents */
+#content > :first-child {
+  margin-top: 0;
+}
+
+/** Site footer **/
+footer#contentinfo {
+  margin-top: 0.2em;
+  padding-top: 0.2em;
+  padding-bottom: 0.4em;
+  border-top: 2px dashed #000000;
+}
+
+/** Post info time data **/
+.post-info > .published::before {
+  content: "Published on "
+}
+.post-info > .published {
+  display: block;
+}
+.post-info > .modified::before {
+  content: "Last Modified on "
+}
+.post-info > .modified {
+  display: block;
+}
+
 /** Code Highlighting **/
 .highlight .hll { background-color: #ffffcc }
 .highlight  { background: #f8f8f8; }
@@ -70,68 +152,3 @@
 .highlight .vi { color: #19177C } /* Name.Variable.Instance */
 .highlight .vm { color: #19177C } /* Name.Variable.Magic */
 .highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
-
-/** Site wide styles */
-html, body {
-  padding: 0 0.4em 0 0.4em;
-  margin: 0;
-  border: 0;
-  font-size: 100%;
-  font-family : 'Lato', monospace ;
-  word-wrap: break-word;
-}
-h1, h2, h3, h4, h5, h6 {
-  padding-bottom: 0;
-  margin-bottom: 0;
-}
-a:hover {
-  font-weight: bold;
-  text-decoration: underline;
-}
-code, pre {
-  background-color: #eeeeee;
-  padding: 0.1em;
-  margin: 0 0.1em 0 0.1em;
-  white-space: pre-wrap;
-  word-break: keep-all;
-}
-table {
-  border-spacing: 0.2em;
-}
-
-/** Title, Site Banner */
-#banner > h1 > a {
-  color: #000000;
-  text-decoration: none;
-}
-
-/** Primary site navigation */
-#menu > ul {
-  margin-top: 0.4em;
-  list-style-type: none;
-  padding-bottom: 0.2em;
-  border-bottom: 2px dashed #000000;
-}
-#menu > ul > li {
-  display: inline;
-  font-size: large;
-}
-#menu > ul > li + li {
-  padding-left: 1em;
-}
-#menu > ul > li.active {
-  font-weight: bold;
-}
-
-/** Pagination page contents */
-#content > :first-child {
-  margin-top: 0;
-}
-
-/** Site footer **/
-footer#contentinfo {
-  margin-top: 0.2em;
-  padding-top: 0.2em;
-  padding-bottom: 0.4em;
-  border-top: 2px dashed #000000;
-}

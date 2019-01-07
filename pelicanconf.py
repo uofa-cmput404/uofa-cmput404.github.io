@@ -41,3 +41,7 @@ MARKDOWN = {
     },
     'output_format': 'html5',
 }
+DATE_FORMATS = {
+    'en': '%a, %d %b %Y at %H:%M %Z',
+}
+
