@@ -49,12 +49,14 @@
   </footer><!-- /.post-info -->
   <div class="entry-content">
     <hr>
-<p>Big lab! Build a simple <a href="https://www.djangoproject.com/">Django</a> website. Understand the fundamentals of Django's MVC architecture using the built in models and views.</p>
-<p>Answers to the questions should be submitted to <em>Lab 4</em> on eClass. You may also follow along with the <a href="https://docs.djangoproject.com/en/2.1/intro/tutorial01/#writing-your-first-django-app-part-1">official documentation</a>.</p>
+<p>Big lab! Build a simple <a href="https://www.djangoproject.com/">Django</a> website. Understand the fundamentals of Django's MVC architecture using the built in models and views. </p>
+<p>Answers to the questions should be submitted to <em>Lab 4</em> on eClass. You may also follow along with the <a href="https://docs.djangoproject.com/en/2.1/#first-steps">official documentation</a>. We will be going through Parts 1 to 4 of the first steps tutorial in lab. You should commit your project to git after each question.</p>
 <h3>Creating a Django Project</h3>
+<ul>
+<li>Official Docs <a href="https://docs.djangoproject.com/en/2.1/intro/overview/">Overview</a>, <a href="https://docs.djangoproject.com/en/2.1/intro/install/">Installation</a></li>
+</ul>
 <p>Create a virtual environment and install Django.</p>
-<div class="highlight"><pre><span></span><span class="nb">cd</span> path/to/your/project
-virtualenv venv --python<span class="o">=</span>python3
+<div class="highlight"><pre><span></span>virtualenv venv --python<span class="o">=</span>python3
 <span class="nb">source</span> venv/bin/activate
 pip install <span class="nv">Django</span><span class="o">==</span><span class="m">2</span>.1.5 <span class="c1"># latest official version</span>
 </pre></div>
@@ -63,13 +65,18 @@ pip install <span class="nv">Django</span><span class="o">==</span><span class="
 <p>Initialize a new Django project called <strong>mysite</strong>.</p>
 <div class="highlight"><pre><span></span>django-admin startproject mysite
 <span class="nb">cd</span> mysite
-python manage.py runserver <span class="c1"># lab question 1</span>
+python manage.py runserver
 </pre></div>
 
 
-<p><strong>Question 1</strong>: After starting a brand new Django application and running the runserver command, what does the browser show you?</p>
+<p>Add your files and push the contents to GitHub. The <em>manage.py</em> file should be at the root of your github repository.</p>
+<p><strong>Question 1</strong>: What is the link to your github repository for this lab?</p>
+<p><strong>Question 2</strong>: After starting a brand new Django application and running the runserver command, what does the browser show you?</p>
 <hr>
 <h3>Creating a Django App</h3>
+<ul>
+<li>Official Docs <a href="https://docs.djangoproject.com/en/2.1/intro/tutorial01/">Part 1</a></li>
+</ul>
 <p>Create a new application within <strong>mysite</strong> called <strong>polls</strong>.</p>
 <div class="highlight"><pre><span></span>python manage.py startapp polls
 </pre></div>
@@ -109,9 +116,12 @@ python manage.py runserver <span class="c1"># lab question 1</span>
 </pre></div>
 
 
-<p><strong>Question 2</strong>: After creating the first view within polls, what does the browser show you when navigating to <code>/</code> and to <code>/polls</code> respectively?</p>
+<p><strong>Question 3</strong>: After creating the first view within polls, what does the browser show you when navigating to <code>/</code> and to <code>/polls</code> respectively?</p>
 <hr>
 <h3>Working with Models</h3>
+<ul>
+<li>Official Docs <a href="https://docs.djangoproject.com/en/2.1/intro/tutorial02/">Part 2</a></li>
+</ul>
 <p>Time to create our first models. Open up <em>mysite/settings.py</em> and ensure that the default database is set to <code>sqlite3</code>.</p>
 <div class="highlight"><pre><span></span><span class="c1"># Database</span>
 <span class="c1"># https://docs.djangoproject.com/en/2.1/ref/settings/#databases</span>
@@ -162,7 +172,7 @@ python manage.py runserver <span class="c1"># lab question 1</span>
 </pre></div>
 
 
-<p><strong>Question 3</strong>: What is a Django migration and why do we need them?</p>
+<p><strong>Question 4</strong>: What is a Django migration and why do we need them?</p>
 <hr>
 <h3>Using Django Admin</h3>
 <p>Create a user that can log into the admin site.</p>
@@ -185,9 +195,12 @@ python manage.py runserver <span class="c1"># lab question 1</span>
 </pre></div>
 
 
-<p><strong>Question 4</strong>: What do you see after you log into the Django adminstration site? From a high levle, how do you get custom models to appear in the Django admin page?</p>
+<p><strong>Question 5</strong>: What do you see after you log into the Django adminstration site? From a high levle, how do you get custom models to appear in the Django admin page?</p>
 <hr>
 <h3>Working with Views</h3>
+<ul>
+<li>Official Docs <a href="https://docs.djangoproject.com/en/2.1/intro/tutorial03/">Part 3</a></li>
+</ul>
 <p>Add some additional views to the <em>polls/views.py</em> file. Include the following methods:</p>
 <div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">detail</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">question_id</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="s2">&quot;You&#39;re looking at question </span><span class="si">%s</span><span class="s2">.&quot;</span> <span class="o">%</span> <span class="n">question_id</span><span class="p">)</span>
@@ -219,7 +232,7 @@ python manage.py runserver <span class="c1"># lab question 1</span>
 </pre></div>
 
 
-<p><strong>Question 5</strong>: What do you see when you go to <code>/polls/38/</code> in your browser? What about <code>/polls/38/results</code> and <code>/polls/38/vote</code>? What happens when you don’t put a number, and instead use a string? How would you modify the <em>urls.py</em> file to allow arbitrary alphabetic characters?</p>
+<p><strong>Question 6</strong>: What do you see when you go to <code>/polls/38/</code> in your browser? What about <code>/polls/38/results</code> and <code>/polls/38/vote</code>? What happens when you don’t put a number, and instead use a string? How would you modify the <em>urls.py</em> file to allow arbitrary alphabetic characters?</p>
 <hr>
 <h3>Making views render model data</h3>
 <p>Update the <em>polls/views.py</em> <code>index</code> method so the questions are returned.</p>
@@ -239,7 +252,7 @@ python manage.py runserver <span class="c1"># lab question 1</span>
 
 <p>Create an empty directory named <em>templates</em> within <em>polls</em>. Then create another directory named <em>polls</em> within the <em>templates</em> directory. Lastly create a file called <em>index.html</em> within the second <em>polls</em> directory.</p>
 <div class="highlight"><pre><span></span>mkdir -p polls/templates/polls
-touch polls/teplates/polls/index.html
+touch polls/templates/polls/index.html
 </pre></div>
 
 
@@ -304,9 +317,12 @@ touch polls/teplates/polls/index.html
 </pre></div>
 
 
-<p><strong>Question 6</strong>: Why is it a bad idea to hardcode urls into the templates?</p>
+<p><strong>Question 7</strong>: Why is it a bad idea to hardcode urls into the templates?</p>
 <hr>
 <h3>Writing a simple form</h3>
+<ul>
+<li>Official Docs <a href="https://docs.djangoproject.com/en/2.1/intro/tutorial04/">Part 4</a></li>
+</ul>
 <p>Update the <em>polls/templates/polls/detail.html</em> file to match the following:</p>
 <div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>{{ question.question_text }}<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
 
@@ -435,7 +451,14 @@ touch polls/teplates/polls/index.html
 </pre></div>
 
 
-<p><strong>Question 7</strong>: What are the benefits of using Django’s generic views over writing views ‘the hard way’? When should you use a generic view and when shouldn’t you use a generic view?</p>
+<p><strong>Question 8</strong>: What are the benefits of using Django's generic views over writing views 'the hard way'? When should you use a generic view and when shouldn't you use a generic view?</p>
+<h3>Optional/Outside of Lab</h3>
+<p>It is in your best interest to Work through the rest of Django's First Steps Tutorials:</p>
+<ul>
+<li><a href="https://docs.djangoproject.com/en/2.1/intro/tutorial05/">Part 5: Testing</a></li>
+<li><a href="https://docs.djangoproject.com/en/2.1/intro/tutorial06/">Part 6: Static Files</a></li>
+<li><a href="https://docs.djangoproject.com/en/2.1/intro/tutorial07/">Part 7: Customizing the Admin Site</a></li>
+</ul>
   </div><!-- /.entry-content -->
 </section>
         <footer id="contentinfo" class="body">
