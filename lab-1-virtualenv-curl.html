@@ -109,18 +109,20 @@
 <li>
 <p>This time, use <code>curl -i</code> to get the Google homepage.</p>
 <ul>
-<li><strong>Question 5</strong>: What status code is returned? What URL must you visit to get a 200 status code?</li>
+<li><strong>Question 5</strong>: What status code is returned for <code>http://google.com</code> ? What URL must you visit to get a 200 status code?</li>
 </ul>
 </li>
 <li>
 <p>Curl the Google home page with <code>-iL</code> and examine the headers.</p>
 </li>
-<li>Curl the Google Teapot page: <a href="https://www.google.com/teapot">https://www.google.com/teapot</a></li>
+<li>
+<p>Curl the Google Teapot page: <a href="https://www.google.com/teapot">https://www.google.com/teapot</a></p>
+<ul>
+<li><strong>Question 6</strong>: What status code is returned for <code>http://google.com/teapot</code>? Is it the one returned by <code>curl -i</code> or <code>curl -iL</code>? What happens when you curl <code>http://www.google.com/teapot</code>?</li>
+</ul>
+</li>
 <li>
 <p>Modify your Python script to GET the Google homepage.</p>
-<ul>
-<li><strong>Question 6</strong>: What status code is returned this time? Is it the one returned by <code>curl -i</code> or <code>curl -iL</code>?</li>
-</ul>
 </li>
 <li>
 <p>Try <code>curl -i https://webdocs.cs.ualberta.ca/~hindle1/1.py</code></p>
