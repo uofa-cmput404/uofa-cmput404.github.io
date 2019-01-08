@@ -1,6 +1,6 @@
 Title: Lab 5 - Pelican & Basic HTML/CSS
 Date: 2019-01-07 12:40
-Modified: 2019-01-07 12:40
+Modified: 2019-01-07 14:31
 Category: Lab
 Tags: pelican, html css
 Authors: Alexander Wong
@@ -133,6 +133,16 @@ html, body {
 }
 ```
 
+Add your theme to your *pelicanconf.py* file.
+
+```python
+THEME = 'templates/mytheme'
+```
+
 Create at least articles/pages on your static site and deploy to GitHub. Ensure that you are not using a theme created by someone else.
 
-**Question 1**: What is the link to your GitHub pages hosted static site?
+**Question 1**: What are some of the benefits of using a static site generator? What are some disadvantages?
+
+**Question 2**: What is the link to your GitHub pages hosted static site?
+
+If you are not finished [Lab 4]({filename}lab-4.md), please work on it. We will be deploying the Django application to Heroku in the next lab.

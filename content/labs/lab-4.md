@@ -7,16 +7,17 @@ Authors: Alexander Wong
 
 ----
 
-Big lab! Build a simple [Django](https://www.djangoproject.com/) website. Understand the fundamentals of Django's MVC architecture using the built in models and views.
+Big lab! Build a simple [Django](https://www.djangoproject.com/) website. Understand the fundamentals of Django's MVC architecture using the built in models and views. 
 
-Answers to the questions should be submitted to *Lab 4* on eClass. You may also follow along with the [official documentation](https://docs.djangoproject.com/en/2.1/intro/tutorial01/#writing-your-first-django-app-part-1).
+Answers to the questions should be submitted to *Lab 4* on eClass. You may also follow along with the [official documentation](https://docs.djangoproject.com/en/2.1/#first-steps). We will be going through Parts 1 to 4 of the first steps tutorial in lab. You should commit your project to git after each question.
 
 ### Creating a Django Project
+
+* Official Docs [Overview](https://docs.djangoproject.com/en/2.1/intro/overview/), [Installation](https://docs.djangoproject.com/en/2.1/intro/install/)
 
 Create a virtual environment and install Django.
 
 ```bash
-cd path/to/your/project
 virtualenv venv --python=python3
 source venv/bin/activate
 pip install Django==2.1.5 # latest official version
@@ -27,14 +28,20 @@ Initialize a new Django project called **mysite**.
 ```bash
 django-admin startproject mysite
 cd mysite
-python manage.py runserver # lab question 1
+python manage.py runserver
 ```
 
-**Question 1**: After starting a brand new Django application and running the runserver command, what does the browser show you?
+Add your files and push the contents to GitHub. The *manage.py* file should be at the root of your github repository.
+
+**Question 1**: What is the link to your github repository for this lab?
+
+**Question 2**: After starting a brand new Django application and running the runserver command, what does the browser show you?
 
 ----
 
 ### Creating a Django App
+
+ * Official Docs [Part 1](https://docs.djangoproject.com/en/2.1/intro/tutorial01/)
 
 Create a new application within **mysite** called **polls**.
 
@@ -80,11 +87,13 @@ Run the Django project with the runserver command.
 python manage.py runserver
 ```
 
-**Question 2**: After creating the first view within polls, what does the browser show you when navigating to `/` and to `/polls` respectively?
+**Question 3**: After creating the first view within polls, what does the browser show you when navigating to `/` and to `/polls` respectively?
 
 ----
 
 ### Working with Models
+
+* Official Docs [Part 2](https://docs.djangoproject.com/en/2.1/intro/tutorial02/)
 
 Time to create our first models. Open up *mysite/settings.py* and ensure that the default database is set to `sqlite3`.
 
@@ -141,7 +150,7 @@ Run the migration command to create the tables in your database.
 python manage.py migrate
 ```
 
-**Question 3**: What is a Django migration and why do we need them?
+**Question 4**: What is a Django migration and why do we need them?
 
 ----
 
@@ -170,11 +179,13 @@ Start the development server again and go to `/admin` on local application.
 python manage.py runserver
 ```
 
-**Question 4**: What do you see after you log into the Django adminstration site? From a high levle, how do you get custom models to appear in the Django admin page?
+**Question 5**: What do you see after you log into the Django adminstration site? From a high levle, how do you get custom models to appear in the Django admin page?
 
 ----
 
 ### Working with Views
+
+* Official Docs [Part 3](https://docs.djangoproject.com/en/2.1/intro/tutorial03/)
 
 Add some additional views to the *polls/views.py* file. Include the following methods:
 
@@ -209,7 +220,7 @@ urlpatterns = [
 ]
 ```
 
-**Question 5**: What do you see when you go to `/polls/38/` in your browser? What about `/polls/38/results` and `/polls/38/vote`? What happens when you don’t put a number, and instead use a string? How would you modify the *urls.py* file to allow arbitrary alphabetic characters?
+**Question 6**: What do you see when you go to `/polls/38/` in your browser? What about `/polls/38/results` and `/polls/38/vote`? What happens when you don’t put a number, and instead use a string? How would you modify the *urls.py* file to allow arbitrary alphabetic characters?
 
 ----
 
@@ -235,7 +246,7 @@ Create an empty directory named *templates* within *polls*. Then create another 
 
 ```bash
 mkdir -p polls/templates/polls
-touch polls/teplates/polls/index.html
+touch polls/templates/polls/index.html
 ```
 
 Within the newly created empty *polls/templates/polls/index.html* file, write the following.
@@ -305,11 +316,13 @@ Remove the hardcoded urls that we specified in the *polls/templates/polls/index.
 <li><a href="{% url 'detail' question.id %}">{{ question.question_text }}</a></li>
 ```
 
-**Question 6**: Why is it a bad idea to hardcode urls into the templates?
+**Question 7**: Why is it a bad idea to hardcode urls into the templates?
 
 ----
 
 ### Writing a simple form
+
+* Official Docs [Part 4](https://docs.djangoproject.com/en/2.1/intro/tutorial04/)
 
 Update the *polls/templates/polls/detail.html* file to match the following:
 
@@ -449,4 +462,12 @@ def vote(request, question_id):
     ... # same as above, no changes needed.
 ```
 
-**Question 7**: What are the benefits of using Django’s generic views over writing views ‘the hard way’? When should you use a generic view and when shouldn’t you use a generic view?
+**Question 8**: What are the benefits of using Django's generic views over writing views 'the hard way'? When should you use a generic view and when shouldn't you use a generic view?
+
+### Optional/Outside of Lab
+
+It is in your best interest to Work through the rest of Django's First Steps Tutorials:
+
+* [Part 5: Testing](https://docs.djangoproject.com/en/2.1/intro/tutorial05/)
+* [Part 6: Static Files](https://docs.djangoproject.com/en/2.1/intro/tutorial06/)
+* [Part 7: Customizing the Admin Site](https://docs.djangoproject.com/en/2.1/intro/tutorial07/)
