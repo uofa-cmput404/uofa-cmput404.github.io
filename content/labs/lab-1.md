@@ -1,6 +1,6 @@
 Title: Lab 1 - Virtualenv & cURL
 Date: 2019-01-04 15:24
-Modified: 2019-01-07 11:45
+Modified: 2019-01-08 9:13
 Category: Lab
 Tags: virtualenv, curl
 Authors: Alexander Wong
@@ -45,11 +45,11 @@ Answers to the questions should be submitted to *Lab 1* on eClass.
 1. Open a new terminal.
 1. Run the script in your new terminal.
 
-    * **Question 4**: Does your script print out the same version? Why?
+    * **Question 4**: What is the difference between the virtual environment and the not virtual environment python?
 
 ### curl
 
-1. Use `curl` to get the Google homepage: [http://www.google.com/](http://www.google.com/)
+1. Use `curl` to get the Google homepage: [http://google.com/](http://google.com/)
 1. This time, use `curl -i` to get the Google homepage.
 
     * **Question 5**: What status code is returned? What URL must you visit to get a 200 status code?
