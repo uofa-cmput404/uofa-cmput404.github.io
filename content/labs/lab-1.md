@@ -1,6 +1,6 @@
 Title: Lab 1 - Virtualenv & cURL
 Date: 2019-01-04 15:24
-Modified: 2019-01-08 9:13
+Modified: 2019-01-08 10:04
 Category: Lab
 Tags: virtualenv, curl
 Authors: Alexander Wong
@@ -52,13 +52,14 @@ Answers to the questions should be submitted to *Lab 1* on eClass.
 1. Use `curl` to get the Google homepage: [http://google.com/](http://google.com/)
 1. This time, use `curl -i` to get the Google homepage.
 
-    * **Question 5**: What status code is returned? What URL must you visit to get a 200 status code?
+    * **Question 5**: What status code is returned for `http://google.com` ? What URL must you visit to get a 200 status code?
 
 1. Curl the Google home page with `-iL` and examine the headers.
 1. Curl the Google Teapot page: [https://www.google.com/teapot](https://www.google.com/teapot)
-1. Modify your Python script to GET the Google homepage.
 
-    * **Question 6**: What status code is returned this time? Is it the one returned by `curl -i` or `curl -iL`?
+    * **Question 6**: What status code is returned for `http://google.com/teapot`? Is it the one returned by `curl -i` or `curl -iL`? What happens when you curl `http://www.google.com/teapot`?
+
+1. Modify your Python script to GET the Google homepage.
 
 1. Try `curl -i https://webdocs.cs.ualberta.ca/~hindle1/1.py`
 1. Try it again `curl -i -X POST -d "X=Y"`
