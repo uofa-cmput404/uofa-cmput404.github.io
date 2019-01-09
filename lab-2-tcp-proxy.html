@@ -35,8 +35,8 @@
     <time class="published" datetime="2019-01-07T08:30:00-07:00">
       Mon, 07 Jan 2019 at 08:30 MST
     </time>
-    <time class="modified" datetime="2019-01-07T11:50:00-07:00">
-      Mon, 07 Jan 2019 at 11:50 MST
+    <time class="modified" datetime="2019-01-08T19:14:00-07:00">
+      Tue, 08 Jan 2019 at 19:14 MST
     </time>
     <address class="vcard author">
       By           <a class="url fn" href="https://uofa-cmput404.github.io/author/alexander-wong.html">Alexander Wong</a>
@@ -53,12 +53,20 @@
   </footer><!-- /.post-info -->
   <div class="entry-content">
     <hr>
-<p>Create a multi-client tcp proxy client in Python.</p>
+<p>Create a tcp client, proxy server, echo server in Python. Understand how sockets work in relation to web requests. Use <a href="https://docs.python.org/3.4/library/multiprocessing.html?highlight=process">multiprocessing</a> for forking new processes.</p>
 <p>Answers to the questions should be submitted to <em>Lab 2</em> on eClass.</p>
+<ul>
+<li><a href="https://docs.python.org/3/library/socket.html">Python socket documentation</a></li>
+<li><a href="https://www.w3.org/Protocols/HTTP/1.0/spec.html">w3 HTTP 1.0 Specification</a><ul>
+<li>Also good: <a href="https://tecfa.unige.ch/moo/book2/node93.html">Intro to HTTP 1.0</a></li>
+</ul>
+</li>
+</ul>
 <h3>Sockets</h3>
+<p>Create a github repository for this lab and initialize a clean Python3 virtual environment.</p>
 <ol>
 <li>
-<p>Make a socket client in Python that connects to google and requests a page.</p>
+<p>Make a file called <em>client.py</em> which uses the <a href="https://docs.python.org/3/library/socket.html">socket</a> library to connect to <code>www.google.com</code> and requests a page.</p>
 </li>
 <li>
 <p>Make your program output whatever was sent to it onto the terminal.</p>
@@ -67,9 +75,14 @@
 </ul>
 </li>
 <li>
-<p>Make a new program that listens for incoming connections.</p>
+<p>Make a file called <em>echo_server.py</em> that listens for incoming connections and echos any received data.</p>
 <ul>
-<li><strong>Question 2</strong>: What is the difference between a client socket and a server socket in Python?</li>
+<li>
+<p>Test echoing example: <code>$ echo "Foobar" | nc localhost 8001 -q 1</code> should return Foobar, provided the port used is <code>8001</code></p>
+</li>
+<li>
+<p><strong>Question 2</strong>: What is the difference between a client socket and a server socket in Python?</p>
+</li>
 </ul>
 </li>
 <li>
@@ -85,21 +98,18 @@
 </li>
 <li>
 <p>Print out whatever is sent to your server program.</p>
-</li>
-<li>
-<p>Connect a client socket to Google.</p>
-</li>
-<li>
-<p>Forward whatever is received on the server socket to the client socket.</p>
-</li>
-<li>
-<p>Forward whatever is received on the client socket to the server socket.</p>
 <ul>
-<li><strong>Question 5</strong>: What is returned by recv() from the server after it is done sending the HTTP request?</li>
+<li><strong>Question 5</strong>: What is returned by <code>recv()</code> from the server after it is done sending the HTTP request?</li>
 </ul>
 </li>
 <li>
-<p>Make your proxy server forking so multiple programs can use it.</p>
+<p>Create a file called <em>proxy_server.py</em> and connect to Google. Create a file called <em>proxy_client.py</em> and connect to your proxy server.</p>
+</li>
+<li>
+<p>Forward whatever is received on the server socket to <code>www.google.com</code>. Take the response from <code>www.google.com</code> and send it to the original connection.</p>
+</li>
+<li>
+<p>Make your proxy server and echo server forking so multiple programs can use it simultaneously.</p>
 </li>
 <li>
 <p>Push your code to GitHub.</p>
