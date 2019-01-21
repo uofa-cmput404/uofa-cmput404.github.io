@@ -2,6 +2,8 @@ Title: Home
 url:
 save_as: index.html
 
+[CMPUT404 Slides](https://uofa-cmput404.github.io/cmput404-slides/)
+
 Lab material for CMPUT 404 (Winter 2019 LAB H01 H02 LEC B1).
 
 * [Lab 1: Virtualenv & cURL]({filename}../labs/lab-1.md)
