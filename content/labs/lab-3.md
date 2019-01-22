@@ -75,8 +75,6 @@ Modify your CGI script to set a cookie if the login is correct.
 
 Modify your CGI script so it displays a secret message if the cookie says the user is logged in. You may use `secret_page()` from *templates.py*.
 
-Capture the cookie using *proxy.py*.
-
 **Question 6**: What is the HTTP header syntax the browser uses to send the cookie back?
 
 ----
@@ -87,3 +85,7 @@ Use the cookie to appear to be logged in to the CGI script without logging in.
     * Within the JavaScript console, enter: `document.cookie = "key=value"`
 
 **Question 7**: In your own words, what are cookies used for?
+
+----
+
+*Optional:* Capture the cookie using *proxy.py*.
