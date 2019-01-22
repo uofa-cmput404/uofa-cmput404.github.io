@@ -35,27 +35,27 @@ Su    Mo    Tu    We    Th    Fr Sa
  6     7     8     9    10    11 12  lab 1 VirtualEnv and Curl
 13    14    15    16    17    18 19  lab 2 TCP
 20    21    22    23    24 A1-25 26  lab 3 CGI
-27 P0-28    29    30    31          
+27 P0-28    29    30    31           lab 4 DJANGO
                                     
       February 2019     
 Su    Mo    Tu    We    Th    Fr Sa 
                                1  2 
- 3     4     5     6     7 A2--8  9  lab 4 DJANGO
-10    11    12    13    14    15 16  lab 5 CSS and HTML
+ 3     4     5     6     7 A2--8  9  lab 5 CSS and HTML
+10    11    12    13    14    15 16  lab 6 Heroku
 17   *18*  R19   R20   R21   R22 23 
-24 A3-25    26    27    28           lab 6 Heroku
+24 A3-25    26    27    28           lab 7 Flask
                                     
         March 2019         
 Su    Mo    Tu    We    Th    Fr Sa 
                            MT--1  2 
- 3     4     5     6     7 A4--8  9  lab 7 Flask
-10    11    12    13    14 P1-15 16  lab 8 Websockets [this is a week late!]
-17    18    19    20    21 A5-22 23  lab 9 Auth
-24    25    26    27    28 P2-29 30  lab 10 Connect demo?
+ 3     4     5     6     7 A4--8  9  lab 8 Websockets
+10    11    12    13    14 P1-15 16  lab 9 Auth
+17    18    19    20    21 A5-22 23  lab 10 Connect Smoketest?
+24    25    26    27    28 P2-29 30  lab 11 Connect demo?
 31                                  
         April 2019         
 Su    Mo    Tu    We    Th    Fr Sa 
-       1     2     3     4     5  6  lab 11 LAST WEEK OF LABS / DEMOS
+       1     2     3     4     5  6  lab 12 LAST WEEK OF LABS / DEMOS
  7 P3--8     9   *10*   11    12 13  NO LABS
 14    15    16    17    18    19 20 
 21    22    23    24    25    26 27 

@@ -1,13 +1,13 @@
 Title: Lab 3 - Common Gateway Interface
 Date: 2019-01-07 8:40
-Modified: 2019-01-07 11:50
+Modified: 2019-01-22 10:50
 Category: Lab
 Tags: cgi, common gateway interface
 Authors: Alexander Wong
 
 ----
 
-Explore the Common Gateway Interface.
+Explore the Common Gateway Interface. Refer to the [CGI documentation](https://docs.python.org/3/library/cgi.html).
 
 Answers to the questions should be submitted to *Lab 3* on eClass.
 
@@ -34,7 +34,7 @@ chmod +x hello.py
 Make the very first line of your CGI script the shebang:
 
 ```python
-#!/usr/bin/env python
+#!/usr/bin/env python3
 ```
 
 Examine the environment variables given to the CGI script.
