@@ -1,6 +1,6 @@
 Title: Lab 4 - Django
 Date: 2019-01-07 9:10
-Modified: 2019-01-07 11:55
+Modified: 2019-01-29 10:00
 Category: Lab
 Tags: django
 Authors: Alexander Wong
@@ -331,7 +331,7 @@ Update the *polls/templates/polls/detail.html* file to match the following:
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
-<form action="{% url 'polls:vote' question.id %}" method="post">
+<form action="{% url 'vote' question.id %}" method="post"> <!-- 'polls:vote'-->
 {% csrf_token %}
 {% for choice in question.choice_set.all %}
     <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
@@ -372,7 +372,7 @@ def vote(request, question_id):
         # Always return an HttpResponseRedirect after successfully dealing
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.
-        return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
+        return HttpResponseRedirect(reverse('results', args=(question.id,))) # 'polls:results'
 ```
 
 After voting, the application should redirect to a view displaying the results. Update the `results` view in *polls/views.py*
@@ -397,7 +397,7 @@ Create a template for the results in *polls/templates/polls/results.html*
 {% endfor %}
 </ul>
 
-<a href="{% url 'polls:detail' question.id %}">Vote again?</a>
+<a href="{% url 'detail' question.id %}">Vote again?</a> <!-- polls:detail -->
 ```
 
 Run your application. Use the admin interface to create aquestion, then create multiple choices for your question. Navigate back to `polls/` and attempt to use your application.
