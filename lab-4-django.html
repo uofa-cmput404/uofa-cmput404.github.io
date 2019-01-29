@@ -33,8 +33,8 @@
     <time class="published" datetime="2019-01-07T09:10:00-07:00">
       Mon, 07 Jan 2019 at 09:10 MST
     </time>
-    <time class="modified" datetime="2019-01-07T11:55:00-07:00">
-      Mon, 07 Jan 2019 at 11:55 MST
+    <time class="modified" datetime="2019-01-29T10:00:00-07:00">
+      Tue, 29 Jan 2019 at 10:00 MST
     </time>
     <address class="vcard author">
       By           <a class="url fn" href="https://uofa-cmput404.github.io/author/alexander-wong.html">Alexander Wong</a>
@@ -328,7 +328,7 @@ touch polls/templates/polls/index.html
 
 {% if error_message %}<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>{{ error_message }}<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>{% endif %}
 
-<span class="p">&lt;</span><span class="nt">form</span> <span class="na">action</span><span class="o">=</span><span class="s">&quot;{% url &#39;polls:vote&#39; question.id %}&quot;</span> <span class="na">method</span><span class="o">=</span><span class="s">&quot;post&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">form</span> <span class="na">action</span><span class="o">=</span><span class="s">&quot;{% url &#39;vote&#39; question.id %}&quot;</span> <span class="na">method</span><span class="o">=</span><span class="s">&quot;post&quot;</span><span class="p">&gt;</span> <span class="c">&lt;!-- &#39;polls:vote&#39;--&gt;</span>
 {% csrf_token %}
 {% for choice in question.choice_set.all %}
     <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;radio&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;choice&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;choice{{ forloop.counter }}&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;{{ choice.id }}&quot;</span><span class="p">&gt;</span>
@@ -367,7 +367,7 @@ touch polls/templates/polls/index.html
         <span class="c1"># Always return an HttpResponseRedirect after successfully dealing</span>
         <span class="c1"># with POST data. This prevents data from being posted twice if a</span>
         <span class="c1"># user hits the Back button.</span>
-        <span class="k">return</span> <span class="n">HttpResponseRedirect</span><span class="p">(</span><span class="n">reverse</span><span class="p">(</span><span class="s1">&#39;polls:results&#39;</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">question</span><span class="o">.</span><span class="n">id</span><span class="p">,)))</span>
+        <span class="k">return</span> <span class="n">HttpResponseRedirect</span><span class="p">(</span><span class="n">reverse</span><span class="p">(</span><span class="s1">&#39;results&#39;</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">question</span><span class="o">.</span><span class="n">id</span><span class="p">,)))</span> <span class="c1"># &#39;polls:results&#39;</span>
 </pre></div>
 
 
@@ -390,7 +390,7 @@ touch polls/templates/polls/index.html
 {% endfor %}
 <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
 
-<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;{% url &#39;polls:detail&#39; question.id %}&quot;</span><span class="p">&gt;</span>Vote again?<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;{% url &#39;detail&#39; question.id %}&quot;</span><span class="p">&gt;</span>Vote again?<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span> <span class="c">&lt;!-- polls:detail --&gt;</span>
 </pre></div>
 
 
