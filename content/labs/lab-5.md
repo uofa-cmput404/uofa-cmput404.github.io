@@ -1,6 +1,6 @@
 Title: Lab 5 - Pelican & Basic HTML/CSS
 Date: 2019-01-07 12:40
-Modified: 2019-01-07 14:31
+Modified: 2019-02-05 09:52
 Category: Lab
 Tags: pelican, html css
 Authors: Alexander Wong
@@ -138,6 +138,8 @@ Add your theme to your *pelicanconf.py* file.
 ```python
 THEME = 'templates/mytheme'
 ```
+
+**In publishconf.py, Comment out `CATEGORY_FEED_ATOM`**
 
 Create at least articles/pages on your static site and deploy to GitHub. Ensure that you are not using a theme created by someone else.
 
