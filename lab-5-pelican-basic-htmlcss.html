@@ -34,8 +34,8 @@
     <time class="published" datetime="2019-01-07T12:40:00-07:00">
       Mon, 07 Jan 2019 at 12:40 MST
     </time>
-    <time class="modified" datetime="2019-02-05T09:52:00-07:00">
-      Tue, 05 Feb 2019 at 09:52 MST
+    <time class="modified" datetime="2019-02-11T17:50:00-07:00">
+      Mon, 11 Feb 2019 at 17:50 MST
     </time>
     <address class="vcard author">
       By           <a class="url fn" href="https://uofa-cmput404.github.io/author/alexander-wong.html">Alexander Wong</a>
@@ -77,7 +77,7 @@ virtualenv venv --python<span class="o">=</span>python3
 
 
 <p>Install Pelican and Markdown.</p>
-<div class="highlight"><pre><span></span>pip install pelican markdown ghp-import
+<div class="highlight"><pre><span></span>pip install pelican markdown
 </pre></div>
 
 
@@ -171,7 +171,8 @@ touch templates/mytheme/static/style.css
 </pre></div>
 
 
-<p><strong>In publishconf.py, Comment out <code>CATEGORY_FEED_ATOM</code></strong></p>
+<p>In publishconf.py, Comment out <code>CATEGORY_FEED_ATOM</code>.
+* See <a href="https://github.com/getpelican/pelican/issues/2489">pelican/issues/2489</a></p>
 <p>Create at least articles/pages on your static site and deploy to GitHub. Ensure that you are not using a theme created by someone else.</p>
 <p><strong>Question 1</strong>: What are some of the benefits of using a static site generator? What are some disadvantages?</p>
 <p><strong>Question 2</strong>: What is the link to your GitHub pages hosted static site?</p>
