@@ -1,8 +1,8 @@
 Title: Lab 6 - Heroku
 Date: 2019-01-07 12:40
-Modified: 2019-01-07 12:40
+Modified: 2019-02-11 17:58
 Category: Lab
-Tags: pelican, html css
+Tags: heroku, django
 Authors: Alexander Wong
 
 ----
@@ -97,4 +97,8 @@ django_heroku.settings(locals()) # bottom of the file
 
 Commit your files and deploy the application using a git integration.
 
-**Question 1**: What is the link to your deployed application (on herokuapps)?
+**Question 1**: What are some ways you can deploy your code to Heroku?
+
+**Question 2**: What is a Procfile used for?
+
+**Question 3**: What is the link to your deployed application (on herokuapps)?
