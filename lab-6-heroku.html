@@ -127,9 +127,17 @@ heroku login
 
 
 <p>Commit your files and deploy the application using a git integration.</p>
+<p>What happens when you go to <code>/polls</code> on your Heroku deployed site?</p>
+<p>Run your migrations, create a Superuser, and ensure your application functionality works.</p>
+<div class="highlight"><pre><span></span>$ heroku run --app APPNAME python manage.py migrate
+$ heroku run --app APPNAME python manage.py createsuperuser
+</pre></div>
+
+
 <p><strong>Question 1</strong>: What are some ways you can deploy your code to Heroku?</p>
 <p><strong>Question 2</strong>: What is a Procfile used for?</p>
 <p><strong>Question 3</strong>: What is the link to your deployed application (on herokuapps)?</p>
+<p>Optional: Configure TravisCI or CircleCI for a deployment pipeline that utilizes tests.</p>
   </div><!-- /.entry-content -->
 </section>
         <footer id="contentinfo" class="body">
