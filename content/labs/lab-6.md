@@ -97,8 +97,19 @@ django_heroku.settings(locals()) # bottom of the file
 
 Commit your files and deploy the application using a git integration.
 
+What happens when you go to `/polls` on your Heroku deployed site?
+
+Run your migrations, create a Superuser, and ensure your application functionality works.
+
+```bash
+$ heroku run --app APPNAME python manage.py migrate
+$ heroku run --app APPNAME python manage.py createsuperuser
+```
+
 **Question 1**: What are some ways you can deploy your code to Heroku?
 
 **Question 2**: What is a Procfile used for?
 
 **Question 3**: What is the link to your deployed application (on herokuapps)?
+
+Optional: Configure TravisCI or CircleCI for a deployment pipeline that utilizes tests.
