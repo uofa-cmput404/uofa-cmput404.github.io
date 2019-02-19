@@ -12,7 +12,7 @@ Lab material for CMPUT 404 (Winter 2019 LAB H01 H02 LEC B1).
 * [Lab 4: Django]({filename}../labs/lab-4.md)
 * [Lab 5: Pelican & Basic HTML/CSS]({filename}../labs/lab-5.md)
 * [Lab 6: Heroku]({filename}../labs/lab-6.md)
-* (todo) Lab 7: Flask
+* [Lab 7: Flask]({filename}../labs/lab-7.md)
 * (todo) Lab 8: Websockets, Node.JS, & Phaser.io
 * (todo) Lab 9: Authentication
 
