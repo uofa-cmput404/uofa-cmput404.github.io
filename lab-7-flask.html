@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+          <title>CMPUT 404 - Lab 7 - Flask</title>
+        <meta charset="utf-8" />
+
+  <link rel="icon" href="https://uofa-cmput404.github.io/theme/favicon.ico" />
+  <link rel="stylesheet" type="text/css" href="https://uofa-cmput404.github.io/theme/style.css" />
+
+
+
+
+    <meta name="tags" content="flask" />
+    <meta name="tags" content="python" />
+
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="https://uofa-cmput404.github.io/">CMPUT 404 <strong></strong></a></h1>
+        </header><!-- /#banner -->
+        <nav id="menu"><ul>
+            <li><a href="https://uofa-cmput404.github.io/">Home</a></li>
+            <li class="active"><a href="https://uofa-cmput404.github.io/category/lab.html">Lab</a></li>
+        </ul></nav><!-- /#menu -->
+<section id="content" class="body">
+  <header>
+    <h2 class="entry-title">
+      <a href="https://uofa-cmput404.github.io/lab-7-flask.html" rel="bookmark"
+         title="Permalink to Lab 7 - Flask">Lab 7 - Flask</a></h2>
+ 
+  </header>
+  <footer class="post-info">
+    <time class="published" datetime="2019-02-19T09:52:00-07:00">
+      Tue, 19 Feb 2019 at 09:52 MST
+    </time>
+    <time class="modified" datetime="2019-02-19T09:52:00-07:00">
+      Tue, 19 Feb 2019 at 09:52 MST
+    </time>
+    <address class="vcard author">
+      By           <a class="url fn" href="https://uofa-cmput404.github.io/author/alexander-wong.html">Alexander Wong</a>
+    </address>
+    <div class="category">
+        Category: <a href="https://uofa-cmput404.github.io/category/lab.html">Lab</a>
+    </div>
+    <div class="tags">
+        Tags:
+            <a href="https://uofa-cmput404.github.io/tag/flask.html">flask</a>
+            <a href="https://uofa-cmput404.github.io/tag/python.html">python</a>
+    </div>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <hr>
+<p>Create a basic RESTful web application backend using <a href="http://flask.pocoo.org/">Flask</a>. Consume the API endpoints using <a href="https://curl.haxx.se/"><code>cURL</code></a> and <a href="https://httpie.org/"><code>httpie</code></a>.</p>
+<h3>Flask</h3>
+<p>Navigate to a new folder and initialize a new Python virtual environment.</p>
+<div class="highlight"><pre><span></span>mkdir cmput404lab7
+<span class="nb">cd</span> cmput404lab7
+virtualenv venv --python<span class="o">=</span>python3
+<span class="nb">source</span> venv/bin/activate
+</pre></div>
+
+
+<p>Install Flask.</p>
+<div class="highlight"><pre><span></span>pip install Flask
+</pre></div>
+
+
+<p>Create a new Python file named <code>hello.py</code> and edit its contents so it looks like this:</p>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+
+<span class="nd">@app.route</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">hello</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s2">&quot;Hello, world!&quot;</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Make the file executable and run the application. Navigate to the page in your browser.</p>
+<div class="highlight"><pre><span></span>chmod +x hello.py
+./hello.py
+<span class="c1"># or</span>
+python3 hello.py
+
+<span class="c1"># In a new terminal</span>
+curl localhost:5000 <span class="c1"># the port may be different on your machine</span>
+</pre></div>
+
+
+<p>Modify the <code>hello.py</code> file to serve a RESTful api for managing a TODO list. First, install <code>flask_restful</code>.</p>
+<div class="highlight"><pre><span></span>pip install flask_restful
+</pre></div>
+
+
+<p>Update <code>hello.py</code> so it looks like the following.</p>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
+<span class="kn">from</span> <span class="nn">flask_restful</span> <span class="kn">import</span> <span class="n">Resource</span><span class="p">,</span> <span class="n">Api</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="n">api</span> <span class="o">=</span> <span class="n">Api</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">HelloWorld</span><span class="p">(</span><span class="n">Resource</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;hello&#39;</span><span class="p">:</span> <span class="s1">&#39;world&#39;</span><span class="p">}</span>
+
+
+<span class="n">api</span><span class="o">.</span><span class="n">add_resource</span><span class="p">(</span><span class="n">HelloWorld</span><span class="p">,</span> <span class="s2">&quot;/&quot;</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Run the server and see what it returns in your browser, or using cURL.</p>
+<div class="highlight"><pre><span></span>curl localhost:5000
+</pre></div>
+
+
+<p>Change the contents of <code>hello.py</code> to the following:</p>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
+<span class="kn">from</span> <span class="nn">flask_restful</span> <span class="kn">import</span> <span class="n">reqparse</span><span class="p">,</span> <span class="n">abort</span><span class="p">,</span> <span class="n">Api</span><span class="p">,</span> <span class="n">Resource</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="n">api</span> <span class="o">=</span> <span class="n">Api</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+
+<span class="n">parser</span> <span class="o">=</span> <span class="n">reqparse</span><span class="o">.</span><span class="n">RequestParser</span><span class="p">()</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;task&quot;</span><span class="p">)</span>
+
+<span class="n">TODOs</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="mi">1</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;task&quot;</span><span class="p">:</span> <span class="s2">&quot;build an API&quot;</span><span class="p">},</span>
+    <span class="mi">2</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;task&quot;</span><span class="p">:</span> <span class="s2">&quot;?????&quot;</span><span class="p">},</span>
+    <span class="mi">3</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;task&quot;</span><span class="p">:</span> <span class="s2">&quot;profit&quot;</span><span class="p">},</span>
+<span class="p">}</span>
+
+
+<span class="k">def</span> <span class="nf">abort_if_todo_not_found</span><span class="p">(</span><span class="n">todo_id</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">todo_id</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">TODOs</span><span class="p">:</span>
+        <span class="n">abort</span><span class="p">(</span><span class="mi">404</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">&quot;TODO {} does not exist&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">todo_id</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">add_todo</span><span class="p">(</span><span class="n">todo_id</span><span class="p">):</span>
+    <span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+    <span class="n">todo</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;task&quot;</span><span class="p">:</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;task&quot;</span><span class="p">]}</span>
+    <span class="n">TODOs</span><span class="p">[</span><span class="n">todo_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">todo</span>
+    <span class="k">return</span> <span class="n">todo</span>
+
+
+<span class="k">class</span> <span class="nc">Todo</span><span class="p">(</span><span class="n">Resource</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Shows a single TODO item and lets you delete a TODO item.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">todo_id</span><span class="p">):</span>
+        <span class="n">abort_if_todo_not_found</span><span class="p">(</span><span class="n">todo_id</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">TODOs</span><span class="p">[</span><span class="n">todo_id</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">todo_id</span><span class="p">):</span>
+        <span class="n">abort_if_todo_not_found</span><span class="p">(</span><span class="n">todo_id</span><span class="p">)</span>
+        <span class="k">del</span> <span class="n">TODOs</span><span class="p">[</span><span class="n">todo_id</span><span class="p">]</span>
+        <span class="k">return</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="mi">204</span>
+
+    <span class="k">def</span> <span class="nf">put</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">todo_id</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">add_todo</span><span class="p">(</span><span class="n">todo_id</span><span class="p">),</span> <span class="mi">201</span>
+
+
+<span class="k">class</span> <span class="nc">TodoList</span><span class="p">(</span><span class="n">Resource</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Shows a list of all TODOs and lets you POST to add new tasks.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">TODOs</span>
+
+    <span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">todo_id</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">TODOs</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="n">add_todo</span><span class="p">(</span><span class="n">todo_id</span><span class="p">),</span> <span class="mi">201</span>
+
+
+<span class="n">api</span><span class="o">.</span><span class="n">add_resource</span><span class="p">(</span><span class="n">Todo</span><span class="p">,</span> <span class="s2">&quot;/todos/&lt;int:todo_id&gt;&quot;</span><span class="p">)</span>
+<span class="n">api</span><span class="o">.</span><span class="n">add_resource</span><span class="p">(</span><span class="n">TodoList</span><span class="p">,</span> <span class="s2">&quot;/todos&quot;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+
+
+<p>What does the browser show you when you navigate to <code>/todos</code> and <code>/todos/1</code>?</p>
+<p>Try running the following <code>cURL</code> commands.</p>
+<div class="highlight"><pre><span></span>curl localhost:5000/todos
+curl localhost:5000/todos/3
+curl -v -X DELETE localhost:5000/todos/2
+curl -v -X POST localhost:5000/todos -d <span class="s2">&quot;task=make sure to do lab 7 questions&quot;</span>
+curl -v -X PUT localhost:5000/todos/3 -d <span class="s2">&quot;task=profit more&quot;</span>
+</pre></div>
+
+
+<h3>Httpie</h3>
+<p>In addition to using <code>cURL</code>, <a href="https://httpie.org/"><code>httpie</code></a> is specifically designed for interacting with RESTful JSON APIs. It has colour output and automatically pretty prints JSON for you.</p>
+<div class="highlight"><pre><span></span>pip install httpie
+http localhost:5000/todos
+http :5000/todos
+http HEAD :5000/todos
+http POST :5000/todos <span class="nv">task</span><span class="o">=</span><span class="s2">&quot;Try httpie!&quot;</span>
+</pre></div>
+
+
+<p><strong>Question 1</strong>: How are Flask and Django different? What does Django provide for you that Flask does not?</p>
+<p><strong>Question 2</strong>: What does REST stand for? When I say something is RESTful, what does that mean?</p>
+<p><strong>Question 3</strong>: What does CRUD stand for? For each letter in CRUD, give the associated HTTP method.</p>
+<p><strong>Question 4</strong>: What do HTTP <code>1XX</code> Status Codes mean? HTTP <code>2xx</code>? HTTP <code>3xx</code>? HTTP <code>4xx</code>? HTTP <code>5xx</code>?</p>
+<p><strong>Question 5</strong>: What is an XSS attack? Provide one way a site can be vulneratble to an XSS attack.</p>
+<p><strong>Question 6</strong>: What does CORS stand for? What situation in web application development will you need to implement CORS?</p>
+<ul>
+<li>Hint: What does the <em>CO</em> part of CORS mean?</li>
+</ul>
+<hr>
+<p><strong>Optional</strong>: Deploy your Flask application to Heroku.</p>
+<ul>
+<li>How does your <code>Procfile</code> change when compared to a Django application?</li>
+</ul>
+  </div><!-- /.entry-content -->
+</section>
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+</body>
+</html>
