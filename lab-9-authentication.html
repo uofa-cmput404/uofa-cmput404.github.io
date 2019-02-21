@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+          <title>CMPUT 404 - Lab 9 - Authentication</title>
+        <meta charset="utf-8" />
+
+  <link rel="icon" href="https://uofa-cmput404.github.io/theme/favicon.ico" />
+  <link rel="stylesheet" type="text/css" href="https://uofa-cmput404.github.io/theme/style.css" />
+
+
+
+
+    <meta name="tags" content="django" />
+    <meta name="tags" content="authentication" />
+
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="https://uofa-cmput404.github.io/">CMPUT 404 <strong></strong></a></h1>
+        </header><!-- /#banner -->
+        <nav id="menu"><ul>
+            <li><a href="https://uofa-cmput404.github.io/">Home</a></li>
+            <li class="active"><a href="https://uofa-cmput404.github.io/category/lab.html">Lab</a></li>
+        </ul></nav><!-- /#menu -->
+<section id="content" class="body">
+  <header>
+    <h2 class="entry-title">
+      <a href="https://uofa-cmput404.github.io/lab-9-authentication.html" rel="bookmark"
+         title="Permalink to Lab 9 - Authentication">Lab 9 - Authentication</a></h2>
+ 
+  </header>
+  <footer class="post-info">
+    <time class="published" datetime="2019-02-20T14:47:00-07:00">
+      Wed, 20 Feb 2019 at 14:47 MST
+    </time>
+    <time class="modified" datetime="2019-02-20T18:40:00-07:00">
+      Wed, 20 Feb 2019 at 18:40 MST
+    </time>
+    <address class="vcard author">
+      By           <a class="url fn" href="https://uofa-cmput404.github.io/author/alexander-wong.html">Alexander Wong</a>
+    </address>
+    <div class="category">
+        Category: <a href="https://uofa-cmput404.github.io/category/lab.html">Lab</a>
+    </div>
+    <div class="tags">
+        Tags:
+            <a href="https://uofa-cmput404.github.io/tag/django.html">django</a>
+            <a href="https://uofa-cmput404.github.io/tag/authentication.html">authentication</a>
+    </div>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <hr>
+<p>Learn the basics of authentication for web applications. Explore the provided <a href="https://www.django-rest-framework.org/">Django Rest Framework</a> applications utilizing <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication#Basic_authentication_scheme">HTTP Basic</a>, <a href="https://www.django-rest-framework.org/api-guide/authentication/#tokenauthentication">HTTP Token</a>, and <a href="https://www.django-rest-framework.org/api-guide/authentication/#sessionauthentication">HTTP Session</a> authentication. Understand the high-level intention behind <a href="https://oauth.net/">OAuth</a>/<a href="https://oauth.net/2/">OAuth2</a> and the security implications behind these different authentication schemes.</p>
+<p>Fork and clone the authentication lab repository.</p>
+<ul>
+<li><a href="https://github.com/uofa-cmput404/authentication-lab">github.com/uofa-cmput404/authentication-lab</a></li>
+</ul>
+<p>Follow the Getting Started instructions and run the application locally.</p>
+<div class="highlight"><pre><span></span>virtualenv venv --python<span class="o">=</span>python3
+<span class="nb">source</span> venv/bin/activate
+pip install -r requirements
+./manage.py migrate
+./manage.py createsuperuser
+./manage.py runserver
+</pre></div>
+
+
+<p>Navigate to the <code>/api</code> route and log into the browsable api. Create a new code snippet.</p>
+<p><strong>Question 1</strong>: What authentication scheme is used by default in Django Rest Framework's browsable API? How is this managed?</p>
+<p>In a new terminal, use <code>httpie</code> to query the api endpoints.</p>
+<div class="highlight"><pre><span></span>http POST http://127.0.0.1:8000/api/snippets/ <span class="nv">code</span><span class="o">=</span><span class="s2">&quot;print(123)&quot;</span>
+
+http POST -a username:password http://127.0.0.1:8000/api/snippets/ <span class="nv">code</span><span class="o">=</span><span class="s2">&quot;print(123)&quot;</span>
+</pre></div>
+
+
+<p><strong>Question 2</strong>: What authentication scheme is used by <code>httpie</code> when querying with the <code>-a</code> or <code>--auth</code> option flag?</p>
+<h3>Configure Token Authentication</h3>
+<p>Official documentation can be found <a href="https://www.django-rest-framework.org/api-guide/authentication/#tokenauthentication">here</a>.</p>
+<p>Within <code>authlab/settings.py</code>, add <code>rest_framework.authtoken</code> into the <code>INSTALLED_APPS</code> setting. include <code>TokenAuthentication</code> in the Django Rest Framework settings.</p>
+<div class="highlight"><pre><span></span><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="c1"># ...</span>
+    <span class="s1">&#39;rest_framework&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;rest_framework.authtoken&#39;</span>
+<span class="p">]</span>
+
+<span class="c1"># ...</span>
+<span class="c1"># Django Rest Framework</span>
+<span class="n">REST_FRAMEWORK</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;DEFAULT_PAGINATION_CLASS&#39;</span><span class="p">:</span> <span class="s1">&#39;rest_framework.pagination.PageNumberPagination&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;PAGE_SIZE&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="s1">&#39;DEFAULT_AUTHENTICATION_CLASSES&#39;</span><span class="p">:</span> <span class="p">(</span>
+        <span class="s1">&#39;rest_framework.authentication.BasicAuthentication&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;rest_framework.authentication.SessionAuthentication&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;rest_framework.authentication.TokenAuthentication&#39;</span>
+    <span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Run <code>./manage.py migrate</code> after changing the settings.</p>
+<p>Register the token model in the Django project admin dashboard. Update <code>client/admin.py</code> to be the following:</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rest_framework.authtoken.admin</span> <span class="kn">import</span> <span class="n">TokenAdmin</span>
+
+<span class="n">TokenAdmin</span><span class="o">.</span><span class="n">raw_id_fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;user&#39;</span><span class="p">,)</span>
+</pre></div>
+
+
+<p>Navigate to the Django admin dashboard and create a new token for your user.</p>
+<p>Use <code>httpie</code> to create a new code snippet using token authentication.</p>
+<div class="highlight"><pre><span></span>http POST http://127.0.0.1:8000/api/snippets/ <span class="se">\</span>
+Authorization:Token<span class="se">\ </span><span class="si">${</span><span class="nv">YOUR_TOKEN</span><span class="si">}</span><span class="se">\</span>
+<span class="nv">code</span><span class="o">=</span><span class="s2">&quot;print(&#39;Token works&#39;)&quot;</span>
+</pre></div>
+
+
+<p><strong>Question 3</strong>: What is the difference between <code>Session Authentication</code> and <code>Token Authentication</code>? How is <code>Token Authentication</code> an improvement over <code>Basic Authentication</code>?</p>
+<h3>Identity and Authentication</h3>
+<p>Identity management on the web can be a difficult problem. Consider the following features a good web application may have for identity management:</p>
+<ul>
+<li>Forgot Password/Forgot Username workflows</li>
+<li>Email verification</li>
+<li>Sign in with <a href="https://developers.google.com/identity/sign-in/web/sign-in">Google</a>, <a href="https://developers.facebook.com/docs/facebook-login/">Facebook</a>, <a href="https://developer.github.com/v3/guides/basics-of-authentication/">GitHub</a>, <a href="https://en.wikipedia.org/wiki/List_of_OAuth_providers">etc.</a></li>
+<li>Password-less authentication (<a href="https://auth0.com/blog/how-passwordless-authentication-works/">Medium, Slack, WhatsApp</a>)</li>
+<li>Two Factor Authentication:<ul>
+<li>by sending a One Time Password (OTP) through voice to a phone number</li>
+<li>by sending a OTP text message to a mobile number</li>
+<li>utilizing a Time-based or <a href="https://en.wikipedia.org/wiki/HMAC-based_One-time_Password_algorithm">HMAC-based OTP</a> algorithm</li>
+<li>using Hardware Tokens (<a href="https://www.yubico.com/products/yubikey-hardware/">YubiKey</a>, <a href="https://www.kickstarter.com/projects/conorpatrick/solo-the-first-open-source-fido2-security-key-usb">Solo</a>)</li>
+</ul>
+</li>
+</ul>
+<p><strong>Question 4</strong>: Provide a high level summary of what happens during an OAuth2 authentication flow. For instance: <code>bitbucket.org</code> &gt; <code>Log In</code> &gt; <code>Log in with Google</code>. What happens when I click "Log in with Google"?</p>
+<ul>
+<li>Hint: <a href="https://www.digitalocean.com/community/tutorials/an-introduction-to-oauth-2">DigitalOcean introduction to OAuth2</a></li>
+</ul>
+<p><em>Optional</em>: Configure your Django project and Django Rest Framework API to utilize OAuth2.</p>
+<ul>
+<li><a href="https://auth0.com/docs/quickstart/webapp/django/01-login">Auth0 Django bindings and tutorial</a></li>
+<li>Additionally, you can use <a href="https://github.com/jazzband/django-oauth-toolkit">github.com/jazzband/django-oauth-toolkit</a> to create an OAuth2 provider for others to use.</li>
+<li><em>You are <strong>not expected</strong> to implement OAuth for your project!</em></li>
+</ul>
+  </div><!-- /.entry-content -->
+</section>
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+</body>
+</html>

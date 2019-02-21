@@ -34,8 +34,8 @@
     <time class="published" datetime="2019-02-19T13:35:00-07:00">
       Tue, 19 Feb 2019 at 13:35 MST
     </time>
-    <time class="modified" datetime="2019-02-20T14:37:00-07:00">
-      Wed, 20 Feb 2019 at 14:37 MST
+    <time class="modified" datetime="2019-02-20T15:03:00-07:00">
+      Wed, 20 Feb 2019 at 15:03 MST
     </time>
     <address class="vcard author">
       By           <a class="url fn" href="https://uofa-cmput404.github.io/author/alexander-wong.html">Alexander Wong</a>
@@ -51,7 +51,7 @@
   </footer><!-- /.post-info -->
   <div class="entry-content">
     <hr>
-<p>Learn how to utilize <a href="https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API">WebSockets</a> and <a href="https://phaser.io/">Phaser.io</a>. Create a basic Phaser game with WebSocket connectivity for real-time server to client communication. Utilize <a href="https://nodejs.org/en/">Node.js</a> for our application server. Utilize <a href="https://www.typescriptlang.org/">TypeScript</a> with <a href="https://parceljs.org/">Parcel</a> for bundling browser client code.</p>
+<p>Learn how to utilize <a href="https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API">WebSockets</a> and <a href="https://phaser.io/">Phaser.io</a>. Create a basic Phaser game with WebSocket connectivity for real-time server to client communication. Use <a href="https://nodejs.org/en/">Node.js</a> for our application server. Use <a href="https://www.typescriptlang.org/">TypeScript</a> with <a href="https://parceljs.org/">Parcel</a> for bundling browser client code.</p>
 <h3>Setup Node.js</h3>
 <p>The following steps may be omitted if the version of Node being used is greater than <code>8.X</code>. Check the <a href="https://github.com/nodejs/Release#release-schedule">Long Term Release Schedule</a>.</p>
 <p>Install <a href="https://github.com/creationix/nvm">Node Version Manager</a>.</p>
@@ -88,8 +88,10 @@ npm --version
 
 
 <h3>Initialize Phaser and WebSockerServer</h3>
-<p>Fork this repository and clone it locally onto your own machine.
-* <a href="https://github.com/uofa-cmput404/nodejs-ws-lab">github.com/uofa-cmput404/nodejs-ws-lab</a></p>
+<p>Fork this repository and clone it locally onto your own machine.</p>
+<ul>
+<li><a href="https://github.com/uofa-cmput404/nodejs-ws-lab">github.com/uofa-cmput404/nodejs-ws-lab</a></li>
+</ul>
 <p>Run the application locally, following the quickstart instructions.</p>
 <div class="highlight"><pre><span></span>npm install
 npm start
@@ -98,12 +100,18 @@ npm start
 
 
 <p><strong>Question 1</strong>: What do you see in the browser? When you open another tab and perform a click/drag action, what happens?</p>
+<p><strong>Question 2</strong>: What are some of the differences between TypeScript and JavaScript?</p>
+<p><strong>Question 3</strong>: Why is a web application bundler (Parcel, Webpack, Rollup, etc.) useful for modern web projects? What are some features that <a href="https://parceljs.org/">ParcelJS</a> provides?</p>
 <h3>Top Down Scroller</h3>
 <p>We will now utilize the other assets and create a top down game where we control our character using the arrow keys.</p>
-<p>Checkout the <a href="https://github.com/uofa-cmput404/nodejs-ws-lab/tree/topdown"><code>topdown</code> branch</a> from GitHub.</p>
+<p>Checkout the <a href="https://github.com/uofa-cmput404/nodejs-ws-lab/tree/topdown"><code>topdown</code></a> branch from GitHub and make note of the changes in <code>client.ts</code>.</p>
+<div class="highlight"><pre><span></span>git remote -v <span class="c1"># show your current remotes</span>
+git remote add laborigin https://github.com/uofa-cmput404/nodejs-ws-lab.git
+git checkout -b topdown laborigin/topdown
+</pre></div>
+
+
 <p>Within <code>client.ts</code> the <code>preload</code> function is now loading our required assets. The <code>create</code> function has been updated to use our tilemap data, spritesheet, and character assets. Additional logic for handling animations and keyboard input has also been added. An <code>update</code> function has been added to handle input logic and playing our sprite animations.</p>
-<p><strong>Question 2</strong>: What are some of the differences between TypeScript and JavaScript?</p>
-<p><strong>Question 3</strong>: Why is a web application bundler useful for modern web projects? What are some features that <a href="https://parceljs.org/">ParcelJS</a> provides?</p>
 <h3>Multiplayer Top Down Scroller</h3>
 <p>The <code>init</code> function will require modifications to work with multiple players.</p>
 <p>Add a function that generates UUIDs before the Scene class. For this toy example, the following modified from <a href="https://gist.github.com/jed/982883">github gist</a> is acceptable:</p>
