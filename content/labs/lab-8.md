@@ -1,13 +1,13 @@
 Title: Lab 8 - WebSockets
 Date: 2019-02-19 13:35
-Modified: 2019-02-20 14:37
+Modified: 2019-02-20 15:03
 Category: Lab
 Tags: nodejs, websockets
 Authors: Alexander Wong
 
 ----
 
-Learn how to utilize [WebSockets](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API) and [Phaser.io](https://phaser.io/). Create a basic Phaser game with WebSocket connectivity for real-time server to client communication. Utilize [Node.js](https://nodejs.org/en/) for our application server. Utilize [TypeScript](https://www.typescriptlang.org/) with [Parcel](https://parceljs.org/) for bundling browser client code.
+Learn how to utilize [WebSockets](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API) and [Phaser.io](https://phaser.io/). Create a basic Phaser game with WebSocket connectivity for real-time server to client communication. Use [Node.js](https://nodejs.org/en/) for our application server. Use [TypeScript](https://www.typescriptlang.org/) with [Parcel](https://parceljs.org/) for bundling browser client code.
 
 ### Setup Node.js
 
@@ -50,6 +50,7 @@ npm --version
 ### Initialize Phaser and WebSockerServer
 
 Fork this repository and clone it locally onto your own machine.
+
 * [github.com/uofa-cmput404/nodejs-ws-lab](https://github.com/uofa-cmput404/nodejs-ws-lab)
 
 Run the application locally, following the quickstart instructions.
@@ -62,17 +63,23 @@ npm start
 
 **Question 1**: What do you see in the browser? When you open another tab and perform a click/drag action, what happens?
 
+**Question 2**: What are some of the differences between TypeScript and JavaScript?
+
+**Question 3**: Why is a web application bundler (Parcel, Webpack, Rollup, etc.) useful for modern web projects? What are some features that [ParcelJS](https://parceljs.org/) provides?
+
 ### Top Down Scroller
 
 We will now utilize the other assets and create a top down game where we control our character using the arrow keys.
 
-Checkout the [`topdown` branch](https://github.com/uofa-cmput404/nodejs-ws-lab/tree/topdown) from GitHub.
+Checkout the [`topdown`](https://github.com/uofa-cmput404/nodejs-ws-lab/tree/topdown) branch from GitHub and make note of the changes in `client.ts`.
+
+```bash
+git remote -v # show your current remotes
+git remote add laborigin https://github.com/uofa-cmput404/nodejs-ws-lab.git
+git checkout -b topdown laborigin/topdown
+```
 
 Within `client.ts` the `preload` function is now loading our required assets. The `create` function has been updated to use our tilemap data, spritesheet, and character assets. Additional logic for handling animations and keyboard input has also been added. An `update` function has been added to handle input logic and playing our sprite animations.
-
-**Question 2**: What are some of the differences between TypeScript and JavaScript?
-
-**Question 3**: Why is a web application bundler useful for modern web projects? What are some features that [ParcelJS](https://parceljs.org/) provides?
 
 ### Multiplayer Top Down Scroller
 

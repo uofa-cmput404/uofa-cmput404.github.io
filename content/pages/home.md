@@ -13,10 +13,10 @@ Lab material for CMPUT 404 (Winter 2019 LAB H01 H02 LEC B1).
 * [Lab 5: Pelican & Basic HTML/CSS]({filename}../labs/lab-5.md)
 * [Lab 6: Heroku]({filename}../labs/lab-6.md)
 * [Lab 7: Flask]({filename}../labs/lab-7.md)
-* [Lab 8: Websockets, Node.JS, & Phaser.io]({filename}../labs/lab-8.md)
-* (todo) Lab 9: Authentication
+* [Lab 8: Websockets, Node.js, & Phaser.io]({filename}../labs/lab-8.md)
+* [Lab 9: Authentication]({filename}../labs/lab-9.md)
 
-Labs 10 & 11 are for demos.
+Labs 10 to 12 are for TA project help and demos.
 
 ## Sections
 
