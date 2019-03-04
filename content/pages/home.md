@@ -28,6 +28,8 @@ Labs 10 to 12 are for TA project help and demos.
 
 ## Days
 
+*Update*: Labs 8 and 9 are switched for this term.
+
 ```text
       January 2019     
 Su    Mo    Tu    We    Th    Fr Sa 
@@ -48,8 +50,8 @@ Su    Mo    Tu    We    Th    Fr Sa
         March 2019         
 Su    Mo    Tu    We    Th    Fr Sa 
                            MT--1  2 
- 3     4     5     6     7 A4--8  9  lab 8 Websockets
-10    11    12    13    14 P1-15 16  lab 9 Auth
+ 3     4     5     6     7 A4--8  9  lab 9 Auth
+10    11    12    13    14 P1-15 16  lab 8 Websockets
 17    18    19    20    21 A5-22 23  lab 10 Connect Smoketest?
 24    25    26    27    28 P2-29 30  lab 11 Connect demo?
 31                                  
