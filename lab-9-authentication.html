@@ -34,8 +34,8 @@
     <time class="published" datetime="2019-02-20T14:47:00-07:00">
       Wed, 20 Feb 2019 at 14:47 MST
     </time>
-    <time class="modified" datetime="2019-02-20T18:40:00-07:00">
-      Wed, 20 Feb 2019 at 18:40 MST
+    <time class="modified" datetime="2019-03-07T18:17:00-07:00">
+      Thu, 07 Mar 2019 at 18:17 MST
     </time>
     <address class="vcard author">
       By           <a class="url fn" href="https://uofa-cmput404.github.io/author/alexander-wong.html">Alexander Wong</a>
@@ -71,7 +71,7 @@ pip install -r requirements
 <p>In a new terminal, use <code>httpie</code> to query the api endpoints.</p>
 <div class="highlight"><pre><span></span>http POST http://127.0.0.1:8000/api/snippets/ <span class="nv">code</span><span class="o">=</span><span class="s2">&quot;print(123)&quot;</span>
 
-http POST -a username:password http://127.0.0.1:8000/api/snippets/ <span class="nv">code</span><span class="o">=</span><span class="s2">&quot;print(123)&quot;</span>
+http -a username:password POST http://127.0.0.1:8000/api/snippets/ <span class="nv">code</span><span class="o">=</span><span class="s2">&quot;print(123)&quot;</span>
 </pre></div>
 
 
