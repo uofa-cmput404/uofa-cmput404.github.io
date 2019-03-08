@@ -1,6 +1,6 @@
 Title: Lab 9 - Authentication
 Date: 2019-02-20 14:47
-Modified: 2019-02-20 18:40
+Modified: 2019-03-07 18:17
 Category: Lab
 Tags: django, authentication
 Authors: Alexander Wong
@@ -33,7 +33,7 @@ In a new terminal, use `httpie` to query the api endpoints.
 ```bash
 http POST http://127.0.0.1:8000/api/snippets/ code="print(123)"
 
-http POST -a username:password http://127.0.0.1:8000/api/snippets/ code="print(123)"
+http -a username:password POST http://127.0.0.1:8000/api/snippets/ code="print(123)"
 ```
 
 **Question 2**: What authentication scheme is used by `httpie` when querying with the `-a` or `--auth` option flag?
