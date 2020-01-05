@@ -1,9 +1,15 @@
 # cmput404.github.io
 
-## Getting Started
+## Installation
 
-0. `git clone https://github.com/uofa-cmput404/cmput404.github.io.git && cd cmput404.github.io`
+0. `git clone https://github.com/uofa-cmput404/uofa-cmput404.github.io.git && cd uofa-cmput404.github.io`
 0. `virtualenv venv --python=python3`
+0. `source venv/bin/activate`
+0. `pip install -r requirements.txt`
+
+## Running
+
+0. `cd uofa-cmput404.github.io`
 0. `source venv/bin/activate`
 0. `make devserver`
     * local development with reloading at [localhost:8000](http://localhost:8000)
