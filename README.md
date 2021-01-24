@@ -2,6 +2,8 @@
 
 ## Installation
 
+You want ghp-import and pelican, both of which you can apt-get if you want.
+
 0. `git clone https://github.com/uofa-cmput404/uofa-cmput404.github.io.git && cd uofa-cmput404.github.io`
 0. `virtualenv venv --python=python3`
 0. `source venv/bin/activate`
