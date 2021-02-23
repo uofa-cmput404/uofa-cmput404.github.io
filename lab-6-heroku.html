@@ -103,8 +103,8 @@ heroku login
 </code></pre></div>
 
 
-<p>Pip install <a href="https://gunicorn.org/">gunicorn</a> and <a href="https://github.com/heroku/django-heroku">django-heroku</a>.</p>
-<div class="highlight"><pre><span></span><code>pip install gunicorn django-heroku
+<p>Pip install <a href="https://gunicorn.org/">gunicorn</a> and <a href="https://github.com/pkrefta/django-on-heroku">django-on-heroku</a>.</p>
+<div class="highlight"><pre><span></span><code>pip install gunicorn django-on-heroku
 </code></pre></div>
 
 
@@ -119,11 +119,11 @@ heroku login
 
 
 <p>Within <em>mysite/settings.py</em>, add the following statements:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">django_heroku</span> <span class="c1"># top of the file</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">django_on_heroku</span> <span class="c1"># top of the file</span>
 
 <span class="c1"># ...</span>
 
-<span class="n">django_heroku</span><span class="o">.</span><span class="n">settings</span><span class="p">(</span><span class="nb">locals</span><span class="p">())</span> <span class="c1"># bottom of the file</span>
+<span class="n">django_on_heroku</span><span class="o">.</span><span class="n">settings</span><span class="p">(</span><span class="nb">locals</span><span class="p">())</span> <span class="c1"># bottom of the file</span>
 </code></pre></div>
 
 
