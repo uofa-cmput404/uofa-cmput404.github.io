@@ -86,6 +86,8 @@ Use the cookie to appear to be logged in to the CGI script without logging in.
 
 **Question 7**: In your own words, what are cookies used for?
 
+**Question 8**: What is the link to your code on GitHub?
+
 ----
 
 *Optional:* Capture the cookie using *proxy.py*.

@@ -9,18 +9,23 @@ Authors: Alexander Wong
 
 Big lab! Build a simple [Django](https://www.djangoproject.com/) website. Understand the fundamentals of Django's MVC architecture using the built in models and views. 
 
-Answers to the questions should be submitted to *Lab 4* on eClass. You may also follow along with the [official documentation](https://docs.djangoproject.com/en/2.1/#first-steps). We will be going through Parts 1 to 4 of the first steps tutorial in lab. You should commit your project to git after each question.
+Answers to the questions should be submitted to *Lab 4* on eClass. You may also follow along with the [official documentation](https://docs.djangoproject.com/en/3.1/#first-steps). We will be going through Parts 1 to 4 of the first steps tutorial in lab. You should commit your project to git after each question.
 
 ### Creating a Django Project
 
-* Official Docs [Overview](https://docs.djangoproject.com/en/2.1/intro/overview/), [Installation](https://docs.djangoproject.com/en/2.1/intro/install/)
+* Official Docs [Overview](https://docs.djangoproject.com/en/3.1/intro/overview/), [Installation](https://docs.djangoproject.com/en/3.1/intro/install/)
 
 Create a virtual environment and install Django.
+
+Make sure to use a **virtual environment** for this lab!
+
+If you're doing this on **Windows** please make sure to follow the Windows
+instructions for Lab 1 before starting this lab!
 
 ```bash
 virtualenv venv --python=python3
 source venv/bin/activate
-pip install Django==2.1.5 # latest official version
+pip install Django==3.1.6 # latest official version
 ```
 
 Initialize a new Django project called **mysite**.
@@ -41,7 +46,7 @@ Add your files and push the contents to GitHub. The *manage.py* file should be a
 
 ### Creating a Django App
 
- * Official Docs [Part 1](https://docs.djangoproject.com/en/2.1/intro/tutorial01/)
+ * Official Docs [Part 1](https://docs.djangoproject.com/en/3.1/intro/tutorial01/)
 
 Create a new application within **mysite** called **polls**.
 
@@ -93,7 +98,7 @@ python manage.py runserver
 
 ### Working with Models
 
-* Official Docs [Part 2](https://docs.djangoproject.com/en/2.1/intro/tutorial02/)
+* Official Docs [Part 2](https://docs.djangoproject.com/en/3.1/intro/tutorial02/)
 
 Time to create our first models. Open up *mysite/settings.py* and ensure that the default database is set to `sqlite3`.
 
@@ -185,7 +190,7 @@ python manage.py runserver
 
 ### Working with Views
 
-* Official Docs [Part 3](https://docs.djangoproject.com/en/2.1/intro/tutorial03/)
+* Official Docs [Part 3](https://docs.djangoproject.com/en/3.1/intro/tutorial03/)
 
 Add some additional views to the *polls/views.py* file. Include the following methods:
 
@@ -322,7 +327,7 @@ Remove the hardcoded urls that we specified in the *polls/templates/polls/index.
 
 ### Writing a simple form
 
-* Official Docs [Part 4](https://docs.djangoproject.com/en/2.1/intro/tutorial04/)
+* Official Docs [Part 4](https://docs.djangoproject.com/en/3.1/intro/tutorial04/)
 
 Update the *polls/templates/polls/detail.html* file to match the following:
 
@@ -468,6 +473,6 @@ def vote(request, question_id):
 
 It is in your best interest to Work through the rest of Django's First Steps Tutorials:
 
-* [Part 5: Testing](https://docs.djangoproject.com/en/2.1/intro/tutorial05/)
-* [Part 6: Static Files](https://docs.djangoproject.com/en/2.1/intro/tutorial06/)
-* [Part 7: Customizing the Admin Site](https://docs.djangoproject.com/en/2.1/intro/tutorial07/)
+* [Part 5: Testing](https://docs.djangoproject.com/en/3.1/intro/tutorial05/)
+* [Part 6: Static Files](https://docs.djangoproject.com/en/3.1/intro/tutorial06/)
+* [Part 7: Customizing the Admin Site](https://docs.djangoproject.com/en/3.1/intro/tutorial07/)
