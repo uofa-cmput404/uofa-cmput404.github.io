@@ -67,7 +67,7 @@ pip install -r requirements
 </code></pre></div>
 
 
-<p>Navigate to the <code>/api</code> route and log into the browsable api. Create a new code snippet.</p>
+<p>Navigate to the <code>/api</code> route and log into the browsable API. Create a new code snippet.</p>
 <p><strong>Question 1</strong>: What authentication scheme is used by default in Django Rest Framework's browsable API? How is this managed?</p>
 <p>In a new terminal, use <code>httpie</code> to query the api endpoints.</p>
 <div class="highlight"><pre><span></span><code>http POST http://127.0.0.1:8000/api/snippets/ <span class="nv">code</span><span class="o">=</span><span class="s2">&quot;print(123)&quot;</span>
@@ -110,9 +110,14 @@ http -a username:password POST http://127.0.0.1:8000/api/snippets/ <span class="
 
 <p>Navigate to the Django admin dashboard and create a new token for your user.</p>
 <p>Use <code>httpie</code> to create a new code snippet using token authentication.</p>
-<div class="highlight"><pre><span></span><code>http POST http://127.0.0.1:8000/api/snippets/ <span class="se">\</span>
-Authorization:Token<span class="se">\ </span><span class="si">${</span><span class="nv">YOUR_TOKEN</span><span class="si">}</span><span class="se">\</span>
-<span class="nv">code</span><span class="o">=</span><span class="s2">&quot;print(&#39;Token works&#39;)&quot;</span>
+<p>Replace <code>YOUR_TOKEN</code> with your token in the following command:</p>
+<div class="highlight"><pre><span></span><code>http POST http://127.0.0.1:8000/api/snippets/ <span class="s2">&quot;Authorization:Token YOUR_TOKEN&quot;</span> <span class="nv">code</span><span class="o">=</span><span class="s2">&quot;print(&#39;Token works&#39;)&quot;</span>
+</code></pre></div>
+
+
+<p>For example, if your token is <code>56b9afcaccad879e5bd9b39fe622927f17163092</code>,
+then you should run the command:</p>
+<div class="highlight"><pre><span></span><code>http POST http://127.0.0.1:8000/api/snippets/ <span class="s2">&quot;Authorization:Token 56b9afcaccad879e5bd9b39fe622927f17163092&quot;</span> <span class="nv">code</span><span class="o">=</span><span class="s2">&quot;print(&#39;Token works&#39;)&quot;</span>
 </code></pre></div>
 
 
@@ -133,6 +138,7 @@ Authorization:Token<span class="se">\ </span><span class="si">${</span><span cla
 </li>
 </ul>
 <p><strong>Question 4</strong>: Provide a high level summary of what happens during an OAuth2 authentication flow. For instance: <code>bitbucket.org</code> &gt; <code>Log In</code> &gt; <code>Log in with Google</code>. What happens when I click "Log in with Google"?</p>
+<p><strong>Question 5</strong>: Please provide a link to your code.</p>
 <ul>
 <li>Hint: <a href="https://www.digitalocean.com/community/tutorials/an-introduction-to-oauth-2">DigitalOcean introduction to OAuth2</a></li>
 </ul>
