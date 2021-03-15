@@ -53,11 +53,34 @@
   <div class="entry-content">
     <hr>
 <p>Learn how to utilize <a href="https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API">WebSockets</a> and <a href="https://phaser.io/">Phaser.io</a>. Create a basic Phaser game with WebSocket connectivity for real-time server to client communication. Use <a href="https://nodejs.org/en/">Node.js</a> for our application server. Use <a href="https://www.typescriptlang.org/">TypeScript</a> with <a href="https://parceljs.org/">Parcel</a> for bundling browser client code.</p>
-<h3>Setup Node.js</h3>
-<p>The following steps may be omitted if the version of Node being used is greater than <code>8.X</code>. Check the <a href="https://github.com/nodejs/Release#release-schedule">Long Term Release Schedule</a>.</p>
-<p>Install <a href="https://github.com/creationix/nvm">Node Version Manager</a>.</p>
+<h3>Install Node.js</h3>
+<p>There are two different ways you can try to install node.js!</p>
+<h4>Option 1: Install node on my own computer</h4>
+<p>If you don't already have node.js installed, 
+download and install node from the node from the 
+<a href="https://nodejs.org/en/download/">node.js website</a>.</p>
+<p>This won't be possible on the lab machines, because it requires 
+administrator/root.</p>
+<p>If you already have node installed, please check the version with <code>node -v</code>.</p>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code>$ node -v
+v15.11.0
+</code></pre></div>
+
+
+<p>Make sure the version number is greater than 8! (In this case it's 15, which
+is fine.)</p>
+<p>If your version is older than 8, please either uninstall node and reinstall
+a more recent version of node from the 
+<a href="https://nodejs.org/en/download/">node.js website</a> or follow the instructions
+in the next section for the lab machines and VM.</p>
+<h4>Option 2: Install Node with NVM</h4>
+<p>NVM allows you to install multiple versions of node on Linux or Macs
+without being an administrator or root user.</p>
+<p>NVM does not work on windows.</p>
+<p>Install <a href="https://github.com/nvm-sh/nvm">Node Version Manager</a>. </p>
 <div class="highlight"><pre><span></span><code><span class="c1"># curl</span>
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh <span class="p">|</span> bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh <span class="p">|</span> bash
 
 <span class="c1"># or wget</span>
 wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh <span class="p">|</span> bash
@@ -108,6 +131,7 @@ npm start
 <p>Checkout the <a href="https://github.com/uofa-cmput404/nodejs-ws-lab/tree/topdown"><code>topdown</code></a> branch from GitHub and make note of the changes in <code>client.ts</code>.</p>
 <div class="highlight"><pre><span></span><code>git remote -v <span class="c1"># show your current remotes</span>
 git remote add laborigin https://github.com/uofa-cmput404/nodejs-ws-lab.git
+git fetch laborigin
 git checkout -b topdown laborigin/topdown
 </code></pre></div>
 
@@ -278,6 +302,7 @@ git checkout -b topdown laborigin/topdown
 
 <p>The reference source code is available on the <a href="https://github.com/uofa-cmput404/nodejs-ws-lab/tree/finishedLab">finishedLab</a> branch. You should now have a game running in your browser that handles real-time concurrent connections and updates among multiple users!</p>
 <p><strong>Question 4</strong>: What are the different values for the <code>readyState</code> a WebSocket can be in? Briefly describe what each state means. (Hint: check out the <a href="https://developer.mozilla.org/en-US/docs/Web/API/WebSocket">Mozilla WebSocket API</a>)</p>
+<p><strong>Question 5</strong>: What's the link to your github repo?</p>
   </div><!-- /.entry-content -->
 </section>
         <footer id="contentinfo" class="body">
