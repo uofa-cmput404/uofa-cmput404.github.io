@@ -93,6 +93,9 @@ npm start
 # navigating to browser, localhost:8080
 ```
 
+If you get errors after `npm install` on Mac OS, look for an error about Xcode.
+If there is an error about Xcode, you may need to install it: [Xcode](https://developer.apple.com/xcode/).
+
 **Question 1**: What do you see in the browser? When you open another tab and perform a click/drag action, what happens?
 
 **Question 2**: What are some of the differences between TypeScript and JavaScript?
