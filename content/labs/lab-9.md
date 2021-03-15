@@ -92,7 +92,6 @@ then you should run the command:
 http POST http://127.0.0.1:8000/api/snippets/ "Authorization:Token 56b9afcaccad879e5bd9b39fe622927f17163092" code="print('Token works')"
 ```
 
-
 **Question 3**: What is the difference between `Session Authentication` and `Token Authentication`? How is `Token Authentication` an improvement over `Basic Authentication`?
 
 ### Identity and Authentication

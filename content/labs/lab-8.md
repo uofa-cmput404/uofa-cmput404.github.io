@@ -9,15 +9,48 @@ Authors: Alexander Wong
 
 Learn how to utilize [WebSockets](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API) and [Phaser.io](https://phaser.io/). Create a basic Phaser game with WebSocket connectivity for real-time server to client communication. Use [Node.js](https://nodejs.org/en/) for our application server. Use [TypeScript](https://www.typescriptlang.org/) with [Parcel](https://parceljs.org/) for bundling browser client code.
 
-### Setup Node.js
+### Install Node.js
 
-The following steps may be omitted if the version of Node being used is greater than `8.X`. Check the [Long Term Release Schedule](https://github.com/nodejs/Release#release-schedule).
+There are two different ways you can try to install node.js!
 
-Install [Node Version Manager](https://github.com/creationix/nvm).
+#### Option 1: Install node on my own computer
+
+If you don't already have node.js installed, 
+download and install node from the node from the 
+[node.js website](https://nodejs.org/en/download/).
+
+This won't be possible on the lab machines, because it requires 
+administrator/root.
+
+If you already have node installed, please check the version with `node -v`.
+
+Example:
+
+```bash
+$ node -v
+v15.11.0
+```
+
+Make sure the version number is greater than 8! (In this case it's 15, which
+is fine.)
+
+If your version is older than 8, please either uninstall node and reinstall
+a more recent version of node from the 
+[node.js website](https://nodejs.org/en/download/) or follow the instructions
+in the next section for the lab machines and VM.
+
+#### Option 2: Install Node with NVM
+
+NVM allows you to install multiple versions of node on Linux or Macs
+without being an administrator or root user.
+
+NVM does not work on windows.
+
+Install [Node Version Manager](https://github.com/nvm-sh/nvm). 
 
 ```bash
 # curl
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
 
 # or wget
 wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
@@ -46,7 +79,6 @@ node --version
 npm --version
 # 6.7.0
 ```
-
 ### Initialize Phaser and WebSockerServer
 
 Fork this repository and clone it locally onto your own machine.
@@ -76,6 +108,7 @@ Checkout the [`topdown`](https://github.com/uofa-cmput404/nodejs-ws-lab/tree/top
 ```bash
 git remote -v # show your current remotes
 git remote add laborigin https://github.com/uofa-cmput404/nodejs-ws-lab.git
+git fetch laborigin
 git checkout -b topdown laborigin/topdown
 ```
 
@@ -257,4 +290,6 @@ public update() {
 The reference source code is available on the [finishedLab](https://github.com/uofa-cmput404/nodejs-ws-lab/tree/finishedLab) branch. You should now have a game running in your browser that handles real-time concurrent connections and updates among multiple users!
 
 **Question 4**: What are the different values for the `readyState` a WebSocket can be in? Briefly describe what each state means. (Hint: check out the [Mozilla WebSocket API](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket))
+
+**Question 5**: What's the link to your github repo?
 
