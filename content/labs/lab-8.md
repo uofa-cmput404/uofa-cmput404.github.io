@@ -93,8 +93,14 @@ npm start
 # navigating to browser, localhost:8080
 ```
 
+You can ignore warnings/errors about security vulnerabilities.
+
 If you get errors after `npm install` on Mac OS, look for an error about Xcode.
 If there is an error about Xcode, you may need to install it: [Xcode](https://developer.apple.com/xcode/).
+
+If there is an error like `favicon.ico: Invalid Version: undefined` 
+this is because of a bug in parcel bundler 1.12.4, so downgrade to 1.12.3 by
+running `npm install parcel-bundler@1.12.3`.
 
 **Question 1**: What do you see in the browser? When you open another tab and perform a click/drag action, what happens?
 
@@ -296,3 +302,4 @@ The reference source code is available on the [finishedLab](https://github.com/u
 
 **Question 5**: What's the link to your github repo?
 
+Hint: `git push -u origin topdown:master`
