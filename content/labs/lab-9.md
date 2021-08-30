@@ -24,7 +24,7 @@ pip install -r requirements
 ./manage.py runserver
 ```
 
-Navigate to the `/api` route and log into the browsable api. Create a new code snippet.
+Navigate to the `/api` route and log into the browsable API. Create a new code snippet.
 
 **Question 1**: What authentication scheme is used by default in Django Rest Framework's browsable API? How is this managed?
 
@@ -79,10 +79,17 @@ Navigate to the Django admin dashboard and create a new token for your user.
 
 Use `httpie` to create a new code snippet using token authentication.
 
+Replace `YOUR_TOKEN` with your token in the following command:
+
 ```bash
-http POST http://127.0.0.1:8000/api/snippets/ \
-Authorization:Token\ ${YOUR_TOKEN}\
-code="print('Token works')"
+http POST http://127.0.0.1:8000/api/snippets/ "Authorization:Token YOUR_TOKEN" code="print('Token works')"
+```
+
+For example, if your token is `56b9afcaccad879e5bd9b39fe622927f17163092`,
+then you should run the command:
+
+```bash
+http POST http://127.0.0.1:8000/api/snippets/ "Authorization:Token 56b9afcaccad879e5bd9b39fe622927f17163092" code="print('Token works')"
 ```
 
 **Question 3**: What is the difference between `Session Authentication` and `Token Authentication`? How is `Token Authentication` an improvement over `Basic Authentication`?
@@ -102,6 +109,8 @@ Identity management on the web can be a difficult problem. Consider the followin
     * using Hardware Tokens ([YubiKey](https://www.yubico.com/products/yubikey-hardware/), [Solo](https://www.kickstarter.com/projects/conorpatrick/solo-the-first-open-source-fido2-security-key-usb))
 
 **Question 4**: Provide a high level summary of what happens during an OAuth2 authentication flow. For instance: `bitbucket.org` > `Log In` > `Log in with Google`. What happens when I click "Log in with Google"?
+
+**Question 5**: Please provide a link to your code.
 
 * Hint: [DigitalOcean introduction to OAuth2](https://www.digitalocean.com/community/tutorials/an-introduction-to-oauth-2)
 

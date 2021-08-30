@@ -67,10 +67,10 @@ $ tree
 
 ```
 
-Pip install [gunicorn](https://gunicorn.org/) and [django-heroku](https://github.com/heroku/django-heroku).
+Pip install [gunicorn](https://gunicorn.org/) and [django-on-heroku](https://github.com/pkrefta/django-on-heroku).
 
 ```bash
-pip install gunicorn django-heroku
+pip install gunicorn django-on-heroku
 ```
 
 Save the new python requirements into the *requirements.txt* file.
@@ -88,11 +88,11 @@ web: gunicorn mysite.wsgi
 Within *mysite/settings.py*, add the following statements:
 
 ```python
-import django_heroku # top of the file
+import django_on_heroku # top of the file
 
 # ...
 
-django_heroku.settings(locals()) # bottom of the file
+django_on_heroku.settings(locals()) # bottom of the file
 ```
 
 Commit your files and deploy the application using a git integration.

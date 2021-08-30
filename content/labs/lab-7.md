@@ -188,6 +188,8 @@ http HEAD :5000/todos
 http POST :5000/todos task="Try httpie!"
 ```
 
+**Question 0**: What is the URL of your python flask_restfull code on github???
+
 **Question 1**: How are Flask and Django different? What does Django provide for you that Flask does not?
 
 **Question 2**: What does REST stand for? When I say something is RESTful, what does that mean?
@@ -198,7 +200,7 @@ http POST :5000/todos task="Try httpie!"
 
 **Question 5**: What is an XSS attack? Provide one way a site can be vulneratble to an XSS attack.
 
-**Question 6**: What does CORS stand for? What situation in web application development will you need to implement CORS?
+**Question 6**: What does CORS stand for? What situation in web application development will you need to implement CORS protection?
   
   * Hint: What does the *CO* part of CORS mean?
 
