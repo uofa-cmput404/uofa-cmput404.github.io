@@ -14,7 +14,7 @@ Lab material for CMPUT 404 (Winter 2021 LAB H01 H02 LEC B1).
 * [Lab 6: Heroku]({filename}../labs/lab-6.md)
 * [Lab 7: Flask]({filename}../labs/lab-7.md)
 * [Lab 9: Authentication]({filename}../labs/lab-9.md)
-    * Note: lab 9 is **before** lab 8 for Winter 2021!
+    * Note: lab 9 is **before** lab 8 for Fall 2021!
 * [Lab 8: Websockets, Node.js, & Phaser.io]({filename}../labs/lab-8.md)
 
 Labs 10 to 12 are for TA project help and demos.
