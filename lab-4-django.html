@@ -3,7 +3,6 @@
 <head>
           <title>CMPUT 404 - Lab 4 - Django</title>
         <meta charset="utf-8" />
-        <meta name="generator" content="Pelican" />
 
   <link rel="icon" href="https://uofa-cmput404.github.io/theme/favicon.ico" />
   <link rel="stylesheet" type="text/css" href="https://uofa-cmput404.github.io/theme/style.css" />
@@ -17,7 +16,7 @@
 
 <body id="index" class="home">
         <header id="banner" class="body">
-                <h1><a href="https://uofa-cmput404.github.io/">CMPUT 404</a></h1>
+                <h1><a href="https://uofa-cmput404.github.io/">CMPUT 404 <strong></strong></a></h1>
         </header><!-- /#banner -->
         <nav id="menu"><ul>
             <li><a href="https://uofa-cmput404.github.io/">Home</a></li>
@@ -60,17 +59,17 @@
 <p>Make sure to use a <strong>virtual environment</strong> for this lab!</p>
 <p>If you're doing this on <strong>Windows</strong> please make sure to follow the Windows
 instructions for Lab 1 before starting this lab!</p>
-<div class="highlight"><pre><span></span><code>virtualenv venv --python<span class="o">=</span>python3
+<div class="highlight"><pre><span></span>virtualenv venv --python<span class="o">=</span>python3
 <span class="nb">source</span> venv/bin/activate
 pip install <span class="nv">Django</span><span class="o">==</span><span class="m">3</span>.1.6 <span class="c1"># latest official version</span>
-</code></pre></div>
+</pre></div>
 
 
 <p>Initialize a new Django project called <strong>mysite</strong>.</p>
-<div class="highlight"><pre><span></span><code>django-admin startproject mysite
+<div class="highlight"><pre><span></span>django-admin startproject mysite
 <span class="nb">cd</span> mysite
 python manage.py runserver
-</code></pre></div>
+</pre></div>
 
 
 <p>Add your files and push the contents to GitHub. The <em>manage.py</em> file should be at the root of your github repository.</p>
@@ -82,42 +81,42 @@ python manage.py runserver
 <li>Official Docs <a href="https://docs.djangoproject.com/en/3.1/intro/tutorial01/">Part 1</a></li>
 </ul>
 <p>Create a new application within <strong>mysite</strong> called <strong>polls</strong>.</p>
-<div class="highlight"><pre><span></span><code>python manage.py startapp polls
-</code></pre></div>
+<div class="highlight"><pre><span></span>python manage.py startapp polls
+</pre></div>
 
 
 <p>Modify the <em>polls/views.py</em> file to look like the following.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponse</span>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponse</span>
 
 <span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="s2">&quot;Hello, world. You&#39;re at the polls index.&quot;</span><span class="p">)</span>
-</code></pre></div>
+</pre></div>
 
 
 <p>Create a file at <em>polls/urls.py</em> with the following code.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">path</span>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">path</span>
 <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">views</span>
 
 <span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
   <span class="n">path</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">)</span>
 <span class="p">]</span>
-</code></pre></div>
+</pre></div>
 
 
 <p>Within <em>mysite/urls.py</em> include the following code.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">django.contrib</span> <span class="kn">import</span> <span class="n">admin</span>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.contrib</span> <span class="kn">import</span> <span class="n">admin</span>
 <span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">include</span><span class="p">,</span> <span class="n">path</span>
 
 <span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
     <span class="n">path</span><span class="p">(</span><span class="s1">&#39;polls/&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="s1">&#39;polls.urls&#39;</span><span class="p">)),</span>
     <span class="n">path</span><span class="p">(</span><span class="s1">&#39;admin/&#39;</span><span class="p">,</span> <span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">urls</span><span class="p">),</span>
 <span class="p">]</span>
-</code></pre></div>
+</pre></div>
 
 
 <p>Run the Django project with the runserver command.</p>
-<div class="highlight"><pre><span></span><code>python manage.py runserver
-</code></pre></div>
+<div class="highlight"><pre><span></span>python manage.py runserver
+</pre></div>
 
 
 <p><strong>Question 3</strong>: After creating the first view within polls, what does the browser show you when navigating to <code>/</code> and to <code>/polls</code> respectively?</p>
@@ -127,7 +126,7 @@ python manage.py runserver
 <li>Official Docs <a href="https://docs.djangoproject.com/en/3.1/intro/tutorial02/">Part 2</a></li>
 </ul>
 <p>Time to create our first models. Open up <em>mysite/settings.py</em> and ensure that the default database is set to <code>sqlite3</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Database</span>
+<div class="highlight"><pre><span></span><span class="c1"># Database</span>
 <span class="c1"># https://docs.djangoproject.com/en/2.1/ref/settings/#databases</span>
 
 <span class="n">DATABASES</span> <span class="o">=</span> <span class="p">{</span>
@@ -136,11 +135,11 @@ python manage.py runserver
         <span class="s1">&#39;NAME&#39;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">BASE_DIR</span><span class="p">,</span> <span class="s1">&#39;db.sqlite3&#39;</span><span class="p">),</span>
     <span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div>
+</pre></div>
 
 
 <p>Within <em>polls/models.py</em> include the following code.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
 
 <span class="k">class</span> <span class="nc">Question</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">question_text</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
@@ -150,11 +149,11 @@ python manage.py runserver
     <span class="n">question</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Question</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">CASCADE</span><span class="p">)</span>
     <span class="n">choice_text</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
     <span class="n">votes</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-</code></pre></div>
+</pre></div>
 
 
 <p>To activate our poll application in our project, add it to the installed apps within <em>mysite/settings.py</em>.</p>
-<div class="highlight"><pre><span></span><code><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
+<div class="highlight"><pre><span></span><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
     <span class="s1">&#39;polls.apps.PollsConfig&#39;</span><span class="p">,</span>
     <span class="s1">&#39;django.contrib.admin&#39;</span><span class="p">,</span>
     <span class="s1">&#39;django.contrib.auth&#39;</span><span class="p">,</span>
@@ -163,40 +162,40 @@ python manage.py runserver
     <span class="s1">&#39;django.contrib.messages&#39;</span><span class="p">,</span>
     <span class="s1">&#39;django.contrib.staticfiles&#39;</span><span class="p">,</span>
 <span class="p">]</span>
-</code></pre></div>
+</pre></div>
 
 
 <p>Make the database migrations.</p>
-<div class="highlight"><pre><span></span><code>python manage.py makemigrations polls
-</code></pre></div>
+<div class="highlight"><pre><span></span>python manage.py makemigrations polls
+</pre></div>
 
 
 <p>Run the migration command to create the tables in your database.</p>
-<div class="highlight"><pre><span></span><code>python manage.py migrate
-</code></pre></div>
+<div class="highlight"><pre><span></span>python manage.py migrate
+</pre></div>
 
 
 <p><strong>Question 4</strong>: What is a Django migration and why do we need them?</p>
 <hr>
 <h3>Using Django Admin</h3>
 <p>Create a user that can log into the admin site.</p>
-<div class="highlight"><pre><span></span><code>python manage.py createsuperuser
-</code></pre></div>
+<div class="highlight"><pre><span></span>python manage.py createsuperuser
+</pre></div>
 
 
 <p>Make the polls app modifiable in the admin by editing the <em>polls/admin.py</em> file to be the following:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">django.contrib</span> <span class="kn">import</span> <span class="n">admin</span>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.contrib</span> <span class="kn">import</span> <span class="n">admin</span>
 
 <span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Choice</span><span class="p">,</span> <span class="n">Question</span>
 
 <span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">Choice</span><span class="p">)</span>
 <span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">Question</span><span class="p">)</span>
-</code></pre></div>
+</pre></div>
 
 
 <p>Start the development server again and go to <code>/admin</code> on local application.</p>
-<div class="highlight"><pre><span></span><code>python manage.py runserver
-</code></pre></div>
+<div class="highlight"><pre><span></span>python manage.py runserver
+</pre></div>
 
 
 <p><strong>Question 5</strong>: What do you see after you log into the Django adminstration site? From a high levle, how do you get custom models to appear in the Django admin page?</p>
@@ -206,7 +205,7 @@ python manage.py runserver
 <li>Official Docs <a href="https://docs.djangoproject.com/en/3.1/intro/tutorial03/">Part 3</a></li>
 </ul>
 <p>Add some additional views to the <em>polls/views.py</em> file. Include the following methods:</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">detail</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">question_id</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">detail</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">question_id</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="s2">&quot;You&#39;re looking at question </span><span class="si">%s</span><span class="s2">.&quot;</span> <span class="o">%</span> <span class="n">question_id</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">results</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">question_id</span><span class="p">):</span>
@@ -215,11 +214,11 @@ python manage.py runserver
 
 <span class="k">def</span> <span class="nf">vote</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">question_id</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="s2">&quot;You&#39;re voting on question </span><span class="si">%s</span><span class="s2">.&quot;</span> <span class="o">%</span> <span class="n">question_id</span><span class="p">)</span>
-</code></pre></div>
+</pre></div>
 
 
 <p>With the above views added, add them to <em>polls/urls.py</em>.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">path</span>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">path</span>
 
 <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">views</span>
 
@@ -233,14 +232,14 @@ python manage.py runserver
     <span class="c1"># ex: /polls/5/vote/</span>
     <span class="n">path</span><span class="p">(</span><span class="s1">&#39;&lt;int:question_id&gt;/vote/&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">vote</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;vote&#39;</span><span class="p">),</span>
 <span class="p">]</span>
-</code></pre></div>
+</pre></div>
 
 
 <p><strong>Question 6</strong>: What do you see when you go to <code>/polls/38/</code> in your browser? What about <code>/polls/38/results</code> and <code>/polls/38/vote</code>? What happens when you don’t put a number, and instead use a string? How would you modify the <em>urls.py</em> file to allow arbitrary alphabetic characters?</p>
 <hr>
 <h3>Making views render model data</h3>
 <p>Update the <em>polls/views.py</em> <code>index</code> method so the questions are returned.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponse</span>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponse</span>
 
 <span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Question</span>
 
@@ -251,17 +250,17 @@ python manage.py runserver
     <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
 
 <span class="c1"># Leave the rest of the views (detail, results, vote) unchanged</span>
-</code></pre></div>
+</pre></div>
 
 
 <p>Create an empty directory named <em>templates</em> within <em>polls</em>. Then create another directory named <em>polls</em> within the <em>templates</em> directory. Lastly create a file called <em>index.html</em> within the second <em>polls</em> directory.</p>
-<div class="highlight"><pre><span></span><code>mkdir -p polls/templates/polls
+<div class="highlight"><pre><span></span>mkdir -p polls/templates/polls
 touch polls/templates/polls/index.html
-</code></pre></div>
+</pre></div>
 
 
 <p>Within the newly created empty <em>polls/templates/polls/index.html</em> file, write the following.</p>
-<div class="highlight"><pre><span></span><code>{% if latest_question_list %}
+<div class="highlight"><pre><span></span>{% if latest_question_list %}
     <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
     {% for question in latest_question_list %}
         <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;/polls/{{ question.id }}/&quot;</span><span class="p">&gt;</span>{{ question.question_text }}<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
@@ -270,11 +269,11 @@ touch polls/templates/polls/index.html
 {% else %}
     <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>No polls are available.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
 {% endif %}
-</code></pre></div>
+</pre></div>
 
 
 <p>Update the <code>index</code> view in <em>polls/views.py</em> to use the new template.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span>
 
 <span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Question</span>
 
@@ -283,42 +282,42 @@ touch polls/templates/polls/index.html
     <span class="n">latest_question_list</span> <span class="o">=</span> <span class="n">Question</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;-pub_date&#39;</span><span class="p">)[:</span><span class="mi">5</span><span class="p">]</span>
     <span class="n">context</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;latest_question_list&#39;</span><span class="p">:</span> <span class="n">latest_question_list</span><span class="p">}</span>
     <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;polls/index.html&#39;</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
-</code></pre></div>
+</pre></div>
 
 
 <p>Add a new template file for the poll details view.</p>
-<div class="highlight"><pre><span></span><code>touch polls/templates/polls/detail.html
-</code></pre></div>
+<div class="highlight"><pre><span></span>touch polls/templates/polls/detail.html
+</pre></div>
 
 
 <p>For the newly created template in <em>polls/templates/polls/detail.html</em>, update the content with the template tag for our question:</p>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>{{ question.question_text }}<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>{{ question.question_text }}<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
 <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
 {% for choice in question.choice_set.all %}
     <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>{{ choice.choice_text }}<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
 {% endfor %}
 <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
-</code></pre></div>
+</pre></div>
 
 
 <p>Update the <code>detail</code> view in <em>polls/views.py</em> to use the new template.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">get_object_or_404</span><span class="p">,</span> <span class="n">render</span>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">get_object_or_404</span><span class="p">,</span> <span class="n">render</span>
 
 <span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Question</span>
 <span class="c1"># ...</span>
 <span class="k">def</span> <span class="nf">detail</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">question_id</span><span class="p">):</span>
     <span class="n">question</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">Question</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="n">question_id</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;polls/detail.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;question&#39;</span><span class="p">:</span> <span class="n">question</span><span class="p">})</span>
-</code></pre></div>
+</pre></div>
 
 
 <p>Remove the hardcoded urls that we specified in the <em>polls/templates/polls/index.html</em> file and replace it with at emplate tag referencing our url.</p>
-<div class="highlight"><pre><span></span><code><span class="c">&lt;!-- old --&gt;</span>
+<div class="highlight"><pre><span></span><span class="c">&lt;!-- old --&gt;</span>
 <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;/polls/{{ question.id }}/&quot;</span><span class="p">&gt;</span>{{ question.question_text }}<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
 
 <span class="c">&lt;!-- new --&gt;</span>
 <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;{% url &#39;detail&#39; question.id %}&quot;</span><span class="p">&gt;</span>{{ question.question_text }}<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
-</code></pre></div>
+</pre></div>
 
 
 <p><strong>Question 7</strong>: Why is it a bad idea to hardcode urls into the templates?</p>
@@ -328,7 +327,7 @@ touch polls/templates/polls/index.html
 <li>Official Docs <a href="https://docs.djangoproject.com/en/3.1/intro/tutorial04/">Part 4</a></li>
 </ul>
 <p>Update the <em>polls/templates/polls/detail.html</em> file to match the following:</p>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>{{ question.question_text }}<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>{{ question.question_text }}<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
 
 {% if error_message %}<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>{{ error_message }}<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>{% endif %}
 
@@ -340,16 +339,16 @@ touch polls/templates/polls/index.html
 {% endfor %}
 <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;Vote&quot;</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
-</code></pre></div>
+</pre></div>
 
 
 <p>Create a url <em>polls/urls.py</em> that handles the form submitted data.</p>
-<div class="highlight"><pre><span></span><code><span class="n">path</span><span class="p">(</span><span class="s1">&#39;&lt;int:question_id&gt;/vote/&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">vote</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;vote&#39;</span><span class="p">),</span>
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="n">path</span><span class="p">(</span><span class="s1">&#39;&lt;int:question_id&gt;/vote/&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">vote</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;vote&#39;</span><span class="p">),</span>
+</pre></div>
 
 
 <p>Update the <code>vote</code> view in <em>polls/views.py</em> to handle the new template.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponse</span><span class="p">,</span> <span class="n">HttpResponseRedirect</span>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponse</span><span class="p">,</span> <span class="n">HttpResponseRedirect</span>
 <span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">get_object_or_404</span><span class="p">,</span> <span class="n">render</span>
 <span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">reverse</span>
 
@@ -372,21 +371,21 @@ touch polls/templates/polls/index.html
         <span class="c1"># with POST data. This prevents data from being posted twice if a</span>
         <span class="c1"># user hits the Back button.</span>
         <span class="k">return</span> <span class="n">HttpResponseRedirect</span><span class="p">(</span><span class="n">reverse</span><span class="p">(</span><span class="s1">&#39;results&#39;</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">question</span><span class="o">.</span><span class="n">id</span><span class="p">,)))</span> <span class="c1"># &#39;polls:results&#39;</span>
-</code></pre></div>
+</pre></div>
 
 
 <p>After voting, the application should redirect to a view displaying the results. Update the <code>results</code> view in <em>polls/views.py</em></p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">get_object_or_404</span><span class="p">,</span> <span class="n">render</span>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">get_object_or_404</span><span class="p">,</span> <span class="n">render</span>
 
 
 <span class="k">def</span> <span class="nf">results</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">question_id</span><span class="p">):</span>
     <span class="n">question</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">Question</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="n">question_id</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;polls/results.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;question&#39;</span><span class="p">:</span> <span class="n">question</span><span class="p">})</span>
-</code></pre></div>
+</pre></div>
 
 
 <p>Create a template for the results in <em>polls/templates/polls/results.html</em></p>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>{{ question.question_text }}<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>{{ question.question_text }}<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
 
 <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
 {% for choice in question.choice_set.all %}
@@ -395,7 +394,7 @@ touch polls/templates/polls/index.html
 <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
 
 <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;{% url &#39;detail&#39; question.id %}&quot;</span><span class="p">&gt;</span>Vote again?<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span> <span class="c">&lt;!-- polls:detail --&gt;</span>
-</code></pre></div>
+</pre></div>
 
 
 <p>Run your application. Use the admin interface to create aquestion, then create multiple choices for your question. Navigate back to <code>polls/</code> and attempt to use your application.</p>
@@ -408,7 +407,7 @@ touch polls/templates/polls/index.html
 <li>Introduce new views based on Django's generic views.</li>
 </ol>
 <p>Amend the <em>polls/urls.py</em> url configuration.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">path</span>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">path</span>
 
 <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">views</span>
 
@@ -419,11 +418,11 @@ touch polls/templates/polls/index.html
     <span class="n">path</span><span class="p">(</span><span class="s1">&#39;&lt;int:pk&gt;/results/&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">ResultsView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;results&#39;</span><span class="p">),</span>
     <span class="n">path</span><span class="p">(</span><span class="s1">&#39;&lt;int:question_id&gt;/vote/&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">vote</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;vote&#39;</span><span class="p">),</span>
 <span class="p">]</span>
-</code></pre></div>
+</pre></div>
 
 
 <p>Amend the <em>polls/views.py</em> file.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponseRedirect</span>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponseRedirect</span>
 <span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">get_object_or_404</span><span class="p">,</span> <span class="n">render</span>
 <span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">reverse</span>
 <span class="kn">from</span> <span class="nn">django.views</span> <span class="kn">import</span> <span class="n">generic</span>
@@ -452,7 +451,7 @@ touch polls/templates/polls/index.html
 
 <span class="k">def</span> <span class="nf">vote</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">question_id</span><span class="p">):</span>
     <span class="o">...</span> <span class="c1"># same as above, no changes needed.</span>
-</code></pre></div>
+</pre></div>
 
 
 <p><strong>Question 8</strong>: What are the benefits of using Django's generic views over writing views 'the hard way'? When should you use a generic view and when shouldn't you use a generic view?</p>
@@ -467,8 +466,8 @@ touch polls/templates/polls/index.html
 </section>
         <footer id="contentinfo" class="body">
                 <address id="about" class="vcard body">
-                Proudly powered by <a href="https://getpelican.com/">Pelican</a>,
-                which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                which takes great advantage of <a href="http://python.org">Python</a>.
                 </address><!-- /#about -->
         </footer><!-- /#contentinfo -->
 </body>
