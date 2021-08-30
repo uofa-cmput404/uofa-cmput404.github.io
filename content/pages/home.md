@@ -28,33 +28,61 @@ Labs 10 to 12 are for TA project help and demos.
 ## Days
 
 ```text
-   2021
-         January         
-   Su Mo Tu We Th Fr Sa  
-                   1  2  
-    3  4  5  6  7  8  9  
-   10 11 12 13 14 15 16  lab 1 VirtualEnv and Curl
-   17 18 19 20 21 22 23  lab 2 TCP
-   24 25 26 27 28 29 30  lab 3 CGI Assignment 1  / Project 0
-   31                
-         February      
-   Su Mo Tu We Th Fr Sa
-       1  2  3  4  5  6  lab 4 DJANGO (Project 0)
-    7  8  9 10 11 12 13  lab 5 CSS and HTML (Assignment 2)
-   14 15 16 17 18 19 20  Reading break
-   21 22 23 24 25 26 27  lab 6 Heroku (Assignment 3)
-   28                  
-          March         
-   Su Mo Tu We Th Fr Sa 
-       1  2  3  4  5  6  lab 7 Flask  project 1
-    7  8  9 10 11 12 13  lab 9 Auth ;  Assignment 4; proj 1 demo
-   14 15 16 17 18 19 20  lab 8 Websockets ; Midterm
-   21 22 23 24 25 26 27  lab 10 Connect Smoketest? ; Assignment 5
-   28 29 30 31           lab 11 Connect demo? ; project 2 wednesday day
-          April        
-   Su Mo Tu We Th Fr Sa
-                1  2  3  Easter Fri ; project 2 demo
-    4  5  6  7  8  9 10  Easter Mon ; Labs are consultation
-   11 12 13 14 15 16 17  lab 12 demo ; Project 3 ; project 3 demo
+   September 2021     
+Su     Mo     Tu     We     Th     Fr Sa  
+                      1      2      3  4  DIY lab 1 VirtualEnv and Curl (TAs available)
+ 5    **6      7      8      9     10 11  DIY lab 1 VirtualEnv and Curl (TAs available)
+12     13     14     15     16     17 18  lab 2 TCP
+19     20     21     22     23  A1-24 25  lab 3 CGI
+26  P0-27     28     29   **30            lab 4 DJANGO ; project 0
+                                     
+       October 2021            
+Su     Mo     Tu     We     Th     Fr Sa  
+                                    1  2  lab 4 DJANGO ; project 0
+ 3      4      5      6      7   A2-8  9  lab 5 CSS and HTML ; Assignment 2
+10   **11     12     13     14     15 16  Consultation
+17     18     19     20     21  A3-22 23  lab 6 Heroku ; Assignment 3
+24     25     26     27     28  P1-29 30  lab 7 Flask; project 1
+31                                        
+       November 2021      
+Su     Mo     Tu     We     Th     Fr Sa  
+        1      2      3      4  A4--5  6  lab 9 Auth ; Assignment 4 ; project 1 demo
+ 7    RW8    RW9   RW10   RW11   RW12 13  Reading week
+14     15     16  MT-17     18     19 20  lab 8 Websockets ; Midterm
+21     22     23     24     25  P2-26 27  lab 10 Connect smoketest AND Project 2 due.
+28  A5-29     30                          Lab 11 Connect Demo ; Assignment 5
+                                          
+       December 2021      
+Su     Mo     Tu     We     Th     Fr Sa  
+                      1      2      3  4  lab 11 Connect Demo ; Assignment 5
+ 5  P3--6      7      8      9     10 11  lab 12 LAST WEEK OF LABS / DEMOS ; Project 3 due; Labs on the 8th
+
+
+If you find the weeks kind of confusing here's the samething but the
+weeks are filled in
+
+   September 2021     
+Su     Mo     Tu     We     Th     Fr Sa  
+                      1      2      3  4  DIY lab 1 VirtualEnv and Curl (TAs available)
+ 5    **6      7      8      9     10 11  DIY lab 1 VirtualEnv and Curl (TAs available)
+12     13     14     15     16     17 18  lab 2 TCP
+19     20     21     22     23  A1-24 25  lab 3 CGI
+26  P0-27     28     29   **30      1     lab 4 DJANGO ; project 0
+       October 2021            
+Su     Mo     Tu     We     Th     Fr Sa  
+ 3      4      5      6      7   A2-8  9  lab 5 CSS and HTML ; Assignment 2
+10   **11     12     13     14     15 16  Consultation
+17     18     19     20     21  A3-22 23  lab 6 Heroku ; Assignment 3
+24     25     26     27     28  P1-29 30  lab 7 Flask; project 1
+       November 2021      
+Su     Mo     Tu     We     Th     Fr Sa  
+31      1      2      3      4  A4--5  6  lab 9 Auth ; Assignment 4 ; project 1 demo
+ 7    RW8    RW9   RW10   RW11   RW12 13  Reading week
+14     15     16  MT-17     18     19 20  lab 8 Websockets ; Midterm
+21     22     23     24     25  P2-26 27  lab 10 Connect smoketest AND Project 2 due.
+28  A5-29     30      1      2      3  4  lab 11 Connect Demo ; Assignment 5
+       December 2021      
+ 5  P3--6      7      8      9     10 11  lab 12 LAST WEEK OF LABS / DEMOS ; Project 3 due ;Labs on 8th
+                    
 
 ```
