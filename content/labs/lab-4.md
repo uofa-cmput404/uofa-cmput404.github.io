@@ -1,6 +1,6 @@
 Title: Lab 4 - Django
 Date: 2019-01-07 9:10
-Modified: 2019-01-29 10:00
+Modified: 2021-10-12 10:00
 Category: Lab
 Tags: django
 Authors: Alexander Wong
@@ -70,7 +70,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-  path('', views.index, name='index')
+  path('', views.index, name='index'),
 ]
 ```
 
@@ -321,6 +321,36 @@ Remove the hardcoded urls that we specified in the *polls/templates/polls/index.
 <li><a href="{% url 'detail' question.id %}">{{ question.question_text }}</a></li>
 ```
 
+----
+
+### Namespacing URL names
+
+Add an `app_name` in the *polls/urls.py* file to set the application namespace.
+
+```python
+from django.urls import path
+
+from . import views
+
+app_name = 'polls'
+urlpatterns = [
+    path('', views.index, name='index'),
+    path('<int:question_id>/', views.detail, name='detail'),
+    path('<int:question_id>/results/', views.results, name='results'),
+    path('<int:question_id>/vote/', views.vote, name='vote'),
+]
+```
+
+Change your *polls/index.html* template to point at the namespaced detail view.
+
+```html
+<!-- old -->
+<li><a href="{% url 'detail' question.id %}">{{ question.question_text }}</a></li>
+
+<!-- new -->
+<li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+```
+
 **Question 7**: Why is it a bad idea to hardcode urls into the templates?
 
 ----
@@ -336,7 +366,7 @@ Update the *polls/templates/polls/detail.html* file to match the following:
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
-<form action="{% url 'vote' question.id %}" method="post"> <!-- 'polls:vote'-->
+<form action="{% url 'polls:vote' question.id %}" method="post">
 {% csrf_token %}
 {% for choice in question.choice_set.all %}
     <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
@@ -377,7 +407,7 @@ def vote(request, question_id):
         # Always return an HttpResponseRedirect after successfully dealing
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.
-        return HttpResponseRedirect(reverse('results', args=(question.id,))) # 'polls:results'
+        return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
 ```
 
 After voting, the application should redirect to a view displaying the results. Update the `results` view in *polls/views.py*
@@ -402,7 +432,7 @@ Create a template for the results in *polls/templates/polls/results.html*
 {% endfor %}
 </ul>
 
-<a href="{% url 'detail' question.id %}">Vote again?</a> <!-- polls:detail -->
+<a href="{% url 'polls:detail' question.id %}">Vote again?</a>
 ```
 
 Run your application. Use the admin interface to create aquestion, then create multiple choices for your question. Navigate back to `polls/` and attempt to use your application.
@@ -417,7 +447,7 @@ To convert the `poll` application to use generic views, we will:
 2. Delete some of the old, unnecessary views.
 3. Introduce new views based on Django's generic views.
 
-Amend the *polls/urls.py* url configuration.
+Amend the *polls/urls.py* url configuration. Note that the name of the matched pattern in the path strings of the second and third patterns has changed from `<question_id>` to `<pk>`.
 
 ```python
 from django.urls import path
