@@ -79,7 +79,7 @@ Save the new python requirements into the *requirements.txt* file.
 pip freeze > requirements.txt
 ```
 
-Create a new file named *Procfile* for Heroku applications.
+Create a new file named *Procfile* for Heroku applications. The file shall have following contents:
 
 ```text
 web: gunicorn mysite.wsgi
