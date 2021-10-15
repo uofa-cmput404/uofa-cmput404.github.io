@@ -3,7 +3,7 @@ Date: 2019-01-07 9:10
 Modified: 2021-10-12 10:00
 Category: Lab
 Tags: django
-Authors: Alexander Wong
+Authors: Alexander Wong, Xin Yang
 
 ----
 
