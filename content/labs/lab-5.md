@@ -28,8 +28,7 @@ Clone the repository, change directory into the repo. Create a branch named `src
 ```bash
 git clone {git-repo-url}
 cd {git-clone-url}
-git branch src
-git checkout src
+git checkout -b src
 virtualenv venv --python=python3
 source venv/bin/activate
 ```
@@ -91,7 +90,8 @@ Generate and preview your site using `make devserver`. Your site should now be a
 Update *publishconf.py* and set `SITEURL` to your github given url.
 
 * If using **User or Organization site**, deploy using `make github`.
-* If using **Project site**, set *publishconf.py* `OUTPUT_PATH = "docs/"`.
+    * If you get ghp-import error. Install ghp-import using pip. (`pip install ghp-import`)
+* If using **Project site**, set *Makefile* `OUTPUTDIR=$(BASEDIR)/docs`.
     * Run `make publish`
     * Commit the *docs/* directory to the master branch on Github.
 
@@ -143,7 +143,7 @@ In publishconf.py, Comment out `CATEGORY_FEED_ATOM`.
 * See [pelican/issues/2489](https://github.com/getpelican/pelican/issues/2489)
 
 
-Create at least articles/pages on your static site and deploy to GitHub. Ensure that you are not using a theme created by someone else.
+Create at least 3 articles/pages on your static site and deploy to GitHub. Ensure that you are not using a theme created by someone else.
 
 **Question 1**: What are some of the benefits of using a static site generator? What are some disadvantages?
 
