@@ -69,8 +69,7 @@
 <p>Clone the repository, change directory into the repo. Create a branch named <code>src</code> and initialize a <code>python3</code> virtual environment.</p>
 <div class="highlight"><pre><span></span>git clone <span class="o">{</span>git-repo-url<span class="o">}</span>
 <span class="nb">cd</span> <span class="o">{</span>git-clone-url<span class="o">}</span>
-git branch src
-git checkout src
+git checkout -b src
 virtualenv venv --python<span class="o">=</span>python3
 <span class="nb">source</span> venv/bin/activate
 </pre></div>
@@ -126,8 +125,11 @@ Done. Your new project is available at /path/to/your/project
 <h3>Deploy your page to Github</h3>
 <p>Update <em>publishconf.py</em> and set <code>SITEURL</code> to your github given url.</p>
 <ul>
-<li>If using <strong>User or Organization site</strong>, deploy using <code>make github</code>.</li>
-<li>If using <strong>Project site</strong>, set <em>publishconf.py</em> <code>OUTPUT_PATH = "docs/"</code>.<ul>
+<li>If using <strong>User or Organization site</strong>, deploy using <code>make github</code>.<ul>
+<li>If you get ghp-import error. Install ghp-import using pip. (<code>pip install ghp-import</code>)</li>
+</ul>
+</li>
+<li>If using <strong>Project site</strong>, set <em>Makefile</em> <code>OUTPUTDIR=$(BASEDIR)/docs</code>.<ul>
 <li>Run <code>make publish</code></li>
 <li>Commit the <em>docs/</em> directory to the master branch on Github.</li>
 </ul>
@@ -173,7 +175,7 @@ touch templates/mytheme/static/style.css
 
 <p>In publishconf.py, Comment out <code>CATEGORY_FEED_ATOM</code>.
 * See <a href="https://github.com/getpelican/pelican/issues/2489">pelican/issues/2489</a></p>
-<p>Create at least articles/pages on your static site and deploy to GitHub. Ensure that you are not using a theme created by someone else.</p>
+<p>Create at least 3 articles/pages on your static site and deploy to GitHub. Ensure that you are not using a theme created by someone else.</p>
 <p><strong>Question 1</strong>: What are some of the benefits of using a static site generator? What are some disadvantages?</p>
 <p><strong>Question 2</strong>: What is the link to your GitHub pages hosted static site?</p>
 <p>If you are not finished <a href="https://uofa-cmput404.github.io/lab-4-django.html">Lab 4</a>, please work on it. We will be deploying the Django application to Heroku in the next lab.</p>

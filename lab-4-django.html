@@ -33,11 +33,12 @@
     <time class="published" datetime="2019-01-07T09:10:00-07:00">
       Mon, 07 Jan 2019 at 09:10 MST
     </time>
-    <time class="modified" datetime="2019-01-29T10:00:00-07:00">
-      Tue, 29 Jan 2019 at 10:00 MST
+    <time class="modified" datetime="2021-10-12T10:00:00-06:00">
+      Tue, 12 Oct 2021 at 10:00 MDT
     </time>
     <address class="vcard author">
       By           <a class="url fn" href="https://uofa-cmput404.github.io/author/alexander-wong.html">Alexander Wong</a>
+          <a class="url fn" href="https://uofa-cmput404.github.io/author/xin-yang.html">Xin Yang</a>
     </address>
     <div class="category">
         Category: <a href="https://uofa-cmput404.github.io/category/lab.html">Lab</a>
@@ -98,7 +99,7 @@ python manage.py runserver
 <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">views</span>
 
 <span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
-  <span class="n">path</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">)</span>
+  <span class="n">path</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">),</span>
 <span class="p">]</span>
 </pre></div>
 
@@ -320,6 +321,32 @@ touch polls/templates/polls/index.html
 </pre></div>
 
 
+<hr>
+<h3>Namespacing URL names</h3>
+<p>Add an <code>app_name</code> in the <em>polls/urls.py</em> file to set the application namespace.</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">path</span>
+
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">views</span>
+
+<span class="n">app_name</span> <span class="o">=</span> <span class="s1">&#39;polls&#39;</span>
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;&lt;int:question_id&gt;/&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">detail</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;detail&#39;</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;&lt;int:question_id&gt;/results/&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">results</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;results&#39;</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;&lt;int:question_id&gt;/vote/&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">vote</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;vote&#39;</span><span class="p">),</span>
+<span class="p">]</span>
+</pre></div>
+
+
+<p>Change your <em>polls/index.html</em> template to point at the namespaced detail view.</p>
+<div class="highlight"><pre><span></span><span class="c">&lt;!-- old --&gt;</span>
+<span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;{% url &#39;detail&#39; question.id %}&quot;</span><span class="p">&gt;</span>{{ question.question_text }}<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+
+<span class="c">&lt;!-- new --&gt;</span>
+<span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;{% url &#39;polls:detail&#39; question.id %}&quot;</span><span class="p">&gt;</span>{{ question.question_text }}<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+</pre></div>
+
+
 <p><strong>Question 7</strong>: Why is it a bad idea to hardcode urls into the templates?</p>
 <hr>
 <h3>Writing a simple form</h3>
@@ -331,7 +358,7 @@ touch polls/templates/polls/index.html
 
 {% if error_message %}<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>{{ error_message }}<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>{% endif %}
 
-<span class="p">&lt;</span><span class="nt">form</span> <span class="na">action</span><span class="o">=</span><span class="s">&quot;{% url &#39;vote&#39; question.id %}&quot;</span> <span class="na">method</span><span class="o">=</span><span class="s">&quot;post&quot;</span><span class="p">&gt;</span> <span class="c">&lt;!-- &#39;polls:vote&#39;--&gt;</span>
+<span class="p">&lt;</span><span class="nt">form</span> <span class="na">action</span><span class="o">=</span><span class="s">&quot;{% url &#39;polls:vote&#39; question.id %}&quot;</span> <span class="na">method</span><span class="o">=</span><span class="s">&quot;post&quot;</span><span class="p">&gt;</span>
 {% csrf_token %}
 {% for choice in question.choice_set.all %}
     <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;radio&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;choice&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;choice{{ forloop.counter }}&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;{{ choice.id }}&quot;</span><span class="p">&gt;</span>
@@ -370,7 +397,7 @@ touch polls/templates/polls/index.html
         <span class="c1"># Always return an HttpResponseRedirect after successfully dealing</span>
         <span class="c1"># with POST data. This prevents data from being posted twice if a</span>
         <span class="c1"># user hits the Back button.</span>
-        <span class="k">return</span> <span class="n">HttpResponseRedirect</span><span class="p">(</span><span class="n">reverse</span><span class="p">(</span><span class="s1">&#39;results&#39;</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">question</span><span class="o">.</span><span class="n">id</span><span class="p">,)))</span> <span class="c1"># &#39;polls:results&#39;</span>
+        <span class="k">return</span> <span class="n">HttpResponseRedirect</span><span class="p">(</span><span class="n">reverse</span><span class="p">(</span><span class="s1">&#39;polls:results&#39;</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">question</span><span class="o">.</span><span class="n">id</span><span class="p">,)))</span>
 </pre></div>
 
 
@@ -393,7 +420,7 @@ touch polls/templates/polls/index.html
 {% endfor %}
 <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
 
-<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;{% url &#39;detail&#39; question.id %}&quot;</span><span class="p">&gt;</span>Vote again?<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span> <span class="c">&lt;!-- polls:detail --&gt;</span>
+<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;{% url &#39;polls:detail&#39; question.id %}&quot;</span><span class="p">&gt;</span>Vote again?<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
 </pre></div>
 
 
@@ -406,7 +433,7 @@ touch polls/templates/polls/index.html
 <li>Delete some of the old, unnecessary views.</li>
 <li>Introduce new views based on Django's generic views.</li>
 </ol>
-<p>Amend the <em>polls/urls.py</em> url configuration.</p>
+<p>Amend the <em>polls/urls.py</em> url configuration. Note that the name of the matched pattern in the path strings of the second and third patterns has changed from <code>&lt;question_id&gt;</code> to <code>&lt;pk&gt;</code>.</p>
 <div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">path</span>
 
 <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">views</span>
