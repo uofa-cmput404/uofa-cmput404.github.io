@@ -98,6 +98,9 @@ You can ignore warnings/errors about security vulnerabilities.
 If you get errors after `npm install` on Mac OS, look for an error about Xcode.
 If there is an error about Xcode, you may need to install it: [Xcode](https://developer.apple.com/xcode/).
 
+If you get the error `Cannot find module 'ws'` after running `npm start`, try downgrading your node version with `npm install 10.15.1` OR `nvm install 10.15.1`
+(depending on which node manager you're using). 
+
 If there is an error like `favicon.ico: Invalid Version: undefined` 
 this is because of a bug in parcel bundler 1.12.4, so downgrade to 1.12.3 by
 running `npm install parcel-bundler@1.12.3`.
