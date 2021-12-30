@@ -4,7 +4,7 @@ save_as: index.html
 
 [CMPUT404 Slides](https://uofa-cmput404.github.io/cmput404-slides/)
 
-Lab material for CMPUT 404 (Winter 2021 LAB H01 H02 LEC B1).
+Lab material for CMPUT 404 (Winter 2022)
 
 * [Lab 1: Virtualenv & cURL]({filename}../labs/lab-1.md)
 * [Lab 2: TCP Proxy]({filename}../labs/lab-2.md)
@@ -14,7 +14,7 @@ Lab material for CMPUT 404 (Winter 2021 LAB H01 H02 LEC B1).
 * [Lab 6: Heroku]({filename}../labs/lab-6.md)
 * [Lab 7: Flask]({filename}../labs/lab-7.md)
 * [Lab 9: Authentication]({filename}../labs/lab-9.md)
-    * Note: lab 9 is **before** lab 8 for Fall 2021!
+    * Note: lab 9 is **before** lab 8 for Winter 2022!
 * [Lab 8: Websockets, Node.js, & Phaser.io]({filename}../labs/lab-8.md)
 
 Labs 10 to 12 are for TA project help and demos.
@@ -29,61 +29,42 @@ Labs 10 to 12 are for TA project help and demos.
 ## Days
 
 ```text
-   September 2021     
-Su     Mo     Tu     We     Th     Fr Sa  
-                      1      2      3  4  DIY lab 1 VirtualEnv and Curl (TAs available)
- 5    **6      7      8      9     10 11  DIY lab 1 VirtualEnv and Curl (TAs available)
-12     13     14     15     16     17 18  lab 2 TCP
-19     20     21     22     23  A1-24 25  lab 3 CGI
-26  P0-27     28     29   **30            lab 4 DJANGO ; project 0
-                                     
-       October 2021            
-Su     Mo     Tu     We     Th     Fr Sa  
-                                    1  2  lab 4 DJANGO ; project 0
- 3      4      5      6      7   A2-8  9  lab 5 CSS and HTML ; Assignment 2
-10   **11     12     13     14     15 16  Consultation
-17     18     19     20     21  A3-22 23  lab 6 Heroku ; Assignment 3
-24     25     26     27     28  P1-29 30  lab 7 Flask; project 1
-31                                        
-       November 2021      
-Su     Mo     Tu     We     Th     Fr Sa  
-        1      2      3      4  A4--5  6  lab 9 Auth ; Assignment 4 ; project 1 demo
- 7    RW8    RW9   RW10   RW11   RW12 13  Reading week
-14     15     16  MT-17     18     19 20  lab 8 Websockets ; Midterm
-21     22     23     24     25  P2-26 27  lab 10 Connect smoketest AND Project 2 due.
-28  A5-29     30                          Lab 11 Connect Demo ; Assignment 5
-                                          
-       December 2021      
-Su     Mo     Tu     We     Th     Fr Sa  
-                      1      2      3  4  lab 11 Connect Demo ; Assignment 5
- 5  P3--6      7      8      9     10 11  lab 12 LAST WEEK OF LABS / DEMOS ; Project 3 due; Labs on the 8th
 
+                    January 2022             
+Su      Mo      Tu      We      Th      Fr Sa  
+                                            1  
+ 2       3       4       5       6       7  8  
+ 9      10      11      12      13      14 15    Lab 1 VirtualEnv and Curl (TAs available)                        
+16      17      18      19      20      21 22    Lab 2 TCP                                                        
+23      24      25      26      27   A1-28 29    Lab 3 CGI Assignment 1                                           
+30   P0-31                                       Lab 4 DJANGO ; project 0                                         
+                                                                                                                  
+                   February 2022                                                                                  
+Su      Mo      Tu      We      Th      Fr Sa                                                                     
+     P0---       1       2       3       4  5    Lab 4 DJANGO ; project 0                      
+ 6       7       8       9      10   A2-11 12    lab 5 CSS and HTML ; Assignment 2                                
+13      14      15      16      17      18 19    lab 6 Heroku                                       
+20      21      22      23      24      25 26    Reading week                                                     
+27   A3-28                                                                                                        
+                                                                                                                  
+                                                                                                                  
+                   March 2022                                                                                     
+Su      Mo      Tu      We      Th      Fr Sa                                                                     
+     A3-         1       2       3    P1-4  5    lab 7 Flask; project 1; Assignment 3                             
+ 6       7       8       9      10   A4-11 12    lab 9 Auth ; Assignment 4 ; project 1 demo                       
+13      14      15   MT-16      17      18 19    lab 8 Websockets ; MIDTERM ;                                 
+20      21      22      23      24   P2-25 26    lab 10 Connect smoketest AND Project 2 due.                      
+27      28      29      30      31   A5-         Lab 11 Connect Demo ; Assignment 5                               
+                                                                                                                  
+                                                                                                                  
+                April 2022                                                                                        
+Su      Mo      Tu      We      Th      Fr Sa                                                                     
+                                    A5---1  2    Lab 11 Connect Demo ; Assignment 5                               
+ 3   P3--4       5       6       7       8  9    Lab 12 LAST WEEK OF LABS / DEMOS ; Project 3 due; Labs Demos
+10      11      12      13      14      15 16    
+17      18      19      20      21      22 23  
+24      25      26      27      28      29 30  
+  
 
-If you find the weeks kind of confusing here's the samething but the
-weeks are filled in
-
-   September 2021     
-Su     Mo     Tu     We     Th     Fr Sa  
-                      1      2      3  4  DIY lab 1 VirtualEnv and Curl (TAs available)
- 5    **6      7      8      9     10 11  DIY lab 1 VirtualEnv and Curl (TAs available)
-12     13     14     15     16     17 18  lab 2 TCP
-19     20     21     22     23  A1-24 25  lab 3 CGI
-26  P0-27     28     29   **30      1     lab 4 DJANGO ; project 0
-       October 2021            
-Su     Mo     Tu     We     Th     Fr Sa  
- 3      4      5      6      7   A2-8  9  lab 5 CSS and HTML ; Assignment 2
-10   **11     12     13     14     15 16  Consultation
-17     18     19     20     21  A3-22 23  lab 6 Heroku ; Assignment 3
-24     25     26     27     28  P1-29 30  lab 7 Flask; project 1
-       November 2021      
-Su     Mo     Tu     We     Th     Fr Sa  
-31      1      2      3      4  A4--5  6  lab 9 Auth ; Assignment 4 ; project 1 demo
- 7    RW8    RW9   RW10   RW11   RW12 13  Reading week
-14     15     16  MT-17     18     19 20  lab 8 Websockets ; Midterm
-21     22     23     24     25  P2-26 27  lab 10 Connect smoketest AND Project 2 due.
-28  A5-29     30      1      2      3  4  lab 11 Connect Demo ; Assignment 5
-       December 2021      
- 5  P3--6      7      8      9     10 11  lab 12 LAST WEEK OF LABS / DEMOS ; Project 3 due ;Labs on 8th
-                    
 
 ```
