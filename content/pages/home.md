@@ -23,8 +23,8 @@ Labs 10 to 12 are for TA project help and demos.
 
 | Lab | Day | Time             | Capacity | Room    |
 |-----|-----|------------------|:--------:|---------|
-| 801 | MON | 5:00PM - 07:50PM | /60      | Online  |
-| 802 | WED | 5:00PM - 07:50PM | /60      | Online  |
+| H01 | MON | 5:00PM - 07:50PM | /        | Online  |
+| H02 | WED | 5:00PM - 07:50PM | /        | Online  |
 
 ## Days
 
