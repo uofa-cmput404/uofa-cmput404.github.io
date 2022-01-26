@@ -3,7 +3,7 @@ Date: 2019-01-07 9:10
 Modified: 2021-10-12 10:00
 Category: Lab
 Tags: django
-Authors: Alexander Wong, Xin Yang
+Authors: Alexander Wong, Xin Yang, Jihoon Og
 
 ----
 
@@ -498,6 +498,158 @@ def vote(request, question_id):
 ```
 
 **Question 8**: What are the benefits of using Django's generic views over writing views 'the hard way'? When should you use a generic view and when shouldn't you use a generic view?
+
+----
+
+### Serializing and Deserializing Queries (Optional, but highly recommended to do)
+
+Based from the DRF (Django Rest Framework) tutorial [here](https://www.django-rest-framework.org/tutorial/1-serialization/)
+
+To convert your queries to or from a JSON object you can use Django's serializers to serialize or deserialize Django QuerySets to or from JSON objects.  
+
+First install the Django Rest Framework library using `pip`
+
+```bash
+pip install djangorestframework
+```
+
+Then add the `rest_framework` app to `INSTALLED_APPS` in our `mysite/settings.py` file
+
+```python
+INSTALLED_APPS = [
+    ...
+    'rest_framework'
+]
+```
+
+### Creating a Serializer Class
+
+Create a file in the `polls` directory named `serializers.py` and add the following
+
+```python
+from rest_framework import serializers
+from .models import Question
+
+class QuestionSerializer(serializers.Serializer):
+    question_text = serializers.CharField()
+    pub_date = serializers.DateTimeField()
+
+    def create(self, validated_data):
+        """
+        Create and return a new `Question` instance, given the validated data
+        """
+        return Question.object.create(**validated_data)
+    
+    def update(self, instance, validated_data):
+        """
+        Update and return an existing `Question` instance, given the validated data
+        """
+        instance.question_text = validated_data.get('question_text', instance.question_text)
+        instance.pub_date = validated_data.get('pub_date', instance.pub_date)
+        instance.save()
+        return instance
+```
+
+### Update our views using our Serializer
+
+Once you have the serializers you now need to write some API views using the new Serializer class
+
+Edit the `polls/views.py` file, and add the following
+
+```python
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from .serializers import QuestionSerializer
+
+...
+
+
+@api_view(['GET'])
+def get_questions(request):
+    """
+    Get the list of questions on our website
+    """
+    questions = Question.objects.all()
+    serializer = QuestionSerializer(questions, many=True)
+    return Response(serializer.data)
+```
+
+The `@api_view` decorator will wrap the view so that only HTTP methods that are listed in the decorator will get executed.
+
+### Updating the our URLs for the new views
+
+Because we want our API responses to have JSON objects we will have to add another set of urls with a `api/` prefix to our `polls/urls.py` file.
+
+```python
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    ...
+    path('api/questions/', views.get_questions, name='get_questions'),
+]
+```
+
+Now run the project again with the `runserver` command and go to `polls/api/questions/`
+
+```bash
+python manage.py runserver
+```
+
+You should see a list of question in a json format.
+
+### Updating a Question Using our Serializer
+
+We can use the serializer to update the `question_text` field of our question entries.
+
+```python
+@api_view(['POST'])
+def update_question(request, pk):
+    """
+    Get the list of questions on our website
+    """
+    questions = Question.objects.get(id=pk)
+    serializer = QuestionSerializer(questions, data=request.data, partial=True)
+    if serializer.is_valid():
+        return Response(serializer.data)
+    return Response(status=400, data=serializer.errors)
+```
+
+and update the `polls/urls.py` file.
+
+```python
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    ...
+    path('api/question/<int:pk>', views.update_question, name='update_question'),
+]
+```
+
+Run the project using `runserver` and go to this link `polls/api/question/1` and POST the following information below.  
+
+```json
+{
+    "question_text": "Updated question text"
+}
+```
+
+After clicking the POST button you should see the updated value in the json structure above. The new value should also be reflected in the model admin page as well.
+
+### Other cool things to know
+
+- If your serializer is replicating a lot of information that's also contained in the model being (de)serialized then you can use the `ModelSerializer` class to automatically generate the fields and produce a simple default implementations for the `create()` and `update()` methods
+- If you want to support alternative serialization and deserialization styles then you can inherit the `BaseSerializer` class and override these four functions depending on what functionality you want the serializer class to support:
+  - `.to_representation()` - Override this to support serialization, for read operations
+  - `.to_internal_value()` - Override this to support deserialization, for write operations
+  - `.create()` and `.update()` - Override either or both of these to support saving instances.
+
+### More information about DRF
+
+Her is the [API Guide for Serializers](https://www.django-rest-framework.org/api-guide/serializers/)
+
+Here is the [Tutorial guide](https://www.django-rest-framework.org/tutorial/1-serialization/)
 
 ### Optional/Outside of Lab
 
