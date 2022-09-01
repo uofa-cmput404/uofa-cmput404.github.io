@@ -3,6 +3,7 @@
 <head>
           <title>CMPUT 404 - Lab 7 - Flask</title>
         <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
 
   <link rel="icon" href="https://uofa-cmput404.github.io/theme/favicon.ico" />
   <link rel="stylesheet" type="text/css" href="https://uofa-cmput404.github.io/theme/style.css" />
@@ -17,7 +18,7 @@
 
 <body id="index" class="home">
         <header id="banner" class="body">
-                <h1><a href="https://uofa-cmput404.github.io/">CMPUT 404 <strong></strong></a></h1>
+                <h1><a href="https://uofa-cmput404.github.io/">CMPUT 404</a></h1>
         </header><!-- /#banner -->
         <nav id="menu"><ul>
             <li><a href="https://uofa-cmput404.github.io/">Home</a></li>
@@ -54,53 +55,48 @@
 <p>Create a basic RESTful web application backend using <a href="http://flask.pocoo.org/">Flask</a>. Consume the API endpoints using <a href="https://curl.haxx.se/"><code>cURL</code></a> and <a href="https://httpie.org/"><code>httpie</code></a>.</p>
 <h3>Flask</h3>
 <p>Navigate to a new folder and initialize a new Python virtual environment.</p>
-<div class="highlight"><pre><span></span>mkdir cmput404lab7
+<div class="highlight"><pre><span></span><code>mkdir cmput404lab7
 <span class="nb">cd</span> cmput404lab7
 virtualenv venv --python<span class="o">=</span>python3
 <span class="nb">source</span> venv/bin/activate
-</pre></div>
-
+</code></pre></div>
 
 <p>Install Flask.</p>
-<div class="highlight"><pre><span></span>pip install Flask
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>pip install Flask
+</code></pre></div>
 
 <p>Create a new Python file named <code>hello.py</code> and edit its contents so it looks like this:</p>
-<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python3</span>
 
 <span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
 <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
 
-<span class="nd">@app.route</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">hello</span><span class="p">():</span>
     <span class="k">return</span> <span class="s2">&quot;Hello, world!&quot;</span>
 
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-</pre></div>
-
+    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
 
 <p>Make the file executable and run the application. Navigate to the page in your browser.</p>
-<div class="highlight"><pre><span></span>chmod +x hello.py
+<div class="highlight"><pre><span></span><code>chmod +x hello.py
 ./hello.py
 <span class="c1"># or</span>
 python3 hello.py
 
 <span class="c1"># In a new terminal</span>
 curl localhost:5000 <span class="c1"># the port may be different on your machine</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>Modify the <code>hello.py</code> file to serve a RESTful api for managing a TODO list. First, install <code>flask_restful</code>.</p>
-<div class="highlight"><pre><span></span>pip install flask_restful
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>pip install flask_restful
+</code></pre></div>
 
 <p>Update <code>hello.py</code> so it looks like the following.</p>
-<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python3</span>
 
 <span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
 <span class="kn">from</span> <span class="nn">flask_restful</span> <span class="kn">import</span> <span class="n">Resource</span><span class="p">,</span> <span class="n">Api</span>
@@ -118,17 +114,15 @@ curl localhost:5000 <span class="c1"># the port may be different on your machine
 
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-</pre></div>
-
+    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
 
 <p>Run the server and see what it returns in your browser, or using cURL.</p>
-<div class="highlight"><pre><span></span>curl localhost:5000
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>curl localhost:5000
+</code></pre></div>
 
 <p>Change the contents of <code>hello.py</code> to the following:</p>
-<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python3</span>
 
 <span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
 <span class="kn">from</span> <span class="nn">flask_restful</span> <span class="kn">import</span> <span class="n">reqparse</span><span class="p">,</span> <span class="n">abort</span><span class="p">,</span> <span class="n">Api</span><span class="p">,</span> <span class="n">Resource</span>
@@ -148,7 +142,7 @@ curl localhost:5000 <span class="c1"># the port may be different on your machine
 
 <span class="k">def</span> <span class="nf">abort_if_todo_not_found</span><span class="p">(</span><span class="n">todo_id</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">todo_id</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">TODOs</span><span class="p">:</span>
-        <span class="n">abort</span><span class="p">(</span><span class="mi">404</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">&quot;TODO {} does not exist&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">todo_id</span><span class="p">))</span>
+        <span class="n">abort</span><span class="p">(</span><span class="mi">404</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">&quot;TODO </span><span class="si">{}</span><span class="s2"> does not exist&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">todo_id</span><span class="p">))</span>
 
 
 <span class="k">def</span> <span class="nf">add_todo</span><span class="p">(</span><span class="n">todo_id</span><span class="p">):</span>
@@ -193,29 +187,26 @@ curl localhost:5000 <span class="c1"># the port may be different on your machine
 <span class="n">api</span><span class="o">.</span><span class="n">add_resource</span><span class="p">(</span><span class="n">TodoList</span><span class="p">,</span> <span class="s2">&quot;/todos&quot;</span><span class="p">)</span>
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-</pre></div>
-
+    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
 
 <p>What does the browser show you when you navigate to <code>/todos</code> and <code>/todos/1</code>?</p>
 <p>Try running the following <code>cURL</code> commands.</p>
-<div class="highlight"><pre><span></span>curl localhost:5000/todos
+<div class="highlight"><pre><span></span><code>curl localhost:5000/todos
 curl localhost:5000/todos/3
 curl -v -X DELETE localhost:5000/todos/2
 curl -v -X POST localhost:5000/todos -d <span class="s2">&quot;task=make sure to do lab 7 questions&quot;</span>
 curl -v -X PUT localhost:5000/todos/3 -d <span class="s2">&quot;task=profit more&quot;</span>
-</pre></div>
-
+</code></pre></div>
 
 <h3>Httpie</h3>
 <p>In addition to using <code>cURL</code>, <a href="https://httpie.org/"><code>httpie</code></a> is specifically designed for interacting with RESTful JSON APIs. It has colour output and automatically pretty prints JSON for you.</p>
-<div class="highlight"><pre><span></span>pip install httpie
+<div class="highlight"><pre><span></span><code>pip install httpie
 http localhost:5000/todos
 http :5000/todos
 http HEAD :5000/todos
 http POST :5000/todos <span class="nv">task</span><span class="o">=</span><span class="s2">&quot;Try httpie!&quot;</span>
-</pre></div>
-
+</code></pre></div>
 
 <p><strong>Question 0</strong>: What is the URL of your python flask_restfull code on github???</p>
 <p><strong>Question 1</strong>: How are Flask and Django different? What does Django provide for you that Flask does not?</p>
@@ -236,8 +227,8 @@ http POST :5000/todos <span class="nv">task</span><span class="o">=</span><span 
 </section>
         <footer id="contentinfo" class="body">
                 <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
-                which takes great advantage of <a href="http://python.org">Python</a>.
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>,
+                which takes great advantage of <a href="https://www.python.org/">Python</a>.
                 </address><!-- /#about -->
         </footer><!-- /#contentinfo -->
 </body>

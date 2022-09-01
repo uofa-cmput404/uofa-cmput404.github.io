@@ -3,6 +3,7 @@
 <head>
           <title>CMPUT 404 - Lab 5 - Pelican & Basic HTML/CSS</title>
         <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
 
   <link rel="icon" href="https://uofa-cmput404.github.io/theme/favicon.ico" />
   <link rel="stylesheet" type="text/css" href="https://uofa-cmput404.github.io/theme/style.css" />
@@ -17,7 +18,7 @@
 
 <body id="index" class="home">
         <header id="banner" class="body">
-                <h1><a href="https://uofa-cmput404.github.io/">CMPUT 404 <strong></strong></a></h1>
+                <h1><a href="https://uofa-cmput404.github.io/">CMPUT 404</a></h1>
         </header><!-- /#banner -->
         <nav id="menu"><ul>
             <li><a href="https://uofa-cmput404.github.io/">Home</a></li>
@@ -67,21 +68,19 @@
 </li>
 </ul>
 <p>Clone the repository, change directory into the repo. Create a branch named <code>src</code> and initialize a <code>python3</code> virtual environment.</p>
-<div class="highlight"><pre><span></span>git clone <span class="o">{</span>git-repo-url<span class="o">}</span>
+<div class="highlight"><pre><span></span><code>git clone <span class="o">{</span>git-repo-url<span class="o">}</span>
 <span class="nb">cd</span> <span class="o">{</span>git-clone-url<span class="o">}</span>
 git checkout -b src
 virtualenv venv --python<span class="o">=</span>python3
 <span class="nb">source</span> venv/bin/activate
-</pre></div>
-
+</code></pre></div>
 
 <p>Install Pelican and Markdown.</p>
-<div class="highlight"><pre><span></span>pip install pelican markdown
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>pip install pelican markdown
+</code></pre></div>
 
 <p>Run the pelican quickstart.</p>
-<div class="highlight"><pre><span></span>pelican-quickstart
+<div class="highlight"><pre><span></span><code>pelican-quickstart
 
 Welcome to pelican-quickstart v4.0.1.
 
@@ -108,18 +107,16 @@ needed by Pelican.
 &gt; Do you want to upload your website using GitHub Pages? <span class="o">(</span>y/N<span class="o">)</span> Y
 &gt; Is this your personal page <span class="o">(</span>username.github.io<span class="o">)</span>? <span class="o">(</span>y/N<span class="o">)</span> Y
 Done. Your new project is available at /path/to/your/project
-</pre></div>
-
+</code></pre></div>
 
 <h3>Create your first Article</h3>
 <p>Create a file inside <em>content</em> with some content. For example, you can use <em>content/my-first-article.md</em> with the following:</p>
-<div class="highlight"><pre><span></span><span class="n">Title</span><span class="o">:</span> <span class="n">My</span> <span class="n">First</span> <span class="n">Article</span>
-<span class="n">Date</span><span class="o">:</span> <span class="mi">2019</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">07</span> <span class="mi">8</span><span class="o">:</span><span class="mi">00</span>
-<span class="n">Category</span><span class="o">:</span> <span class="n">Blog</span>
+<div class="highlight"><pre><span></span><code>Title: My First Article
+Date: 2019-01-07 8:00
+Category: Blog
 
-<span class="n">I</span> <span class="n">like</span> <span class="n">free</span> <span class="kd">static</span> <span class="n">web</span> <span class="n">hosting</span><span class="o">.</span>
-</pre></div>
-
+I like free static web hosting.
+</code></pre></div>
 
 <p>Generate and preview your site using <code>make devserver</code>. Your site should now be available at <a href="http://localhost:8000">http://localhost:8000</a>.</p>
 <h3>Deploy your page to Github</h3>
@@ -137,41 +134,36 @@ Done. Your new project is available at /path/to/your/project
 </ul>
 <h3>Theme your static site</h3>
 <p>Make a directory called <em>templates</em>. Within this directory, create a new theme directory containing a templates folder and a static folder.</p>
-<div class="highlight"><pre><span></span>mkdir -p templates/mytheme/<span class="o">{</span>static,templates<span class="o">}</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>mkdir -p templates/mytheme/<span class="o">{</span>static,templates<span class="o">}</span>
+</code></pre></div>
 
 <p>Within the <em>templates/mytheme/templates" directory, create a new file </em>base.html<em>. Within the </em>templates/mytheme/static<em> directory, create a new file </em>style.css*.</p>
-<div class="highlight"><pre><span></span>touch templates/mytheme/templates/base.html
+<div class="highlight"><pre><span></span><code>touch templates/mytheme/templates/base.html
 touch templates/mytheme/static/style.css
-</pre></div>
-
+</code></pre></div>
 
 <p>Add the following content to the file <em>templates/mytheme/templates/base.html</em>.</p>
-<div class="highlight"><pre><span></span>{% extends &quot;!simple/base.html&quot; %}
+<div class="highlight"><pre><span></span><code>{% extends &quot;!simple/base.html&quot; %}
 
 {% block head %}
 {{ super() }}
   <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/css&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;{{ SITEURL }}/theme/style.css&quot;</span> <span class="p">/&gt;</span>
 {% endblock %}
-</pre></div>
-
+</code></pre></div>
 
 <p>Modify the content of the <em>templates/mytheme/static/style.css</em> file to your preference. A quick sample stylesheet can be found below.</p>
-<div class="highlight"><pre><span></span><span class="nt">html</span><span class="o">,</span> <span class="nt">body</span> <span class="p">{</span>
-  <span class="k">margin</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
-  <span class="k">border</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
-  <span class="k">font-size</span><span class="p">:</span> <span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
-  <span class="k">background-color</span><span class="p">:</span> <span class="mh">#000000</span><span class="p">;</span>
-  <span class="k">color</span><span class="p">:</span> <span class="mh">#ffffff</span><span class="p">;</span>
-<span class="p">}</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="nt">html</span><span class="o">,</span><span class="w"> </span><span class="nt">body</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">%</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#000000</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#ffffff</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <p>Add your theme to your <em>pelicanconf.py</em> file.</p>
-<div class="highlight"><pre><span></span><span class="n">THEME</span> <span class="o">=</span> <span class="s1">&#39;templates/mytheme&#39;</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="n">THEME</span> <span class="o">=</span> <span class="s1">&#39;templates/mytheme&#39;</span>
+</code></pre></div>
 
 <p>In publishconf.py, Comment out <code>CATEGORY_FEED_ATOM</code>.
 * See <a href="https://github.com/getpelican/pelican/issues/2489">pelican/issues/2489</a></p>
@@ -183,8 +175,8 @@ touch templates/mytheme/static/style.css
 </section>
         <footer id="contentinfo" class="body">
                 <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
-                which takes great advantage of <a href="http://python.org">Python</a>.
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>,
+                which takes great advantage of <a href="https://www.python.org/">Python</a>.
                 </address><!-- /#about -->
         </footer><!-- /#contentinfo -->
 </body>
