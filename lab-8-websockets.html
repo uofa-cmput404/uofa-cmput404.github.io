@@ -3,7 +3,6 @@
 <head>
           <title>CMPUT 404 - Lab 8 - WebSockets</title>
         <meta charset="utf-8" />
-        <meta name="generator" content="Pelican" />
 
   <link rel="icon" href="https://uofa-cmput404.github.io/theme/favicon.ico" />
   <link rel="stylesheet" type="text/css" href="https://uofa-cmput404.github.io/theme/style.css" />
@@ -18,7 +17,7 @@
 
 <body id="index" class="home">
         <header id="banner" class="body">
-                <h1><a href="https://uofa-cmput404.github.io/">CMPUT 404</a></h1>
+                <h1><a href="https://uofa-cmput404.github.io/">CMPUT 404 <strong></strong></a></h1>
         </header><!-- /#banner -->
         <nav id="menu"><ul>
             <li><a href="https://uofa-cmput404.github.io/">Home</a></li>
@@ -63,9 +62,10 @@ download and install node from the node from the
 administrator/root.</p>
 <p>If you already have node installed, please check the version with <code>node -v</code>.</p>
 <p>Example:</p>
-<div class="highlight"><pre><span></span><code>$ node -v
+<div class="highlight"><pre><span></span>$ node -v
 v15.11.0
-</code></pre></div>
+</pre></div>
+
 
 <p>Make sure the version number is greater than 8! (In this case it's 15, which
 is fine.)</p>
@@ -78,33 +78,37 @@ in the next section for the lab machines and VM.</p>
 without being an administrator or root user.</p>
 <p>NVM does not work on windows.</p>
 <p>Install <a href="https://github.com/nvm-sh/nvm">Node Version Manager</a>. </p>
-<div class="highlight"><pre><span></span><code><span class="c1"># curl</span>
+<div class="highlight"><pre><span></span><span class="c1"># curl</span>
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh <span class="p">|</span> bash
 
 <span class="c1"># or wget</span>
 wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh <span class="p">|</span> bash
-</code></pre></div>
+</pre></div>
+
 
 <p>Close and reopen your terminal, or load nvm manually.</p>
-<div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">NVM_DIR</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/.nvm&quot;</span>
+<div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">NVM_DIR</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/.nvm&quot;</span>
 <span class="o">[</span> -s <span class="s2">&quot;</span><span class="nv">$NVM_DIR</span><span class="s2">/nvm.sh&quot;</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="se">\.</span> <span class="s2">&quot;</span><span class="nv">$NVM_DIR</span><span class="s2">/nvm.sh&quot;</span>  <span class="c1"># This loads nvm</span>
 <span class="o">[</span> -s <span class="s2">&quot;</span><span class="nv">$NVM_DIR</span><span class="s2">/bash_completion&quot;</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="se">\.</span> <span class="s2">&quot;</span><span class="nv">$NVM_DIR</span><span class="s2">/bash_completion&quot;</span>  <span class="c1"># This loads nvm bash_completion</span>
-</code></pre></div>
+</pre></div>
+
 
 <p>Install the latest release of node.</p>
-<div class="highlight"><pre><span></span><code>nvm install node <span class="c1"># latest node version</span>
+<div class="highlight"><pre><span></span>nvm install node <span class="c1"># latest node version</span>
 
 <span class="c1"># LTS. Alternatively 8.15.0 (6.X is EOL April 2019)</span>
 <span class="c1"># nvm install 10.15.1 </span>
-</code></pre></div>
+</pre></div>
+
 
 <p>Map this version of node as the current default.</p>
-<div class="highlight"><pre><span></span><code>nvm <span class="nb">alias</span> default node
+<div class="highlight"><pre><span></span>nvm <span class="nb">alias</span> default node
 node --version
 <span class="c1"># v11.10.0</span>
 npm --version
 <span class="c1"># 6.7.0</span>
-</code></pre></div>
+</pre></div>
+
 
 <h3>Initialize Phaser and WebSockerServer</h3>
 <p>Fork this repository and clone it locally onto your own machine.</p>
@@ -112,10 +116,11 @@ npm --version
 <li><a href="https://github.com/uofa-cmput404/nodejs-ws-lab">github.com/uofa-cmput404/nodejs-ws-lab</a></li>
 </ul>
 <p>Run the application locally, following the quickstart instructions.</p>
-<div class="highlight"><pre><span></span><code>npm install
+<div class="highlight"><pre><span></span>npm install
 npm start
 <span class="c1"># navigating to browser, localhost:8080</span>
-</code></pre></div>
+</pre></div>
+
 
 <p>You can ignore warnings/errors about security vulnerabilities.</p>
 <p>If you get errors after <code>npm install</code> on Mac OS, look for an error about Xcode.
@@ -131,168 +136,176 @@ running <code>npm install parcel-bundler@1.12.3</code>.</p>
 <h3>Top Down Scroller</h3>
 <p>We will now utilize the other assets and create a top down game where we control our character using the arrow keys.</p>
 <p>Checkout the <a href="https://github.com/uofa-cmput404/nodejs-ws-lab/tree/topdown"><code>topdown</code></a> branch from GitHub and make note of the changes in <code>client.ts</code>.</p>
-<div class="highlight"><pre><span></span><code>git remote -v <span class="c1"># show your current remotes</span>
+<div class="highlight"><pre><span></span>git remote -v <span class="c1"># show your current remotes</span>
 git remote add laborigin https://github.com/uofa-cmput404/nodejs-ws-lab.git
 git fetch laborigin
 git checkout -b topdown laborigin/topdown
-</code></pre></div>
+</pre></div>
+
 
 <p>Within <code>client.ts</code> the <code>preload</code> function is now loading our required assets. The <code>create</code> function has been updated to use our tilemap data, spritesheet, and character assets. Additional logic for handling animations and keyboard input has also been added. An <code>update</code> function has been added to handle input logic and playing our sprite animations.</p>
 <h3>Multiplayer Top Down Scroller</h3>
 <p>The <code>init</code> function will require modifications to work with multiple players.</p>
 <p>Add a function that generates UUIDs before the Scene class. For this toy example, the following modified from <a href="https://gist.github.com/jed/982883">github gist</a> is acceptable:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">uuid</span><span class="p">(</span><span class="w"></span>
-<span class="w">  </span><span class="nx">a?</span><span class="o">:</span><span class="w"> </span><span class="kt">any</span><span class="w">               </span><span class="c1">// placeholder</span><span class="w"></span>
-<span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">a</span><span class="w">              </span><span class="c1">// if the placeholder was passed, return</span><span class="w"></span>
-<span class="w">    </span><span class="o">?</span><span class="w"> </span><span class="p">(</span><span class="w">                 </span><span class="c1">// a random number from 0 to 15</span><span class="w"></span>
-<span class="w">      </span><span class="nx">a</span><span class="w"> </span><span class="o">^</span><span class="w">               </span><span class="c1">// unless b is 8,</span><span class="w"></span>
-<span class="w">      </span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span><span class="w">     </span><span class="c1">// in which case</span><span class="w"></span>
-<span class="w">      </span><span class="o">*</span><span class="w"> </span><span class="mf">16</span><span class="w">              </span><span class="c1">// a random number from</span><span class="w"></span>
-<span class="w">      </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">4</span><span class="w">          </span><span class="c1">// 8 to 11</span><span class="w"></span>
-<span class="w">    </span><span class="p">).</span><span class="nx">toString</span><span class="p">(</span><span class="mf">16</span><span class="p">)</span><span class="w">      </span><span class="c1">// in hexadecimal</span><span class="w"></span>
-<span class="w">    </span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="w">                 </span><span class="c1">// or otherwise a concatenated string:</span><span class="w"></span>
-<span class="w">      </span><span class="mf">1e7</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w">  </span><span class="c1">// 10000000 +</span><span class="w"></span>
-<span class="w">      </span><span class="o">-</span><span class="mf">1e3</span><span class="w"> </span><span class="o">+</span><span class="w">            </span><span class="c1">// -1000 +</span><span class="w"></span>
-<span class="w">      </span><span class="o">-</span><span class="mf">4e3</span><span class="w"> </span><span class="o">+</span><span class="w">            </span><span class="c1">// -4000 +</span><span class="w"></span>
-<span class="w">      </span><span class="o">-</span><span class="mf">8e3</span><span class="w"> </span><span class="o">+</span><span class="w">            </span><span class="c1">// -80000000 +</span><span class="w"></span>
-<span class="w">      </span><span class="o">-</span><span class="mf">1e11</span><span class="w">             </span><span class="c1">// -100000000000,</span><span class="w"></span>
-<span class="w">    </span><span class="p">).</span><span class="nx">replace</span><span class="p">(</span><span class="w">          </span><span class="c1">// replacing</span><span class="w"></span>
-<span class="w">      </span><span class="sr">/[018]/g</span><span class="p">,</span><span class="w">         </span><span class="c1">// zeroes, ones, and eights with</span><span class="w"></span>
-<span class="w">      </span><span class="nx">uuid</span><span class="w">              </span><span class="c1">// random hex digits</span><span class="w"></span>
-<span class="w">    </span><span class="p">)</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">uuid</span><span class="p">(</span>
+  <span class="nx">a?</span>: <span class="kt">any</span>               <span class="c1">// placeholder</span>
+<span class="p">)</span><span class="o">:</span> <span class="kt">string</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">a</span>              <span class="c1">// if the placeholder was passed, return</span>
+    <span class="o">?</span> <span class="p">(</span>                 <span class="c1">// a random number from 0 to 15</span>
+      <span class="nx">a</span> <span class="o">^</span>               <span class="c1">// unless b is 8,</span>
+      <span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span>     <span class="c1">// in which case</span>
+      <span class="o">*</span> <span class="mi">16</span>              <span class="c1">// a random number from</span>
+      <span class="o">&gt;&gt;</span> <span class="nx">a</span> <span class="o">/</span> <span class="mi">4</span>          <span class="c1">// 8 to 11</span>
+    <span class="p">).</span><span class="nx">toString</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span>      <span class="c1">// in hexadecimal</span>
+    <span class="o">:</span> <span class="p">(</span>                 <span class="c1">// or otherwise a concatenated string:</span>
+      <span class="mi">1</span><span class="nx">e7</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span> <span class="o">+</span>  <span class="c1">// 10000000 +</span>
+      <span class="o">-</span><span class="mi">1</span><span class="nx">e3</span> <span class="o">+</span>            <span class="c1">// -1000 +</span>
+      <span class="o">-</span><span class="mi">4</span><span class="nx">e3</span> <span class="o">+</span>            <span class="c1">// -4000 +</span>
+      <span class="o">-</span><span class="mi">8</span><span class="nx">e3</span> <span class="o">+</span>            <span class="c1">// -80000000 +</span>
+      <span class="o">-</span><span class="mi">1</span><span class="nx">e11</span>             <span class="c1">// -100000000000,</span>
+    <span class="p">).</span><span class="nx">replace</span><span class="p">(</span>          <span class="c1">// replacing</span>
+      <span class="sr">/[018]/g</span><span class="p">,</span>         <span class="c1">// zeroes, ones, and eights with</span>
+      <span class="nx">uuid</span>              <span class="c1">// random hex digits</span>
+    <span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
 
 <p>Initialize the ID as a class property, before the constructor. Add a <code>players</code> map object and refactor all references to <code>player</code> such that the map is now used instead.</p>
-<div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">GameScene</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">Phaser</span><span class="p">.</span><span class="nx">Scene</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">GameScene</span> <span class="kr">extends</span> <span class="nx">Phaser</span><span class="p">.</span><span class="nx">Scene</span> <span class="p">{</span>
 
-<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">VELOCITY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">100</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">wsClient?</span><span class="o">:</span><span class="w"> </span><span class="kt">WebSocket</span><span class="p">;</span><span class="w"></span>
+  <span class="kr">private</span> <span class="nx">VELOCITY</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+  <span class="kr">private</span> <span class="nx">wsClient?</span>: <span class="kt">WebSocket</span><span class="p">;</span>
 
-<span class="w">  </span><span class="c1">// delete this</span><span class="w"></span>
-<span class="w">  </span><span class="c1">// private player?: Phaser.GameObjects.Sprite;</span><span class="w"></span>
-<span class="w">  </span><span class="c1">// ...</span><span class="w"></span>
+  <span class="c1">// delete this</span>
+  <span class="c1">// private player?: Phaser.GameObjects.Sprite;</span>
+  <span class="c1">// ...</span>
 
-<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">uuid</span><span class="p">();</span><span class="w"></span>
-<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">players</span><span class="o">:</span><span class="w"> </span><span class="p">{[</span><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">Phaser</span><span class="p">.</span><span class="nx">GameObjects</span><span class="p">.</span><span class="nx">Sprite</span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{};</span><span class="w"></span>
+  <span class="kr">private</span> <span class="nx">id</span> <span class="o">=</span> <span class="nx">uuid</span><span class="p">();</span>
+  <span class="kr">private</span> <span class="nx">players</span><span class="o">:</span> <span class="p">{[</span><span class="nx">key</span>: <span class="kt">string</span><span class="p">]</span><span class="o">:</span> <span class="nx">Phaser</span><span class="p">.</span><span class="nx">GameObjects</span><span class="p">.</span><span class="nx">Sprite</span><span class="p">}</span> <span class="o">=</span> <span class="p">{};</span>
 
-<span class="w">  </span><span class="c1">// ...</span><span class="w"></span>
+  <span class="c1">// ...</span>
 
-<span class="c1">// Refactor your code such that all references to this.player</span><span class="w"></span>
-<span class="c1">// becomes this.players[this.id]</span><span class="w"></span>
+<span class="c1">// Refactor your code such that all references to this.player</span>
+<span class="c1">// becomes this.players[this.id]</span>
 
-<span class="c1">// create</span><span class="w"></span>
-<span class="k">public</span><span class="w"> </span><span class="nx">create</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="c1">// ...</span><span class="w"></span>
-<span class="w">  </span><span class="k">this</span><span class="p">.</span><span class="nx">players</span><span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">id</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">physics</span><span class="p">.</span><span class="nx">add</span><span class="p">.</span><span class="nx">sprite</span><span class="p">(</span><span class="mf">48</span><span class="p">,</span><span class="w"> </span><span class="mf">48</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;player&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="k">this</span><span class="p">.</span><span class="nx">physics</span><span class="p">.</span><span class="nx">add</span><span class="p">.</span><span class="nx">collider</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">players</span><span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">id</span><span class="p">],</span><span class="w"> </span><span class="nx">layer</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="k">this</span><span class="p">.</span><span class="nx">cameras</span><span class="p">.</span><span class="nx">main</span><span class="p">.</span><span class="nx">startFollow</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">players</span><span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">id</span><span class="p">]);</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="c1">// create</span>
+<span class="kr">public</span> <span class="nx">create() {</span>
+  <span class="c1">// ...</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">players</span><span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">id</span><span class="p">]</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">physics</span><span class="p">.</span><span class="nx">add</span><span class="p">.</span><span class="nx">sprite</span><span class="p">(</span><span class="mi">48</span><span class="p">,</span> <span class="mi">48</span><span class="p">,</span> <span class="s2">&quot;player&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">physics</span><span class="p">.</span><span class="nx">add</span><span class="p">.</span><span class="nx">collider</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">players</span><span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">id</span><span class="p">],</span> <span class="nx">layer</span><span class="p">);</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">cameras</span><span class="p">.</span><span class="nx">main</span><span class="p">.</span><span class="nx">startFollow</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">players</span><span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">id</span><span class="p">]);</span>
+<span class="p">}</span>
 
 
-<span class="c1">// update</span><span class="w"></span>
-<span class="k">public</span><span class="w"> </span><span class="nx">update</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">players</span><span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">id</span><span class="p">])</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">player</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">players</span><span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">id</span><span class="p">];</span><span class="w"></span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">moving</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span><span class="w"></span>
+<span class="c1">// update</span>
+<span class="kr">public</span> <span class="nx">update() {</span>
+  <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">players</span><span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">id</span><span class="p">])</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="nx">player</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">players</span><span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">id</span><span class="p">];</span>
+    <span class="kd">let</span> <span class="nx">moving</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
 
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">leftKey</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">leftKey</span><span class="p">.</span><span class="nx">isDown</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="p">(</span><span class="nx">player</span><span class="p">.</span><span class="nx">body</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">Phaser</span><span class="p">.</span><span class="nx">Physics</span><span class="p">.</span><span class="nx">Arcade</span><span class="p">.</span><span class="nx">Body</span><span class="p">).</span><span class="nx">setVelocityX</span><span class="p">(</span><span class="o">-</span><span class="k">this</span><span class="p">.</span><span class="nx">VELOCITY</span><span class="p">);</span><span class="w"></span>
-<span class="w">      </span><span class="nx">player</span><span class="p">.</span><span class="nx">play</span><span class="p">(</span><span class="s2">&quot;left&quot;</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">);</span><span class="w"></span>
-<span class="w">      </span><span class="nx">moving</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="c1">// ...</span><span class="w"></span>
-<span class="w">    </span><span class="nx">player</span><span class="p">.</span><span class="nx">update</span><span class="p">();</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
+    <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">leftKey</span> <span class="o">&amp;&amp;</span> <span class="k">this</span><span class="p">.</span><span class="nx">leftKey</span><span class="p">.</span><span class="nx">isDown</span><span class="p">)</span> <span class="p">{</span>
+      <span class="p">(</span><span class="nx">player</span><span class="p">.</span><span class="nx">body</span> <span class="kr">as</span> <span class="nx">Phaser</span><span class="p">.</span><span class="nx">Physics</span><span class="p">.</span><span class="nx">Arcade</span><span class="p">.</span><span class="nx">Body</span><span class="p">).</span><span class="nx">setVelocityX</span><span class="p">(</span><span class="o">-</span><span class="k">this</span><span class="p">.</span><span class="nx">VELOCITY</span><span class="p">);</span>
+      <span class="nx">player</span><span class="p">.</span><span class="nx">play</span><span class="p">(</span><span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+      <span class="nx">moving</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="c1">// ...</span>
+    <span class="nx">player</span><span class="p">.</span><span class="nx">update</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
 
 <p>Modify the <code>update</code> function to broadcast our player's position during movement.</p>
-<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">moving</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="p">(</span><span class="nx">player</span><span class="p">.</span><span class="nx">body</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">Phaser</span><span class="p">.</span><span class="nx">Physics</span><span class="p">.</span><span class="nx">Arcade</span><span class="p">.</span><span class="nx">Body</span><span class="p">).</span><span class="nx">setVelocity</span><span class="p">(</span><span class="mf">0</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="nx">player</span><span class="p">.</span><span class="nx">anims</span><span class="p">.</span><span class="nx">stop</span><span class="p">();</span><span class="w"></span>
-<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">wsClient</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="k">this</span><span class="p">.</span><span class="nx">wsClient</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span><span class="w"></span>
-<span class="w">    </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">this.id</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="kt">player.x</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="kt">player.y</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nx">frame</span><span class="o">:</span><span class="w"> </span><span class="kt">player.frame.name</span><span class="w"></span>
-<span class="w">  </span><span class="p">}));</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">moving</span><span class="p">)</span> <span class="p">{</span>
+  <span class="p">(</span><span class="nx">player</span><span class="p">.</span><span class="nx">body</span> <span class="kr">as</span> <span class="nx">Phaser</span><span class="p">.</span><span class="nx">Physics</span><span class="p">.</span><span class="nx">Arcade</span><span class="p">.</span><span class="nx">Body</span><span class="p">).</span><span class="nx">setVelocity</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+  <span class="nx">player</span><span class="p">.</span><span class="nx">anims</span><span class="p">.</span><span class="nx">stop</span><span class="p">();</span>
+<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">wsClient</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">wsClient</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
+    <span class="nx">id</span>: <span class="kt">this.id</span><span class="p">,</span>
+    <span class="nx">x</span>: <span class="kt">player.x</span><span class="p">,</span>
+    <span class="nx">y</span>: <span class="kt">player.y</span><span class="p">,</span>
+    <span class="nx">frame</span>: <span class="kt">player.frame.name</span>
+  <span class="p">}));</span>
+<span class="p">}</span>
+</pre></div>
+
 
 <p>Within <code>server.js</code>, change the WebSocket server message handler to accomodate a map of IDs and positions.</p>
-<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">setupWSServer</span><span class="p">(</span><span class="nx">server</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="c1">// ...</span><span class="w"></span>
-<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">actorCoordinates</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
-<span class="w">  </span><span class="nx">wss</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;connection&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">ws</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nx">ws</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;message&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">rawMsg</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`RECV: </span><span class="si">${</span><span class="nx">rawMsg</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span><span class="w"></span>
-<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">incommingMessage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">rawMsg</span><span class="p">);</span><span class="w"></span>
-<span class="w">      </span><span class="nx">actorCoordinates</span><span class="p">[</span><span class="nx">incommingMessage</span><span class="p">.</span><span class="nx">id</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="nx">incommingMessage</span><span class="p">.</span><span class="nx">x</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="nx">incommingMessage</span><span class="p">.</span><span class="nx">y</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nx">frame</span><span class="o">:</span><span class="w"> </span><span class="nx">incommingMessage</span><span class="p">.</span><span class="nx">frame</span><span class="w"></span>
-<span class="w">      </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="c1">// ...</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">setupWSServer</span><span class="p">(</span><span class="nx">server</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// ...</span>
+  <span class="kd">let</span> <span class="nx">actorCoordinates</span> <span class="o">=</span> <span class="p">{</span> <span class="p">};</span>
+  <span class="nx">wss</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;connection&quot;</span><span class="p">,</span> <span class="p">(</span><span class="nx">ws</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="nx">ws</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;message&quot;</span><span class="p">,</span> <span class="p">(</span><span class="nx">rawMsg</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`RECV: </span><span class="si">${</span><span class="nx">rawMsg</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+      <span class="kr">const</span> <span class="nx">incommingMessage</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">rawMsg</span><span class="p">);</span>
+      <span class="nx">actorCoordinates</span><span class="p">[</span><span class="nx">incommingMessage</span><span class="p">.</span><span class="nx">id</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="nx">x</span><span class="o">:</span> <span class="nx">incommingMessage</span><span class="p">.</span><span class="nx">x</span><span class="p">,</span>
+        <span class="nx">y</span><span class="o">:</span> <span class="nx">incommingMessage</span><span class="p">.</span><span class="nx">y</span><span class="p">,</span>
+        <span class="nx">frame</span><span class="o">:</span> <span class="nx">incommingMessage</span><span class="p">.</span><span class="nx">frame</span>
+      <span class="p">}</span>
+    <span class="c1">// ...</span>
+</pre></div>
+
 
 <p>Update the <code>client.ts</code> file to handle the new map of positions, rendering multiple characters on screen.</p>
 <p>The <code>ICoords</code> interface must change to accomodate a map of Ids to coordinates and frame numbers.</p>
-<div class="highlight"><pre><span></span><code><span class="kd">interface</span><span class="w"> </span><span class="nx">ICoords</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="p">[</span><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="nx">frame</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="kr">interface</span> <span class="nx">ICoords</span> <span class="p">{</span>
+  <span class="p">[</span><span class="nx">key</span>: <span class="kt">string</span><span class="p">]</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">x</span>: <span class="kt">number</span><span class="p">;</span>
+    <span class="nx">y</span>: <span class="kt">number</span><span class="p">;</span>
+    <span class="nx">frame</span>: <span class="kt">number</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
 
 <p>The websocket client should parse and store sprite objects received from the server.</p>
-<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="nx">init</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="c1">// ...</span><span class="w"></span>
-<span class="w">  </span><span class="k">this</span><span class="p">.</span><span class="nx">wsClient</span><span class="p">.</span><span class="nx">onmessage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">wsMsgEvent</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">allCoords</span><span class="o">:</span><span class="w"> </span><span class="kt">ICoords</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">wsMsgEvent</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">const</span><span class="w"> </span><span class="nx">playerId</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">allCoords</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">playerId</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="c1">// we don&#39;t need to update ourselves</span><span class="w"></span>
-<span class="w">        </span><span class="k">continue</span><span class="p">;</span><span class="w"></span>
-<span class="w">      </span><span class="p">}</span><span class="w"></span>
-<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="p">,</span><span class="w"> </span><span class="nx">frame</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">allCoords</span><span class="p">[</span><span class="nx">playerId</span><span class="p">];</span><span class="w"></span>
-<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">playerId</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">players</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="c1">// We have seen this player before, update it!</span><span class="w"></span>
-<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">player</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">players</span><span class="p">[</span><span class="nx">playerId</span><span class="p">];</span><span class="w"></span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">player</span><span class="p">.</span><span class="nx">texture</span><span class="p">.</span><span class="nx">key</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;__MISSING&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">          </span><span class="c1">// Player was instantiated before texture was ready, reinstantiate</span><span class="w"></span>
-<span class="w">          </span><span class="nx">player</span><span class="p">.</span><span class="nx">destroy</span><span class="p">();</span><span class="w"></span>
-<span class="w">          </span><span class="k">this</span><span class="p">.</span><span class="nx">players</span><span class="p">[</span><span class="nx">playerId</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">add</span><span class="p">.</span><span class="nx">sprite</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;player&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">frame</span><span class="p">);</span><span class="w"></span>
-<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">          </span><span class="nx">player</span><span class="p">.</span><span class="nx">setX</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span><span class="w"></span>
-<span class="w">          </span><span class="nx">player</span><span class="p">.</span><span class="nx">setY</span><span class="p">(</span><span class="nx">y</span><span class="p">);</span><span class="w"></span>
-<span class="w">          </span><span class="nx">player</span><span class="p">.</span><span class="nx">setFrame</span><span class="p">(</span><span class="nx">frame</span><span class="p">);</span><span class="w">  </span>
-<span class="w">        </span><span class="p">}</span><span class="w"></span>
-<span class="w">      </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="c1">// We have not seen this player before, create it!</span><span class="w"></span>
-<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">players</span><span class="p">[</span><span class="nx">playerId</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">add</span><span class="p">.</span><span class="nx">sprite</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;player&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">frame</span><span class="p">);</span><span class="w"></span>
-<span class="w">      </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="kr">public</span> <span class="nx">init() {</span>
+  <span class="c1">// ...</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">wsClient</span><span class="p">.</span><span class="nx">onmessage</span> <span class="o">=</span> <span class="p">(</span><span class="nx">wsMsgEvent</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="nx">allCoords</span>: <span class="kt">ICoords</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">wsMsgEvent</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kr">const</span> <span class="nx">playerId</span> <span class="nx">of</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">allCoords</span><span class="p">))</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">playerId</span> <span class="o">===</span> <span class="k">this</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// we don&#39;t need to update ourselves</span>
+        <span class="k">continue</span><span class="p">;</span>
+      <span class="p">}</span>
+      <span class="kr">const</span> <span class="p">{</span> <span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">,</span> <span class="nx">frame</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">allCoords</span><span class="p">[</span><span class="nx">playerId</span><span class="p">];</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">playerId</span> <span class="k">in</span> <span class="k">this</span><span class="p">.</span><span class="nx">players</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// We have seen this player before, update it!</span>
+        <span class="kr">const</span> <span class="nx">player</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">players</span><span class="p">[</span><span class="nx">playerId</span><span class="p">];</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">player</span><span class="p">.</span><span class="nx">texture</span><span class="p">.</span><span class="nx">key</span> <span class="o">===</span> <span class="s2">&quot;__MISSING&quot;</span><span class="p">)</span> <span class="p">{</span>
+          <span class="c1">// Player was instantiated before texture was ready, reinstantiate</span>
+          <span class="nx">player</span><span class="p">.</span><span class="nx">destroy</span><span class="p">();</span>
+          <span class="k">this</span><span class="p">.</span><span class="nx">players</span><span class="p">[</span><span class="nx">playerId</span><span class="p">]</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">add</span><span class="p">.</span><span class="nx">sprite</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">,</span> <span class="s2">&quot;player&quot;</span><span class="p">,</span> <span class="nx">frame</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+          <span class="nx">player</span><span class="p">.</span><span class="nx">setX</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span>
+          <span class="nx">player</span><span class="p">.</span><span class="nx">setY</span><span class="p">(</span><span class="nx">y</span><span class="p">);</span>
+          <span class="nx">player</span><span class="p">.</span><span class="nx">setFrame</span><span class="p">(</span><span class="nx">frame</span><span class="p">);</span>  
+        <span class="p">}</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="c1">// We have not seen this player before, create it!</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">players</span><span class="p">[</span><span class="nx">playerId</span><span class="p">]</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">add</span><span class="p">.</span><span class="nx">sprite</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">,</span> <span class="s2">&quot;player&quot;</span><span class="p">,</span> <span class="nx">frame</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
 
 <p>Let's modify our <code>update</code> function to also render all of the other players.</p>
-<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="nx">update</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">const</span><span class="w"> </span><span class="nx">playerId</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">players</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">player</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">players</span><span class="p">[</span><span class="nx">playerId</span><span class="p">];</span><span class="w"></span>
+<div class="highlight"><pre><span></span><span class="kr">public</span> <span class="nx">update() {</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kr">const</span> <span class="nx">playerId</span> <span class="nx">of</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">players</span><span class="p">))</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="nx">player</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">players</span><span class="p">[</span><span class="nx">playerId</span><span class="p">];</span>
 
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">playerId</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="nx">player</span><span class="p">.</span><span class="nx">setTint</span><span class="p">(</span><span class="mh">0x0000aa</span><span class="p">);</span><span class="w"> </span><span class="c1">// so we can tell our guy apart</span><span class="w"></span>
-<span class="w">      </span><span class="nx">player</span><span class="p">.</span><span class="nx">update</span><span class="p">();</span><span class="w"></span>
-<span class="w">      </span><span class="k">continue</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="c1">// rest of the input handling code</span><span class="w"></span>
-</code></pre></div>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">playerId</span> <span class="o">!==</span> <span class="k">this</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">player</span><span class="p">.</span><span class="nx">setTint</span><span class="p">(</span><span class="mh">0x0000aa</span><span class="p">);</span> <span class="c1">// so we can tell our guy apart</span>
+      <span class="nx">player</span><span class="p">.</span><span class="nx">update</span><span class="p">();</span>
+      <span class="k">continue</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="c1">// rest of the input handling code</span>
+</pre></div>
+
 
 <p>The reference source code is available on the <a href="https://github.com/uofa-cmput404/nodejs-ws-lab/tree/finishedLab">finishedLab</a> branch. You should now have a game running in your browser that handles real-time concurrent connections and updates among multiple users!</p>
 <p><strong>Question 4</strong>: What are the different values for the <code>readyState</code> a WebSocket can be in? Briefly describe what each state means. (Hint: check out the <a href="https://developer.mozilla.org/en-US/docs/Web/API/WebSocket">Mozilla WebSocket API</a>)</p>
@@ -302,8 +315,8 @@ git checkout -b topdown laborigin/topdown
 </section>
         <footer id="contentinfo" class="body">
                 <address id="about" class="vcard body">
-                Proudly powered by <a href="https://getpelican.com/">Pelican</a>,
-                which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                which takes great advantage of <a href="http://python.org">Python</a>.
                 </address><!-- /#about -->
         </footer><!-- /#contentinfo -->
 </body>

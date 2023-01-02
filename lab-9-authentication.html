@@ -3,7 +3,6 @@
 <head>
           <title>CMPUT 404 - Lab 9 - Authentication</title>
         <meta charset="utf-8" />
-        <meta name="generator" content="Pelican" />
 
   <link rel="icon" href="https://uofa-cmput404.github.io/theme/favicon.ico" />
   <link rel="stylesheet" type="text/css" href="https://uofa-cmput404.github.io/theme/style.css" />
@@ -18,7 +17,7 @@
 
 <body id="index" class="home">
         <header id="banner" class="body">
-                <h1><a href="https://uofa-cmput404.github.io/">CMPUT 404</a></h1>
+                <h1><a href="https://uofa-cmput404.github.io/">CMPUT 404 <strong></strong></a></h1>
         </header><!-- /#banner -->
         <nav id="menu"><ul>
             <li><a href="https://uofa-cmput404.github.io/">Home</a></li>
@@ -58,27 +57,29 @@
 <li><a href="https://github.com/uofa-cmput404/authentication-lab">github.com/uofa-cmput404/authentication-lab</a></li>
 </ul>
 <p>Follow the Getting Started instructions and run the application locally.</p>
-<div class="highlight"><pre><span></span><code>virtualenv venv --python<span class="o">=</span>python3
+<div class="highlight"><pre><span></span>virtualenv venv --python<span class="o">=</span>python3
 <span class="nb">source</span> venv/bin/activate
 pip install -r requirements
 ./manage.py migrate
 ./manage.py createsuperuser
 ./manage.py runserver
-</code></pre></div>
+</pre></div>
+
 
 <p>Navigate to the <code>/api</code> route and log into the browsable API. Create a new code snippet.</p>
 <p><strong>Question 1</strong>: What authentication scheme is used by default in Django Rest Framework's browsable API? How is this managed?</p>
 <p>In a new terminal, use <code>httpie</code> to query the api endpoints.</p>
-<div class="highlight"><pre><span></span><code>http POST http://127.0.0.1:8000/api/snippets/ <span class="nv">code</span><span class="o">=</span><span class="s2">&quot;print(123)&quot;</span>
+<div class="highlight"><pre><span></span>http POST http://127.0.0.1:8000/api/snippets/ <span class="nv">code</span><span class="o">=</span><span class="s2">&quot;print(123)&quot;</span>
 
 http -a username:password POST http://127.0.0.1:8000/api/snippets/ <span class="nv">code</span><span class="o">=</span><span class="s2">&quot;print(123)&quot;</span>
-</code></pre></div>
+</pre></div>
+
 
 <p><strong>Question 2</strong>: What authentication scheme is used by <code>httpie</code> when querying with the <code>-a</code> or <code>--auth</code> option flag?</p>
 <h3>Configure Token Authentication</h3>
 <p>Official documentation can be found <a href="https://www.django-rest-framework.org/api-guide/authentication/#tokenauthentication">here</a>.</p>
 <p>Within <code>authlab/settings.py</code>, add <code>rest_framework.authtoken</code> into the <code>INSTALLED_APPS</code> setting. include <code>TokenAuthentication</code> in the Django Rest Framework settings.</p>
-<div class="highlight"><pre><span></span><code><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
+<div class="highlight"><pre><span></span><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
     <span class="c1"># ...</span>
     <span class="s1">&#39;rest_framework&#39;</span><span class="p">,</span>
     <span class="s1">&#39;rest_framework.authtoken&#39;</span>
@@ -95,25 +96,29 @@ http -a username:password POST http://127.0.0.1:8000/api/snippets/ <span class="
         <span class="s1">&#39;rest_framework.authentication.TokenAuthentication&#39;</span>
     <span class="p">)</span>
 <span class="p">}</span>
-</code></pre></div>
+</pre></div>
+
 
 <p>Run <code>./manage.py migrate</code> after changing the settings.</p>
 <p>Register the token model in the Django project admin dashboard. Update <code>client/admin.py</code> to be the following:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">rest_framework.authtoken.admin</span> <span class="kn">import</span> <span class="n">TokenAdmin</span>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rest_framework.authtoken.admin</span> <span class="kn">import</span> <span class="n">TokenAdmin</span>
 
 <span class="n">TokenAdmin</span><span class="o">.</span><span class="n">raw_id_fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;user&#39;</span><span class="p">,)</span>
-</code></pre></div>
+</pre></div>
+
 
 <p>Navigate to the Django admin dashboard and create a new token for your user.</p>
 <p>Use <code>httpie</code> to create a new code snippet using token authentication.</p>
 <p>Replace <code>YOUR_TOKEN</code> with your token in the following command:</p>
-<div class="highlight"><pre><span></span><code>http POST http://127.0.0.1:8000/api/snippets/ <span class="s2">&quot;Authorization:Token YOUR_TOKEN&quot;</span> <span class="nv">code</span><span class="o">=</span><span class="s2">&quot;print(&#39;Token works&#39;)&quot;</span>
-</code></pre></div>
+<div class="highlight"><pre><span></span>http POST http://127.0.0.1:8000/api/snippets/ <span class="s2">&quot;Authorization:Token YOUR_TOKEN&quot;</span> <span class="nv">code</span><span class="o">=</span><span class="s2">&quot;print(&#39;Token works&#39;)&quot;</span>
+</pre></div>
+
 
 <p>For example, if your token is <code>56b9afcaccad879e5bd9b39fe622927f17163092</code>,
 then you should run the command:</p>
-<div class="highlight"><pre><span></span><code>http POST http://127.0.0.1:8000/api/snippets/ <span class="s2">&quot;Authorization:Token 56b9afcaccad879e5bd9b39fe622927f17163092&quot;</span> <span class="nv">code</span><span class="o">=</span><span class="s2">&quot;print(&#39;Token works&#39;)&quot;</span>
-</code></pre></div>
+<div class="highlight"><pre><span></span>http POST http://127.0.0.1:8000/api/snippets/ <span class="s2">&quot;Authorization:Token 56b9afcaccad879e5bd9b39fe622927f17163092&quot;</span> <span class="nv">code</span><span class="o">=</span><span class="s2">&quot;print(&#39;Token works&#39;)&quot;</span>
+</pre></div>
+
 
 <p><strong>Question 3</strong>: What is the difference between <code>Session Authentication</code> and <code>Token Authentication</code>? How is <code>Token Authentication</code> an improvement over <code>Basic Authentication</code>?</p>
 <h3>Identity and Authentication</h3>
@@ -140,14 +145,14 @@ then you should run the command:</p>
 <ul>
 <li><a href="https://auth0.com/docs/quickstart/webapp/django/01-login">Auth0 Django bindings and tutorial</a></li>
 <li>Additionally, you can use <a href="https://github.com/jazzband/django-oauth-toolkit">github.com/jazzband/django-oauth-toolkit</a> to create an OAuth2 provider for others to use.</li>
-<li><em>You are </em><em>not expected</em><em> to implement OAuth for your project!</em></li>
+<li><em>You are <strong>not expected</strong> to implement OAuth for your project!</em></li>
 </ul>
   </div><!-- /.entry-content -->
 </section>
         <footer id="contentinfo" class="body">
                 <address id="about" class="vcard body">
-                Proudly powered by <a href="https://getpelican.com/">Pelican</a>,
-                which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                which takes great advantage of <a href="http://python.org">Python</a>.
                 </address><!-- /#about -->
         </footer><!-- /#contentinfo -->
 </body>
