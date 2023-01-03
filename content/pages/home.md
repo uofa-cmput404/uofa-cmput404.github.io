@@ -2,9 +2,13 @@ Title: Home
 url:
 save_as: index.html
 
+## Lecture Material
+
 [CMPUT404 Slides](https://uofa-cmput404.github.io/cmput404-slides/)
 
-Lab material for CMPUT 404 (Winter 2023)
+## Lab material for CMPUT 404 (Winter 2023)
+
+Lab material for CMPUT 404.
 
 * [Lab 1: Virtualenv & cURL]({filename}../labs/lab-1.md)
 * [Lab 2: TCP Proxy]({filename}../labs/lab-2.md)
@@ -26,14 +30,9 @@ Labs 10 to 12 are for TA project help and demos.
 | H01 | MON | 5:00PM - 07:50PM | /        | CSC B-02  |
 | H02 | WED | 5:00PM - 07:50PM | /        | GSB 5-59  |
 
-## Days
+## Course Schedule
 
 ```text
-
-
-
-
-
                    January 2023      
 Su      Mo      Tu      We      Th      Fr Sa  
  1       2       3       4       5       6  7   No Labs
@@ -66,5 +65,9 @@ Su      Mo      Tu      We      Th      Fr Sa
 16      17      18      19      20      21 22  
 23      24      25      26      27      28 29  
 30           
+
+Last day of classes is April 12th
+
+There is no final exam.
 
 ```
