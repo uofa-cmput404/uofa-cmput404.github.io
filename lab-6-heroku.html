@@ -3,6 +3,7 @@
 <head>
           <title>CMPUT 404 - Lab 6 - Heroku</title>
         <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
 
   <link rel="icon" href="https://uofa-cmput404.github.io/theme/favicon.ico" />
   <link rel="stylesheet" type="text/css" href="https://uofa-cmput404.github.io/theme/style.css" />
@@ -17,10 +18,11 @@
 
 <body id="index" class="home">
         <header id="banner" class="body">
-                <h1><a href="https://uofa-cmput404.github.io/">CMPUT 404 <strong></strong></a></h1>
+                <h1><a href="https://uofa-cmput404.github.io/">CMPUT 404</a></h1>
         </header><!-- /#banner -->
         <nav id="menu"><ul>
             <li><a href="https://uofa-cmput404.github.io/">Home</a></li>
+            <li><a href="https://uofa-cmput404.github.io/pages/course-outline.html">Course Outline</a></li>
             <li class="active"><a href="https://uofa-cmput404.github.io/category/lab.html">Lab</a></li>
         </ul></nav><!-- /#menu -->
 <section id="content" class="body">
@@ -59,16 +61,16 @@
 <li>Use the default installation instructions if you are on a VM or your own device.</li>
 <li>If using a lab machine, download and extract the tarball and add the binary to your path.</li>
 </ul>
-<div class="highlight"><pre><span></span>wget https://cli-assets.heroku.com/heroku-linux-x64.tar.gz
-tar -xvf heroku-linux-x64.tar.gz
-<span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$PATH</span><span class="s2">:</span><span class="nv">$HOME</span><span class="s2">/heroku/bin&quot;</span>
+<div class="highlight"><pre><span></span>wget<span class="w"> </span>https://cli-assets.heroku.com/heroku-linux-x64.tar.gz
+tar<span class="w"> </span>-xvf<span class="w"> </span>heroku-linux-x64.tar.gz
+<span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$PATH</span><span class="s2">:</span><span class="nv">$HOME</span><span class="s2">/heroku/bin&quot;</span>
 </pre></div>
 
 
 <p>Ensure the heroku tool works, login to your account.</p>
-<div class="highlight"><pre><span></span>heroku --version
+<div class="highlight"><pre><span></span>heroku<span class="w"> </span>--version
 <span class="c1"># heroku/7.19.4 linux-x64 node-v11.3.0</span>
-heroku login
+heroku<span class="w"> </span>login
 </pre></div>
 
 
@@ -103,12 +105,12 @@ heroku login
 
 
 <p>Pip install <a href="https://gunicorn.org/">gunicorn</a> and <a href="https://github.com/pkrefta/django-on-heroku">django-on-heroku</a>.</p>
-<div class="highlight"><pre><span></span>pip install gunicorn django-on-heroku
+<div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>gunicorn<span class="w"> </span>django-on-heroku
 </pre></div>
 
 
 <p>Save the new python requirements into the <em>requirements.txt</em> file.</p>
-<div class="highlight"><pre><span></span>pip freeze &gt; requirements.txt
+<div class="highlight"><pre><span></span>pip<span class="w"> </span>freeze<span class="w"> </span>&gt;<span class="w"> </span>requirements.txt
 </pre></div>
 
 
@@ -129,8 +131,8 @@ heroku login
 <p>Commit your files and deploy the application using a git integration.</p>
 <p>What happens when you go to <code>/polls</code> on your Heroku deployed site?</p>
 <p>Run your migrations, create a Superuser, and ensure your application functionality works.</p>
-<div class="highlight"><pre><span></span>$ heroku run --app APPNAME python manage.py migrate
-$ heroku run --app APPNAME python manage.py createsuperuser
+<div class="highlight"><pre><span></span>$<span class="w"> </span>heroku<span class="w"> </span>run<span class="w"> </span>--app<span class="w"> </span>APPNAME<span class="w"> </span>python<span class="w"> </span>manage.py<span class="w"> </span>migrate
+$<span class="w"> </span>heroku<span class="w"> </span>run<span class="w"> </span>--app<span class="w"> </span>APPNAME<span class="w"> </span>python<span class="w"> </span>manage.py<span class="w"> </span>createsuperuser
 </pre></div>
 
 
@@ -142,8 +144,8 @@ $ heroku run --app APPNAME python manage.py createsuperuser
 </section>
         <footer id="contentinfo" class="body">
                 <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
-                which takes great advantage of <a href="http://python.org">Python</a>.
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>,
+                which takes great advantage of <a href="https://www.python.org/">Python</a>.
                 </address><!-- /#about -->
         </footer><!-- /#contentinfo -->
 </body>

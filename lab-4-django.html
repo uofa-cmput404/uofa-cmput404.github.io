@@ -3,6 +3,7 @@
 <head>
           <title>CMPUT 404 - Lab 4 - Django</title>
         <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
 
   <link rel="icon" href="https://uofa-cmput404.github.io/theme/favicon.ico" />
   <link rel="stylesheet" type="text/css" href="https://uofa-cmput404.github.io/theme/style.css" />
@@ -16,10 +17,11 @@
 
 <body id="index" class="home">
         <header id="banner" class="body">
-                <h1><a href="https://uofa-cmput404.github.io/">CMPUT 404 <strong></strong></a></h1>
+                <h1><a href="https://uofa-cmput404.github.io/">CMPUT 404</a></h1>
         </header><!-- /#banner -->
         <nav id="menu"><ul>
             <li><a href="https://uofa-cmput404.github.io/">Home</a></li>
+            <li><a href="https://uofa-cmput404.github.io/pages/course-outline.html">Course Outline</a></li>
             <li class="active"><a href="https://uofa-cmput404.github.io/category/lab.html">Lab</a></li>
         </ul></nav><!-- /#menu -->
 <section id="content" class="body">
@@ -61,16 +63,16 @@
 <p>Make sure to use a <strong>virtual environment</strong> for this lab!</p>
 <p>If you're doing this on <strong>Windows</strong> please make sure to follow the Windows
 instructions for Lab 1 before starting this lab!</p>
-<div class="highlight"><pre><span></span>virtualenv venv --python<span class="o">=</span>python3
-<span class="nb">source</span> venv/bin/activate
-pip install <span class="nv">Django</span><span class="o">==</span><span class="m">3</span>.1.6 <span class="c1"># latest official version</span>
+<div class="highlight"><pre><span></span>virtualenv<span class="w"> </span>venv<span class="w"> </span>--python<span class="o">=</span>python3
+<span class="nb">source</span><span class="w"> </span>venv/bin/activate
+pip<span class="w"> </span>install<span class="w"> </span><span class="nv">Django</span><span class="o">==</span><span class="m">3</span>.1.6<span class="w"> </span><span class="c1"># latest official version</span>
 </pre></div>
 
 
 <p>Initialize a new Django project called <strong>mysite</strong>.</p>
-<div class="highlight"><pre><span></span>django-admin startproject mysite
-<span class="nb">cd</span> mysite
-python manage.py runserver
+<div class="highlight"><pre><span></span>django-admin<span class="w"> </span>startproject<span class="w"> </span>mysite
+<span class="nb">cd</span><span class="w"> </span>mysite
+python<span class="w"> </span>manage.py<span class="w"> </span>runserver
 </pre></div>
 
 
@@ -83,7 +85,7 @@ python manage.py runserver
 <li>Official Docs <a href="https://docs.djangoproject.com/en/3.1/intro/tutorial01/">Part 1</a></li>
 </ul>
 <p>Create a new application within <strong>mysite</strong> called <strong>polls</strong>.</p>
-<div class="highlight"><pre><span></span>python manage.py startapp polls
+<div class="highlight"><pre><span></span>python<span class="w"> </span>manage.py<span class="w"> </span>startapp<span class="w"> </span>polls
 </pre></div>
 
 
@@ -117,7 +119,7 @@ python manage.py runserver
 
 
 <p>Run the Django project with the runserver command.</p>
-<div class="highlight"><pre><span></span>python manage.py runserver
+<div class="highlight"><pre><span></span>python<span class="w"> </span>manage.py<span class="w"> </span>runserver
 </pre></div>
 
 
@@ -168,12 +170,12 @@ python manage.py runserver
 
 
 <p>Make the database migrations.</p>
-<div class="highlight"><pre><span></span>python manage.py makemigrations polls
+<div class="highlight"><pre><span></span>python<span class="w"> </span>manage.py<span class="w"> </span>makemigrations<span class="w"> </span>polls
 </pre></div>
 
 
 <p>Run the migration command to create the tables in your database.</p>
-<div class="highlight"><pre><span></span>python manage.py migrate
+<div class="highlight"><pre><span></span>python<span class="w"> </span>manage.py<span class="w"> </span>migrate
 </pre></div>
 
 
@@ -181,7 +183,7 @@ python manage.py runserver
 <hr>
 <h3>Using Django Admin</h3>
 <p>Create a user that can log into the admin site.</p>
-<div class="highlight"><pre><span></span>python manage.py createsuperuser
+<div class="highlight"><pre><span></span>python<span class="w"> </span>manage.py<span class="w"> </span>createsuperuser
 </pre></div>
 
 
@@ -196,7 +198,7 @@ python manage.py runserver
 
 
 <p>Start the development server again and go to <code>/admin</code> on local application.</p>
-<div class="highlight"><pre><span></span>python manage.py runserver
+<div class="highlight"><pre><span></span>python<span class="w"> </span>manage.py<span class="w"> </span>runserver
 </pre></div>
 
 
@@ -256,8 +258,8 @@ python manage.py runserver
 
 
 <p>Create an empty directory named <em>templates</em> within <em>polls</em>. Then create another directory named <em>polls</em> within the <em>templates</em> directory. Lastly create a file called <em>index.html</em> within the second <em>polls</em> directory.</p>
-<div class="highlight"><pre><span></span>mkdir -p polls/templates/polls
-touch polls/templates/polls/index.html
+<div class="highlight"><pre><span></span>mkdir<span class="w"> </span>-p<span class="w"> </span>polls/templates/polls
+touch<span class="w"> </span>polls/templates/polls/index.html
 </pre></div>
 
 
@@ -288,7 +290,7 @@ touch polls/templates/polls/index.html
 
 
 <p>Add a new template file for the poll details view.</p>
-<div class="highlight"><pre><span></span>touch polls/templates/polls/detail.html
+<div class="highlight"><pre><span></span>touch<span class="w"> </span>polls/templates/polls/detail.html
 </pre></div>
 
 
@@ -314,10 +316,10 @@ touch polls/templates/polls/index.html
 
 
 <p>Remove the hardcoded urls that we specified in the <em>polls/templates/polls/index.html</em> file and replace it with at emplate tag referencing our url.</p>
-<div class="highlight"><pre><span></span><span class="c">&lt;!-- old --&gt;</span>
+<div class="highlight"><pre><span></span><span class="cm">&lt;!-- old --&gt;</span>
 <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;/polls/{{ question.id }}/&quot;</span><span class="p">&gt;</span>{{ question.question_text }}<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
 
-<span class="c">&lt;!-- new --&gt;</span>
+<span class="cm">&lt;!-- new --&gt;</span>
 <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;{% url &#39;detail&#39; question.id %}&quot;</span><span class="p">&gt;</span>{{ question.question_text }}<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
 </pre></div>
 
@@ -340,10 +342,10 @@ touch polls/templates/polls/index.html
 
 
 <p>Change your <em>polls/index.html</em> template to point at the namespaced detail view.</p>
-<div class="highlight"><pre><span></span><span class="c">&lt;!-- old --&gt;</span>
+<div class="highlight"><pre><span></span><span class="cm">&lt;!-- old --&gt;</span>
 <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;{% url &#39;detail&#39; question.id %}&quot;</span><span class="p">&gt;</span>{{ question.question_text }}<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
 
-<span class="c">&lt;!-- new --&gt;</span>
+<span class="cm">&lt;!-- new --&gt;</span>
 <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;{% url &#39;polls:detail&#39; question.id %}&quot;</span><span class="p">&gt;</span>{{ question.question_text }}<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
 </pre></div>
 
@@ -463,7 +465,7 @@ touch polls/templates/polls/index.html
     <span class="n">context_object_name</span> <span class="o">=</span> <span class="s1">&#39;latest_question_list&#39;</span>
 
     <span class="k">def</span> <span class="nf">get_queryset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return the last five published questions.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the last five published questions.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">Question</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;-pub_date&#39;</span><span class="p">)[:</span><span class="mi">5</span><span class="p">]</span>
 
 
@@ -488,7 +490,7 @@ touch polls/templates/polls/index.html
 <p>Based from the DRF (Django Rest Framework) tutorial <a href="https://www.django-rest-framework.org/tutorial/1-serialization/">here</a></p>
 <p>To convert your queries to or from a JSON object you can use Django's serializers to serialize or deserialize Django QuerySets to or from JSON objects.  </p>
 <p>First install the Django Rest Framework library using <code>pip</code></p>
-<div class="highlight"><pre><span></span>pip install djangorestframework
+<div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>djangorestframework
 </pre></div>
 
 
@@ -510,13 +512,13 @@ touch polls/templates/polls/index.html
     <span class="n">pub_date</span> <span class="o">=</span> <span class="n">serializers</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">validated_data</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Create and return a new `Question` instance, given the validated data</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">Question</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="o">**</span><span class="n">validated_data</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="n">validated_data</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Update and return an existing `Question` instance, given the validated data</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">instance</span><span class="o">.</span><span class="n">question_text</span> <span class="o">=</span> <span class="n">validated_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;question_text&#39;</span><span class="p">,</span> <span class="n">instance</span><span class="o">.</span><span class="n">question_text</span><span class="p">)</span>
@@ -538,11 +540,11 @@ touch polls/templates/polls/index.html
 
 <span class="nd">@api_view</span><span class="p">([</span><span class="s1">&#39;GET&#39;</span><span class="p">])</span>
 <span class="k">def</span> <span class="nf">get_questions</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Get the list of questions on our website</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">questions</span> <span class="o">=</span> <span class="n">Question</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
-    <span class="n">serializer</span> <span class="o">=</span> <span class="n">QuestionSerializer</span><span class="p">(</span><span class="n">questions</span><span class="p">,</span> <span class="n">many</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">serializer</span> <span class="o">=</span> <span class="n">QuestionSerializer</span><span class="p">(</span><span class="n">questions</span><span class="p">,</span> <span class="n">many</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="n">serializer</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
 </pre></div>
 
@@ -561,7 +563,7 @@ touch polls/templates/polls/index.html
 
 
 <p>Now run the project again with the <code>runserver</code> command and go to <code>polls/api/questions/</code></p>
-<div class="highlight"><pre><span></span>python manage.py runserver
+<div class="highlight"><pre><span></span>python<span class="w"> </span>manage.py<span class="w"> </span>runserver
 </pre></div>
 
 
@@ -570,11 +572,11 @@ touch polls/templates/polls/index.html
 <p>We can use the serializer to update the <code>question_text</code> field of our question entries.</p>
 <div class="highlight"><pre><span></span><span class="nd">@api_view</span><span class="p">([</span><span class="s1">&#39;POST&#39;</span><span class="p">])</span>
 <span class="k">def</span> <span class="nf">update_question</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">pk</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Get the list of questions on our website</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">questions</span> <span class="o">=</span> <span class="n">Question</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">pk</span><span class="p">)</span>
-    <span class="n">serializer</span> <span class="o">=</span> <span class="n">QuestionSerializer</span><span class="p">(</span><span class="n">questions</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">partial</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">serializer</span> <span class="o">=</span> <span class="n">QuestionSerializer</span><span class="p">(</span><span class="n">questions</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">partial</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">serializer</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
         <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="n">serializer</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="n">status</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">serializer</span><span class="o">.</span><span class="n">errors</span><span class="p">)</span>
@@ -594,7 +596,7 @@ touch polls/templates/polls/index.html
 
 <p>Run the project using <code>runserver</code> and go to this link <code>polls/api/question/1</code> and POST the following information below.  </p>
 <div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;question_text&quot;</span><span class="p">:</span> <span class="s2">&quot;Updated question text&quot;</span>
+<span class="w">    </span><span class="nt">&quot;question_text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Updated question text&quot;</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -622,8 +624,8 @@ touch polls/templates/polls/index.html
 </section>
         <footer id="contentinfo" class="body">
                 <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
-                which takes great advantage of <a href="http://python.org">Python</a>.
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>,
+                which takes great advantage of <a href="https://www.python.org/">Python</a>.
                 </address><!-- /#about -->
         </footer><!-- /#contentinfo -->
 </body>

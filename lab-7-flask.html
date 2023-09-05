@@ -3,6 +3,7 @@
 <head>
           <title>CMPUT 404 - Lab 7 - Flask</title>
         <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
 
   <link rel="icon" href="https://uofa-cmput404.github.io/theme/favicon.ico" />
   <link rel="stylesheet" type="text/css" href="https://uofa-cmput404.github.io/theme/style.css" />
@@ -17,10 +18,11 @@
 
 <body id="index" class="home">
         <header id="banner" class="body">
-                <h1><a href="https://uofa-cmput404.github.io/">CMPUT 404 <strong></strong></a></h1>
+                <h1><a href="https://uofa-cmput404.github.io/">CMPUT 404</a></h1>
         </header><!-- /#banner -->
         <nav id="menu"><ul>
             <li><a href="https://uofa-cmput404.github.io/">Home</a></li>
+            <li><a href="https://uofa-cmput404.github.io/pages/course-outline.html">Course Outline</a></li>
             <li class="active"><a href="https://uofa-cmput404.github.io/category/lab.html">Lab</a></li>
         </ul></nav><!-- /#menu -->
 <section id="content" class="body">
@@ -54,15 +56,15 @@
 <p>Create a basic RESTful web application backend using <a href="http://flask.pocoo.org/">Flask</a>. Consume the API endpoints using <a href="https://curl.haxx.se/"><code>cURL</code></a> and <a href="https://httpie.org/"><code>httpie</code></a>.</p>
 <h3>Flask</h3>
 <p>Navigate to a new folder and initialize a new Python virtual environment.</p>
-<div class="highlight"><pre><span></span>mkdir cmput404lab7
-<span class="nb">cd</span> cmput404lab7
-virtualenv venv --python<span class="o">=</span>python3
-<span class="nb">source</span> venv/bin/activate
+<div class="highlight"><pre><span></span>mkdir<span class="w"> </span>cmput404lab7
+<span class="nb">cd</span><span class="w"> </span>cmput404lab7
+virtualenv<span class="w"> </span>venv<span class="w"> </span>--python<span class="o">=</span>python3
+<span class="nb">source</span><span class="w"> </span>venv/bin/activate
 </pre></div>
 
 
 <p>Install Flask.</p>
-<div class="highlight"><pre><span></span>pip install Flask
+<div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>Flask
 </pre></div>
 
 
@@ -73,29 +75,29 @@ virtualenv venv --python<span class="o">=</span>python3
 <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
 
-<span class="nd">@app.route</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">hello</span><span class="p">():</span>
     <span class="k">return</span> <span class="s2">&quot;Hello, world!&quot;</span>
 
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 
 
 <p>Make the file executable and run the application. Navigate to the page in your browser.</p>
-<div class="highlight"><pre><span></span>chmod +x hello.py
+<div class="highlight"><pre><span></span>chmod<span class="w"> </span>+x<span class="w"> </span>hello.py
 ./hello.py
 <span class="c1"># or</span>
-python3 hello.py
+python3<span class="w"> </span>hello.py
 
 <span class="c1"># In a new terminal</span>
-curl localhost:5000 <span class="c1"># the port may be different on your machine</span>
+curl<span class="w"> </span>localhost:5000<span class="w"> </span><span class="c1"># the port may be different on your machine</span>
 </pre></div>
 
 
 <p>Modify the <code>hello.py</code> file to serve a RESTful api for managing a TODO list. First, install <code>flask_restful</code>.</p>
-<div class="highlight"><pre><span></span>pip install flask_restful
+<div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>flask_restful
 </pre></div>
 
 
@@ -118,12 +120,12 @@ curl localhost:5000 <span class="c1"># the port may be different on your machine
 
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 
 
 <p>Run the server and see what it returns in your browser, or using cURL.</p>
-<div class="highlight"><pre><span></span>curl localhost:5000
+<div class="highlight"><pre><span></span>curl<span class="w"> </span>localhost:5000
 </pre></div>
 
 
@@ -148,7 +150,7 @@ curl localhost:5000 <span class="c1"># the port may be different on your machine
 
 <span class="k">def</span> <span class="nf">abort_if_todo_not_found</span><span class="p">(</span><span class="n">todo_id</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">todo_id</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">TODOs</span><span class="p">:</span>
-        <span class="n">abort</span><span class="p">(</span><span class="mi">404</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">&quot;TODO {} does not exist&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">todo_id</span><span class="p">))</span>
+        <span class="n">abort</span><span class="p">(</span><span class="mi">404</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">&quot;TODO </span><span class="si">{}</span><span class="s2"> does not exist&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">todo_id</span><span class="p">))</span>
 
 
 <span class="k">def</span> <span class="nf">add_todo</span><span class="p">(</span><span class="n">todo_id</span><span class="p">):</span>
@@ -159,7 +161,7 @@ curl localhost:5000 <span class="c1"># the port may be different on your machine
 
 
 <span class="k">class</span> <span class="nc">Todo</span><span class="p">(</span><span class="n">Resource</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Shows a single TODO item and lets you delete a TODO item.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -177,7 +179,7 @@ curl localhost:5000 <span class="c1"># the port may be different on your machine
 
 
 <span class="k">class</span> <span class="nc">TodoList</span><span class="p">(</span><span class="n">Resource</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Shows a list of all TODOs and lets you POST to add new tasks.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -193,27 +195,27 @@ curl localhost:5000 <span class="c1"># the port may be different on your machine
 <span class="n">api</span><span class="o">.</span><span class="n">add_resource</span><span class="p">(</span><span class="n">TodoList</span><span class="p">,</span> <span class="s2">&quot;/todos&quot;</span><span class="p">)</span>
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 
 
 <p>What does the browser show you when you navigate to <code>/todos</code> and <code>/todos/1</code>?</p>
 <p>Try running the following <code>cURL</code> commands.</p>
-<div class="highlight"><pre><span></span>curl localhost:5000/todos
-curl localhost:5000/todos/3
-curl -v -X DELETE localhost:5000/todos/2
-curl -v -X POST localhost:5000/todos -d <span class="s2">&quot;task=make sure to do lab 7 questions&quot;</span>
-curl -v -X PUT localhost:5000/todos/3 -d <span class="s2">&quot;task=profit more&quot;</span>
+<div class="highlight"><pre><span></span>curl<span class="w"> </span>localhost:5000/todos
+curl<span class="w"> </span>localhost:5000/todos/3
+curl<span class="w"> </span>-v<span class="w"> </span>-X<span class="w"> </span>DELETE<span class="w"> </span>localhost:5000/todos/2
+curl<span class="w"> </span>-v<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>localhost:5000/todos<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;task=make sure to do lab 7 questions&quot;</span>
+curl<span class="w"> </span>-v<span class="w"> </span>-X<span class="w"> </span>PUT<span class="w"> </span>localhost:5000/todos/3<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;task=profit more&quot;</span>
 </pre></div>
 
 
 <h3>Httpie</h3>
 <p>In addition to using <code>cURL</code>, <a href="https://httpie.org/"><code>httpie</code></a> is specifically designed for interacting with RESTful JSON APIs. It has colour output and automatically pretty prints JSON for you.</p>
-<div class="highlight"><pre><span></span>pip install httpie
-http localhost:5000/todos
-http :5000/todos
-http HEAD :5000/todos
-http POST :5000/todos <span class="nv">task</span><span class="o">=</span><span class="s2">&quot;Try httpie!&quot;</span>
+<div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>httpie
+http<span class="w"> </span>localhost:5000/todos
+http<span class="w"> </span>:5000/todos
+http<span class="w"> </span>HEAD<span class="w"> </span>:5000/todos
+http<span class="w"> </span>POST<span class="w"> </span>:5000/todos<span class="w"> </span><span class="nv">task</span><span class="o">=</span><span class="s2">&quot;Try httpie!&quot;</span>
 </pre></div>
 
 
@@ -236,8 +238,8 @@ http POST :5000/todos <span class="nv">task</span><span class="o">=</span><span 
 </section>
         <footer id="contentinfo" class="body">
                 <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
-                which takes great advantage of <a href="http://python.org">Python</a>.
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>,
+                which takes great advantage of <a href="https://www.python.org/">Python</a>.
                 </address><!-- /#about -->
         </footer><!-- /#contentinfo -->
 </body>

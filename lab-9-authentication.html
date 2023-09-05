@@ -3,6 +3,7 @@
 <head>
           <title>CMPUT 404 - Lab 9 - Authentication</title>
         <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
 
   <link rel="icon" href="https://uofa-cmput404.github.io/theme/favicon.ico" />
   <link rel="stylesheet" type="text/css" href="https://uofa-cmput404.github.io/theme/style.css" />
@@ -17,10 +18,11 @@
 
 <body id="index" class="home">
         <header id="banner" class="body">
-                <h1><a href="https://uofa-cmput404.github.io/">CMPUT 404 <strong></strong></a></h1>
+                <h1><a href="https://uofa-cmput404.github.io/">CMPUT 404</a></h1>
         </header><!-- /#banner -->
         <nav id="menu"><ul>
             <li><a href="https://uofa-cmput404.github.io/">Home</a></li>
+            <li><a href="https://uofa-cmput404.github.io/pages/course-outline.html">Course Outline</a></li>
             <li class="active"><a href="https://uofa-cmput404.github.io/category/lab.html">Lab</a></li>
         </ul></nav><!-- /#menu -->
 <section id="content" class="body">
@@ -57,21 +59,21 @@
 <li><a href="https://github.com/uofa-cmput404/authentication-lab">github.com/uofa-cmput404/authentication-lab</a></li>
 </ul>
 <p>Follow the Getting Started instructions and run the application locally.</p>
-<div class="highlight"><pre><span></span>virtualenv venv --python<span class="o">=</span>python3
-<span class="nb">source</span> venv/bin/activate
-pip install -r requirements
-./manage.py migrate
-./manage.py createsuperuser
-./manage.py runserver
+<div class="highlight"><pre><span></span>virtualenv<span class="w"> </span>venv<span class="w"> </span>--python<span class="o">=</span>python3
+<span class="nb">source</span><span class="w"> </span>venv/bin/activate
+pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements
+./manage.py<span class="w"> </span>migrate
+./manage.py<span class="w"> </span>createsuperuser
+./manage.py<span class="w"> </span>runserver
 </pre></div>
 
 
 <p>Navigate to the <code>/api</code> route and log into the browsable API. Create a new code snippet.</p>
 <p><strong>Question 1</strong>: What authentication scheme is used by default in Django Rest Framework's browsable API? How is this managed?</p>
 <p>In a new terminal, use <code>httpie</code> to query the api endpoints.</p>
-<div class="highlight"><pre><span></span>http POST http://127.0.0.1:8000/api/snippets/ <span class="nv">code</span><span class="o">=</span><span class="s2">&quot;print(123)&quot;</span>
+<div class="highlight"><pre><span></span>http<span class="w"> </span>POST<span class="w"> </span>http://127.0.0.1:8000/api/snippets/<span class="w"> </span><span class="nv">code</span><span class="o">=</span><span class="s2">&quot;print(123)&quot;</span>
 
-http -a username:password POST http://127.0.0.1:8000/api/snippets/ <span class="nv">code</span><span class="o">=</span><span class="s2">&quot;print(123)&quot;</span>
+http<span class="w"> </span>-a<span class="w"> </span>username:password<span class="w"> </span>POST<span class="w"> </span>http://127.0.0.1:8000/api/snippets/<span class="w"> </span><span class="nv">code</span><span class="o">=</span><span class="s2">&quot;print(123)&quot;</span>
 </pre></div>
 
 
@@ -110,13 +112,13 @@ http -a username:password POST http://127.0.0.1:8000/api/snippets/ <span class="
 <p>Navigate to the Django admin dashboard and create a new token for your user.</p>
 <p>Use <code>httpie</code> to create a new code snippet using token authentication.</p>
 <p>Replace <code>YOUR_TOKEN</code> with your token in the following command:</p>
-<div class="highlight"><pre><span></span>http POST http://127.0.0.1:8000/api/snippets/ <span class="s2">&quot;Authorization:Token YOUR_TOKEN&quot;</span> <span class="nv">code</span><span class="o">=</span><span class="s2">&quot;print(&#39;Token works&#39;)&quot;</span>
+<div class="highlight"><pre><span></span>http<span class="w"> </span>POST<span class="w"> </span>http://127.0.0.1:8000/api/snippets/<span class="w"> </span><span class="s2">&quot;Authorization:Token YOUR_TOKEN&quot;</span><span class="w"> </span><span class="nv">code</span><span class="o">=</span><span class="s2">&quot;print(&#39;Token works&#39;)&quot;</span>
 </pre></div>
 
 
 <p>For example, if your token is <code>56b9afcaccad879e5bd9b39fe622927f17163092</code>,
 then you should run the command:</p>
-<div class="highlight"><pre><span></span>http POST http://127.0.0.1:8000/api/snippets/ <span class="s2">&quot;Authorization:Token 56b9afcaccad879e5bd9b39fe622927f17163092&quot;</span> <span class="nv">code</span><span class="o">=</span><span class="s2">&quot;print(&#39;Token works&#39;)&quot;</span>
+<div class="highlight"><pre><span></span>http<span class="w"> </span>POST<span class="w"> </span>http://127.0.0.1:8000/api/snippets/<span class="w"> </span><span class="s2">&quot;Authorization:Token 56b9afcaccad879e5bd9b39fe622927f17163092&quot;</span><span class="w"> </span><span class="nv">code</span><span class="o">=</span><span class="s2">&quot;print(&#39;Token works&#39;)&quot;</span>
 </pre></div>
 
 
@@ -151,8 +153,8 @@ then you should run the command:</p>
 </section>
         <footer id="contentinfo" class="body">
                 <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
-                which takes great advantage of <a href="http://python.org">Python</a>.
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>,
+                which takes great advantage of <a href="https://www.python.org/">Python</a>.
                 </address><!-- /#about -->
         </footer><!-- /#contentinfo -->
 </body>
