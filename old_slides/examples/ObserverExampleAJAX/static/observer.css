@@ -1,0 +1,16 @@
+.entity {
+    border-style:dotted;
+    margin: 1%;
+}
+.name {
+    margin: 1%;
+    font-style: oblique;
+}
+.object {
+    border-style:dashed;
+    margin: 1%;
+}
+.list {
+    border-style:solid;
+    margin: 1%;
+}

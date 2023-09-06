@@ -1,0 +1,168 @@
+.reveal .slides section,
+.reveal .slides section > section {
+  line-height: 1.3;
+  font-weight: inherit; 
+}
+.reveal section img.noborder { 
+    background:none; 
+    border:none; 
+    box-shadow:none;
+    max-width:100%;
+    max-height:100%;
+}
+.reveal .slides img.full {
+    background:none; 
+    border:none; 
+    box-shadow:none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 720px;
+    max-height: 720px;
+    max-width: 1280px;
+    margin: 0;
+}
+.fit {
+    display: inline-block;
+    white-space: nowrap;
+}
+.columns{
+    display: flex;
+}
+.column{
+    flex: 1;
+}
+table.shrinky td {
+    padding-left: 0.2em;
+    padding-right: 0.2em;
+}
+table.wikitable {
+    margin: 0 0;
+    text-align: center;
+    font-size: 40%;
+}
+table.wikitable td, table.wikitable th {
+    text-align: center;
+    vertical-align: middle;
+    padding: 0.2em 0.2em 0.2em 0.2em;
+}
+.reveal .slides section>cite {
+    font-size: 50%;
+    text-align: left;
+    line-height: 1;
+    display: block;
+}
+.reveal .slides var {
+    font-family: "Lucida Console", Monaco, monospace;
+    font-size: 90%;
+    font-weight: normal;
+    padding-left: 0.2em;
+    padding-right: 0.2em;
+    border: 1px solid #888;
+    border-radius: 0.5ex;
+    box-shadow: 0 0 0.5ex rgba(127, 127, 127, 1.0);
+    background-clip: border-box;
+    text-transform: none;
+}
+.reveal .slides pre {
+    font-family: "Lucida Console", Monaco, monospace;
+    width: 100%;
+    line-height: 1;
+    box-shadow: 0 0 0.5ex rgba(127, 127, 127, 1.0);
+    margin-left: 0;
+    margin-right: 0;
+    border: 0px solid transparent;
+    background-clip: border-box;
+    border-radius: 0.5ex;
+}
+.reveal .slides pre code {
+    overflow-x: scroll;
+    width: 100%;
+    border: 1px solid #888;
+    border-radius: 0.5ex;
+    width: calc(100% - 10px);
+    background-clip: border-box;
+}
+.reveal .slides samp>pre {
+    font-size: 50%;
+}
+.rare {
+    opacity: 0.66;
+}
+.reveal .slides img.emoji {
+    border: none;
+    padding: 0;
+    margin: 0;
+    height: 1.75ex;
+    vertical-align: baseline;
+    background: none;
+    position: relative;
+    top: 0.25ex;
+}
+.reveal .slides blockquote {
+    text-align: justify;
+    margin: 0;
+    width: calc(100% - 10px);
+    line-height: 1.10;
+    border: 1px solid #888;
+    background-clip: border-box;
+    border-radius: 0.5ex;
+    box-shadow: 0 0 0.5ex rgba(127, 127, 127, 1.0);
+}
+.reveal .slides blockquote>cite {
+    display: block;
+    font-size: 75%;
+    text-align: left;
+    margin-top: 1ex;
+    font-style: normal;
+}
+button {
+    border: 2px solid #444;
+    background: #444;
+    background-clip: border-box;
+    border-style: outset;
+    color: white;
+    border-radius: 0.5ex;
+    margin-left: 1ex;
+    margin-right: 1ex;
+    margin-top: 0ex;
+    margin-bottom: 1ex;
+    font-size: 70%;
+}
+button:active {
+    border-style: inset;
+}
+button:hover {
+    color: #42affa;
+}
+form.fiddler {
+    display: inline;
+    float: right;
+    clear: right;
+    height: 0;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    top: -5px;
+}
+form.fiddler button {
+    margin-top: 0;
+    margin-left: 1em;
+    margin-bottom: 0;
+    margin-right: 0;
+    padding: 0;
+    border-color: #840;
+    background: #840;
+}
+form.fiddler button:hover {
+    color: #7F7;
+}
+form.fiddler button:active {
+    border-style: inset;
+    background: #630;
+}
+.reveal section img.centered {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}

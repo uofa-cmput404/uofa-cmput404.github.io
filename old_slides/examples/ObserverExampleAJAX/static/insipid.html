@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Insipid Tweets</title>
+    <style>
+      #domview {
+          border: 1em solid;
+      }
+    </style>
+    
+  </head>
+  <body>
+    <!--
+        In the div with the ID "domview " replace the HTML with HTML returned in the body entry of the JSON response. This JSON response comes from an AJAX request (XMLHttpRequest) , a GET sent to http://insipid.ca/tweets/ that will return new tweets.
+
+        The JSON response will look something like :
+
+        {"body”:”<div>someinlinehtml</div>”}
+
+Write the Javascript to poll this URI every 30 seconds and replace the domview id'd DIV's content with the body of the response.
+      -->
+    <h1>Insipid Tweets</h1>
+    <div id="domview">
+    </div>
+    <script>
+      var uri = "http://"+ location.host + "/tweets/";
+      var domview = document.getElementById("domview");
+      function tweetGetter() {
+          fetch(uri)
+              .then( response => {
+                  response.json() }
+              )
+              .then( tweet => {
+                  domview.innerHTML = tweet.body
+              });
+      }
+      window.setInterval( tweetGetter ,1*1000);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Tweets</title>
+	</head>
+	<body>
+		<div id="domview">
+		</div>	
+	<script>
+		function updateTweets() {
+			var promise = fetch('http://127.0.0.1:5000/tweets/');
+			promise.then( response => {
+				if (response.status == 200) {
+					return response.text();
+				}
+			}).then(text => {
+				console.log(text);
+				var domview = document.getElementById("domview");
+				domview.innerHTML = "<h2>"+text+"</h2>";
+
+			});
+		}
+		window.setInterval(updateTweets,1000);
+	</script>
+	</body>
+</html>

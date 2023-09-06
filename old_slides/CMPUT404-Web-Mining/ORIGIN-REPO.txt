@@ -1,0 +1,9 @@
+https://github.com/abramhindle/CMPUT404-Web-Mining
+git@github.com:abramhindle/CMPUT404-Web-Mining.git
+
+commit ed9d847a1e3636b9d40c3a29e80aae44b97a0247
+Author: Abram Hindle <abram.hindle@ualberta.ca>
+Date:   2019-03-27 10:37:58 -0600
+
+    Updated dependencies
+

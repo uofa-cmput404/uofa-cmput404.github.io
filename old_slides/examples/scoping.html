@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        "use strict";
+        function f() {
+            let a = 1;
+            for (let i = 1; i<10; i++) {
+                var c = i; // var defines it inside the function
+                let b = i; // let would only define it inside the for loop (if it were in it)
+            }
+            console.log(c); // 9
+            console.log(b); // Reference Error
+        }
+        f();
+        console.log(a); // Reference Error
+    </script>
+    <script>
+        function g(a) {
+            console.log(a); // prints a
+        }
+        g("value passed to g");
+        console.log(a); // Reference Error
+    </script>
+</head>
+<body>
+</body>
+</html>

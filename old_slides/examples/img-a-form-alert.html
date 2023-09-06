@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="white.css">
+<style>
+a {
+    color: purple;
+}
+</style>
+</head>
+<body>
+<a href="http://slashdot.org" style="color: blue;">ABSOLUTE URL</a>
+<a href="/top-level-folder/">RELATIVE URL, ABSOLUTE PATH, implies stay on the same scheme and authority</a>
+<a href="blah.txt">relative path it means get blah.txt from the same directory on the same authority over the same protocol</a>
+<form>
+    <input type="color" name="favcolor"></input>
+</form>
+<script>
+// I'm some javascript
+/* also a comment */
+function blah(text) {
+    function bloo(x) {
+        alert(text);
+    }
+    return bloo;
+}
+f = blah("Hi mom I'm on the projector");
+f(1);
+</script>
+</body>
+</body>
+</html>

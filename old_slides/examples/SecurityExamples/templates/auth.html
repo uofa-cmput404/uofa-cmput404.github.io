@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+<title>Happy Birthday</title>
+</head>
+<body>
+{% if adminone %}
+  <h1>Hello Administrator! [admin == 1]</h1>
+{% endif %}
+
+{% if adminzero %}
+  <h1>Hello {{ user }}!</h1>
+{% else %}
+  <h1>Hello Administrator! [admin != 0]</h1>
+{% endif %}
+
+  <div>
+    Admin is set to {{ admin }}.
+  </div>
+
+  <div>
+    user:  {{ user }}<br/>
+    admin: {{ admin }}<br/>
+    token: {{ hextoken }}<br/>
+    decrypted: {{ decrypted }}<br/>
+    encoded: {{ tosend }}<br/>
+
+  </div>
+
+
+<form>
+	<input name="user"/>
+        <input name="token" value="{{ hextoken }}">
+	<input type="submit"/>
+</form>
+</body>
+</html>
