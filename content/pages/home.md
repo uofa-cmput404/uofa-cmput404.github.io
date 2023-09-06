@@ -6,32 +6,58 @@ save_as: index.html
 
 [CMPUT404 Slides](https://uofa-cmput404.github.io/cmput404-slides/)
 
-## Lab material for CMPUT 404 (Winter 2023)
+## Lab material for CMPUT 404 (Fall 2023)
 
 Lab material for CMPUT 404.
 
 * [Lab 1: Virtualenv & cURL]({filename}../labs/lab-1.md)
-* [Lab 2: TCP Proxy]({filename}../labs/lab-2.md)
+* <!--[Lab 2: TCP Proxy]({filename}../labs/lab-2.md)--> There is no lab 2.
 * [Lab 3: Common Gateway Interface]({filename}../labs/lab-3.md)
 * [Lab 4: Django]({filename}../labs/lab-4.md)
 * [Lab 5: Pelican & Basic HTML/CSS]({filename}../labs/lab-5.md)
 * [Lab 6: Heroku]({filename}../labs/lab-6.md)
 * [Lab 7: Flask]({filename}../labs/lab-7.md)
 * [Lab 9: Authentication]({filename}../labs/lab-9.md)
-    * Note: lab 9 is **before** lab 8 for Winter 2023!
+    * Note: lab 9 is **before** lab 8!
 * [Lab 8: Websockets, Node.js, & Phaser.io]({filename}../labs/lab-8.md)
 
 Labs 10 to 12 are for TA project help and demos.
 
-## Sections
-
-| Lab | Day | Time             | Capacity | Room    |
-|-----|-----|------------------|:--------:|---------|
-| H01 | MON | 5:00PM - 07:50PM | /        | CSC B-02  |
-| H02 | WED | 5:00PM - 07:50PM | /        | GSB 5-59  |
-
 ## Course Schedule
 
+```text
+   September 2023
+Su    Mo    Tu    We    Th    Fr Sa
+                   1     2
+ 3     4     5     6     7     8  9 No labs
+10    11    12    13    14    15 16 Lab 1 VirtualEnv and Curl
+17    18    19    20    21    22 23 Lab 3 CGI
+                                    Registration deadline
+24    25    26    27    28    29 30 Assignment 1 
+            October 2023
+Su    Mo    Tu    We    Th    Fr Sa
+ 1     2     3     4     5     6  7 Lab 4 DJANGO
+                                    Project 0
+ 8     9    10    11    12    13 14 Thanksgiving Day: No Monday lab, Wednesday lab homework help
+                                    Assignment 2
+15    16    17    18    19    20 21 Lab 6 Heroku
+22    23    24    25    26    27 28 Lab 7 Flask; Project 1; Assignment 3
+29 30    31                         Lab 9 Auth; Project 1 Demo
+            November 2023                |
+Su    Mo    Tu    We    Th    Fr Sa      |
+                   1     2     3  4 Lab 9 Auth ; Project 1 Demo
+ 5     6     7     8     9    10 11 Lab 8 Websockets
+12    13    14    15    16    17 18 Reading Week; No Class; No Labs;
+19    20    21    22    23    24 25 Lab 10 Connect smoketest AND Project 2 due.
+26    27    28    29    30          Lab 11 Connect Demo ; Assignment 5
+            December 2023                |
+Su    Mo    Tu    We    Th    Fr Sa      |
+                         1     2    Assignment 5
+ 3     4     5     6     7     8  9 Lab 12 LAST WEEK OF LABS / DEMOS ; Project 3 due; Labs Demos
+10    11    12    13    14    15 16 Final Exam
+17    18    19    20    21    22 23
+```
+<!--
 ```text
                    January 2023      
 Su      Mo      Tu      We      Th      Fr Sa  
@@ -71,3 +97,4 @@ Last day of classes is April 12th
 There is no final exam.
 
 ```
+-->
