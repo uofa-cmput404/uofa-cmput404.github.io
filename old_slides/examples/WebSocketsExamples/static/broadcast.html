@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"/>
+<meta license="
+# Copyright 2013 Abram Hindle
+# 
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+# 
+#     http://www.apache.org/licenses/LICENSE-2.0
+# 
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+" />
+
+<title>Broadcast Example</title>
+</head>
+<body>
+<style>
+    body {
+        background-color: #AAAAFF;
+    }
+    .msg {
+        padding: 1em;
+        border-radius: 1.5em;
+        box-shadow: 0.6em 0.6em 0.3em #888888;
+        margin: 1em;
+        background-color: white;
+    }
+
+    #queue {
+        margin: 1em;
+    }
+</style>
+<div id="debug"></div>
+<input id="message"/>
+<div id="queue">
+</div>
+<script>
+window.onload = function() {
+    var messageInput = document.getElementById("message");
+    var queue = document.getElementById("queue");
+    var host = window.location.host;
+    var url = "ws://"+host+"/subscribe";   
+    var socket = new WebSocket(url);
+    socket.onopen = function() {
+    };
+    socket.onerror = function(msg) {
+        debug("WebSocket Error:" + msg.data);
+    };
+    socket.onmessage = function(msg) {  
+        try {
+            var message = JSON.parse(msg.data);
+            addMessage(message["msg"]);
+        } catch (e) {
+            alert("socket on message: " + e);
+        }
+    }; 
+    messageInput.onkeyup = function(evt) {
+        if (evt.keyCode === 13) {
+            socket.send( JSON.stringify( {"msg": messageInput.value } ) );
+            messageInput.value = "";
+            return evt.preventDefault();
+        }
+    };
+    function debug(str) {
+        var debugDiv = document.getElementById('debug');
+        debugDiv.innerHTML = "" + str;
+    };
+    function addMessage( msg ) {
+        var msgDiv = document.createElement("div");
+        msgDiv.className = "msg";
+        msgDiv.appendChild(new Text(msg));
+        //queue.appendChild( msgDiv );
+        queue.insertBefore(msgDiv, queue.firstChild);
+    };
+};
+</script>
+</body>
+</html>

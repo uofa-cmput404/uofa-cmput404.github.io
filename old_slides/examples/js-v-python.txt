@@ -1,0 +1,45 @@
+"1" + 1
+type coercion
+
+class Quiz {
+  write() {
+    console.log(this);
+  }
+}
+quiz = new Quiz();
+w = quiz.write
+w()
+
+# in python the w method is BOUND to the quiz object
+# in javascript the w method isn't bound YET to the quiz object 
+w2 = w.bind(quiz) # gives you a method that is bound
+w.call(quiz) # calls w with this set to quiz
+
+
+
+# CLOSURE
+function p(a) {
+    function q() {
+        console.log("a: " + a);
+        console.log("arguments: " + arguments[0]);
+    }
+    return q;
+}
+r = p(1);
+s = p(2);
+# now p is finished running, what happens to a?
+r(); # print 1
+s(); # print 2
+
+
+def f(): # PYTHON
+    a = 1
+print(a)
+
+function f() {
+    a = 1;
+}
+console.log(a);
+
+
+

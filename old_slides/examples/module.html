@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+
+<head>
+<!--   <script type="module" src="module.mjs"></script> -->
+  <!--
+  Doesn't work... example not defined!
+  <script>
+    // import { example } from "module"; // syntax error, import can only appear at top level of a module
+    example(); // undefined
+  </script>-->
+  <script type="module">
+//     import { example } from 'module'; // error resolving module specifier
+//     import { example } from 'module.mjs'; // doesn't work on file:///
+    import { example } from './module.mjs'; // doesn't work on file:/// due to CORS
+    example();
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

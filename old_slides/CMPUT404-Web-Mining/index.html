@@ -1,0 +1,1060 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8"/>
+
+		<title>Web Mining / Screen Scraping</title>
+
+		<meta name="description" content="Web Mining and
+                                                  Screen Scraping
+                                                  CMPUT404"/>
+		<meta name="author" content="Abram Hindle"/>
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+			  <section>
+			    <h1>Web Mining</h1>
+			    <p>
+			      <small>Created
+				by <a href="http://softwareprocess.es">Abram
+				  Hindle</a><br/>
+                                abram dot hindle at ualberta dot ca
+				<br/>
+                                Department of Computing Science<br/>
+                                University of Alberta<br/>
+                                Edmonton, Alberta, Canada<br/>
+                                Earth<br/>
+
+			    </p>
+                            <p>
+                              </small>
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/deed.en_US"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/deed.en_US">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+
+			    </p>
+			  </section>
+
+
+<!-- ######################## START MARKDOWN SLIDE ########################## -->
+<section>
+<div data-markdown>
+<script type="text/template">
+## Web Mining / Web automation
+
+* Web mining is the mining of information from the web
+  * mining website access and error logs
+  * mining websites
+  * mining webservices
+  * automating tasks by automating website access
+</script>
+</div>
+</section>
+<!-- ######################## END MARKDOWN SLIDE ########################## -->
+
+<!-- ######################## START MARKDOWN SLIDE ########################## -->
+<section>
+<div data-markdown>
+<script type="text/template">
+## Web Mining
+
+* We're going to focus on 
+  * mining websites
+    * Webservices are easy!
+      * Websites much harder.
+  * automating webtasks
+</script>
+</div>
+</section>
+<!-- ######################## END MARKDOWN SLIDE ########################## -->
+
+<!-- ######################## START MARKDOWN SLIDE ########################## -->
+<section>
+<div data-markdown>
+<script type="text/template">
+## Web Mining Workflow
+
+* Retrieve the documents
+  * Get a bunch of documents
+* Extract information from documents
+  * Get the information we need from the documents.
+  * Parse them
+* Analyze Information
+  * From the extracted information, analyze the results
+* Aggregate and Report Results
+  * Take analyzed information and report about it
+
+This process might be continuous.
+
+
+</script>
+</div>
+</section>
+<!-- ######################## END MARKDOWN SLIDE ########################## -->
+
+
+<!-- ######################## START MARKDOWN SLIDE ########################## -->
+<section>
+<div data-markdown>
+<script type="text/template">
+## Web Mining
+
+* First 
+  * Why do you need to extract information from a website?
+    * Can't you get it elsewhere?
+  * Does the website provide an API or webservice? 
+    * Use that instead! Usually far better quality of data.
+</script>
+</div>
+</section>
+<!-- ######################## END MARKDOWN SLIDE ########################## -->
+
+
+<!-- ######################## START MARKDOWN SLIDE ########################## -->
+<section>
+<div data-markdown>
+<script type="text/template">
+## Task: CNN Headlines
+
+* First can we get the information automatically?
+  * Atom or RSS Feed
+    * Most websites have such a service
+      * http://www.cnn.com/services/rss/
+  * Webservice?
+    * Maybe check the site map:
+      * http://www.cnn.com/sitemap/
+    * Maybe an app already exists:
+      * http://www.cnn.com/tools/index.html  
+
+</script>
+</div>
+</section>
+<!-- ######################## END MARKDOWN SLIDE ########################## -->
+
+<!-- ######################## START MARKDOWN SLIDE ########################## -->
+<section>
+<div data-markdown>
+<script type="text/template">
+## Task: CNN Headlines
+
+* RSS Exists!
+  * Read license/TOS if they have one
+  * Use an RSS parser!
+    * RSS is a dialect of XML
+    * 2 Main versions both XML
+</script>
+</div>
+</section>
+<!-- ######################## END MARKDOWN SLIDE ########################## -->
+
+<!-- ######################## START MARKDOWN SLIDE ########################## -->
+<section>
+<div data-markdown>
+<script type="text/template">
+## RSS
+
+Example from the spec: http://web.resource.org/rss/1.0/spec
+
+````
+<?xml version="1.0"?>
+
+<rdf:RDF 
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns="http://purl.org/rss/1.0/"
+>
+
+  <channel rdf:about="http://www.xml.com/xml/news.rss">
+    <title>XML.com</title>
+    <link>http://xml.com/pub</link>
+    <description>
+      XML.com features a rich mix of information and services 
+      for the XML community.
+    </description>
+
+    <image rdf:resource="http://xml.com/universal/images/xml_tiny.gif" />
+
+    <items>
+      <rdf:Seq>
+        <rdf:li resource="http://xml.com/pub/2000/08/09/xslt/xslt.html" />
+        <rdf:li resource="http://xml.com/pub/2000/08/09/rdfdb/index.html" />
+      </rdf:Seq>
+    </items>
+
+  </channel>
+  
+  <image rdf:about="http://xml.com/universal/images/xml_tiny.gif">
+    <title>XML.com</title>
+    <link>http://www.xml.com</link>
+    <url>http://xml.com/universal/images/xml_tiny.gif</url>
+  </image>
+  
+  <item rdf:about="http://xml.com/pub/2000/08/09/xslt/xslt.html">
+    <title>Processing Inclusions with XSLT</title>
+    <link>http://xml.com/pub/2000/08/09/xslt/xslt.html</link>
+    <description>
+     Processing document inclusions with general XML tools can be 
+     problematic. This article proposes a way of preserving inclusion 
+     information through SAX-based processing.
+    </description>
+  </item>
+  
+  <item rdf:about="http://xml.com/pub/2000/08/09/rdfdb/index.html">
+    <title>Putting RDF to Work</title>
+    <link>http://xml.com/pub/2000/08/09/rdfdb/index.html</link>
+    <description>
+     Tool and API support for the Resource Description Framework 
+     is slowly coming of age. Edd Dumbill takes a look at RDFDB, 
+     one of the most exciting new RDF toolkits.
+    </description>
+  </item>
+
+</rdf:RDF>
+
+````
+
+</script>
+</div>
+</section>
+<!-- ######################## END MARKDOWN SLIDE ########################## -->
+
+
+<!-- ######################## START MARKDOWN SLIDE ########################## -->
+<section>
+<div data-markdown>
+<script type="text/template">
+## Atom
+
+Like RSS but:
+
+* Provides appropriate encoding of bodies
+* Focus on internationalization
+* IETF Standard http://tools.ietf.org/html/rfc4287
+* [Partial
+Content](http://www.intertwingly.net/wiki/pie/Rss20AndAtom10Compared#full)
+* Atom came after RSS to deal with any evolutionary
+
+
+</script>
+</div>
+</section>
+<!-- ######################## END MARKDOWN SLIDE ########################## -->
+
+
+<!-- ######################## START MARKDOWN SLIDE ########################## -->
+<section>
+<div data-markdown>
+<script type="text/template">
+## Atom
+
+Taken from http://tools.ietf.org/html/rfc4287
+
+````
+   <?xml version="1.0" encoding="utf-8"?>
+   <feed xmlns="http://www.w3.org/2005/Atom">
+
+     <title>Example Feed</title>
+     <link href="http://example.org/"/>
+     <updated>2003-12-13T18:30:02Z</updated>
+     <author>
+       <name>John Doe</name>
+     </author>
+     <id>urn:uuid:60a76c80-d399-11d9-b93C-0003939e0af6</id>
+
+     <entry>
+       <title>Atom-Powered Robots Run Amok</title>
+       <link href="http://example.org/2003/12/13/atom03"/>
+       <id>urn:uuid:1225c695-cfb8-4ebb-aaaa-80da344efa6a</id>
+       <updated>2003-12-13T18:30:02Z</updated>
+       <summary>Some text.</summary>
+     </entry>
+
+   </feed>
+
+````
+
+</script>
+</div>
+</section>
+<!-- ######################## END MARKDOWN SLIDE ########################## -->
+
+
+
+
+
+
+<!-- ######################## START MARKDOWN SLIDE ########################## -->
+<section>
+<div data-markdown>
+<script type="text/template">
+## Parsing RSS
+
+* In Python
+  * Feedparser https://pypi.python.org/pypi/feedparser
+  * If you can't install anything you can try to use:
+  [xml.dom.minidom](http://docs.python.org/2/library/xml.dom.minidom.html)
+    * But RSS Is often ILL-FORMED XML and it will break.
+
+</script>
+</div>
+</section>
+<!-- ######################## END MARKDOWN SLIDE ########################## -->
+
+
+
+<!-- ######################## START MARKDOWN SLIDE ########################## -->
+<section>
+<div data-markdown>
+<script type="text/template">
+## Feedparser Example
+
+Let's see if CNN and CBC have similar top stories! [./rssexample.py](./rssexample.py)
+
+````
+    import feedparser
+    import difflib
+    cbc = feedparser.parse("http://rss.cbc.ca/lineup/topstories.xml")
+    cnn = feedparser.parse("http://rss.cnn.com/rss/cnn_topstories.rss")
+    cbc_titles = [x['title'] for x in cbc.get('entries')]
+    cnn_titles = [x['title'] for x in cnn.get('entries')]
+    res = [(x,difflib.get_close_matches(x,cbc_titles,1,0.01)) for x in
+                cnn_titles]
+>>> res[0]
+(u'7 days to solve Crimea crisis', [u'Russian forces tighten grip on Crimea'])
+```
+
+</script>
+</div>
+</section>
+<!-- ######################## END MARKDOWN SLIDE ########################## -->
+
+<!-- ######################## START MARKDOWN SLIDE ########################## -->
+<section>
+<div data-markdown>
+<script type="text/template">
+## Feedparser Example
+
+Did you notice that we combined 2 data sources that were not already
+combined for us?
+
+RSS/ATOM are relatively easy to scrape, but they don't give you everything.
+
+</script>
+</div>
+</section>
+<!-- ######################## END MARKDOWN SLIDE ########################## -->
+
+
+<!-- ######################## START MARKDOWN SLIDE ########################## -->
+<section>
+<div data-markdown>
+<script type="text/template">
+## Music Graph
+
+* Go to Allmusic.com
+* Find an artist
+* Find a similar artist
+* Can we do this via just URLs?
+
+
+</script>
+</div>
+</section>
+<!-- ######################## END MARKDOWN SLIDE ########################## -->
+
+
+<!-- ######################## START MARKDOWN SLIDE ########################## -->
+<section>
+<div data-markdown>
+<script type="text/template">
+## Music Graph
+
+* Go to Allmusic.com
+* Find an artist
+  * Poke around
+````
+import urllib, urllib2
+artist = "devo"
+fd = urllib2.urlopen("http://www.allmusic.com/search/all/%s" % artist)
+content = fd.read()
+# now we just have some HTML
+````
+
+</script>
+</div>
+</section>
+<!-- ######################## END MARKDOWN SLIDE ########################## -->
+
+<!-- ######################## START MARKDOWN SLIDE ########################## -->
+<section>
+<div data-markdown>
+<script type="text/template">
+## Once you have HTML...
+
+So we have HTML now. What to do with it?
+
+````
+import urllib, urllib2
+artist = "devo"
+fd = urllib2.urlopen("http://allmusic.com/search/all/%s" % artist)
+content = fd.read()
+# now we just have some HTML
+# we could use regexes and try to find links
+m = re.search('<a[^>]+href[^>]*artist[^<]+>.*Devo',content)
+m.group(0)
+# '<a href="http://www.allmusic.com/artist/devo-mn0000249973" data-tooltip="{&quot;id&quot;:&quot;MN0000249973&quot;,&quot;thumbnail&quot;:true}">Devo'
+
+````
+
+</script>
+</div>
+</section>
+<!-- ######################## END MARKDOWN SLIDE ########################## -->
+
+<!-- ######################## START MARKDOWN SLIDE ########################## -->
+<section>
+<div data-markdown>
+<script type="text/template">
+## Once you have HTML...
+
+Really though it is HTML, it's better to actually parse it!
+
+````
+import urllib, urllib2
+artist = "devo"
+fd = urllib2.urlopen("http://www.allmusic.com/search/all/%s" % artist)
+content = fd.read()
+# now we just have some HTML
+# we could use regexes and try to find links
+import bs4
+soup = bs4.BeautifulSoup(content)
+res = soup.findAll("",{"class":"artist"})
+res
+    [<li class="artist">
+    <div class="photo">
+    <a data-tooltip='{"id":"MN0000249973","thumbnail":true}' href="/artist/devo-mn0000249973">
+    <img alt="Devo" height="100" src="http://cps-static.rovicorp.com/3/JPG_170/MI0003/183/MI0003183801.jpg?partner=allrovi.com"/>
+    </a>
+    </div>
+    ...
+
+````
+
+</script>
+</div>
+</section>
+<!-- ######################## END MARKDOWN SLIDE ########################## -->
+
+
+<!-- ######################## START MARKDOWN SLIDE ########################## -->
+<section>
+<div data-markdown>
+<script type="text/template">
+## Once you have HTML...
+
+````
+import urllib, urllib2
+def GET(url):
+    req = urllib2.Request(url)
+    req.add_header( "User-Agent", "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:27.0) Gecko/20100101 Firefox/27.0")
+    return urllib2.urlopen(req)
+
+artist = "devo"
+fd = GET("http://www.allmusic.com/search/all/%s" % artist)
+content = fd.read()
+# now we just have some HTML
+# we could use regexes and try to find links
+import bs4
+soup = bs4.BeautifulSoup(content)
+res = soup.findAll("",{"class":"artist"})
+ahref = res[0].findAll("",{"class":"name"})[0].a
+name = ahref.text.strip()
+link = ahref.attrs["href"]
+>>> link
+'http://www.www.allmusic.com/artist/devo-mn0000249973'
+````
+
+Now we have the link!
+
+</script>
+</div>
+</section>
+<!-- ######################## END MARKDOWN SLIDE ########################## -->
+
+
+<!-- ######################## START MARKDOWN SLIDE ########################## -->
+<section>
+<div data-markdown>
+<script type="text/template">
+## Now onto finding a similar artist
+
+* Go to Www.Allmusic.com
+* Find an artist
+* Find a similar artist
+
+
+````
+link = 'http://www.allmusic.com/artist/devo-mn0000249973'
+related = link + '/related'
+rfd = GET(related)
+related_content = rfd.read()
+soup = bs4.BeautifulSoup(related_content)
+res = soup.findAll("",{"class":"similars"})
+ahrefs = [x.a for x in res[0].findAll("li")]
+>>> ahrefs[0]
+<a data-tooltip='{"id":"MN0000838272","thumbnail":true}' href="http://www.allmusic.com/artist/pere-ubu-mn0000838272">Pere Ubu</a>
+````
+
+</script>
+</div>
+</section>
+<!-- ######################## END MARKDOWN SLIDE ########################## -->
+
+
+<!-- ######################## START MARKDOWN SLIDE ########################## -->
+<section>
+<div data-markdown>
+<script type="text/template">
+## Now Build a Graph
+
+````
+ahrefs = [x.a for x in res[0].findAll("li")]
+>>> ahrefs[0]
+<a data-tooltip='{"id":"MN0000838272","thumbnail":true}' href="http://www.allmusic.com/artist/pere-ubu-mn0000838272">Pere Ubu</a>
+graph = dict()
+
+def newartist(artist,link):
+    return {"url": link, "name": artist, "similar": dict()}
+
+# keep a flat graph
+graph[artist] = newartist(artist,link)
+links = [(a.text,a.attrs["href"]) for a in ahrefs]
+for elm in links:
+    (sartist, url) = elm
+    if (graph.get(sartist,None) == None):
+        graph[sartist] = newartist(sartist,url)
+    graph[artist]["similar"][sartist] = url
+
+print(json.dumps(graph,indent=1))
+````
+</script>
+</div>
+</section>
+<!-- ######################## END MARKDOWN SLIDE ########################## -->
+
+<!-- ######################## START MARKDOWN SLIDE ########################## -->
+<section>
+<div data-markdown>
+<script type="text/template">
+## Modularize it!
+
+````
+def get_artist(artist):
+    uriartist = urllib.urlencode({"":artist})[1:]
+    fd = GET("http://www.allmusic.com/search/all/%s" % uriartist)
+    content = fd.read()
+    soup = bs4.BeautifulSoup(content)
+    res = soup.findAll("",{"class":"artist"})
+    ahref = res[0].findAll("",{"class":"name"})[0].a
+    name = ahref.text.strip()
+    link = ahref.attrs["href"]
+    return newartist(name,link)
+
+def get_similar(artist_entry):
+    url = artist_entry["url"]
+    related = url + '/related'
+    rfd = GET(related)
+    related_content = rfd.read()
+    soup = bs4.BeautifulSoup(related_content)
+    res = soup.findAll("",{"class":"similars"})
+    ahrefs = [x.a for x in res[0].findAll("li")]
+    links = [(a.text,a.attrs["href"]) for a in ahrefs]
+    return links
+
+def add_similar(graph, artist_entry, links):
+    name = artist_entry
+    if (name.__class__ != str):
+        name = artist_entry["name"]
+    for elm in links:
+        (sartist, url) = elm
+        if (graph.get(sartist,None) == None):
+            graph[sartist] = newartist(sartist,url)
+        graph[name]["similar"][sartist] = url
+
+for art in graph["devo"]["similar"]:
+    print "Adding %s" % art
+    if (graph.get(art,None) == None):
+        graph[art] = getartist(art)
+    links = get_similar( graph[art] )
+    print links
+    add_similar(graph, graph[artist], links)
+    
+import json
+file("devo.json","w").write(json.dumps(graph,indent=1))
+
+````
+</script>
+</div>
+</section>
+<!-- ######################## END MARKDOWN SLIDE ########################## -->
+
+
+
+<!-- ######################## START MARKDOWN SLIDE ########################## -->
+<section>
+<div data-markdown>
+<script type="text/template">
+## Result!
+
+Some results.
+
+````
+ "Von Lmo": {
+  "url": "http://www.allmusic.com/artist/von-lmo-mn0001529406", 
+  "similar": {
+   "Monitor": "http://www.allmusic.com/artist/monitor-mn0001257578", 
+   "Von Lmo": "http://www.allmusic.com/artist/von-lmo-mn0001529406", 
+   "The Residents": "http://www.allmusic.com/artist/the-residents-mn0000420539", 
+   "Soft Cell": "http://www.allmusic.com/artist/soft-cell-mn0000038579", 
+   "Thomas Dolby": "http://www.allmusic.com/artist/thomas-dolby-mn0000926428", 
+   "The Moog Cookbook": "http://www.allmusic.com/artist/the-moog-cookbook-mn0000891403", 
+   "Afternoon Delights": "http://www.allmusic.com/artist/afternoon-delights-mn0000029295", 
+   "The Screamers": "http://www.allmusic.com/artist/the-screamers-mn0001873885", 
+   "The Soft Boys": "http://www.allmusic.com/artist/the-soft-boys-mn0000501802", 
+   "Pere Ubu": "http://www.allmusic.com/artist/pere-ubu-mn0000838272", 
+   "The Flying Lizards": "http://www.allmusic.com/artist/the-flying-lizards-mn0000057636", 
+   "They Might Be Giants": "http://www.allmusic.com/artist/they-might-be-giants-mn0000493327", 
+   "The Weirdos": "http://www.allmusic.com/artist/the-weirdos-mn0000490141", 
+   "Violent Femmes": "http://www.allmusic.com/artist/violent-femmes-mn0000922200", 
+   "Minny Pops": "http://www.allmusic.com/artist/minny-pops-mn0000422700", 
+   "Primus": "http://www.allmusic.com/artist/primus-mn0000359326", 
+   "The B-52s": "http://www.allmusic.com/artist/the-b-52s-mn0000043489", 
+   "XTC": "http://www.allmusic.com/artist/xtc-mn0000678339", 
+   "Crack the Sky": "http://www.allmusic.com/artist/crack-the-sky-mn0000121515", 
+   "The Rentals": "http://www.allmusic.com/artist/the-rentals-mn0000495288", 
+   "The Method Actors": "http://www.allmusic.com/artist/the-method-actors-mn0001589334", 
+   "The Dickies": "http://www.allmusic.com/artist/the-dickies-mn0000123007", 
+   "Eurythmics": "http://www.allmusic.com/artist/eurythmics-mn0000206241", 
+   "The Mekons": "http://www.allmusic.com/artist/the-mekons-mn0000399895", 
+   "Talking Heads": "http://www.allmusic.com/artist/talking-heads-mn0000131650"
+  }, 
+  "name": "Von Lmo"
+ }, 
+ "The Sugarcubes": {
+  "url": "http://www.allmusic.com/artist/the-sugarcubes-mn0000919525", 
+  "similar": {}, 
+  "name": "The Sugarcubes"
+ }, 
+ "Circle Jerks": {
+  "url": "http://www.allmusic.com/artist/circle-jerks-mn0000109735", 
+  "similar": {}, 
+  "name": "Circle Jerks"
+ }, 
+ "Bush Tetras": {
+  "url": "http://www.allmusic.com/artist/bush-tetras-mn0000640269", 
+  "similar": {}, 
+  "name": "Bush Tetras"
+ }, 
+ "The Police": {
+  "url": "http://www.allmusic.com/artist/the-police-mn0000413524", 
+  "similar": {}, 
+  "name": "The Police"
+ }, 
+ "Steely Dan": {
+  "url": "http://www.allmusic.com/artist/steely-dan-mn0000011707", 
+  "similar": {}, 
+  "name": "Steely Dan"
+ }, 
+ "Marc Almond": {
+  "url": "http://www.allmusic.com/artist/marc-almond-mn0000570046", 
+  "similar": {}, 
+  "name": "Marc Almond"
+ }, 
+ "Brian Eno": {
+  "url": "http://www.allmusic.com/artist/brian-eno-mn0000617196", 
+  "similar": {}, 
+  "name": "Brian Eno"
+ }, 
+ "Bad Brains": {
+  "url": "http://www.allmusic.com/artist/bad-brains-mn0000075264", 
+  "similar": {}, 
+  "name": "Bad Brains"
+ }, 
+ "Bloodhound Gang": {
+  "url": "http://www.allmusic.com/artist/bloodhound-gang-mn0000758402", 
+  "similar": {}, 
+  "name": "Bloodhound Gang"
+ }, 
+ "James Chance": {
+  "url": "http://www.allmusic.com/artist/james-chance-mn0000108489", 
+  "similar": {}, 
+  "name": "James Chance"
+ }, 
+ "Oingo Boingo": {
+  "url": "http://www.allmusic.com/artist/oingo-boingo-mn0000390532", 
+  "similar": {}, 
+  "name": "Oingo Boingo"
+ }, 
+ "Martha and the Muffins": {
+  "url": "http://www.allmusic.com/artist/martha-and-the-muffins-mn0000368698", 
+  "similar": {}, 
+  "name": "Martha and the Muffins"
+ }, 
+ "The Mountain Goats": {
+  "url": "http://www.allmusic.com/artist/the-mountain-goats-mn0000480830", 
+  "similar": {}, 
+  "name": "The Mountain Goats"
+ }, 
+ "Phish": {
+  "url": "http://www.allmusic.com/artist/phish-mn0000333464", 
+  "similar": {}, 
+  "name": "Phish"
+ }, 
+ "Jonathan Richman": {
+  "url": "http://www.allmusic.com/artist/jonathan-richman-mn0000266255", 
+  "similar": {}, 
+  "name": "Jonathan Richman"
+ }, 
+ "Afternoon Delights": {
+  "url": "http://www.allmusic.com/artist/afternoon-delights-mn0000029295", 
+  "similar": {
+   "Monitor": "http://www.allmusic.com/artist/monitor-mn0001257578", 
+   "Von Lmo": "http://www.allmusic.com/artist/von-lmo-mn0001529406", 
+   "The Residents": "http://www.allmusic.com/artist/the-residents-mn0000420539", 
+   "Soft Cell": "http://www.allmusic.com/artist/soft-cell-mn0000038579", 
+   "Thomas Dolby": "http://www.allmusic.com/artist/thomas-dolby-mn0000926428", 
+   "The Moog Cookbook": "http://www.allmusic.com/artist/the-moog-cookbook-mn0000891403", 
+   "Afternoon Delights": "http://www.allmusic.com/artist/afternoon-delights-mn0000029295", 
+   "The Screamers": "http://www.allmusic.com/artist/the-screamers-mn0001873885", 
+   "The Soft Boys": "http://www.allmusic.com/artist/the-soft-boys-mn0000501802", 
+   "Pere Ubu": "http://www.allmusic.com/artist/pere-ubu-mn0000838272", 
+   "The Flying Lizards": "http://www.allmusic.com/artist/the-flying-lizards-mn0000057636", 
+   "They Might Be Giants": "http://www.allmusic.com/artist/they-might-be-giants-mn0000493327", 
+   "The Weirdos": "http://www.allmusic.com/artist/the-weirdos-mn0000490141", 
+   "Violent Femmes": "http://www.allmusic.com/artist/violent-femmes-mn0000922200", 
+   "Minny Pops": "http://www.allmusic.com/artist/minny-pops-mn0000422700", 
+   "Primus": "http://www.allmusic.com/artist/primus-mn0000359326", 
+   "The B-52s": "http://www.allmusic.com/artist/the-b-52s-mn0000043489", 
+   "XTC": "http://www.allmusic.com/artist/xtc-mn0000678339", 
+   "Crack the Sky": "http://www.allmusic.com/artist/crack-the-sky-mn0000121515", 
+   "The Rentals": "http://www.allmusic.com/artist/the-rentals-mn0000495288", 
+   "The Method Actors": "http://www.allmusic.com/artist/the-method-actors-mn0001589334", 
+   "The Dickies": "http://www.allmusic.com/artist/the-dickies-mn0000123007", 
+   "Eurythmics": "http://www.allmusic.com/artist/eurythmics-mn0000206241", 
+   "The Mekons": "http://www.allmusic.com/artist/the-mekons-mn0000399895", 
+   "Talking Heads": "http://www.allmusic.com/artist/talking-heads-mn0000131650"
+  }, 
+  "name": "Afternoon Delights"
+ }, 
+ "The Screamers": {
+  "url": "http://www.allmusic.com/artist/the-screamers-mn0001873885", 
+  "similar": {
+   "Monitor": "http://www.allmusic.com/artist/monitor-mn0001257578", 
+   "Von Lmo": "http://www.allmusic.com/artist/von-lmo-mn0001529406", 
+   "The Residents": "http://www.allmusic.com/artist/the-residents-mn0000420539", 
+   "Soft Cell": "http://www.allmusic.com/artist/soft-cell-mn0000038579", 
+   "Thomas Dolby": "http://www.allmusic.com/artist/thomas-dolby-mn0000926428", 
+   "The Moog Cookbook": "http://www.allmusic.com/artist/the-moog-cookbook-mn0000891403", 
+   "Afternoon Delights": "http://www.allmusic.com/artist/afternoon-delights-mn0000029295", 
+   "The Screamers": "http://www.allmusic.com/artist/the-screamers-mn0001873885", 
+   "The Soft Boys": "http://www.allmusic.com/artist/the-soft-boys-mn0000501802", 
+   "Pere Ubu": "http://www.allmusic.com/artist/pere-ubu-mn0000838272", 
+   "The Flying Lizards": "http://www.allmusic.com/artist/the-flying-lizards-mn0000057636", 
+   "They Might Be Giants": "http://www.allmusic.com/artist/they-might-be-giants-mn0000493327", 
+   "The Weirdos": "http://www.allmusic.com/artist/the-weirdos-mn0000490141", 
+   "Violent Femmes": "http://www.allmusic.com/artist/violent-femmes-mn0000922200", 
+   "Minny Pops": "http://www.allmusic.com/artist/minny-pops-mn0000422700", 
+   "Primus": "http://www.allmusic.com/artist/primus-mn0000359326", 
+   "The B-52s": "http://www.allmusic.com/artist/the-b-52s-mn0000043489", 
+   "XTC": "http://www.allmusic.com/artist/xtc-mn0000678339", 
+   "Crack the Sky": "http://www.allmusic.com/artist/crack-the-sky-mn0000121515", 
+   "The Rentals": "http://www.allmusic.com/artist/the-rentals-mn0000495288", 
+   "The Method Actors": "http://www.allmusic.com/artist/the-method-actors-mn0001589334", 
+   "The Dickies": "http://www.allmusic.com/artist/the-dickies-mn0000123007", 
+   "Eurythmics": "http://www.allmusic.com/artist/eurythmics-mn0000206241", 
+   "The Mekons": "http://www.allmusic.com/artist/the-mekons-mn0000399895", 
+   "Talking Heads": "http://www.allmusic.com/artist/talking-heads-mn0000131650"
+  }, 
+  "name": "The Screamers"
+ }, 
+ "Tuxedomoon": {
+  "url": "http://www.allmusic.com/artist/tuxedomoon-mn0000174132", 
+  "similar": {}, 
+  "name": "Tuxedomoon"
+ }, 
+ "Squares": {
+  "url": "http://www.allmusic.com/artist/squares-mn0002291367", 
+  "similar": {}, 
+  "name": "Squares"
+ }, 
+ "Swimming Pool Q's": {
+  "url": "http://www.allmusic.com/artist/swimming-pool-qs-mn0000037525", 
+  "similar": {}, 
+  "name": "Swimming Pool Q's"
+ }, 
+ "Ludus": {
+  "url": "http://www.allmusic.com/artist/ludus-mn0000309255", 
+  "similar": {}, 
+  "name": "Ludus"
+ }, 
+ "Apollo 9": {
+  "url": "http://www.allmusic.com/artist/apollo-9-mn0001844423", 
+  "similar": {}, 
+  "name": "Apollo 9"
+ }, 
+ "The Jam": {
+  "url": "http://www.allmusic.com/artist/the-jam-mn0000084053", 
+  "similar": {}, 
+  "name": "The Jam"
+ }, 
+ "Porno for Pyros": {
+  "url": "http://www.allmusic.com/artist/porno-for-pyros-mn0000355208", 
+  "similar": {}, 
+  "name": "Porno for Pyros"
+ }, 
+ "Chumbawamba": {
+  "url": "http://www.allmusic.com/artist/chumbawamba-mn0000781370", 
+  "similar": {}, 
+  "name": "Chumbawamba"
+ }, 
+ "Barenaked Ladies": {
+  "url": "http://www.allmusic.com/artist/barenaked-ladies-mn0000139089", 
+  "similar": {}, 
+  "name": "Barenaked Ladies"
+ }, 
+ "New Order": {
+  "url": "http://www.allmusic.com/artist/new-order-mn0000334193", 
+  "similar": {}, 
+  "name": "New Order"
+ }, 
+ "The Ramones": {
+  "url": "http://www.allmusic.com/artist/the-ramones-mn0000490004", 
+  "similar": {}, 
+  "name": "The Ramones"
+ }, 
+ "Faith No More": {
+  "url": "http://www.allmusic.com/artist/faith-no-more-mn0000134729", 
+  "similar": {}, 
+  "name": "Faith No More"
+ }, 
+ "Morphine": {
+  "url": "http://www.allmusic.com/artist/morphine-mn0000601430", 
+  "similar": {}, 
+  "name": "Morphine"
+ }, 
+ "Flotilla": {
+  "url": "http://www.allmusic.com/artist/flotilla-mn0000797706", 
+  "similar": {}, 
+  "name": "Flotilla"
+ }, 
+ "The Flying Lizards": {
+  "url": "http://www.allmusic.com/artist/the-flying-lizards-mn0000057636", 
+  "similar": {
+   "Monitor": "http://www.allmusic.com/artist/monitor-mn0001257578", 
+   "Von Lmo": "http://www.allmusic.com/artist/von-lmo-mn0001529406", 
+   "The Residents": "http://www.allmusic.com/artist/the-residents-mn0000420539", 
+   "Soft Cell": "http://www.allmusic.com/artist/soft-cell-mn0000038579", 
+   "Thomas Dolby": "http://www.allmusic.com/artist/thomas-dolby-mn0000926428", 
+   "The Moog Cookbook": "http://www.allmusic.com/artist/the-moog-cookbook-mn0000891403", 
+   "Afternoon Delights": "http://www.allmusic.com/artist/afternoon-delights-mn0000029295", 
+   "The Screamers": "http://www.allmusic.com/artist/the-screamers-mn0001873885", 
+   "The Soft Boys": "http://www.allmusic.com/artist/the-soft-boys-mn0000501802", 
+   "Pere Ubu": "http://www.allmusic.com/artist/pere-ubu-mn0000838272", 
+   "The Flying Lizards": "http://www.allmusic.com/artist/the-flying-lizards-mn0000057636", 
+   "They Might Be Giants": "http://www.allmusic.com/artist/they-might-be-giants-mn0000493327", 
+   "The Weirdos": "http://www.allmusic.com/artist/the-weirdos-mn0000490141", 
+   "Violent Femmes": "http://www.allmusic.com/artist/violent-femmes-mn0000922200", 
+   "Minny Pops": "http://www.allmusic.com/artist/minny-pops-mn0000422700", 
+   "Primus": "http://www.allmusic.com/artist/primus-mn0000359326", 
+   "The B-52s": "http://www.allmusic.com/artist/the-b-52s-mn0000043489", 
+   "XTC": "http://www.allmusic.com/artist/xtc-mn0000678339", 
+   "Crack the Sky": "http://www.allmusic.com/artist/crack-the-sky-mn0000121515", 
+   "The Rentals": "http://www.allmusic.com/artist/the-rentals-mn0000495288", 
+   "The Method Actors": "http://www.allmusic.com/artist/the-method-actors-mn0001589334", 
+   "The Dickies": "http://www.allmusic.com/artist/the-dickies-mn0000123007", 
+   "Eurythmics": "http://www.allmusic.com/artist/eurythmics-mn0000206241", 
+   "The Mekons": "http://www.allmusic.com/artist/the-mekons-mn0000399895", 
+   "Talking Heads": "http://www.allmusic.com/artist/talking-heads-mn0000131650"
+  }, 
+  "name": "The Flying Lizards"
+ }, 
+ "Game Theory": {
+  "url": "http://www.allmusic.com/artist/game-theory-mn0000189864", 
+  "similar": {}, 
+  "name": "Game Theory"
+ }, 
+````
+</script>
+</div>
+</section>
+<!-- ######################## END MARKDOWN SLIDE ########################## -->
+
+
+<!-- ######################## START MARKDOWN SLIDE ########################## -->
+<section>
+<div data-markdown>
+<script type="text/template">
+## Demos
+
+* Checkout Graph Drawing [./d3.html](./d3.html)
+* Checkout Interactive Drawing [./force.html](./force.html)
+* Checkout Selenium for Automation [./sidewalk-report.py](./sidewalk-report.py)
+
+</script>
+</div>
+</section>
+<!-- ######################## END MARKDOWN SLIDE ########################## -->
+
+<!-- ######################## START MARKDOWN SLIDE ########################## -->
+<section>
+<div data-markdown>
+<script type="text/template">
+## Selenium
+
+* Checkout Selenium for Automation [./sidewalk.py](./sidewalk.py)
+* Selenium allows the automation of an actual browser for web testing OR web mining
+* You can walk the DOM from your host language.
+* Great for walking dynamic pages
+
+</script>
+</div>
+</section>
+<!-- ######################## END MARKDOWN SLIDE ########################## -->
+
+<!-- ######################## START MARKDOWN SLIDE ########################## -->
+<section>
+<div data-markdown>
+<script type="text/template">
+## Resources
+
+* Python and HTML Processing
+http://www.boddie.org.uk/python/HTML.html
+* Beautiful Soup -- Screen Scraping! http://www.crummy.com/software/BeautifulSoup/
+
+</script>
+</div>
+</section>
+<!-- ######################## END MARKDOWN SLIDE ########################## -->
+
+
+
+
+<!-- ######################## START MARKDOWN SLIDE ########################## -->
+<section>
+<div data-markdown>
+<script type="text/template">
+## LICENSE
+
+Copyright 2014 (C) Abram Hindle
+
+The textual components of this slide deck are placed under the
+Creative Commons Attribute-ShareAlike 4.0 International License (CC
+BY-SA 4.0)
+
+</script>
+</div>
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/deed.en_US"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/deed.en_US">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+
+</section>
+<!-- ######################## END MARKDOWN SLIDE ########################## -->
+
+
+<!-- ######################## START MARKDOWN SLIDE ########################## -->
+<section>
+<div data-markdown>
+<script type="text/template">
+## LICENSE
+
+The source code to this slide deck is:
+
+````
+Copyright (C) 2013 Hakim El Hattab, http://hakim.se
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+````
+
+</script>
+</div>
+</section>
+<!-- ######################## END MARKDOWN SLIDE ########################## -->
+
+
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: 'sky',//Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: 'linear' || Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

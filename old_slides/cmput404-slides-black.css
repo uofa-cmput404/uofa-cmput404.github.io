@@ -1,0 +1,19 @@
+table.wikitable {
+    border: 1px solid black;
+}
+table.wikitable td, table.wikitable th {
+    border: 1px solid black;
+}
+.reveal .slides var {
+    background-color: black;
+/*     box-shadow: 0 0.24ex 0 0 #111, 0 -0.24ex 0 0 #111; */
+}
+.reveal .slides pre {
+    background-color: black;
+}
+.reveal .slides pre code {
+    background-color: black;
+}
+html body {
+    background-color: black;
+}
