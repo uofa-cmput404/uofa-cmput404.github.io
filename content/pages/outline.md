@@ -12,7 +12,7 @@ Title: Course Outline
 ## Labs
 
 * D01: Monday, 5:00PM to 7:50PM, SAB 3-31
-* D02: Wednesday, 5:00PM to 7:50PM, SAB 3-31
+* D02: Wednesday, 5:00PM to 7:50PM, **NRE 1-001**
 
 ## Dr. Hazel Campbell
 
@@ -294,3 +294,4 @@ Dr. Abram Hindle, Department of Computing Science, Faculty of Science, Universit
 
 2023-08-31 - Draft
 2023-09-01 - Draft
+2023-09-06 - D02 Lab Room Updated
