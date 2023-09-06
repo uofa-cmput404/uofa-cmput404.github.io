@@ -1,0 +1,18 @@
+table.wikitable {
+    border: 1px solid black;
+}
+table.wikitable td, table.wikitable th {
+    border: 1px solid black;
+}
+.reveal .slides var {
+    background-color: white;
+/*     box-shadow: 0 0.24ex 0 0 #eee, 0 -0.24ex 0 0 #eee; */
+}
+.reveal .slides pre {
+    background-color: white;
+}
+.reveal .slides pre code {
+    background-color: white;
+}
+form.fiddler button {
+}
