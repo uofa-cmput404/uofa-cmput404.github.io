@@ -11,8 +11,8 @@ save_as: index.html
 Lab material for CMPUT 404.
 
 * [Lab 1: Virtualenv & cURL]({filename}../labs/lab-1.md)
-* <!--[Lab 2: TCP Proxy]({filename}../labs/lab-2.md)--> There is no lab 2.
-* [Lab 3: Common Gateway Interface]({filename}../labs/lab-3.md)
+* [Lab 2: TCP Proxy]({filename}../labs/lab-2.md)
+* <!--[Lab 3: Common Gateway Interface]({filename}../labs/lab-3.md)--> There is no Lab 3.
 * [Lab 4: Django]({filename}../labs/lab-4.md)
 * [Lab 5: Pelican & Basic HTML/CSS]({filename}../labs/lab-5.md)
 * [Lab 6: Heroku]({filename}../labs/lab-6.md)
@@ -31,7 +31,7 @@ Su    Mo    Tu    We    Th    Fr Sa
                    1     2
  3     4     5     6     7     8  9 No labs
 10    11    12    13    14    15 16 Lab 1 VirtualEnv and Curl
-17    18    19    20    21    22 23 Lab 3 CGI
+17    18    19    20    21    22 23 Lab 2 TCP
                                     Registration deadline
 24    25    26    27    28    29 30 Assignment 1 
             October 2023
