@@ -9,18 +9,25 @@ save_as: index.html
 
 ## Lab material for CMPUT 404 (Fall 2023)
 
+**Both labs have been moved to NRE 1-001.**
+
+Labs are due on eClass before you demo.
+
+* [Lab D01 Monday demo & help signup sheet.](https://docs.google.com/spreadsheets/d/1PQ8cmpGy0nAsTkoL49V1bUIsUDJO3nBV2XJQQhqLoyU/edit?usp=sharing)
+* [Lab D02 Wednesday demo & help signup sheet.](https://docs.google.com/spreadsheets/d/1r6xk72JonREZizZx_NhioQrYox49YdoTDB0wIcjopF4/edit?usp=sharing)
+
 Lab material for CMPUT 404.
 
-* [Lab 1: Virtualenv & cURL]({filename}../labs/lab-1.md)
-* [Lab 2: TCP Proxy]({filename}../labs/lab-2.md)
-* <!--[Lab 3: Common Gateway Interface]({filename}../labs/lab-3.md)--> There is no Lab 3.
-* [Lab 4: Django]({filename}../labs/lab-4.md)
-* [Lab 5: Pelican & Basic HTML/CSS]({filename}../labs/lab-5.md)
-* [Lab 6: Heroku]({filename}../labs/lab-6.md)
-* [Lab 7: Flask]({filename}../labs/lab-7.md)
-* [Lab 9: Authentication]({filename}../labs/lab-9.md)
-    * Note: lab 9 is **before** lab 8!
-* [Lab 8: Websockets, Node.js, & Phaser.io]({filename}../labs/lab-8.md)
+* [Virtualenv & cURL]({filename}../labs/lab-1.md)
+* [TCP Proxy]({filename}../labs/lab-2.md)
+* <!--[Lab 3: Common Gateway Interface]({filename}../labs/lab-3.md)--> Lab 3 homework/lab/project help, Wednesday only.
+* [Django]({filename}../labs/lab-4.md)
+* [Pelican & Basic HTML/CSS]({filename}../labs/lab-5.md)
+* [Heroku]({filename}../labs/lab-6.md)
+* [Flask]({filename}../labs/lab-7.md)
+* [Authentication]({filename}../labs/lab-9.md)
+    * Note: Authentication lab is **before** Websockets!
+* [Websockets, Node.js, & Phaser.io]({filename}../labs/lab-8.md)
 
 Labs 10 to 12 are for TA project help and demos.
 
@@ -29,32 +36,50 @@ Labs 10 to 12 are for TA project help and demos.
 ```text
    September 2023
 Su    Mo    Tu    We    Th    Fr Sa
-                   1     2
+                               1  2
  3     4     5     6     7     8  9 No labs
-10    11    12    13    14    15 16 Lab 1 VirtualEnv and Curl
-17    18    19    20    21    22 23 Lab 2 TCP
+10    11    12    13    14    15 16 Lab: VirtualEnv and Curl
+17    18    19    20    21    22 23 Lab: TCP Proxy
+                                    Demos: VirtualEnv and Curl
                                     Registration deadline
-24    25    26    27    28    29 30 Assignment 1 
+24    25    26    27    28    29 30 Lab: DJANGO
+                                    Demos: TCP Proxy
+                                    Assignment 1 due Friday
             October 2023
 Su    Mo    Tu    We    Th    Fr Sa
- 1     2     3     4     5     6  7 Lab 4 DJANGO
-                                    Project 0
- 8     9    10    11    12    13 14 Thanksgiving Day: No Monday lab, Wednesday lab homework help
-                                    Assignment 2
-15    16    17    18    19    20 21 Lab 6 Heroku
-22    23    24    25    26    27 28 Lab 7 Flask; Project 1; Assignment 3
-29 30    31                         Lab 9 Auth; Project 1 Demo
-            November 2023                |
+ 1     2     3     4     5     6  7 Lab: Pelican/HTML/CSS
+                                    Demos: DJANGO
+                                    Friday: Project 0 due
+ 8     9    10    11    12    13 14 Thanksgiving Day: No Monday lab
+                                    Wednesday lab/homework/project help
+                                    Friday: Assignment 2 due
+15    16    17    18    19    20 21 Lab: Heroku
+                                    Demos: Pelican/HTML/CSS
+                                    Friday: Assignment 3 due
+22    23    24    25    26    27 28 Lab: Flask
+                                    Demos: Heroku
+                                    Friday: Project 1 code due
+29 30    31                         Lab: Project 1 Demo
+            November 2023           Demos: Flask
 Su    Mo    Tu    We    Th    Fr Sa      |
-                   1     2     3  4 Lab 9 Auth ; Project 1 Demo
- 5     6     7     8     9    10 11 Lab 8 Websockets
+                   1     2     3  4 Lab: Project 1 Group Demos (first half of lab)
+                                    Demos: Flask
+ 5     6     7     8     9    10 11 Lab: Authentication
+                                    Friday: Assignment 4 due
 12    13    14    15    16    17 18 Reading Week; No Class; No Labs;
-19    20    21    22    23    24 25 Lab 10 Connect smoketest AND Project 2 due.
-26    27    28    29    30          Lab 11 Connect Demo ; Assignment 5
+19    20    21    22    23    24 25 Lab: Websockets (first half of lab)
+                                    Demos: Authentication lab
+                                    Project 2 code due
+                                          
+26    27    28    29    30          Lab: Project 2 Connect Demo  (first half of lab)
+                                    Demos: Websockets
+                                    Friday: Assignment 5 due
             December 2023                |
 Su    Mo    Tu    We    Th    Fr Sa      |
-                         1     2    Assignment 5
- 3     4     5     6     7     8  9 Lab 12 LAST WEEK OF LABS / DEMOS ; Project 3 due; Labs Demos
+                         1     2            Assignment 5
+ 3     4     5     6     7     8  9 Lab 12 LAST WEEK OF LABS / DEMOS 
+                                    Project 3 due
+                                    Project Labs Demos
 10    11    12    13    14    15 16 Final Exam
 17    18    19    20    21    22 23
 ```
