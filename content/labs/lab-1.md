@@ -24,7 +24,7 @@ Answers to the questions should be submitted to *Virtualenv Lab* on eClass.
 * Windows Users
     * You should install Ubuntu on WSL2, then follow Ubuntu instructions below.
         * Each time it suggests opening a new terminal, open a new Ubuntu terminal.
-        * (A guide for installing Ubuntu/WSL2)[https://learn.microsoft.com/en-us/windows/wsl/install]
+        * [Guide for installing Ubuntu/WSL2](https://learn.microsoft.com/en-us/windows/wsl/install)
 * Mac Users
     * [pip install virtualenv](https://programwithus.com/learn/python/pip-virtualenv-mac)
     * Alternately: [use brew](https://gist.github.com/pandafulmanda/730a9355e088a9970b18275cb9eadef3)
