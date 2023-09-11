@@ -7,14 +7,18 @@ save_as: index.html
 * [CMPUT404 Slides XT](https://uofa-cmput404.github.io/slides-xt/)
 * [Old CMPUT404 Slides](https://uofa-cmput404.github.io/cmput404-slides/)
 
-## Lab material for CMPUT 404 (Fall 2023)
+## Lab info for CMPUT 404 (Fall 2023)
 
-**Both labs have been moved to NRE 1-001.**
-
-*You must demo your lab work to a TA between 6:30PM and 7:50PM over Zoom or in person and submit to eClass or you will get ZERO marks.* Labs are due on eClass **before** you demo. Yes, I know eClass says 8PM Wedensday, that's just the last possible demo slot.
-
-* [Lab D01 Monday demo & help signup sheet.](https://docs.google.com/spreadsheets/d/1PQ8cmpGy0nAsTkoL49V1bUIsUDJO3nBV2XJQQhqLoyU/edit?usp=sharing)
-* [Lab D02 Wednesday demo & help signup sheet.](https://docs.google.com/spreadsheets/d/1r6xk72JonREZizZx_NhioQrYox49YdoTDB0wIcjopF4/edit?usp=sharing)
+* **Both labs have been moved to NRE 1-001.**
+* You **must demo your individual lab work to a TA** during the lab to recieve marks.
+    * If you submit on eClass but don't demo you will get a zero.
+    * You can demo over Zoom or in person.
+    * Demos are during the second half of your registered lab section on BearTracks (6:30-7:50)
+    * [Lab D01 Monday demo & help signup sheet.](https://docs.google.com/spreadsheets/d/1PQ8cmpGy0nAsTkoL49V1bUIsUDJO3nBV2XJQQhqLoyU/edit?usp=sharing)
+    * [Lab D02 Wednesday demo & help signup sheet.](https://docs.google.com/spreadsheets/d/1r6xk72JonREZizZx_NhioQrYox49YdoTDB0wIcjopF4/edit?usp=sharing)
+* Labs are due on eClass **before you demo.**
+    * If you demo but don't submit you will get a zero.
+    * Yes, I know eClass says 8PM Wedensday, that's just because it is the last possible demo slot, and eClass has no idea when you demoed.
 
 Lab material for CMPUT 404.
 

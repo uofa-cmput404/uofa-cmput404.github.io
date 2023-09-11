@@ -1,33 +1,43 @@
-Title: Lab 1 - Virtualenv & cURL
+Title: Virtualenv & cURL
 Date: 2019-01-04 15:24
-Modified: 2019-01-08 10:04
+Modified: 2023-09-11 10:04
 Category: Lab
 Tags: virtualenv, curl
-Authors: Alexander Wong
+Authors: Alexander Wong, Hazel Victoria Campbell
 
 ----
 
+# Virtualenv & Curl Lab
+
 Introduction to CMPUT 404 labs. Setup [virtualenv](https://docs.python-guide.org/dev/virtualenvs/) and understand basic usage of [curl](https://curl.haxx.se/).
 
-Answers to the questions should be submitted to *Lab 1* on eClass.
+Answers to the questions should be submitted to *Virtualenv Lab* on eClass.
 
-### Git and GitHub
+## Git and GitHub
 
 1. Make a GitHub account or log in to your existing GitHub account.
 
     * **Question 1**: What is your GitHub URL?
 
-### virtualenv
+## Command-line Environment
+
+* Windows Users
+    * You should install Ubuntu on WSL2, then follow Ubuntu instructions below.
+        * Each time it suggests opening a new terminal, open a new Ubuntu terminal.
+        * (A guide for installing Ubuntu/WSL2)[https://learn.microsoft.com/en-us/windows/wsl/install]
+* Mac Users
+    * [pip install virtualenv](https://programwithus.com/learn/python/pip-virtualenv-mac)
+    * Alternately: [use brew](https://gist.github.com/pandafulmanda/730a9355e088a9970b18275cb9eadef3)
+* Ubuntu Users
+    * `sudo apt install python3-virtualenv`
+
+## virtualenv
 
 1. Create a new directory for this lab (`mkdir`).
 1. `cd` into the created directory and initialize a new git repository (`git init`).
-1. Try installing [requests](https://pypi.org/project/requests/).
-
-    `pip install requests`
-
 1. Make a Python script that prints out the version of the requests library.
 
-    * **Question 2**: What version is the requests library installed on the system?
+    * **Question 2**: What version is the requests library installed on the system? Is there none at all? Or is it already installed?
 
 1. Create a virtualenv.
 
@@ -40,7 +50,7 @@ Answers to the questions should be submitted to *Lab 1* on eClass.
 1. Try installing [requests](https://pypi.org/project/requests/) into your virtual environment.
 1. Run your Python script that prints out the version of the requests library in your virtualenv.
 
-    * **Question 3**: What version is the requests library installed in the virtualenv?
+    * **Question 3**: Is requests installed? If so, what version is the requests library installed in the virtualenv?
 
 1. Open a new terminal.
 1. Run the script in your new terminal.
