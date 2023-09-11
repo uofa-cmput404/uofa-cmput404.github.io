@@ -11,7 +11,7 @@ save_as: index.html
 
 **Both labs have been moved to NRE 1-001.**
 
-**You must demo your lab work to a TA and submit to eClass or you will get ZERO marks.** Labs are due on eClass before you demo. Yes, I know eClass says 8PM Wedensday, that's just the last possible demo slot.
+*You must demo your lab work to a TA between 6:30PM and 7:50PM over Zoom or in person and submit to eClass or you will get ZERO marks.* Labs are due on eClass **before** you demo. Yes, I know eClass says 8PM Wedensday, that's just the last possible demo slot.
 
 * [Lab D01 Monday demo & help signup sheet.](https://docs.google.com/spreadsheets/d/1PQ8cmpGy0nAsTkoL49V1bUIsUDJO3nBV2XJQQhqLoyU/edit?usp=sharing)
 * [Lab D02 Wednesday demo & help signup sheet.](https://docs.google.com/spreadsheets/d/1r6xk72JonREZizZx_NhioQrYox49YdoTDB0wIcjopF4/edit?usp=sharing)
@@ -32,6 +32,10 @@ Lab material for CMPUT 404.
 Labs 10 to 12 are for TA project help and demos.
 
 ## Course Schedule
+
+Labs are Monday and Wednesday, they are about 3 hours. Generally the first hour and a half will be for TA or group presentations, and the second hour and half will be for individual demos.
+
+Assignments and project code is generally due Friday at 4PM.
 
 ```text
    September 2023
