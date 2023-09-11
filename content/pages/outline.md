@@ -11,7 +11,7 @@ Title: Course Outline
 
 ## Labs
 
-* D01: Monday, 5:00PM to 7:50PM, SAB 3-31
+* D01: Monday, 5:00PM to 7:50PM, **NRE 1-001**
 * D02: Wednesday, 5:00PM to 7:50PM, **NRE 1-001**
 
 ## Dr. Hazel Campbell

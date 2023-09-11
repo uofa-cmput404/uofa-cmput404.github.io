@@ -4,8 +4,8 @@ save_as: index.html
 
 ## Lecture Material
 
-[CMPUT404 Slides XT](https://uofa-cmput404.github.io/slides-xt/)
-[Old CMPUT404 Slides](https://uofa-cmput404.github.io/cmput404-slides/)
+* [CMPUT404 Slides XT](https://uofa-cmput404.github.io/slides-xt/)
+* [Old CMPUT404 Slides](https://uofa-cmput404.github.io/cmput404-slides/)
 
 ## Lab material for CMPUT 404 (Fall 2023)
 
