@@ -11,7 +11,7 @@ save_as: index.html
 
 **Both labs have been moved to NRE 1-001.**
 
-Labs are due on eClass before you demo.
+**You must demo your lab work to a TA and submit to eClass or you will get ZERO marks.** Labs are due on eClass before you demo. Yes, I know eClass says 8PM Wedensday, that's just the last possible demo slot.
 
 * [Lab D01 Monday demo & help signup sheet.](https://docs.google.com/spreadsheets/d/1PQ8cmpGy0nAsTkoL49V1bUIsUDJO3nBV2XJQQhqLoyU/edit?usp=sharing)
 * [Lab D02 Wednesday demo & help signup sheet.](https://docs.google.com/spreadsheets/d/1r6xk72JonREZizZx_NhioQrYox49YdoTDB0wIcjopF4/edit?usp=sharing)
@@ -20,7 +20,7 @@ Lab material for CMPUT 404.
 
 * [Virtualenv & cURL]({filename}../labs/lab-1.md)
 * [TCP Proxy]({filename}../labs/lab-2.md)
-* <!--[Lab 3: Common Gateway Interface]({filename}../labs/lab-3.md)--> Lab 3 homework/lab/project help, Wednesday only.
+<!--* [Lab 3: Common Gateway Interface]({filename}../labs/lab-3.md)-->
 * [Django]({filename}../labs/lab-4.md)
 * [Pelican & Basic HTML/CSS]({filename}../labs/lab-5.md)
 * [Heroku]({filename}../labs/lab-6.md)
@@ -44,7 +44,7 @@ Su    Mo    Tu    We    Th    Fr Sa
                                     Registration deadline
 24    25    26    27    28    29 30 Lab: DJANGO
                                     Demos: TCP Proxy
-                                    Assignment 1 due Friday
+                                    Friday: Assignment 1 due
             October 2023
 Su    Mo    Tu    We    Th    Fr Sa
  1     2     3     4     5     6  7 Lab: Pelican/HTML/CSS
