@@ -1,6 +1,6 @@
-Title: Lab 2 - TCP Proxy
+Title: Lab - TCP Proxy
 Date: 2019-01-07 8:30
-Modified: 2019-01-08 19:14
+Modified: 2023-09-18 19:14
 Category: Lab
 Tags: tcp, proxy, socket
 Authors: Alexander Wong
@@ -9,7 +9,7 @@ Authors: Alexander Wong
 
 Create a tcp client, proxy server, echo server in Python. Understand how sockets work in relation to web requests. Use [multiprocessing](https://docs.python.org/3.4/library/multiprocessing.html?highlight=process) for forking new processes.
 
-Answers to the questions should be submitted to *Lab 2* on eClass.
+Answers to the questions should be submitted to *Lab: TCP Proxy* on eClass.
 
 * [Python socket documentation](https://docs.python.org/3/library/socket.html)
 * [w3 HTTP 1.0 Specification](https://www.w3.org/Protocols/HTTP/1.0/spec.html)
