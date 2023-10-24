@@ -57,20 +57,18 @@
 <p>Create a basic RESTful web application backend using <a href="http://flask.pocoo.org/">Flask</a>. Consume the API endpoints using <a href="https://curl.haxx.se/"><code>cURL</code></a> and <a href="https://httpie.org/"><code>httpie</code></a>.</p>
 <h3>Flask</h3>
 <p>Navigate to a new folder and initialize a new Python virtual environment.</p>
-<div class="highlight"><pre><span></span>mkdir<span class="w"> </span>cmput404lab7
+<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>cmput404lab7
 <span class="nb">cd</span><span class="w"> </span>cmput404lab7
 virtualenv<span class="w"> </span>venv<span class="w"> </span>--python<span class="o">=</span>python3
 <span class="nb">source</span><span class="w"> </span>venv/bin/activate
-</pre></div>
-
+</code></pre></div>
 
 <p>Install Flask.</p>
-<div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>Flask
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>Flask
+</code></pre></div>
 
 <p>Create a new Python file named <code>hello.py</code> and edit its contents so it looks like this:</p>
-<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python3</span>
 
 <span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
 <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
@@ -83,27 +81,24 @@ virtualenv<span class="w"> </span>venv<span class="w"> </span>--python<span clas
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>Make the file executable and run the application. Navigate to the page in your browser.</p>
-<div class="highlight"><pre><span></span>chmod<span class="w"> </span>+x<span class="w"> </span>hello.py
+<div class="highlight"><pre><span></span><code>chmod<span class="w"> </span>+x<span class="w"> </span>hello.py
 ./hello.py
 <span class="c1"># or</span>
 python3<span class="w"> </span>hello.py
 
 <span class="c1"># In a new terminal</span>
 curl<span class="w"> </span>localhost:5000<span class="w"> </span><span class="c1"># the port may be different on your machine</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>Modify the <code>hello.py</code> file to serve a RESTful api for managing a TODO list. First, install <code>flask_restful</code>.</p>
-<div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>flask_restful
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>flask_restful
+</code></pre></div>
 
 <p>Update <code>hello.py</code> so it looks like the following.</p>
-<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python3</span>
 
 <span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
 <span class="kn">from</span> <span class="nn">flask_restful</span> <span class="kn">import</span> <span class="n">Resource</span><span class="p">,</span> <span class="n">Api</span>
@@ -122,16 +117,14 @@ curl<span class="w"> </span>localhost:5000<span class="w"> </span><span class="c
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>Run the server and see what it returns in your browser, or using cURL.</p>
-<div class="highlight"><pre><span></span>curl<span class="w"> </span>localhost:5000
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>localhost:5000
+</code></pre></div>
 
 <p>Change the contents of <code>hello.py</code> to the following:</p>
-<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python3</span>
 
 <span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
 <span class="kn">from</span> <span class="nn">flask_restful</span> <span class="kn">import</span> <span class="n">reqparse</span><span class="p">,</span> <span class="n">abort</span><span class="p">,</span> <span class="n">Api</span><span class="p">,</span> <span class="n">Resource</span>
@@ -197,28 +190,25 @@ curl<span class="w"> </span>localhost:5000<span class="w"> </span><span class="c
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>What does the browser show you when you navigate to <code>/todos</code> and <code>/todos/1</code>?</p>
 <p>Try running the following <code>cURL</code> commands.</p>
-<div class="highlight"><pre><span></span>curl<span class="w"> </span>localhost:5000/todos
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>localhost:5000/todos
 curl<span class="w"> </span>localhost:5000/todos/3
 curl<span class="w"> </span>-v<span class="w"> </span>-X<span class="w"> </span>DELETE<span class="w"> </span>localhost:5000/todos/2
 curl<span class="w"> </span>-v<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>localhost:5000/todos<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;task=make sure to do lab 7 questions&quot;</span>
 curl<span class="w"> </span>-v<span class="w"> </span>-X<span class="w"> </span>PUT<span class="w"> </span>localhost:5000/todos/3<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;task=profit more&quot;</span>
-</pre></div>
-
+</code></pre></div>
 
 <h3>Httpie</h3>
 <p>In addition to using <code>cURL</code>, <a href="https://httpie.org/"><code>httpie</code></a> is specifically designed for interacting with RESTful JSON APIs. It has colour output and automatically pretty prints JSON for you.</p>
-<div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>httpie
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>httpie
 http<span class="w"> </span>localhost:5000/todos
 http<span class="w"> </span>:5000/todos
 http<span class="w"> </span>HEAD<span class="w"> </span>:5000/todos
 http<span class="w"> </span>POST<span class="w"> </span>:5000/todos<span class="w"> </span><span class="nv">task</span><span class="o">=</span><span class="s2">&quot;Try httpie!&quot;</span>
-</pre></div>
-
+</code></pre></div>
 
 <p><strong>Question 0</strong>: What is the URL of your python flask_restfull code on github???</p>
 <p><strong>Question 1</strong>: How are Flask and Django different? What does Django provide for you that Flask does not?</p>

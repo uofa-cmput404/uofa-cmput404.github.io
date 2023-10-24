@@ -61,19 +61,16 @@
 <p>Activate a python3 virtual environment.</p>
 <p>Start the <code>cgi_server.py</code> in a background terminal window.</p>
 <p>Initialize an empty file (this will be your CGI script).</p>
-<div class="highlight"><pre><span></span>touch<span class="w"> </span>hello.py
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>touch<span class="w"> </span>hello.py
+</code></pre></div>
 
 <p>Make your CGI script executable.</p>
-<div class="highlight"><pre><span></span>chmod<span class="w"> </span>+x<span class="w"> </span>hello.py
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>chmod<span class="w"> </span>+x<span class="w"> </span>hello.py
+</code></pre></div>
 
 <p>Make the very first line of your CGI script the shebang:</p>
-<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python3</span>
+</code></pre></div>
 
 <p>Examine the environment variables given to the CGI script.</p>
 <p><strong>Question 1</strong>: How do you inspect all environment variables in Python?</p>
