@@ -66,10 +66,9 @@ Su    Mo    Tu    We    Th    Fr Sa
                                     Friday: Assignment 3 due
 22    23    24    25    26    27 28 Lab: Flask
                                     Demos: Heroku
-                                    Friday: Project 1 code due
 29 30    31                         Lab: Project 1 Demo
             November 2023           Demos: Flask
-Su    Mo    Tu    We    Th    Fr Sa      |
+Su    Mo    Tu    We    Th    Fr Sa Project Part 1 code due MONDAY OCT 30
                    1     2     3  4 Lab: Project 1 Group Demos (first half of lab)
                                     Demos: Flask
  5     6     7     8     9    10 11 Lab: Authentication
