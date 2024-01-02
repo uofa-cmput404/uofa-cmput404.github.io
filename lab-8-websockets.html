@@ -4,6 +4,7 @@
           <title>CMPUT 404 - Lab 8 - WebSockets</title>
         <meta charset="utf-8" />
         <meta name="generator" content="Pelican" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link rel="icon" href="https://uofa-cmput404.github.io/theme/favicon.ico" />
   <link rel="stylesheet" type="text/css" href="https://uofa-cmput404.github.io/theme/style.css" />
@@ -16,44 +17,25 @@
 
 </head>
 
-<body id="index" class="home">
-        <header id="banner" class="body">
-                <h1><a href="https://uofa-cmput404.github.io/">CMPUT 404</a></h1>
-        </header><!-- /#banner -->
-        <nav id="menu"><ul>
-            <li><a href="https://uofa-cmput404.github.io/">Home</a></li>
-            <li><a href="https://uofa-cmput404.github.io/pages/lab-rubric.html">Lab Rubric</a></li>
-            <li><a href="https://uofa-cmput404.github.io/pages/course-outline.html">Course Outline</a></li>
-            <li class="active"><a href="https://uofa-cmput404.github.io/category/lab.html">Lab</a></li>
-        </ul></nav><!-- /#menu -->
-<section id="content" class="body">
+<body>
+        <header>
+              <hgroup><h1><a href="https://uofa-cmput404.github.io/">CMPUT 404</a></h1></hgroup>
+        <nav><ul>
+            <li><a href="https://uofa-cmput404.github.io/" >Home</a></li>
+            <li><a href="https://uofa-cmput404.github.io/pages/lab-rubric.html" >Lab Rubric</a></li>
+            <li><a href="https://uofa-cmput404.github.io/pages/course-outline.html" >Course Outline</a></li>
+            <li><a href="https://uofa-cmput404.github.io/category/lab.html"  aria-current="page" >Lab</a></li>
+        </ul></nav>
+        </header>
+        <main>
+<article>
   <header>
-    <h2 class="entry-title">
+    <h2>
       <a href="https://uofa-cmput404.github.io/lab-8-websockets.html" rel="bookmark"
          title="Permalink to Lab 8 - WebSockets">Lab 8 - WebSockets</a></h2>
  
   </header>
-  <footer class="post-info">
-    <time class="published" datetime="2019-02-19T13:35:00-07:00">
-      Tue, 19 Feb 2019 at 13:35 MST
-    </time>
-    <time class="modified" datetime="2019-02-20T15:03:00-07:00">
-      Wed, 20 Feb 2019 at 15:03 MST
-    </time>
-    <address class="vcard author">
-      By           <a class="url fn" href="https://uofa-cmput404.github.io/author/alexander-wong.html">Alexander Wong</a>
-    </address>
-    <div class="category">
-        Category: <a href="https://uofa-cmput404.github.io/category/lab.html">Lab</a>
-    </div>
-    <div class="tags">
-        Tags:
-            <a href="https://uofa-cmput404.github.io/tag/nodejs.html">nodejs</a>
-            <a href="https://uofa-cmput404.github.io/tag/websockets.html">websockets</a>
-    </div>
-  </footer><!-- /.post-info -->
-  <div class="entry-content">
-    <hr>
+  <hr>
 <p>Learn how to utilize <a href="https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API">WebSockets</a> and <a href="https://phaser.io/">Phaser.io</a>. Create a basic Phaser game with WebSocket connectivity for real-time server to client communication. Use <a href="https://nodejs.org/en/">Node.js</a> for our application server. Use <a href="https://www.typescriptlang.org/">TypeScript</a> with <a href="https://parceljs.org/">Parcel</a> for bundling browser client code.</p>
 <h3>Install Node.js</h3>
 <p>There are two different ways you can try to install node.js!</p>
@@ -108,20 +90,6 @@ npm<span class="w"> </span>--version
 <span class="c1"># 6.7.0</span>
 </code></pre></div>
 
-<h4>Option 3: Downgrading Node on Mac</h4>
-<p>If you already have node.js installed, and want to downgrade to a version, you can use 
-  <code>n</code>
-  to manage node versions.</p>  
-</p>
-<p>Run this:</p>
-<div class="highlight"><pre><span></span><code>$ npm install -g n
-$ n 11.10.0
-</code></pre></div>
-<p>Now you can check your version:</p>
-<div class="highlight"><pre><span></span><code>node<span class="w"> </span>--version
-<span class="c1"># v11.10.0</span>
-</code></pre></div>
-<p>This does not work for Windows OS (try this instead: <a href"https://phoenixnap.com/kb/downgrade-node-version-windows" >https://phoenixnap.com/kb/downgrade-node-version-windows)</a></p>
 <h3>Initialize Phaser and WebSockerServer</h3>
 <p>Fork this repository and clone it locally onto your own machine.</p>
 <ul>
@@ -314,13 +282,32 @@ git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </
 <p><strong>Question 4</strong>: What are the different values for the <code>readyState</code> a WebSocket can be in? Briefly describe what each state means. (Hint: check out the <a href="https://developer.mozilla.org/en-US/docs/Web/API/WebSocket">Mozilla WebSocket API</a>)</p>
 <p><strong>Question 5</strong>: What's the link to your github repo?</p>
 <p>Hint: <code>git push -u origin topdown:master</code></p>
-  </div><!-- /.entry-content -->
-</section>
-        <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="https://getpelican.com/">Pelican</a>,
-                which takes great advantage of <a href="https://www.python.org/">Python</a>.
-                </address><!-- /#about -->
-        </footer><!-- /#contentinfo -->
+  <footer>
+    <p>Published: <time datetime="2019-02-19T13:35:00-07:00">
+      Tue, 19 Feb 2019 at 13:35 MST
+    </time></p>
+    <p>Last updated: <time datetime="2019-02-20T15:03:00-07:00">
+      Wed, 20 Feb 2019 at 15:03 MST
+    </time></p>
+    <address>
+      By           <a href="https://uofa-cmput404.github.io/author/alexander-wong.html">Alexander Wong</a>
+    </address>
+    <p>
+        Category: <a href="https://uofa-cmput404.github.io/category/lab.html">Lab</a>
+    </p>
+    <p>
+        Tags:
+            <a href="https://uofa-cmput404.github.io/tag/nodejs.html">nodejs</a>
+            <a href="https://uofa-cmput404.github.io/tag/websockets.html">websockets</a>
+    </p>
+  </footer>
+  </article>
+        </main>
+        <footer>
+                <address>
+                Proudly powered by <a rel="nofollow" href="https://getpelican.com/">Pelican</a>,
+                which takes great advantage of <a rel="nofollow" href="https://www.python.org/">Python</a>.
+                </address>
+        </footer>
 </body>
 </html>
