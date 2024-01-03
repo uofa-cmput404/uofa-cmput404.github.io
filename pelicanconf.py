@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
 
-AUTHOR = 'Alexander Wong'
+AUTHOR = 'Hazel Victoria Campbell'
 SITENAME = 'CMPUT 404'
 SITEURL = ''
 
@@ -38,6 +38,10 @@ MARKDOWN = {
         'markdown.extensions.codehilite': {'css_class': 'highlight'},
         'markdown.extensions.extra': {},
         'markdown.extensions.meta': {},
+        'markdown.extensions.toc': {
+            'toc_depth': '2-6',
+        },
+        'markdown.extensions.tables': {},
     },
     'output_format': 'html5',
 }
@@ -49,3 +53,6 @@ STATIC_PATHS=[
 	]
 PAGE_EXCLUDES=STATIC_PATHS
 ARTICLE_EXCLUDES=STATIC_PATHS
+
+PATH_METADATA = '(?P<path_no_ext>.*)\..*'
+ARTICLE_URL = ARTICLE_SAVE_AS = PAGE_URL = PAGE_SAVE_AS = '{path_no_ext}.html'
