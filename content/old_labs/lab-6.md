@@ -1,10 +1,9 @@
 Title: Lab 6 - Heroku
 Date: 2019-01-07 12:41
 Modified: 2019-02-11 17:58
-Category: Lab
-Tags: heroku, django
+Tags: homework, lab
 Authors: Alexander Wong
-Status: hidden
+Status: published
 
 ----
 

@@ -1,10 +1,9 @@
 Title: Lab 8 - WebSockets
 Date: 2019-02-19 13:35
 Modified: 2019-02-20 15:03
-Category: Lab
-Tags: nodejs, websockets
+Tags: homework, lab
 Authors: Alexander Wong
-Status: hidden
+Status: published
 
 ----
 

@@ -1,10 +1,9 @@
 Title: Lab 7 - Flask
 Date: 2019-02-19 09:52
 Modified: 2019-02-19 09:52
-Category: Lab
-Tags: flask, python
+Tags: homework, lab
 Authors: Alexander Wong
-Status: hidden
+Status: published
 
 ----
 

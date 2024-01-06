@@ -1,10 +1,9 @@
 Title: Lab 9 - Authentication
 Date: 2019-02-20 14:47
 Modified: 2019-03-07 18:17
-Category: Lab
-Tags: django, authentication
+Tags: homework, lab
 Authors: Alexander Wong
-Status: hidden
+Status: published
 
 ----
 

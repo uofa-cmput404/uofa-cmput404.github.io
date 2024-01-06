@@ -1,10 +1,9 @@
 Title: Lab 5 - Pelican & Basic HTML/CSS
 Date: 2019-01-07 12:40
 Modified: 2019-02-11 17:50
-Category: Lab
-Tags: pelican, html css
+Tags: homework, lab
 Authors: Alexander Wong
-Status: hidden
+Status: published
 
 ----
 

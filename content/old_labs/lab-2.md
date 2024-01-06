@@ -1,10 +1,9 @@
 Title: Lab - TCP Proxy
 Date: 2019-01-07 8:30
 Modified: 2023-09-18 19:14
-Category: Lab
-Tags: tcp, proxy, socket
+Tags: homework, lab
 Authors: Hazel Victoria Campbell, Alexander Wong
-Status: hidden
+Status: published
 
 ----
 

@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 
 AUTHOR = 'University of Alberta'
 SITENAME = 'CMPUT 404'
+SITESUBTITLE = 'Web Applications and Architecture'
 SITEURL = ''
 
 PATH = 'content'
@@ -12,7 +13,7 @@ TIMEZONE = 'America/Edmonton'
 
 DEFAULT_LANG = 'en'
 
-# Feed generation is usually not desired when developing
+# Feed generation is ufally not desired when developing
 FEED_ALL_ATOM = None
 CATEGORY_FEED_ATOM = None
 TRANSLATION_FEED_ATOM = None
@@ -31,7 +32,7 @@ LINKS = ()
 #           ('Another social link', '#'),)
 SOCIAL = ()
 
-DEFAULT_PAGINATION = 20
+DEFAULT_PAGINATION = False
 
 MARKDOWN = {
     'extension_configs': {
@@ -40,6 +41,7 @@ MARKDOWN = {
         'markdown.extensions.meta': {},
         'markdown.extensions.toc': {
             'toc_depth': '2-6',
+            'baselevel': '3'
         },
         'markdown.extensions.tables': {},
     },
@@ -56,3 +58,19 @@ ARTICLE_EXCLUDES=STATIC_PATHS
 
 PATH_METADATA = '(?P<path_no_ext>.*)\..*'
 ARTICLE_URL = ARTICLE_SAVE_AS = PAGE_URL = PAGE_SAVE_AS = '{path_no_ext}.html'
+
+DISPLAY_CATEGORIES_ON_MENU=False
+DISPLAY_PAGES_ON_MENU=False
+
+INDEX_SAVE_AS="all.html"
+
+MENUITEMS=[
+    ("Outline", "/general/outline.html"),
+    ("eClass", "https://eclass.srv.ualberta.ca/course/view.php?id=95227"),
+    ("Schedule", "/general/schedule.html"),
+    ("Labs", "/general/labs.html"),
+    ("Project", "/general/project.html"),
+    ("Resources", "/general/resources.html"),
+    ("Help", "/general/help.html"),
+]
+

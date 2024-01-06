@@ -1,10 +1,9 @@
 Title: Lab 3 - Common Gateway Interface
 Date: 2019-01-07 8:40
 Modified: 2019-01-22 10:50
-Category: Lab
-Tags: cgi, common gateway interface
+Tags: homework, lab
 Authors: Alexander Wong
-Status: hidden
+Status: published
 
 ----
 

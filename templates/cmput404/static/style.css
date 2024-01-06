@@ -46,7 +46,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 0;
 }
 
-article>h1 {
+h2 {
   text-align: center;
 }
 
@@ -77,24 +77,41 @@ em, strong {
 }
 
 /** Title, Site Banner */
-#banner > h1 > a {
+body>header hgroup {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+body>header hgroup>* {
+  padding: 0 1ex;
+  margin: 1ex 1ex 0 1ex;
+}
+
+body>header h1>a {
   color: #000000;
   text-decoration: none;
 }
 
 /** Primary site navigation */
 header > nav > ul {
-  margin-top: 0.4em;
+  margin: 1ex 0;
+  padding: 0 0 0.5ex 0;
   list-style-type: none;
-  padding-bottom: 0.2em;
   border-bottom: 2px dashed #000000;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-evenly;
 }
 header > nav > ul > li {
   display: inline;
   font-size: large;
 }
 header > nav > ul > li + li {
-  padding-left: 1em;
+  margin: 0 1ex;
+  padding: 0;
 }
 header > nav > ul > li.active {
   font-weight: bold;
@@ -103,6 +120,14 @@ header > nav > ul > li.active {
 /** Pagination page contents */
 #content > :first-child {
   margin-top: 0;
+}
+
+article>footer {
+  font-size: smaller;
+}
+
+footer>p {
+  font-size: smaller;
 }
 
 footer>address {

@@ -1,10 +1,9 @@
 Title: Virtualenv & cURL
 Date: 2019-01-04 15:24
 Modified: 2023-09-11 10:04
-Category: Lab
-Tags: virtualenv, curl
+Tags: homework, lab
 Authors: Alexander Wong, Hazel Victoria Campbell
-Status: hidden
+Status: published
 
 ----
 
