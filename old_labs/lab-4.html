@@ -5,6 +5,7 @@
         <meta charset="utf-8" />
         <meta name="generator" content="Pelican" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Web Applications and Architecture" />
 
   <link rel="icon" href="https://uofa-cmput404.github.io/theme/favicon.ico" />
   <link rel="stylesheet" type="text/css" href="https://uofa-cmput404.github.io/theme/style.css" />
@@ -12,18 +13,22 @@
 
 
 
-    <meta name="tags" content="django" />
+    <meta name="tags" content="homework" />
+    <meta name="tags" content="lab" />
 
 </head>
 
 <body>
         <header>
-              <hgroup><h1><a href="https://uofa-cmput404.github.io/">CMPUT 404</a></h1></hgroup>
+              <hgroup><h1><a href="https://uofa-cmput404.github.io/">CMPUT 404</a></h1><p>Web Applications and Architecture</p></hgroup>
         <nav><ul>
-            <li><a href="https://uofa-cmput404.github.io/" >Home</a></li>
-            <li><a href="https://uofa-cmput404.github.io/pages/labs.html" >Labs</a></li>
-            <li><a href="https://uofa-cmput404.github.io/pages/outline202401.html" >Course Outline</a></li>
-            <li><a href="https://uofa-cmput404.github.io/pages/project.html" >Project</a></li>
+            <li><a href="/general/outline.html">Outline</a></li>
+            <li><a href="https://eclass.srv.ualberta.ca/course/view.php?id=95227">eClass</a></li>
+            <li><a href="/general/schedule.html">Schedule</a></li>
+            <li><a href="/general/labs.html">Labs</a></li>
+            <li><a href="/general/project.html">Project</a></li>
+            <li><a href="/general/resources.html">Resources</a></li>
+            <li><a href="/general/help.html">Help</a></li>
         </ul></nav>
         </header>
         <main>
@@ -37,7 +42,7 @@
   <hr>
 <p>Big lab! Build a simple <a href="https://www.djangoproject.com/">Django</a> website. Understand the fundamentals of Django's MVC architecture using the built in models and views. </p>
 <p>Answers to the questions should be submitted to <em>Lab 4</em> on eClass. You may also follow along with the <a href="https://docs.djangoproject.com/en/3.1/#first-steps">official documentation</a>. We will be going through Parts 1 to 4 of the first steps tutorial in lab. You should commit your project to git after each question.</p>
-<h3 id="creating-a-django-project">Creating a Django Project</h3>
+<h5 id="creating-a-django-project">Creating a Django Project</h5>
 <ul>
 <li>Official Docs <a href="https://docs.djangoproject.com/en/3.1/intro/overview/">Overview</a>, <a href="https://docs.djangoproject.com/en/3.1/intro/install/">Installation</a></li>
 </ul>
@@ -60,7 +65,7 @@ python<span class="w"> </span>manage.py<span class="w"> </span>runserver
 <p><strong>Question 1</strong>: What is the link to your github repository for this lab?</p>
 <p><strong>Question 2</strong>: After starting a brand new Django application and running the runserver command, what does the browser show you?</p>
 <hr>
-<h3 id="creating-a-django-app">Creating a Django App</h3>
+<h5 id="creating-a-django-app">Creating a Django App</h5>
 <ul>
 <li>Official Docs <a href="https://docs.djangoproject.com/en/3.1/intro/tutorial01/">Part 1</a></li>
 </ul>
@@ -100,7 +105,7 @@ python<span class="w"> </span>manage.py<span class="w"> </span>runserver
 
 <p><strong>Question 3</strong>: After creating the first view within polls, what does the browser show you when navigating to <code>/</code> and to <code>/polls</code> respectively?</p>
 <hr>
-<h3 id="working-with-models">Working with Models</h3>
+<h5 id="working-with-models">Working with Models</h5>
 <ul>
 <li>Official Docs <a href="https://docs.djangoproject.com/en/3.1/intro/tutorial02/">Part 2</a></li>
 </ul>
@@ -151,7 +156,7 @@ python<span class="w"> </span>manage.py<span class="w"> </span>runserver
 
 <p><strong>Question 4</strong>: What is a Django migration and why do we need them?</p>
 <hr>
-<h3 id="using-django-admin">Using Django Admin</h3>
+<h5 id="using-django-admin">Using Django Admin</h5>
 <p>Create a user that can log into the admin site.</p>
 <div class="highlight"><pre><span></span><code>python<span class="w"> </span>manage.py<span class="w"> </span>createsuperuser
 </code></pre></div>
@@ -171,7 +176,7 @@ python<span class="w"> </span>manage.py<span class="w"> </span>runserver
 
 <p><strong>Question 5</strong>: What do you see after you log into the Django adminstration site? From a high levle, how do you get custom models to appear in the Django admin page?</p>
 <hr>
-<h3 id="working-with-views">Working with Views</h3>
+<h5 id="working-with-views">Working with Views</h5>
 <ul>
 <li>Official Docs <a href="https://docs.djangoproject.com/en/3.1/intro/tutorial03/">Part 3</a></li>
 </ul>
@@ -206,7 +211,7 @@ python<span class="w"> </span>manage.py<span class="w"> </span>runserver
 
 <p><strong>Question 6</strong>: What do you see when you go to <code>/polls/38/</code> in your browser? What about <code>/polls/38/results</code> and <code>/polls/38/vote</code>? What happens when you don’t put a number, and instead use a string? How would you modify the <em>urls.py</em> file to allow arbitrary alphabetic characters?</p>
 <hr>
-<h3 id="making-views-render-model-data">Making views render model data</h3>
+<h5 id="making-views-render-model-data">Making views render model data</h5>
 <p>Update the <em>polls/views.py</em> <code>index</code> method so the questions are returned.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponse</span>
 
@@ -282,7 +287,7 @@ touch<span class="w"> </span>polls/templates/polls/index.html
 </code></pre></div>
 
 <hr>
-<h3 id="namespacing-url-names">Namespacing URL names</h3>
+<h5 id="namespacing-url-names">Namespacing URL names</h5>
 <p>Add an <code>app_name</code> in the <em>polls/urls.py</em> file to set the application namespace.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">path</span>
 
@@ -307,7 +312,7 @@ touch<span class="w"> </span>polls/templates/polls/index.html
 
 <p><strong>Question 7</strong>: Why is it a bad idea to hardcode urls into the templates?</p>
 <hr>
-<h3 id="writing-a-simple-form">Writing a simple form</h3>
+<h5 id="writing-a-simple-form">Writing a simple form</h5>
 <ul>
 <li>Official Docs <a href="https://docs.djangoproject.com/en/3.1/intro/tutorial04/">Part 4</a></li>
 </ul>
@@ -379,7 +384,7 @@ touch<span class="w"> </span>polls/templates/polls/index.html
 
 <p>Run your application. Use the admin interface to create aquestion, then create multiple choices for your question. Navigate back to <code>polls/</code> and attempt to use your application.</p>
 <hr>
-<h3 id="refactoring-generic-views">Refactoring: Generic Views</h3>
+<h5 id="refactoring-generic-views">Refactoring: Generic Views</h5>
 <p>To convert the <code>poll</code> application to use generic views, we will:</p>
 <ol>
 <li>Convert the old url conf.</li>
@@ -434,7 +439,7 @@ touch<span class="w"> </span>polls/templates/polls/index.html
 
 <p><strong>Question 8</strong>: What are the benefits of using Django's generic views over writing views 'the hard way'? When should you use a generic view and when shouldn't you use a generic view?</p>
 <hr>
-<h3 id="serializing-and-deserializing-queries-optional-but-highly-recommended-to-do">Serializing and Deserializing Queries (Optional, but highly recommended to do)</h3>
+<h5 id="serializing-and-deserializing-queries-optional-but-highly-recommended-to-do">Serializing and Deserializing Queries (Optional, but highly recommended to do)</h5>
 <p>Based from the DRF (Django Rest Framework) tutorial <a href="https://www.django-rest-framework.org/tutorial/1-serialization/">here</a></p>
 <p>To convert your queries to or from a JSON object you can use Django's serializers to serialize or deserialize Django QuerySets to or from JSON objects.  </p>
 <p>First install the Django Rest Framework library using <code>pip</code></p>
@@ -448,7 +453,7 @@ touch<span class="w"> </span>polls/templates/polls/index.html
 <span class="p">]</span>
 </code></pre></div>
 
-<h3 id="creating-a-serializer-class">Creating a Serializer Class</h3>
+<h5 id="creating-a-serializer-class">Creating a Serializer Class</h5>
 <p>Create a file in the <code>polls</code> directory named <code>serializers.py</code> and add the following</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">rest_framework</span> <span class="kn">import</span> <span class="n">serializers</span>
 <span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Question</span>
@@ -473,7 +478,7 @@ touch<span class="w"> </span>polls/templates/polls/index.html
         <span class="k">return</span> <span class="n">instance</span>
 </code></pre></div>
 
-<h3 id="update-our-views-using-our-serializer">Update our views using our Serializer</h3>
+<h5 id="update-our-views-using-our-serializer">Update our views using our Serializer</h5>
 <p>Once you have the serializers you now need to write some API views using the new Serializer class</p>
 <p>Edit the <code>polls/views.py</code> file, and add the following</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">rest_framework.decorators</span> <span class="kn">import</span> <span class="n">api_view</span>
@@ -494,7 +499,7 @@ touch<span class="w"> </span>polls/templates/polls/index.html
 </code></pre></div>
 
 <p>The <code>@api_view</code> decorator will wrap the view so that only HTTP methods that are listed in the decorator will get executed.</p>
-<h3 id="updating-the-our-urls-for-the-new-views">Updating the our URLs for the new views</h3>
+<h5 id="updating-the-our-urls-for-the-new-views">Updating the our URLs for the new views</h5>
 <p>Because we want our API responses to have JSON objects we will have to add another set of urls with a <code>api/</code> prefix to our <code>polls/urls.py</code> file.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">path</span>
 <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">views</span>
@@ -510,7 +515,7 @@ touch<span class="w"> </span>polls/templates/polls/index.html
 </code></pre></div>
 
 <p>You should see a list of question in a json format.</p>
-<h3 id="updating-a-question-using-our-serializer">Updating a Question Using our Serializer</h3>
+<h5 id="updating-a-question-using-our-serializer">Updating a Question Using our Serializer</h5>
 <p>We can use the serializer to update the <code>question_text</code> field of our question entries.</p>
 <div class="highlight"><pre><span></span><code><span class="nd">@api_view</span><span class="p">([</span><span class="s1">&#39;POST&#39;</span><span class="p">])</span>
 <span class="k">def</span> <span class="nf">update_question</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">pk</span><span class="p">):</span>
@@ -541,7 +546,7 @@ touch<span class="w"> </span>polls/templates/polls/index.html
 </code></pre></div>
 
 <p>After clicking the POST button you should see the updated value in the json structure above. The new value should also be reflected in the model admin page as well.</p>
-<h3 id="other-cool-things-to-know">Other cool things to know</h3>
+<h5 id="other-cool-things-to-know">Other cool things to know</h5>
 <ul>
 <li>If your serializer is replicating a lot of information that's also contained in the model being (de)serialized then you can use the <code>ModelSerializer</code> class to automatically generate the fields and produce a simple default implementations for the <code>create()</code> and <code>update()</code> methods</li>
 <li>If you want to support alternative serialization and deserialization styles then you can inherit the <code>BaseSerializer</code> class and override these four functions depending on what functionality you want the serializer class to support:</li>
@@ -549,10 +554,10 @@ touch<span class="w"> </span>polls/templates/polls/index.html
 <li><code>.to_internal_value()</code> - Override this to support deserialization, for write operations</li>
 <li><code>.create()</code> and <code>.update()</code> - Override either or both of these to support saving instances.</li>
 </ul>
-<h3 id="more-information-about-drf">More information about DRF</h3>
+<h5 id="more-information-about-drf">More information about DRF</h5>
 <p>Her is the <a href="https://www.django-rest-framework.org/api-guide/serializers/">API Guide for Serializers</a></p>
 <p>Here is the <a href="https://www.django-rest-framework.org/tutorial/1-serialization/">Tutorial guide</a></p>
-<h3 id="optionaloutside-of-lab">Optional/Outside of Lab</h3>
+<h5 id="optionaloutside-of-lab">Optional/Outside of Lab</h5>
 <p>It is in your best interest to Work through the rest of Django's First Steps Tutorials:</p>
 <ul>
 <li><a href="https://docs.djangoproject.com/en/3.1/intro/tutorial05/">Part 5: Testing</a></li>
@@ -572,11 +577,12 @@ touch<span class="w"> </span>polls/templates/polls/index.html
           <a href="https://uofa-cmput404.github.io/author/jihoon-og.html">Jihoon Og</a>
     </address>
     <p>
-        Category: <a href="https://uofa-cmput404.github.io/category/lab.html">Lab</a>
+        Category: <a href="https://uofa-cmput404.github.io/category/old_labs.html">old_labs</a>
     </p>
     <p>
         Tags:
-            <a href="https://uofa-cmput404.github.io/tag/django.html">django</a>
+            <a href="https://uofa-cmput404.github.io/tag/homework.html">homework</a>
+            <a href="https://uofa-cmput404.github.io/tag/lab.html">lab</a>
     </p>
   </footer>
   </article>

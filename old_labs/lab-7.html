@@ -5,6 +5,7 @@
         <meta charset="utf-8" />
         <meta name="generator" content="Pelican" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Web Applications and Architecture" />
 
   <link rel="icon" href="https://uofa-cmput404.github.io/theme/favicon.ico" />
   <link rel="stylesheet" type="text/css" href="https://uofa-cmput404.github.io/theme/style.css" />
@@ -12,19 +13,22 @@
 
 
 
-    <meta name="tags" content="flask" />
-    <meta name="tags" content="python" />
+    <meta name="tags" content="homework" />
+    <meta name="tags" content="lab" />
 
 </head>
 
 <body>
         <header>
-              <hgroup><h1><a href="https://uofa-cmput404.github.io/">CMPUT 404</a></h1></hgroup>
+              <hgroup><h1><a href="https://uofa-cmput404.github.io/">CMPUT 404</a></h1><p>Web Applications and Architecture</p></hgroup>
         <nav><ul>
-            <li><a href="https://uofa-cmput404.github.io/" >Home</a></li>
-            <li><a href="https://uofa-cmput404.github.io/pages/labs.html" >Labs</a></li>
-            <li><a href="https://uofa-cmput404.github.io/pages/outline202401.html" >Course Outline</a></li>
-            <li><a href="https://uofa-cmput404.github.io/pages/project.html" >Project</a></li>
+            <li><a href="/general/outline.html">Outline</a></li>
+            <li><a href="https://eclass.srv.ualberta.ca/course/view.php?id=95227">eClass</a></li>
+            <li><a href="/general/schedule.html">Schedule</a></li>
+            <li><a href="/general/labs.html">Labs</a></li>
+            <li><a href="/general/project.html">Project</a></li>
+            <li><a href="/general/resources.html">Resources</a></li>
+            <li><a href="/general/help.html">Help</a></li>
         </ul></nav>
         </header>
         <main>
@@ -37,7 +41,7 @@
   </header>
   <hr>
 <p>Create a basic RESTful web application backend using <a href="http://flask.pocoo.org/">Flask</a>. Consume the API endpoints using <a href="https://curl.haxx.se/"><code>cURL</code></a> and <a href="https://httpie.org/"><code>httpie</code></a>.</p>
-<h3 id="flask">Flask</h3>
+<h5 id="flask">Flask</h5>
 <p>Navigate to a new folder and initialize a new Python virtual environment.</p>
 <div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>cmput404lab7
 <span class="nb">cd</span><span class="w"> </span>cmput404lab7
@@ -183,7 +187,7 @@ curl<span class="w"> </span>-v<span class="w"> </span>-X<span class="w"> </span>
 curl<span class="w"> </span>-v<span class="w"> </span>-X<span class="w"> </span>PUT<span class="w"> </span>localhost:5000/todos/3<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;task=profit more&quot;</span>
 </code></pre></div>
 
-<h3 id="httpie">Httpie</h3>
+<h5 id="httpie">Httpie</h5>
 <p>In addition to using <code>cURL</code>, <a href="https://httpie.org/"><code>httpie</code></a> is specifically designed for interacting with RESTful JSON APIs. It has colour output and automatically pretty prints JSON for you.</p>
 <div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>httpie
 http<span class="w"> </span>localhost:5000/todos
@@ -218,12 +222,12 @@ http<span class="w"> </span>POST<span class="w"> </span>:5000/todos<span class="
       By           <a href="https://uofa-cmput404.github.io/author/alexander-wong.html">Alexander Wong</a>
     </address>
     <p>
-        Category: <a href="https://uofa-cmput404.github.io/category/lab.html">Lab</a>
+        Category: <a href="https://uofa-cmput404.github.io/category/old_labs.html">old_labs</a>
     </p>
     <p>
         Tags:
-            <a href="https://uofa-cmput404.github.io/tag/flask.html">flask</a>
-            <a href="https://uofa-cmput404.github.io/tag/python.html">python</a>
+            <a href="https://uofa-cmput404.github.io/tag/homework.html">homework</a>
+            <a href="https://uofa-cmput404.github.io/tag/lab.html">lab</a>
     </p>
   </footer>
   </article>

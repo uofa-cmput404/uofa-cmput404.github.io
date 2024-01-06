@@ -5,6 +5,7 @@
         <meta charset="utf-8" />
         <meta name="generator" content="Pelican" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Web Applications and Architecture" />
 
   <link rel="icon" href="https://uofa-cmput404.github.io/theme/favicon.ico" />
   <link rel="stylesheet" type="text/css" href="https://uofa-cmput404.github.io/theme/style.css" />
@@ -12,19 +13,22 @@
 
 
 
-    <meta name="tags" content="pelican" />
-    <meta name="tags" content="html css" />
+    <meta name="tags" content="homework" />
+    <meta name="tags" content="lab" />
 
 </head>
 
 <body>
         <header>
-              <hgroup><h1><a href="https://uofa-cmput404.github.io/">CMPUT 404</a></h1></hgroup>
+              <hgroup><h1><a href="https://uofa-cmput404.github.io/">CMPUT 404</a></h1><p>Web Applications and Architecture</p></hgroup>
         <nav><ul>
-            <li><a href="https://uofa-cmput404.github.io/" >Home</a></li>
-            <li><a href="https://uofa-cmput404.github.io/pages/labs.html" >Labs</a></li>
-            <li><a href="https://uofa-cmput404.github.io/pages/outline202401.html" >Course Outline</a></li>
-            <li><a href="https://uofa-cmput404.github.io/pages/project.html" >Project</a></li>
+            <li><a href="/general/outline.html">Outline</a></li>
+            <li><a href="https://eclass.srv.ualberta.ca/course/view.php?id=95227">eClass</a></li>
+            <li><a href="/general/schedule.html">Schedule</a></li>
+            <li><a href="/general/labs.html">Labs</a></li>
+            <li><a href="/general/project.html">Project</a></li>
+            <li><a href="/general/resources.html">Resources</a></li>
+            <li><a href="/general/help.html">Help</a></li>
         </ul></nav>
         </header>
         <main>
@@ -39,7 +43,7 @@
 <p>Create a static page using <a href="https://blog.getpelican.com/">Pelican</a>, or write plain html. Deploy using <a href="https://pages.github.com/">GitHub pages</a>. Learn to style the basic theme.</p>
 <p>Answers to the questions should be submitted to <em>Lab 5</em> on eClass. Feel free to follow along with the <a href="https://docs.getpelican.com/en/stable/quickstart.html">official documentation</a>.</p>
 <p><em>aside</em>: These lab instructions are currently using Pelican and hosted on Github Pages!</p>
-<h3 id="initializing-the-project">Initializing the Project</h3>
+<h5 id="initializing-the-project">Initializing the Project</h5>
 <p>Create a repository on Github for your github hosted page.</p>
 <ul>
 <li>If using a <strong>User or Organization site</strong>, the repo must be named <code>${username}.github.io</code><ul>
@@ -93,7 +97,7 @@ needed<span class="w"> </span>by<span class="w"> </span>Pelican.
 Done.<span class="w"> </span>Your<span class="w"> </span>new<span class="w"> </span>project<span class="w"> </span>is<span class="w"> </span>available<span class="w"> </span>at<span class="w"> </span>/path/to/your/project
 </code></pre></div>
 
-<h3 id="create-your-first-article">Create your first Article</h3>
+<h5 id="create-your-first-article">Create your first Article</h5>
 <p>Create a file inside <em>content</em> with some content. For example, you can use <em>content/my-first-article.md</em> with the following:</p>
 <div class="highlight"><pre><span></span><code>Title: My First Article
 Date: 2019-01-07 8:00
@@ -103,7 +107,7 @@ I like free static web hosting.
 </code></pre></div>
 
 <p>Generate and preview your site using <code>make devserver</code>. Your site should now be available at <a href="http://localhost:8000">http://localhost:8000</a>.</p>
-<h3 id="deploy-your-page-to-github">Deploy your page to Github</h3>
+<h5 id="deploy-your-page-to-github">Deploy your page to Github</h5>
 <p>Update <em>publishconf.py</em> and set <code>SITEURL</code> to your github given url.</p>
 <ul>
 <li>If using <strong>User or Organization site</strong>, deploy using <code>make github</code>.<ul>
@@ -116,7 +120,7 @@ I like free static web hosting.
 </ul>
 </li>
 </ul>
-<h3 id="theme-your-static-site">Theme your static site</h3>
+<h5 id="theme-your-static-site">Theme your static site</h5>
 <p>Make a directory called <em>templates</em>. Within this directory, create a new theme directory containing a templates folder and a static folder.</p>
 <div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>-p<span class="w"> </span>templates/mytheme/<span class="o">{</span>static,templates<span class="o">}</span>
 </code></pre></div>
@@ -166,12 +170,12 @@ touch<span class="w"> </span>templates/mytheme/static/style.css
       By           <a href="https://uofa-cmput404.github.io/author/alexander-wong.html">Alexander Wong</a>
     </address>
     <p>
-        Category: <a href="https://uofa-cmput404.github.io/category/lab.html">Lab</a>
+        Category: <a href="https://uofa-cmput404.github.io/category/old_labs.html">old_labs</a>
     </p>
     <p>
         Tags:
-            <a href="https://uofa-cmput404.github.io/tag/pelican.html">pelican</a>
-            <a href="https://uofa-cmput404.github.io/tag/html-css.html">html css</a>
+            <a href="https://uofa-cmput404.github.io/tag/homework.html">homework</a>
+            <a href="https://uofa-cmput404.github.io/tag/lab.html">lab</a>
     </p>
   </footer>
   </article>

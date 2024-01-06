@@ -5,6 +5,7 @@
         <meta charset="utf-8" />
         <meta name="generator" content="Pelican" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Web Applications and Architecture" />
 
   <link rel="icon" href="https://uofa-cmput404.github.io/theme/favicon.ico" />
   <link rel="stylesheet" type="text/css" href="https://uofa-cmput404.github.io/theme/style.css" />
@@ -12,19 +13,22 @@
 
 
 
-    <meta name="tags" content="nodejs" />
-    <meta name="tags" content="websockets" />
+    <meta name="tags" content="homework" />
+    <meta name="tags" content="lab" />
 
 </head>
 
 <body>
         <header>
-              <hgroup><h1><a href="https://uofa-cmput404.github.io/">CMPUT 404</a></h1></hgroup>
+              <hgroup><h1><a href="https://uofa-cmput404.github.io/">CMPUT 404</a></h1><p>Web Applications and Architecture</p></hgroup>
         <nav><ul>
-            <li><a href="https://uofa-cmput404.github.io/" >Home</a></li>
-            <li><a href="https://uofa-cmput404.github.io/pages/labs.html" >Labs</a></li>
-            <li><a href="https://uofa-cmput404.github.io/pages/outline202401.html" >Course Outline</a></li>
-            <li><a href="https://uofa-cmput404.github.io/pages/project.html" >Project</a></li>
+            <li><a href="/general/outline.html">Outline</a></li>
+            <li><a href="https://eclass.srv.ualberta.ca/course/view.php?id=95227">eClass</a></li>
+            <li><a href="/general/schedule.html">Schedule</a></li>
+            <li><a href="/general/labs.html">Labs</a></li>
+            <li><a href="/general/project.html">Project</a></li>
+            <li><a href="/general/resources.html">Resources</a></li>
+            <li><a href="/general/help.html">Help</a></li>
         </ul></nav>
         </header>
         <main>
@@ -37,9 +41,9 @@
   </header>
   <hr>
 <p>Learn how to utilize <a href="https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API">WebSockets</a> and <a href="https://phaser.io/">Phaser.io</a>. Create a basic Phaser game with WebSocket connectivity for real-time server to client communication. Use <a href="https://nodejs.org/en/">Node.js</a> for our application server. Use <a href="https://www.typescriptlang.org/">TypeScript</a> with <a href="https://parceljs.org/">Parcel</a> for bundling browser client code.</p>
-<h3 id="install-nodejs">Install Node.js</h3>
+<h5 id="install-nodejs">Install Node.js</h5>
 <p>There are two different ways you can try to install node.js!</p>
-<h4 id="option-1-install-node-on-my-own-computer">Option 1: Install node on my own computer</h4>
+<h6 id="option-1-install-node-on-my-own-computer">Option 1: Install node on my own computer</h6>
 <p>If you don't already have node.js installed, 
 download and install node from the node from the 
 <a href="https://nodejs.org/en/download/">node.js website</a>.</p>
@@ -57,7 +61,7 @@ is fine.)</p>
 a more recent version of node from the 
 <a href="https://nodejs.org/en/download/">node.js website</a> or follow the instructions
 in the next section for the lab machines and VM.</p>
-<h4 id="option-2-install-node-with-nvm">Option 2: Install Node with NVM</h4>
+<h6 id="option-2-install-node-with-nvm">Option 2: Install Node with NVM</h6>
 <p>NVM allows you to install multiple versions of node on Linux or Macs
 without being an administrator or root user.</p>
 <p>NVM does not work on windows.</p>
@@ -90,7 +94,7 @@ npm<span class="w"> </span>--version
 <span class="c1"># 6.7.0</span>
 </code></pre></div>
 
-<h3 id="initialize-phaser-and-websockerserver">Initialize Phaser and WebSockerServer</h3>
+<h5 id="initialize-phaser-and-websockerserver">Initialize Phaser and WebSockerServer</h5>
 <p>Fork this repository and clone it locally onto your own machine.</p>
 <ul>
 <li><a href="https://github.com/uofa-cmput404/nodejs-ws-lab">github.com/uofa-cmput404/nodejs-ws-lab</a></li>
@@ -112,7 +116,7 @@ running <code>npm install parcel-bundler@1.12.3</code>.</p>
 <p><strong>Question 1</strong>: What do you see in the browser? When you open another tab and perform a click/drag action, what happens?</p>
 <p><strong>Question 2</strong>: What are some of the differences between TypeScript and JavaScript?</p>
 <p><strong>Question 3</strong>: Why is a web application bundler (Parcel, Webpack, Rollup, etc.) useful for modern web projects? What are some features that <a href="https://parceljs.org/">ParcelJS</a> provides?</p>
-<h3 id="top-down-scroller">Top Down Scroller</h3>
+<h5 id="top-down-scroller">Top Down Scroller</h5>
 <p>We will now utilize the other assets and create a top down game where we control our character using the arrow keys.</p>
 <p>Checkout the <a href="https://github.com/uofa-cmput404/nodejs-ws-lab/tree/topdown"><code>topdown</code></a> branch from GitHub and make note of the changes in <code>client.ts</code>.</p>
 <div class="highlight"><pre><span></span><code>git<span class="w"> </span>remote<span class="w"> </span>-v<span class="w"> </span><span class="c1"># show your current remotes</span>
@@ -122,7 +126,7 @@ git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </
 </code></pre></div>
 
 <p>Within <code>client.ts</code> the <code>preload</code> function is now loading our required assets. The <code>create</code> function has been updated to use our tilemap data, spritesheet, and character assets. Additional logic for handling animations and keyboard input has also been added. An <code>update</code> function has been added to handle input logic and playing our sprite animations.</p>
-<h3 id="multiplayer-top-down-scroller">Multiplayer Top Down Scroller</h3>
+<h5 id="multiplayer-top-down-scroller">Multiplayer Top Down Scroller</h5>
 <p>The <code>init</code> function will require modifications to work with multiple players.</p>
 <p>Add a function that generates UUIDs before the Scene class. For this toy example, the following modified from <a href="https://gist.github.com/jed/982883">github gist</a> is acceptable:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">uuid</span><span class="p">(</span>
@@ -293,12 +297,12 @@ git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </
       By           <a href="https://uofa-cmput404.github.io/author/alexander-wong.html">Alexander Wong</a>
     </address>
     <p>
-        Category: <a href="https://uofa-cmput404.github.io/category/lab.html">Lab</a>
+        Category: <a href="https://uofa-cmput404.github.io/category/old_labs.html">old_labs</a>
     </p>
     <p>
         Tags:
-            <a href="https://uofa-cmput404.github.io/tag/nodejs.html">nodejs</a>
-            <a href="https://uofa-cmput404.github.io/tag/websockets.html">websockets</a>
+            <a href="https://uofa-cmput404.github.io/tag/homework.html">homework</a>
+            <a href="https://uofa-cmput404.github.io/tag/lab.html">lab</a>
     </p>
   </footer>
   </article>

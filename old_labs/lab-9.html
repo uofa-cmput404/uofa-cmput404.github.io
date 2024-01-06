@@ -5,6 +5,7 @@
         <meta charset="utf-8" />
         <meta name="generator" content="Pelican" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Web Applications and Architecture" />
 
   <link rel="icon" href="https://uofa-cmput404.github.io/theme/favicon.ico" />
   <link rel="stylesheet" type="text/css" href="https://uofa-cmput404.github.io/theme/style.css" />
@@ -12,19 +13,22 @@
 
 
 
-    <meta name="tags" content="django" />
-    <meta name="tags" content="authentication" />
+    <meta name="tags" content="homework" />
+    <meta name="tags" content="lab" />
 
 </head>
 
 <body>
         <header>
-              <hgroup><h1><a href="https://uofa-cmput404.github.io/">CMPUT 404</a></h1></hgroup>
+              <hgroup><h1><a href="https://uofa-cmput404.github.io/">CMPUT 404</a></h1><p>Web Applications and Architecture</p></hgroup>
         <nav><ul>
-            <li><a href="https://uofa-cmput404.github.io/" >Home</a></li>
-            <li><a href="https://uofa-cmput404.github.io/pages/labs.html" >Labs</a></li>
-            <li><a href="https://uofa-cmput404.github.io/pages/outline202401.html" >Course Outline</a></li>
-            <li><a href="https://uofa-cmput404.github.io/pages/project.html" >Project</a></li>
+            <li><a href="/general/outline.html">Outline</a></li>
+            <li><a href="https://eclass.srv.ualberta.ca/course/view.php?id=95227">eClass</a></li>
+            <li><a href="/general/schedule.html">Schedule</a></li>
+            <li><a href="/general/labs.html">Labs</a></li>
+            <li><a href="/general/project.html">Project</a></li>
+            <li><a href="/general/resources.html">Resources</a></li>
+            <li><a href="/general/help.html">Help</a></li>
         </ul></nav>
         </header>
         <main>
@@ -59,7 +63,7 @@ http<span class="w"> </span>-a<span class="w"> </span>username:password<span cla
 </code></pre></div>
 
 <p><strong>Question 2</strong>: What authentication scheme is used by <code>httpie</code> when querying with the <code>-a</code> or <code>--auth</code> option flag?</p>
-<h3 id="configure-token-authentication">Configure Token Authentication</h3>
+<h5 id="configure-token-authentication">Configure Token Authentication</h5>
 <p>Official documentation can be found <a href="https://www.django-rest-framework.org/api-guide/authentication/#tokenauthentication">here</a>.</p>
 <p>Within <code>authlab/settings.py</code>, add <code>rest_framework.authtoken</code> into the <code>INSTALLED_APPS</code> setting. include <code>TokenAuthentication</code> in the Django Rest Framework settings.</p>
 <div class="highlight"><pre><span></span><code><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
@@ -100,7 +104,7 @@ then you should run the command:</p>
 </code></pre></div>
 
 <p><strong>Question 3</strong>: What is the difference between <code>Session Authentication</code> and <code>Token Authentication</code>? How is <code>Token Authentication</code> an improvement over <code>Basic Authentication</code>?</p>
-<h3 id="identity-and-authentication">Identity and Authentication</h3>
+<h5 id="identity-and-authentication">Identity and Authentication</h5>
 <p>Identity management on the web can be a difficult problem. Consider the following features a good web application may have for identity management:</p>
 <ul>
 <li>Forgot Password/Forgot Username workflows</li>
@@ -137,12 +141,12 @@ then you should run the command:</p>
       By           <a href="https://uofa-cmput404.github.io/author/alexander-wong.html">Alexander Wong</a>
     </address>
     <p>
-        Category: <a href="https://uofa-cmput404.github.io/category/lab.html">Lab</a>
+        Category: <a href="https://uofa-cmput404.github.io/category/old_labs.html">old_labs</a>
     </p>
     <p>
         Tags:
-            <a href="https://uofa-cmput404.github.io/tag/django.html">django</a>
-            <a href="https://uofa-cmput404.github.io/tag/authentication.html">authentication</a>
+            <a href="https://uofa-cmput404.github.io/tag/homework.html">homework</a>
+            <a href="https://uofa-cmput404.github.io/tag/lab.html">lab</a>
     </p>
   </footer>
   </article>
