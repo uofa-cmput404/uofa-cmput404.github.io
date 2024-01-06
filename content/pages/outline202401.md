@@ -15,19 +15,20 @@ Status: published
 
 * Monday Wednesday Friday, 1:00PM to 1:50PM, CAB 265
 * Hybrid Synchronous. Recordings will not be available without an approved excuse or registered accommodations. You must attend live.
+    * You will be required to attend in person for some lectures/labs. 
 
 ## Labs
 
-* D01: Monday, 5:00PM to 7:50PM, SAB 3-31
-* D02: Wednesday, 5:00PM to 7:50PM, SAB 3-31
+* H01: Monday, 5:00PM to 7:50PM, SAB 3-31
+* H02: Wednesday, 5:00PM to 7:50PM, SAB 3-31
 * [Lab Information](labs.html)
 
 ## Contact Information
 
 * Lecturer: Dr. Hazel Victoria Campbell
     * **Email**: <hazel.campbell@ualberta.ca>
-    * **Office**: ATH 4-05
-    * **Office hours (ATH 4-05):** After lecture
+    * **Office**: [ATH](http://www.campusmap.ualberta.ca/?b=ath) 4-05
+    * **Office hours (ATH 4-05):** TBA
     * **Office hours (Zoom):** _(email to make an appointment)_
 
 ## Course Content
@@ -71,7 +72,7 @@ The weekly topic schedule is likely to be updated during the term; please see [t
 
 ### On-Line Homework Disclaimer
 
-On-line homework is a component of this course and is provided by at least one third-party company. However, this company will not have access to any assessment information. They will have access to your homework, but not to your grades, academic performance, or feedback. If you have any concerns about this, please contact the instructor of this course.
+On-line homework is a component of this course and is provided by at least one third-party company. Please be aware that these companies will be storing assessment information that may be associated with you. They will have access to your homework, but not to your name, Student ID, overall academic performance, or feedback. If you have any concerns about this, please contact the instructor of this course.
 
 1. Registration in the system and any monetary transactions are of your own accord and not the responsibility of the University.
 2. Students should be mindful of protecting their personal information and should be aware of how their personal information might be used and/or shared.
@@ -83,14 +84,19 @@ The [Academic Success Centre](https://www.ualberta.ca/current-students/academic-
 
 ## Grade Evaluation
 
-Note the last column, it shows collaboration models for each unit of work. These styles are better described on the [CS course policy page](https://www.cs.ualberta.ca/resources-services/policy-information/department-course-policies).
+Note the last column, it shows collaboration models for each unit of work. These styles are better described on the [CS course policy page](https://www.ualberta.ca/computing-science/resources/policy-information/department-course-policies.html).
 
-|What                     |Weight|Collaboration|
-|-------------------------|------|-------------|
-|Participation            |10%   |Solo Effort  |
-|Lab Assignments          |30%   |Consultation |
-|Project                  |30%   |Teamwork     |
-|Final Exam               |30%   |Solo Effort  |
+| What                    | Weight | Collaboration |
+|-------------------------|--------|---------------|
+| Participation           | 10%    | Solo Effort   |
+| Lab Assignments (5-6)   | 30%    | Consultation  |
+| Project Part 0          | 1%     | Teamwork      |
+| Project Part 1          | 7%     | Teamwork      |
+| Project Part 2          | 7%     | Teamwork      |
+| Project Part 3          | 5%     | Teamwork      |
+| Project Part 4          | 10%    | Teamwork      |
+| Final Exam              | 30%    | Solo Effort   |
+| Extra Credit            | +1%    | Solo Effort   | 
 
 Grades are unofficial until approved by the Department and/or Faculty offering the course.
 
@@ -168,8 +174,8 @@ Re-Evaluation of Term Work follows the [Computing Science department course poli
 
 ### Re-examination
 
-There is no possibility of a re-examination in this course.
-<!--A student who writes the final examination and fails the course may apply for a re-examination.  Re-examinations are rarely granted in the Faculty of Science.  Re-examinations are governed by [university-wide Academic Regulations](https://calendar.ualberta.ca/content.php?catoid=39&navoid=12216#reexaminations) and [Faculty of Science Academic Regulations](https://calendar.ualberta.ca/content.php?catoid=39&navoid=12231#reexamination). Misrepresentation of Facts to gain a re-examination is a serious breach of the Code of Student Behaviour.-->
+<!--There is no possibility of a re-examination in this course.-->
+A student who writes the final examination and fails the course may apply for a re-examination.  Re-examinations are rarely granted in the Faculty of Science.  Re-examinations are governed by [university-wide Academic Regulations](https://calendar.ualberta.ca/content.php?catoid=39&navoid=12216#reexaminations) and [Faculty of Science Academic Regulations](https://calendar.ualberta.ca/content.php?catoid=39&navoid=12231#reexamination). Misrepresentation of Facts to gain a re-examination is a serious breach of the Code of Student Behaviour.
 
 ### Past or Representative evaluative Material
 
@@ -198,10 +204,25 @@ Failure to participate on time for any reason will result in a mark of zero. Ple
 
 Unless otherwise instructed by an instructor, **this course requires attendance in-person or via Zoom during the scheduled lectures and labs.** Some lectures or labs require in-person attendance, like the last lab for presentations, and for exams.
 
-**Recordings of Synchronous Activities**:
-Please note that class times for this course **will be recorded**. Recordings of this course will be used for the purposes of allowing students who missed class due to illness to review missed lectures, for review before the final exam, and will be disclosed to other students enrolled in this section of the class, all instructors and teaching assistants.
-Students have the right to not participate in the recording and are advised to turn off their cameras and audio prior to recording; they can still participate through text-based chat. It is recommended that students remove all identifiable and personal belongings from the space in which they will be participating.
-Recordings will be made available until Dec. 31, 2023, etc. and accessible by eClass, Google Drive, or Zoom Cloud Storage. Please direct any questions about this collection to the instructor of this course.
+* **Most Lectures** will be given in **hybrid** format. The lecture will be given in the lecture room on campus. At the same time, the lecture will also be streamed via Zoom and a recording of the lecture content will be made.
+    * Lecture recordings will be available **on request only**. If you want a lecture recording, you must contact the instructor.
+    * Students are expected to attend during the lecture either on Zoom or in-person.
+    * **Presentations and Guest Lectures** will be given **in-person only.**
+* **Most lab sessions** will be available in a hybrid format: you may attend either in-person or online.
+    * For group projects, the entire group must be online, or the entire group must be in-person.
+    * For **group presentation**, you must present **in-person**.
+* **Exams** must be taken **in-person**. They will not be online. You must bring your Student ID (One Card).
+* **Scheduled office hours** will be available **in-person**.
+    * Additional **office appointments** will be conducted **online** (usually Zoom, maybe Google Meet). Email the instructor to set up an appointment.
+
+### Recordings of Synchronous Activities
+
+* Please note that class times for this course will be recorded. Recordings of this course will be used for the purposes of accommodating students who experienced illness, domestic affliction, improving accessibility and will be disclosed to other students enrolled in this section of the class, teaching assistants, university officials, and other professors in the CS department.
+* Students have the right to not participate in the recording and are advised to turn off their cameras and audio prior to recording; they can still participate through text-based chat. It is recommended that students remove all identifiable and personal belongings from the space in which they will be participating.
+* Recordings will be kept until the end of the semester and accessible by eClass, Google Drive, or Zoom Cloud Storage. Please direct any questions about this collection to the instructor of this course.
+* Recordings will be made available only to students who are unable to attend in person or via Zoom at the time of the leture due to incapacitating illness, severe domestic affliction, duty to accommodate or other compelling reasons.
+
+### In Case of Emergency
 
 However, **in the case that some parts of the class are moved on-line,** for example due to an emergency the following will apply:
 
@@ -219,7 +240,8 @@ However, **in the case that some parts of the class are moved on-line,** for exa
 
 ## Student Responsibilities
 
-**Academic Integrity and Student Conduct**: 
+### Academic Integrity and Student Conduct
+
 The University of Alberta is committed to the highest standards of academic integrity and honesty, as well as maintaining a learning environment that fosters the safety, security, and the inherent dignity of each member of the community, ensuring students conduct themselves accordingly. Students are expected to be familiar with the standards of academic honesty and appropriate student conduct, and to uphold the policies of the University in this respect. Students are particularly urged to familiarize themselves with the provisions of the [Code of Student Behaviour](https://www.ualberta.ca/governance/resources/policies-standards-and-codes-of-conduct/code-of-student-behaviour.html) and the [Student Conduct Policy](https://policiesonline.ualberta.ca/PoliciesProcedures/Policies/Student-Conduct-Policy.pdf#search=Student%20Conduct%20Policy), and avoid any behaviour that could potentially result in suspicions of academic misconduct (e.g., cheating, plagiarism, misrepresentation of facts) and non-academic misconduct (e.g., discrimination, harassment, physical assault). Academic and non-academic misconduct are taken very seriously and can result in suspension or expulsion from the University.
 
 All students are expected to consult the [Academic Integrity website ](https://www.ualberta.ca/current-students/academic-resources/academic-integrity)for clarification on the various academic offences. All forms of academic dishonesty are unacceptable at the University. Any suspected academic offence in this course will be reported to the College of Natural and Applied Sciences. Suspected cases of non-academic misconduct will be reported to the Dean of Students. The College, the Faculty of Science, and the Dean of Students are committed to student rights and responsibilities, and adhere to due process and administrative fairness, as outlined in the Code of Student Behaviour and the Student Conduct Policy. Anyone who is found in violation is likely to receive a sanction. Typical sanctions for academic misconduct include conduct probation, a mark reduction or a mark of 0 on an assessment, a grade reduction or a grade of F in a course, a remark on the transcript, and a recommendation for suspension or expulsion. Sanctions for non-academic misconduct include conduct conditions, fines, suspension of essential or non-essential University services and resources, and suspension or expulsion from the University.
@@ -228,36 +250,78 @@ All students are expected to consult the [Academic Integrity website ](https://w
 
 Exams are confidential. No discussion of the contents of the exam is permitted except with instructors.
 
+## Apropriate Collaboration: Quizzes & Participation
+
+Quizzes and Participation are **Solo Effort** and must be completed by the student registered in the course without external assistance from any individual or organization. *Students may only submit work authored by themselves.*
+
 ### Appropriate Collaboration: Labs & Assignments
 
 Students are not permitted to copy solutions on homework assignments. Here are some tips to avoid copying on assignments:
 
 1. Do not write down something that you cannot explain to your instructor.
-2. When you are helping other students, avoid showing them your work directly. Instead, explain your solution verbally. Students whose work is copied also receive academic sanctions.
-3. If you find yourself reading another student's solution, do not write anything down. Once you understand how to solve the problem, remove the other person's work from your sight and then write up the solution to the question yourself. Looking back and forth between someone else's paper and your own paper is almost certainly copying and will result in academic sanctions for both you and your fellow student.
+2. Do not copy and paste something that you cannot explain to your instructor.
+3. Do not copy and paste something without citing it.
+2. When you are helping other students, avoid showing them your work directly. Instead, explain your solution verbally in terms of ideas instead of reading them your code. Students whose work is copied also receive academic sanctions.
+3. If you find yourself reading another student's solution, do not write anything down. Once you understand how to solve the problem, remove the other person's work from your sight and then write up the solution to the question yourself. Looking back and forth between someone else's paper and your own paper is copying and will result in academic sanctions for both you and your fellow student.
 4. If the instructor or TA writes down part of a solution in order to help explain it to you or the class, you cannot copy it and hand it in for credit.
 Treat it the same way you would treat another student's work with respect to copying, that is, remove the explanation from your sight and then write up the solution yourself.
 5. There is often more than one way to solve a problem. Choose the method that makes the most sense to you rather than the method that other students happen to use. If none of the ideas in your solution are your own, there is a good chance it will be flagged as copying.
 
+* Each student must be able to verbally describe their exam answers and code, line by line, to a professor or TA, if asked to do so. Your mark may be reduced if you aren't able to explain your own work satisfactorily.
+* For some of the substantial programming assignments and homework questions, students may discuss the concepts covered by the assignment with other students registered in the course as long as they do not share actual solutions or programming code.
+* If you include code or ideas from someone who isn't you (including from an Generative AI or LLM) you must cite it. Here is an example of an appropriate citation:
+
+```.py
+# The following function from Django Software Foundation and contributors, "Writing your first Django app, part 2", 2024-01-05
+class Choice(models.Model):
+    question = models.ForeignKey(Question, on_delete=models.CASCADE)
+    choice_text = models.CharField(max_length=200)
+    votes = models.IntegerField(default=0)
+```
+
+For programming assignments software tools are used to detect plagiarism. When the software tools indicate that there is similarity between two submissions, the submissions are reviewed by the instructor or teaching assistant. If the possibility that the standards for academic honesty were violated is confirmed, an investigation is started. Eventually the submitted solutions may be forwarded to the Faculty of Science Associate Dean of Students for further investigation and eventual sanctions. Submissions will be retained for future comparisons.
+
 ### Appropriate Collaboration: Group Projects
 
-As long as you are a part of a group, you are responsible for everything in the group project, whether or not you participated in every component.
+* As long as you are a part of a group, you are responsible for everything in the group project, whether or not you participated in every component.
+* A group may only submit work authored by group members or appropriately cited and credited code that does not violate the author's license.
 
-[More information about appropriate collaboration.](https://www.ualberta.ca/current-students/academic-resources/academic-integrity/collaboration.html)
+### Appropriate Collaboration: General
 
-**Exam Conduct**:
+* [More information about appropriate collaboration.](https://www.ualberta.ca/current-students/academic-resources/academic-integrity/collaboration.html)
+* [CS Department Course Policies](https://www.ualberta.ca/computing-science/resources/policy-information/department-course-policies.html)
 
+### Exam Conduct
+
+* If you are not on the class list, you may not write the examination.
 * Your student photo I.D. is required at exams to verify your identity.  
 * Students will not be allowed to begin an examination after it has been in progress for 30 minutes.  Students must remain in the exam room until at least 30 minutes has elapsed.
-* All electronic devices must be turned off and stored in your bags. The only permitted electronics are those being used for accessibility or accomodations.
+* Do not start the test or open the test booklet until instructed.
+* All electronic devices must be turned off and stored in your bags. The only permitted electronics are those being used for accessibility or accomodations. This includes calculators, smart watches, and headphones.
+* If noise distracts you, bring ear plugs.
+* You must leave your bag at the front of the classroom.
+* Do not write down letters for multiple-choice questions, circle your answer.
+* You are not allowed to keep any part of the exam, scratch paper, or your notes.
+* You must sign the class list and the exam.
 
-**Cell Phones**: Cell phones are to be turned off during lectures, labs and seminars.
+### Lecture Conduct
+
+* Cell phone audio/ringers are to be turned off during lectures, labs and seminars.
+* Cell phone and computer use during the lecture is only permitted for participation, note-taking, and other activities directly related to the lecture.
 
 ### Students Eligible for Accessibility-Related Accommodations
 
 In accordance with the University of Alberta’s [Discrimination, Harassment, and Duty to Accommodate](https://policiesonline.ualberta.ca/PoliciesProcedures/Policies/Discrimination-Harassment-and-Duty-to-Accommodate-Policy.pdf) policy, accommodation support is available to eligible students who encounter limitations or restrictions to their ability to perform the daily activities necessary to pursue studies at a post-secondary level due to medical conditions and/or non-medical protected grounds. Accommodations are coordinated through the [Academic Success Centre](https://www.ualberta.ca/current-students/academic-success-centre/index.html), and students can learn more about eligibility on the [Register for Accommodations website](https://www.ualberta.ca/current-students/academic-success-centre/accessibility-resources/register/index.html).  
 
 It is recommended that students apply as early as possible in order to ensure sufficient time to complete accommodation registration and coordination. Students are advised to review and adhere to published deadlines for accommodation approval and for specific accommodation requests (e.g., exam registration submission deadlines). Students who request accommodations less than a month in advance of the academic term for which they require accommodations may experience unavoidable delays or consequences in their academic programs, and may need to consider alternative academic schedules.
+
+### Required Equipment
+
+A tablet, phone, or other mobile device will NOT work for this course. You need a laptop or desktop computer, running Windows, Mac OS X/11+, or Linux. A Chromebook probably will not work unless it can run Ubuntu.
+
+### On-Campus Computer Labs
+
+See the [Undergraduate Conditions of Use](https://www.ualberta.ca/computing-science/resources/policy-information/undergraduate-conditions-of-use.html) and [Lab Policies](https://www.ualberta.ca/computing-science/resources/policy-information/lab-policies.html) for information about undergraduate labs.
 
 ### Recording and/or Distribution of Course Materials
 
@@ -285,6 +349,10 @@ This [Self-Care Guide](https://drive.google.com/file/d/1t5fqgXCG369tt5hDxrzQuvlT
 
 Policy about course outlines can be found in [Course Requirements, Evaluations Procedures and Grading](https://calendar.ualberta.ca/content.php?catoid=39&navoid=12216#course-requirements-evaluation-procedures-and-grading) of the University Calendar.
 
+Policies applicable to CS Department courses can be found on the [Department Course Policies](https://www.ualberta.ca/computing-science/resources/policy-information/department-course-policies.html) page.
+
+----------------------------------------------------------------------------
+
 **Land Acknowledgement**:
 The University of Alberta respectfully acknowledges that we are situated on Treaty 6 territory, traditional lands of First Nations and Métis people. 
 
@@ -294,11 +362,9 @@ To learn more about the significance of this land acknowledgement, please read [
 Any typographical errors in this Course Outline are subject to change and will be announced in class. The date of the final examination is set by the Registrar and takes precedence over the final examination date reported in this syllabus.
 
 **Copyright**:
-Dr. Hazel Campbell, Department of Computing Science, Faculty of Science, University of Alberta (2023).
+Dr. Hazel Campbell, Department of Computing Science, Faculty of Science, University of Alberta (2023, 2024).
 Dr. Abram Hindle, Department of Computing Science, Faculty of Science, University of Alberta (2023).
 
 ### Update History
 
-2023-08-31 - Draft
-2023-09-01 - Draft
-2023-09-06 - D02 Lab Room Updated
+* 2024-01-08: Initial version.

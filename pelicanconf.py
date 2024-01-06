@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
 
-AUTHOR = 'Hazel Victoria Campbell'
+AUTHOR = 'University of Alberta'
 SITENAME = 'CMPUT 404'
 SITEURL = ''
 
