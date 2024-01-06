@@ -17,9 +17,9 @@
               <hgroup><h1><a href="https://uofa-cmput404.github.io/">CMPUT 404</a></h1></hgroup>
         <nav><ul>
             <li><a href="https://uofa-cmput404.github.io/" >Home</a></li>
-            <li><a href="https://uofa-cmput404.github.io/pages/lab-rubric.html" >Lab Rubric</a></li>
-            <li><a href="https://uofa-cmput404.github.io/pages/course-outline.html" >Course Outline</a></li>
-            <li><a href="https://uofa-cmput404.github.io/category/lab.html" >Lab</a></li>
+            <li><a href="https://uofa-cmput404.github.io/pages/labs.html" >Labs</a></li>
+            <li><a href="https://uofa-cmput404.github.io/pages/outline202401.html" >Course Outline</a></li>
+            <li><a href="https://uofa-cmput404.github.io/pages/project.html" >Project</a></li>
         </ul></nav>
         </header>
         <main>
@@ -29,9 +29,22 @@
   </header>
     
 
-    <h1>Disables Jekyll</h1>
+    <hr>
+<h1 id="disables-jekyll">Disables Jekyll</h1>
 
 </article>
+
+<hr>
+<footer>
+    <address>
+        Copyright © 
+        <ul>
+          <li>Dr. Hazel Campbell, Department of Computing Science, Faculty of Science, University of Alberta (2019, 2023, 2024).</li>
+          <li>Dr. Abram Hindle, Department of Computing Science, Faculty of Science, University of Alberta (2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023).</li>
+          <li>Alexander Wong, 2019.</li>
+        </ul>      
+    </address>
+</footer>
         </main>
         <footer>
                 <address>
