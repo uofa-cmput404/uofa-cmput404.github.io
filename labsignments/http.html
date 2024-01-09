@@ -9,7 +9,7 @@
 
   <link rel="icon" href="../theme/favicon.ico" />
   <link rel="stylesheet" type="text/css" href="../theme/style.css" />
-  <link rel="stylesheet" type="text/css" href="../theme/style.css" />
+  <link rel="stylesheet" type="text/css" href="../theme/404.css" />
 
 
 
@@ -44,10 +44,50 @@
 <div class="toc">
 <ul>
 <li><a href="#submission-instructions">Submission Instructions</a></li>
+<li><a href="#tips">Tips</a><ul>
+<li><a href="#ubuntu-on-windows">Ubuntu on Windows</a></li>
+<li><a href="#for-macos-with-homebrew">For macOS with homebrew:</a></li>
+<li><a href="#for-windows-10-with-pip">For Windows 10 with pip:</a></li>
+<li><a href="#ubuntu-lab-computers">Ubuntu Lab Computers</a></li>
+</ul>
+</li>
 </ul>
 </div>
-<h4 id="submission-instructions">Submission Instructions</h4>
+<h3 id="submission-instructions">Submission Instructions</h3>
 <p>Submit a link to your repo in the form <code>https://github.com/uofa-cmput404/f23-assignment-ajax-hazelcam</code> on eClass. <strong>Do not</strong> submit a link to a branch, a file, or the clone url.</p>
+<p>Your submission needs to pass the free tests (included) and the secret tests (you don't have these).</p>
+<h3 id="tips">Tips</h3>
+<h4 id="ubuntu-on-windows">Ubuntu on Windows</h4>
+<p>Install Ubuntu on Windows using WSL2. </p>
+<h4 id="for-macos-with-homebrew">For macOS with homebrew:</h4>
+<ol>
+<li><code>brew install git</code></li>
+<li><code>brew install python@3</code></li>
+<li><code>sudo pip3 install virtualenv</code></li>
+</ol>
+<h4 id="for-windows-10-with-pip">For Windows 10 with pip:</h4>
+<p>In cmd (not powershell):</p>
+<ol>
+<li>pip install requests</li>
+<li>pip install virtualenv</li>
+<li>In your repository directory, <code>virtualenv venv --python=python3</code><ul>
+<li>if you get the error "virtualenv not found" try forcing a reinstall with pip install virtualenv --force-reinstall
+4 To activate: venv\Scripts\activate</li>
+</ul>
+</li>
+</ol>
+<p>As of 2018 all Windows 10 machines come pre-installed with curl, so you should have it already.  </p>
+<h4 id="ubuntu-lab-computers">Ubuntu Lab Computers</h4>
+<p>Connect to one of the lab machines at the University if needed. </p>
+<p>They are named like <code>ug01.cs.ualberta.ca</code>, <code>ug02.cs.ualberta.ca</code>, all the way up to <code>ug34.cs.ualberta.ca</code>:</p>
+<p>`ssh yourccid@ugXX.cs.ualberta.ca``</p>
+<p>For example:</p>
+<p><code>ssh hazelcam@ug15.cs.ualberta.ca</code></p>
+<p>To quit the ssh connection to the lab machine, use the exit command or press control-D on a blank prompt. If that does not work you can force close the connection by pressing enter, then ~, then .</p>
+<p><strong>Want to view stuff in terminal but it scrolled off the top of the page?</strong></p>
+<p>Try using the more command to scroll page by page. For example, you can pipe the output of curl to more to scroll through the output of curl page by page:</p>
+<p>curl -s url | more</p>
+<p>(The -s option to curl prevents curl from displaying download progress. You can combine it with other curl options like -i and -L.)</p>
   <footer>
     <p>Published: <time datetime="2024-01-06T00:00:00-07:00">
       Sat, 06 Jan 2024 at 00:00 MST
