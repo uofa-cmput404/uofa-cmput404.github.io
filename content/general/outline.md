@@ -22,8 +22,8 @@ summary: University of Alberta <br> CMPUT 404 - Web Applications and Architectur
 
 # Labs
 
-* H01: Monday, 5:00PM to 7:50PM, SAB 3-31
-* H02: Wednesday, 5:00PM to 7:50PM, SAB 3-31
+* H01: Monday, 5:00PM to 7:50PM, [CSC](http://www.campusmap.ualberta.ca/?b=csc) B-10
+* H02: Wednesday, 5:00PM to 7:50PM, [NRE](http://www.campusmap.ualberta.ca/?b=csc) 2-003
 * [Lab Information]({filename}/general/labs.md)
 
 # Contact Information
@@ -31,7 +31,7 @@ summary: University of Alberta <br> CMPUT 404 - Web Applications and Architectur
 * Lecturer: Dr. Hazel Victoria Campbell
     * **Email**: <hazel.campbell@ualberta.ca>
     * **Office**: [ATH](http://www.campusmap.ualberta.ca/?b=ath) 4-05
-    * **Office hours (ATH 4-05):** TBA
+    * **Office hours (ATH 4-05):** Monday, Wednesday, Friday 2:10-2:50PM
     * **Office hours (Zoom):** _(email to make an appointment)_
 * TA Contact Info and Office hours is on eClass
 
