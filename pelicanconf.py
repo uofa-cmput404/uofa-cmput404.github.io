@@ -34,13 +34,16 @@ SOCIAL = ()
 
 DEFAULT_PAGINATION = False
 
+# Uncomment following line if you want document-relative URLs when developing
+RELATIVE_URLS = True
+
 MARKDOWN = {
     'extension_configs': {
         'markdown.extensions.codehilite': {'css_class': 'highlight'},
         'markdown.extensions.extra': {},
         'markdown.extensions.meta': {},
         'markdown.extensions.toc': {
-            'toc_depth': '2-6',
+            'toc_depth': '3-7',
             'baselevel': '3'
         },
         'markdown.extensions.tables': {},
@@ -51,13 +54,11 @@ DATE_FORMATS = {
     'en': '%a, %d %b %Y at %H:%M %Z',
 }
 
-STATIC_PATHS=[
-	]
-PAGE_EXCLUDES=STATIC_PATHS
-ARTICLE_EXCLUDES=STATIC_PATHS
+STATIC_PATHS=[PATH]
 
 PATH_METADATA = '(?P<path_no_ext>.*)\..*'
 ARTICLE_URL = ARTICLE_SAVE_AS = PAGE_URL = PAGE_SAVE_AS = '{path_no_ext}.html'
+STATIC_URL = STATIC_SAVE_AS = '{path}'
 
 DISPLAY_CATEGORIES_ON_MENU=False
 DISPLAY_PAGES_ON_MENU=False
