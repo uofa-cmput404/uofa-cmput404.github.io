@@ -26,6 +26,10 @@ Install Ubuntu on Windows using WSL2.
 1. `brew install git`
 2. `brew install python@3`
 3. `sudo pip3 install virtualenv`
+4. In your repository directory, `virtualenv venv --python=python3`
+5. Activate the virtual environment: `source venv/bin/activate`
+6. Install requests: `pip3 install requests`
+
 
 ## For Windows 10 with pip:
 
