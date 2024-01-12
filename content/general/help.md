@@ -95,3 +95,10 @@ If you are unsure how to access a resource, please contact the **[Office of the 
 ## Immediate Assistance
 
 If you or someone you know is in need of immediate assistance, please reach out to a friend, professor, or staff member. Find a list of immediate support services **[here](https://www.ualberta.ca/current-students/need-help-now.html?utm_medium=email&utm_campaign=WCSI_Jan%202024&utm_content=WCSI_Jan%202024+CID_ba92968704987d94bc0c32e21ef6d5c6&utm_source=cm_internal_comms&utm_term=here)**.
+
+## Safety and Security for Students
+
+UA's [Safety and Security for Students](https://www.ualberta.ca/current-students/safety-and-security.html) page.
+
+Protective Services [780-492-5050](tel:780-492-5050)
+
