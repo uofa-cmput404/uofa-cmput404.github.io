@@ -21,11 +21,32 @@ Your submission needs to pass the free tests (included) and the secret tests (yo
 
 Install Ubuntu on Windows using WSL2. 
 
+## Ubuntu on macOS ARM:
+1. Install UTM for macOS: https://mac.getutm.app/
+2. Download Ubuntu image for ARM: https://ubuntu.com/download/server/arm
+3. Open the UTM app and Select "Create a New Virtual Machine"
+4. Select "Virtualize" followed by "Linux"
+5. Browse for the Ubuntu iso file you downloaded
+6. Select your desired VM memory and CPU configs
+7. Give your VM a name and select "Save"
+8. Run the VM
+9. Follow the onscreen prompts, default options are sufficient
+10. Once the configuration is complete, shutdown the VM and dismount the iso file
+11. Start and log into your VM
+12. Run: `sudo apt install ubuntu-desktop` and `reboot`
+You should now have access to Ubuntu desktop.
+
+For more details, you can read [this](https://jun1okamura.medium.com/install-ubuntu-on-mac-m1-powered-by-utm-499aba3ba7e9).
+
 ## For macOS with homebrew:
 
 1. `brew install git`
 2. `brew install python@3`
 3. `sudo pip3 install virtualenv`
+4. In your repository directory, `virtualenv venv --python=python3`
+5. Activate the virtual environment: `source venv/bin/activate`
+6. Install requests: `pip3 install requests`
+
 
 ## For Windows 10 with pip:
 
