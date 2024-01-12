@@ -46,6 +46,7 @@
 <li><a href="#submission-instructions">Submission Instructions</a></li>
 <li><a href="#tips">Tips</a><ul>
 <li><a href="#ubuntu-on-windows">Ubuntu on Windows</a></li>
+<li><a href="#ubuntu-on-macos-arm">Ubuntu on macOS ARM:</a></li>
 <li><a href="#for-macos-with-homebrew">For macOS with homebrew:</a></li>
 <li><a href="#for-windows-10-with-pip">For Windows 10 with pip:</a></li>
 <li><a href="#ubuntu-lab-computers">Ubuntu Lab Computers</a></li>
@@ -59,11 +60,31 @@
 <h3 id="tips">Tips</h3>
 <h4 id="ubuntu-on-windows">Ubuntu on Windows</h4>
 <p>Install Ubuntu on Windows using WSL2. </p>
+<h4 id="ubuntu-on-macos-arm">Ubuntu on macOS ARM:</h4>
+<ol>
+<li>Install UTM for macOS: https://mac.getutm.app/</li>
+<li>Download Ubuntu image for ARM: https://ubuntu.com/download/server/arm</li>
+<li>Open the UTM app and Select "Create a New Virtual Machine"</li>
+<li>Select "Virtualize" followed by "Linux"</li>
+<li>Browse for the Ubuntu iso file you downloaded</li>
+<li>Select your desired VM memory and CPU configs</li>
+<li>Give your VM a name and select "Save"</li>
+<li>Run the VM</li>
+<li>Follow the onscreen prompts, default options are sufficient</li>
+<li>Once the configuration is complete, shutdown the VM and dismount the iso file</li>
+<li>Start and log into your VM</li>
+<li>Run: <code>sudo apt install ubuntu-desktop</code> and <code>reboot</code>
+You should now have access to Ubuntu desktop.</li>
+</ol>
+<p>For more details, you can read <a href="https://jun1okamura.medium.com/install-ubuntu-on-mac-m1-powered-by-utm-499aba3ba7e9">this</a>.</p>
 <h4 id="for-macos-with-homebrew">For macOS with homebrew:</h4>
 <ol>
 <li><code>brew install git</code></li>
 <li><code>brew install python@3</code></li>
 <li><code>sudo pip3 install virtualenv</code></li>
+<li>In your repository directory, <code>virtualenv venv --python=python3</code></li>
+<li>Activate the virtual environment: <code>source venv/bin/activate</code></li>
+<li>Install requests: <code>pip3 install requests</code></li>
 </ol>
 <h4 id="for-windows-10-with-pip">For Windows 10 with pip:</h4>
 <p>In cmd (not powershell):</p>
