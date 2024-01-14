@@ -43,6 +43,11 @@
   <hr>
 <div class="toc">
 <ul>
+<li><a href="#description">Description</a></li>
+<li><a href="#collaboration">Collaboration</a></li>
+<li><a href="#user-stories">User Stories</a></li>
+<li><a href="#requirements">Requirements</a></li>
+<li><a href="#restrictions">Restrictions</a></li>
 <li><a href="#submission-instructions">Submission Instructions</a></li>
 <li><a href="#tips">Tips</a><ul>
 <li><a href="#ubuntu-on-windows">Ubuntu on Windows</a></li>
@@ -54,12 +59,94 @@
 </li>
 </ul>
 </div>
+<h3 id="description">Description</h3>
+<p>Your task is to build a partially HTTP 1.1 compliant webserver. Your webserver will serve static content from the www directory in the same directory that you start the webserver in.</p>
+<p>You are meant to understand the very basics of HTTP by having a hands-on ground up understanding of what it takes to have an HTTP connection.</p>
+<h3 id="collaboration">Collaboration</h3>
+<ul>
+<li>You may consult with others (exhange high-level ideas) but the submission should be your own source code</li>
+<li>Collaboration must be documented in your source code.</li>
+<li>Any source code you got from anywhere else must be cited in the source code.</li>
+<li>You can only use source code that <strong>you understand</strong>: see the <a href="{filename}/general/lab.md#lab-marking#lab-marking">lab marking info</a></li>
+</ul>
+<h3 id="user-stories">User Stories</h3>
+<ul>
+<li>As a user I want to view files in ./www via a webbrowser, so I can see my website.</li>
+<li>As a user I want to view files in ./www via curl, so I can test my website.</li>
+<li>As a webserver admin I want to serve HTML and CSS files from ./www, so I don't have to deal with other file types.</li>
+<li>As a webserver admin I want ONLY files in ./www and deeper to be served, so I don't get hacked.</li>
+</ul>
+<h3 id="requirements">Requirements</h3>
+<ul>
+<li>The webserver can serve files from ./www</li>
+<li>The webserver can be run from the <code>free-tests.py</code> file</li>
+<li>The webserver can pass all the tests in <code>free-tests.py</code> file</li>
+<li>The webserver can pass all the tests in <code>secret-tests.py</code> file<ul>
+<li>You don't have this, but it is similar to <code>free-tests.py</code>: this is used to check against defeating the <code>free-tests.py</code> by modifying it, hardcoding responses, etc.</li>
+</ul>
+</li>
+<li>The webserver supports mime-types for HTML</li>
+<li>The webserver supports mime-types for CSS</li>
+<li>The webserver can return index.html from directories (paths that end in /)</li>
+<li>The webserver can serve 404 errors for paths not found</li>
+<li>The webserver works with Firefox and Chomium-based browsers (Chrome/Edge/etc.)</li>
+<li>The webserver can serve CSS properly so that the front page has an orange h1 header.</li>
+<li>The webserver returns a <code>405 Method Not Allowed</code> for any method it cannot handle (POST/PUT/DELETE).</li>
+<li>The webserver uses a <code>301 Moved Permanently</code> to correct paths that go to directories but don't end in a '/' like they should.</li>
+<li>I can check out the source code via an HTTP git URL.</li>
+<li>Tests must execute within 60 seconds.</li>
+<li>The webserver must be started by calling the main function.</li>
+</ul>
+<h3 id="restrictions">Restrictions</h3>
+<p>Violation of the restrictions will result in a mark of zero.</p>
+<ul>
+<li>Must use Python3</li>
+<li>Must run on Ubuntu (Use the undergrad lab machines, for example the ones in CSC 2-29 or install an Ubuntu VM to check this)</li>
+<li>The only allowed imports are <code>socketserver</code> and <code>pathlib</code>: You will recieve a zero mark for using any other imports.</li>
+<li>Your code must not modify the code out of its scope (must not do dependency injection), must not run anything at the top level (outside of functions/classes/defining constants), and must not try to work around or modify the test suite.</li>
+</ul>
 <h3 id="submission-instructions">Submission Instructions</h3>
-<p>Submit a link to your repo in the form <code>https://github.com/uofa-cmput404/f23-assignment-ajax-hazelcam</code> on eClass. <strong>Do not</strong> submit a link to a branch, a file, or the clone url.</p>
-<p>Your submission needs to pass the free tests (included) and the secret tests (you don't have these).</p>
+<p>Submit a link to your repo in the form <code>https://github.com/uofa-cmput404/f23-assignment-ajax-hazelcam</code> on eClass. <strong>Do not</strong> submit a link to a branch, a file, or the clone url. If you do not do this we will not know which github submission is yours.</p>
 <h3 id="tips">Tips</h3>
 <h4 id="ubuntu-on-windows">Ubuntu on Windows</h4>
 <p>Install Ubuntu on Windows using WSL2. </p>
+<p>Installing Ubuntu on Windows</p>
+<p>Step 1-  Search for Windows PowerShell in your Windows search bar, then select Run as administrator.</p>
+<p>At the command prompt type:
+wsl --install
+And wait for the process to complete.
+For WSL to be properly activated, you will now need to restart your computer.</p>
+<p>Step 2- WSL supports a variety of Linux distributions, including the latest Ubuntu release, Ubuntu 20.04 LTS and Ubuntu 18.04 LTS. You can find them by opening the Microsoft store app and searching for Ubuntu.</p>
+<p>Choose the distribution you prefer and then click on Get.</p>
+<p>Ubuntu will then install on your machine.</p>
+<p>The one line install!</p>
+<p>There is a single command that will install both WSL and Ubuntu at the same time.</p>
+<p>When opening PowerShell for the first time, simply modify the initial instruction to:</p>
+<p>wsl --install -d ubuntu</p>
+<p>This will install both WSL and Ubuntu! Don’t forget to restart your machine before continuing.</p>
+<p>Once installed, you can either launch the application directly from the store or search for Ubuntu in your Windows search bar.</p>
+<p>Step-3 Configure Ubuntu</p>
+<p>Congratulations, you now have an Ubuntu terminal running on your Windows machine!</p>
+<p>If Ubuntu returns an error during this initial installation, then the most common issue is that virtualisation is disabled in your device’s BIOS menu. You will need to turn this on during your device’s boot sequence. The location of this option varies by manufacturer, so you will need to refer to their documentation to find it.
+Once Ubuntu has finished its initial setup you will need to create a username and password (this does not need to match your Windows user credentials).</p>
+<p>Finally, it’s always good practice to install the latest updates with the following commands, entering your password when prompted.</p>
+<p>sudo apt update</p>
+<p>Then</p>
+<p>sudo apt upgrade</p>
+<p>Press Y when prompted.</p>
+<p>Step - 4 Install your first package</p>
+<p>Installing packages on Ubuntu is as easy as using a single command. Below, you will see how to install bpython, a simple python interpreter for trying out ideas, featuring some nice usability features like expected parameters and autocompletion.
+To check that you have the latest package lists, type:</p>
+<p>sudo apt update</p>
+<p>Then install bpython:</p>
+<p>sudo apt install bpython</p>
+<p>To run the application type:</p>
+<p>bpython</p>
+<p>And you’re ready to go!</p>
+<p>Step- 5 Customizing your terminal with Windows Terminal Preview</p>
+<p>Since you’re likely to be using your Ubuntu terminal a fair bit, it’s always nice to do some customisation. We recommend installing Windows Terminal Preview to get the most user-friendly setup. You can find it in the Microsoft Store. </p>
+<p>Windows Terminal allows you to open multiple Terminal instances as tabs, so you can have PowerShell running alongside Ubuntu. It also includes a number of customisation options. In the below screenshot, we’ve changed the tab name and color, and configured the terminal appearance to use the Tango Dark theme and the Ubuntu font!</p>
+<p>These customisations can be applied universally using the Appearance menu in Settings or to individual profiles which each have their own Appearance menu. Try it yourself to find something you feel comfortable with!</p>
 <h4 id="ubuntu-on-macos-arm">Ubuntu on macOS ARM:</h4>
 <ol>
 <li>Install UTM for macOS: https://mac.getutm.app/</li>
@@ -87,6 +174,80 @@ You should now have access to Ubuntu desktop.</li>
 <li>Install requests: <code>pip3 install requests</code></li>
 </ol>
 <h4 id="for-windows-10-with-pip">For Windows 10 with pip:</h4>
+<p>Installing Python for Windows</p>
+<p>Step 1- Downloading the Python Installer</p>
+<p>Go to the official Python download page for Windows.
+Find a stable Python 3 release. This tutorial was tested with Python version 3.10.10.
+Click the appropriate link for your system to download the executable file: Windows installer (64-bit) or Windows installer (32-bit).</p>
+<p>Step 2- Running the Executable Installer</p>
+<ol>
+<li>
+<p>After the installer is downloaded, double-click the .exe file, for example python-3.10.10-amd64.exe, to run the Python installer.</p>
+</li>
+<li>
+<p>Select the Install launcher for all users checkbox, which enables all users of the computer to access the Python launcher application.</p>
+</li>
+<li>
+<p>Select the Add python.exe to PATH checkbox, which enables users to launch Python from the command line.</p>
+</li>
+<li>
+<p>If you’re just getting started with Python and you want to install it with default features as described in the dialog, then click Install Now and go to Step 4 - Verify the Python Installation. To install other optional and advanced features, click Customize installation and continue.</p>
+</li>
+<li>
+<p>The Optional Features include common tools and resources for Python and you can install all of them, even if you don’t plan to use them.</p>
+</li>
+</ol>
+<p>Select some or all of the following options:</p>
+<p>Documentation: recommended</p>
+<p>pip: recommended if you want to install other Python packages, such as NumPy or pandas</p>
+<p>tcl/tk and IDLE: recommended if you plan to use IDLE or follow tutorials that use it</p>
+<p>Python test suite: recommended for testing and learning</p>
+<p>py launcher and for all users: recommended to enable users to launch Python from the command line</p>
+<ol>
+<li>
+<p>Click Next.</p>
+</li>
+<li>
+<p>The Advanced Options dialog displays.</p>
+</li>
+</ol>
+<p>Select the options that suit your requirements:</p>
+<p>Install for all users: recommended if you’re not the only user on this computer</p>
+<p>Associate files with Python: recommended, because this option associates all the Python file types with the launcher or editor</p>
+<p>Create shortcuts for installed applications: recommended to enable shortcuts for Python applications</p>
+<p>Add Python to environment variables: recommended to enable launching Python</p>
+<p>Precompile standard library: not required, it might down the installation</p>
+<p>Download debugging symbols and Download debug binaries: recommended only if you plan to create C or C++ extensions</p>
+<p>Make note of the Python installation directory in case you need to reference it later.</p>
+<ol>
+<li>
+<p>Click Install to start the installation.</p>
+</li>
+<li>
+<p>After the installation is complete, a Setup was successful message displays.</p>
+</li>
+</ol>
+<p>Step 3- Adding Python to the environment variables.</p>
+<p>Skip this step if you selected Add Python to environment variables during installation.
+If you want to access Python through the command line but you didn’t add Python to your environment variables during installation, then you can still do it manually.
+Before you start, locate the Python installation directory on your system. The following directories are examples of the default directory paths:</p>
+<p>C:\Program Files\Python310: if you selected Install for all users during installation, then the directory will be system wide</p>
+<p>C:\Users\Sammy\AppData\Local\Programs\Python\Python310: if you didn’t select Install for all users during installation, then the directory will be in the Windows user path</p>
+<p>Note that the folder name will be different if you installed a different version, but will still start with Python.</p>
+<p>Go to Start and enter advanced system settings in the search bar.</p>
+<p>Click View advanced system settings.</p>
+<p>In the System Properties dialog, click the Advanced tab and then click Environment Variables.
+Depending on your installation:</p>
+<p>If you selected Install for all users during installation, select Path from the list of System Variables and click Edit.
+If you didn’t select Install for all users during installation, select Path from the list of User Variables and click Edit.
+Click New and enter the Python directory path, then click OK until all the dialogs are closed.</p>
+<p>Step-4 Verify Python Installation</p>
+<p>You can verify whether the Python installation is successful either through the command line or through the Integrated Development Environment (IDLE) application, if you chose to install it.
+Go to Start and enter cmd in the search bar. Click Command Prompt</p>
+<p>Enter the following command in the command prompt:</p>
+<p>python --version</p>
+<p>You can also check the version of Python by opening the IDLE application. Go to Start and enter python in the search bar and then click the IDLE app, for example IDLE (Python 3.10 64-bit).</p>
+<p>You’ve successfully installed Python on your Windows system.</p>
 <p>In cmd (not powershell):</p>
 <ol>
 <li>pip install requests</li>
