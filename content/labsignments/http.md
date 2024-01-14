@@ -31,7 +31,7 @@ For WSL to be properly activated, you will now need to restart your computer.
 
 Step 2- WSL supports a variety of Linux distributions, including the latest Ubuntu release, Ubuntu 20.04 LTS and Ubuntu 18.04 LTS. You can find them by opening the Microsoft store app and searching for Ubuntu.
 
-Choose the distribution you prefer and then click on Get as shown in the following screenshot:
+Choose the distribution you prefer and then click on Get.
 
 Ubuntu will then install on your machine.
 The one line install!
@@ -154,8 +154,9 @@ Step-4 Verify Python Installation
 You can verify whether the Python installation is successful either through the command line or through the Integrated Development Environment (IDLE) application, if you chose to install it.
 Go to Start and enter cmd in the search bar. Click Command Prompt.
 Enter the following command in the command prompt:
+python --version
 
-An example of output is
+
 
 You can also check the version of Python by opening the IDLE application. Go to Start and enter python in the search bar and then click the IDLE app, for example IDLE (Python 3.10 64-bit).
 
