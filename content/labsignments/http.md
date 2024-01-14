@@ -102,6 +102,7 @@ For more details, you can read [this](https://jun1okamura.medium.com/install-ubu
 
 ## For Windows 10 with pip:
 Installing Python for Windows
+
 Step 1- Downloading the Python Installer
 Go to the official Python download page for Windows.
 Find a stable Python 3 release. This tutorial was tested with Python version 3.10.10.
