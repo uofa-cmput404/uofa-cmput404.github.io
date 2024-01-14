@@ -8,12 +8,57 @@ status: published
 
 [TOC]
 
+# Description
+
+Your task is to build a partially HTTP 1.1 compliant webserver. Your webserver will serve static content from the www directory in the same directory that you start the webserver in.
+
+You are meant to understand the very basics of HTTP by having a hands-on ground up understanding of what it takes to have an HTTP connection.
+
+# Collaboration
+
+* You may consult with others (exhange high-level ideas) but the submission should be your own source code
+* Collaboration must be documented in your source code.
+* Any source code you got from anywhere else must be cited in the source code.
+* You can only use source code that **you understand**: see the [lab marking info]({filename}/general/lab.md#lab-marking)
+
+# User Stories
+
+* As a user I want to view files in ./www via a webbrowser, so I can see my website.
+* As a user I want to view files in ./www via curl, so I can test my website.
+* As a webserver admin I want to serve HTML and CSS files from ./www, so I don't have to deal with other file types.
+* As a webserver admin I want ONLY files in ./www and deeper to be served, so I don't get hacked.
+
+# Requirements
+
+* The webserver can serve files from ./www
+* The webserver can be run from the `free-tests.py` file
+* The webserver can pass all the tests in `free-tests.py` file
+* The webserver can pass all the tests in `secret-tests.py` file
+    * You don't have this, but it is similar to `free-tests.py`: this is used to check against defeating the `free-tests.py` by modifying it, hardcoding responses, etc.
+* The webserver supports mime-types for HTML
+* The webserver supports mime-types for CSS
+* The webserver can return index.html from directories (paths that end in /)
+* The webserver can serve 404 errors for paths not found
+* The webserver works with Firefox and Chomium-based browsers (Chrome/Edge/etc.)
+* The webserver can serve CSS properly so that the front page has an orange h1 header.
+* The webserver returns a `405 Method Not Allowed` for any method it cannot handle (POST/PUT/DELETE).
+* The webserver uses a `301 Moved Permanently` to correct paths that go to directories but don't end in a '/' like they should.
+* I can check out the source code via an HTTP git URL.
+* Tests must execute within 60 seconds.
+* The webserver must be started by calling the main function.
+
+# Restrictions
+
+Violation of the restrictions will result in a mark of zero.
+
+* Must use Python3
+* Must run on Ubuntu (Use the undergrad lab machines, for example the ones in CSC 2-29 or install an Ubuntu VM to check this)
+* The only allowed imports are `socketserver` and `pathlib`: You will recieve a zero mark for using any other imports.
+* Your code must not modify the code out of its scope (must not do dependency injection), must not run anything at the top level (outside of functions/classes/defining constants), and must not try to work around or modify the test suite.
+
 # Submission Instructions
 
-Submit a link to your repo in the form `https://github.com/uofa-cmput404/f23-assignment-ajax-hazelcam` on eClass. **Do not** submit a link to a branch, a file, or the clone url.
-
-Your submission needs to pass the free tests (included) and the secret tests (you don't have these).
-
+Submit a link to your repo in the form `https://github.com/uofa-cmput404/f23-assignment-ajax-hazelcam` on eClass. **Do not** submit a link to a branch, a file, or the clone url. If you do not do this we will not know which github submission is yours.
 
 # Tips
 
