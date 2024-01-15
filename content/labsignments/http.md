@@ -282,7 +282,7 @@ Connect to one of the lab machines at the University if needed.
 
 They are named like `ug01.cs.ualberta.ca`, `ug02.cs.ualberta.ca`, all the way up to `ug34.cs.ualberta.ca`:
 
-`ssh yourccid@ugXX.cs.ualberta.ca``
+`ssh yourccid@ugXX.cs.ualberta.ca`
 
 For example:
 
