@@ -106,7 +106,7 @@ INSTALLED_APPS = [
 ]
 ```
 
-Access the emojis app using: `localhost:8000` from your browser.
+Access the emojis app using: `localhost:8000/emojis` from your browser.
 
 Now it's pretty boring receiving a plain text response. Let's try rendering an html page. One way to achieve this using django is with `templates`:
 
@@ -135,7 +135,7 @@ def index(request):
     return render(request, "index.html")
 ```
 
-Now you should get a big welcome message when you access `localhost:8000`.
+Now you should get a big welcome message when you access `localhost:8000/emojis`.
 
 Npm is a package manager for node JS. Node JS is a runtime environment for JavaScript. The node JS developer community use npm to distribute useful packages. For this lab we will be using [emoji-mart](https://www.npmjs.com/package/emoji-mart) to create a fun browser based emoji picker. 
 
