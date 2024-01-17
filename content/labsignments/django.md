@@ -139,7 +139,7 @@ Now you should get a big welcome message when you access `localhost:8000/emojis`
 
 Npm is a package manager for node JS. Node JS is a runtime environment for JavaScript. The node JS developer community use npm to distribute useful packages. For this lab we will be using [emoji-mart](https://www.npmjs.com/package/emoji-mart) to create a fun browser based emoji picker. 
 
-To use the package we need to install the JavaScript modules using node JS:
+To use the package we need to install the JavaScript modules using npm:
 
 1. Run `npm install --save emoji-mart` in your project root where `manage.py` is.
 2. This should create a new directory called `node_modules`
