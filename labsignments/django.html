@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+          <title>CMPUT 404 - Django Lab</title>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Web Applications and Architecture" />
+
+  <link rel="icon" href="../theme/favicon.ico" />
+  <link rel="stylesheet" type="text/css" href="../theme/style.css" />
+  <link rel="stylesheet" type="text/css" href="../theme/404.css" />
+
+
+
+
+    <meta name="tags" content="labs" />
+
+</head>
+
+<body>
+        <header>
+              <hgroup><h1><a href="../">CMPUT 404</a></h1><p>Web Applications and Architecture</p></hgroup>
+        <nav><ul>
+            <li><a href="/general/outline.html">Outline</a></li>
+            <li><a href="https://eclass.srv.ualberta.ca/course/view.php?id=95227">eClass</a></li>
+            <li><a href="/general/schedule.html">Schedule</a></li>
+            <li><a href="/general/labs.html">Labs</a></li>
+            <li><a href="/general/project.html">Project</a></li>
+            <li><a href="/general/resources.html">Resources</a></li>
+            <li><a href="/general/help.html">Help</a></li>
+        </ul></nav>
+        </header>
+        <main>
+<article>
+  <header>
+    <h2>
+      <a href="../labsignments/django.html" rel="bookmark"
+         title="Permalink to Django Lab">Django Lab</a></h2>
+ 
+  </header>
+  <hr>
+<div class="toc">
+<ul>
+<li><a href="#description">Description</a></li>
+<li><a href="#getting-started">Getting Started</a><ul>
+<li><a href="#installing-venv-with-pip">Installing venv with pip</a></li>
+<li><a href="#installing-node-js-and-npm">Installing node JS and npm</a></li>
+</ul>
+</li>
+<li><a href="#lab-instructions">Lab Instructions</a></li>
+<li><a href="#restrictions">Restrictions</a></li>
+<li><a href="#before-you-submit">Before You Submit</a></li>
+<li><a href="#submission-instructions">Submission Instructions</a></li>
+<li><a href="#collaboration">Collaboration</a></li>
+<li><a href="#tips">Tips</a></li>
+</ul>
+</div>
+<h3 id="description">Description</h3>
+<p>The purpose of this lab is to familiarize you with setting up a virtual environment, developing in django and using npm.
+By the end of this lab you will make a simple emoji picker app.</p>
+<h3 id="getting-started">Getting Started</h3>
+<h4 id="installing-venv-with-pip">Installing venv with pip</h4>
+<p>Virtual environment is a CLI tool for managing python dependencies. Different projects have different dependencies, and version requirements. A virtual environment allows you to manage your dependencies specific to your project.</p>
+<p>To install follow these steps (Note that you need pip installed and configured):</p>
+<ol>
+<li><code>python -m pip install --user virtualenv</code></li>
+<li>Check installation: <code>python -m virtualenv --help</code> </li>
+</ol>
+<p>For more info check <a href="https://virtualenv.pypa.io/en/latest/installation.html">here</a>.
+To create and use a virtual environment:</p>
+<ol>
+<li><code>virtualenv venv --python=python3</code></li>
+<li><code>source venv/bin/activate</code></li>
+</ol>
+<p>The first command will create a directory named <code>venv</code>. Contained in the directory is your
+project dependecy installation and the <code>activate</code> script. Run <code>deactivate</code> to exit the virtual environment.</p>
+<h4 id="installing-node-js-and-npm">Installing node JS and npm</h4>
+<p>To install node js, you can download the appropriate installer directly from the node js
+<a href="https://nodejs.org/en/download">website</a>. Make sure to download the LTS version. The installation 
+will include npm as well.</p>
+<h3 id="lab-instructions">Lab Instructions</h3>
+<p>The framework we will be using for this lab is <a href="https://www.djangoproject.com/">django</a>, a high-level python web framework. Django is a well documented framework, with a large developer community. The official django <a href="https://docs.djangoproject.com/en/5.0/">documentation</a> is also an ideal place to learn more and look up specific features.</p>
+<p>Get started by creating a virtual environment and installing django: </p>
+<ol>
+<li>Within your assignment directory create a virtual environment: <code>virtualenv venv --python=python3</code></li>
+<li>Activate the virtual environment: <code>source venv/bin/activate</code></li>
+<li>Install django: <code>python -m pip install Django</code></li>
+<li>Verify installation by running a python shell and using: <code>import django</code></li>
+</ol>
+<p>To create a django project:</p>
+<ol>
+<li>Run <code>django-admin startproject lab2</code></li>
+<li>Verify "lab2" directory containing project files is created</li>
+<li>move into directory: <code>cd lab2</code></li>
+<li>Run <code>python manage.py runserver 0.0.0.0:8000</code></li>
+<li>In your browser access <code>localhost:8000</code></li>
+</ol>
+<p>If all went well you should see a "Congratulations!" with a rocket flying off.</p>
+<p>In this lab we will be using an emoji picker package to display emojis on a django webpage. We will create a webapp called "emojis" using django. To create a new webapp inside your django project run <code>python manage.py startapp emojis</code>. This will create an <code>emojis</code> directory in your folder. Locate <code>emojis/views.py</code> and add the following code:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponse</span> <span class="c1"># Make sure to include this import</span>
+
+
+<span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="s2">&quot;This is the emoji app.&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Create a <code>urls.py</code> within the <code>emojis</code> directory, and add the following code:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">path</span>
+
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">views</span> <span class="c1"># . referes to the current module we are in</span>
+
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">path</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;index&quot;</span><span class="p">),</span>
+<span class="p">]</span>
+</code></pre></div>
+
+<p>Ensure your <code>lab2/urls.py</code> looks like this:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">django.contrib</span> <span class="kn">import</span> <span class="n">admin</span>
+<span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">include</span><span class="p">,</span> <span class="n">path</span> <span class="c1"># make sure you have &quot;include&quot;</span>
+
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">path</span><span class="p">(</span><span class="s2">&quot;emojis/&quot;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="s2">&quot;emojis.urls&quot;</span><span class="p">)),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s2">&quot;admin/&quot;</span><span class="p">,</span> <span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">urls</span><span class="p">),</span>
+<span class="p">]</span>
+</code></pre></div>
+
+<p>Make sure to register your app with the project by modifying <code>lab2/settings.py</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;emojis.apps.EmojisConfig&#39;</span><span class="p">,</span> <span class="c1"># don&#39;t forget to add this line !!</span>
+    <span class="s1">&#39;django.contrib.admin&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.auth&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.contenttypes&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.sessions&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.messages&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.staticfiles&#39;</span><span class="p">,</span>
+<span class="p">]</span>
+</code></pre></div>
+
+<p>Access the emojis app using: <code>localhost:8000/emojis</code> from your browser.</p>
+<p>Now it's pretty boring receiving a plain text response. Let's try rendering an html page. One way to achieve this using django is with <code>templates</code>:</p>
+<ol>
+<li>Create <code>templates</code> directory inside <code>emojis</code>. Django will look for this directory by default.</li>
+<li>Inside templates create a file called <code>index.html</code>.</li>
+</ol>
+<p>Place the following html boilerplate inside <code>index.html</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;en&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Emojis App<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Welcome to Emojis!<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<p>Go back to <code>emojis/views.py</code> and make sure to render this html template:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span> <span class="c1"># Import this shortcut function</span>
+
+<span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s2">&quot;index.html&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Now you should get a big welcome message when you access <code>localhost:8000/emojis</code>.</p>
+<p>Npm is a package manager for node JS. Node JS is a runtime environment for JavaScript. The node JS developer community use npm to distribute useful packages. For this lab we will be using <a href="https://www.npmjs.com/package/emoji-mart">emoji-mart</a> to create a fun browser based emoji picker. </p>
+<p>To use the package we need to install the JavaScript modules using npm:</p>
+<ol>
+<li>Run <code>npm install --save emoji-mart</code> in your project root where <code>manage.py</code> is.</li>
+<li>This should create a new directory called <code>node_modules</code></li>
+<li>Locate <code>node_modules/emoji-mart/dist</code> which contains the JS files for the package</li>
+<li>Create a directory called <code>static</code> inside <code>emojis</code>, where you made the <code>templates</code> directory</li>
+<li>Copy <code>node_modules/emoji-mart</code> into that directory (Why?)</li>
+</ol>
+<p>The reason why we didn't directly install <code>node_modules</code> inside <code>static</code> is mainly a safety practice. static files are accessible through the browser, therefore you need to make sure you are only allowing that for the files you want. Additionally, though not in the scope of this lab, some npm packages are designed to run in the node JS environment on a server; so, they are not suited for a browser.</p>
+<p>Now that we have our static files ready to go, modify your <code>index.html</code> to load the static files.</p>
+<div class="highlight"><pre><span></span><code>{% load static %}
+<span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;en&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Emojis App<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Welcome to Emojis!<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;{% static &#39;emoji-mart/dist/browser.js&#39; %}&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="w">        </span><span class="c1">// Add your code here</span>
+<span class="w">    </span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span> 
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<p>As part of your lab you need to write the code that will add the emoji picker to the dom using the package we have included. <strong>You MUST NOT modify the body tag directly</strong>. If successful, you should be able to see an emoji picker in your browser.</p>
+<h3 id="restrictions">Restrictions</h3>
+<p>Violation of the restrictions will result in a mark of zero.</p>
+<ul>
+<li>Must use Python3</li>
+<li>Must run on Ubuntu (Use the undergrad lab machines, for example the ones in CSC 2-29 or install an Ubuntu VM to check this)</li>
+</ul>
+<h3 id="before-you-submit">Before You Submit</h3>
+<p>Make sure to include an appropriate <code>.gitignore</code> file, to prevent unwanted files being commited to your repository.
+Place this gitignore within the root of your project. You can use <a href="https://github.com/django/django/blob/main/.gitignore">this one</a> for your django project. Double check you're not staging any unwanted files before you commit. The <code>git status</code> command can help with that.</p>
+<h3 id="submission-instructions">Submission Instructions</h3>
+<p>Make sure you push to github classroom <strong>BEFORE 4PM on the day of your lab section!</strong> You will not be able to push after that!</p>
+<p>Submit a link to your repo in the form <code>https://github.com/uofa-cmput404/w24-h0x-labsignment-django-yourgithubname</code> on eClass. <strong>Do not</strong> submit a link to a branch, a file, or the clone url. If you do not do this we will not know which github submission is yours.</p>
+<h3 id="collaboration">Collaboration</h3>
+<ul>
+<li>You may consult with others (exchange high-level ideas) but the submission should be your own source code.</li>
+<li>Collaboration must be documented in your source code.</li>
+<li>Any source code you got from anywhere else must be cited in the source code.</li>
+<li>You can only use source code that <strong>you understand</strong>: see the <a href="../general/labs.html#lab-marking">lab marking info</a></li>
+</ul>
+<h3 id="tips">Tips</h3>
+<p>Django is a complex framework and maybe overwhelming at times. You should consult the documentation should you run into any issues with the framework. </p>
+<p>If you're unable to load a static file or resource, it maybe because you're not referencing it correctly. It may be in a different directory or you have a typo when you are referencing that particular resource using its path. </p>
+<p>Another common problem is not being able to render the templates even though you're directory structure is correct. Make sure your app is registered in <code>settings.py</code> otherwise it may not render.</p>
+  <footer>
+    <p>Published: <time datetime="2024-01-16T00:00:00-07:00">
+      Tue, 16 Jan 2024 at 00:00 MST
+    </time></p>
+    <address>
+      By           <a href="../author/alireza-azimi.html">Alireza Azimi</a>
+    </address>
+    <p>
+        Category: <a href="../category/labsignments.html">labsignments</a>
+    </p>
+    <p>
+        Tags:
+            <a href="../tag/labs.html">labs</a>
+    </p>
+  </footer>
+  </article>
+        </main>
+        <footer>
+                <address>
+                Proudly powered by <a rel="nofollow" href="https://getpelican.com/">Pelican</a>,
+                which takes great advantage of <a rel="nofollow" href="https://www.python.org/">Python</a>.
+                </address>
+        </footer>
+</body>
+</html>

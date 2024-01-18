@@ -41,6 +41,51 @@
  
   </header>
   <hr>
+<div class="toc">
+<ul>
+<li><a href="#description">Description</a><ul>
+<li><a href="#scenario">Scenario</a></li>
+<li><a href="#scenario-summary">Scenario Summary</a></li>
+<li><a href="#project-parts">Project Parts</a></li>
+</ul>
+</li>
+<li><a href="#collaboration">Collaboration</a></li>
+<li><a href="#user-stories">User Stories</a></li>
+<li><a href="#main-concepts">Main Concepts</a><ul>
+<li><a href="#authentication">Authentication</a></li>
+<li><a href="#pagination">Pagination</a></li>
+</ul>
+</li>
+<li><a href="#objects">Objects</a><ul>
+<li><a href="#authors">Authors</a></li>
+<li><a href="#single-author">Single Author</a></li>
+<li><a href="#followers">Followers</a></li>
+<li><a href="#friendfollow-request">Friend/Follow Request</a></li>
+<li><a href="#post">Post</a></li>
+<li><a href="#image-posts">Image Posts</a></li>
+<li><a href="#comments">Comments</a></li>
+<li><a href="#likes">Likes</a></li>
+<li><a href="#liked">Liked</a></li>
+<li><a href="#inbox">Inbox</a></li>
+</ul>
+</li>
+<li><a href="#requirements">Requirements</a></li>
+<li><a href="#take-aways">Take-aways</a></li>
+<li><a href="#restrictions">Restrictions</a></li>
+<li><a href="#api-guidelines">API Guidelines</a></li>
+<li><a href="#submission-instructions">Submission Instructions</a></li>
+<li><a href="#warning">Warning!!!!</a></li>
+<li><a href="#marking">Marking</a><ul>
+<li><a href="#project-part-0-group-formation">Project Part 0: Group Formation</a></li>
+<li><a href="#project-part-1-centralized">Project Part 1: Centralized</a></li>
+<li><a href="#project-part-2-distribution">Project Part 2: Distribution</a></li>
+<li><a href="#project-part-3-federation">Project Part 3: Federation</a></li>
+<li><a href="#project-part-4-polish">Project Part 4: Polish</a></li>
+</ul>
+</li>
+<li><a href="#license">License</a></li>
+</ul>
+</div>
 <h3 id="description">Description</h3>
 <p>The web is fundamentally interconnected and peer to peer. There's
 no really great reason why we should all use facebook.com or
@@ -88,16 +133,9 @@ This post is sent to her inbox.</p>
 post will be on her stream. She should also see that I've liked and
 commented her post.</p>
 <h4 id="scenario-summary">Scenario Summary</h4>
-<div class="highlight"><pre><span></span><code>All actions from authors are routed through the inbox of the
-receiving authors by the node itself.
-
-Nodes will store copies of posts because they receive them in the
-inbox.
-
-Likes, Comments, Public Posts, Friends Only posts, Private posts are
-all sent to the inbox of the author.
-</code></pre></div>
-
+<p>All actions from authors are routed through the inbox of the receiving authors by the node itself.</p>
+<p>Nodes will store copies of posts because they receive them in the inbox.</p>
+<p>Likes, Comments, Public Posts, Friends Only posts, Private posts are all sent to the inbox of the author.</p>
 <h4 id="project-parts">Project Parts</h4>
 <ul>
 <li>Part 0 - sign up a repo</li>
@@ -119,9 +157,10 @@ all sent to the inbox of the author.
 </ul>
 <h3 id="user-stories">User Stories</h3>
 <ul>
-<li>As an author, I want to make public posts.</li>
-<li>As an author, I want to edit public posts.</li>
-<li>As an author, posts I create can link to images.</li>
+<li>As an author, I want to make public posts, so that anyone who visits the site can see them.</li>
+<li>As an author, I want to edit my posts, so that I'm not stuck with a typo on a popular post.</li>
+<li>As an author, posts I make can be in CommonMark, so I can give my posts some basic formatting.</li>
+<li>As an author, posts I create that are in CommonMark can link to images.</li>
 <li>As an author, posts I create can be images.</li>
 <li>As a server admin, images can be hosted on my server.</li>
 <li>As an author, posts I create can be private to another author</li>
@@ -129,34 +168,33 @@ all sent to the inbox of the author.
 <li>As an author, I can share other author's public posts</li>
 <li>As an author, I can re-share other author's friend posts to my friends</li>
 <li>As an author, posts I make can be in simple plain text</li>
-<li>As an author, posts I make can be in CommonMark</li>
 <li>As an author, I want a consistent identity per server</li>
 <li>As a server admin, I want to host multiple authors on my server</li>
 <li>As a server admin, I want to share public images with users
-     on other servers.</li>
+  on other servers.</li>
 <li>As an author, I want to pull in my github activity to my "stream"</li>
 <li>As an author, I want to post posts to my "stream"</li>
 <li>As an author, I want to delete my own public posts.</li>
 <li>As an author, I want to befriend local authors</li>
 <li>As an author, I want to befriend remote authors</li>
 <li>As an author, I want to feel safe about sharing images and posts
-     with my friends -- images shared to friends should only be
-     visible to friends. [public images are public]</li>
+  with my friends -- images shared to friends should only be
+  visible to friends. [public images are public]</li>
 <li>As an author, when someone sends me a friends only-post I want to
-     see the likes.</li>
+  see the likes.</li>
 <li>As an author, comments on friend posts are private only to me the
-     original author.</li>
+  original author.</li>
 <li>As an author, I want un-befriend local and remote authors</li>
 <li>As an author, I want to be able to use my web-browser to manage
-     my profile</li>
+  my profile</li>
 <li>As an author, I want to be able to use my web-browser to manage/author
-     my posts</li>
+  my posts</li>
 <li>As a server admin, I want to be able add, modify, and remove
-     authors.</li>
+  authors.</li>
 <li>As a server admin, I want to OPTIONALLY be able allow users to sign up but
-     require my OK to finally be on my server</li>
+  require my OK to finally be on my server</li>
 <li>As a server admin, I don't want to do heavy setup to get the
-     posts of my author's friends.</li>
+  posts of my author's friends.</li>
 <li>As a server admin, I want a restful interface for most operations</li>
 <li>As an author, other authors cannot modify my public post</li>
 <li>As an author, other authors cannot modify my shared to friends post.</li>
@@ -164,20 +202,20 @@ all sent to the inbox of the author.
 <li>As an author, I want to like posts that I can access</li>
 <li>As an author, my server will know about my friends</li>
 <li>As an author, When I befriend someone (they accept my friend request) I follow them, only when
-     the other author befriends me do I count as a real friend -- a bi-directional follow is a true friend.</li>
+  the other author befriends me do I count as a real friend -- a bi-directional follow is a true friend.</li>
 <li>As an author, I want to know if I have friend requests.</li>
 <li>As an author, I should be able to browse the public posts of everyone</li>
 <li>As a server admin, I want to be able to add nodes to share with</li>
 <li>As a server admin, I want to be able to remove nodes and stop
-     sharing with them.</li>
+  sharing with them.</li>
 <li>As a server admin, I can limit nodes connecting to me via
-     authentication.</li>
+  authentication.</li>
 <li>As a server admin, node to node connections can be authenticated
-     with HTTP Basic Auth</li>
+  with HTTP Basic Auth</li>
 <li>As a server admin, I can disable the node to node interfaces for
-     connections that are not authenticated!</li>
+  connections that are not authenticated!</li>
 <li>As an author, I want to be able to make posts that are unlisted,
-     that are publicly shareable by URI alone (or for embedding images)</li>
+  that are publicly shareable by URI alone (or for embedding images)</li>
 </ul>
 <h3 id="main-concepts">Main Concepts</h3>
 <ul>
@@ -255,445 +293,507 @@ all sent to the inbox of the author.
 </ul>
 </li>
 </ul>
-<p>** Authentication
-   - Remote node authentication is global between nodes. It requires an admin to allow node to node access.
-   - Remote node authentication is done solely with HTTP basic auth
-   - Local auth uses your frameworks local auth mechanisms (cookies, tokens, basic auth).   - Local refers to local access to the restful API. This is useful for frameworks like react, vue, or angular to get access to data, and enable a more client heavy UI.</p>
-<p>** Pagination
-   - If something is paginated it has query options:
-     - page - how many pages of objects have been delivered
-     - size - how big is a page
-     - Page 4 of objects http://service/author/{author_id}/posts/{post_id}/comments?page=4
-     - Page 4 of objects but 40 per page http://service/author/{author_id}/posts/{post_id}/comments?page=4&amp;size=40
-     - 1 based indexing. First page is 1.
-** Objects
-   - HTTP Methods not explicitly listed are not allowed methods
-   - Most HTTP methods are local only, and provided for local node use.
-*** Authors
-    - URL: ://service/authors/
-      - GET [local, remote]: retrieve all profiles on the server (paginated)
-         - page: how many pages
-         - size: how big is a page
-    - Example query: GET ://service/authors?page=10&amp;size=5 
-      - Gets the 5 authors, authors 45 to 49.
-    - Example: GET ://service/authors/
-      #+BEGIN_SRC json
-      {
-          "type": "authors",    <br>
-          "items":[
-              {
-                  "type":"author",
-                  "id":"http://127.0.0.1:5454/authors/1d698d25ff008f7538453c120f581471",
-                  "url":"http://127.0.0.1:5454/authors/1d698d25ff008f7538453c120f581471",
-                  "host":"http://127.0.0.1:5454/",
-                  "displayName":"Greg Johnson",
-                  "github": "http://github.com/gjohnson",
-                  "profileImage": "https://i.imgur.com/k7XVwpB.jpeg"
-              },
-              {
-                  "type":"author",
-                  "id":"http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e",
-                  "host":"http://127.0.0.1:5454/",
-                  "displayName":"Lara Croft",
-                  "url":"http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e",
-                  "github": "http://github.com/laracroft",
-                  "profileImage": "https://i.imgur.com/k7XVwpB.jpeg"
-              }
-          ]
-      }
-      #+END_SRC</p>
-<p>*** Single Author
-    - URL: ://service/authors/{AUTHOR_ID}/
-      - GET [local, remote]: retrieve AUTHOR_ID's profile
-      - POST [local]: update AUTHOR_ID's profile
-    - Example Format:
-      #+BEGIN_SRC json
-      {
-          "type":"author",
-          # ID of the Author
-          "id":"http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e",
-          # the home host of the author
-          "host":"http://127.0.0.1:5454/",
-          # the display name of the author
-          "displayName":"Lara Croft",
-          # url to the authors profile
-          "url":"http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e",
-          # HATEOS url for Github API
-          "github": "http://github.com/laracroft",
-          # Image from a public domain
-          "profileImage": "https://i.imgur.com/k7XVwpB.jpeg"
-      }
-      #+END_SRC
-*** Followers
-    - URL: ://service/authors/{AUTHOR_ID}/followers
-      - GET [local, remote]: get a list of authors who are AUTHOR_ID's followers
-    - URL: ://service/authors/{AUTHOR_ID}/followers/{FOREIGN_AUTHOR_ID}
-      - DELETE [local]: remove FOREIGN_AUTHOR_ID as a follower of AUTHOR_ID
-      - PUT [local]: Add FOREIGN_AUTHOR_ID as a follower of AUTHOR_ID (must be authenticated)
-      - GET [local, remote] check if FOREIGN_AUTHOR_ID is a follower of AUTHOR_ID
-    - Example: GET ://service/authors/{AUTHOR_ID}/followers
-      #+BEGIN_SRC json
-      {
-          "type": "followers",    <br>
-          "items":[
-              {
-                  "type":"author",
-                  "id":"http://127.0.0.1:5454/authors/1d698d25ff008f7538453c120f581471",
-                  "url":"http://127.0.0.1:5454/authors/1d698d25ff008f7538453c120f581471",
-                  "host":"http://127.0.0.1:5454/",
-                  "displayName":"Greg Johnson",
-                  "github": "http://github.com/gjohnson",
-                  "profileImage": "https://i.imgur.com/k7XVwpB.jpeg"
-              },
-              {
-                  "type":"author",
-                  "id":"http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e",
-                  "host":"http://127.0.0.1:5454/",
-                  "displayName":"Lara Croft",
-                  "url":"http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e",
-                  "github": "http://github.com/laracroft",
-                  "profileImage": "https://i.imgur.com/k7XVwpB.jpeg"
-              }
-          ]
-      }
-      #+END_SRC</p>
-<p>*** Friend/Follow Request
-    - This allows you to follow someone you, so they can send you their post.
-    - If the recipient accepts the Friend Request then you are friends
-    - If the recipient folows you, you are true friends
-    - Sent to inbox of "object" 
-    - Example format:
-      #+BEGIN_SRC json
-      {
-          "type": "Follow",    <br>
-          "summary":"Greg wants to follow Lara",
-          "actor":{
-              "type":"author",
-              "id":"http://127.0.0.1:5454/authors/1d698d25ff008f7538453c120f581471",
-              "url":"http://127.0.0.1:5454/authors/1d698d25ff008f7538453c120f581471",
-              "host":"http://127.0.0.1:5454/",
-              "displayName":"Greg Johnson",
-              "github": "http://github.com/gjohnson",
-              "profileImage": "https://i.imgur.com/k7XVwpB.jpeg"
-          },
-          "object":{
-              "type":"author",
-              # ID of the Author
-              "id":"http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e",
-              # the home host of the author
-              "host":"http://127.0.0.1:5454/",
-              # the display name of the author
-              "displayName":"Lara Croft",
-              # url to the authors profile
-              "url":"http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e",
-              # HATEOS url for Github API
-              "github": "http://github.com/laracroft",
-              # Image from a public domain
-              "profileImage": "https://i.imgur.com/k7XVwpB.jpeg"
-          }
-      }
-      #+END_SRC</p>
-<p>*** Post  <br>
-    - URL: ://service/authors/{AUTHOR_ID}/posts/{POST_ID}
-      - GET [local, remote] get the public post whose id is POST_ID
-      - POST [local] update the post whose id is POST_ID (must be authenticated)
-      - DELETE [local] remove the post whose id is POST_ID
-      - PUT [local] create a post where its id is POST_ID
-    - Creation URL ://service/authors/{AUTHOR_ID}/posts/
-      - GET [local, remote] get the recent posts from author AUTHOR_ID (paginated)
-      - POST [local] create a new post but generate a new id
-    - Be aware that Posts can be images that need base64 decoding.
-      - posts can also hyperlink to images that are public
-    - Example Format:
-      #+BEGIN_SRC json
-      {
-          "type":"post",
-          # title of a post
-          "title":"A post title about a post about web dev",
-          # id of the post
-          "id":"http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/764efa883dda1e11db47671c4a3bbd9e"
-          # where did you get this post from?
-          "source":"http://lastplaceigotthisfrom.com/posts/yyyyy",
-          # where is it actually from
-          "origin":"http://whereitcamefrom.com/posts/zzzzz",
-          # a brief description of the post
-          "description":"This post discusses stuff -- brief",
-          # The content type of the post
-          # assume either
-          # text/markdown -- common mark
-          # text/plain -- UTF-8
-          # application/base64
-          # image/png;base64 # this is an embedded png -- images are POSTS. So you might have a user make 2 posts if a post includes an image!
-          # image/jpeg;base64 # this is an embedded jpeg
-          # for HTML you will want to strip tags before displaying
-          "contentType":"text/plain",
-          "content":"Þā wæs on burgum Bēowulf Scyldinga, lēof lēod-cyning, longe þrāge folcum gefrǣge (fæder ellor hwearf, aldor of earde), oð þæt him eft onwōc hēah Healfdene; hēold þenden lifde, gamol and gūð-rēow, glæde Scyldingas. Þǣm fēower bearn forð-gerīmed in worold wōcun, weoroda rǣswan, Heorogār and Hrōðgār and Hālga til; hȳrde ic, þat Elan cwēn Ongenþēowes wæs Heaðoscilfinges heals-gebedde. Þā wæs Hrōðgāre here-spēd gyfen, wīges weorð-mynd, þæt him his wine-māgas georne hȳrdon, oð þæt sēo geogoð gewēox, mago-driht micel. Him on mōd bearn, þæt heal-reced hātan wolde, medo-ærn micel men gewyrcean, þone yldo bearn ǣfre gefrūnon, and þǣr on innan eall gedǣlan geongum and ealdum, swylc him god sealde, būton folc-scare and feorum gumena. Þā ic wīde gefrægn weorc gebannan manigre mǣgðe geond þisne middan-geard, folc-stede frætwan. Him on fyrste gelomp ǣdre mid yldum, þæt hit wearð eal gearo, heal-ærna mǣst; scōp him Heort naman, sē þe his wordes geweald wīde hæfde. Hē bēot ne ālēh, bēagas dǣlde, sinc æt symle. Sele hlīfade hēah and horn-gēap: heaðo-wylma bād, lāðan līges; ne wæs hit lenge þā gēn þæt se ecg-hete āðum-swerian 85 æfter wæl-nīðe wæcnan scolde. Þā se ellen-gǣst earfoðlīce þrāge geþolode, sē þe in þȳstrum bād, þæt hē dōgora gehwām drēam gehȳrde hlūdne in healle; þǣr wæs hearpan swēg, swutol sang scopes. Sægde sē þe cūðe frum-sceaft fīra feorran reccan",
-          # the author has an ID where by authors can be disambiguated
-          "author":{
-                "type":"author",
-                # ID of the Author
-                "id":"http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e",
-                # the home host of the author
-                "host":"http://127.0.0.1:5454/",
-                # the display name of the author
-                "displayName":"Lara Croft",
-                # url to the authors profile
-                "url":"http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e",
-                # HATEOS url for Github API
-                "github": "http://github.com/laracroft",
-                # Image from a public domain (optional, can be missing)
-                "profileImage": "https://i.imgur.com/k7XVwpB.jpeg"
-          },
-          # categories this post fits into (a list of strings
-          "categories":["web","tutorial"],
-          # comments about the post
-          # return a maximum number of comments
-          # total number of comments for this post
-          "count": 1023,
-          # the first page of comments
-          "comments":"http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/de305d54-75b4-431b-adb2-eb6b9e546013/comments"
-          # commentsSrc is OPTIONAL and can be missing
-          # You should return ~ 5 comments per post.
-          # should be sorted newest(first) to oldest(last)
-          # this is to reduce API call counts
-          "commentsSrc":{
-              "type":"comments",
-              "page":1,
-              "size":5,
-              "post":"http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/764efa883dda1e11db47671c4a3bbd9e"
-              "id":"http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/de305d54-75b4-431b-adb2-eb6b9e546013/comments"
-              "comments":[
-                  {
-                      "type":"comment",
-                      "author":{
-                          "type":"author",
-                          # ID of the Author (UUID)
-                          "id":"http://127.0.0.1:5454/authors/1d698d25ff008f7538453c120f581471",
-                          # url to the authors information
-                          "url":"http://127.0.0.1:5454/authors/1d698d25ff008f7538453c120f581471",
-                          "host":"http://127.0.0.1:5454/",
-                          "displayName":"Greg Johnson",
-                          # HATEOS url for Github API
-                          "github": "http://github.com/gjohnson",
-                          # Image from a public domain
-                          "profileImage": "https://i.imgur.com/k7XVwpB.jpeg"
-                      },
-                      "comment":"Sick Olde English",
-                      "contentType":"text/markdown",
-                      # ISO 8601 TIMESTAMP
-                      "published":"2015-03-09T13:07:04+00:00",
-                      # ID of the Comment (UUID)
-                      "id":"http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/de305d54-75b4-431b-adb2-eb6b9e546013/comments/f6255bb01c648fe967714d52a89e8e9c",
-                  }
-              ]
-          }
-          # ISO 8601 TIMESTAMP
-          "published":"2015-03-09T13:07:04+00:00",
-          # visibility ["PUBLIC","FRIENDS"]
-          "visibility":"PUBLIC",
-          # for visibility PUBLIC means it is open to the wild web
-          # FRIENDS means if we're direct friends I can see the post
-          # FRIENDS should've already been sent the post so they don't need this
-          "unlisted":false
-          # unlisted means it is public if you know the post name -- use this for images, it's so images don't show up in timelines
-      }
-      #+END_SRC</p>
-<p>*** Image Posts
-    Image Posts are just posts that are images. But they are encoded as base64 data.
-    You can inline an image post using a data url or you can use this 
-    shortcut to get the image if authenticated to see it.
-    - URL: ://service/authors/{AUTHOR_ID}/posts/{POST_ID}/image
-      - GET [local, remote] get the public post converted to binary as an iamge
-        - return 404 if not an image
-    - This end point decodes image posts as images. This allows the use of
-      image tags in markdown.
-    - You can use this to proxy or cache images.</p>
-<p>*** Comments
-    - URL: ://service/authors/{AUTHOR_ID}/posts/{POST_ID}/comments
-      - GET [local, remote] get the list of comments of the post whose id is POST_ID (paginated)
-      - POST [local] if you post an object of "type":"comment", it will add your comment to the post whose id is POST_ID
-    - example comment from ://service/authors/{AUTHOR_ID}/posts/{POST_ID}/comments
-      #+BEGIN_SRC json
-      {
-          "type":"comment",
-          "author":{
-              "type":"author",
-              # ID of the Author (UUID)
-              "id":"http://127.0.0.1:5454/authors/1d698d25ff008f7538453c120f581471",
-              # url to the authors information
-              "url":"http://127.0.0.1:5454/authors/1d698d25ff008f7538453c120f581471",
-              "host":"http://127.0.0.1:5454/",
-              "displayName":"Greg Johnson",
-              # HATEOS url for Github API
-              "github": "http://github.com/gjohnson",
-              # Image from a public domain
-              "profileImage": "https://i.imgur.com/k7XVwpB.jpeg"
-          }
-          "comment":"Sick Olde English",
-          "contentType":"text/markdown",
-          # ISO 8601 TIMESTAMP
-          "published":"2015-03-09T13:07:04+00:00",
-          # ID of the Comment (UUID)
-          "id":"http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/de305d54-75b4-431b-adb2-eb6b9e546013/comments/f6255bb01c648fe967714d52a89e8e9c",
-      }
-      #+END_SRC
-    - example comments from a post
-      #+BEGIN_SRC json
-      {
-          "type":"comments",
-          "page":1,
-          "size":5,
-          "post":"http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/764efa883dda1e11db47671c4a3bbd9e"
-          "id":"http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/de305d54-75b4-431b-adb2-eb6b9e546013/comments"
-          "comments":[
-              {
-                  "type":"comment",
-                  "author":{
-                      "type":"author",
-                      # ID of the Author (UUID)
-                      "id":"http://127.0.0.1:5454/authors/1d698d25ff008f7538453c120f581471",
-                      # url to the authors information
-                      "url":"http://127.0.0.1:5454/authors/1d698d25ff008f7538453c120f581471",
-                      "host":"http://127.0.0.1:5454/",
-                      "displayName":"Greg Johnson",
-                      # HATEOS url for Github API
-                      "github": "http://github.com/gjohnson",
-                      # Image from a public domain
-                      "profileImage": "https://i.imgur.com/k7XVwpB.jpeg"
-                  },
-                  "comment":"Sick Olde English",
-                  "contentType":"text/markdown",
-                  # ISO 8601 TIMESTAMP
-                  "published":"2015-03-09T13:07:04+00:00",
-                  # ID of the Comment (UUID)
-                  "id":"http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/de305d54-75b4-431b-adb2-eb6b9e546013/comments/f6255bb01c648fe967714d52a89e8e9c",
-              }
-          ]
-      }
-      #+END_SRC</p>
-<p>*** Likes
-    - You can like posts and comments
-    - Send them to the inbox of the author of the post or comment
-    - URL: ://service/authors/{AUTHOR_ID}/inbox/
-      - POST [local, remote]: send a like object to AUTHOR_ID
-    - URL: ://service/authors/{AUTHOR_ID}/posts/{POST_ID}/likes
-      - GET [local, remote] a list of likes from other authors on AUTHOR_ID's post POST_ID
-    - URL: ://service/authors/{AUTHOR_ID}/posts/{POST_ID}/comments/{COMMENT_ID}/likes
-      - GET [local, remote] a list of likes from other authors on AUTHOR_ID's post POST_ID comment COMMENT_ID
-    - Example like object:
-      #+BEGIN_SRC json
-      {
-          "@context": "https://www.w3.org/ns/activitystreams",
-          "summary": "Lara Croft Likes your post",       <br>
-          "type": "Like",
-          "author":{
-              "type":"author",
-              "id":"http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e",
-              "host":"http://127.0.0.1:5454/",
-              "displayName":"Lara Croft",
-              "url":"http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e",
-              "github":"http://github.com/laracroft",
-              "profileImage": "https://i.imgur.com/k7XVwpB.jpeg"
-          },
-          "object":"http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/764efa883dda1e11db47671c4a3bbd9e"
-     }
-     #+END_SRC
-*** Liked
-    - URL: ://service/authors/{AUTHOR_ID}/liked
-      - GET [local, remote] list what public things AUTHOR_ID liked.
-        - It's a list of of likes originating from this author
-        - Note: be careful here private information could be disclosed.
-    - Example liked object:
-      #+BEGIN_SRC json
-      {
-          "type":"liked",
-          "items":[
-              {
-                  "@context": "https://www.w3.org/ns/activitystreams",
-                  "summary": "Lara Croft Likes your post",       <br>
-                  "type": "Like",
-                  "author":{
-                      "type":"author",
-                      "id":"http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e",
-                      "host":"http://127.0.0.1:5454/",
-                      "displayName":"Lara Croft",
-                      "url":"http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e",
-                      "github":"http://github.com/laracroft",
-                      "profileImage": "https://i.imgur.com/k7XVwpB.jpeg"
-                  },
-                  "object":"http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/764efa883dda1e11db47671c4a3bbd9e"
-              }
-          ]
-      }
-      #+END_SRC</p>
-<p>*** Inbox
-    - The inbox is all the new posts from who you follow
-    - URL: ://service/authors/{AUTHOR_ID}/inbox
-      - GET [local]: if authenticated get a list of posts sent to AUTHOR_ID (paginated)
-      - POST [local, remote]: send a post to the author
-        - if the type is "post" then add that post to AUTHOR_ID's inbox
-        - if the type is "Follow" then add that follow is added to AUTHOR_ID's inbox to approve later
-        - if the type is "Like" then add that like to AUTHOR_ID's inbox
-        - if the type is "comment" then add that comment to AUTHOR_ID's inbox
-      - DELETE [local]: clear the inbox
-    - Example, retrieving an inbox
-      #+BEGIN_SRC json
-      {
-          "type":"inbox",
-          "author":"http://127.0.0.1:5454/authors/c1e3db8ccea4541a0f3d7e5c75feb3fb",
-          "items":[
-              {
-                  "type":"post",
-                  "title":"A Friendly post title about a post about web dev",
-                  "id":"http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/764efa883dda1e11db47671c4a3bbd9e"
-                  "source":"http://lastplaceigotthisfrom.com/authors/xxxxxx/posts/yyyyy",
-                  "origin":"http://whereitcamefrom.com/authors/yyyyyy/posts/zzzzz",
-                  "description":"This post discusses stuff -- brief",
-                  "contentType":"text/plain",
-                  "content":"Þā wæs on burgum Bēowulf Scyldinga, lēof lēod-cyning, longe þrāge folcum gefrǣge (fæder ellor hwearf, aldor of earde), oð þæt him eft onwōc hēah Healfdene; hēold þenden lifde, gamol and gūð-rēow, glæde Scyldingas. Þǣm fēower bearn forð-gerīmed in worold wōcun, weoroda rǣswan, Heorogār and Hrōðgār and Hālga til; hȳrde ic, þat Elan cwēn Ongenþēowes wæs Heaðoscilfinges heals-gebedde. Þā wæs Hrōðgāre here-spēd gyfen, wīges weorð-mynd, þæt him his wine-māgas georne hȳrdon, oð þæt sēo geogoð gewēox, mago-driht micel. Him on mōd bearn, þæt heal-reced hātan wolde, medo-ærn micel men gewyrcean, þone yldo bearn ǣfre gefrūnon, and þǣr on innan eall gedǣlan geongum and ealdum, swylc him god sealde, būton folc-scare and feorum gumena. Þā ic wīde gefrægn weorc gebannan manigre mǣgðe geond þisne middan-geard, folc-stede frætwan. Him on fyrste gelomp ǣdre mid yldum, þæt hit wearð eal gearo, heal-ærna mǣst; scōp him Heort naman, sē þe his wordes geweald wīde hæfde. Hē bēot ne ālēh, bēagas dǣlde, sinc æt symle. Sele hlīfade hēah and horn-gēap: heaðo-wylma bād, lāðan līges; ne wæs hit lenge þā gēn þæt se ecg-hete āðum-swerian 85 æfter wæl-nīðe wæcnan scolde. Þā se ellen-gǣst earfoðlīce þrāge geþolode, sē þe in þȳstrum bād, þæt hē dōgora gehwām drēam gehȳrde hlūdne in healle; þǣr wæs hearpan swēg, swutol sang scopes. Sægde sē þe cūðe frum-sceaft fīra feorran reccan",
-                  "author":{
-                        "type":"author",
-                        "id":"http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e",
-                        "host":"http://127.0.0.1:5454/",
-                        "displayName":"Lara Croft",
-                        "url":"http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e",
-                        "github": "http://github.com/laracroft",
-                        "profileImage": "https://i.imgur.com/k7XVwpB.jpeg"
-                  },
-                  "categories":["web","tutorial"],
-                  "comments":"http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/de305d54-75b4-431b-adb2-eb6b9e546013/comments"
-                  "published":"2015-03-09T13:07:04+00:00",
-                  "visibility":"FRIENDS",
-                  "unlisted":false
-              },
-              {
-                  "type":"post",
-                  "title":"DID YOU READ MY POST YET?",
-                  "id":"http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/999999983dda1e11db47671c4a3bbd9e",
-                  "source":"http://lastplaceigotthisfrom.com/authors/xxxxxx/posts/yyyyy",
-                  "origin":"http://whereitcamefrom.com/authors/wwwwww/posts/zzzzz",
-                  "description":"Whatever",
-                  "contentType":"text/plain",
-                  "content":"Are you even reading my posts Arjun?",
-                  "author":{
-                        "type":"author",
-                        "id":"http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e",
-                        "host":"http://127.0.0.1:5454/",
-                        "displayName":"Lara Croft",
-                        "url":"http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e",
-                        "github": "http://github.com/laracroft",
-                        "profileImage": "https://i.imgur.com/k7XVwpB.jpeg"
-                  },
-                  "categories":["web","tutorial"],
-                  "comments":"http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/de305d54-75b4-431b-adb2-eb6b9e546013/comments"
-                  "published":"2015-03-09T13:07:04+00:00",
-                  "visibility":"FRIENDS",
-                  "unlisted":false
-              }
-          ]
-      }
-      #+END_SRC</p>
-<p>** Requirements</p>
+<h4 id="authentication">Authentication</h4>
+<ul>
+<li>Remote node authentication is global between nodes. It requires an admin to allow node to node access.</li>
+<li>Remote node authentication is done solely with HTTP basic auth</li>
+<li>Local auth uses your frameworks local auth mechanisms (cookies, tokens, basic auth).   - Local refers to local access to the restful API. This is useful for frameworks like react, vue, or angular to get access to data, and enable a more client heavy UI.</li>
+</ul>
+<h4 id="pagination">Pagination</h4>
+<p>If something is paginated it has query options:</p>
+<ul>
+<li>page - how many pages of objects have been delivered</li>
+<li>size - how big is a page</li>
+<li>Page 4 of objects http://service/author/{author_id}/posts/{post_id}/comments?page=4</li>
+<li>Page 4 of objects but 40 per page http://service/author/{author_id}/posts/{post_id}/comments?page=4&amp;size=40</li>
+<li>1 based indexing. First page is 1.</li>
+</ul>
+<h3 id="objects">Objects</h3>
+<ul>
+<li>HTTP Methods not explicitly listed are not allowed methods<ul>
+<li>Most HTTP methods are local only, and provided for local node use.</li>
+</ul>
+</li>
+</ul>
+<h4 id="authors">Authors</h4>
+<ul>
+<li>URL: ://service/authors/<ul>
+<li>GET [local, remote]: retrieve all profiles on the server (paginated)<ul>
+<li>page: how many pages</li>
+<li>size: how big is a page</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Example query: GET ://service/authors?page=10&amp;size=5 <ul>
+<li>Gets the 5 authors, authors 45 to 49.</li>
+</ul>
+</li>
+<li>Example: GET ://service/authors/</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;authors&quot;</span><span class="p">,</span><span class="w">      </span>
+<span class="w">    </span><span class="s2">&quot;items&quot;</span><span class="o">:</span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;author&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/1d698d25ff008f7538453c120f581471&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;url&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/1d698d25ff008f7538453c120f581471&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;host&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;displayName&quot;</span><span class="o">:</span><span class="s2">&quot;Greg Johnson&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;github&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://github.com/gjohnson&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;profileImage&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://i.imgur.com/k7XVwpB.jpeg&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;author&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;host&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;displayName&quot;</span><span class="o">:</span><span class="s2">&quot;Lara Croft&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;url&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;github&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://github.com/laracroft&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;profileImage&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://i.imgur.com/k7XVwpB.jpeg&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h4 id="single-author">Single Author</h4>
+<ul>
+<li>URL: ://service/authors/{AUTHOR_ID}/<ul>
+<li>GET [local, remote]: retrieve AUTHOR_ID's profile</li>
+<li>POST [local]: update AUTHOR_ID's profile</li>
+</ul>
+</li>
+<li>Example Format:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;author&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// ID of the Author</span>
+<span class="w">    </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// the home host of the author</span>
+<span class="w">    </span><span class="s2">&quot;host&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// the display name of the author</span>
+<span class="w">    </span><span class="s2">&quot;displayName&quot;</span><span class="o">:</span><span class="s2">&quot;Lara Croft&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// url to the authors profile</span>
+<span class="w">    </span><span class="s2">&quot;url&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// HATEOS url for Github API</span>
+<span class="w">    </span><span class="s2">&quot;github&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://github.com/laracroft&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// Image from a public domain</span>
+<span class="w">    </span><span class="s2">&quot;profileImage&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://i.imgur.com/k7XVwpB.jpeg&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h4 id="followers">Followers</h4>
+<ul>
+<li>URL: ://service/authors/{AUTHOR_ID}/followers<ul>
+<li>GET [local, remote]: get a list of authors who are AUTHOR_ID's followers</li>
+</ul>
+</li>
+<li>URL: ://service/authors/{AUTHOR_ID}/followers/{FOREIGN_AUTHOR_ID}<ul>
+<li>DELETE [local]: remove FOREIGN_AUTHOR_ID as a follower of AUTHOR_ID</li>
+<li>PUT [local]: Add FOREIGN_AUTHOR_ID as a follower of AUTHOR_ID (must be authenticated)</li>
+<li>GET [local, remote] check if FOREIGN_AUTHOR_ID is a follower of AUTHOR_ID</li>
+</ul>
+</li>
+<li>Example: GET ://service/authors/{AUTHOR_ID}/followers</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;followers&quot;</span><span class="p">,</span><span class="w">      </span>
+<span class="w">    </span><span class="s2">&quot;items&quot;</span><span class="o">:</span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;author&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/1d698d25ff008f7538453c120f581471&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;url&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/1d698d25ff008f7538453c120f581471&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;host&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;displayName&quot;</span><span class="o">:</span><span class="s2">&quot;Greg Johnson&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;github&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://github.com/gjohnson&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;profileImage&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://i.imgur.com/k7XVwpB.jpeg&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;author&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;host&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;displayName&quot;</span><span class="o">:</span><span class="s2">&quot;Lara Croft&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;url&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;github&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://github.com/laracroft&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;profileImage&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://i.imgur.com/k7XVwpB.jpeg&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h4 id="friendfollow-request">Friend/Follow Request</h4>
+<ul>
+<li>This allows you to follow someone you, so they can send you their post.</li>
+<li>If the recipient accepts the Friend Request then you are friends</li>
+<li>If the recipient folows you, you are true friends</li>
+<li>Sent to inbox of "object" </li>
+<li>Example format:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Follow&quot;</span><span class="p">,</span><span class="w">      </span>
+<span class="w">    </span><span class="s2">&quot;summary&quot;</span><span class="o">:</span><span class="s2">&quot;Greg wants to follow Lara&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;actor&quot;</span><span class="o">:</span><span class="p">{</span>
+<span class="w">        </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;author&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/1d698d25ff008f7538453c120f581471&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;url&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/1d698d25ff008f7538453c120f581471&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;host&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;displayName&quot;</span><span class="o">:</span><span class="s2">&quot;Greg Johnson&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;github&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://github.com/gjohnson&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;profileImage&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://i.imgur.com/k7XVwpB.jpeg&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="s2">&quot;object&quot;</span><span class="o">:</span><span class="p">{</span>
+<span class="w">        </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;author&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="c1">// ID of the Author</span>
+<span class="w">        </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="c1">// the home host of the author</span>
+<span class="w">        </span><span class="s2">&quot;host&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="c1">// the display name of the author</span>
+<span class="w">        </span><span class="s2">&quot;displayName&quot;</span><span class="o">:</span><span class="s2">&quot;Lara Croft&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="c1">// url to the authors profile</span>
+<span class="w">        </span><span class="s2">&quot;url&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="c1">// HATEOS url for Github API</span>
+<span class="w">        </span><span class="s2">&quot;github&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://github.com/laracroft&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="c1">// Image from a public domain</span>
+<span class="w">        </span><span class="s2">&quot;profileImage&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://i.imgur.com/k7XVwpB.jpeg&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h4 id="post">Post</h4>
+<ul>
+<li>URL: ://service/authors/{AUTHOR_ID}/posts/{POST_ID}<ul>
+<li>GET [local, remote] get the public post whose id is POST_ID</li>
+<li>POST [local] update the post whose id is POST_ID (must be authenticated)</li>
+<li>DELETE [local] remove the post whose id is POST_ID</li>
+<li>PUT [local] create a post where its id is POST_ID</li>
+</ul>
+</li>
+<li>Creation URL ://service/authors/{AUTHOR_ID}/posts/<ul>
+<li>GET [local, remote] get the recent posts from author AUTHOR_ID (paginated)</li>
+<li>POST [local] create a new post but generate a new id</li>
+</ul>
+</li>
+<li>Be aware that Posts can be images that need base64 decoding.<ul>
+<li>posts can also hyperlink to images that are public</li>
+</ul>
+</li>
+<li>Example Format:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;post&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// title of a post</span>
+<span class="w">    </span><span class="s2">&quot;title&quot;</span><span class="o">:</span><span class="s2">&quot;A post title about a post about web dev&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// id of the post</span>
+<span class="w">    </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/764efa883dda1e11db47671c4a3bbd9e&quot;</span>
+<span class="w">    </span><span class="c1">// where did you get this post from?</span>
+<span class="w">    </span><span class="s2">&quot;source&quot;</span><span class="o">:</span><span class="s2">&quot;http://lastplaceigotthisfrom.com/posts/yyyyy&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// where is it actually from</span>
+<span class="w">    </span><span class="s2">&quot;origin&quot;</span><span class="o">:</span><span class="s2">&quot;http://whereitcamefrom.com/posts/zzzzz&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// a brief description of the post</span>
+<span class="w">    </span><span class="s2">&quot;description&quot;</span><span class="o">:</span><span class="s2">&quot;This post discusses stuff -- brief&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// The content type of the post</span>
+<span class="w">    </span><span class="c1">// assume either</span>
+<span class="w">    </span><span class="c1">// text/markdown -- common mark</span>
+<span class="w">    </span><span class="c1">// text/plain -- UTF-8</span>
+<span class="w">    </span><span class="c1">// application/base64</span>
+<span class="w">    </span><span class="c1">// image/png;base64 # this is an embedded png -- images are POSTS. So you might have a user make 2 posts if a post includes an image!</span>
+<span class="w">    </span><span class="c1">// image/jpeg;base64 # this is an embedded jpeg</span>
+<span class="w">    </span><span class="c1">// for HTML you will want to strip tags before displaying</span>
+<span class="w">    </span><span class="s2">&quot;contentType&quot;</span><span class="o">:</span><span class="s2">&quot;text/plain&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;content&quot;</span><span class="o">:</span><span class="s2">&quot;Þā wæs on burgum Bēowulf Scyldinga, lēof lēod-cyning, longe þrāge folcum gefrǣge (fæder ellor hwearf, aldor of earde), oð þæt him eft onwōc hēah Healfdene; hēold þenden lifde, gamol and gūð-rēow, glæde Scyldingas. Þǣm fēower bearn forð-gerīmed in worold wōcun, weoroda rǣswan, Heorogār and Hrōðgār and Hālga til; hȳrde ic, þat Elan cwēn Ongenþēowes wæs Heaðoscilfinges heals-gebedde. Þā wæs Hrōðgāre here-spēd gyfen, wīges weorð-mynd, þæt him his wine-māgas georne hȳrdon, oð þæt sēo geogoð gewēox, mago-driht micel. Him on mōd bearn, þæt heal-reced hātan wolde, medo-ærn micel men gewyrcean, þone yldo bearn ǣfre gefrūnon, and þǣr on innan eall gedǣlan geongum and ealdum, swylc him god sealde, būton folc-scare and feorum gumena. Þā ic wīde gefrægn weorc gebannan manigre mǣgðe geond þisne middan-geard, folc-stede frætwan. Him on fyrste gelomp ǣdre mid yldum, þæt hit wearð eal gearo, heal-ærna mǣst; scōp him Heort naman, sē þe his wordes geweald wīde hæfde. Hē bēot ne ālēh, bēagas dǣlde, sinc æt symle. Sele hlīfade hēah and horn-gēap: heaðo-wylma bād, lāðan līges; ne wæs hit lenge þā gēn þæt se ecg-hete āðum-swerian 85 æfter wæl-nīðe wæcnan scolde. Þā se ellen-gǣst earfoðlīce þrāge geþolode, sē þe in þȳstrum bād, þæt hē dōgora gehwām drēam gehȳrde hlūdne in healle; þǣr wæs hearpan swēg, swutol sang scopes. Sægde sē þe cūðe frum-sceaft fīra feorran reccan&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// the author has an ID where by authors can be disambiguated</span>
+<span class="w">    </span><span class="s2">&quot;author&quot;</span><span class="o">:</span><span class="p">{</span>
+<span class="w">        </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;author&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="c1">// ID of the Author</span>
+<span class="w">        </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="c1">// the home host of the author</span>
+<span class="w">        </span><span class="s2">&quot;host&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="c1">// the display name of the author</span>
+<span class="w">        </span><span class="s2">&quot;displayName&quot;</span><span class="o">:</span><span class="s2">&quot;Lara Croft&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="c1">// url to the authors profile</span>
+<span class="w">        </span><span class="s2">&quot;url&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="c1">// HATEOS url for Github API</span>
+<span class="w">        </span><span class="s2">&quot;github&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://github.com/laracroft&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="c1">// Image from a public domain (optional, can be missing)</span>
+<span class="w">        </span><span class="s2">&quot;profileImage&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://i.imgur.com/k7XVwpB.jpeg&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="c1">// categories this post fits into (a list of strings</span>
+<span class="w">    </span><span class="s2">&quot;categories&quot;</span><span class="o">:</span><span class="p">[</span><span class="s2">&quot;web&quot;</span><span class="p">,</span><span class="s2">&quot;tutorial&quot;</span><span class="p">],</span>
+<span class="w">    </span><span class="c1">// comments about the post</span>
+<span class="w">    </span><span class="c1">// return a maximum number of comments</span>
+<span class="w">    </span><span class="c1">// total number of comments for this post</span>
+<span class="w">    </span><span class="s2">&quot;count&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1023</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// the first page of comments</span>
+<span class="w">    </span><span class="s2">&quot;comments&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/de305d54-75b4-431b-adb2-eb6b9e546013/comments&quot;</span>
+<span class="w">    </span><span class="c1">// commentsSrc is OPTIONAL and can be missing</span>
+<span class="w">    </span><span class="c1">// You should return ~ 5 comments per post.</span>
+<span class="w">    </span><span class="c1">// should be sorted newest(first) to oldest(last)</span>
+<span class="w">    </span><span class="c1">// this is to reduce API call counts</span>
+<span class="w">    </span><span class="s2">&quot;commentsSrc&quot;</span><span class="o">:</span><span class="p">{</span>
+<span class="w">        </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;comments&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;page&quot;</span><span class="o">:</span><span class="mf">1</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;size&quot;</span><span class="o">:</span><span class="mf">5</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;post&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/764efa883dda1e11db47671c4a3bbd9e&quot;</span>
+<span class="w">        </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/de305d54-75b4-431b-adb2-eb6b9e546013/comments&quot;</span>
+<span class="w">        </span><span class="s2">&quot;comments&quot;</span><span class="o">:</span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;comment&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;author&quot;</span><span class="o">:</span><span class="p">{</span>
+<span class="w">                    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;author&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="c1">// ID of the Author (UUID)</span>
+<span class="w">                    </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/1d698d25ff008f7538453c120f581471&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="c1">// url to the authors information</span>
+<span class="w">                    </span><span class="s2">&quot;url&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/1d698d25ff008f7538453c120f581471&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;host&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;displayName&quot;</span><span class="o">:</span><span class="s2">&quot;Greg Johnson&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="c1">// HATEOS url for Github API</span>
+<span class="w">                    </span><span class="s2">&quot;github&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://github.com/gjohnson&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="c1">// Image from a public domain</span>
+<span class="w">                    </span><span class="s2">&quot;profileImage&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://i.imgur.com/k7XVwpB.jpeg&quot;</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="s2">&quot;comment&quot;</span><span class="o">:</span><span class="s2">&quot;Sick Olde English&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;contentType&quot;</span><span class="o">:</span><span class="s2">&quot;text/markdown&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="c1">// ISO 8601 TIMESTAMP</span>
+<span class="w">                </span><span class="s2">&quot;published&quot;</span><span class="o">:</span><span class="s2">&quot;2015-03-09T13:07:04+00:00&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="c1">// ID of the Comment (UUID)</span>
+<span class="w">                </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/de305d54-75b4-431b-adb2-eb6b9e546013/comments/f6255bb01c648fe967714d52a89e8e9c&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">// ISO 8601 TIMESTAMP</span>
+<span class="w">    </span><span class="s2">&quot;published&quot;</span><span class="o">:</span><span class="s2">&quot;2015-03-09T13:07:04+00:00&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// visibility [&quot;PUBLIC&quot;,&quot;FRIENDS&quot;]</span>
+<span class="w">    </span><span class="s2">&quot;visibility&quot;</span><span class="o">:</span><span class="s2">&quot;PUBLIC&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// for visibility PUBLIC means it is open to the wild web</span>
+<span class="w">    </span><span class="c1">// FRIENDS means if we&#39;re direct friends I can see the post</span>
+<span class="w">    </span><span class="c1">// FRIENDS should&#39;ve already been sent the post so they don&#39;t need this</span>
+<span class="w">    </span><span class="s2">&quot;unlisted&quot;</span><span class="o">:</span><span class="kc">false</span>
+<span class="w">    </span><span class="c1">// unlisted means it is public if you know the post name -- use this for images, it&#39;s so images don&#39;t show up in timelines</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h4 id="image-posts">Image Posts</h4>
+<p>Image Posts are just posts that are images. But they are encoded as base64 data.
+You can inline an image post using a data url or you can use this 
+shortcut to get the image if authenticated to see it.</p>
+<ul>
+<li>URL: ://service/authors/{AUTHOR_ID}/posts/{POST_ID}/image<ul>
+<li>GET [local, remote] get the public post converted to binary as an iamge</li>
+<li>return 404 if not an image</li>
+</ul>
+</li>
+<li>This end point decodes image posts as images. This allows the use of
+  image tags in markdown.</li>
+<li>You can use this to proxy or cache images.</li>
+</ul>
+<h4 id="comments">Comments</h4>
+<ul>
+<li>URL: ://service/authors/{AUTHOR_ID}/posts/{POST_ID}/comments<ul>
+<li>GET [local, remote] get the list of comments of the post whose id is POST_ID (paginated)</li>
+<li>POST [local] if you post an object of "type":"comment", it will add your comment to the post whose id is POST_ID</li>
+</ul>
+</li>
+<li>example comment from ://service/authors/{AUTHOR_ID}/posts/{POST_ID}/comments</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;comment&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;author&quot;</span><span class="o">:</span><span class="p">{</span>
+<span class="w">        </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;author&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="c1">// ID of the Author (UUID)</span>
+<span class="w">        </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/1d698d25ff008f7538453c120f581471&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="c1">// url to the authors information</span>
+<span class="w">        </span><span class="s2">&quot;url&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/1d698d25ff008f7538453c120f581471&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;host&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;displayName&quot;</span><span class="o">:</span><span class="s2">&quot;Greg Johnson&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="c1">// HATEOS url for Github API</span>
+<span class="w">        </span><span class="s2">&quot;github&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://github.com/gjohnson&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="c1">// Image from a public domain</span>
+<span class="w">        </span><span class="s2">&quot;profileImage&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://i.imgur.com/k7XVwpB.jpeg&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="s2">&quot;comment&quot;</span><span class="o">:</span><span class="s2">&quot;Sick Olde English&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;contentType&quot;</span><span class="o">:</span><span class="s2">&quot;text/markdown&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// ISO 8601 TIMESTAMP</span>
+<span class="w">    </span><span class="s2">&quot;published&quot;</span><span class="o">:</span><span class="s2">&quot;2015-03-09T13:07:04+00:00&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// ID of the Comment (UUID)</span>
+<span class="w">    </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/de305d54-75b4-431b-adb2-eb6b9e546013/comments/f6255bb01c648fe967714d52a89e8e9c&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<ul>
+<li>example comments from a post:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;comments&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;page&quot;</span><span class="o">:</span><span class="mf">1</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;size&quot;</span><span class="o">:</span><span class="mf">5</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;post&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/764efa883dda1e11db47671c4a3bbd9e&quot;</span>
+<span class="w">    </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/de305d54-75b4-431b-adb2-eb6b9e546013/comments&quot;</span>
+<span class="w">    </span><span class="s2">&quot;comments&quot;</span><span class="o">:</span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;comment&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;author&quot;</span><span class="o">:</span><span class="p">{</span>
+<span class="w">                </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;author&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="c1">// ID of the Author (UUID)</span>
+<span class="w">                </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/1d698d25ff008f7538453c120f581471&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="c1">// url to the authors information</span>
+<span class="w">                </span><span class="s2">&quot;url&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/1d698d25ff008f7538453c120f581471&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;host&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;displayName&quot;</span><span class="o">:</span><span class="s2">&quot;Greg Johnson&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="c1">// HATEOS url for Github API</span>
+<span class="w">                </span><span class="s2">&quot;github&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://github.com/gjohnson&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="c1">// Image from a public domain</span>
+<span class="w">                </span><span class="s2">&quot;profileImage&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://i.imgur.com/k7XVwpB.jpeg&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="s2">&quot;comment&quot;</span><span class="o">:</span><span class="s2">&quot;Sick Olde English&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;contentType&quot;</span><span class="o">:</span><span class="s2">&quot;text/markdown&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="c1">// ISO 8601 TIMESTAMP</span>
+<span class="w">            </span><span class="s2">&quot;published&quot;</span><span class="o">:</span><span class="s2">&quot;2015-03-09T13:07:04+00:00&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="c1">// ID of the Comment (UUID)</span>
+<span class="w">            </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/de305d54-75b4-431b-adb2-eb6b9e546013/comments/f6255bb01c648fe967714d52a89e8e9c&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h4 id="likes">Likes</h4>
+<ul>
+<li>You can like posts and comments</li>
+<li>Send them to the inbox of the author of the post or comment</li>
+<li>URL: ://service/authors/{AUTHOR_ID}/inbox/<ul>
+<li>POST [local, remote]: send a like object to AUTHOR_ID</li>
+</ul>
+</li>
+<li>URL: ://service/authors/{AUTHOR_ID}/posts/{POST_ID}/likes<ul>
+<li>GET [local, remote] a list of likes from other authors on AUTHOR_ID's post POST_ID</li>
+</ul>
+</li>
+<li>URL: ://service/authors/{AUTHOR_ID}/posts/{POST_ID}/comments/{COMMENT_ID}/likes<ul>
+<li>GET [local, remote] a list of likes from other authors on AUTHOR_ID's post POST_ID comment COMMENT_ID</li>
+</ul>
+</li>
+<li>Example like object:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;@context&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://www.w3.org/ns/activitystreams&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;summary&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Lara Croft Likes your post&quot;</span><span class="p">,</span><span class="w">         </span>
+<span class="w">    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Like&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;author&quot;</span><span class="o">:</span><span class="p">{</span>
+<span class="w">        </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;author&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;host&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;displayName&quot;</span><span class="o">:</span><span class="s2">&quot;Lara Croft&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;url&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;github&quot;</span><span class="o">:</span><span class="s2">&quot;http://github.com/laracroft&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;profileImage&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://i.imgur.com/k7XVwpB.jpeg&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="s2">&quot;object&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/764efa883dda1e11db47671c4a3bbd9e&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h4 id="liked">Liked</h4>
+<ul>
+<li>URL: ://service/authors/{AUTHOR_ID}/liked<ul>
+<li>GET [local, remote] list what public things AUTHOR_ID liked.</li>
+<li>It's a list of of likes originating from this author</li>
+<li>Note: be careful here private information could be disclosed.</li>
+</ul>
+</li>
+<li>Example liked object:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;liked&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;items&quot;</span><span class="o">:</span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;@context&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://www.w3.org/ns/activitystreams&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;summary&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Lara Croft Likes your post&quot;</span><span class="p">,</span><span class="w">         </span>
+<span class="w">            </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Like&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;author&quot;</span><span class="o">:</span><span class="p">{</span>
+<span class="w">                </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;author&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;host&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;displayName&quot;</span><span class="o">:</span><span class="s2">&quot;Lara Croft&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;url&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;github&quot;</span><span class="o">:</span><span class="s2">&quot;http://github.com/laracroft&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;profileImage&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://i.imgur.com/k7XVwpB.jpeg&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="s2">&quot;object&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/764efa883dda1e11db47671c4a3bbd9e&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h4 id="inbox">Inbox</h4>
+<ul>
+<li>The inbox is all the new posts from who you follow</li>
+<li>URL: ://service/authors/{AUTHOR_ID}/inbox<ul>
+<li>GET [local]: if authenticated get a list of posts sent to AUTHOR_ID (paginated)</li>
+<li>POST [local, remote]: send a post to the author</li>
+<li>if the type is "post" then add that post to AUTHOR_ID's inbox</li>
+<li>if the type is "Follow" then add that follow is added to AUTHOR_ID's inbox to approve later</li>
+<li>if the type is "Like" then add that like to AUTHOR_ID's inbox</li>
+<li>if the type is "comment" then add that comment to AUTHOR_ID's inbox</li>
+<li>DELETE [local]: clear the inbox</li>
+</ul>
+</li>
+<li>Example, retrieving an inbox:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;inbox&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;author&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/c1e3db8ccea4541a0f3d7e5c75feb3fb&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;items&quot;</span><span class="o">:</span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;post&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;title&quot;</span><span class="o">:</span><span class="s2">&quot;A Friendly post title about a post about web dev&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/764efa883dda1e11db47671c4a3bbd9e&quot;</span>
+<span class="w">            </span><span class="s2">&quot;source&quot;</span><span class="o">:</span><span class="s2">&quot;http://lastplaceigotthisfrom.com/authors/xxxxxx/posts/yyyyy&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;origin&quot;</span><span class="o">:</span><span class="s2">&quot;http://whereitcamefrom.com/authors/yyyyyy/posts/zzzzz&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;description&quot;</span><span class="o">:</span><span class="s2">&quot;This post discusses stuff -- brief&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;contentType&quot;</span><span class="o">:</span><span class="s2">&quot;text/plain&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;content&quot;</span><span class="o">:</span><span class="s2">&quot;Þā wæs on burgum Bēowulf Scyldinga, lēof lēod-cyning, longe þrāge folcum gefrǣge (fæder ellor hwearf, aldor of earde), oð þæt him eft onwōc hēah Healfdene; hēold þenden lifde, gamol and gūð-rēow, glæde Scyldingas. Þǣm fēower bearn forð-gerīmed in worold wōcun, weoroda rǣswan, Heorogār and Hrōðgār and Hālga til; hȳrde ic, þat Elan cwēn Ongenþēowes wæs Heaðoscilfinges heals-gebedde. Þā wæs Hrōðgāre here-spēd gyfen, wīges weorð-mynd, þæt him his wine-māgas georne hȳrdon, oð þæt sēo geogoð gewēox, mago-driht micel. Him on mōd bearn, þæt heal-reced hātan wolde, medo-ærn micel men gewyrcean, þone yldo bearn ǣfre gefrūnon, and þǣr on innan eall gedǣlan geongum and ealdum, swylc him god sealde, būton folc-scare and feorum gumena. Þā ic wīde gefrægn weorc gebannan manigre mǣgðe geond þisne middan-geard, folc-stede frætwan. Him on fyrste gelomp ǣdre mid yldum, þæt hit wearð eal gearo, heal-ærna mǣst; scōp him Heort naman, sē þe his wordes geweald wīde hæfde. Hē bēot ne ālēh, bēagas dǣlde, sinc æt symle. Sele hlīfade hēah and horn-gēap: heaðo-wylma bād, lāðan līges; ne wæs hit lenge þā gēn þæt se ecg-hete āðum-swerian 85 æfter wæl-nīðe wæcnan scolde. Þā se ellen-gǣst earfoðlīce þrāge geþolode, sē þe in þȳstrum bād, þæt hē dōgora gehwām drēam gehȳrde hlūdne in healle; þǣr wæs hearpan swēg, swutol sang scopes. Sægde sē þe cūðe frum-sceaft fīra feorran reccan&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;author&quot;</span><span class="o">:</span><span class="p">{</span>
+<span class="w">                </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;author&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;host&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;displayName&quot;</span><span class="o">:</span><span class="s2">&quot;Lara Croft&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;url&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;github&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://github.com/laracroft&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;profileImage&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://i.imgur.com/k7XVwpB.jpeg&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="s2">&quot;categories&quot;</span><span class="o">:</span><span class="p">[</span><span class="s2">&quot;web&quot;</span><span class="p">,</span><span class="s2">&quot;tutorial&quot;</span><span class="p">],</span>
+<span class="w">            </span><span class="s2">&quot;comments&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/de305d54-75b4-431b-adb2-eb6b9e546013/comments&quot;</span>
+<span class="w">            </span><span class="s2">&quot;published&quot;</span><span class="o">:</span><span class="s2">&quot;2015-03-09T13:07:04+00:00&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;visibility&quot;</span><span class="o">:</span><span class="s2">&quot;FRIENDS&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;unlisted&quot;</span><span class="o">:</span><span class="kc">false</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;post&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;title&quot;</span><span class="o">:</span><span class="s2">&quot;DID YOU READ MY POST YET?&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/999999983dda1e11db47671c4a3bbd9e&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;source&quot;</span><span class="o">:</span><span class="s2">&quot;http://lastplaceigotthisfrom.com/authors/xxxxxx/posts/yyyyy&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;origin&quot;</span><span class="o">:</span><span class="s2">&quot;http://whereitcamefrom.com/authors/wwwwww/posts/zzzzz&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;description&quot;</span><span class="o">:</span><span class="s2">&quot;Whatever&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;contentType&quot;</span><span class="o">:</span><span class="s2">&quot;text/plain&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;content&quot;</span><span class="o">:</span><span class="s2">&quot;Are you even reading my posts Arjun?&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;author&quot;</span><span class="o">:</span><span class="p">{</span>
+<span class="w">                </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;author&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;host&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;displayName&quot;</span><span class="o">:</span><span class="s2">&quot;Lara Croft&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;url&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;github&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://github.com/laracroft&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;profileImage&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://i.imgur.com/k7XVwpB.jpeg&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="s2">&quot;categories&quot;</span><span class="o">:</span><span class="p">[</span><span class="s2">&quot;web&quot;</span><span class="p">,</span><span class="s2">&quot;tutorial&quot;</span><span class="p">],</span>
+<span class="w">            </span><span class="s2">&quot;comments&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/de305d54-75b4-431b-adb2-eb6b9e546013/comments&quot;</span>
+<span class="w">            </span><span class="s2">&quot;published&quot;</span><span class="o">:</span><span class="s2">&quot;2015-03-09T13:07:04+00:00&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;visibility&quot;</span><span class="o">:</span><span class="s2">&quot;FRIENDS&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;unlisted&quot;</span><span class="o">:</span><span class="kc">false</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h3 id="requirements">Requirements</h3>
 <ul>
 <li>WARNING: Check this over again</li>
 <li>[ ] Implement the webservice as described in the user stories</li>
@@ -702,267 +802,382 @@ all sent to the inbox of the author.
 <li>[ ] Prove your project by connecting with at least 1 clone of your project.</li>
 <li>[ ] Prove your project by connecting with at least 2 other groups.</li>
 <li>[ ] Prove your project by connecting with at least 3 other groups.</li>
-<li>[ ] Make a video demo of your blog (desktop-recorder is ok) <ul>
+<li>[ ] Make a video demo of your blog (desktop-recorder is ok) </li>
 <li>Your video may not be a part of your presentation.</li>
-</ul>
-</li>
 <li>[ ] Make a presentation about your blog </li>
 <li>[ ] Follow the guidelines in the project.org for URLs and services</li>
 <li>[ ] Allow users to accept or reject friend requests</li>
 <li>[ ] Images get the same protection that posts get as they are POSTS   </li>
 </ul>
-<p>** Take-aways
-   - [ ] 1 Working Website
-   - [ ] 1 Github git repo
-   - [ ] 1 Presentation
-      - May not include the video
-   - [ ] 1 OpenAPI (formally 'Swagger') specification for your API 
-   - [ ] 1 Video</p>
-<p>** Restrictions
-   - [ ] Use Python 3.6+ (otherwise get approval)
-   - [ ] Use Django or Flask (otherwise get approval)
-   - [ ] Must run on one of the following:
-     - [ ] provided VMs
-     - [ ] Heroku
-   - [ ] License your code properly (use an OSI approved license)
-     - Put your name (or some representation of you like GeneralHuxFan768) on it!</p>
-<p>** API Guidelines</p>
+<h3 id="take-aways">Take-aways</h3>
+<ul>
+<li>[ ] 1 Working Website</li>
+<li>[ ] 1 Github git repo</li>
+<li>[ ] 1 Presentation</li>
+<li>May not include the video</li>
+<li>[ ] 1 OpenAPI ('Swagger') specification for your API </li>
+<li>[ ] 1 Video</li>
+</ul>
+<h3 id="restrictions">Restrictions</h3>
+<ul>
+<li>[ ] Use Python 3.8+ (otherwise get approval)</li>
+<li>[ ] Use Django or Flask (otherwise get approval)</li>
+<li>[ ] Must run on one of the following:<ul>
+<li>[ ] provided VMs</li>
+<li>[ ] Heroku</li>
+</ul>
+</li>
+<li>[ ] License your code properly (use an OSI approved license)<ul>
+<li>Put your name (or some representation of you like GeneralHuxFan768) on it!</li>
+</ul>
+</li>
+</ul>
+<h3 id="api-guidelines">API Guidelines</h3>
 <p>When building your API, try to adhere to these rules for easy compatibility with other groups:</p>
 <ul>
 <li>REST API calls may be prefixed. ie. http://service_address/api/authors/{AUTHOR_ID}/posts/</li>
 <li>Document your service address, port, hostname, prefix(if used), and the username/password for HTTP
-    Basic Auth(if used) in your README so that HTTP clients can connect to your API.</li>
+Basic Auth(if used) in your README so that HTTP clients can connect to your API.</li>
 </ul>
-<p>** Submission Instructions
-   - Fork my repository from github
-      https://github.com/abramhindle/CMPUT404-project-socialdistribution
-   - Share your repo in part 0
-** Warning!!!!</p>
-<p>This spec is subject to change!</p>
-<p>** Marking
-*** Project Part 0
-    - 1 mark
-    - [ ] 4-5 CCIDs
-    - [ ] 1 Github repo with a README and LICENSE
-*** Project Part 1
-    - 7 Marks
-    - Total Project
-      - Excellent 7: Excellent effort. Relatively consistent. At least ½
-        of the project implemented. Clean code. 1/2 includes both UI and webservice.
-      - Good 6: Good quality. Some inconsistency. About ½ of
-        the project implemented
-      - Satisfactory 5: Codebase in places. Passes some tests. Some
-        parts run
-      - Unsatisfactory 3: Effort exists, it's missing lots of components but something is there.
-      - Failure 0: Missing. No attempted. Not complete enough to evaluate.
-    - Code Base 
-      - Excellent : Excellent effort. Relatively consistent. At least ½
-        of the project implemented. Clean code
-      - Good : Good quality. Some inconsistency. About ½ of
-        the project implemented
-      - Satisfactory : Codebase in places. Passes some tests. Some
-        parts run
-      - Unsatisfactory : Does not meet Satisfactory level
-    - Test Cases 
-      - Excellent: System is well tested
-      - Good: System has some blind spots for testing
-      - Satisfactory: Effort was placed on testing but it is inconsistent.
-      - Unsatisfactory: test cases are inappropriate but exist.
-      - Failure: Missing test cases
-    - UI 2
-      - Excellent: UI Exists and is coherent. Shows evidence of
-        planning.
-      - Good: UI Exists. Some issues
-      - Satisfactory: UI Exists, it's not good. It has issues.
-      - Unsatisfactory: A UI was attempted, a UI exists.
-      - Failure: No UI, or what was attempted is not substantial.
-    - Tool Use
-      - Excellent: Use of at least Git is Evidence and Obvious
-      - Good: Frequent but inconsistent use of Git, etc.
-      - Satisfactory: Uses Git, etc.
-      - Unsatisfactory: Limited of tool use
-      - Failure: Used filesharing and email attachments instead of git
-    - TA Demo
-      - Excellent: Coherent demo, shows off features. Limited snags.
-      - Good: Coherent demo, shows off features. Some snags.
-      - Satisfactory: Lots of snags. Can demo it.
-      - Unsatifactory: Unfinished, hard to demo.
-      - Failure: no demo or unable to demo.
-    - Web Service API &amp; Documentation
-      - Excellent: Documented, adheres to requirements to augments
-        them with compatibility. Open API specification exists, has clear descriptions,
-        and has example requests and responses from your API. 
-      - Good: Documented, exists, tries to adhere to requirements. Open API specification exists,
-        and has some descriptions and a few example requests and responses.
-      - Satisfactory: Some of the webservice exists. Open API specification exists, but no descriptions
-        or example requests and responses.
-      - Unsatisfactory: Well you tried right? Open API specification does not exist.
-      - Failure: Ok you didn't try. 
-    - Design
-      - Excellent: Adheres to standards, well designed
-      - Good: Adheres to standards somewhat, some awkward parts
-      - Satisfactory: Some good parts, some nasty parts
-      - Unsatisfactory: Little effort went into documenting and
-        designing the project
-      - Failure: failure to learn from the class and apply concepts even remedially
-*** Project Part 2: The web service 
-    - 5 Marks
-    - Total Project
-      - Excellent 5: Excellent effort. Coordinates and connects fine with 2 or more groups.
-      - Good 4: Some issues, not quite excellent but definitely fixable and functional with 1 or more groups
-      - Satisfactory 3: There are issues, it does run, it does coordinate with 1 or more groups.
-      - Unsatisfactory 2: Well you tried, but it's hardly working.
-      - Failure 0: Missing. No attempted. Not complete enough to evaluate.
-    - Web Service API &amp; Documentation
-      - Excellent: Documented, adheres to requirements to augments
-        them with compatibility.  Open API specification exists, has clear descriptions,
-        and has example requests and responses from your API. 
-      - Good: Documented, exists, tries to adhere to requirements.  Open API specification exists,
-        and has some descriptions and a few example requests and responses.
-      - Satisfactory: Some of the webservice exists. Open API specification exists, but no descriptions
-        or example requests and responses.
-      - Unsatisfactory: Webservice exists, barely. Open API specification does not exist.
-      - Failure: it is not usable.
-    - Web Service Coordination
-      - Excellent: Web service coordinates with 2+ other group
-        projects successfully. Most interoperation requirements met.
-      - Good: Web service coordinates with 1+ other group
-        projects successfully. Most interoperation requirements met.
-        Some snags.
-      - Satisfactory: The basics of coordination are covered.
-        Probably many snags.
-      - Unsatisfactory 0: Coordination barely works.
-      - Failure: failure to coordinate
-    - Design 
-      - Excellent: Adheres to standards, well designed
-      - Good: Adheres to standards somewhat, some awkward parts
-      - Satisfactory: Some good parts, some nasty parts
-      - Unsatisfactory: Little effort went into documenting and
-        designing the project
-      - Failure: failure to apply what was learned in class      <br>
-*** Project Part 3
-    - 20 Marks
-    - Total Project
-      - Excellent 20: Excellent effort. Coordinates and connects fine. Good demo. Clear application of what was learned in class. 3 or more groups connected. Posts with embedded images are visible. Image posts are visible.
-      - Good 17: Some issues, not quite excellent but definitely operational and functional. 2 or more groups connected. Posts with embedded images are visible. Image posts are visible.
-      - Satisfactory 14: There are issues, it does run, it does coordinate. Meets satisfactory aspects of rubric. 2 or more group connected. Image posts are visible.
-      - Unsatisfactory 10: Well you tried, but it's hardly working. Meets unsatisfactory aspects of rubric. 1 or more group connected.
-      - Failure 0: Missing. No attempted. Not complete enough to evaluate. Often hits failure aspects of rubric.
-    - Note: these are ordered by importance, but you need to meet all these parts and we care about the final quality.
-    - Code Base
-      - Excellent: Excellent effort. Relatively consistent. At least 90%
-        of requirements implemented. Clean code
-      - Good: Good quality. Some inconsistency. About 90% of
-        requirements implemented.
-      - Satisfactory: Codebase in places. Passes some tests. Some
-        parts run
-      - Unsatisfactory: Does not meet Satisfactory level
-    - UI 3
-      - Excellent: UI Exists and works well. Shows evidence of
-        planning. Looks great.
-      - Good: UI Exists.  Looks good
-      - Satisfactory: UI exists. Looks poor.
-      - Unsatisfactory: UI exists. Doesn't work well. Worse than poor.
-      - Failure: Missing or unusable.
-    - Web Service Coordination
-      - Excellent: Web service coordinates with 2+ other group
-        projects successfully. Most interoperation requirements met.
-      - Good: Web service coordinates with 2+ other group
-        projects successfully. Most interoperation requirements met.
-        Some snags.
-      - Satisfactory: The basics of coordination are covered.
-        Probably many snags.
-      - Unsatisfactory: Coordination doesn't work or barely works.
-    - Web Service API &amp; Documentation
-      - Excellent: Documented, adheres to requirements to augments
-        them with compatibility.  Open API specification exists, has clear descriptions,
-        and has example requests and responses from your API. 
-      - Good: Documented, exists, tries to adhere to requirements.  Open API specification exists,
-        and has some descriptions and a few example requests and responses.
-      - Satisfactory: Some of the webservice exists. Open API specification exists,
-        and has a few example requests and responses.
-      - Unsatisfactory: Effort taken but incomplete. Open API specification exists, but no descriptions
-        or example requests and responses.
-      - Failure: API or Documentation Missing. Open API specification does not exist.
-    - Test Cases
-      - Excellent: System is well tested
-      - Good: System has some tests
-      - Unsatisfactory: test cases are inappropriate
-      - Failure: Missing test cases
-    - Tool Use
-      - Excellent: Use of at least Git is Evidence and Obvious
-      - Good: Frequent but inconsistent use of Git, etc.
-      - Satisfactory: Infrequent use of Git, etc.
-      - Unsatisfactory: Limited tool use
-      - Failure: lack of tool use
-    - Design
-      - Excellent: Adheres to standards, well designed
-      - Good: Adheres to standards somewhat, some awkward parts
-      - Satisfactory: Some good parts, some nasty parts
-      - Unsatisfactory: Little effort went into documenting and
-        designing the project
-      - Failure: clear lack of design
-    - Adhering to Standards
-      - Excellent: Excellent attempt at making a standards
-        compliant website. Most things are compliant.
-      - Good: An attempt at making a standards
-        compliant website. Some not compliant.
-      - Satisfactory: Inconsistent.
-      - Unsatisfactory: poor attempt to meet standards.
-      - Failure: failed to apply what was learned in class
-    - Addressing Feedback:
-      - Excellent: TAs suggestions were implemented, TA approves of
-        implementation set.
-      - Good: The good TA suggestions were implemented ;)
-      - Satisfactory: Feedback ignored mostly, but some followed.
-      - Unsatisfactory: Majority of Feedback ignored.
-      - Failure: Feedback ignored.
-    - Presentation:
-      - Excellent: Presentation within time, shows teamwork,
-        promotes the application, uses the live application to show functionality.
-      - Good: Presentation nearly within time, some team works,
-        reasonable presentation.
-      - Satisfactory: Presentation exists but has problems.
-      - Unsatisfactory: Missing or terrible presentation (lack of
-        practice, lack of preparation, irrelevant) OR presentation includes video.
-      - Failure: no presentation
-    - Video Demo:
-      - Excellent: Video is well presented and not boring, less
-        than 2 minutes.
-      - Good: Video presents the functionality and is less than 2
-        minutes.
-      - Satisfactory: Video is longer than 2 minutes, or doesn't
-        accurately present the project.
-      - Unsatisfactory: A video exists and it is a demo.
-      - Failure: lack of video, failure to make a video.
-    - AJAX
-      - Excellent: Uses AJAX appropriately and well (documented)
-      - Good: Uses some AJAX (documented)
-      - Satisfactory: AJAX not really used
-      - Unsatisfactory: An attempt was made.
-      - Failure: No AJAX</p>
-<p>** License</p>
+<h3 id="submission-instructions">Submission Instructions</h3>
 <ul>
-<li>Parts of this document are derived from the W3C Documentation for Activity Pub</li>
-<li>Copyright © 2018 W3C® (MIT, ERCIM, Keio, Beihang). W3C liability, trademark and permissive document license rules apply. </li>
-<li>
-<p>https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
-     #+BEGIN_SRC plain
-     License</p>
-<p>By obtaining and/or copying this work, you (the licensee) agree that you have read, understood, and will comply with the following terms and conditions.</p>
-<p>Permission to copy, modify, and distribute this work, with or without modification, for any purpose and without fee or royalty is hereby granted, provided that you include the following on ALL copies of the work or portions thereof, including modifications:</p>
-<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="k">full</span><span class="w"> </span><span class="nc">text</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="n">NOTICE</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">location</span><span class="w"> </span><span class="n">viewable</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">users</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">redistributed</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">derivative</span><span class="w"> </span><span class="k">work</span><span class="p">.</span>
-<span class="w"> </span><span class="ow">Any</span><span class="w"> </span><span class="n">pre</span><span class="o">-</span><span class="n">existing</span><span class="w"> </span><span class="n">intellectual</span><span class="w"> </span><span class="n">property</span><span class="w"> </span><span class="n">disclaimers</span><span class="p">,</span><span class="w"> </span><span class="n">notices</span><span class="p">,</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">terms</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">conditions</span><span class="p">.</span><span class="w"> </span><span class="k">If</span><span class="w"> </span><span class="k">none</span><span class="w"> </span><span class="n">exist</span><span class="p">,</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">W3C</span><span class="w"> </span><span class="n">Software</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">Document</span><span class="w"> </span><span class="n">Short</span><span class="w"> </span><span class="n">Notice</span><span class="w"> </span><span class="n">should</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">included</span><span class="p">.</span>
-<span class="w"> </span><span class="n">Notice</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ow">any</span><span class="w"> </span><span class="n">changes</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">modifications</span><span class="p">,</span><span class="w"> </span><span class="n">through</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">copyright</span><span class="w"> </span><span class="k">statement</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">code</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">document</span><span class="w"> </span><span class="n">such</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="ss">&quot;This software or document includes material copied from or derived from [title and URI of the W3C document]. Copyright © [YEAR] W3C® (MIT, ERCIM, Keio, Beihang).&quot;</span>
-</code></pre></div>
-
-<p>Disclaimers</p>
-<p>THIS WORK IS PROVIDED "AS IS," AND COPYRIGHT HOLDERS MAKE NO REPRESENTATIONS OR WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO, WARRANTIES OF MERCHANTABILITY OR FITNESS FOR ANY PARTICULAR PURPOSE OR THAT THE USE OF THE SOFTWARE OR DOCUMENT WILL NOT INFRINGE ANY THIRD PARTY PATENTS, COPYRIGHTS, TRADEMARKS OR OTHER RIGHTS.</p>
-<p>COPYRIGHT HOLDERS WILL NOT BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL OR CONSEQUENTIAL DAMAGES ARISING OUT OF ANY USE OF THE SOFTWARE OR DOCUMENT.</p>
-<p>The name and trademarks of copyright holders may NOT be used in advertising or publicity pertaining to the work without specific, written prior permission. Title to copyright in this work will at all times remain with copyright holders.
- #+END_SRC</p>
+<li>Submission will be by GitHub Classroom. Please follow the link on eClass.</li>
+</ul>
+<h3 id="warning">Warning!!!!</h3>
+<p>This spec is subject to change!</p>
+<h3 id="marking">Marking</h3>
+<ul>
+<li>Individual students marks will be reduced if that student is found to not be contributing.<ul>
+<li>Or if an individual student does not complete the feedback form.</li>
+</ul>
 </li>
 </ul>
+<h4 id="project-part-0-group-formation">Project Part 0: Group Formation</h4>
+<ul>
+<li>1 mark</li>
+<li>Submitted on eClass by all members</li>
+<li>1 Github repo with a README and LICENSE</li>
+</ul>
+<h4 id="project-part-1-centralized">Project Part 1: Centralized</h4>
+<ul>
+<li>7 Marks</li>
+<li>Total Project<ul>
+<li>Excellent 7: Excellent effort. Relatively consistent. At least ½
+of the project implemented. Clean code. 1/2 includes both UI and webservice.</li>
+<li>Good 6: Good quality. Some inconsistency. About ½ of
+the project implemented</li>
+<li>Satisfactory 5: Codebase in places. Passes some tests. Some
+parts run</li>
+<li>Unsatisfactory 3: Effort exists, it's missing lots of components but something is there.</li>
+<li>Failure 0: Missing. No attempted. Not complete enough to evaluate.</li>
+</ul>
+</li>
+<li>Code Base <ul>
+<li>Excellent : Excellent effort. Relatively consistent. At least ½
+of the project implemented. Clean code</li>
+<li>Good : Good quality. Some inconsistency. About ½ of
+the project implemented</li>
+<li>Satisfactory : Codebase in places. Passes some tests. Some
+parts run</li>
+<li>Unsatisfactory : Does not meet Satisfactory level</li>
+</ul>
+</li>
+<li>Test Cases <ul>
+<li>Excellent: System is well tested</li>
+<li>Good: System has some blind spots for testing</li>
+<li>Satisfactory: Effort was placed on testing but it is inconsistent.</li>
+<li>Unsatisfactory: test cases are inappropriate but exist.</li>
+<li>Failure: Missing test cases</li>
+</ul>
+</li>
+<li>UI 2<ul>
+<li>Excellent: UI Exists and is coherent. Shows evidence of
+planning.</li>
+<li>Good: UI Exists. Some issues</li>
+<li>Satisfactory: UI Exists, it's not good. It has issues.</li>
+<li>Unsatisfactory: A UI was attempted, a UI exists.</li>
+<li>Failure: No UI, or what was attempted is not substantial.</li>
+</ul>
+</li>
+<li>Tool Use<ul>
+<li>Excellent: Use of at least Git is Evidence and Obvious</li>
+<li>Good: Frequent but inconsistent use of Git, etc.</li>
+<li>Satisfactory: Uses Git, etc.</li>
+<li>Unsatisfactory: Limited of tool use</li>
+<li>Failure: Used filesharing and email attachments instead of git</li>
+</ul>
+</li>
+<li>TA Demo<ul>
+<li>Excellent: Coherent demo, shows off features. Limited snags.</li>
+<li>Good: Coherent demo, shows off features. Some snags.</li>
+<li>Satisfactory: Lots of snags. Can demo it.</li>
+<li>Unsatifactory: Unfinished, hard to demo.</li>
+<li>Failure: no demo or unable to demo.</li>
+</ul>
+</li>
+<li>Web Service API &amp; Documentation<ul>
+<li>Excellent: Documented, adheres to requirements to augments
+them with compatibility. Open API specification exists, has clear descriptions,
+and has example requests and responses from your API. </li>
+<li>Good: Documented, exists, tries to adhere to requirements. Open API specification exists,
+and has some descriptions and a few example requests and responses.</li>
+<li>Satisfactory: Some of the webservice exists. Open API specification exists, but no descriptions
+or example requests and responses.</li>
+<li>Unsatisfactory: Well you tried right? Open API specification does not exist.</li>
+<li>Failure: Ok you didn't try. </li>
+</ul>
+</li>
+<li>Design<ul>
+<li>Excellent: Adheres to standards, well designed</li>
+<li>Good: Adheres to standards somewhat, some awkward parts</li>
+<li>Satisfactory: Some good parts, some nasty parts</li>
+<li>Unsatisfactory: Little effort went into documenting and
+designing the project</li>
+<li>Failure: failure to learn from the class and apply concepts even remedially.</li>
+</ul>
+</li>
+</ul>
+<h4 id="project-part-2-distribution">Project Part 2: Distribution</h4>
+<ul>
+<li>7 Marks</li>
+<li>Total Project<ul>
+<li>Excellent 7: Excellent effort. Relatively consistent. All of the project implemented. Clean code. Coordinates and connects fine with another instance of itself.</li>
+<li>Good 6: Good quality. Some inconsistency. All of the project implemented except several user stories. Fixable and functional connection with another instance of itself.</li>
+<li>Satisfactory 5: Codebase in places. Passes some tests. Most parts run. Some things coordinate and connect with another instance of itself.</li>
+<li>Unsatisfactory 3: Effort exists, it's missing lots of components but at least ½ is there.</li>
+<li>Failure 0: Missing. No attempted. Not complete enough to evaluate.</li>
+</ul>
+</li>
+<li>Web Service Coordination<ul>
+<li>Excellent: Web service coordinates with another instance of itself successfully. Most interoperation requirements met.</li>
+<li>Good: Web service coordinates with another instance of itself successfully. Most interoperation requirements met. Some snags.</li>
+<li>Satisfactory: The basics of coordination with another instance of itself are covered. Probably many snags.</li>
+<li>Unsatisfactory 0: Coordination with another instance of itself barely works.</li>
+<li>Failure: Failure to coordinate and connect with another instance of itself.</li>
+</ul>
+</li>
+<li>Code Base <ul>
+<li>Excellent : Excellent effort. Relatively consistent. All of the project implemented. Clean code.</li>
+<li>Good : Good quality. Some inconsistency. All of the project implemented except several user stories.</li>
+<li>Satisfactory : At least half of codebase in place. Passes some tests. Some parts run.</li>
+<li>Unsatisfactory : Does not meet Satisfactory level.</li>
+</ul>
+</li>
+<li>Test Cases <ul>
+<li>Excellent: System is well tested.</li>
+<li>Good: System has some blind spots for testing.</li>
+<li>Satisfactory: Effort was placed on testing but it is inconsistent.</li>
+<li>Unsatisfactory: test cases are inappropriate but exist.</li>
+<li>Failure: Missing test cases.</li>
+</ul>
+</li>
+<li>UI<ul>
+<li>Excellent: UI Exists and is coherent. Shows evidence of planning.</li>
+<li>Good: UI Exists. Some issues.</li>
+<li>Satisfactory: UI Exists, it's not good. It has issues.</li>
+<li>Unsatisfactory: A UI was attempted, a UI exists.</li>
+<li>Failure: No UI, or what was attempted is not substantial.</li>
+</ul>
+</li>
+<li>Tool Use<ul>
+<li>Excellent: Use of at least Git is Evidence and Obvious</li>
+<li>Good: Frequent but inconsistent use of Git, etc.</li>
+<li>Satisfactory: Uses Git, etc.</li>
+<li>Unsatisfactory: Limited of tool use</li>
+<li>Failure: Used filesharing and email attachments instead of git</li>
+</ul>
+</li>
+<li>TA Demo<ul>
+<li>Excellent: Coherent demo, shows off features. Limited snags.</li>
+<li>Good: Coherent demo, shows off features. Some snags.</li>
+<li>Satisfactory: Lots of snags. Can demo it.</li>
+<li>Unsatifactory: Unfinished, hard to demo.</li>
+<li>Failure: no demo or unable to demo.</li>
+</ul>
+</li>
+<li>Web Service API &amp; Documentation<ul>
+<li>Excellent: Documented, adheres to requirements to augments them with compatibility. Open API specification exists, has clear descriptions, and has example requests and responses from your API. </li>
+<li>Good: Documented, exists, tries to adhere to requirements. Open API specification exists, and has some descriptions and a few example requests and responses.</li>
+<li>Satisfactory: Some of the webservice exists. Open API specification exists, but no descriptions or example requests and responses.</li>
+<li>Unsatisfactory: Well you tried right? Open API specification does not exist.</li>
+<li>Failure: Ok you didn't try. </li>
+</ul>
+</li>
+<li>Design<ul>
+<li>Excellent: Adheres to standards, well designed.</li>
+<li>Good: Adheres to standards somewhat, some awkward parts.</li>
+<li>Satisfactory: Some good parts, some nasty parts.</li>
+<li>Unsatisfactory: Little effort went into documenting and designing the project.</li>
+<li>Failure: Failure to learn from the class and apply concepts even remedially.</li>
+</ul>
+</li>
+</ul>
+<h4 id="project-part-3-federation">Project Part 3: Federation</h4>
+<ul>
+<li>5 Marks</li>
+<li>Total Project<ul>
+<li>Excellent 5: Excellent effort. Coordinates and connects fine with 2 or more groups and another instance of itself.</li>
+<li>Good 4: Some issues, not quite excellent but definitely fixable and functional with 1 or more groups and another instance itself.</li>
+<li>Satisfactory 3: There are issues, it does run, it does coordinate with 1 or more groups.</li>
+<li>Unsatisfactory 2: Not connected to other groups, still connects to another instance of itself.</li>
+<li>Failure 0: Missing. No attempted. Not complete enough to evaluate.</li>
+</ul>
+</li>
+<li>Web Service API &amp; Documentation<ul>
+<li>Excellent: Documented, adheres to requirements to augments them with compatibility. Open API specification exists, has clear descriptions, and has example requests and responses from your API.</li>
+<li>Good: Documented, exists, tries to adhere to requirements. Open API specification exists, and has some descriptions and a few example requests and responses.</li>
+<li>Satisfactory: Some of the webservice exists. Open API specification exists, but no descriptions or example requests and responses.</li>
+<li>Unsatisfactory: Webservice exists, barely. Open API specification does not exist.</li>
+<li>Failure: it is not usable.</li>
+</ul>
+</li>
+<li>Web Service Coordination<ul>
+<li>Excellent: Web service coordinates with 2+ other group projects and itself successfully. Most interoperation requirements met.</li>
+<li>Good: Web service coordinates with 1+ other group projects and itself successfully. Most interoperation requirements met. Some snags.</li>
+<li>Satisfactory: The basics of coordination are covered. Probably many snags.</li>
+<li>Unsatisfactory 0: Coordination barely works.</li>
+<li>Failure: failure to coordinate</li>
+</ul>
+</li>
+<li>Design<ul>
+<li>Excellent: Adheres to standards, well designed.</li>
+<li>Good: Adheres to standards somewhat, some awkward parts.</li>
+<li>Satisfactory: Some good parts, some nasty parts.</li>
+<li>Unsatisfactory: Little effort went into documenting and designing the project.</li>
+<li>Failure: failure to apply what was learned in class.</li>
+</ul>
+</li>
+</ul>
+<h4 id="project-part-4-polish">Project Part 4: Polish</h4>
+<ul>
+<li>10 Marks</li>
+<li>Total Project<ul>
+<li>Excellent 10: Excellent effort. Coordinates and connects fine. Good demo. Clear application of what was learned in class. 3 or more groups connected. Posts with embedded images are visible. Image posts are visible.</li>
+<li>Good 8: Some issues, not quite excellent but definitely operational and functional. 2 or more groups connected. Posts with embedded images are visible. Image posts are visible.</li>
+<li>Satisfactory 6: There are issues, it does run, it does coordinate. Meets satisfactory aspects of rubric. 2 or more group connected. Image posts are visible.</li>
+<li>Unsatisfactory 4: Well you tried, but it's hardly working. Meets unsatisfactory aspects of rubric. 1 or more group connected.</li>
+<li>Failure 0: Missing. No attempted. Not complete enough to evaluate. Often hits failure aspects of rubric.</li>
+</ul>
+</li>
+<li>Note: these are ordered by importance, but you need to meet all these parts and we care about the final quality.</li>
+<li>Code Base<ul>
+<li>Excellent: Excellent effort. Relatively consistent. At least 90% of requirements implemented. Clean code</li>
+<li>Good: Good quality. Some inconsistency. About 90% of requirements implemented.</li>
+<li>Satisfactory: Codebase in places. Passes some tests. Some parts run.</li>
+<li>Unsatisfactory: Does not meet Satisfactory level</li>
+</ul>
+</li>
+<li>UI 3<ul>
+<li>Excellent: UI Exists and works well. Shows evidence of planning. Looks great.</li>
+<li>Good: UI Exists.  Looks good</li>
+<li>Satisfactory: UI exists. Looks poor.</li>
+<li>Unsatisfactory: UI exists. Doesn't work well. Worse than poor.</li>
+<li>Failure: Missing or unusable.</li>
+</ul>
+</li>
+<li>Web Service Coordination<ul>
+<li>Excellent: Web service coordinates with 2+ other group projects successfully. Most interoperation requirements met.</li>
+<li>Good: Web service coordinates with 2+ other group projects successfully. Most interoperation requirements met. Some snags.</li>
+<li>Satisfactory: The basics of coordination are covered. Probably many snags.</li>
+<li>Unsatisfactory: Coordination doesn't work or barely works.</li>
+</ul>
+</li>
+<li>Web Service API &amp; Documentation<ul>
+<li>Excellent: Documented, adheres to requirements to augments them with compatibility.  Open API specification exists, has clear descriptions, and has example requests and responses from your API. </li>
+<li>Good: Documented, exists, tries to adhere to requirements.  Open API specification exists, and has some descriptions and a few example requests and responses.</li>
+<li>Satisfactory: Some of the webservice exists. Open API specification exists, and has a few example requests and responses.</li>
+<li>Unsatisfactory: Effort taken but incomplete. Open API specification exists, but no descriptions or example requests and responses.</li>
+<li>Failure: API or Documentation Missing. Open API specification does not exist.</li>
+</ul>
+</li>
+<li>Test Cases<ul>
+<li>Excellent: System is well tested</li>
+<li>Good: System has some tests</li>
+<li>Unsatisfactory: test cases are inappropriate</li>
+<li>Failure: Missing test cases</li>
+</ul>
+</li>
+<li>Tool Use<ul>
+<li>Excellent: Use of at least Git is Evidence and Obvious</li>
+<li>Good: Frequent but inconsistent use of Git, etc.</li>
+<li>Satisfactory: Infrequent use of Git, etc.</li>
+<li>Unsatisfactory: Limited tool use</li>
+<li>Failure: lack of tool use</li>
+</ul>
+</li>
+<li>Design<ul>
+<li>Excellent: Adheres to standards, well designed</li>
+<li>Good: Adheres to standards somewhat, some awkward parts</li>
+<li>Satisfactory: Some good parts, some nasty parts</li>
+<li>Unsatisfactory: Little effort went into documenting and designing the project</li>
+<li>Failure: clear lack of design</li>
+</ul>
+</li>
+<li>Adhering to Standards<ul>
+<li>Excellent: Excellent attempt at making a standards compliant website. Most things are compliant.</li>
+<li>Good: An attempt at making a standards compliant website. Some not compliant.</li>
+<li>Satisfactory: Inconsistent.</li>
+<li>Unsatisfactory: poor attempt to meet standards.</li>
+<li>Failure: failed to apply what was learned in class</li>
+</ul>
+</li>
+<li>Addressing Feedback:<ul>
+<li>Excellent: TAs suggestions were implemented, TA approves of implementation set.</li>
+<li>Good: The good TA suggestions were implemented ;)</li>
+<li>Satisfactory: Feedback ignored mostly, but some followed.</li>
+<li>Unsatisfactory: Majority of Feedback ignored.</li>
+<li>Failure: Feedback ignored.</li>
+</ul>
+</li>
+<li>Presentation:<ul>
+<li>Excellent: Presentation within time, shows teamwork, promotes the application, uses the live application to show functionality.</li>
+<li>Good: Presentation nearly within time, some team works, reasonable presentation.</li>
+<li>Satisfactory: Presentation exists but has problems.</li>
+<li>Unsatisfactory: Missing or terrible presentation (lack of practice, lack of preparation, irrelevant) OR presentation includes the video demo.</li>
+<li>Failure: no presentation</li>
+</ul>
+</li>
+<li>Video Demo:<ul>
+<li>Excellent: Video is well presented and not boring, less than 2 minutes. Posted to the discussion forum thread to share it with everyone in the class.</li>
+<li>Good: Video presents the functionality and is less than 2 minutes.</li>
+<li>Satisfactory: Video is longer than 2 minutes, or doesn't accurately present the project.</li>
+<li>Unsatisfactory: A video exists and it is a demo.</li>
+<li>Failure: lack of video, failure to make a video.</li>
+</ul>
+</li>
+<li>AJAX<ul>
+<li>Excellent: Uses AJAX appropriately and well (documented)</li>
+<li>Good: Uses some AJAX (documented)</li>
+<li>Satisfactory: AJAX not really used</li>
+<li>Unsatisfactory: An attempt was made.</li>
+<li>Failure: No AJAX</li>
+</ul>
+</li>
+</ul>
+<h3 id="license">License</h3>
+<div class="highlight"><pre><span></span><code> <span class="k">*</span> Parts of this document are derived from the W3C Documentation for Activity Pub
+ <span class="k">*</span> Copyright © 2018 W3C® (MIT, ERCIM, Keio, Beihang). W3C liability, trademark and permissive document license rules apply. 
+ <span class="k">*</span> https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="w">     </span><span class="n">License</span>
+
+<span class="w">     </span><span class="k">By</span><span class="w"> </span><span class="n">obtaining</span><span class="w"> </span><span class="ow">and</span><span class="o">/</span><span class="ow">or</span><span class="w"> </span><span class="n">copying</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="k">work</span><span class="p">,</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="p">(</span><span class="n">the</span><span class="w"> </span><span class="n">licensee</span><span class="p">)</span><span class="w"> </span><span class="n">agree</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">have</span><span class="w"> </span><span class="k">read</span><span class="p">,</span><span class="w"> </span><span class="n">understood</span><span class="p">,</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">comply</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">following</span><span class="w"> </span><span class="n">terms</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">conditions</span><span class="p">.</span>
+
+<span class="w">     </span><span class="n">Permission</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">copy</span><span class="p">,</span><span class="w"> </span><span class="k">modify</span><span class="p">,</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">distribute</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="k">work</span><span class="p">,</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="k">without</span><span class="w"> </span><span class="n">modification</span><span class="p">,</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="ow">any</span><span class="w"> </span><span class="n">purpose</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="k">without</span><span class="w"> </span><span class="n">fee</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">royalty</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">hereby</span><span class="w"> </span><span class="n">granted</span><span class="p">,</span><span class="w"> </span><span class="n">provided</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="k">include</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">following</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="ow">ALL</span><span class="w"> </span><span class="n">copies</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="k">work</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">portions</span><span class="w"> </span><span class="n">thereof</span><span class="p">,</span><span class="w"> </span><span class="n">including</span><span class="w"> </span><span class="nl">modifications</span><span class="p">:</span>
+
+<span class="w">         </span><span class="n">The</span><span class="w"> </span><span class="k">full</span><span class="w"> </span><span class="nc">text</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="n">NOTICE</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">location</span><span class="w"> </span><span class="n">viewable</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">users</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">redistributed</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">derivative</span><span class="w"> </span><span class="k">work</span><span class="p">.</span>
+<span class="w">         </span><span class="ow">Any</span><span class="w"> </span><span class="n">pre</span><span class="o">-</span><span class="n">existing</span><span class="w"> </span><span class="n">intellectual</span><span class="w"> </span><span class="n">property</span><span class="w"> </span><span class="n">disclaimers</span><span class="p">,</span><span class="w"> </span><span class="n">notices</span><span class="p">,</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">terms</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">conditions</span><span class="p">.</span><span class="w"> </span><span class="k">If</span><span class="w"> </span><span class="k">none</span><span class="w"> </span><span class="n">exist</span><span class="p">,</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">W3C</span><span class="w"> </span><span class="n">Software</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">Document</span><span class="w"> </span><span class="n">Short</span><span class="w"> </span><span class="n">Notice</span><span class="w"> </span><span class="n">should</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">included</span><span class="p">.</span>
+<span class="w">         </span><span class="n">Notice</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ow">any</span><span class="w"> </span><span class="n">changes</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">modifications</span><span class="p">,</span><span class="w"> </span><span class="n">through</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">copyright</span><span class="w"> </span><span class="k">statement</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">code</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">document</span><span class="w"> </span><span class="n">such</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="ss">&quot;This software or document includes material copied from or derived from [title and URI of the W3C document]. Copyright © [YEAR] W3C® (MIT, ERCIM, Keio, Beihang).&quot;</span><span class="w"> </span>
+
+<span class="w">     </span><span class="n">Disclaimers</span>
+
+<span class="w">     </span><span class="n">THIS</span><span class="w"> </span><span class="k">WORK</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="n">PROVIDED</span><span class="w"> </span><span class="ss">&quot;AS IS,&quot;</span><span class="w"> </span><span class="ow">AND</span><span class="w"> </span><span class="n">COPYRIGHT</span><span class="w"> </span><span class="n">HOLDERS</span><span class="w"> </span><span class="n">MAKE</span><span class="w"> </span><span class="k">NO</span><span class="w"> </span><span class="n">REPRESENTATIONS</span><span class="w"> </span><span class="ow">OR</span><span class="w"> </span><span class="n">WARRANTIES</span><span class="p">,</span><span class="w"> </span><span class="n">EXPRESS</span><span class="w"> </span><span class="ow">OR</span><span class="w"> </span><span class="n">IMPLIED</span><span class="p">,</span><span class="w"> </span><span class="n">INCLUDING</span><span class="w"> </span><span class="n">BUT</span><span class="w"> </span><span class="ow">NOT</span><span class="w"> </span><span class="n">LIMITED</span><span class="w"> </span><span class="k">TO</span><span class="p">,</span><span class="w"> </span><span class="n">WARRANTIES</span><span class="w"> </span><span class="k">OF</span><span class="w"> </span><span class="n">MERCHANTABILITY</span><span class="w"> </span><span class="ow">OR</span><span class="w"> </span><span class="n">FITNESS</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="ow">ANY</span><span class="w"> </span><span class="n">PARTICULAR</span><span class="w"> </span><span class="n">PURPOSE</span><span class="w"> </span><span class="ow">OR</span><span class="w"> </span><span class="n">THAT</span><span class="w"> </span><span class="n">THE</span><span class="w"> </span><span class="k">USE</span><span class="w"> </span><span class="k">OF</span><span class="w"> </span><span class="n">THE</span><span class="w"> </span><span class="n">SOFTWARE</span><span class="w"> </span><span class="ow">OR</span><span class="w"> </span><span class="n">DOCUMENT</span><span class="w"> </span><span class="n">WILL</span><span class="w"> </span><span class="ow">NOT</span><span class="w"> </span><span class="n">INFRINGE</span><span class="w"> </span><span class="ow">ANY</span><span class="w"> </span><span class="n">THIRD</span><span class="w"> </span><span class="n">PARTY</span><span class="w"> </span><span class="n">PATENTS</span><span class="p">,</span><span class="w"> </span><span class="n">COPYRIGHTS</span><span class="p">,</span><span class="w"> </span><span class="n">TRADEMARKS</span><span class="w"> </span><span class="ow">OR</span><span class="w"> </span><span class="n">OTHER</span><span class="w"> </span><span class="n">RIGHTS</span><span class="p">.</span>
+
+<span class="w">     </span><span class="n">COPYRIGHT</span><span class="w"> </span><span class="n">HOLDERS</span><span class="w"> </span><span class="n">WILL</span><span class="w"> </span><span class="ow">NOT</span><span class="w"> </span><span class="n">BE</span><span class="w"> </span><span class="n">LIABLE</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="ow">ANY</span><span class="w"> </span><span class="n">DIRECT</span><span class="p">,</span><span class="w"> </span><span class="n">INDIRECT</span><span class="p">,</span><span class="w"> </span><span class="n">SPECIAL</span><span class="w"> </span><span class="ow">OR</span><span class="w"> </span><span class="n">CONSEQUENTIAL</span><span class="w"> </span><span class="n">DAMAGES</span><span class="w"> </span><span class="n">ARISING</span><span class="w"> </span><span class="k">OUT</span><span class="w"> </span><span class="k">OF</span><span class="w"> </span><span class="ow">ANY</span><span class="w"> </span><span class="k">USE</span><span class="w"> </span><span class="k">OF</span><span class="w"> </span><span class="n">THE</span><span class="w"> </span><span class="n">SOFTWARE</span><span class="w"> </span><span class="ow">OR</span><span class="w"> </span><span class="n">DOCUMENT</span><span class="p">.</span>
+
+<span class="w">     </span><span class="n">The</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">trademarks</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">copyright</span><span class="w"> </span><span class="n">holders</span><span class="w"> </span><span class="n">may</span><span class="w"> </span><span class="ow">NOT</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">used</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">advertising</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">publicity</span><span class="w"> </span><span class="n">pertaining</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="k">work</span><span class="w"> </span><span class="k">without</span><span class="w"> </span><span class="k">specific</span><span class="p">,</span><span class="w"> </span><span class="n">written</span><span class="w"> </span><span class="k">prior</span><span class="w"> </span><span class="n">permission</span><span class="p">.</span><span class="w"> </span><span class="n">Title</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">copyright</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="k">work</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="k">at</span><span class="w"> </span><span class="ow">all</span><span class="w"> </span><span class="n">times</span><span class="w"> </span><span class="n">remain</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="n">copyright</span><span class="w"> </span><span class="n">holders</span><span class="p">.</span>
+</code></pre></div>
   <footer>
     <p>Published: <time datetime="2024-01-06T00:00:00-07:00">
       Sat, 06 Jan 2024 at 00:00 MST
