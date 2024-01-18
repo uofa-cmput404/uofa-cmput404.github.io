@@ -88,77 +88,79 @@ Likes, Comments, Public Posts, Friends Only posts, Private posts are all sent to
 
 # Collaboration
    
-* You may consult with others but the submission should be your
-  own team's source code.
+* You may consult with others but the submission should be your own team's source code.
 * You may work with 5 other students (groups of 5)
 * Work will be submitted together
 * Collaboration must be documented in the README.md file
-* Any external source code must be referenced and documented in
-  the README.md file
-* You make collaborate/consult with other groups in order to get
-  your webservices to integrate with each other
+* Any external source code must be referenced and documented in the README.md file.
+* You make collaborate/consult with other groups in order to get your webservices to integrate with each other
 
 # User Stories
-   
-* As an author, I want to make public posts, so that anyone who visits the site can see them.
-* As an author, I want to edit my posts, so that I'm not stuck with a typo on a popular post.
-* As an author, posts I make can be in CommonMark, so I can give my posts some basic formatting.
-* As an author, posts I create that are in CommonMark can link to images.
-* As an author, posts I create can be images.
-* As a server admin, images can be hosted on my server.
-* As an author, posts I create can be private to another author
-* As an author, posts I create can be private to my friends
-* As an author, I can share other author's public posts
-* As an author, I can re-share other author's friend posts to my friends
-* As an author, posts I make can be in simple plain text
-* As an author, I want a consistent identity per server
-* As a server admin, I want to host multiple authors on my server
-* As a server admin, I want to share public images with users
-  on other servers.
-* As an author, I want to pull in my github activity to my "stream"
-* As an author, I want to post posts to my "stream"
-* As an author, I want to delete my own public posts.
-* As an author, I want to befriend local authors
-* As an author, I want to befriend remote authors
-* As an author, I want to feel safe about sharing images and posts
-  with my friends -- images shared to friends should only be
-  visible to friends. [public images are public]
-* As an author, when someone sends me a friends only-post I want to
-  see the likes.
-* As an author, comments on friend posts are private only to me the
-  original author.
-* As an author, I want un-befriend local and remote authors
-* As an author, I want to be able to use my web-browser to manage
-  my profile
-* As an author, I want to be able to use my web-browser to manage/author
-  my posts
-* As a server admin, I want to be able add, modify, and remove
-  authors.
-* As a server admin, I want to OPTIONALLY be able allow users to sign up but
-  require my OK to finally be on my server
-* As a server admin, I don't want to do heavy setup to get the
-  posts of my author's friends.
-* As a server admin, I want a restful interface for most operations
-* As an author, other authors cannot modify my public post
-* As an author, other authors cannot modify my shared to friends post.
-* As an author, I want to comment on posts that I can access
-* As an author, I want to like posts that I can access
-* As an author, my server will know about my friends
-* As an author, When I befriend someone (they accept my friend request) I follow them, only when
-  the other author befriends me do I count as a real friend -- a bi-directional follow is a true friend.
-* As an author, I want to know if I have friend requests.
-* As an author, I should be able to browse the public posts of everyone
-* As a server admin, I want to be able to add nodes to share with
-* As a server admin, I want to be able to remove nodes and stop
-  sharing with them.
-* As a server admin, I can limit nodes connecting to me via
-  authentication.
-* As a server admin, node to node connections can be authenticated
-  with HTTP Basic Auth
-* As a server admin, I can disable the node to node interfaces for
-  connections that are not authenticated!
-* As an author, I want to be able to make posts that are unlisted,
-  that are publicly shareable by URI alone (or for embedding images)
+
+* Identity
+    * As an author, I want a consistent identity per server, so that URLs to me/my posts are predictable and don't stop working.
+        * Note: This includces API links and web frontend links.
+        * Note: This doesn't include authors/posts that are deleted.
+    * As a server admin, I want to host multiple authors on my server, so I can have a friendly online community.
+    * As an author, I want a public page with my profile information, so that I can link people to it.
+    * As an author, I want to pull in my github activity to my "public timeline", so if someone visits my profile they can see my github activity too.
+    * As an author, I want my public posts to be on my "public timeline", so if someone visits my profile they can see my posts.
+    * As an author, I want to be able to use my web-browser to manage my profile, so I don't have to use a clunky API.
+* Posting
+    * As an author, I want to make public posts, so that any other author can see them.
+    * As an author, I want to edit my posts locally, so that I'm not stuck with a typo on a popular post.
+    * As an author, I want my edits to take effect remotely, so that people don't keep seeing the old version.
+    * As an author, posts I make can be in CommonMark, so I can give my posts some basic formatting.
+    * As an author, posts I make can be in simple plain text, because I don't always want all the formatting features of CommonMark.
+    * As an author, posts I create can be images, so that I can share pictures and drawings.
+    * As an author, posts I create that are in CommonMark can link to images, so that I can illustrate my posts.
+    * As a server admin, images can be hosted on my server, so that my users can use them in their CommonMark posts.
+    * As an author, I want to delete my own posts locally, so I can remove posts that are out of date or made by mistake.
+    * As an author, I want my deletions to take effect remotely, so I know remote users don't keep seeing my deleted posts forever.
+    * As an author, I want to be able to use my web-browser to manage/author my posts, so I don't have to use a clunky API.
+    * As an author, I want to be able to make posts that are unlisted, that are publicly shareable by URI alone (or for embedding images).
+* Visibility
+    * As an author, posts I create can be private to another author, so that I don't have to worry about other people joining private conversations.
+    * As an author, posts I create can be private to my friends ("friends-only"), so that I don't have to worry about people I don't know seeing them.
+    * As an author, I want my friends-only posts and images to only be visible to my friends, so I can feel safe about posting.
+        * Note: public posts (and image posts) are public.
+    * As an author, other authors cannot modify my posts, so that I don't get impersonated.
+* Sharing
+    * As an author, I can share other author's public posts, so I can make things go viral!
+    * As an author, posts that I share will show up on the timeline of anyone who is following me. 
+    * As a server admin, I want to share public images with users on other servers, so that they are visible by users of other servers.
+    * As an author, I want my friends-only/private/unlisted images and posts sto *not* be shareable, so I know that if someone wants to re-post it they'll at least have to take a screenshot.
+        * Note: public posts (and image posts) are re-shareable.
+    * As an author, I should be able to browse the public posts of everyone, so that I can see what's going on beyond authors I follow.
+* Following/Friends
+    * As an author, I want to follow local authors, so that I can see their public posts.
+    * As an author, I want to follow remote authors, so that I can see their public posts.
+    * As an author, I want to be able to approve or deny other authors following me, so that I don't get followed by people I don't like.
+    * As an author, I want to know if I have follow requests, so I can approve them.
+    * As an author, I want to unfollow authors I am following, so that I don't have to see their posts anymore.
+    * As an author, if I am following a local author and they are following me, I want us to be considered friends, so that they can see my friends-only posts.
+    * As an author, I want to unfriend remote authors by unfollowing them, so that they can no longer see my friends-only posts.
+    * As an author, my server will know about my followers, who I am following, and my friends, so that I don't have to keep track of it myself.
+* Comments/Likes
+    * As an author, I want to comment on posts that I can access, so I can make a witty reply.
+    * As an author, I want to like posts that I can access, so I can show my appreciation.
+    * As an author, when someone sends me a public post I want to see the likes, so I can tell if its good or not.
+    * As an author, comments on my friends-only posts are visible only to my friends and the comment's author.
+* Server Management
+    * As a server admin, I want to be able add, modify, and delete authors, to fix problems or remove unwanted users.
+    * As a server admin, I want to OPTIONALLY be able allow users to sign up but require my OK to finally be on my server, so that I can prevent unwanted users or spam bots.
+    * As a server admin, I want to be able to connect to remote servers by entering only the URL of the remote server, a username, and a password, so that I don't have to edit code.
+    * As a server admin, I want a RESTful interface for most operations, so that I can connect to other servers and allow my users to use alternate clients other than the web frontend.
+    * As a server admin, I want to be able to add nodes to share with.
+    * As a server admin, I want to be able to remove nodes and stop sharing with them.
+    * As a server admin, I can prevent notes from connecting to my node if they don't have a valid username and password.
+    * As a server admin, node to node connections can be authenticated with HTTP Basic Auth, so that I don't have to deal with tokens.
+    * As a server admin, I can disable the node to node interfaces for connections that I no longer want, in case another node goes bad.
+    * As a server admin, I want everything to be stored in a well-indexed relational database, so that my website is snappy and I can write SQL to fix things if I need to, make backups, etc...
+        * We strongly recommend Postgres on Heroku and sqlite for testing on your local machine.
+        * We strongly recommend against other DBaaS (e.g. Firebase), since this always seems to cause problems for teams who chose them.
+    * As a server admin, I don't want arrays to be stored in database fields, so that my server won't get slower over time.
+    * As a server admin, I don't want to have seperate frontend and backend web servers, so I don't have to manage two webservers/services.
 
 # Main Concepts
 
@@ -368,12 +370,24 @@ If something is paginated it has query options:
 
 * URL: ://service/authors/{AUTHOR_ID}/posts/{POST_ID}
     * GET [local, remote] get the public post whose id is POST_ID
-    * POST [local] update the post whose id is POST_ID (must be authenticated)
-    * DELETE [local] remove the post whose id is POST_ID
-    * PUT [local] create a post where its id is POST_ID
+        * private/friends-only posts: must be authenticated
+    * DELETE [local,remote] remove the post whose id is POST_ID
+        * local posts: must be authenticated locally as the author
+        * remote posts: must be authenticated locally as the author's server
+            * The remote server should do this when a post is deleted
+    * PUT [local,remote] update a post where its id is POST_ID
+        * local posts: must be authenticated locally as the author
+        * remote posts: must be authenticated locally as the author's server
+            * The remote server should do this when a post is edited
 * Creation URL ://service/authors/{AUTHOR_ID}/posts/
     * GET [local, remote] get the recent posts from author AUTHOR_ID (paginated)
+        * Not authenticated: only public posts.
+        * Authenticated locally as author: all posts.
+        * Authenticated locally as friend of author: public + friends-only posts.
+        * Authenticated locally as someone author made a post private to: + those private posts.  
+        * Authenticated as remote server: This probably should not happen. Remember, the way remote server becomes aware of local posts is by local server pushing those posts to inbox, not by remote server pulling.
     * POST [local] create a new post but generate a new id
+        * Authenticated locally as author
 * Be aware that Posts can be images that need base64 decoding.
     * posts can also hyperlink to images that are public
 * Example Format:
@@ -482,7 +496,7 @@ shortcut to get the image if authenticated to see it.
     * GET [local, remote] get the public post converted to binary as an iamge
       * return 404 if not an image
 * This end point decodes image posts as images. This allows the use of
-  image tags in markdown.
+    image tags in markdown.
 * You can use this to proxy or cache images.
 
 ## Comments
@@ -693,7 +707,7 @@ shortcut to get the image if authenticated to see it.
 * [ ] Prove your project by connecting with at least 2 other groups.
 * [ ] Prove your project by connecting with at least 3 other groups.
 * [ ] Make a video demo of your blog (desktop-recorder is ok) 
-* Your video may not be a part of your presentation.
+    * Your video may not be a part of your presentation.
 * [ ] Make a presentation about your blog 
 * [ ] Follow the guidelines in the project.org for URLs and services
 * [ ] Allow users to accept or reject friend requests
@@ -710,19 +724,41 @@ shortcut to get the image if authenticated to see it.
  
 # Restrictions
 
-* [ ] Use Python 3.8+ (otherwise get approval)
-* [ ] Use Django or Flask (otherwise get approval)
+* [ ] Use Python 3.8+ (otherwise get approval from the instructor)
+* [ ] Use Django or Flask (otherwise get approval from the instructor)
+    * You must use a single django or a single flask to serve both frontend (for browser) and backend api, distinguish between the two using routes or django "apps" or whatever.
+* [ ] You must use a single git repository that contains everything.
 * [ ] Must run on one of the following:
-    * [ ] provided VMs
+    * [ ] provided (usually Cybera) VMs
     * [ ] Heroku
+    * Other hosting on approval: you must get approval in advance from the instructor.
+        * You are responsible for any problems that come up as a result.
+        * You are responsible for any surprise fees that come up as a result.
+        * Often when groups use some other hosting service that isn't Heroku they get shut off, blocked by firewalls, and/or hit with surprise fees.
+    * [ ] Must use a postgres, sqlite, or mariadb database for storage.
+        * Database provider must be the same provider as your website hosting.
+    * Splitting frontend/backend hosting is not allowed, this has caused too many problems.
 * [ ] License your code properly (use an OSI approved license)
     * Put your name (or some representation of you like GeneralHuxFan768) on it!
+
+# Groupwork Guidelines
+
+The most successful teams:
+
+* Do not use pull requests.
+    * Pull requests are great in general, but they tend to cause problems because the project is very small and groups are also small.
+* Use very very few branches (e.g. production and staging).
+    * Do not use author branches (or branches where a single author is the only one touching them).
+* Commit, pull, push the code they're working on, to the same branch that everyone else is working on, at least once an hour.
+    * Commit code that doesn't break the overall project.
+    * Avoid your version being broken for more than an hour.
+* Do not stay up all night, change everything, and push a hundred changes all over the code base as one giant pull request.
 
 # API Guidelines
    
 When building your API, try to adhere to these rules for easy compatibility with other groups:
    
-* REST API calls may be prefixed. ie. http://service_address/api/authors/{AUTHOR_ID}/posts/
+* REST API calls may be prefixed. ie. `http://service_address/api/authors/{AUTHOR_ID}/posts/`
 * Document your service address, port, hostname, prefix(if used), and the username/password for HTTP
 Basic Auth(if used) in your README so that HTTP clients can connect to your API.
 
@@ -736,8 +772,17 @@ Basic Auth(if used) in your README so that HTTP clients can connect to your API.
 
 # Marking
 
-* Individual students marks will be reduced if that student is found to not be contributing.
-    * Or if an individual student does not complete the feedback form.
+* Usually all teammates will share the same mark.
+* An individual student's marks will be reduced if the instructor (or a TA in consultation with the instructor) finds that:
+    * The student is not contributing or contributing significantly less than their teammates.
+    * The individual student is significantly preventing their teammates from participating or contributing.
+    * The individual student's is significantly misusing git/github/heroku/other software tools.
+    * The indivudual student is engaging in significant "intellectual violence."
+        * Intellectual violence is when one teammate uses their skill, knowledge, or experience, to intimidate or control the other teammate(s) rather than sharing and helping them learn.
+    * The individual student is not communicating or only communicating very rarely with their team.
+    * The individual student does not complete the peer feedback form (-1 mark for each part 1-4).
+* Any concerns about teamwork must be brought to the instructor's (not the TA) attention *by email* well before the last lab.
+    * It takes time to investigate these things. 
 
 ## Project Part 0: Group Formation
 
