@@ -22,27 +22,28 @@ Thus in the spirit of diaspora https://diasporafoundation.org/ we
 want to build something like diaspora but far far simpler.
 
 This blogging/social network platform will allow the importing of
-other sources of posts (github, twitter, etc.) as well allow the
-distributing sharing of posts and content.
+other sources of information (github) as well allow the
+distribution and sharing of posts and content.
 
-An author sitting on one server can aggregate the posts of their
-friends on other servers.   
+An author sitting on one server can aggregate
+the posts of authors they follow on other servers.   
 
 We are going to go with an inbox model where by you share posts to
-your friends by sending them your posts. This is similar to
+your followers by sending them your posts. This is similar to
 activity pub: https://www.w3.org/TR/activitypub/ Activity Pub is
 great, but too complex for a class project.
 
 We also won't be adding much in the way of encryption or security
 to this platform. We're keeping it simple and restful.
 
-Choose at least 3 other groups to work with
+Choose at least 3 other groups to work with!
 
 ## Scenario 
 
 I log into SocialDistribution. I see my stream which is filled with
-posts that have arrived in my inbox. I browse them and I click like
-on anything by friend Steph who is on another node.
+posts that have arrived in my inbox combined with public posts that my server knows about.
+I browse them and I click like
+on anything by my friend Steph who is on another node.
 
 When I click like, my node sends a like object to Steph's inbox
 that references her post.
@@ -64,12 +65,12 @@ knows who follows me and thus can just send the public post to each
 of those inboxes. Perhaps there will be a scaling problem in the
 future.
 
-Later I write a message to Steph, a post that is private to just her.
-This post is sent to her inbox.
+Later I write a friends-only post about how much I hate the movie The Room (2003).
+Tommy Wiseau can't see it because I'm not friends with Tommy Wiseau, but this post is sent to Steph's inbox and she can see it because she's my friend.
 
 When Steph logs into her node she'll see her stream and my public
-post will be on her stream. She should also see that I've liked and
-commented her post.
+post and my friends-only post will be on her stream.
+She should also see that I've liked and commented her post.
 
 ## Scenario Summary
 
@@ -77,7 +78,13 @@ All actions from authors are routed through the inbox of the receiving authors b
 
 Nodes will store copies of posts because they receive them in the inbox.
 
-Likes, Comments, Public Posts, Friends Only posts, Private posts are all sent to the inbox of the author.
+Likes and comments on posts are all sent to the inbox of the author.
+
+Public posts are sent to the inboxes of all followers of the author.
+
+Friends-only posts are sent to the inboxes of all friends of the author.
+
+Posts, likes, comments, posts, are all sent to the inboxes of the authors that should be able to see them.
 
 ## Project Parts 
 
@@ -103,8 +110,8 @@ Likes, Comments, Public Posts, Friends Only posts, Private posts are all sent to
         * Note: This doesn't include authors/posts that are deleted.
     * As a server admin, I want to host multiple authors on my server, so I can have a friendly online community.
     * As an author, I want a public page with my profile information, so that I can link people to it.
-    * As an author, I want to pull in my github activity to my "public timeline", so if someone visits my profile they can see my github activity too.
-    * As an author, I want my public posts to be on my "public timeline", so if someone visits my profile they can see my posts.
+    * As an author, I want to my (new, public) github activity to be automatically turned into public posts, so everyone can see my github activity too.
+    * As an author, I want my profile page to show my public posts (most recent first), so they can decide if they want to follow me.
     * As an author, I want to be able to use my web-browser to manage my profile, so I don't have to use a clunky API.
 * Posting
     * As an author, I want to make public posts, so that any other author can see them.
@@ -119,9 +126,11 @@ Likes, Comments, Public Posts, Friends Only posts, Private posts are all sent to
     * As an author, I want my deletions to take effect remotely, so I know remote users don't keep seeing my deleted posts forever.
     * As an author, I want to be able to use my web-browser to manage/author my posts, so I don't have to use a clunky API.
     * As an author, I want to be able to make posts that are unlisted, that are publicly shareable by URI alone (or for embedding images).
+* Reading
+    * As an author, I want a "stream" page which shows me all the public posts my server knows about and all the posts by people I follow.
+    * As an author, I want my "stream" page to be sorted with the most recent posts first. 
 * Visibility
-    * As an author, posts I create can be private to another author, so that I don't have to worry about other people joining private conversations.
-    * As an author, posts I create can be private to my friends ("friends-only"), so that I don't have to worry about people I don't know seeing them.
+    * As an author, posts I create can be friends-only, so that I don't have to worry about people I don't know seeing them.
     * As an author, I want my friends-only posts and images to only be visible to my friends, so I can feel safe about posting.
         * Note: public posts (and image posts) are public.
     * As an author, other authors cannot modify my posts, so that I don't get impersonated.
@@ -129,7 +138,7 @@ Likes, Comments, Public Posts, Friends Only posts, Private posts are all sent to
     * As an author, I can share other author's public posts, so I can make things go viral!
     * As an author, posts that I share will show up on the timeline of anyone who is following me. 
     * As a server admin, I want to share public images with users on other servers, so that they are visible by users of other servers.
-    * As an author, I want my friends-only/private/unlisted images and posts sto *not* be shareable, so I know that if someone wants to re-post it they'll at least have to take a screenshot.
+    * As an author, I want my friends-only/unlisted images and posts sto *not* be shareable, so I know that if someone wants to re-post it they'll at least have to take a screenshot.
         * Note: public posts (and image posts) are re-shareable.
     * As an author, I should be able to browse the public posts of everyone, so that I can see what's going on beyond authors I follow.
 * Following/Friends
@@ -153,7 +162,7 @@ Likes, Comments, Public Posts, Friends Only posts, Private posts are all sent to
     * As a server admin, I want a RESTful interface for most operations, so that I can connect to other servers and allow my users to use alternate clients other than the web frontend.
     * As a server admin, I want to be able to add nodes to share with.
     * As a server admin, I want to be able to remove nodes and stop sharing with them.
-    * As a server admin, I can prevent notes from connecting to my node if they don't have a valid username and password.
+    * As a server admin, I can prevent nodes from connecting to my node if they don't have a valid username and password.
     * As a server admin, node to node connections can be authenticated with HTTP Basic Auth, so that I don't have to deal with tokens.
     * As a server admin, I can disable the node to node interfaces for connections that I no longer want, in case another node goes bad.
     * As a server admin, I want everything to be stored in a well-indexed relational database, so that my website is snappy and I can write SQL to fix things if I need to, make backups, etc...
@@ -166,8 +175,9 @@ Likes, Comments, Public Posts, Friends Only posts, Private posts are all sent to
 
 * Author
     * makes posts
+    * following other authors
+    * can have followers
     * makes friends
-    * befriends other authors
     * likes posts
     * comments on posts
     * a generally nice person
@@ -175,15 +185,14 @@ Likes, Comments, Public Posts, Friends Only posts, Private posts are all sent to
     * manages a node
     * allows people to sign up
     * responsible for private data :(
-* Follow
-    * Friend another author and they accept the friend request
-    * They will send their posts to your inbox
+* Follower
+    * Someone who follows you
+    * Your server will send posts to their inbox
+* Following
+    * Someone you follow
+    * Their server will send posts to your inbox
 * Friend
-    * Someone who follows you.
-* True Friend
-    * Bidirectional friendship.
-* Real Friend
-    * True friend
+    * You follow them and they follow you
 * Server
     * a host that hosts authors and vouches for them
 * Restful service
@@ -195,26 +204,34 @@ Likes, Comments, Public Posts, Friends Only posts, Private posts are all sent to
     * it has a public URL
     * anyone can see it
     * Public posts can be liked
-    * public posts can have comments from friends
-* Friend Post
+    * public posts can have comments
+* Friends-Only Post
     * this is a post that is shared to friends (followers)
     * since it is sent, it is a message and not changeable
-    * Friend posts can be liked
-    * Friend posts can have comments sent back to the author via the author's inbox
+    * Friends-Only posts can be liked
+    * Friends-Only posts can have comments sent back to the author via the author's inbox
 * Inbox
-    * This is what a READER or USER of the social network has. They make friends, and friends send objects to their inbox.
+    * This is what a READER or USER of the social network has. They follow authors, and the authors they follow send objects to their inbox.
+    * This is something that only exists in the API. There is no special inbox in the User Interface, posts sent to a user's inbox are integrated into a their stream.
     * This forms the backbone of the timeline of the social media user.
     * This receives likes and comments.
+* Stream
+    * The user interface showing date-sorted (most recent first) local, public posts combined with posts from everyone that user follows.
 * Remote
     * A node to node connection. Requests from another node. HTTP Basic Auth authenticated.
 * Local
     * A local user accessing the REST API. Likely will use their cookie-auth, basic auth, or token auth. Local usually implies you check whether or not the user should have access. For instance local API access to the inbox should be limited to only that authenticated authors---don't snoop!
+* Profile Page
+    * A page that shows information about me as well as my public posts.
 
 ## Authentication
 
 * Remote node authentication is global between nodes. It requires an admin to allow node to node access.
 * Remote node authentication is done solely with HTTP basic auth
-* Local auth uses your frameworks local auth mechanisms (cookies, tokens, basic auth).   - Local refers to local access to the restful API. This is useful for frameworks like react, vue, or angular to get access to data, and enable a more client heavy UI.
+* Local auth uses your local auth mechanisms (cookies, tokens, basic auth).
+* Local refers the RESTful API for authors on that server.
+    * This is useful for frameworks like react, vue, or angular to get access to data, and enable a more client heavy UI.
+    * Even if your frontend does not use them, endpoints marked [local] should be usable by a future Android/iOS client to achieve the same functionality as frontend.
 
 ## Pagination
 
@@ -329,9 +346,9 @@ If something is paginated it has query options:
    
 ## Friend/Follow Request
 
-* This allows you to follow someone you, so they can send you their post.
-* If the recipient accepts the Friend Request then you are friends
-* If the recipient folows you, you are true friends
+* When author 1 tries to follow author 2, author 1's server send the follow request to author 2's server.
+* If the author 2 accepts the Follow Request then author 1 is following author 2.
+    * If author 2 is also already following author 1, then they are now friends.
 * Sent to inbox of "object" 
 * Example format:
 
@@ -370,7 +387,7 @@ If something is paginated it has query options:
 
 * URL: ://service/authors/{AUTHOR_ID}/posts/{POST_ID}
     * GET [local, remote] get the public post whose id is POST_ID
-        * private/friends-only posts: must be authenticated
+        * friends-only posts: must be authenticated
     * DELETE [local,remote] remove the post whose id is POST_ID
         * local posts: must be authenticated locally as the author
         * remote posts: must be authenticated locally as the author's server
@@ -384,7 +401,6 @@ If something is paginated it has query options:
         * Not authenticated: only public posts.
         * Authenticated locally as author: all posts.
         * Authenticated locally as friend of author: public + friends-only posts.
-        * Authenticated locally as someone author made a post private to: + those private posts.  
         * Authenticated as remote server: This probably should not happen. Remember, the way remote server becomes aware of local posts is by local server pushing those posts to inbox, not by remote server pulling.
     * POST [local] create a new post but generate a new id
         * Authenticated locally as author
@@ -476,13 +492,11 @@ If something is paginated it has query options:
     }
     // ISO 8601 TIMESTAMP
     "published":"2015-03-09T13:07:04+00:00",
-    // visibility ["PUBLIC","FRIENDS"]
-    "visibility":"PUBLIC",
+    // visibility ["PUBLIC","FRIENDS","UNLISTED"]
+    "visibility":"PUBLIC"
     // for visibility PUBLIC means it is open to the wild web
-    // FRIENDS means if we're direct friends I can see the post
+    // FRIENDS means if we're friends I can see the post
     // FRIENDS should've already been sent the post so they don't need this
-    "unlisted":false
-    // unlisted means it is public if you know the post name -- use this for images, it's so images don't show up in timelines
 }
 ```
 
@@ -629,12 +643,14 @@ shortcut to get the image if authenticated to see it.
 
 ## Inbox
 
-* The inbox is all the new posts from who you follow
+* The inbox is all the new posts from who you follow, as well as follow requests, likes, and comments you should be aware of
+* The inbox is the API equivalent of the stream in the UI
 * URL: ://service/authors/{AUTHOR_ID}/inbox
     * GET [local]: if authenticated get a list of posts sent to AUTHOR_ID (paginated)
+        * Should be sorted most recent first
     * POST [local, remote]: send a post to the author
       * if the type is "post" then add that post to AUTHOR_ID's inbox
-      * if the type is "Follow" then add that follow is added to AUTHOR_ID's inbox to approve later
+      * if the type is "follow" then add that follow is added to AUTHOR_ID's inbox to approve later
       * if the type is "Like" then add that like to AUTHOR_ID's inbox
       * if the type is "comment" then add that comment to AUTHOR_ID's inbox
     * DELETE [local]: clear the inbox
@@ -709,8 +725,8 @@ shortcut to get the image if authenticated to see it.
 * [ ] Make a video demo of your blog (desktop-recorder is ok) 
     * Your video may not be a part of your presentation.
 * [ ] Make a presentation about your blog 
-* [ ] Follow the guidelines in the project.org for URLs and services
-* [ ] Allow users to accept or reject friend requests
+* [ ] Follow the guidelines in the [project spec]({filename}/general/project.md) for URLs and services
+* [ ] Allow users to accept or reject follow requests
 * [ ] Images get the same protection that posts get as they are POSTS   
 
 # Take-aways
