@@ -145,21 +145,22 @@ To use the package we need to install the JavaScript module using npm:
 2. This should create a new directory called `node_modules`
 3. Locate `node_modules/emoji-mart` to verify installation
 4. Create a directory called `static` inside `emojis`, where you made the `templates` directory
-5. Create a file called `emojis.js` where `node_modules` is located
+5. Create a file called `main.js` where `node_modules` is located
 
-Within `emojis.js` add the following code:
+Within `main.js` add the following code:
 ```js
 import { Picker } from "emoji-mart"; // import Picker class from module
+// This is where you would import other modules you installed with NPM too, but for this example we only have the emoji-mart.
 
 const pickerOptions = { onEmojiSelect: console.log }
 const picker = new Picker(pickerOptions) // instantiate object
 document.body.appendChild(picker) // add to DOM
 ```
-Now this file won't be able do much here, but it will be useful within a browser environment. To make `emoji.js` run in a browser, it must be in a compatible format. Fortunately, there are tools that can build or transpile our javascript code into a format the browser can handle. The tool we will be using for this lab is [esbuild](https://esbuild.github.io/getting-started/):
+Now this file won't be able do much here, but it will be useful within a browser environment. To make `main.js` run in a browser, it must be in a compatible format. Fortunately, there are tools that can build or transpile our javascript code into a format the browser can handle. The tool we will be using for this lab is [esbuild](https://esbuild.github.io/getting-started/):
 
 1. First install esbuild using npm: `npm install --save-exact --save-dev esbuild`
-2. Transpile `emoji.js` to the static directory: `./node_modules/.bin/esbuild emoji.js --bundle --minify --sourcemap --outfile=./emojis/static/emoji.min.js`
-3. Verify `emoji.min.js` is created within `emojis/static`
+2. Transpile `main.js` to the static directory: `./node_modules/.bin/esbuild main.js --bundle --minify --sourcemap --outfile=./emojis/static/main.min.js`
+3. Verify `main.min.js` is created within `emojis/static`
 
 Now that we have our static files ready to go, modify your `index.html` to load the static file.
 
@@ -174,7 +175,7 @@ Now that we have our static files ready to go, modify your `index.html` to load 
     <body>
         <h1>Welcome to Emojis!</h1>
     </body>
-    <script src="{% static 'emoji.min.js' %}"></script>
+    <script src="{% static 'main.min.js' %}"></script>
 </html>
 ```
 
