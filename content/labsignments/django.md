@@ -137,19 +137,31 @@ def index(request):
 
 Now you should get a big welcome message when you access `localhost:8000/emojis`.
 
-Npm is a package manager for node JS. Node JS is a runtime environment for JavaScript. The node JS developer community use npm to distribute useful packages. For this lab we will be using [emoji-mart](https://www.npmjs.com/package/emoji-mart) to create a fun browser based emoji picker. 
+Npm is a package manager for node JS. Node JS is a runtime environment for JavaScript. The node JS developer community use npm to distribute useful packages. For this lab we will be using [emoji-mart](https://www.npmjs.com/package/emoji-mart) to create a fun browser based emoji picker. Ensure you have npm and node installed ([Refer to Getting Started](/labsignments/django.html#installing-node-js-and-npm))
 
-To use the package we need to install the JavaScript modules using npm:
+To use the package we need to install the JavaScript module using npm:
 
 1. Run `npm install --save emoji-mart` in your project root where `manage.py` is.
 2. This should create a new directory called `node_modules`
-3. Locate `node_modules/emoji-mart/dist` which contains the JS files for the package
+3. Locate `node_modules/emoji-mart` to verify installation
 4. Create a directory called `static` inside `emojis`, where you made the `templates` directory
-5. Copy `node_modules/emoji-mart` into that directory (Why?)
+5. Create a file called `emojis.js` where `node_modules` is located
 
-The reason why we didn't directly install `node_modules` inside `static` is mainly a safety practice. static files are accessible through the browser, therefore you need to make sure you are only allowing that for the files you want. Additionally, though not in the scope of this lab, some npm packages are designed to run in the node JS environment on a server; so, they are not suited for a browser.
+Within `emojis.js` add the following code:
+```js
+import { Picker } from "emoji-mart"; // import Picker class from module
 
-Now that we have our static files ready to go, modify your `index.html` to load the static files.
+const pickerOptions = { onEmojiSelect: console.log }
+const picker = new Picker(pickerOptions) // instantiate object
+document.body.appendChild(picker) // add to DOM
+```
+Now this file won't be able do much here, but it will be useful within a browser environment. To make `emoji.js` run in a browser, it must be in a compatible format. Fortunately, there are tools that can build or transpile our javascript code into a format the browser can handle. The tool we will be using for this lab is [esbuild](https://esbuild.github.io/getting-started/):
+
+1. First install esbuild using npm: `npm install --save-exact --save-dev esbuild`
+2. Transpile `emoji.js` to the static directory: `./node_modules/.bin/esbuild emoji.js --bundle --minify --sourcemap --outfile=./emojis/static/emoji.min.js`
+3. Verify `emoji.min.js` is created within `emojis/static`
+
+Now that we have our static files ready to go, modify your `index.html` to load the static file.
 
 ```html
 {% load static %}
@@ -162,14 +174,11 @@ Now that we have our static files ready to go, modify your `index.html` to load 
     <body>
         <h1>Welcome to Emojis!</h1>
     </body>
-    <script src="{% static 'emoji-mart/dist/browser.js' %}"></script>
-    <script>
-        // Add your code here
-    </script> 
+    <script src="{% static 'emoji.min.js' %}"></script>
 </html>
 ```
 
-As part of your lab you need to write the code that will add the emoji picker to the dom using the package we have included. **You MUST NOT modify the body tag directly**. If successful, you should be able to see an emoji picker in your browser.
+You should now be able to see the emoji picker on `localhost:8000/emojis`.
 
 # Restrictions
 
