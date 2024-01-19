@@ -16,7 +16,15 @@ By the end of this lab you will make a simple emoji picker app.
 
 # Getting Started
 
+## Prepare your Repo
+
+1. Get the github classroom link from eClass, create your assignment, and clone it.
+2. Create an appropriate `.gitignore` file, to prevent unwanted files being commited to your repository.
+
+Place this gitignore within the root of your project. You can combine [this one](https://github.com/github/gitignore/blob/main/Python.gitignore) and [this one](https://github.com/github/gitignore/blob/main/Node.gitignore) and [this one](https://github.com/django/django/blob/main/.gitignore) for your django+node project. Double check you're not staging any unwanted files before you commit. The `git status` command can help with that.
+
 ## Installing venv with pip
+
 Virtual environment is a CLI tool for managing python dependencies. Different projects have different dependencies, and version requirements. A virtual environment allows you to manage your dependencies specific to your project.
 
 To install follow these steps (Note that you need pip installed and configured):
@@ -33,8 +41,8 @@ To create and use a virtual environment:
 The first command will create a directory named `venv`. Contained in the directory is your
 project dependecy installation and the `activate` script. Run `deactivate` to exit the virtual environment.
 
-
 ## Installing node JS and npm
+
 To install node js, you can download the appropriate installer directly from the node js
 [website](https://nodejs.org/en/download). Make sure to download the LTS version. The installation 
 will include npm as well.
@@ -141,28 +149,29 @@ Npm is a package manager for node JS. Node JS is a runtime environment for JavaS
 
 To use the package we need to install the JavaScript module using npm:
 
-1. Run `npm install --save emoji-mart` in your project root where `manage.py` is.
+1. Run `npm install --save-dev emoji-mart` in your project root where `manage.py` is.
 2. This should create a new directory called `node_modules`
 3. Locate `node_modules/emoji-mart` to verify installation
 4. Create a directory called `static` inside `emojis`, where you made the `templates` directory
-5. Create a file called `main.js` where `node_modules` is located
+5. Create a file called `main.js` where `node_modules` is located (but not inside `node_modules`)
 
 Within `main.js` add the following code:
 ```js
 import { Picker } from "emoji-mart"; // import Picker class from module
-// This is where you would import other modules you installed with NPM too, but for this example we only have the emoji-mart.
+// This is where you would import other modules you installed with npm too, but for this example we only have the emoji-mart.
 
 const pickerOptions = { onEmojiSelect: console.log }
 const picker = new Picker(pickerOptions) // instantiate object
 document.body.appendChild(picker) // add to DOM
 ```
-Now this file won't be able do much here, but it will be useful within a browser environment. To make `main.js` run in a browser, it must be in a compatible format. Fortunately, there are tools that can build or transpile our javascript code into a format the browser can handle. The tool we will be using for this lab is [esbuild](https://esbuild.github.io/getting-started/):
+Now this file won't be able do much here, but it will be useful within a browser environment. To make `main.js` run in a browser, it must be in a compatible format. Fortunately, there are tools such as webpack, vite, and esbuild that can build or transpile our javascript code into a format the browser can handle. The tool we will be using for this lab is [esbuild](https://esbuild.github.io/getting-started/):
 
 1. First install esbuild using npm: `npm install --save-exact --save-dev esbuild`
-2. Transpile `main.js` to the static directory: `./node_modules/.bin/esbuild main.js --bundle --minify --sourcemap --outfile=./emojis/static/main.min.js`
+2. Transpile `main.js` to the static directory: `npx esbuild main.js --bundle --minify --sourcemap --outfile=./emojis/static/main.min.js`
 3. Verify `main.min.js` is created within `emojis/static`
+4. Add a line to your `.gitignore` to prevent `main.min.js` from being added to git.
 
-Now that we have our static files ready to go, modify your `index.html` to load the static file.
+Now that we have our static files ready to go, modify your `index.html` to load your main.js file.
 
 ```html
 {% load static %}
@@ -181,16 +190,31 @@ Now that we have our static files ready to go, modify your `index.html` to load 
 
 You should now be able to see the emoji picker on `localhost:8000/emojis`.
 
+## Phase Two: Automation
+
+Double check that your git repository doesn't contain any built or downloaded artifacts such as the 
+
 # Restrictions
 
 Violation of the restrictions will result in a mark of zero.
 
 * Must use Python3
 * Must run on Ubuntu (Use the undergrad lab machines, for example the ones in CSC 2-29 or install an Ubuntu VM to check this)
+* Must run on your machine (whatever machine you use to demo)
 
-# Before You Submit
-Make sure to include an appropriate `.gitignore` file, to prevent unwanted files being commited to your repository.
-Place this gitignore within the root of your project. You can use [this one](https://github.com/django/django/blob/main/.gitignore) for your django project. Double check you're not staging any unwanted files before you commit. The `git status` command can help with that.
+# Requirements
+
+* A working Django 5 application
+    * using the latest Django version from pypi
+        * downloaded with pip into a virtualenv
+    * that can serve a template that uses
+        * JS code bundled by esbuild
+            * which loads a JS library
+                * that was intalled by npm
+* A git repository that does not contain built (compiled, transpiled, bundled) or downloaded artifacts, including but not limited to:
+    * virtualenv
+    * node_modules
+    * main.min.js
 
 # Submission Instructions
 
