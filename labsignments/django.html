@@ -95,7 +95,8 @@ will include npm as well.</p>
 <ol>
 <li>Within your assignment directory create a virtual environment: <code>virtualenv venv --python=python3</code></li>
 <li>Activate the virtual environment: <code>source venv/bin/activate</code></li>
-<li>Install django: <code>python -m pip install Django</code></li>
+<li>Add the line <code>Django&gt;=5.0.1</code> to a new file, <code>requirements.txt</code>, at the top level of your repo.</li>
+<li>Install django: <code>python -m pip install -r requirements.txt</code></li>
 <li>Verify installation by running a python shell and using: <code>import django</code></li>
 </ol>
 <p>To create a django project:</p>
@@ -216,7 +217,35 @@ will include npm as well.</p>
 
 <p>You should now be able to see the emoji picker on <code>localhost:8000/emojis</code>.</p>
 <h4 id="phase-two-automation">Phase Two: Automation</h4>
-<p>Double check that your git repository doesn't contain any built or downloaded artifacts such as the </p>
+<p>Double check that your git repository doesn't contain any built or reinstallable artifacts such as:</p>
+<ul>
+<li>The virtual environment (venv)</li>
+<li>node_modules</li>
+<li>main.min.js</li>
+</ul>
+<p>Make sure that it does contain:</p>
+<ul>
+<li>package.json</li>
+<li>requirements.txt</li>
+<li>All files you created and/or edited</li>
+<li>The files that django-admin startproject created</li>
+</ul>
+<p>Write a python script and (and add it to your repository) that:</p>
+<ol>
+<li>Creates the virtualenv if it doesn't already exist</li>
+<li>Activates the virtualenv if it's not already active</li>
+<li>Installs everything from <code>requirements.txt</code> to virtualenv if its not already installed</li>
+<li>Runs <code>npm install</code> to install every depencency from <code>package.json</code> to node_modules</li>
+<li>Runs esbuild to build <code>main.min.js</code></li>
+<li>Starts the django server</li>
+</ol>
+<p>Do not have it install python, venv, or node. We will assume that every web developer has these installed already.</p>
+<p>Your goal is to have a repository by the end that is just the stuff you need for your script to
+install dependencies of your project and get it started, regardless of what computer your
+repository is cloned to.</p>
+<p>That is you should be able to log onto a different computer with a different OS and run the python
+script you wrote and it should download the pypi packages it needs with pip, download the npm packages
+it needs with npm, and then runs your project.</p>
 <h3 id="restrictions">Restrictions</h3>
 <p>Violation of the restrictions will result in a mark of zero.</p>
 <ul>
