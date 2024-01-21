@@ -44,13 +44,17 @@
 <ul>
 <li><a href="#description">Description</a></li>
 <li><a href="#getting-started">Getting Started</a><ul>
+<li><a href="#prepare-your-repo">Prepare your Repo</a></li>
 <li><a href="#installing-venv-with-pip">Installing venv with pip</a></li>
 <li><a href="#installing-node-js-and-npm">Installing node JS and npm</a></li>
 </ul>
 </li>
-<li><a href="#lab-instructions">Lab Instructions</a></li>
+<li><a href="#lab-instructions">Lab Instructions</a><ul>
+<li><a href="#phase-two-automation">Phase Two: Automation</a></li>
+</ul>
+</li>
 <li><a href="#restrictions">Restrictions</a></li>
-<li><a href="#before-you-submit">Before You Submit</a></li>
+<li><a href="#requirements">Requirements</a></li>
 <li><a href="#submission-instructions">Submission Instructions</a></li>
 <li><a href="#collaboration">Collaboration</a></li>
 <li><a href="#tips">Tips</a></li>
@@ -60,6 +64,12 @@
 <p>The purpose of this lab is to familiarize you with setting up a virtual environment, developing in django and using npm.
 By the end of this lab you will make a simple emoji picker app.</p>
 <h3 id="getting-started">Getting Started</h3>
+<h4 id="prepare-your-repo">Prepare your Repo</h4>
+<ol>
+<li>Get the github classroom link from eClass, create your assignment, and clone it.</li>
+<li>Create an appropriate <code>.gitignore</code> file, to prevent unwanted files being commited to your repository.</li>
+</ol>
+<p>Place this gitignore within the root of your project. You can combine <a href="https://github.com/github/gitignore/blob/main/Python.gitignore">this one</a> and <a href="https://github.com/github/gitignore/blob/main/Node.gitignore">this one</a> and <a href="https://github.com/django/django/blob/main/.gitignore">this one</a> for your django+node project. Double check you're not staging any unwanted files before you commit. The <code>git status</code> command can help with that.</p>
 <h4 id="installing-venv-with-pip">Installing venv with pip</h4>
 <p>Virtual environment is a CLI tool for managing python dependencies. Different projects have different dependencies, and version requirements. A virtual environment allows you to manage your dependencies specific to your project.</p>
 <p>To install follow these steps (Note that you need pip installed and configured):</p>
@@ -164,17 +174,32 @@ will include npm as well.</p>
 </code></pre></div>
 
 <p>Now you should get a big welcome message when you access <code>localhost:8000/emojis</code>.</p>
-<p>Npm is a package manager for node JS. Node JS is a runtime environment for JavaScript. The node JS developer community use npm to distribute useful packages. For this lab we will be using <a href="https://www.npmjs.com/package/emoji-mart">emoji-mart</a> to create a fun browser based emoji picker. </p>
-<p>To use the package we need to install the JavaScript modules using npm:</p>
+<p>Npm is a package manager for node JS. Node JS is a runtime environment for JavaScript. The node JS developer community use npm to distribute useful packages. For this lab we will be using <a href="https://www.npmjs.com/package/emoji-mart">emoji-mart</a> to create a fun browser based emoji picker. Ensure you have npm and node installed (<a href="/labsignments/django.html#installing-node-js-and-npm">Refer to Getting Started</a>)</p>
+<p>To use the package we need to install the JavaScript module using npm:</p>
 <ol>
-<li>Run <code>npm install --save emoji-mart</code> in your project root where <code>manage.py</code> is.</li>
+<li>Run <code>npm install --save-dev emoji-mart</code> in your project root where <code>manage.py</code> is.</li>
 <li>This should create a new directory called <code>node_modules</code></li>
-<li>Locate <code>node_modules/emoji-mart/dist</code> which contains the JS files for the package</li>
+<li>Locate <code>node_modules/emoji-mart</code> to verify installation</li>
 <li>Create a directory called <code>static</code> inside <code>emojis</code>, where you made the <code>templates</code> directory</li>
-<li>Copy <code>node_modules/emoji-mart</code> into that directory (Why?)</li>
+<li>Create a file called <code>main.js</code> where <code>node_modules</code> is located (but not inside <code>node_modules</code>)</li>
 </ol>
-<p>The reason why we didn't directly install <code>node_modules</code> inside <code>static</code> is mainly a safety practice. static files are accessible through the browser, therefore you need to make sure you are only allowing that for the files you want. Additionally, though not in the scope of this lab, some npm packages are designed to run in the node JS environment on a server; so, they are not suited for a browser.</p>
-<p>Now that we have our static files ready to go, modify your <code>index.html</code> to load the static files.</p>
+<p>Within <code>main.js</code> add the following code:</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Picker</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;emoji-mart&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// import Picker class from module</span>
+<span class="c1">// This is where you would import other modules you installed with npm too, but for this example we only have the emoji-mart.</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">pickerOptions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">onEmojiSelect</span><span class="o">:</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="w"> </span><span class="p">}</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">picker</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Picker</span><span class="p">(</span><span class="nx">pickerOptions</span><span class="p">)</span><span class="w"> </span><span class="c1">// instantiate object</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">picker</span><span class="p">)</span><span class="w"> </span><span class="c1">// add to DOM</span>
+</code></pre></div>
+
+<p>Now this file won't be able do much here, but it will be useful within a browser environment. To make <code>main.js</code> run in a browser, it must be in a compatible format. Fortunately, there are tools such as webpack, vite, and esbuild that can build or transpile our javascript code into a format the browser can handle. The tool we will be using for this lab is <a href="https://esbuild.github.io/getting-started/">esbuild</a>:</p>
+<ol>
+<li>First install esbuild using npm: <code>npm install --save-exact --save-dev esbuild</code></li>
+<li>Transpile <code>main.js</code> to the static directory: <code>npx esbuild main.js --bundle --minify --sourcemap --outfile=./emojis/static/main.min.js</code></li>
+<li>Verify <code>main.min.js</code> is created within <code>emojis/static</code></li>
+<li>Add a line to your <code>.gitignore</code> to prevent <code>main.min.js</code> from being added to git.</li>
+</ol>
+<p>Now that we have our static files ready to go, modify your <code>index.html</code> to load your main.js file.</p>
 <div class="highlight"><pre><span></span><code>{% load static %}
 <span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;en&quot;</span><span class="p">&gt;</span>
@@ -185,23 +210,46 @@ will include npm as well.</p>
     <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
         <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Welcome to Emojis!<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
     <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;{% static &#39;emoji-mart/dist/browser.js&#39; %}&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
-<span class="w">        </span><span class="c1">// Add your code here</span>
-<span class="w">    </span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span> 
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;{% static &#39;main.min.js&#39; %}&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </code></pre></div>
 
-<p>As part of your lab you need to write the code that will add the emoji picker to the dom using the package we have included. <strong>You MUST NOT modify the body tag directly</strong>. If successful, you should be able to see an emoji picker in your browser.</p>
+<p>You should now be able to see the emoji picker on <code>localhost:8000/emojis</code>.</p>
+<h4 id="phase-two-automation">Phase Two: Automation</h4>
+<p>Double check that your git repository doesn't contain any built or downloaded artifacts such as the </p>
 <h3 id="restrictions">Restrictions</h3>
 <p>Violation of the restrictions will result in a mark of zero.</p>
 <ul>
 <li>Must use Python3</li>
 <li>Must run on Ubuntu (Use the undergrad lab machines, for example the ones in CSC 2-29 or install an Ubuntu VM to check this)</li>
+<li>Must run on your machine (whatever machine you use to demo)</li>
 </ul>
-<h3 id="before-you-submit">Before You Submit</h3>
-<p>Make sure to include an appropriate <code>.gitignore</code> file, to prevent unwanted files being commited to your repository.
-Place this gitignore within the root of your project. You can use <a href="https://github.com/django/django/blob/main/.gitignore">this one</a> for your django project. Double check you're not staging any unwanted files before you commit. The <code>git status</code> command can help with that.</p>
+<h3 id="requirements">Requirements</h3>
+<ul>
+<li>A working Django 5 application<ul>
+<li>using the latest Django version from pypi<ul>
+<li>downloaded with pip into a virtualenv</li>
+</ul>
+</li>
+<li>that can serve a template that uses<ul>
+<li>JS code bundled by esbuild<ul>
+<li>which loads a JS library<ul>
+<li>that was intalled by npm</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>A git repository that does not contain built (compiled, transpiled, bundled) or downloaded artifacts, including but not limited to:<ul>
+<li>virtualenv</li>
+<li>node_modules</li>
+<li>main.min.js</li>
+</ul>
+</li>
+</ul>
 <h3 id="submission-instructions">Submission Instructions</h3>
 <p>Make sure you push to github classroom <strong>BEFORE 4PM on the day of your lab section!</strong> You will not be able to push after that!</p>
 <p>Submit a link to your repo in the form <code>https://github.com/uofa-cmput404/w24-h0x-labsignment-django-yourgithubname</code> on eClass. <strong>Do not</strong> submit a link to a branch, a file, or the clone url. If you do not do this we will not know which github submission is yours.</p>

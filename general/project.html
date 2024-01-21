@@ -97,21 +97,22 @@ autonomy.</p>
 <p>Thus in the spirit of diaspora https://diasporafoundation.org/ we
 want to build something like diaspora but far far simpler.</p>
 <p>This blogging/social network platform will allow the importing of
-other sources of posts (github, twitter, etc.) as well allow the
-distributing sharing of posts and content.</p>
-<p>An author sitting on one server can aggregate the posts of their
-friends on other servers.   </p>
+other sources of information (github) as well allow the
+distribution and sharing of posts and content.</p>
+<p>An author sitting on one server can aggregate
+the posts of authors they follow on other servers.   </p>
 <p>We are going to go with an inbox model where by you share posts to
-your friends by sending them your posts. This is similar to
+your followers by sending them your posts. This is similar to
 activity pub: https://www.w3.org/TR/activitypub/ Activity Pub is
 great, but too complex for a class project.</p>
 <p>We also won't be adding much in the way of encryption or security
 to this platform. We're keeping it simple and restful.</p>
-<p>Choose at least 3 other groups to work with</p>
+<p>Choose at least 3 other groups to work with!</p>
 <h4 id="scenario">Scenario</h4>
 <p>I log into SocialDistribution. I see my stream which is filled with
-posts that have arrived in my inbox. I browse them and I click like
-on anything by friend Steph who is on another node.</p>
+posts that have arrived in my inbox combined with public posts that my server knows about.
+I browse them and I click like
+on anything by my friend Steph who is on another node.</p>
 <p>When I click like, my node sends a like object to Steph's inbox
 that references her post.</p>
 <p>I then comment on Steph's post. This sends a comment object to
@@ -128,15 +129,18 @@ public posts to the inboxes of everyone who follows me. My node
 knows who follows me and thus can just send the public post to each
 of those inboxes. Perhaps there will be a scaling problem in the
 future.</p>
-<p>Later I write a message to Steph, a post that is private to just her.
-This post is sent to her inbox.</p>
+<p>Later I write a friends-only post about how much I hate the movie The Room (2003).
+Tommy Wiseau can't see it because I'm not friends with Tommy Wiseau, but this post is sent to Steph's inbox and she can see it because she's my friend.</p>
 <p>When Steph logs into her node she'll see her stream and my public
-post will be on her stream. She should also see that I've liked and
-commented her post.</p>
+post and my friends-only post will be on her stream.
+She should also see that I've liked and commented her post.</p>
 <h4 id="scenario-summary">Scenario Summary</h4>
 <p>All actions from authors are routed through the inbox of the receiving authors by the node itself.</p>
 <p>Nodes will store copies of posts because they receive them in the inbox.</p>
-<p>Likes, Comments, Public Posts, Friends Only posts, Private posts are all sent to the inbox of the author.</p>
+<p>Likes and comments on posts are all sent to the inbox of the author.</p>
+<p>Public posts are sent to the inboxes of all followers of the author.</p>
+<p>Friends-only posts are sent to the inboxes of all friends of the author.</p>
+<p>Posts, likes, comments, posts, are all sent to the inboxes of the authors that should be able to see them.</p>
 <h4 id="project-parts">Project Parts</h4>
 <ul>
 <li>Part 0 - sign up a repo</li>
@@ -163,8 +167,8 @@ commented her post.</p>
 </li>
 <li>As a server admin, I want to host multiple authors on my server, so I can have a friendly online community.</li>
 <li>As an author, I want a public page with my profile information, so that I can link people to it.</li>
-<li>As an author, I want to pull in my github activity to my "public timeline", so if someone visits my profile they can see my github activity too.</li>
-<li>As an author, I want my public posts to be on my "public timeline", so if someone visits my profile they can see my posts.</li>
+<li>As an author, I want to my (new, public) github activity to be automatically turned into public posts, so everyone can see my github activity too.</li>
+<li>As an author, I want my profile page to show my public posts (most recent first), so they can decide if they want to follow me.</li>
 <li>As an author, I want to be able to use my web-browser to manage my profile, so I don't have to use a clunky API.</li>
 </ul>
 </li>
@@ -183,9 +187,13 @@ commented her post.</p>
 <li>As an author, I want to be able to make posts that are unlisted, that are publicly shareable by URI alone (or for embedding images).</li>
 </ul>
 </li>
+<li>Reading<ul>
+<li>As an author, I want a "stream" page which shows me all the public posts my server knows about and all the posts by people I follow.</li>
+<li>As an author, I want my "stream" page to be sorted with the most recent posts first. </li>
+</ul>
+</li>
 <li>Visibility<ul>
-<li>As an author, posts I create can be private to another author, so that I don't have to worry about other people joining private conversations.</li>
-<li>As an author, posts I create can be private to my friends ("friends-only"), so that I don't have to worry about people I don't know seeing them.</li>
+<li>As an author, posts I create can be friends-only, so that I don't have to worry about people I don't know seeing them.</li>
 <li>As an author, I want my friends-only posts and images to only be visible to my friends, so I can feel safe about posting.<ul>
 <li>Note: public posts (and image posts) are public.</li>
 </ul>
@@ -197,7 +205,7 @@ commented her post.</p>
 <li>As an author, I can share other author's public posts, so I can make things go viral!</li>
 <li>As an author, posts that I share will show up on the timeline of anyone who is following me. </li>
 <li>As a server admin, I want to share public images with users on other servers, so that they are visible by users of other servers.</li>
-<li>As an author, I want my friends-only/private/unlisted images and posts sto <em>not</em> be shareable, so I know that if someone wants to re-post it they'll at least have to take a screenshot.<ul>
+<li>As an author, I want my friends-only/unlisted images and posts sto <em>not</em> be shareable, so I know that if someone wants to re-post it they'll at least have to take a screenshot.<ul>
 <li>Note: public posts (and image posts) are re-shareable.</li>
 </ul>
 </li>
@@ -229,7 +237,7 @@ commented her post.</p>
 <li>As a server admin, I want a RESTful interface for most operations, so that I can connect to other servers and allow my users to use alternate clients other than the web frontend.</li>
 <li>As a server admin, I want to be able to add nodes to share with.</li>
 <li>As a server admin, I want to be able to remove nodes and stop sharing with them.</li>
-<li>As a server admin, I can prevent notes from connecting to my node if they don't have a valid username and password.</li>
+<li>As a server admin, I can prevent nodes from connecting to my node if they don't have a valid username and password.</li>
 <li>As a server admin, node to node connections can be authenticated with HTTP Basic Auth, so that I don't have to deal with tokens.</li>
 <li>As a server admin, I can disable the node to node interfaces for connections that I no longer want, in case another node goes bad.</li>
 <li>As a server admin, I want everything to be stored in a well-indexed relational database, so that my website is snappy and I can write SQL to fix things if I need to, make backups, etc...<ul>
@@ -246,8 +254,9 @@ commented her post.</p>
 <ul>
 <li>Author<ul>
 <li>makes posts</li>
+<li>following other authors</li>
+<li>can have followers</li>
 <li>makes friends</li>
-<li>befriends other authors</li>
 <li>likes posts</li>
 <li>comments on posts</li>
 <li>a generally nice person</li>
@@ -259,21 +268,18 @@ commented her post.</p>
 <li>responsible for private data :(</li>
 </ul>
 </li>
-<li>Follow<ul>
-<li>Friend another author and they accept the friend request</li>
-<li>They will send their posts to your inbox</li>
+<li>Follower<ul>
+<li>Someone who follows you</li>
+<li>Your server will send posts to their inbox</li>
+</ul>
+</li>
+<li>Following<ul>
+<li>Someone you follow</li>
+<li>Their server will send posts to your inbox</li>
 </ul>
 </li>
 <li>Friend<ul>
-<li>Someone who follows you.</li>
-</ul>
-</li>
-<li>True Friend<ul>
-<li>Bidirectional friendship.</li>
-</ul>
-</li>
-<li>Real Friend<ul>
-<li>True friend</li>
+<li>You follow them and they follow you</li>
 </ul>
 </li>
 <li>Server<ul>
@@ -293,20 +299,25 @@ commented her post.</p>
 <li>it has a public URL</li>
 <li>anyone can see it</li>
 <li>Public posts can be liked</li>
-<li>public posts can have comments from friends</li>
+<li>public posts can have comments</li>
 </ul>
 </li>
-<li>Friend Post<ul>
+<li>Friends-Only Post<ul>
 <li>this is a post that is shared to friends (followers)</li>
 <li>since it is sent, it is a message and not changeable</li>
-<li>Friend posts can be liked</li>
-<li>Friend posts can have comments sent back to the author via the author's inbox</li>
+<li>Friends-Only posts can be liked</li>
+<li>Friends-Only posts can have comments sent back to the author via the author's inbox</li>
 </ul>
 </li>
 <li>Inbox<ul>
-<li>This is what a READER or USER of the social network has. They make friends, and friends send objects to their inbox.</li>
+<li>This is what a READER or USER of the social network has. They follow authors, and the authors they follow send objects to their inbox.</li>
+<li>This is something that only exists in the API. There is no special inbox in the User Interface, posts sent to a user's inbox are integrated into a their stream.</li>
 <li>This forms the backbone of the timeline of the social media user.</li>
 <li>This receives likes and comments.</li>
+</ul>
+</li>
+<li>Stream<ul>
+<li>The user interface showing date-sorted (most recent first) local, public posts combined with posts from everyone that user follows.</li>
 </ul>
 </li>
 <li>Remote<ul>
@@ -317,12 +328,21 @@ commented her post.</p>
 <li>A local user accessing the REST API. Likely will use their cookie-auth, basic auth, or token auth. Local usually implies you check whether or not the user should have access. For instance local API access to the inbox should be limited to only that authenticated authors---don't snoop!</li>
 </ul>
 </li>
+<li>Profile Page<ul>
+<li>A page that shows information about me as well as my public posts.</li>
+</ul>
+</li>
 </ul>
 <h4 id="authentication">Authentication</h4>
 <ul>
 <li>Remote node authentication is global between nodes. It requires an admin to allow node to node access.</li>
 <li>Remote node authentication is done solely with HTTP basic auth</li>
-<li>Local auth uses your frameworks local auth mechanisms (cookies, tokens, basic auth).   - Local refers to local access to the restful API. This is useful for frameworks like react, vue, or angular to get access to data, and enable a more client heavy UI.</li>
+<li>Local auth uses your local auth mechanisms (cookies, tokens, basic auth).</li>
+<li>Local refers the RESTful API for authors on that server.<ul>
+<li>This is useful for frameworks like react, vue, or angular to get access to data, and enable a more client heavy UI.</li>
+<li>Even if your frontend does not use them, endpoints marked [local] should be usable by a future Android/iOS client to achieve the same functionality as frontend.</li>
+</ul>
+</li>
 </ul>
 <h4 id="pagination">Pagination</h4>
 <p>If something is paginated it has query options:</p>
@@ -448,9 +468,11 @@ commented her post.</p>
 
 <h4 id="friendfollow-request">Friend/Follow Request</h4>
 <ul>
-<li>This allows you to follow someone you, so they can send you their post.</li>
-<li>If the recipient accepts the Friend Request then you are friends</li>
-<li>If the recipient folows you, you are true friends</li>
+<li>When author 1 tries to follow author 2, author 1's server send the follow request to author 2's server.</li>
+<li>If the author 2 accepts the Follow Request then author 1 is following author 2.<ul>
+<li>If author 2 is also already following author 1, then they are now friends.</li>
+</ul>
+</li>
 <li>Sent to inbox of "object" </li>
 <li>Example format:</li>
 </ul>
@@ -488,7 +510,7 @@ commented her post.</p>
 <ul>
 <li>URL: ://service/authors/{AUTHOR_ID}/posts/{POST_ID}<ul>
 <li>GET [local, remote] get the public post whose id is POST_ID<ul>
-<li>private/friends-only posts: must be authenticated</li>
+<li>friends-only posts: must be authenticated</li>
 </ul>
 </li>
 <li>DELETE [local,remote] remove the post whose id is POST_ID<ul>
@@ -514,7 +536,6 @@ commented her post.</p>
 <li>Not authenticated: only public posts.</li>
 <li>Authenticated locally as author: all posts.</li>
 <li>Authenticated locally as friend of author: public + friends-only posts.</li>
-<li>Authenticated locally as someone author made a post private to: + those private posts.  </li>
 <li>Authenticated as remote server: This probably should not happen. Remember, the way remote server becomes aware of local posts is by local server pushing those posts to inbox, not by remote server pulling.</li>
 </ul>
 </li>
@@ -613,13 +634,11 @@ commented her post.</p>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="c1">// ISO 8601 TIMESTAMP</span>
 <span class="w">    </span><span class="s2">&quot;published&quot;</span><span class="o">:</span><span class="s2">&quot;2015-03-09T13:07:04+00:00&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="c1">// visibility [&quot;PUBLIC&quot;,&quot;FRIENDS&quot;]</span>
-<span class="w">    </span><span class="s2">&quot;visibility&quot;</span><span class="o">:</span><span class="s2">&quot;PUBLIC&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// visibility [&quot;PUBLIC&quot;,&quot;FRIENDS&quot;,&quot;UNLISTED&quot;]</span>
+<span class="w">    </span><span class="s2">&quot;visibility&quot;</span><span class="o">:</span><span class="s2">&quot;PUBLIC&quot;</span>
 <span class="w">    </span><span class="c1">// for visibility PUBLIC means it is open to the wild web</span>
-<span class="w">    </span><span class="c1">// FRIENDS means if we&#39;re direct friends I can see the post</span>
+<span class="w">    </span><span class="c1">// FRIENDS means if we&#39;re friends I can see the post</span>
 <span class="w">    </span><span class="c1">// FRIENDS should&#39;ve already been sent the post so they don&#39;t need this</span>
-<span class="w">    </span><span class="s2">&quot;unlisted&quot;</span><span class="o">:</span><span class="kc">false</span>
-<span class="w">    </span><span class="c1">// unlisted means it is public if you know the post name -- use this for images, it&#39;s so images don&#39;t show up in timelines</span>
 <span class="p">}</span>
 </code></pre></div>
 
@@ -775,12 +794,16 @@ shortcut to get the image if authenticated to see it.</p>
 
 <h4 id="inbox">Inbox</h4>
 <ul>
-<li>The inbox is all the new posts from who you follow</li>
+<li>The inbox is all the new posts from who you follow, as well as follow requests, likes, and comments you should be aware of</li>
+<li>The inbox is the API equivalent of the stream in the UI</li>
 <li>URL: ://service/authors/{AUTHOR_ID}/inbox<ul>
-<li>GET [local]: if authenticated get a list of posts sent to AUTHOR_ID (paginated)</li>
+<li>GET [local]: if authenticated get a list of posts sent to AUTHOR_ID (paginated)<ul>
+<li>Should be sorted most recent first</li>
+</ul>
+</li>
 <li>POST [local, remote]: send a post to the author</li>
 <li>if the type is "post" then add that post to AUTHOR_ID's inbox</li>
-<li>if the type is "Follow" then add that follow is added to AUTHOR_ID's inbox to approve later</li>
+<li>if the type is "follow" then add that follow is added to AUTHOR_ID's inbox to approve later</li>
 <li>if the type is "Like" then add that like to AUTHOR_ID's inbox</li>
 <li>if the type is "comment" then add that comment to AUTHOR_ID's inbox</li>
 <li>DELETE [local]: clear the inbox</li>
@@ -858,8 +881,8 @@ shortcut to get the image if authenticated to see it.</p>
 </ul>
 </li>
 <li>[ ] Make a presentation about your blog </li>
-<li>[ ] Follow the guidelines in the project.org for URLs and services</li>
-<li>[ ] Allow users to accept or reject friend requests</li>
+<li>[ ] Follow the guidelines in the <a href="../general/project.html">project spec</a> for URLs and services</li>
+<li>[ ] Allow users to accept or reject follow requests</li>
 <li>[ ] Images get the same protection that posts get as they are POSTS   </li>
 </ul>
 <h3 id="take-aways">Take-aways</h3>
