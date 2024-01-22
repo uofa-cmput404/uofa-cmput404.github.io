@@ -55,8 +55,9 @@ Get started by creating a virtual environment and installing django:
 
 1. Within your assignment directory create a virtual environment: `virtualenv venv --python=python3`
 2. Activate the virtual environment: `source venv/bin/activate`
-3. Install django: `python -m pip install Django`
-4. Verify installation by running a python shell and using: `import django`
+3. Add the line `Django>=5.0.1` to a new file, `requirements.txt`, at the top level of your repo.
+4. Install django: `python -m pip install -r requirements.txt`
+5. Verify installation by running a python shell and using: `import django`
 
 To create a django project:
 
@@ -192,7 +193,37 @@ You should now be able to see the emoji picker on `localhost:8000/emojis`.
 
 ## Phase Two: Automation
 
-Double check that your git repository doesn't contain any built or downloaded artifacts such as the 
+Double check that your git repository doesn't contain any built or reinstallable artifacts such as:
+
+* The virtual environment (venv)
+* node_modules
+* main.min.js
+
+Make sure that it does contain:
+
+* package.json
+* requirements.txt
+* All files you created and/or edited
+* The files that django-admin startproject created
+
+Write a python script and (and add it to your repository) that:
+
+1. Creates the virtualenv if it doesn't already exist
+2. Activates the virtualenv if it's not already active
+3. Installs everything from `requirements.txt` to virtualenv if its not already installed
+4. Runs `npm install` to install every depencency from `package.json` to node_modules
+5. Runs esbuild to build `main.min.js`
+6. Starts the django server
+
+Do not have it install python, venv, or node. We will assume that every web developer has these installed already.
+
+Your goal is to have a repository by the end that is just the stuff you need for your script to
+install dependencies of your project and get it started, regardless of what computer your
+repository is cloned to.
+
+That is you should be able to log onto a different computer with a different OS and run the python
+script you wrote and it should download the pypi packages it needs with pip, download the npm packages
+it needs with npm, and then runs your project.
 
 # Restrictions
 
