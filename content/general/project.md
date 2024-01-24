@@ -808,6 +808,22 @@ Basic Auth(if used) in your README so that HTTP clients can connect to your API.
 
 ## Project Part 1: Centralized
 
+### Submission
+
+Due 4PM on the day of your lab.
+
+eClass has a limitation where it only shows the due date for the last lab section of the week, but for Monday labs it is due Monday. For Wednesday labs it is due Wednesday.
+
+Create a git tag "part1" before 4PM and submit only the link to your tag.
+
+Don't forget to push the tag to GitHub.
+
+Submit only the link to the tag in the following format:
+
+https://github.com/uofa-cmput404/w24-project-example-team/tree/part1
+
+### Marking
+
 * 7 Marks
 * Total Project
     * Excellent 7: Excellent effort. Relatively consistent. At least ½
@@ -871,6 +887,22 @@ Basic Auth(if used) in your README so that HTTP clients can connect to your API.
 
 ## Project Part 2: Distribution
 
+### Submission
+
+Due 4PM on the day of your lab.
+
+eClass has a limitation where it only shows the due date for the last lab section of the week, but for Monday labs it is due Monday. For Wednesday labs it is due Wednesday.
+
+Create a git tag "part2" before 4PM and submit only the link to your tag.
+
+Don't forget to push the tag to GitHub.
+
+Submit only the link to the tag in the following format:
+
+https://github.com/uofa-cmput404/w24-project-example-team/tree/part2
+
+### Marking
+
 * 7 Marks
 * Total Project
     * Excellent 7: Excellent effort. Relatively consistent. All of the project implemented. Clean code. Coordinates and connects fine with another instance of itself.
@@ -928,6 +960,22 @@ Basic Auth(if used) in your README so that HTTP clients can connect to your API.
 
 ## Project Part 3: Federation
 
+### Submission
+
+Due 4PM on the day of your lab.
+
+eClass has a limitation where it only shows the due date for the last lab section of the week, but for Monday labs it is due Monday. For Wednesday labs it is due Wednesday.
+
+Create a git tag "part3" before 4PM and submit only the link to your tag.
+
+Don't forget to push the tag to GitHub.
+
+Submit only the link to the tag in the following format:
+
+https://github.com/uofa-cmput404/w24-project-example-team/tree/part3
+
+### Marking
+
 * 5 Marks
 * Total Project
     * Excellent 5: Excellent effort. Coordinates and connects fine with 2 or more groups and another instance of itself.
@@ -955,6 +1003,22 @@ Basic Auth(if used) in your README so that HTTP clients can connect to your API.
     * Failure: failure to apply what was learned in class.
 
 ## Project Part 4: Polish
+
+### Submission
+
+Due 4PM on the day of your lab.
+
+eClass has a limitation where it only shows the due date for the last lab section of the week, but for Monday labs it is due Monday. For Wednesday labs it is due Wednesday.
+
+Create a git tag "part4" before 4PM and submit only the link to your tag.
+
+Don't forget to push the tag to GitHub.
+
+Submit only the link to the tag in the following format:
+
+https://github.com/uofa-cmput404/w24-project-example-team/tree/part4
+
+### Marking
 
 * 10 Marks
 * Total Project
