@@ -53,7 +53,7 @@ will include npm as well.
 
 ### Creating a Django Project
 
-* Official Docs [Overview](https://docs.djangoproject.com/en/3.1/intro/overview/), [Installation](https://docs.djangoproject.com/en/3.1/intro/install/)
+* Official Docs [Overview](https://docs.djangoproject.com/en/5.0/intro/overview/), [Installation](https://docs.djangoproject.com/en/5.0/intro/install/)
 
 
 Make sure to use a **virtual environment** for this lab!
