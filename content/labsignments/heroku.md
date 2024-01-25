@@ -810,7 +810,7 @@ Note: Please make sure that the Heroku app uses Postgres as the backend database
 
 You can verify the backend in use by login into the dashboard of the Heroku app: [https://dashboard.heroku.com/apps/APP_NAME](https://dashboard.heroku.com/apps/APP_NAME), then click the `Resources` tab, you should see `Heroku Postgres` under the `Add-ons` Section.
 
-If other Heroku backend is used (e.g., SQLite), or if you try to create the Heroku app through the Heroku webpage, you should follow the below instructions to enable Postgres.
+If a different Heroku backend is used (e.g., SQLite), or if you try to create the Heroku app through the Heroku webpage, you can follow the below instructions to enable Postgres.
 [https://www.geeksforgeeks.org/deploying-django-app-on-heroku-with-postgres-as-backend/](https://www.geeksforgeeks.org/deploying-django-app-on-heroku-with-postgres-as-backend/)
 
 
