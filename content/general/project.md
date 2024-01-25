@@ -868,8 +868,7 @@ https://github.com/uofa-cmput404/w24-project-example-team/tree/part1
     * Unsatifactory: Unfinished, hard to demo.
     * Failure: no demo or unable to demo.
 * Web Service API & Documentation
-    * Excellent: Documented, adheres to requirements to augments
-    them with compatibility. Open API specification exists, has clear descriptions,
+    * Excellent: Documented, adheres to the specification & examples listed above. Open API specification exists, has clear descriptions,
     and has example requests and responses from your API. 
     * Good: Documented, exists, tries to adhere to requirements. Open API specification exists,
     and has some descriptions and a few example requests and responses.
@@ -905,7 +904,7 @@ https://github.com/uofa-cmput404/w24-project-example-team/tree/part2
 
 * 7 Marks
 * Total Project
-    * Excellent 7: Excellent effort. Relatively consistent. All of the project implemented. Clean code. Coordinates and connects fine with another instance of itself.
+    * Excellent 7: Excellent effort. Relatively consistent. All of the project implemented. Clean code. Coordinates and connects fine with another instance of itself. API follows spec & examples listed in this document.
     * Good 6: Good quality. Some inconsistency. All of the project implemented except several user stories. Fixable and functional connection with another instance of itself.
     * Satisfactory 5: Codebase in places. Passes some tests. Most parts run. Some things coordinate and connect with another instance of itself.
     * Unsatisfactory 3: Effort exists, it's missing lots of components but at least ½ is there.
@@ -946,7 +945,7 @@ https://github.com/uofa-cmput404/w24-project-example-team/tree/part2
     * Unsatifactory: Unfinished, hard to demo.
     * Failure: no demo or unable to demo.
 * Web Service API & Documentation
-    * Excellent: Documented, adheres to requirements to augments them with compatibility. Open API specification exists, has clear descriptions, and has example requests and responses from your API. 
+    * Excellent: Documented, adheres to the specification & examples listed above.  Open API specification exists, has clear descriptions, and has example requests and responses from your API. 
     * Good: Documented, exists, tries to adhere to requirements. Open API specification exists, and has some descriptions and a few example requests and responses.
     * Satisfactory: Some of the webservice exists. Open API specification exists, but no descriptions or example requests and responses.
     * Unsatisfactory: Well you tried right? Open API specification does not exist.
@@ -978,8 +977,8 @@ https://github.com/uofa-cmput404/w24-project-example-team/tree/part3
 
 * 5 Marks
 * Total Project
-    * Excellent 5: Excellent effort. Coordinates and connects fine with 2 or more groups and another instance of itself.
-    * Good 4: Some issues, not quite excellent but definitely fixable and functional with 1 or more groups and another instance itself.
+    * Excellent 5: Excellent effort. Coordinates and connects fine with 2 or more groups and another instance of itself. API follows spec & examples listed in this document.
+    * Good 4: Some issues, not quite excellent but definitely fixable and functional with 1 or more groups and another instance itself. API follows spec & examples listed in this document.
     * Satisfactory 3: There are issues, it does run, it does coordinate with 1 or more groups.
     * Unsatisfactory 2: Not connected to other groups, still connects to another instance of itself.
     * Failure 0: Missing. No attempted. Not complete enough to evaluate.
@@ -1022,9 +1021,9 @@ https://github.com/uofa-cmput404/w24-project-example-team/tree/part4
 
 * 10 Marks
 * Total Project
-    * Excellent 10: Excellent effort. Coordinates and connects fine. Good demo. Clear application of what was learned in class. 3 or more groups connected. Posts with embedded images are visible. Image posts are visible.
-    * Good 8: Some issues, not quite excellent but definitely operational and functional. 2 or more groups connected. Posts with embedded images are visible. Image posts are visible.
-    * Satisfactory 6: There are issues, it does run, it does coordinate. Meets satisfactory aspects of rubric. 2 or more group connected. Image posts are visible.
+    * Excellent 10: Excellent effort. Coordinates and connects fine. Good demo. Clear application of what was learned in class. 3 or more groups connected. Posts with embedded images are visible. Image posts are visible. API follows spec & examples listed in this document.
+    * Good 8: Some issues, not quite excellent but definitely operational and functional. 2 or more groups connected. Posts with embedded images are visible. Image posts are visible. API follows spec & examples listed in this document.
+    * Satisfactory 6: There are issues, it does run, it does coordinate. Meets satisfactory aspects of rubric. 2 or more group connected. Image posts are visible. API follows spec & examples listed in this document.
     * Unsatisfactory 4: Well you tried, but it's hardly working. Meets unsatisfactory aspects of rubric. 1 or more group connected.
     * Failure 0: Missing. No attempted. Not complete enough to evaluate. Often hits failure aspects of rubric.
 * Note: these are ordered by importance, but you need to meet all these parts and we care about the final quality.
