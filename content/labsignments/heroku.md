@@ -41,19 +41,13 @@ To create and use a virtual environment:
 The first command will create a directory named `venv`. Contained in the directory is your
 project dependecy installation and the `activate` script. Run `deactivate` to exit the virtual environment.
 
-## Installing node JS and npm
-
-To install node js, you can download the appropriate installer directly from the node js
-[website](https://nodejs.org/en/download). Make sure to download the LTS version. The installation 
-will include npm as well.
-
 # Lab Instructions
 
 ## Phase One: Django Polls App
 
 ### Creating a Django Project
 
-* Official Docs [Overview](https://docs.djangoproject.com/en/3.1/intro/overview/), [Installation](https://docs.djangoproject.com/en/3.1/intro/install/)
+* Official Docs [Overview](https://docs.djangoproject.com/en/5.0/intro/overview/), [Installation](https://docs.djangoproject.com/en/5.0/intro/install/)
 
 
 Make sure to use a **virtual environment** for this lab!
@@ -811,6 +805,15 @@ $ heroku run --app APPNAME python manage.py createsuperuser
 ```
 
 Go to `/polls` on your Heroku deployed site, you should be able to use the Polls app from Heroku. 
+
+Note: Please make sure that the Heroku app uses Postgres as the backend database. If you created the Heroku app through Git integration, this should be a default setting.
+
+You can verify the backend in use by login into the dashboard of the Heroku app: [https://dashboard.heroku.com/apps/APP_NAME](https://dashboard.heroku.com/apps/APP_NAME), then click the `Resources` tab, you should see `Heroku Postgres` under the `Add-ons` Section.
+
+If a different Heroku backend is used (e.g., SQLite), or if you try to create the Heroku app through the Heroku webpage, you can follow the below instructions to enable Postgres.
+[https://www.geeksforgeeks.org/deploying-django-app-on-heroku-with-postgres-as-backend/](https://www.geeksforgeeks.org/deploying-django-app-on-heroku-with-postgres-as-backend/)
+
+
 
 # Restrictions
 
