@@ -90,8 +90,9 @@ Posts, likes, comments, posts, are all sent to the inboxes of the authors that s
 
 * Part 0 - sign up a repo
 * Part 1 - 1/2 way implementation
-* Part 2 - Connect with Groups
-* Part 3 - Finish it off!
+* Part 2 - Complete implementation
+* Part 3 - Connect with Groups
+* Part 4 - Finish it off!
 
 # Collaboration
    

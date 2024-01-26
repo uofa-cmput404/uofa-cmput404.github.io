@@ -14,6 +14,22 @@ summary: Lab Procedure, Lab Assignments, Lab Marking
 Big lab! This lab contains two phases. In Phase One, you will build a simple Django website. Understand the fundamentals of Django's MVC architecture using the built in models and views.
 In Phase Two, you will deploy the Django application to [Heroku](https://www.heroku.com/). Understand the reasoning behind Platform as a Service (PaaS) businesses like Heroku. You may follow the official documentation.
 
+## Warning!
+
+The University's firewall (UWS) blocks new domains for 24 hours to prevent scam domains.
+
+This *might* affect your Heroku domain.The University's firewall is also inconsistent so it doesn't *always* seem to do this.
+We have complained about this every semester since forever, but IST simply does not care.
+
+Double check that your Heroku is not blocked before you demo. We will **not** give you an extension if you Heroku is blocked.
+
+You have several options to make sure this doesn't happen:
+
+* Connect to your Heroku with your web browser on UWS at least 2 days before your demo.
+    * It doesn't have to be fully working, the firewall just needs to see that the domain does in fact exist.
+* Use a VPN service.
+* Demo over Zoom using Shaw or Telus internet, or another internet not provided by the University.
+
 # Getting Started
 
 ## Prepare your Repo
@@ -813,7 +829,9 @@ You can verify the backend in use by login into the dashboard of the Heroku app:
 If a different Heroku backend is used (e.g., SQLite), or if you try to create the Heroku app through the Heroku webpage, you can follow the below instructions to enable Postgres.
 [https://www.geeksforgeeks.org/deploying-django-app-on-heroku-with-postgres-as-backend/](https://www.geeksforgeeks.org/deploying-django-app-on-heroku-with-postgres-as-backend/)
 
+## Phase 3: Connection
 
+Download and install a 
 
 # Restrictions
 
