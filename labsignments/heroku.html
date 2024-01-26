@@ -42,11 +42,13 @@
   <hr>
 <div class="toc">
 <ul>
-<li><a href="#description">Description</a></li>
+<li><a href="#description">Description</a><ul>
+<li><a href="#warning">Warning!</a></li>
+</ul>
+</li>
 <li><a href="#getting-started">Getting Started</a><ul>
 <li><a href="#prepare-your-repo">Prepare your Repo</a></li>
 <li><a href="#installing-venv-with-pip">Installing venv with pip</a></li>
-<li><a href="#installing-node-js-and-npm">Installing node JS and npm</a></li>
 </ul>
 </li>
 <li><a href="#lab-instructions">Lab Instructions</a><ul>
@@ -75,6 +77,7 @@
 <li><a href="#deploying-our-django-application">Deploying our Django Application</a></li>
 </ul>
 </li>
+<li><a href="#phase-3-connection">Phase 3: Connection</a></li>
 </ul>
 </li>
 <li><a href="#restrictions">Restrictions</a></li>
@@ -87,6 +90,20 @@
 <h3 id="description">Description</h3>
 <p>Big lab! This lab contains two phases. In Phase One, you will build a simple Django website. Understand the fundamentals of Django's MVC architecture using the built in models and views.
 In Phase Two, you will deploy the Django application to <a href="https://www.heroku.com/">Heroku</a>. Understand the reasoning behind Platform as a Service (PaaS) businesses like Heroku. You may follow the official documentation.</p>
+<h4 id="warning">Warning!</h4>
+<p>The University's firewall (UWS) blocks new domains for 24 hours to prevent scam domains.</p>
+<p>This <em>might</em> affect your Heroku domain.The University's firewall is also inconsistent so it doesn't <em>always</em> seem to do this.
+We have complained about this every semester since forever, but IST simply does not care.</p>
+<p>Double check that your Heroku is not blocked before you demo. We will <strong>not</strong> give you an extension if you Heroku is blocked.</p>
+<p>You have several options to make sure this doesn't happen:</p>
+<ul>
+<li>Connect to your Heroku with your web browser on UWS at least 2 days before your demo.<ul>
+<li>It doesn't have to be fully working, the firewall just needs to see that the domain does in fact exist.</li>
+</ul>
+</li>
+<li>Use a VPN service.</li>
+<li>Demo over Zoom using Shaw or Telus internet, or another internet not provided by the University.</li>
+</ul>
 <h3 id="getting-started">Getting Started</h3>
 <h4 id="prepare-your-repo">Prepare your Repo</h4>
 <ol>
@@ -109,15 +126,11 @@ To create and use a virtual environment:</p>
 </ol>
 <p>The first command will create a directory named <code>venv</code>. Contained in the directory is your
 project dependecy installation and the <code>activate</code> script. Run <code>deactivate</code> to exit the virtual environment.</p>
-<h4 id="installing-node-js-and-npm">Installing node JS and npm</h4>
-<p>To install node js, you can download the appropriate installer directly from the node js
-<a href="https://nodejs.org/en/download">website</a>. Make sure to download the LTS version. The installation 
-will include npm as well.</p>
 <h3 id="lab-instructions">Lab Instructions</h3>
 <h4 id="phase-one-django-polls-app">Phase One: Django Polls App</h4>
 <h5 id="creating-a-django-project">Creating a Django Project</h5>
 <ul>
-<li>Official Docs <a href="https://docs.djangoproject.com/en/3.1/intro/overview/">Overview</a>, <a href="https://docs.djangoproject.com/en/3.1/intro/install/">Installation</a></li>
+<li>Official Docs <a href="https://docs.djangoproject.com/en/5.0/intro/overview/">Overview</a>, <a href="https://docs.djangoproject.com/en/5.0/intro/install/">Installation</a></li>
 </ul>
 <p>Make sure to use a <strong>virtual environment</strong> for this lab!</p>
 <p>If you're doing this on <strong>Windows</strong> please make sure to follow the Windows
@@ -724,6 +737,12 @@ $<span class="w"> </span>heroku<span class="w"> </span>run<span class="w"> </spa
 </code></pre></div>
 
 <p>Go to <code>/polls</code> on your Heroku deployed site, you should be able to use the Polls app from Heroku. </p>
+<p>Note: Please make sure that the Heroku app uses Postgres as the backend database. If you created the Heroku app through Git integration, this should be a default setting.</p>
+<p>You can verify the backend in use by login into the dashboard of the Heroku app: <a href="https://dashboard.heroku.com/apps/APP_NAME">https://dashboard.heroku.com/apps/APP_NAME</a>, then click the <code>Resources</code> tab, you should see <code>Heroku Postgres</code> under the <code>Add-ons</code> Section.</p>
+<p>If a different Heroku backend is used (e.g., SQLite), or if you try to create the Heroku app through the Heroku webpage, you can follow the below instructions to enable Postgres.
+<a href="https://www.geeksforgeeks.org/deploying-django-app-on-heroku-with-postgres-as-backend/">https://www.geeksforgeeks.org/deploying-django-app-on-heroku-with-postgres-as-backend/</a></p>
+<h4 id="phase-3-connection">Phase 3: Connection</h4>
+<p>Download and install a </p>
 <h3 id="restrictions">Restrictions</h3>
 <p>Violation of the restrictions will result in a mark of zero.</p>
 <ul>
