@@ -75,9 +75,9 @@
 <li><a href="#phase-two-heroku">Phase Two: Heroku</a><ul>
 <li><a href="#setting-up-the-heroku-cli">Setting up the Heroku CLI</a></li>
 <li><a href="#deploying-our-django-application">Deploying our Django Application</a></li>
+<li><a href="#checking-your-heroku-app">Checking your heroku app</a></li>
 </ul>
 </li>
-<li><a href="#phase-3-connection">Phase 3: Connection</a></li>
 </ul>
 </li>
 <li><a href="#restrictions">Restrictions</a></li>
@@ -101,7 +101,23 @@ We have complained about this every semester since forever, but IST simply does 
 <li>It doesn't have to be fully working, the firewall just needs to see that the domain does in fact exist.</li>
 </ul>
 </li>
-<li>Use a VPN service.</li>
+<li>Bypass the Unversity's DNS server by adding the hostname and IP address of your heroku site to your hosts file.<ul>
+<li>Follow the steps of the "Checking your heroku app" below.</li>
+<li>Then add it your hosts file:<ul>
+<li>It uses the format <code>ip-address host-name host-name</code> on each line.<ul>
+<li>Example: <code>123.123.123.123 whatever.ingress.herokuapp.com whatever-whatever.herokouapp.com</code></li>
+<li>Example: <code>46.137.15.86 ie02.ingress.herokuapp.com example-app-1234567890ab.herokuapp.com</code></li>
+</ul>
+</li>
+<li>Linux: edit /etc/hosts as superuser. and add it in the format .</li>
+<li>MacOS: <a href="https://kinsta.com/knowledgebase/edit-mac-hosts-file/">https://kinsta.com/knowledgebase/edit-mac-hosts-file/</a></li>
+<li>Windows 10/11: <a href="https://allthings.how/how-to-edit-hosts-file-in-windows-11/">https://allthings.how/how-to-edit-hosts-file-in-windows-11/</a></li>
+</ul>
+</li>
+<li>If it stops working check again with nslookup and update it.</li>
+</ul>
+</li>
+<li>Use a VPN service or proxy.</li>
 <li>Demo over Zoom using Shaw or Telus internet, or another internet not provided by the University.</li>
 </ul>
 <h3 id="getting-started">Getting Started</h3>
@@ -741,14 +757,52 @@ $<span class="w"> </span>heroku<span class="w"> </span>run<span class="w"> </spa
 <p>You can verify the backend in use by login into the dashboard of the Heroku app: <a href="https://dashboard.heroku.com/apps/APP_NAME">https://dashboard.heroku.com/apps/APP_NAME</a>, then click the <code>Resources</code> tab, you should see <code>Heroku Postgres</code> under the <code>Add-ons</code> Section.</p>
 <p>If a different Heroku backend is used (e.g., SQLite), or if you try to create the Heroku app through the Heroku webpage, you can follow the below instructions to enable Postgres.
 <a href="https://www.geeksforgeeks.org/deploying-django-app-on-heroku-with-postgres-as-backend/">https://www.geeksforgeeks.org/deploying-django-app-on-heroku-with-postgres-as-backend/</a></p>
-<h4 id="phase-3-connection">Phase 3: Connection</h4>
-<p>Download and install a </p>
+<h5 id="checking-your-heroku-app">Checking your heroku app</h5>
+<p>You can use the <code>heroku open</code> command to open your heroku app in a web browser. </p>
+<ul>
+<li>Add your apps hostname, cname, and ip address to the README.md file in your git repo. You <strong>must</strong> do this to help us mark your work. <ul>
+<li>First get your heroku apps hostname, it will look something like <code>example-app-1234567890ab.herokuapp.com</code>.</li>
+<li>Then get an IP address for it using the <code>nslookup</code> command and a public dns server not controlled by the University.<ul>
+<li>This will look something like <code>nslookup example-app-1234567890ab.herokuapp.com 1.1.1.1</code>.<ul>
+<li>The second argument is the DNS server's IP address. You could also use:<ul>
+<li><code>nslookup example-app-1234567890ab.herokuapp.com 8.8.8.8</code></li>
+<li><code>nslookup example-app-1234567890ab.herokuapp.com 9.9.9.9</code><ul>
+<li>Or any other <a href="https://duckduckgo.com/?t=ffab&amp;q=public+dns+servers&amp;ia=answer&amp;iax=answer">public DNS server</a>. <code>1.1.1.1</code> <code>8.8.8.8</code> and <code>9.9.9.9</code> are just easy to remember!</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Read the output of nslookup, it will say something like:<ul>
+<li><code>example-app-1234567890ab.herokuapp.com  canonical name = ie02.ingress.herokuapp.com.</code></li>
+<li><code>ie02.ingress.herokuapp.com</code></li>
+<li><code>Address: 46.137.15.86</code></li>
+</ul>
+</li>
+<li>Write your app's hostname, cname, and ip address to the README.md in your git repo.</li>
+</ul>
+</li>
+<li>Make sure you can use the admin panel on heroku from your web browser.<ul>
+<li>Hint: shut down your localhost server if its running to make sure you're not connecting to the one on your computer by accident!</li>
+<li>Use the admin panel to add a poll.</li>
+</ul>
+</li>
+<li>Make sure you can use the polls app on heroku from your web browser.</li>
+<li>Make sure your heroku app remembers the results of your polls and your superuser login!<ul>
+<li>If your heroku is not configured properly to use postgres it will forget them randomly! (somewhere between 0 and 24 hours.)</li>
+</ul>
+</li>
+</ul>
 <h3 id="restrictions">Restrictions</h3>
 <p>Violation of the restrictions will result in a mark of zero.</p>
 <ul>
 <li>Must use Python3</li>
 <li>Must run on Ubuntu (Use the undergrad lab machines, for example the ones in CSC 2-29 or install an Ubuntu VM to check this)</li>
 <li>Must run on your machine (whatever machine you use to demo)</li>
+<li>Must be running on heroku, with some polls that you created for the TA to look at when they mark it.</li>
 </ul>
 <h3 id="requirements">Requirements</h3>
 <ul>
@@ -764,6 +818,10 @@ $<span class="w"> </span>heroku<span class="w"> </span>run<span class="w"> </spa
 <li>virtualenv</li>
 <li>node_modules</li>
 <li>main.min.js</li>
+<li>README.md<ul>
+<li>Has heroku app's hostname, cname, and IP address.</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
