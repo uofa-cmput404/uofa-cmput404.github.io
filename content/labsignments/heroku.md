@@ -27,7 +27,17 @@ You have several options to make sure this doesn't happen:
 
 * Connect to your Heroku with your web browser on UWS at least 2 days before your demo.
     * It doesn't have to be fully working, the firewall just needs to see that the domain does in fact exist.
-* Use a VPN service.
+* Bypass the Unversity's DNS server by adding the hostname and IP address of your heroku site to your hosts file.
+    * Follow the steps of the "Checking your heroku app" below.
+    * Then add it your hosts file:
+        * It uses the format `ip-address host-name host-name` on each line.
+            * Example: `123.123.123.123 whatever.ingress.herokuapp.com whatever-whatever.herokouapp.com`
+            * Example: `46.137.15.86 ie02.ingress.herokuapp.com example-app-1234567890ab.herokuapp.com`
+        * Linux: edit /etc/hosts as superuser. and add it in the format .
+        * MacOS: <https://kinsta.com/knowledgebase/edit-mac-hosts-file/>
+        * Windows 10/11: <https://allthings.how/how-to-edit-hosts-file-in-windows-11/>
+    * If it stops working check again with nslookup and update it.
+* Use a VPN service or proxy.
 * Demo over Zoom using Shaw or Telus internet, or another internet not provided by the University.
 
 # Getting Started
@@ -829,9 +839,29 @@ You can verify the backend in use by login into the dashboard of the Heroku app:
 If a different Heroku backend is used (e.g., SQLite), or if you try to create the Heroku app through the Heroku webpage, you can follow the below instructions to enable Postgres.
 [https://www.geeksforgeeks.org/deploying-django-app-on-heroku-with-postgres-as-backend/](https://www.geeksforgeeks.org/deploying-django-app-on-heroku-with-postgres-as-backend/)
 
-## Phase 3: Connection
+### Checking your heroku app
 
-Download and install a 
+You can use the `heroku open` command to open your heroku app in a web browser. 
+
+* Add your apps hostname, cname, and ip address to the README.md file in your git repo. You **must** do this to help us mark your work. 
+    * First get your heroku apps hostname, it will look something like `example-app-1234567890ab.herokuapp.com`.
+    * Then get an IP address for it using the `nslookup` command and a public dns server not controlled by the University.
+        * This will look something like `nslookup example-app-1234567890ab.herokuapp.com 1.1.1.1`.
+            * The second argument is the DNS server's IP address. You could also use:
+                * `nslookup example-app-1234567890ab.herokuapp.com 8.8.8.8`
+                * `nslookup example-app-1234567890ab.herokuapp.com 9.9.9.9`
+                    * Or any other [public DNS server](https://duckduckgo.com/?t=ffab&q=public+dns+servers&ia=answer&iax=answer). `1.1.1.1` `8.8.8.8` and `9.9.9.9` are just easy to remember!
+    * Read the output of nslookup, it will say something like:
+        * `example-app-1234567890ab.herokuapp.com  canonical name = ie02.ingress.herokuapp.com.`
+        * `ie02.ingress.herokuapp.com`
+        * `Address: 46.137.15.86`
+    * Write your app's hostname, cname, and ip address to the README.md in your git repo.
+* Make sure you can use the admin panel on heroku from your web browser.
+    * Hint: shut down your localhost server if its running to make sure you're not connecting to the one on your computer by accident!
+    * Use the admin panel to add a poll.
+* Make sure you can use the polls app on heroku from your web browser.
+* Make sure your heroku app remembers the results of your polls and your superuser login!
+    * If your heroku is not configured properly to use postgres it will forget them randomly (somewhere between 0 and 24 hours.)
 
 # Restrictions
 
@@ -840,6 +870,7 @@ Violation of the restrictions will result in a mark of zero.
 * Must use Python3
 * Must run on Ubuntu (Use the undergrad lab machines, for example the ones in CSC 2-29 or install an Ubuntu VM to check this)
 * Must run on your machine (whatever machine you use to demo)
+* Must be running on heroku, with some polls that you created for the TA to look at when they mark it.
 
 # Requirements
 
@@ -851,6 +882,8 @@ Violation of the restrictions will result in a mark of zero.
     * virtualenv
     * node_modules
     * main.min.js
+    * README.md
+        * Has heroku app's hostname, cname, and IP address.
 
 # Submission Instructions
 
