@@ -26,7 +26,8 @@ summary: Lab Procedure, Lab Assignments, Lab Marking
 # Labsignments (Lab Assignments)
 
 1. [HTTP]({filename}/labsignments/http.md)
-2. [DJANGO]({filename}/labsignments/django.md)
+2. [Django]({filename}/labsignments/django.md)
+3. [Heroku]({filename}/labsignments/heroku.md)
 
 [All labsignments]({category}labsignments)
 

@@ -861,7 +861,7 @@ You can use the `heroku open` command to open your heroku app in a web browser.
     * Use the admin panel to add a poll.
 * Make sure you can use the polls app on heroku from your web browser.
 * Make sure your heroku app remembers the results of your polls and your superuser login!
-    * If your heroku is not configured properly to use postgres it will forget them randomly (somewhere between 0 and 24 hours.)
+    * If your heroku is not configured properly to use postgres it will forget them randomly! (somewhere between 0 and 24 hours.)
 
 # Restrictions
 
