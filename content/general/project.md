@@ -778,6 +778,7 @@ When building your API, try to adhere to these rules for easy compatibility with
 * REST API calls may be prefixed. ie. `http://service_address/api/authors/{AUTHOR_ID}/posts/`
 * Document your service address, port, hostname, prefix(if used), and the username/password for HTTP
 Basic Auth(if used) in your README so that HTTP clients can connect to your API.
+* You **must** be compatible with the API specification and examples listed above in this document. 
 
 # Submission Instructions
 
@@ -815,7 +816,9 @@ Due 4PM on the day of your lab.
 
 eClass has a limitation where it only shows the due date for the last lab section of the week, but for Monday labs it is due Monday. For Wednesday labs it is due Wednesday.
 
-Create a git tag "part1" before 4PM and submit only the link to your tag.
+Create a git tag "part1" before 4PM and submit only the link to your tag. 
+
+* A tag is just a name for a commit, so do not create the tag until you have your final commit for part 1!
 
 Don't forget to push the tag to GitHub.
 
@@ -869,7 +872,7 @@ https://github.com/uofa-cmput404/w24-project-example-team/tree/part1
     * Unsatifactory: Unfinished, hard to demo.
     * Failure: no demo or unable to demo.
 * Web Service API & Documentation
-    * Excellent: Documented, adheres to the specification & examples listed above. Open API specification exists, has clear descriptions,
+    * Excellent: Documented, adheres to the specification & examples listed above where it exists. Open API specification exists, has clear descriptions,
     and has example requests and responses from your API. 
     * Good: Documented, exists, tries to adhere to requirements. Open API specification exists,
     and has some descriptions and a few example requests and responses.
