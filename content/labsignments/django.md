@@ -225,6 +225,10 @@ That is you should be able to log onto a different computer with a different OS 
 script you wrote and it should download the pypi packages it needs with pip, download the npm packages
 it needs with npm, and then runs your project.
 
+* Assuming python, virtualenv, and node are already installed:
+    * your repo + your script = a fully working app
+    * while keeping our repo clean of things that can just be downloaded or compiled/transpiled/etc. again
+
 # Restrictions
 
 Violation of the restrictions will result in a mark of zero.
