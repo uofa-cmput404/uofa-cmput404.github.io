@@ -771,7 +771,8 @@ It is in your best interest to Work through the rest of Django's First Steps Tut
 ### Setting up the Heroku CLI
 
 Sign up for a Heroku account at [https://signup.heroku.com/](https://signup.heroku.com/).
-You can apply for free Heroku credits for 12 months at [https://www.heroku.com/github-students](https://www.heroku.com/github-students) with an eligible GitHub student account [https://education.github.com/pack](https://education.github.com/pack). 
+
+You can apply for free Heroku credits for 12 months at [https://www.heroku.com/github-students](https://www.heroku.com/github-students) with an eligible GitHub student account [https://education.github.com/pack](https://education.github.com/pack). **We cannot gaurantee that you will get free Heroku credits. As stated in the Course Outline, you may have to pay a small amount for Heroku.**
 
 Note: Remember to clean up all Heroku resources after this course to avoid unexpected charges after exceeding the credit limit or the offer expires.
 
@@ -801,7 +802,7 @@ Ensure the Django application created in Phase One is working locally.
 Activate the virtualenv for the Django application.
 
 <aside class="option1">
-Ensure that the git repo similar to the following if you're not using a project folder:
+Ensure that the git repo structure is similar to the following if you're not using a project folder:
 
 ```text
 $ tree 
@@ -916,6 +917,39 @@ django_on_heroku.settings(locals()) # bottom of the file
 
 Commit your files and deploy the application using a the heroku command line tool. See [their article on how to do this](https://devcenter.heroku.com/articles/git). Follow the instructions for an existing app, not a new app: `use heroku git:remote`, **not** `heroku create`.
 If you used `heroku create`, please see [this stackoverflow question](https://stackoverflow.com/questions/50421071/git-i-made-a-repository-inside-a-repository-and-now-i-just-want-the-one-big-rep) about how to return to a single repository.
+
+You should have a heroku app. You should see it if you run the `heroku list` command. In the following, `APPNAME` refers to this heroku app's name.
+
+### Make a Postgres Database on Heroku
+
+```
+heroku addons:create heroku-postgresql:mini
+```
+
+You can manage your mini postgres on your heroku dashboard under the app addons.
+<br><img id="access-panel" alt="access panel" src="{attach}postgres-add-on.jpg" style="width: 50%;">
+
+Check that heroku is configuring the database:
+
+```
+heroku run env
+```
+
+You should get an output like that contains a line that starts with `DATABASE_URL=postgres://` followed by a username and a password.
+
+Check that django is now using your heroku postgres database:
+
+```
+heroku run "python3 lab3/manage.py diffsettings"
+```
+
+The output should contain a line like this that says `'default'` and has `'ENGINE': 'django.db.backends.postgresql'`.
+
+```
+DATABASES = {'default': {'NAME': 'random letters', 'USER': 'random letters', 'PASSWORD': 'big hex number', 'HOST': 'something.amazonaws.com', 'PORT': 5432, 'CONN_MAX_AGE': 600, 'CONN_HEALTH_CHECKS': False, 'ENGINE': 'django.db.backends.postgresql', 'OPTIONS': {'sslmode': 'require'}, 'ATOMIC_REQUESTS': False, 'AUTOCOMMIT': True, 'TIME_ZONE': None, 'TEST': {'CHARSET': None, 'COLLATION': None, 'MIGRATE': True, 'MIRROR': None, 'NAME': None}}}
+```
+
+If it contains `sqlite3`, something is wrong. Please check that you followed the steps starting with adding `django-on-heroku` correctly.
 
 Run your migrations, create a Superuser, and ensure your application functionality works.
 
