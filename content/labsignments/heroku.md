@@ -992,7 +992,8 @@ Violation of the restrictions will result in a mark of zero.
     * `virtualenv` `venv` etc.
     * `.pyc` files, `__pycache__` directories.
     * `node_modules`
-    * `db.sqlite3` or any other databases
+    * `db.sqlite3` or any other databases.
+        * `db.sqlite3` *should never leave your computer.* It is for local development only.
 * Your git repository SHOULD contain:
     * The code you worked on during the lab.
     * Django migrations: `polls/migrations/0001_initial.py` etc.
