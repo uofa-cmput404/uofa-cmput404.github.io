@@ -31,8 +31,8 @@ You have several options to make sure this doesn't happen:
     * Follow the steps of the "Checking your heroku app" below.
     * Then add it your hosts file:
         * It uses the format `ip-address host-name host-name` on each line.
-            * Example: `123.123.123.123 whatever.ingress.herokuapp.com whatever-whatever.herokouapp.com`
-            * Example: `46.137.15.86 ie02.ingress.herokuapp.com example-app-1234567890ab.herokuapp.com`
+            * Example (has CNAME): `46.137.15.86 ie02.ingress.herokuapp.com example-app-1234567890ab.herokuapp.com`
+            * Example (no CNAME): `34.201.81.34 lab3test-fbb81150e720.herokuapp.com`
         * Linux: edit /etc/hosts as superuser. and add it in the format .
         * MacOS: <https://kinsta.com/knowledgebase/edit-mac-hosts-file/>
         * Windows 10/11: <https://allthings.how/how-to-edit-hosts-file-in-windows-11/>
@@ -855,6 +855,10 @@ You can use the `heroku open` command to open your heroku app in a web browser.
         * `example-app-1234567890ab.herokuapp.com  canonical name = ie02.ingress.herokuapp.com.`
         * `ie02.ingress.herokuapp.com`
         * `Address: 46.137.15.86`
+    * Sometimes it doesn't have CNAME, this is fine:
+        * `Name:   lab3test-fbb81150e720.herokuapp.com`
+        * `Address: 34.201.81.34`
+        * In this case, write "none" for the cname.
     * Write your app's hostname, cname, and ip address to the README.md in your git repo.
 * Make sure you can use the admin panel on heroku from your web browser.
     * Hint: shut down your localhost server if its running to make sure you're not connecting to the one on your computer by accident!
@@ -884,6 +888,7 @@ Violation of the restrictions will result in a mark of zero.
     * main.min.js
     * README.md
         * Has heroku app's hostname, cname, and IP address.
+            * cname can be "none" if nslookup doesn't give a cname.
 
 # Submission Instructions
 
