@@ -927,7 +927,7 @@ heroku addons:create heroku-postgresql:mini
 ```
 
 You can manage your mini postgres on your heroku dashboard under the app addons.
-<br><img id="access-panel" alt="access panel" src="{attach}postgres-add-on.jpg" style="width: 50%;">
+<br><img id="access-panel" alt="access panel" src="{attach}postgres-add-on.png" style="width: 50%;">
 
 Check that heroku is configuring the database:
 
