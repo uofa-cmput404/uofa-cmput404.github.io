@@ -755,7 +755,7 @@ heroku --version
 heroku login
 ```
 
-### Deploying our Django Application
+### Preparing our Django Application for Heroku
 
 Ensure the Django application created in Phase One is working locally.
 
@@ -821,7 +821,9 @@ import django_on_heroku # top of the file
 django_on_heroku.settings(locals()) # bottom of the file
 ```
 
-Commit your files and deploy the application using a the heroku command line tool. See [their article on how to do this](https://devcenter.heroku.com/articles/git).
+### Deploying our Django Application to Heroku
+
+Commit your files and deploy the application using a the heroku command line tool. See [their article on how to do this](https://devcenter.heroku.com/articles/git). Follow the instructions for an existing app, not a new app: `use heroku git:remote`, **not** `heroku create`.
 
 Run your migrations, create a Superuser, and ensure your application functionality works.
 
