@@ -128,6 +128,7 @@ We have complained about this every semester since forever, but IST simply does 
 <li>Create an appropriate <code>.gitignore</code> file, to prevent unwanted files being commited to your repository.</li>
 </ol>
 <p>Place this gitignore within the root of your project. You can combine <a href="https://github.com/github/gitignore/blob/main/Python.gitignore">this one</a> and <a href="https://github.com/github/gitignore/blob/main/Node.gitignore">this one</a> and <a href="https://github.com/django/django/blob/main/.gitignore">this one</a> for your django+node project. Double check you're not staging any unwanted files before you commit. The <code>git status</code> command can help with that.</p>
+<p>Make sure your <code>.gitignore</code> contains <code>*.sqlite3</code>.</p>
 <h4 id="installing-venv-with-pip">Installing venv with pip</h4>
 <p>Virtual environment is a CLI tool for managing python dependencies. Different projects have different dependencies, and version requirements. A virtual environment allows you to manage your dependencies specific to your project.</p>
 <p>To install follow these steps (Note that you need pip installed and configured):</p>
@@ -156,19 +157,49 @@ instructions for Lab 1 before starting this lab!</p>
 <div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>django<span class="w"> </span>--version
 </code></pre></div>
 
-<p>Initialize a new Django project called <strong>lab3</strong>.</p>
-<div class="highlight"><pre><span></span><code>django-admin<span class="w"> </span>startproject<span class="w"> </span>lab3
-<span class="nb">cd</span><span class="w"> </span>lab3
+<p>Initialize a new Django project in your repo.</p>
+<aside class="option1">
+<p>Recommended option: Django project in root of repo.</p>
+<div class="highlight"><pre><span></span><code>django-admin<span class="w"> </span>startproject<span class="w"> </span>lab3<span class="w"> </span>.
 python<span class="w"> </span>manage.py<span class="w"> </span>runserver
 </code></pre></div>
 
+<p>Your repo should look like this:</p>
+<div class="highlight"><pre><span></span><code>.
+├── lab3
+│   ├── __init__.py
+│   ├── asgi.py
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+└── manage.py
+</code></pre></div>
+
+</aside>
+<aside class="option2">
+<p>Alternate option: Django project in folder.</p>
+<p>If you do <code>django-admin startproject lab3</code> (with no <code>.</code>) before that's fine, but your django project will be in folder in your git repo, so you will
+need to use the noted alternate instructions. Your repo would look like this, with a <code>lab3</code> folder inside of a <code>lab3</code> folder.</p>
+<p>You will need to be inside the <code>lab3</code> folder to run manage.py.</p>
+<div class="highlight"><pre><span></span><code>.
+└── lab3
+    ├── lab3
+    │   ├── __init__.py
+    │   ├── asgi.py
+    │   ├── settings.py
+    │   ├── urls.py
+    │   └── wsgi.py
+    └── manage.py
+</code></pre></div>
+
+</aside>
 <p>Now that the server’s running, visit <a href="http://127.0.0.1:8000/">http://127.0.0.1:8000/</a> with your web browser. You’ll see a “Congratulations!” page, with a rocket taking off. It worked!</p>
 <hr>
 <h5 id="creating-a-django-app">Creating a Django App</h5>
 <ul>
 <li>Official Docs <a href="https://docs.djangoproject.com/en/5.0/intro/tutorial01/">Part 1</a></li>
 </ul>
-<p>Create a new application within <strong>lab3</strong> called <strong>polls</strong>.</p>
+<p>Create a new application within your django project called <strong>polls</strong>.</p>
 <div class="highlight"><pre><span></span><code>python<span class="w"> </span>manage.py<span class="w"> </span>startapp<span class="w"> </span>polls
 </code></pre></div>
 
@@ -188,7 +219,7 @@ python<span class="w"> </span>manage.py<span class="w"> </span>runserver
 <span class="p">]</span>
 </code></pre></div>
 
-<p>Within <em>lab3/urls.py</em> include the following code.</p>
+<p>Within <em>urls.py</em> (the outer one) include the following code.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">django.contrib</span> <span class="kn">import</span> <span class="n">admin</span>
 <span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">include</span><span class="p">,</span> <span class="n">path</span>
 
@@ -209,7 +240,7 @@ python<span class="w"> </span>manage.py<span class="w"> </span>runserver
 <ul>
 <li>Official Docs <a href="https://docs.djangoproject.com/en/5.0/intro/tutorial02/">Part 2</a></li>
 </ul>
-<p>Time to create our first models. Open up <em>lab3/settings.py</em> and ensure that the default database is set to <code>sqlite3</code>.</p>
+<p>Time to create our first models. Open up <em>settings.py</em> and ensure that the default database is set to <code>sqlite3</code>.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Database</span>
 <span class="c1"># https://docs.djangoproject.com/en/5.0/ref/settings/#databases</span>
 
@@ -234,7 +265,7 @@ python<span class="w"> </span>manage.py<span class="w"> </span>runserver
     <span class="n">votes</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </code></pre></div>
 
-<p>To activate our poll application in our project, add it to the installed apps within <em>lab3/settings.py</em>.</p>
+<p>To activate our poll application in our project, add it to the installed apps within <code>lab3/settings.py</code>. This file already exists, you do not need to create it.</p>
 <div class="highlight"><pre><span></span><code><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
     <span class="s2">&quot;polls.apps.PollsConfig&quot;</span><span class="p">,</span>
     <span class="s2">&quot;django.contrib.admin&quot;</span><span class="p">,</span>
@@ -261,7 +292,7 @@ python<span class="w"> </span>manage.py<span class="w"> </span>runserver
 <div class="highlight"><pre><span></span><code>python<span class="w"> </span>manage.py<span class="w"> </span>migrate
 </code></pre></div>
 
-<hr>
+<p>Make sure your <code>.gitignore</code> contains <code>*.sqlite3</code>, and that you don't have db.sqlite3 in your git repo.</p>
 <h5 id="using-django-admin">Using Django Admin</h5>
 <p>Create a user that can log into the admin site.</p>
 <div class="highlight"><pre><span></span><code>python<span class="w"> </span>manage.py<span class="w"> </span>createsuperuser
@@ -555,7 +586,7 @@ touch<span class="w"> </span>polls/templates/polls/index.html
 <div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>djangorestframework
 </code></pre></div>
 
-<p>Then add the <code>rest_framework</code> app to <code>INSTALLED_APPS</code> in our <code>lab3/settings.py</code> file</p>
+<p>Then add the <code>rest_framework</code> app to <code>INSTALLED_APPS</code> in our <code>settings.py</code> file</p>
 <div class="highlight"><pre><span></span><code><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
     <span class="o">...</span>
     <span class="s1">&#39;rest_framework&#39;</span>
@@ -698,34 +729,81 @@ heroku<span class="w"> </span>login
 <h5 id="preparing-our-django-application-for-heroku">Preparing our Django Application for Heroku</h5>
 <p>Ensure the Django application created in Phase One is working locally.</p>
 <p>Activate the virtualenv for the Django application.</p>
-<p>Ensure that the current working directory is similar to the following.</p>
+<aside class="option1">
+Ensure that the git repo similar to the following if you're not using a project folder:
+
+
 <div class="highlight"><pre><span></span><code>$ tree 
 .
-├── db.sqlite3
-├── manage.py
+├── Procfile    &lt;- you will create this in the next step
+├── README.md
 ├── lab3
-│   ├── asgi.py
 │   ├── __init__.py
+│   ├── asgi.py
 │   ├── settings.py
 │   ├── urls.py
 │   └── wsgi.py
-└── polls
-    ├── admin.py
-    ├── apps.py
-    ├── __init__.py
-    ├── migrations
-    │   ├── 0001_initial.py
-    │   └── __init__.py
-    ├── models.py
-    ├── templates
-    │   └── polls
-    │       ├── detail.html
-    │       ├── index.html
-    │       └── results.html
-    ├── tests.py
-    ├── urls.py
-    └── views.py
+├── manage.py
+├── polls
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── migrations
+│   │   ├── 0001_initial.py
+│   │   └── __init__.py
+│   ├── models.py
+│   ├── serializers.py
+│   ├── templates
+│   │   └── polls
+│   │       ├── detail.html
+│   │       ├── index.html
+│   │       └── results.html
+│   ├── tests.py
+│   ├── urls.py
+│   └── views.py
+└── requirements.txt
 </code></pre></div>
+
+
+</aside>
+
+<aside class="option2">
+If you do have a project subfolder it should look like this:
+
+
+<div class="highlight"><pre><span></span><code>.
+├── Procfile    &lt;- you will create this in the next step
+├── README.md
+├── lab3
+│   ├── lab3
+│   │   ├── __init__.py
+│   │   ├── asgi.py
+│   │   ├── settings.py
+│   │   ├── urls.py
+│   │   └── wsgi.py
+│   ├── manage.py
+│   └── polls
+│       ├── __init__.py
+│       ├── admin.py
+│       ├── apps.py
+│       ├── migrations
+│       │   ├── 0001_initial.py
+│       │   └── __init__.py
+│       ├── models.py
+│       ├── serializers.py
+│       ├── templates
+│       │   └── polls
+│       │       ├── detail.html
+│       │       ├── index.html
+│       │       └── results.html
+│       ├── tests.py
+│       ├── urls.py
+│       └── views.py
+└── requirements.txt
+</code></pre></div>
+
+
+</aside>
 
 <p>Pip install <a href="https://gunicorn.org/">gunicorn</a> and <a href="https://github.com/pkrefta/django-on-heroku">django-on-heroku</a>.</p>
 <div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>gunicorn<span class="w"> </span>django-on-heroku
@@ -735,11 +813,20 @@ heroku<span class="w"> </span>login
 <div class="highlight"><pre><span></span><code>pip<span class="w"> </span>freeze<span class="w"> </span>&gt;<span class="w"> </span>requirements.txt
 </code></pre></div>
 
+<p><code>requirements.txt</code> must be in the root of your repo for Heroku to detect your project as a Python/Django project!</p>
+<aside class="option1">
 <p>Create a new file named <em>Procfile</em> for Heroku applications. The file shall have following contents:</p>
 <div class="highlight"><pre><span></span><code>web: gunicorn lab3.wsgi
 </code></pre></div>
 
-<p>Within <em>lab3/settings.py</em>, add the following statements:</p>
+</aside>
+<aside class="option2">
+<p>If your Django PROJECT (not app) is in a subfolder like <code>lab3</code>, then you will need to write something like:</p>
+<div class="highlight"><pre><span></span><code>web: gunicorn lab3.wsgi --chdir lab3
+</code></pre></div>
+
+</aside>
+<p>Within <em>settings.py</em>, add the following statements:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">django_on_heroku</span> <span class="c1"># top of the file</span>
 
 <span class="c1"># ...</span>
@@ -751,10 +838,19 @@ heroku<span class="w"> </span>login
 <p>Commit your files and deploy the application using a the heroku command line tool. See <a href="https://devcenter.heroku.com/articles/git">their article on how to do this</a>. Follow the instructions for an existing app, not a new app: <code>use heroku git:remote</code>, <strong>not</strong> <code>heroku create</code>.
 If you used <code>heroku create</code>, please see <a href="https://stackoverflow.com/questions/50421071/git-i-made-a-repository-inside-a-repository-and-now-i-just-want-the-one-big-rep">this stackoverflow question</a> about how to return to a single repository.</p>
 <p>Run your migrations, create a Superuser, and ensure your application functionality works.</p>
+<aside class="option1">
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>heroku<span class="w"> </span>run<span class="w"> </span>--app<span class="w"> </span>APPNAME<span class="w"> </span>python<span class="w"> </span>manage.py<span class="w"> </span>migrate
 $<span class="w"> </span>heroku<span class="w"> </span>run<span class="w"> </span>--app<span class="w"> </span>APPNAME<span class="w"> </span>python<span class="w"> </span>manage.py<span class="w"> </span>createsuperuser
 </code></pre></div>
 
+</aside>
+<aside class="option2">
+<p>If your Django project is in a folder in your repo like <code>lab3</code>, you will need something like:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>heroku<span class="w"> </span>run<span class="w"> </span>--app<span class="w"> </span>APPNAME<span class="w"> </span>python<span class="w"> </span>lab3/manage.py<span class="w"> </span>migrate
+$<span class="w"> </span>heroku<span class="w"> </span>run<span class="w"> </span>--app<span class="w"> </span>APPNAME<span class="w"> </span>python<span class="w"> </span>lab3/manage.py<span class="w"> </span>createsuperuser
+</code></pre></div>
+
+</aside>
 <p>Go to <code>/polls</code> on your Heroku deployed site, you should be able to use the Polls app from Heroku. </p>
 <p>Note: Please make sure that the Heroku app uses Postgres as the backend database. If you created the Heroku app through Git integration, this should be a default setting.</p>
 <p>You can verify the backend in use by login into the dashboard of the Heroku app: <a href="https://dashboard.heroku.com/apps/APP_NAME">https://dashboard.heroku.com/apps/APP_NAME</a>, then click the <code>Resources</code> tab, you should see <code>Heroku Postgres</code> under the <code>Add-ons</code> Section.</p>
@@ -812,6 +908,7 @@ $<span class="w"> </span>heroku<span class="w"> </span>run<span class="w"> </spa
 <li>Must run on Ubuntu (Use the undergrad lab machines, for example the ones in CSC 2-29 or install an Ubuntu VM to check this)</li>
 <li>Must run on your machine (whatever machine you use to demo)</li>
 <li>Must be running on heroku, with some polls that you created for the TA to look at when they mark it.</li>
+<li>Git repo must not contain </li>
 </ul>
 <h3 id="requirements">Requirements</h3>
 <ul>
@@ -824,10 +921,16 @@ $<span class="w"> </span>heroku<span class="w"> </span>run<span class="w"> </spa
 </ul>
 </li>
 <li>A git repository that does not contain built (compiled, transpiled, bundled) or downloaded artifacts, including but not limited to:<ul>
-<li>virtualenv</li>
-<li>node_modules</li>
-<li>main.min.js</li>
-<li>README.md<ul>
+<li><code>virtualenv</code> <code>venv</code> etc.</li>
+<li><code>.pyc</code> files, <code>__pycache__</code> directories.</li>
+<li><code>node_modules</code></li>
+<li><code>db.sqlite3</code> or any other databases</li>
+</ul>
+</li>
+<li>Your git repository SHOULD contain:<ul>
+<li>The code you worked on during the lab.</li>
+<li>Django migrations: <code>polls/migrations/0001_initial.py</code> etc.</li>
+<li><code>README.md</code><ul>
 <li>Has heroku app's hostname, cname, and IP address.<ul>
 <li>cname can be "none" if nslookup doesn't give a cname.</li>
 </ul>
