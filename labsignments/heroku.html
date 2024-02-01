@@ -105,8 +105,8 @@ We have complained about this every semester since forever, but IST simply does 
 <li>Follow the steps of the "Checking your heroku app" below.</li>
 <li>Then add it your hosts file:<ul>
 <li>It uses the format <code>ip-address host-name host-name</code> on each line.<ul>
-<li>Example: <code>123.123.123.123 whatever.ingress.herokuapp.com whatever-whatever.herokouapp.com</code></li>
-<li>Example: <code>46.137.15.86 ie02.ingress.herokuapp.com example-app-1234567890ab.herokuapp.com</code></li>
+<li>Example (has CNAME): <code>46.137.15.86 ie02.ingress.herokuapp.com example-app-1234567890ab.herokuapp.com</code></li>
+<li>Example (no CNAME): <code>34.201.81.34 lab3test-fbb81150e720.herokuapp.com</code></li>
 </ul>
 </li>
 <li>Linux: edit /etc/hosts as superuser. and add it in the format .</li>
@@ -782,6 +782,12 @@ $<span class="w"> </span>heroku<span class="w"> </span>run<span class="w"> </spa
 <li><code>Address: 46.137.15.86</code></li>
 </ul>
 </li>
+<li>Sometimes it doesn't have CNAME, this is fine:<ul>
+<li><code>Name:   lab3test-fbb81150e720.herokuapp.com</code></li>
+<li><code>Address: 34.201.81.34</code></li>
+<li>In this case, write "none" for the cname.</li>
+</ul>
+</li>
 <li>Write your app's hostname, cname, and ip address to the README.md in your git repo.</li>
 </ul>
 </li>
@@ -819,7 +825,10 @@ $<span class="w"> </span>heroku<span class="w"> </span>run<span class="w"> </spa
 <li>node_modules</li>
 <li>main.min.js</li>
 <li>README.md<ul>
-<li>Has heroku app's hostname, cname, and IP address.</li>
+<li>Has heroku app's hostname, cname, and IP address.<ul>
+<li>cname can be "none" if nslookup doesn't give a cname.</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
