@@ -851,9 +851,18 @@ If you used <code>heroku create</code>, please see <a href="https://stackoverflo
 
 <p>You should get an output like that contains a line that starts with <code>DATABASE_URL=postgres://</code> followed by a username and a password.</p>
 <p>Check that django is now using your heroku postgres database:</p>
-<div class="highlight"><pre><span></span><code>heroku run &quot;python3 lab3/manage.py diffsettings&quot;
+<aside class="option1">
+<div class="highlight"><pre><span></span><code><span class="c1"># If your django project is your git repo root</span>
+heroku<span class="w"> </span>run<span class="w"> </span><span class="s2">&quot;python3 manage.py diffsettings&quot;</span>
 </code></pre></div>
 
+</aside>
+<aside class="option2">
+<div class="highlight"><pre><span></span><code><span class="c1"># If your django project is in a folder</span>
+heroku<span class="w"> </span>run<span class="w"> </span><span class="s2">&quot;python3 lab3/manage.py diffsettings&quot;</span>
+</code></pre></div>
+
+</aside>
 <p>The output should contain a line like this that says <code>'default'</code> and has <code>'ENGINE': 'django.db.backends.postgresql'</code>.</p>
 <div class="highlight"><pre><span></span><code>DATABASES = {&#39;default&#39;: {&#39;NAME&#39;: &#39;random letters&#39;, &#39;USER&#39;: &#39;random letters&#39;, &#39;PASSWORD&#39;: &#39;big hex number&#39;, &#39;HOST&#39;: &#39;something.amazonaws.com&#39;, &#39;PORT&#39;: 5432, &#39;CONN_MAX_AGE&#39;: 600, &#39;CONN_HEALTH_CHECKS&#39;: False, &#39;ENGINE&#39;: &#39;django.db.backends.postgresql&#39;, &#39;OPTIONS&#39;: {&#39;sslmode&#39;: &#39;require&#39;}, &#39;ATOMIC_REQUESTS&#39;: False, &#39;AUTOCOMMIT&#39;: True, &#39;TIME_ZONE&#39;: None, &#39;TEST&#39;: {&#39;CHARSET&#39;: None, &#39;COLLATION&#39;: None, &#39;MIGRATE&#39;: True, &#39;MIRROR&#39;: None, &#39;NAME&#39;: None}}}
 </code></pre></div>
@@ -939,7 +948,11 @@ $<span class="w"> </span>heroku<span class="w"> </span>run<span class="w"> </spa
 <li>downloaded with pip into a virtualenv</li>
 </ul>
 </li>
-<li>that is deployed on Heroku </li>
+<li>that is deployed on Heroku</li>
+<li>using a heroku postgres database<ul>
+<li>you can check what database is being used by the <code>heroku run "python3 manage.py diffsettings"</code> command above.</li>
+</ul>
+</li>
 </ul>
 </li>
 <li>A git repository that does not contain built (compiled, transpiled, bundled) or downloaded artifacts, including but not limited to:<ul>
