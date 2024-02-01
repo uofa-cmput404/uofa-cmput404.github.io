@@ -748,7 +748,8 @@ heroku<span class="w"> </span>login
 </code></pre></div>
 
 <h5 id="deploying-our-django-application-to-heroku">Deploying our Django Application to Heroku</h5>
-<p>Commit your files and deploy the application using a the heroku command line tool. See <a href="https://devcenter.heroku.com/articles/git">their article on how to do this</a>. Follow the instructions for an existing app, not a new app: <code>use heroku git:remote</code>, <strong>not</strong> <code>heroku create</code>.</p>
+<p>Commit your files and deploy the application using a the heroku command line tool. See <a href="https://devcenter.heroku.com/articles/git">their article on how to do this</a>. Follow the instructions for an existing app, not a new app: <code>use heroku git:remote</code>, <strong>not</strong> <code>heroku create</code>.
+If you used <code>heroku create</code>, please see <a href="https://stackoverflow.com/questions/50421071/git-i-made-a-repository-inside-a-repository-and-now-i-just-want-the-one-big-rep">this stackoverflow question</a> about how to return to a single repository.</p>
 <p>Run your migrations, create a Superuser, and ensure your application functionality works.</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>heroku<span class="w"> </span>run<span class="w"> </span>--app<span class="w"> </span>APPNAME<span class="w"> </span>python<span class="w"> </span>manage.py<span class="w"> </span>migrate
 $<span class="w"> </span>heroku<span class="w"> </span>run<span class="w"> </span>--app<span class="w"> </span>APPNAME<span class="w"> </span>python<span class="w"> </span>manage.py<span class="w"> </span>createsuperuser
