@@ -47,6 +47,7 @@ MARKDOWN = {
             'baselevel': '3'
         },
         'markdown.extensions.tables': {},
+        'markdown.extensions.md_in_html': {},
     },
     'output_format': 'html5',
 }

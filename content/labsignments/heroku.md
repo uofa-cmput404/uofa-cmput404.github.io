@@ -49,6 +49,8 @@ You have several options to make sure this doesn't happen:
 
 Place this gitignore within the root of your project. You can combine [this one](https://github.com/github/gitignore/blob/main/Python.gitignore) and [this one](https://github.com/github/gitignore/blob/main/Node.gitignore) and [this one](https://github.com/django/django/blob/main/.gitignore) for your django+node project. Double check you're not staging any unwanted files before you commit. The `git status` command can help with that.
 
+Make sure your `.gitignore` contains `*.sqlite3`.
+
 ## Installing venv with pip
 
 Virtual environment is a CLI tool for managing python dependencies. Different projects have different dependencies, and version requirements. A virtual environment allows you to manage your dependencies specific to your project.
@@ -87,14 +89,50 @@ Follow Labsignments 2 to create a virtual environment and install Django. You ca
 python -m django --version
 ```
 
+Initialize a new Django project in your repo.
 
-Initialize a new Django project called **lab3**.
+<aside markdown="block" class="option1">
+Recommended option: Django project in root of repo.
 
 ```bash
-django-admin startproject lab3
-cd lab3
+django-admin startproject lab3 .
 python manage.py runserver
 ```
+
+Your repo should look like this:
+
+```text
+.
+├── lab3
+│   ├── __init__.py
+│   ├── asgi.py
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+└── manage.py
+```
+</aside>
+
+<aside markdown="block" class="option2">
+Alternate option: Django project in folder.
+
+If you do `django-admin startproject lab3` (with no `.`) before that's fine, but your django project will be in folder in your git repo, so you will
+need to use the noted alternate instructions. Your repo would look like this, with a `lab3` folder inside of a `lab3` folder.
+
+You will need to be inside the `lab3` folder to run manage.py.
+
+```text
+.
+└── lab3
+    ├── lab3
+    │   ├── __init__.py
+    │   ├── asgi.py
+    │   ├── settings.py
+    │   ├── urls.py
+    │   └── wsgi.py
+    └── manage.py
+```
+</aside>
 
 Now that the server’s running, visit [http://127.0.0.1:8000/](http://127.0.0.1:8000/) with your web browser. You’ll see a “Congratulations!” page, with a rocket taking off. It worked!
 
@@ -104,7 +142,7 @@ Now that the server’s running, visit [http://127.0.0.1:8000/](http://127.0.0.1
 
  * Official Docs [Part 1](https://docs.djangoproject.com/en/5.0/intro/tutorial01/)
 
-Create a new application within **lab3** called **polls**.
+Create a new application within your django project called **polls**.
 
 ```bash
 python manage.py startapp polls
@@ -130,7 +168,7 @@ urlpatterns = [
 ]
 ```
 
-Within *lab3/urls.py* include the following code.
+Within *urls.py* (the outer one) include the following code.
 
 ```python
 from django.contrib import admin
@@ -159,7 +197,7 @@ If you get an error page here, check that you’re going to [http://localhost:80
 
 * Official Docs [Part 2](https://docs.djangoproject.com/en/5.0/intro/tutorial02/)
 
-Time to create our first models. Open up *lab3/settings.py* and ensure that the default database is set to `sqlite3`.
+Time to create our first models. Open up *settings.py* and ensure that the default database is set to `sqlite3`.
 
 ```python
 # Database
@@ -188,7 +226,7 @@ class Choice(models.Model):
     votes = models.IntegerField(default=0)
 ```
 
-To activate our poll application in our project, add it to the installed apps within *lab3/settings.py*.
+To activate our poll application in our project, add it to the installed apps within `lab3/settings.py`. This file already exists, you do not need to create it.
 
 ```python
 INSTALLED_APPS = [
@@ -222,7 +260,8 @@ Run the migration command to create the tables in your database.
 ```bash
 python manage.py migrate
 ```
-----
+
+Make sure your `.gitignore` contains `*.sqlite3`, and that you don't have db.sqlite3 in your git repo.
 
 ### Using Django Admin
 
@@ -579,7 +618,7 @@ First install the Django Rest Framework library using `pip`
 pip install djangorestframework
 ```
 
-Then add the `rest_framework` app to `INSTALLED_APPS` in our `lab3/settings.py` file
+Then add the `rest_framework` app to `INSTALLED_APPS` in our `settings.py` file
 
 ```python
 INSTALLED_APPS = [
@@ -761,37 +800,77 @@ Ensure the Django application created in Phase One is working locally.
 
 Activate the virtualenv for the Django application.
 
-Ensure that the current working directory is similar to the following.
+<aside class="option1">
+Ensure that the git repo similar to the following if you're not using a project folder:
 
 ```text
 $ tree 
 .
-├── db.sqlite3
-├── manage.py
+├── Procfile    <- you will create this in the next step
+├── README.md
 ├── lab3
-│   ├── asgi.py
 │   ├── __init__.py
+│   ├── asgi.py
 │   ├── settings.py
 │   ├── urls.py
 │   └── wsgi.py
-└── polls
-    ├── admin.py
-    ├── apps.py
-    ├── __init__.py
-    ├── migrations
-    │   ├── 0001_initial.py
-    │   └── __init__.py
-    ├── models.py
-    ├── templates
-    │   └── polls
-    │       ├── detail.html
-    │       ├── index.html
-    │       └── results.html
-    ├── tests.py
-    ├── urls.py
-    └── views.py
-
+├── manage.py
+├── polls
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── migrations
+│   │   ├── 0001_initial.py
+│   │   └── __init__.py
+│   ├── models.py
+│   ├── serializers.py
+│   ├── templates
+│   │   └── polls
+│   │       ├── detail.html
+│   │       ├── index.html
+│   │       └── results.html
+│   ├── tests.py
+│   ├── urls.py
+│   └── views.py
+└── requirements.txt
 ```
+</aside>
+
+<aside class="option2">
+If you do have a project subfolder it should look like this:
+
+```text
+.
+├── Procfile    <- you will create this in the next step
+├── README.md
+├── lab3
+│   ├── lab3
+│   │   ├── __init__.py
+│   │   ├── asgi.py
+│   │   ├── settings.py
+│   │   ├── urls.py
+│   │   └── wsgi.py
+│   ├── manage.py
+│   └── polls
+│       ├── __init__.py
+│       ├── admin.py
+│       ├── apps.py
+│       ├── migrations
+│       │   ├── 0001_initial.py
+│       │   └── __init__.py
+│       ├── models.py
+│       ├── serializers.py
+│       ├── templates
+│       │   └── polls
+│       │       ├── detail.html
+│       │       ├── index.html
+│       │       └── results.html
+│       ├── tests.py
+│       ├── urls.py
+│       └── views.py
+└── requirements.txt
+```
+</aside>
 
 Pip install [gunicorn](https://gunicorn.org/) and [django-on-heroku](https://github.com/pkrefta/django-on-heroku).
 
@@ -805,13 +884,25 @@ Save the new python requirements into the *requirements.txt* file.
 pip freeze > requirements.txt
 ```
 
+`requirements.txt` must be in the root of your repo for Heroku to detect your project as a Python/Django project!
+
+<aside markdown="block" class="option1">
 Create a new file named *Procfile* for Heroku applications. The file shall have following contents:
 
 ```text
 web: gunicorn lab3.wsgi
 ```
+</aside>
 
-Within *lab3/settings.py*, add the following statements:
+<aside markdown="block" class="option2">
+If your Django PROJECT (not app) is in a subfolder like `lab3`, then you will need to write something like:
+
+```text
+web: gunicorn lab3.wsgi --chdir lab3
+```
+</aside>
+
+Within *settings.py*, add the following statements:
 
 ```python
 import django_on_heroku # top of the file
@@ -828,10 +919,21 @@ If you used `heroku create`, please see [this stackoverflow question](https://st
 
 Run your migrations, create a Superuser, and ensure your application functionality works.
 
+<aside markdown="block" class="option1">
 ```bash
 $ heroku run --app APPNAME python manage.py migrate
 $ heroku run --app APPNAME python manage.py createsuperuser
 ```
+</aside>
+
+<aside markdown="block" class="option2">
+If your Django project is in a folder in your repo like `lab3`, you will need something like:
+
+```bash
+$ heroku run --app APPNAME python lab3/manage.py migrate
+$ heroku run --app APPNAME python lab3/manage.py createsuperuser
+```
+</aside>
 
 Go to `/polls` on your Heroku deployed site, you should be able to use the Polls app from Heroku. 
 
@@ -878,6 +980,7 @@ Violation of the restrictions will result in a mark of zero.
 * Must run on Ubuntu (Use the undergrad lab machines, for example the ones in CSC 2-29 or install an Ubuntu VM to check this)
 * Must run on your machine (whatever machine you use to demo)
 * Must be running on heroku, with some polls that you created for the TA to look at when they mark it.
+* Git repo must not contain 
 
 # Requirements
 
@@ -886,10 +989,14 @@ Violation of the restrictions will result in a mark of zero.
         * downloaded with pip into a virtualenv
     * that is deployed on Heroku 
 * A git repository that does not contain built (compiled, transpiled, bundled) or downloaded artifacts, including but not limited to:
-    * virtualenv
-    * node_modules
-    * main.min.js
-    * README.md
+    * `virtualenv` `venv` etc.
+    * `.pyc` files, `__pycache__` directories.
+    * `node_modules`
+    * `db.sqlite3` or any other databases
+* Your git repository SHOULD contain:
+    * The code you worked on during the lab.
+    * Django migrations: `polls/migrations/0001_initial.py` etc.
+    * `README.md`
         * Has heroku app's hostname, cname, and IP address.
             * cname can be "none" if nslookup doesn't give a cname.
 
