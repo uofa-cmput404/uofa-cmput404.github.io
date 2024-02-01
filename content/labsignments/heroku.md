@@ -965,8 +965,8 @@ Run your migrations, create a Superuser, and ensure your application functionali
 
 <aside markdown="block" class="option1">
 ```bash
-$ heroku run --app APPNAME python manage.py migrate
-$ heroku run --app APPNAME python manage.py createsuperuser
+$ heroku run python manage.py migrate
+$ heroku run python manage.py createsuperuser
 ```
 </aside>
 
@@ -974,10 +974,12 @@ $ heroku run --app APPNAME python manage.py createsuperuser
 If your Django project is in a folder in your repo like `lab3`, you will need something like:
 
 ```bash
-$ heroku run --app APPNAME python lab3/manage.py migrate
-$ heroku run --app APPNAME python lab3/manage.py createsuperuser
+$ heroku run python lab3/manage.py migrate
+$ heroku run python lab3/manage.py createsuperuser
 ```
 </aside>
+
+After this if you select your postgres database in the [Heroku dataclips interface](https://data.heroku.com/dataclips/create), you should see your polls_question and poll_choice tables.
 
 Go to `/polls` on your Heroku deployed site, you should be able to use the Polls app from Heroku. 
 
