@@ -76,6 +76,7 @@
 <li><a href="#setting-up-the-heroku-cli">Setting up the Heroku CLI</a></li>
 <li><a href="#preparing-our-django-application-for-heroku">Preparing our Django Application for Heroku</a></li>
 <li><a href="#deploying-our-django-application-to-heroku">Deploying our Django Application to Heroku</a></li>
+<li><a href="#make-a-postgres-database-on-heroku">Make a Postgres Database on Heroku</a></li>
 <li><a href="#checking-your-heroku-app">Checking your heroku app</a></li>
 </ul>
 </li>
@@ -707,8 +708,8 @@ touch<span class="w"> </span>polls/templates/polls/index.html
 </ul>
 <h4 id="phase-two-heroku">Phase Two: Heroku</h4>
 <h5 id="setting-up-the-heroku-cli">Setting up the Heroku CLI</h5>
-<p>Sign up for a Heroku account at <a href="https://signup.heroku.com/">https://signup.heroku.com/</a>.
-You can apply for free Heroku credits for 12 months at <a href="https://www.heroku.com/github-students">https://www.heroku.com/github-students</a> with an eligible GitHub student account <a href="https://education.github.com/pack">https://education.github.com/pack</a>. </p>
+<p>Sign up for a Heroku account at <a href="https://signup.heroku.com/">https://signup.heroku.com/</a>.</p>
+<p>You can apply for free Heroku credits for 12 months at <a href="https://www.heroku.com/github-students">https://www.heroku.com/github-students</a> with an eligible GitHub student account <a href="https://education.github.com/pack">https://education.github.com/pack</a>. <strong>We cannot gaurantee that you will get free Heroku credits. As stated in the Course Outline, you may have to pay a small amount for Heroku.</strong></p>
 <p>Note: Remember to clean up all Heroku resources after this course to avoid unexpected charges after exceeding the credit limit or the offer expires.</p>
 <p>Download and install the <a href="https://devcenter.heroku.com/articles/heroku-cli#download-and-install">Heroku CLI tools</a>.</p>
 <ul>
@@ -730,7 +731,7 @@ heroku<span class="w"> </span>login
 <p>Ensure the Django application created in Phase One is working locally.</p>
 <p>Activate the virtualenv for the Django application.</p>
 <aside class="option1">
-Ensure that the git repo similar to the following if you're not using a project folder:
+Ensure that the git repo structure is similar to the following if you're not using a project folder:
 
 
 <div class="highlight"><pre><span></span><code>$ tree 
@@ -837,6 +838,27 @@ If you do have a project subfolder it should look like this:
 <h5 id="deploying-our-django-application-to-heroku">Deploying our Django Application to Heroku</h5>
 <p>Commit your files and deploy the application using a the heroku command line tool. See <a href="https://devcenter.heroku.com/articles/git">their article on how to do this</a>. Follow the instructions for an existing app, not a new app: <code>use heroku git:remote</code>, <strong>not</strong> <code>heroku create</code>.
 If you used <code>heroku create</code>, please see <a href="https://stackoverflow.com/questions/50421071/git-i-made-a-repository-inside-a-repository-and-now-i-just-want-the-one-big-rep">this stackoverflow question</a> about how to return to a single repository.</p>
+<p>You should have a heroku app. You should see it if you run the <code>heroku list</code> command. In the following, <code>APPNAME</code> refers to this heroku app's name.</p>
+<h5 id="make-a-postgres-database-on-heroku">Make a Postgres Database on Heroku</h5>
+<div class="highlight"><pre><span></span><code>heroku addons:create heroku-postgresql:mini
+</code></pre></div>
+
+<p>You can manage your mini postgres on your heroku dashboard under the app addons.
+<br><img id="access-panel" alt="access panel" src="../labsignments/postgres-add-on.jpg" style="width: 50%;"></p>
+<p>Check that heroku is configuring the database:</p>
+<div class="highlight"><pre><span></span><code>heroku run env
+</code></pre></div>
+
+<p>You should get an output like that contains a line that starts with <code>DATABASE_URL=postgres://</code> followed by a username and a password.</p>
+<p>Check that django is now using your heroku postgres database:</p>
+<div class="highlight"><pre><span></span><code>heroku run &quot;python3 lab3/manage.py diffsettings&quot;
+</code></pre></div>
+
+<p>The output should contain a line like this that says <code>'default'</code> and has <code>'ENGINE': 'django.db.backends.postgresql'</code>.</p>
+<div class="highlight"><pre><span></span><code>DATABASES = {&#39;default&#39;: {&#39;NAME&#39;: &#39;random letters&#39;, &#39;USER&#39;: &#39;random letters&#39;, &#39;PASSWORD&#39;: &#39;big hex number&#39;, &#39;HOST&#39;: &#39;something.amazonaws.com&#39;, &#39;PORT&#39;: 5432, &#39;CONN_MAX_AGE&#39;: 600, &#39;CONN_HEALTH_CHECKS&#39;: False, &#39;ENGINE&#39;: &#39;django.db.backends.postgresql&#39;, &#39;OPTIONS&#39;: {&#39;sslmode&#39;: &#39;require&#39;}, &#39;ATOMIC_REQUESTS&#39;: False, &#39;AUTOCOMMIT&#39;: True, &#39;TIME_ZONE&#39;: None, &#39;TEST&#39;: {&#39;CHARSET&#39;: None, &#39;COLLATION&#39;: None, &#39;MIGRATE&#39;: True, &#39;MIRROR&#39;: None, &#39;NAME&#39;: None}}}
+</code></pre></div>
+
+<p>If it contains <code>sqlite3</code>, something is wrong. Please check that you followed the steps starting with adding <code>django-on-heroku</code> correctly.</p>
 <p>Run your migrations, create a Superuser, and ensure your application functionality works.</p>
 <aside class="option1">
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>heroku<span class="w"> </span>run<span class="w"> </span>--app<span class="w"> </span>APPNAME<span class="w"> </span>python<span class="w"> </span>manage.py<span class="w"> </span>migrate
