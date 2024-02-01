@@ -28,6 +28,7 @@ summary: Lab Procedure, Lab Assignments, Lab Marking
 1. [HTTP]({filename}/labsignments/http.md)
 2. [Django]({filename}/labsignments/django.md)
 3. [Heroku]({filename}/labsignments/heroku.md)
+4. [Pelican]({filename}/labsignments/pelican.md)
 
 [All labsignments]({category}labsignments)
 
