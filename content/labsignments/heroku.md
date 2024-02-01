@@ -821,7 +821,7 @@ import django_on_heroku # top of the file
 django_on_heroku.settings(locals()) # bottom of the file
 ```
 
-Commit your files and deploy the application using a git integration following the instructions: [https://devcenter.heroku.com/articles/git](https://devcenter.heroku.com/articles/git).
+Commit your files and deploy the application using a the heroku command line tool. See [their article on how to do this](https://devcenter.heroku.com/articles/git).
 
 Run your migrations, create a Superuser, and ensure your application functionality works.
 
