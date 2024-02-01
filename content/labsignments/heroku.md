@@ -939,9 +939,19 @@ You should get an output like that contains a line that starts with `DATABASE_UR
 
 Check that django is now using your heroku postgres database:
 
+<aside markdown="block" class="option1">
+```bash
+# If your django project is your git repo root
+heroku run "python3 manage.py diffsettings"
 ```
+</aside>
+<aside markdown="block" class="option2">
+```bash
+# If your django project is in a folder
 heroku run "python3 lab3/manage.py diffsettings"
 ```
+</aside>
+
 
 The output should contain a line like this that says `'default'` and has `'ENGINE': 'django.db.backends.postgresql'`.
 
@@ -1021,7 +1031,9 @@ Violation of the restrictions will result in a mark of zero.
 * A working Django 5 application
     * using the latest Django version from pypi
         * downloaded with pip into a virtualenv
-    * that is deployed on Heroku 
+    * that is deployed on Heroku
+    * using a heroku postgres database
+        * you can check what database is being used by the `heroku run "python3 manage.py diffsettings"` command above.
 * A git repository that does not contain built (compiled, transpiled, bundled) or downloaded artifacts, including but not limited to:
     * `virtualenv` `venv` etc.
     * `.pyc` files, `__pycache__` directories.
