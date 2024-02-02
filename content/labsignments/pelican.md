@@ -13,13 +13,6 @@ The primary objective of this lab is for you to acquire the skills necessary to 
 
 # Getting Started
 
-## Prepare your Repo
-Create a repository on Github for your github hosted page.
-
-* If using a **User or Organization site**, the repo must be named `${username}.github.io`
-    * raw html must be served on the master branch directly
-* If using a project site, the repo can be named anything,
-    * raw html can also be on the master branch in a directory named `/docs`
 
 Clone the repository, change directory into the repo. Create a branch named `src` and initialize a `python3` virtual environment.
 
@@ -65,7 +58,7 @@ needed by Pelican.
 > Do you want to upload your website using S3? (y/N) N
 > Do you want to upload your website using Rackspace Cloud Files? (y/N) N
 > Do you want to upload your website using GitHub Pages? (y/N) Y
-> Is this your personal page (username.github.io)? (y/N) Y
+> Is this your personal page (username.github.io)? (y/N) N
 Done. Your new project is available at /path/to/your/project
 ```
 # Lab Instructions
@@ -100,15 +93,8 @@ pelican --listen
 ### Deploy your page to Github
 
 Update *publishconf.py* and set `SITEURL` to your github given url.
-If it is a user repository:
-
 ```bash
-SITEURL = 'https://${username}.github.io'
-
-```
-If it is an orginazation repository:
-```bash
-SITEURL = 'https://${organization-name}.github.io/${repository-name}'
+SITEURL = 'https://uofa-cmput404.github.io/${repository-name}'
 
 ```
 * For Mac and Ubuntu: 
@@ -172,25 +158,106 @@ In publishconf.py, Comment out `CATEGORY_FEED_ATOM`.
 
 ## Phase TWO: Playing around with CSS
 
-Create 3 more articles for your site from 3 project [Gutenberg](http://www.gutenberg.org/browse/scores/top)   HTML documents of your choosing and change the look and feel, I recommend making the documents look old using serif fonts use yellowish or paper-like backgrounds.
-Some of these books are archaic and subscribe to archaic and outdated values. If they offend you, choose something else from the Gutenberg catalogue.
-Change the colour scheme to something aesthetically pleasing using the style.css in your custom mytheme.
+Create 3 more articles for your site from 3 project [Gutenberg](http://www.gutenberg.org/browse/scores/top)   HTML documents of your choosing, you can directly download the html file from the website. 
 
-* At the end you should have 4 articles in your content folder including your first article and deploy it to the github pages.
+Write CSS to enable your site to have dark mode, light mode, print mode, and responsiveness in both desktop and mobile views.  
+
+* Light Mode: You can take inspiration from modern websites such as amazon, facebook or google. BUT DO NOT COPY THEIR CODE. Try to make your light mode as fancy as possible.  
+
+* Dark Mode: You can take inspiration from the [oatmeal comic](https://theoatmeal.com/comics/design_hell?fbclid=IwAR32De0TRFISnARpWunp3jvoCF1k1iXdotYZbvenRJOvqUCeaJwABk91JFw) or [space jam](https://www.spacejam.com/1996/). Try to make it like those 90s website.
+
+* Print Mode: Try to make the page look good and clean for printing.
+
+Finally publish to your GITHUB PAGES!!!
+
+You should use media queries to achieve these
+
+```
+/* Light mode styles */
+  @media (prefers-color-scheme: light) {
+    html,body {
+      background-color: #d7a1a1;
+      /* Add more styling for light theme */
+    }
+    /* Add more styling for light theme */
+
+  }
+/* Dark mode styles */
+  
+  @media (prefers-color-scheme: dark) {
+    html, body {
+      background-color: #0f0f0f;
+       /* Add more styling for dark theme */
+    }
+    /* Add more styling for dark theme */
+
+  }
+
+  /* Styles for printing */
+  @media print {
+    html,body {
+      background-color: #fff;
+      /* Add more styling for printing */
+    }
+  
+    /* Additional styles for printed pages */
+  }
+  /* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  /* Add styling here */
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+   /* Add styling here */
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+   /* Add styling here */
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+   /* Add styling here */
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+   /* Add styling here */
+}
+```
+
+You can read more about CSS and Media Queries [here](https://www.w3schools.com/css/default.asp)
+
+### Testing it on the Browser
+You can use a browser to test out the different modes in the developer tools or developer console. Firefox is more preffered as the latest version has the light mode , dark mode and printing mode button in the tools. You can just click and toggle between different modes. 
+<br>
+1. Open your browser. <br>
+2. Right click and select <strong> Inspect (Q) </strong><br>
+* Keyboard shortcut for Windows: CTRL+ SHIFT + I <br>
+* Keyboard shortcut for MAC: Command + Option + I. <br>
+Once you have opened the Developer Tools, you can toggle between dark mode, light mode and print mode by clicking on those buttons.
+<br><img id="toggle-mode" alt="toggle-mode" src="{attach}Firefox-mode-toggle.png" style="width: 50%;"> <br>
+You can change to Desktop and mobile view by click on this button.
+
+<br><img id="mobile-view" alt="mobile-view" src="{attach}Desktop-Mobile-view.png" style="width: 50%;"> 
+
+In case your dark mode is not working in firefox, please check your firefox settings and see if the privacy.resistFingerprinting is set to false, otherwise it will always override with light mode. 
+
 # Restrictions
 
 Violation of the restrictions will result in a mark of zero.
 
 * Must use Python3
+* Using of any frontend frameworks, css libraries or frameworks such bootstrap or tailwind is FORBIDDEN. You have to write plain CSS.
 * If you borrow CSS, always cite the author and the source
 
 # Recommendation
 * Go look at CSS on the internet. Check the licenses.
 * Look how things are achieved.
 # Requirements
-* A working Pelican Site
-    * With 4 Articles
-        * With a custom-made theme
+A functioning Pelican site featuring four articles with different stylings in dark mode, light mode, and print mode, and responsive in both mobile and desktop views, deployed on GitHub Pages.
 
 # Submission Instructions
 
