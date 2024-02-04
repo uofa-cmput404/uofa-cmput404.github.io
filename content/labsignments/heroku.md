@@ -770,7 +770,7 @@ It is in your best interest to Work through the rest of Django's First Steps Tut
 
 ### Setting up the Heroku CLI
 
-Sign up for a Heroku account at [https://signup.heroku.com/](https://signup.heroku.com/).
+Sign up for a Heroku account at [https://signup.heroku.com/](https://signup.heroku.com/). Be sure to **enable multi-factor authentication** (two-factor authentication) or Heroku will not allow you to sign in. 
 
 You can apply for free Heroku credits for 12 months at [https://www.heroku.com/github-students](https://www.heroku.com/github-students) with an eligible GitHub student account [https://education.github.com/pack](https://education.github.com/pack). **We cannot gaurantee that you will get free Heroku credits. As stated in the Course Outline, you may have to pay a small amount for Heroku.**
 
