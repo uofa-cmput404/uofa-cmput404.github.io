@@ -448,8 +448,6 @@ If something is paginated it has query options:
         // Image from a public domain (optional, can be missing)
         "profileImage": "https://i.imgur.com/k7XVwpB.jpeg"
     },
-    // categories this post fits into (a list of strings
-    "categories":["web","tutorial"],
     // comments about the post
     // return a maximum number of comments
     // total number of comments for this post
@@ -680,7 +678,6 @@ shortcut to get the image if authenticated to see it.
                 "github": "http://github.com/laracroft",
                 "profileImage": "https://i.imgur.com/k7XVwpB.jpeg"
             },
-            "categories":["web","tutorial"],
             "comments":"http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/de305d54-75b4-431b-adb2-eb6b9e546013/comments"
             "published":"2015-03-09T13:07:04+00:00",
             "visibility":"FRIENDS",
@@ -704,7 +701,6 @@ shortcut to get the image if authenticated to see it.
                 "github": "http://github.com/laracroft",
                 "profileImage": "https://i.imgur.com/k7XVwpB.jpeg"
             },
-            "categories":["web","tutorial"],
             "comments":"http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/de305d54-75b4-431b-adb2-eb6b9e546013/comments"
             "published":"2015-03-09T13:07:04+00:00",
             "visibility":"FRIENDS",
