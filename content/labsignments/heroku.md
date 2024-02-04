@@ -915,6 +915,8 @@ django_on_heroku.settings(locals()) # bottom of the file
 
 ### Deploying our Django Application to Heroku
 
+First, [create an app](https://dashboard.heroku.com/new-app) on your Heroku dashboard. Keep in mind that a Heroku app is different from a Django app.
+
 Commit your files and deploy the application using a the heroku command line tool. See [their article on how to do this](https://devcenter.heroku.com/articles/git). Follow the instructions for an existing app, not a new app: `use heroku git:remote`, **not** `heroku create`.
 If you used `heroku create`, please see [this stackoverflow question](https://stackoverflow.com/questions/50421071/git-i-made-a-repository-inside-a-repository-and-now-i-just-want-the-one-big-rep) about how to return to a single repository.
 
