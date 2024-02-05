@@ -156,6 +156,28 @@ footer#contentinfo {
   display: block;
 }
 
+.option1, .option2 {
+  margin-top: 1lh;
+  margin-bottom: 1lh;
+  margin-left: 1em;
+  padding-left: 1em;
+  float: none;
+}
+
+.option1 {
+  border-left: 1em solid rgb(255, 243, 205);
+}
+
+.option2 {
+  border-left: 1em solid gray;
+}
+
+p>img {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
 /** Code Highlighting **/
 .highlight .hll { background-color: #ffffcc }
 .highlight  { background: #f8f8f8; }
@@ -226,20 +248,4 @@ footer#contentinfo {
 .highlight .vi { color: #19177C } /* Name.Variable.Instance */
 .highlight .vm { color: #19177C } /* Name.Variable.Magic */
 .highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
-
-.option1, .option2 {
-  margin-top: 1lh;
-  margin-bottom: 1lh;
-  margin-left: 1em;
-  padding-left: 1em;
-  float: none;
-}
-
-.option1 {
-  border-left: 1em solid rgb(255, 243, 205);
-}
-
-.option2 {
-  border-left: 1em solid gray;
-}
 
