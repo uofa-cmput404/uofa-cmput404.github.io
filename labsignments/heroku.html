@@ -708,7 +708,7 @@ touch<span class="w"> </span>polls/templates/polls/index.html
 </ul>
 <h4 id="phase-two-heroku">Phase Two: Heroku</h4>
 <h5 id="setting-up-the-heroku-cli">Setting up the Heroku CLI</h5>
-<p>Sign up for a Heroku account at <a href="https://signup.heroku.com/">https://signup.heroku.com/</a>.</p>
+<p>Sign up for a Heroku account at <a href="https://signup.heroku.com/">https://signup.heroku.com/</a>. Be sure to <strong>enable multi-factor authentication</strong> (two-factor authentication) or Heroku will not allow you to sign in. </p>
 <p>You can apply for free Heroku credits for 12 months at <a href="https://www.heroku.com/github-students">https://www.heroku.com/github-students</a> with an eligible GitHub student account <a href="https://education.github.com/pack">https://education.github.com/pack</a>. <strong>We cannot gaurantee that you will get free Heroku credits. As stated in the Course Outline, you may have to pay a small amount for Heroku.</strong></p>
 <p>Note: Remember to clean up all Heroku resources after this course to avoid unexpected charges after exceeding the credit limit or the offer expires.</p>
 <p>Download and install the <a href="https://devcenter.heroku.com/articles/heroku-cli#download-and-install">Heroku CLI tools</a>.</p>
@@ -836,6 +836,7 @@ If you do have a project subfolder it should look like this:
 </code></pre></div>
 
 <h5 id="deploying-our-django-application-to-heroku">Deploying our Django Application to Heroku</h5>
+<p>First, <a href="https://dashboard.heroku.com/new-app">create an app</a> on your Heroku dashboard. Keep in mind that a Heroku app is different from a Django app.</p>
 <p>Commit your files and deploy the application using a the heroku command line tool. See <a href="https://devcenter.heroku.com/articles/git">their article on how to do this</a>. Follow the instructions for an existing app, not a new app: <code>use heroku git:remote</code>, <strong>not</strong> <code>heroku create</code>.
 If you used <code>heroku create</code>, please see <a href="https://stackoverflow.com/questions/50421071/git-i-made-a-repository-inside-a-repository-and-now-i-just-want-the-one-big-rep">this stackoverflow question</a> about how to return to a single repository.</p>
 <p>You should have a heroku app. You should see it if you run the <code>heroku list</code> command. In the following, <code>APPNAME</code> refers to this heroku app's name.</p>
@@ -870,18 +871,19 @@ heroku<span class="w"> </span>run<span class="w"> </span><span class="s2">&quot;
 <p>If it contains <code>sqlite3</code>, something is wrong. Please check that you followed the steps starting with adding <code>django-on-heroku</code> correctly.</p>
 <p>Run your migrations, create a Superuser, and ensure your application functionality works.</p>
 <aside class="option1">
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>heroku<span class="w"> </span>run<span class="w"> </span>--app<span class="w"> </span>APPNAME<span class="w"> </span>python<span class="w"> </span>manage.py<span class="w"> </span>migrate
-$<span class="w"> </span>heroku<span class="w"> </span>run<span class="w"> </span>--app<span class="w"> </span>APPNAME<span class="w"> </span>python<span class="w"> </span>manage.py<span class="w"> </span>createsuperuser
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>heroku<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>manage.py<span class="w"> </span>migrate
+$<span class="w"> </span>heroku<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>manage.py<span class="w"> </span>createsuperuser
 </code></pre></div>
 
 </aside>
 <aside class="option2">
 <p>If your Django project is in a folder in your repo like <code>lab3</code>, you will need something like:</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>heroku<span class="w"> </span>run<span class="w"> </span>--app<span class="w"> </span>APPNAME<span class="w"> </span>python<span class="w"> </span>lab3/manage.py<span class="w"> </span>migrate
-$<span class="w"> </span>heroku<span class="w"> </span>run<span class="w"> </span>--app<span class="w"> </span>APPNAME<span class="w"> </span>python<span class="w"> </span>lab3/manage.py<span class="w"> </span>createsuperuser
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>heroku<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>lab3/manage.py<span class="w"> </span>migrate
+$<span class="w"> </span>heroku<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>lab3/manage.py<span class="w"> </span>createsuperuser
 </code></pre></div>
 
 </aside>
+<p>After this if you select your postgres database in the <a href="https://data.heroku.com/dataclips/create">Heroku dataclips interface</a>, you should see your polls_question and poll_choice tables.</p>
 <p>Go to <code>/polls</code> on your Heroku deployed site, you should be able to use the Polls app from Heroku. </p>
 <p>Note: Please make sure that the Heroku app uses Postgres as the backend database. If you created the Heroku app through Git integration, this should be a default setting.</p>
 <p>You can verify the backend in use by login into the dashboard of the Heroku app: <a href="https://dashboard.heroku.com/apps/APP_NAME">https://dashboard.heroku.com/apps/APP_NAME</a>, then click the <code>Resources</code> tab, you should see <code>Heroku Postgres</code> under the <code>Add-ons</code> Section.</p>
@@ -981,6 +983,7 @@ $<span class="w"> </span>heroku<span class="w"> </span>run<span class="w"> </spa
 <h3 id="submission-instructions">Submission Instructions</h3>
 <p>Make sure you push to github classroom <strong>BEFORE 4PM on the day of your lab section!</strong> You will not be able to push after that!</p>
 <p>Submit a link to your repo in the form <code>https://github.com/uofa-cmput404/w24-h0x-labsignment-heroku-yourgithubname</code> on eClass. <strong>Do not</strong> submit a link to a branch, a file, or the clone url. If you do not do this we will not know which github submission is yours.</p>
+<p>After you recieve your grade, you can delete your Heroku app to save credits/money.</p>
 <h3 id="collaboration">Collaboration</h3>
 <ul>
 <li>You may consult with others (exchange high-level ideas) but the submission should be your own source code.</li>
