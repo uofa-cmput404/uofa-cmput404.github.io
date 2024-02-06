@@ -200,10 +200,12 @@ Enable Github Pages for your repo. It is in the repo settings under pages, then 
 Make sure to include the `-b pages` to specify your pages branch so that ghp-import doesn't overwrite your `main` branch.
 
 ```bash
-pelican content -o output -s pelicanconf.py
+pelican content -o output -s publishconf.py
 ghp-import output -b pages
 git push origin pages
 ```
+
+**When building for github:** you should use `publishconf.py` not `pelicanconf.py`. That is what it is there for: so you can have different settings for local development and for publishing to anywhere (including GitHub Pages).
 
 ### Check your Github Pages site
 
