@@ -219,11 +219,12 @@ Check the <code>output</code> directory: it should contain a file called <code>.
 </ul>
 <h6 id="deploy-from-windows-or-without-make">Deploy from Windows or Without Make</h6>
 <p>Make sure to include the <code>-b pages</code> to specify your pages branch so that ghp-import doesn't overwrite your <code>main</code> branch.</p>
-<div class="highlight"><pre><span></span><code>pelican<span class="w"> </span>content<span class="w"> </span>-o<span class="w"> </span>output<span class="w"> </span>-s<span class="w"> </span>pelicanconf.py
+<div class="highlight"><pre><span></span><code>pelican<span class="w"> </span>content<span class="w"> </span>-o<span class="w"> </span>output<span class="w"> </span>-s<span class="w"> </span>publishconf.py
 ghp-import<span class="w"> </span>output<span class="w"> </span>-b<span class="w"> </span>pages
 git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>pages
 </code></pre></div>
 
+<p><strong>When building for github:</strong> you should use <code>publishconf.py</code> not <code>pelicanconf.py</code>. That is what it is there for: so you can have different settings for local development and for publishing to anywhere (including GitHub Pages).</p>
 <h5 id="check-your-github-pages-site">Check your Github Pages site</h5>
 <p>Your Github Pages site should be at a URL like <code>https://uofa-cmput404.github.io/GITHUB REPO NAME/</code> a couple of minutes after pushing.
 For example: <code>https://uofa-cmput404.github.io/w24-h01-labsignment-pelican-hazelybell/</code>.</p>
