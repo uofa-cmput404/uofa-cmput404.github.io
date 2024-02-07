@@ -713,46 +713,62 @@ shortcut to get the image if authenticated to see it.
 # Requirements
 
 * WARNING: Check this over again
-* [ ] Implement the webservice as described in the user stories
-* [ ] Provide a webservice interface that is restful
-* [ ] Provide a web UI interface that is usable
-* [ ] Prove your project by connecting with at least 1 clone of your project.
-* [ ] Prove your project by connecting with at least 2 other groups.
-* [ ] Prove your project by connecting with at least 3 other groups.
-* [ ] Make a video demo of your blog (desktop-recorder is ok) 
+* Implement the webservice as described in the user stories
+* Provide a webservice interface that is restful
+* Provide a web UI interface that is usable
+* Prove your project by connecting with at least 1 clone of your project.
+* Prove your project by connecting with at least 2 other groups.
+* Prove your project by connecting with at least 3 other groups.
+* Make a video demo of your blog (desktop-recorder is ok) 
     * Your video may not be a part of your presentation.
-* [ ] Make a presentation about your blog 
-* [ ] Follow the guidelines in the [project spec]({filename}/general/project.md) for URLs and services
-* [ ] Allow users to accept or reject follow requests
-* [ ] Images get the same protection that posts get as they are POSTS   
+* Make a presentation about your blog 
+* Follow the guidelines in the [project spec]({filename}/general/project.md) for URLs and services
+* Allow users to accept or reject follow requests
+* Images get the same protection that posts get as they are POSTS   
+
+## API Requirements
+   
+When building your API, try to adhere to these rules for easy compatibility with other groups:
+   
+* REST API calls may be prefixed. ie. `http://service_address/api/authors/{AUTHOR_ID}/posts/`
+* Document your service address, port, hostname, prefix(if used), and the username/password for HTTP Basic Auth in your README so that HTTP clients can connect to your API.
+* You **must** be compatible with the API specification and examples listed above in this document. 
+    * You **may** need to add some additional things for compatibility with other groups due to varying interpretations.
+    * You **may** add additional endpoints and JSON keys as long as you provide the ones listed above.
 
 # Take-aways
 
-* [ ] 1 Working Website
-* [ ] 1 Github git repo
-* [ ] 1 Presentation
-* May not include the video
-* [ ] 1 OpenAPI ('Swagger') specification for your API 
-* [ ] 1 Video
+* 1 Working Website
+* 1 Github git repo
+* 1 Presentation
+    * May not include the video
+* 1 OpenAPI ('Swagger') specification for your API 
+* 1 Video
  
 # Restrictions
 
-* [ ] Use Python 3.8+ (otherwise get approval from the instructor)
-* [ ] Use Django or Flask (otherwise get approval from the instructor)
-    * You must use a single django or a single flask to serve both frontend (for browser) and backend api, distinguish between the two using routes or django "apps" or whatever.
-* [ ] You must use a single git repository that contains everything.
-* [ ] Must run on one of the following:
-    * [ ] provided (usually Cybera) VMs
-    * [ ] Heroku
-    * Other hosting on approval: you must get approval in advance from the instructor.
-        * You are responsible for any problems that come up as a result.
-        * You are responsible for any surprise fees that come up as a result.
-        * Often when groups use some other hosting service that isn't Heroku they get shut off, blocked by firewalls, and/or hit with surprise fees.
-    * [ ] Must use a postgres, sqlite, or mariadb database for storage.
+*  You must use a single git repository that contains everything.
+*  Must run on:
+    *  Heroku or Cybera VM
+        * Other hosting on approval: you must get approval in advance from the instructor.
+            * You are responsible for any problems that come up as a result.
+            * You are responsible for any surprise fees that come up as a result.
+            * Often when groups use some other hosting service that isn't Heroku they get shut off, blocked by firewalls, and/or hit with surprise fees.
+    * Use Django or Flask (otherwise get approval from the instructor)
+        * You must use a single django or a single flask to serve both frontend (for browser) and backend api, distinguish between the two using routes or django "apps" or whatever.
+        * Use Python 3.8+ (otherwise get approval from the instructor)
+    * Must use a postgres, sqlite, or mariadb database for storage.
+        * For Heroku this must be postgres (sqlite doesn't work correctly on Heroku).
         * Database provider must be the same provider as your website hosting.
     * Splitting frontend/backend hosting is not allowed, this has caused too many problems.
-* [ ] License your code properly (use an OSI approved license)
+* License your code properly (use an OSI approved license)
     * Put your name (or some representation of you like GeneralHuxFan768) on it!
+
+## Things that are allowed
+
+* You may use React if you choose, but generally this is more difficult and takes more work so it is not recommended.
+    * Django templates or lighter-weight frameworks like Vue are generally easier and take less work.
+    * If you use React, you must still serve everything (including React js and html) through the same Django/Flask server that is serving the API backend.
 
 # Groupwork Guidelines
 
@@ -765,16 +781,8 @@ The most successful teams:
 * Commit, pull, push the code they're working on, to the same branch that everyone else is working on, at least once an hour.
     * Commit code that doesn't break the overall project.
     * Avoid your version being broken for more than an hour.
-* Do not stay up all night, change everything, and push a hundred changes all over the code base as one giant pull request.
-
-# API Guidelines
-   
-When building your API, try to adhere to these rules for easy compatibility with other groups:
-   
-* REST API calls may be prefixed. ie. `http://service_address/api/authors/{AUTHOR_ID}/posts/`
-* Document your service address, port, hostname, prefix(if used), and the username/password for HTTP
-Basic Auth(if used) in your README so that HTTP clients can connect to your API.
-* You **must** be compatible with the API specification and examples listed above in this document. 
+    * Do not stay up all night, change everything, and push a hundred changes all over the code base as one giant pull request.
+* Divide teamwork by user story, instead of frontend vs backend.
 
 # Submission Instructions
 
