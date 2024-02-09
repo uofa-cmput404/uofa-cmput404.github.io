@@ -770,7 +770,9 @@ When building your API, try to adhere to these rules for easy compatibility with
     * Django templates or lighter-weight frameworks like Vue are generally easier and take less work.
     * If you use React, you must still serve everything (including React js and html) through the same Django/Flask server that is serving the API backend.
 
-# Groupwork Guidelines
+# Groupwork Tips
+
+* These optional. They are just advice. They usually lead to less conflict and a better end result.
 
 The most successful teams:
 

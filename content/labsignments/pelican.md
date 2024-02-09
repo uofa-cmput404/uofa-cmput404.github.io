@@ -1,7 +1,7 @@
 Title: Pelican Lab
 date: 2024-02-01
 tags: labs
-authors: Sadia Zahin Prodhan
+authors: Sadia Zahin Prodhan, Hazel Campbell
 status: Published
 summary: Lab Procedure, Lab Assignments, Lab Marking
 ----
@@ -14,12 +14,11 @@ The primary objective of this lab is for you to acquire the skills necessary to 
 
 # Getting Started
 
-Clone the repository, change directory into the repo. Create a branch named `src` and initialize a `python3` virtual environment.
+Clone the repository, change directory into the repo. Initialize a `python3` virtual environment.
 
 ```bash
 git clone {git-repo-url}
 cd {git-clone-url}
-git checkout -b src
 virtualenv venv --python=python3
 source venv/bin/activate
 ```
@@ -378,7 +377,7 @@ Violation of the restrictions will result in a mark of zero.
   * with different stylings in dark mode, light mode, and print mode
   * responsive in both mobile and desktop views
   * deployed on GitHub Pages.
-* A git repository with a `main` branch that does not contain built (compiled, transpiled, bundled) or downloaded artifacts, including but not limited to:
+* A git repository with a `main` or `src` branch that does not contain built (compiled, transpiled, bundled) or downloaded artifacts, including but not limited to:
     * `virtualenv` `venv` etc.
     * `.pyc` files, `__pycache__` directories.
     * `node_modules`
