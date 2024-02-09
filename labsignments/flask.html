@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+          <title>CMPUT 404 - Flask and AJAX Lab</title>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Web Applications and Architecture" />
+
+  <link rel="icon" href="../theme/favicon.ico" />
+  <link rel="stylesheet" type="text/css" href="../theme/style.css" />
+  <link rel="stylesheet" type="text/css" href="../theme/404.css" />
+
+
+
+
+    <meta name="tags" content="labs" />
+
+</head>
+
+<body>
+        <header>
+              <hgroup><h1><a href="../">CMPUT 404</a></h1><p>Web Applications and Architecture</p></hgroup>
+        <nav><ul>
+            <li><a href="/general/outline.html">Outline</a></li>
+            <li><a href="https://eclass.srv.ualberta.ca/course/view.php?id=95227">eClass</a></li>
+            <li><a href="/general/schedule.html">Schedule</a></li>
+            <li><a href="/general/labs.html">Labs</a></li>
+            <li><a href="/general/project.html">Project</a></li>
+            <li><a href="/general/resources.html">Resources</a></li>
+            <li><a href="/general/help.html">Help</a></li>
+        </ul></nav>
+        </header>
+        <main>
+<article>
+  <header>
+    <h2>
+      <a href="../labsignments/flask.html" rel="bookmark"
+         title="Permalink to Flask and AJAX Lab">Flask and AJAX Lab</a></h2>
+ 
+  </header>
+  <div class="toc">
+<ul>
+<li><a href="#description">Description</a></li>
+<li><a href="#getting-started">Getting Started</a></li>
+<li><a href="#user-stories">User Stories</a></li>
+<li><a href="#lab-instructions">Lab Instructions</a><ul>
+<li><a href="#have-flask-serve-files">Have Flask Serve Files</a></li>
+<li><a href="#create-model-classes">Create Model Classes</a></li>
+<li><a href="#create-api-for-model">Create API for Model</a></li>
+<li><a href="#create-the-ui-in-js">Create the UI in JS</a></li>
+<li><a href="#add-polling">Add polling</a></li>
+</ul>
+</li>
+<li><a href="#restrictions">Restrictions</a></li>
+</ul>
+</div>
+<h3 id="description">Description</h3>
+<p>Your task is to build a live, collaborative outline editing service.</p>
+<h3 id="getting-started">Getting Started</h3>
+<ol>
+<li>Get the github classroom link from eClass and clone it.</li>
+<li>Use virtualenv/pip to install flask.</li>
+<li>Follow the first steps of the <a href="https://flask.palletsprojects.com/en/latest/quickstart/">Flask Quickstart guide</a>: "A Minimal Application". <ul>
+<li>Name your app "outliner.py".</li>
+</ul>
+</li>
+</ol>
+<p>In order to connect to your flask server inside WSL or another VM from outside WSL/VM, use <code>flask --app outliner run --host 0.0.0.0</code>.</p>
+<h3 id="user-stories">User Stories</h3>
+<ul>
+<li>As a user, I want to add items to any existing item in the outline, so I can grow my outline.</li>
+<li>As a user, I want to edit items in the outline, so I can update my outline.</li>
+<li>As a user, I want to delete items from the outline, becuase I don't want them anymore.</li>
+<li>As a user, I want the outline to remember the order of outline items, because the order is important to me.</li>
+<li>As a user, I want my friend to be able to edit the same outline that I am editing, so that we can collaborate.</li>
+<li>As a user, I don't want my friend to be able to edit the same outline item that I am editing, so that we don't create a conflict.</li>
+<li>As a user, I want to see what my friends are typing in my outline while they type it, so I can be up to date.</li>
+<li>As a user, I want to pick a color to represent me, so that my friends know which item I'm editing.</li>
+<li>As a user, I want my friend's colors to show up next to the outline item they are editing, so I know who is editing it.</li>
+<li>As a user, I want my outline to have a single root item, so I can name my outline.</li>
+</ul>
+<h3 id="lab-instructions">Lab Instructions</h3>
+<h4 id="have-flask-serve-files">Have Flask Serve Files</h4>
+<ul>
+<li>Flask should serve the <code>ui.html</code> file at path <code>/</code>.</li>
+<li>Flask should serve the <code>style.css</code> file at path <code>/style.css</code>.</li>
+<li>Flask should serve the <code>main.js</code> file at path <code>/main.js</code>.</li>
+<li>Flask should serve the <code>favicon.ico</code> file at path <code>favicon.ico</code>.</li>
+</ul>
+<p>You will need to send the correct Content-Type with each file. 
+In flask you can do this by <code>from flask import Response</code> then returning from your handler like:</p>
+<div class="highlight"><pre><span></span><code>    <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="n">icon_bytes</span><span class="p">,</span> <span class="n">mimetype</span><span class="o">=</span><span class="s1">&#39;image/x-icon&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>After this step is complete you should be able to view the HTML in the browser,
+without getting errors in the browser.
+Check the console to make sure you don't have any errors.</p>
+<h4 id="create-model-classes">Create Model Classes</h4>
+<p>Create model class(es) to represent the state of the outline and users.
+Think about what you learned in CMPUT 301.</p>
+<p>Your class for outline items must be nestable (a tree) so that any item in the outline can have items inside of it.
+Each item needs to be able to store some text and sub-items.
+Your code must remember which items go inside of other items, the order of the items, each authors color, and which item each author is editing.</p>
+<p>It does not need to save this to a database or file, it's fine to just keep it in memory.</p>
+<h4 id="create-api-for-model">Create API for Model</h4>
+<p>Each item in the outline and each author needs a URL in the Flask backend that is accessible by the JS frontend.</p>
+<ul>
+<li><code>GET /outline/</code> should get a JSON respresentation of the root item.</li>
+<li><code>GET /outline/1/2/3/</code> should get a JSON representation of the 3rd item in the 2nd item in 1st item in the root item.</li>
+<li><code>POST /outline/4/</code> should create a new item inside of the 4th item inside of the root item.<ul>
+<li>It should return the appropriate HTTP status code, along with the JSON representation of the new item.</li>
+</ul>
+</li>
+<li><code>PUT /outline/5/6/</code> should modify the text of the 6th item inside of the 5th item inside of the outline.<ul>
+<li>It should return the appropriate HTTP status code.</li>
+<li>It should return the new JSON representation of the 6th item inside of the 5th item inside of the outline.</li>
+</ul>
+</li>
+<li><code>DELETE /outline/7/</code> should delete the 7th item inside of the root item.\<ul>
+<li>It should return the appropriate HTTP status code.</li>
+</ul>
+</li>
+<li><code>PUT /authors/&lt;author_id&gt;</code> should create a new author. This is "logging in" though we don't require anything but a color, there's no username or password.</li>
+<li><code>GET /authors/&lt;author_id&gt;</code> should get a JSON representation of the author.</li>
+</ul>
+<p>In the JSON representation of the outline items, there must be an <code>id</code> key that gives the URL for the outline item.
+For example, <code>GET /outline/8/9</code> should return some JSON like:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;/outline/8/9`,</span>
+<span class="s1">    text: &#39;</span><span class="nx">text</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">item</span><span class="s1">&#39;,</span>
+<span class="s1">    children: [</span>
+<span class="s1">        &#39;</span><span class="o">/</span><span class="nx">outline</span><span class="o">/</span><span class="mf">8</span><span class="o">/</span><span class="mf">9</span><span class="o">/</span><span class="mf">0</span><span class="s1">&#39;,</span>
+<span class="s1">        &#39;</span><span class="o">/</span><span class="nx">outline</span><span class="o">/</span><span class="mf">8</span><span class="o">/</span><span class="mf">9</span><span class="o">/</span><span class="mf">1</span><span class="err">&#39;</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h4 id="create-the-ui-in-js">Create the UI in JS</h4>
+<p>Create JS View and Controller classes to:</p>
+<ol>
+<li>Remove the "Loading...".<ul>
+<li><strong>Hint</strong>: Use <code>window.addEventListener('load', someFunction)</code> to run a function once the page has loaded.</li>
+</ul>
+</li>
+<li>Fill in the page.</li>
+</ol>
+<h4 id="add-polling">Add polling</h4>
+<p>Add some way in your code to remember updates. Each time the outline is changed, record the URL of the changed item in a list.</p>
+<p>Add an endpoint that can <code>GET</code> a list of updated items, with a <code>since</code> query parameter that takes a time.</p>
+<p>Then, in your JS, use the list of updated items to request only the items changed since the last poll to update the UI.</p>
+<h3 id="restrictions">Restrictions</h3>
+<p>Violation of the restrictions will result in a mark of zero.</p>
+<ul>
+<li>Must use Python3</li>
+<li>All of your Python code must be in <code>outliner.py</code>.</li>
+<li>All of your CSS code must be in <code>style.css</code>.</li>
+<li>All of your JS code must be in <code>main.js</code>.</li>
+<li>All of your HTML must be created dynamically using plain JS in <code>main.js</code>.<ul>
+<li>You must not modify <code>ui.html</code>.</li>
+<li><code>ui.html</code> must be the only HTML served by flask (on the route <code>/</code>).</li>
+</ul>
+</li>
+<li>Using of any frontend frameworks, CSS libraries, JS libraries or frameworks is forbidden. </li>
+<li>You must write plain JS, CSS and HTML. </li>
+<li>You must not use JS libraries, frameworks, preprocessors, or transpilers.</li>
+<li>You must not use CSS libraries, frameworks, preprocessors or transpilers.</li>
+<li>You must not use frontend frameworks, HTML frameworks, preprocessors or transpilers. </li>
+<li>If you borrow CSS from examples online, always cite the author, give the source URL, and the date you downloaded it.</li>
+</ul>
+  <footer>
+    <p>Published: <time datetime="2024-02-07T00:00:00-07:00">
+      Wed, 07 Feb 2024 at 00:00 MST
+    </time></p>
+    <address>
+      By           <a href="../author/sadia-zahin-prodhan.html">Sadia Zahin Prodhan</a>
+          <a href="../author/hazel-campbell.html">Hazel Campbell</a>
+    </address>
+    <p>
+        Category: <a href="../category/labsignments.html">labsignments</a>
+    </p>
+    <p>
+        Tags:
+            <a href="../tag/labs.html">labs</a>
+    </p>
+  </footer>
+  </article>
+        </main>
+        <footer>
+                <address>
+                Proudly powered by <a rel="nofollow" href="https://getpelican.com/">Pelican</a>,
+                which takes great advantage of <a rel="nofollow" href="https://www.python.org/">Python</a>.
+                </address>
+        </footer>
+</body>
+</html>
