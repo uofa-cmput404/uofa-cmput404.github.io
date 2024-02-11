@@ -29,6 +29,7 @@ summary: Lab Procedure, Lab Assignments, Lab Marking
 2. [Django]({filename}/labsignments/django.md)
 3. [Heroku]({filename}/labsignments/heroku.md)
 4. [Pelican]({filename}/labsignments/pelican.md)
+5. [Flask]({filename}/labsignments/flask.md)
 
 [All labsignments]({category}labsignments)
 
