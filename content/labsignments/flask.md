@@ -16,8 +16,9 @@ Your task is to build a live, collaborative outline editing service.
 
 1. Get the github classroom link from eClass and clone it.
 2. Use virtualenv/pip to install flask.
+3. Create an appropriate `.gitignore` file to prevent unwanted files from being added to your repository.
 3. Follow the first steps of the [Flask Quickstart guide](https://flask.palletsprojects.com/en/latest/quickstart/): "A Minimal Application". 
-    * Name your app "outliner.py".
+    * Name your app `outliner.py`.
 
 In order to connect to your flask server inside WSL or another VM from outside WSL/VM, use `flask --app outliner run --host 0.0.0.0`.
 
@@ -28,10 +29,7 @@ In order to connect to your flask server inside WSL or another VM from outside W
 * As a user, I want to delete items from the outline, becuase I don't want them anymore.
 * As a user, I want the outline to remember the order of outline items, because the order is important to me.
 * As a user, I want my friend to be able to edit the same outline that I am editing, so that we can collaborate.
-* As a user, I don't want my friend to be able to edit the same outline item that I am editing, so that we don't create a conflict.
 * As a user, I want to see what my friends are typing in my outline while they type it, so I can be up to date.
-* As a user, I want to pick a color to represent me, so that my friends know which item I'm editing.
-* As a user, I want my friend's colors to show up next to the outline item they are editing, so I know who is editing it.
 * As a user, I want my outline to have a single root item, so I can name my outline.
 
 #  Lab Instructions
@@ -78,11 +76,9 @@ Each item in the outline and each author needs a URL in the Flask backend that i
     * It should return the new JSON representation of the 6th item inside of the 5th item inside of the outline.
 * `DELETE /outline/7/` should delete the 7th item inside of the root item.\
     * It should return the appropriate HTTP status code.
-* `PUT /authors/<author_id>` should create a new author. This is "logging in" though we don't require anything but a color, there's no username or password.
-* `GET /authors/<author_id>` should get a JSON representation of the author.
 
 In the JSON representation of the outline items, there must be an `id` key that gives the URL for the outline item.
-For example, `GET /outline/8/9` should return some JSON like:
+For example, `GET /outline/8/9/` should return some JSON like:
 
 ```js
 {
@@ -100,12 +96,21 @@ For example, `GET /outline/8/9` should return some JSON like:
 Create JS View and Controller classes to:
 
 1. Remove the "Loading...".
-    * **Hint**: Use `window.addEventListener('load', someFunction)` to run a function once the page has loaded.
+    * **Hint:** Use `window.addEventListener('load', someFunction)` to run a function once the page has loaded.
 2. Fill in the page.
+
+**Hint:** Using proper OOAD will save you a lot of work. Apply the skills you learned in CMPUT 301.
+I suggest making model proxy classes that are responsible for synchronizing with the model objects in the Flask backend,
+by making calls using the Fetch API.
+
+**Hint:** Using the "event.preventDefault();" on form `submit` events will prevent the browser from trying to submit the form,
+so you can handle form submission in you custom JS code instead.
 
 ## Add polling
 
-Add some way in your code to remember updates. Each time the outline is changed, record the URL of the changed item in a list.
+Add polling in your code to get live updates. 
+
+Each time the outline is changed, record the URL of the changed item in a list.
 
 Add an endpoint that can `GET` a list of updated items, with a `since` query parameter that takes a time.
 
