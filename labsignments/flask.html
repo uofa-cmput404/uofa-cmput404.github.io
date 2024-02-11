@@ -61,8 +61,9 @@
 <ol>
 <li>Get the github classroom link from eClass and clone it.</li>
 <li>Use virtualenv/pip to install flask.</li>
+<li>Create an appropriate <code>.gitignore</code> file to prevent unwanted files from being added to your repository.</li>
 <li>Follow the first steps of the <a href="https://flask.palletsprojects.com/en/latest/quickstart/">Flask Quickstart guide</a>: "A Minimal Application". <ul>
-<li>Name your app "outliner.py".</li>
+<li>Name your app <code>outliner.py</code>.</li>
 </ul>
 </li>
 </ol>
@@ -74,10 +75,7 @@
 <li>As a user, I want to delete items from the outline, becuase I don't want them anymore.</li>
 <li>As a user, I want the outline to remember the order of outline items, because the order is important to me.</li>
 <li>As a user, I want my friend to be able to edit the same outline that I am editing, so that we can collaborate.</li>
-<li>As a user, I don't want my friend to be able to edit the same outline item that I am editing, so that we don't create a conflict.</li>
 <li>As a user, I want to see what my friends are typing in my outline while they type it, so I can be up to date.</li>
-<li>As a user, I want to pick a color to represent me, so that my friends know which item I'm editing.</li>
-<li>As a user, I want my friend's colors to show up next to the outline item they are editing, so I know who is editing it.</li>
 <li>As a user, I want my outline to have a single root item, so I can name my outline.</li>
 </ul>
 <h3 id="lab-instructions">Lab Instructions</h3>
@@ -121,11 +119,9 @@ Your code must remember which items go inside of other items, the order of the i
 <li>It should return the appropriate HTTP status code.</li>
 </ul>
 </li>
-<li><code>PUT /authors/&lt;author_id&gt;</code> should create a new author. This is "logging in" though we don't require anything but a color, there's no username or password.</li>
-<li><code>GET /authors/&lt;author_id&gt;</code> should get a JSON representation of the author.</li>
 </ul>
 <p>In the JSON representation of the outline items, there must be an <code>id</code> key that gives the URL for the outline item.
-For example, <code>GET /outline/8/9</code> should return some JSON like:</p>
+For example, <code>GET /outline/8/9/</code> should return some JSON like:</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">    </span><span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;/outline/8/9`,</span>
 <span class="s1">    text: &#39;</span><span class="nx">text</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">item</span><span class="s1">&#39;,</span>
@@ -140,13 +136,19 @@ For example, <code>GET /outline/8/9</code> should return some JSON like:</p>
 <p>Create JS View and Controller classes to:</p>
 <ol>
 <li>Remove the "Loading...".<ul>
-<li><strong>Hint</strong>: Use <code>window.addEventListener('load', someFunction)</code> to run a function once the page has loaded.</li>
+<li><strong>Hint:</strong> Use <code>window.addEventListener('load', someFunction)</code> to run a function once the page has loaded.</li>
 </ul>
 </li>
 <li>Fill in the page.</li>
 </ol>
+<p><strong>Hint:</strong> Using proper OOAD will save you a lot of work. Apply the skills you learned in CMPUT 301.
+I suggest making model proxy classes that are responsible for synchronizing with the model objects in the Flask backend,
+by making calls using the Fetch API.</p>
+<p><strong>Hint:</strong> Using the "event.preventDefault();" on form <code>submit</code> events will prevent the browser from trying to submit the form,
+so you can handle form submission in you custom JS code instead.</p>
 <h4 id="add-polling">Add polling</h4>
-<p>Add some way in your code to remember updates. Each time the outline is changed, record the URL of the changed item in a list.</p>
+<p>Add polling in your code to get live updates. </p>
+<p>Each time the outline is changed, record the URL of the changed item in a list.</p>
 <p>Add an endpoint that can <code>GET</code> a list of updated items, with a <code>since</code> query parameter that takes a time.</p>
 <p>Then, in your JS, use the list of updated items to request only the items changed since the last poll to update the UI.</p>
 <h3 id="restrictions">Restrictions</h3>
