@@ -1,7 +1,7 @@
 Title: Flask and AJAX Lab
 date: 2024-02-07
 tags: labs
-authors: Sadia Zahin Prodhan, Hazel Campbell
+authors: Hazel Campbell
 status: Published
 summary: Lab Procedure, Lab Assignments, Lab Marking
 ----
@@ -20,7 +20,7 @@ Your task is to build a live, collaborative outline editing service.
 3. Follow the first steps of the [Flask Quickstart guide](https://flask.palletsprojects.com/en/latest/quickstart/): "A Minimal Application". 
     * Name your app `outliner.py`.
 
-In order to connect to your flask server inside WSL or another VM from outside WSL/VM, use `flask --app outliner run --host 0.0.0.0`.
+In order to connect to your flask server inside WSL or another VM from outside WSL/VM, use `flask --app outliner run --host 0.0.0.0 --debug`.
 
 # User Stories
 
