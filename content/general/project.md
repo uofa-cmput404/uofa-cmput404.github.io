@@ -289,7 +289,7 @@ If something is paginated it has query options:
 
 * URL: ://service/authors/{AUTHOR_ID}/
     * GET [local, remote]: retrieve AUTHOR_ID's profile
-    * POST [local]: update AUTHOR_ID's profile
+    * PUT [local]: update AUTHOR_ID's profile
 * Example Format:
 
 ```.js
