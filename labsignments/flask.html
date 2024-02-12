@@ -50,9 +50,14 @@
 <li><a href="#create-api-for-model">Create API for Model</a></li>
 <li><a href="#create-the-ui-in-js">Create the UI in JS</a></li>
 <li><a href="#add-polling">Add polling</a></li>
+<li><a href="#optimize-communications">Optimize Communications</a></li>
+<li><a href="#make-it-look-nice">Make it look nice</a></li>
 </ul>
 </li>
 <li><a href="#restrictions">Restrictions</a></li>
+<li><a href="#requirements">Requirements</a></li>
+<li><a href="#submission-instructions">Submission Instructions</a></li>
+<li><a href="#collaboration">Collaboration</a></li>
 </ul>
 </div>
 <h3 id="description">Description</h3>
@@ -132,6 +137,7 @@ For example, <code>GET /outline/8/9/</code> should return some JSON like:</p>
 <span class="p">}</span>
 </code></pre></div>
 
+<p><strong>Do not</strong> have the API send the entire tree at once, it should only send the URLs each items children.</p>
 <h4 id="create-the-ui-in-js">Create the UI in JS</h4>
 <p>Create JS View and Controller classes to:</p>
 <ol>
@@ -148,9 +154,22 @@ by making calls using the Fetch API.</p>
 so you can handle form submission in you custom JS code instead.</p>
 <h4 id="add-polling">Add polling</h4>
 <p>Add polling in your code to get live updates. </p>
-<p>Each time the outline is changed, record the URL of the changed item in a list.</p>
-<p>Add an endpoint that can <code>GET</code> a list of updated items, with a <code>since</code> query parameter that takes a time.</p>
-<p>Then, in your JS, use the list of updated items to request only the items changed since the last poll to update the UI.</p>
+<p>Each browser window that has the outline open should be able to see all the changes that the other browser windows make in a reasonable 
+amount of time (less than a few seconds).</p>
+<p>Make sure that the updates don't clobber or overwrite whatever the user is typing.</p>
+<p><strong>Hint:</strong> The <code>input</code> event of a <code>text</code> type <code>&lt;input&gt;</code> will fire every time the text changes at all (every keypress if they're typing.)</p>
+<h4 id="optimize-communications">Optimize Communications</h4>
+<p>Optimize communications so that the frontend doesn't have to ask the backend for the details of unchanged items.</p>
+<ul>
+<li>One way to do this is:<ul>
+<li>Each time the outline is changed in the backend, record the URL of the changed item in a list in the backend.</li>
+<li>Add an endpoint that can <code>GET</code> a list of updated items, with a <code>since</code> query parameter that takes a time.</li>
+<li>Then, in your JS, poll the list of updated items, then only poll the items changed since the last poll to update the UI.</li>
+</ul>
+</li>
+</ul>
+<h4 id="make-it-look-nice">Make it look nice</h4>
+<p>Add CSS to make your outline look nice. You should give it your own personal style, but it should be pleasing and easy-to-use.</p>
 <h3 id="restrictions">Restrictions</h3>
 <p>Violation of the restrictions will result in a mark of zero.</p>
 <ul>
@@ -169,6 +188,38 @@ so you can handle form submission in you custom JS code instead.</p>
 <li>You must not use CSS libraries, frameworks, preprocessors or transpilers.</li>
 <li>You must not use frontend frameworks, HTML frameworks, preprocessors or transpilers. </li>
 <li>If you borrow CSS from examples online, always cite the author, give the source URL, and the date you downloaded it.</li>
+<li>You <strong>must not</strong> modify the HTML except by using JS to add and remove elements.<ul>
+<li>You <strong>must not</strong> modify the <code>ui.html</code> or add other HTML files.</li>
+</ul>
+</li>
+</ul>
+<h3 id="requirements">Requirements</h3>
+<ul>
+<li>A functioning outline editor </li>
+<li>Has a root item</li>
+<li>Can add items under any item</li>
+<li>Can delete items</li>
+<li>Can add text to items</li>
+<li>Changes in one window are reflected in a few seconds on all the other windows.</li>
+<li>Changes aren't overwritten by old data.</li>
+<li>A git repository that does not contain built (compiled, transpiled, bundled) or downloaded artifacts, including but not limited to:<ul>
+<li><code>virtualenv</code> <code>venv</code> etc.</li>
+<li><code>.pyc</code> files, <code>__pycache__</code> directories.</li>
+</ul>
+</li>
+<li>A flask app <code>outline.py</code> that serves the files <code>ui.html</code>, <code>main.js</code>, `</li>
+<li>This contains the output HTML produced by Pelican.</li>
+<li>Your site should look the same on github pages as it does on your local dev server.</li>
+</ul>
+<h3 id="submission-instructions">Submission Instructions</h3>
+<p>Make sure you push to github classroom <strong>BEFORE 4PM on the day of your lab section!</strong> You will not be able to push after that!</p>
+<p>Submit a link to your repo in the form <code>https://github.com/uofa-cmput404/w24-h0x-labsignment-pelican-yourgithubname</code> and your Github Pages URL in the form <code>https://uofa-cmput404.github.io/your-repo-name/</code> on eClass. <strong>Do not</strong> submit a link to a branch, a file, or the clone url. If you do not do this we will not know which github submission is yours.</p>
+<h3 id="collaboration">Collaboration</h3>
+<ul>
+<li>You may consult with others (exchange high-level ideas) but the submission should be your own source code.</li>
+<li>Collaboration must be documented in your source code.</li>
+<li>Any source code you got from anywhere else must be cited in the source code.</li>
+<li>You can only use source code that <strong>you understand</strong>: see the <a href="../general/labs.html#lab-marking">lab marking info</a></li>
 </ul>
   <footer>
     <p>Published: <time datetime="2024-02-07T00:00:00-07:00">
