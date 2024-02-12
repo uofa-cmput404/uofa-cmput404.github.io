@@ -106,7 +106,18 @@ I suggest making model proxy classes that are responsible for synchronizing with
 by making calls using the Fetch API.
 
 **Hint:** Using the "event.preventDefault();" on form `submit` events will prevent the browser from trying to submit the form,
-so you can handle form submission in you custom JS code instead.
+so you can handle form submission in your custom JS code instead.
+
+## Call the backend
+
+* To get an item, GET the item's URL on the backend.
+    * GET should return JSON for the item. The item's children should be represented as an array or object with URLs of the children, not the full representation of the children.
+* To add an outline item, POST to the item's parent's URL on the backend.
+    * POST should return JSON for the new child item including the new child's URL, text, etc. This should be the same contents as a GET that immediately follows the POST to the URL of the new child item.
+* To update an item's text, PUT to the item's URL on the backend.
+    * PUT should return JSON for the item including the updated information. This should be the same contents as a GET that immediately follows the PUT.
+* To delete an item, DELETE to the item's URL on the backend.
+    * Backend can respond with HTTP 204 No Content if successful.
 
 ## Add polling
 
@@ -130,6 +141,10 @@ Optimize communications so that the frontend doesn't have to ask the backend for
     * Add an endpoint that can `GET` a list of updated items, with a `since` query parameter that takes a time.
     * Then, in your JS, poll the list of updated items, then only poll the items changed since the last poll to update the UI.
 
+Optional: Also consider adding code to make sure the frontend doesn't make another request to the same endpoint while the first request is still in progress. You can do this by using the `finally()` method on a promise to run code whether or not the promise resolves or rejects.
+
+Optional: Also consider adding code to batch updates to the backend, e.g. instead of every keypress while typing, limit PUT requests to one update per second while typing.
+
 ## Make it look nice
 
 Add CSS to make your outline look nice. You should give it your own personal style, but it should be pleasing and easy-to-use.
@@ -142,7 +157,7 @@ Violation of the restrictions will result in a mark of zero.
 * All of your Python code must be in `outliner.py`.
 * All of your CSS code must be in `style.css`.
 * All of your JS code must be in `main.js`.
-* All of your HTML must be created dynamically using plain JS in `main.js`.
+* All of your elements must be created dynamically using plain JS to manipulate the DOM in `main.js`.
     * You must not modify `ui.html`.
     * `ui.html` must be the only HTML served by flask (on the route `/`).
 * Using of any frontend frameworks, CSS libraries, JS libraries or frameworks is forbidden. 
@@ -153,7 +168,8 @@ Violation of the restrictions will result in a mark of zero.
 * If you borrow CSS from examples online, always cite the author, give the source URL, and the date you downloaded it.
 * You **must not** modify the HTML.
     * Use JS to modify the DOM.
-    * You **must not** modify the `ui.html` or add other HTML files.
+    * You must not modify the `ui.html` or add other HTML files.
+    * You must not have flask send any other HTML.
 
 # Requirements
 
@@ -164,15 +180,16 @@ Violation of the restrictions will result in a mark of zero.
     * Can add text to items
     * Changes in one window are reflected in a few seconds on all the other windows.
     * Changes aren't overwritten by old data.
-    * It doesn't send multiple items at once, instead it sends URLS to child items which must be fetched separately.
-    * Demonstrates GET POST PUT and DELETE functionality.
     * Demonstrates correct usage of promises.
     * Demonstrates live modification of elements of the DOM.
 * A git repository that does not contain built (compiled, transpiled, bundled) or downloaded artifacts, including but not limited to:
     * `virtualenv` `venv` etc.
     * `.pyc` files, `__pycache__` directories.
-* A flask app `outline.py` that serves the files `ui.html`, `main.js`, `
-  * This contains the output HTML produced by Pelican.
+* A flask app `outline.py` that serves the files `ui.html`, `main.js`, `favicon.ico`, and `style.css`.
+    * Maintains a model of the outline in memory.
+    * Makes the outline available by JSON API endpoints.
+    * Demonstrates GET POST PUT and DELETE functionality.
+    * It doesn't send multiple items at once, instead it sends URLs to child items which must be fetched separately.
 * Your site should look the same on github pages as it does on your local dev server.
 
 # Submission Instructions
