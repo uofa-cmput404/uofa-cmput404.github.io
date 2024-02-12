@@ -91,22 +91,31 @@ For example, `GET /outline/8/9/` should return some JSON like:
 }
 ```
 
-**Do not** have the API send the entire tree at once, it should only send the URLs each items children.
+You can use UUIDs instead of integers if you want, just as long as each outline item has a unique URL.
+
+**Do not** have the API send the entire tree at once, it should only send the URLs for each child item.
 
 ## Create the UI in JS
 
-Create JS View and Controller classes to:
+Create JS code to:
 
 1. Remove the "Loading...".
     * **Hint:** Use `window.addEventListener('load', someFunction)` to run a function once the page has loaded.
 2. Fill in the page.
 
+There are *at least* three different ways to do this.
+Using `document.createElement`, `appendChild`, and `remove` to manipulate the DOM directly is probably the easiest.
+You can also use `innerHTML` to add multiple elements at the same time to the DOM. Using `innerHTML` creates potential security problems that we will discuss during the lectures on security later in the semester.
+A third approach is to register custom elements and add them to the DOM, or even using  Web Components & Templates in combination with one of the two previous approaches.
+
 **Hint:** Using proper OOAD will save you a lot of work. Apply the skills you learned in CMPUT 301.
-I suggest making model proxy classes that are responsible for synchronizing with the model objects in the Flask backend,
-by making calls using the Fetch API.
+I suggest making model proxy classes that are responsible for synchronizing with the model objects in the Flask backend, by making calls using the Fetch API. 
+If you only use "own properties" for things the server sends, you can serialize the model proxy objects to JSON for sending, and apply updates directly to the model proxy objects from deserialized JSON when recieving.
 
 **Hint:** Using the "event.preventDefault();" on form `submit` events will prevent the browser from trying to submit the form,
 so you can handle form submission in your custom JS code instead.
+
+**Hint:** A single DOM object can only be added to the DOM once.
 
 ## Call the backend
 
@@ -121,16 +130,17 @@ so you can handle form submission in your custom JS code instead.
 
 ## Add polling
 
-Add polling in your code to get live updates.
+Add polling in your code to get live updates. 
+Use `fetch()` and promises, not the old `XMLHttpRequest`.
 
 Each browser window that has the outline open should be able to see all the changes that the other browser windows make in a reasonable 
 amount of time (less than a few seconds).
 
-Make sure that the updates don't clobber or overwrite whatever the user is typing.
+Make sure that the updates don't "clobber" or overwrite or reset whatever the user is typing. The easiest way to do that is to remember what the server sent previously for an item, and not update the HTML DOM unless the server sends something different from what it sent the last time.
 
 Use Fetch API, not XMLHttpRequest.
 
-**Hint:** The `input` event of a `text` type `<input>` will fire every time the text changes at all (every keypress if they're typing.)
+**Hint:** The `input` event of a `text` type `<input>` will happen every time the text changes at all (every keypress if the user istyping.) The `change` event only happens when the user changes their focus to a different element.
 
 ## Optimize Communications
 
