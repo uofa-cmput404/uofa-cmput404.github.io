@@ -91,6 +91,8 @@ For example, `GET /outline/8/9/` should return some JSON like:
 }
 ```
 
+**Do not** have the API send the entire tree at once, it should only send the URLs each items children.
+
 ## Create the UI in JS
 
 Create JS View and Controller classes to:
@@ -108,13 +110,29 @@ so you can handle form submission in you custom JS code instead.
 
 ## Add polling
 
-Add polling in your code to get live updates. 
+Add polling in your code to get live updates.
 
-Each time the outline is changed, record the URL of the changed item in a list.
+Each browser window that has the outline open should be able to see all the changes that the other browser windows make in a reasonable 
+amount of time (less than a few seconds).
 
-Add an endpoint that can `GET` a list of updated items, with a `since` query parameter that takes a time.
+Make sure that the updates don't clobber or overwrite whatever the user is typing.
 
-Then, in your JS, use the list of updated items to request only the items changed since the last poll to update the UI.
+Use Fetch API, not XMLHttpRequest.
+
+**Hint:** The `input` event of a `text` type `<input>` will fire every time the text changes at all (every keypress if they're typing.)
+
+## Optimize Communications
+
+Optimize communications so that the frontend doesn't have to ask the backend for the details of unchanged items.
+
+* One way to do this is:
+    * Each time the outline is changed in the backend, record the URL of the changed item in a list in the backend.
+    * Add an endpoint that can `GET` a list of updated items, with a `since` query parameter that takes a time.
+    * Then, in your JS, poll the list of updated items, then only poll the items changed since the last poll to update the UI.
+
+## Make it look nice
+
+Add CSS to make your outline look nice. You should give it your own personal style, but it should be pleasing and easy-to-use.
 
 # Restrictions
 
@@ -133,4 +151,40 @@ Violation of the restrictions will result in a mark of zero.
   * You must not use CSS libraries, frameworks, preprocessors or transpilers.
   * You must not use frontend frameworks, HTML frameworks, preprocessors or transpilers. 
 * If you borrow CSS from examples online, always cite the author, give the source URL, and the date you downloaded it.
+* You **must not** modify the HTML.
+    * Use JS to modify the DOM.
+    * You **must not** modify the `ui.html` or add other HTML files.
+
+# Requirements
+
+* A functioning outline editor 
+    * Has a root item
+    * Can add items under any item
+    * Can delete items
+    * Can add text to items
+    * Changes in one window are reflected in a few seconds on all the other windows.
+    * Changes aren't overwritten by old data.
+    * It doesn't send multiple items at once, instead it sends URLS to child items which must be fetched separately.
+    * Demonstrates GET POST PUT and DELETE functionality.
+    * Demonstrates correct usage of promises.
+    * Demonstrates live modification of elements of the DOM.
+* A git repository that does not contain built (compiled, transpiled, bundled) or downloaded artifacts, including but not limited to:
+    * `virtualenv` `venv` etc.
+    * `.pyc` files, `__pycache__` directories.
+* A flask app `outline.py` that serves the files `ui.html`, `main.js`, `
+  * This contains the output HTML produced by Pelican.
+* Your site should look the same on github pages as it does on your local dev server.
+
+# Submission Instructions
+
+Make sure you push to github classroom **BEFORE 4PM on the day of your lab section!** You will not be able to push after that!
+
+Submit a link to your repo in the form `https://github.com/uofa-cmput404/w24-h0x-labsignment-pelican-yourgithubname` and your Github Pages URL in the form `https://uofa-cmput404.github.io/your-repo-name/` on eClass. **Do not** submit a link to a branch, a file, or the clone url. If you do not do this we will not know which github submission is yours.
+
+# Collaboration
+
+* You may consult with others (exchange high-level ideas) but the submission should be your own source code.
+* Collaboration must be documented in your source code.
+* Any source code you got from anywhere else must be cited in the source code.
+* You can only use source code that **you understand**: see the [lab marking info]({filename}/general/labs.md#lab-marking)
 

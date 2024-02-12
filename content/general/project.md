@@ -135,6 +135,7 @@ Posts, likes, comments, posts, are all sent to the inboxes of the authors that s
     * As an author, I want my friends-only posts and images to only be visible to my friends, so I can feel safe about posting.
         * Note: public posts (and image posts) are public.
     * As an author, other authors cannot modify my posts, so that I don't get impersonated.
+    * As an author, posts I create should always be visible to me, so I can find them to edit them or review them or get the link or whatever I want to do with them.
 * Sharing
     * As an author, I can share other author's public posts, so I can make things go viral!
     * As an author, posts that I share will show up on the timeline of anyone who is following me. 
