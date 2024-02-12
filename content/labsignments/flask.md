@@ -120,7 +120,7 @@ so you can handle form submission in your custom JS code instead.
 ## Call the backend
 
 * To get an item, GET the item's URL on the backend.
-    * GET should return JSON for the item. The item's children should be represented as an array or object with URLs of the children, not the full representation of the children.
+    * GET should return JSON for the item. The item's children should be represented as an array or object with URLs of the children, **not** the full representation of the children.
 * To add an outline item, POST to the item's parent's URL on the backend.
     * POST should return JSON for the new child item including the new child's URL, text, etc. This should be the same contents as a GET that immediately follows the POST to the URL of the new child item.
 * To update an item's text, PUT to the item's URL on the backend.
@@ -133,12 +133,11 @@ so you can handle form submission in your custom JS code instead.
 Add polling in your code to get live updates. 
 Use `fetch()` and promises, not the old `XMLHttpRequest`.
 
-Each browser window that has the outline open should be able to see all the changes that the other browser windows make in a reasonable 
-amount of time (less than a few seconds).
+Each browser window that has the outline open should be able to see all the changes that the other browser windows make in a reasonable amount of time (less than a few seconds).
 
 Make sure that the updates don't "clobber" or overwrite or reset whatever the user is typing. The easiest way to do that is to remember what the server sent previously for an item, and not update the HTML DOM unless the server sends something different from what it sent the last time.
 
-Use Fetch API, not XMLHttpRequest.
+Use Fetch API, **not XMLHttpRequest**.
 
 **Hint:** The `input` event of a `text` type `<input>` will happen every time the text changes at all (every keypress if the user istyping.) The `change` event only happens when the user changes their focus to a different element.
 
@@ -200,13 +199,12 @@ Violation of the restrictions will result in a mark of zero.
     * Makes the outline available by JSON API endpoints.
     * Demonstrates GET POST PUT and DELETE functionality.
     * It doesn't send multiple items at once, instead it sends URLs to child items which must be fetched separately.
-* Your site should look the same on github pages as it does on your local dev server.
 
 # Submission Instructions
 
 Make sure you push to github classroom **BEFORE 4PM on the day of your lab section!** You will not be able to push after that!
 
-Submit a link to your repo in the form `https://github.com/uofa-cmput404/w24-h0x-labsignment-pelican-yourgithubname` and your Github Pages URL in the form `https://uofa-cmput404.github.io/your-repo-name/` on eClass. **Do not** submit a link to a branch, a file, or the clone url. If you do not do this we will not know which github submission is yours.
+Submit a link to your repo in the form `https://github.com/uofa-cmput404/w24-h0x-labsignment-flask-yourgithubname`. **Do not** submit a link to a branch, a file, or the clone url. If you do not do this we will not know which github submission is yours.
 
 # Collaboration
 
