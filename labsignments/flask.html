@@ -138,9 +138,10 @@ For example, <code>GET /outline/8/9/</code> should return some JSON like:</p>
 <span class="p">}</span>
 </code></pre></div>
 
-<p><strong>Do not</strong> have the API send the entire tree at once, it should only send the URLs each items children.</p>
+<p>You can use UUIDs instead of integers if you want, just as long as each outline item has a unique URL.</p>
+<p><strong>Do not</strong> have the API send the entire tree at once, it should only send the URLs for each child item.</p>
 <h4 id="create-the-ui-in-js">Create the UI in JS</h4>
-<p>Create JS View and Controller classes to:</p>
+<p>Create JS code to:</p>
 <ol>
 <li>Remove the "Loading...".<ul>
 <li><strong>Hint:</strong> Use <code>window.addEventListener('load', someFunction)</code> to run a function once the page has loaded.</li>
@@ -148,11 +149,16 @@ For example, <code>GET /outline/8/9/</code> should return some JSON like:</p>
 </li>
 <li>Fill in the page.</li>
 </ol>
+<p>There are <em>at least</em> three different ways to do this.
+Using <code>document.createElement</code>, <code>appendChild</code>, and <code>remove</code> to manipulate the DOM directly is probably the easiest.
+You can also use <code>innerHTML</code> to add multiple elements at the same time to the DOM. Using <code>innerHTML</code> creates potential security problems that we will discuss during the lectures on security later in the semester.
+A third approach is to register custom elements and add them to the DOM, or even using  Web Components &amp; Templates in combination with one of the two previous approaches.</p>
 <p><strong>Hint:</strong> Using proper OOAD will save you a lot of work. Apply the skills you learned in CMPUT 301.
-I suggest making model proxy classes that are responsible for synchronizing with the model objects in the Flask backend,
-by making calls using the Fetch API.</p>
+I suggest making model proxy classes that are responsible for synchronizing with the model objects in the Flask backend, by making calls using the Fetch API. 
+If you only use "own properties" for things the server sends, you can serialize the model proxy objects to JSON for sending, and apply updates directly to the model proxy objects from deserialized JSON when recieving.</p>
 <p><strong>Hint:</strong> Using the "event.preventDefault();" on form <code>submit</code> events will prevent the browser from trying to submit the form,
 so you can handle form submission in your custom JS code instead.</p>
+<p><strong>Hint:</strong> A single DOM object can only be added to the DOM once.</p>
 <h4 id="call-the-backend">Call the backend</h4>
 <ul>
 <li>To get an item, GET the item's URL on the backend.<ul>
@@ -173,12 +179,13 @@ so you can handle form submission in your custom JS code instead.</p>
 </li>
 </ul>
 <h4 id="add-polling">Add polling</h4>
-<p>Add polling in your code to get live updates.</p>
+<p>Add polling in your code to get live updates. 
+Use <code>fetch()</code> and promises, not the old <code>XMLHttpRequest</code>.</p>
 <p>Each browser window that has the outline open should be able to see all the changes that the other browser windows make in a reasonable 
 amount of time (less than a few seconds).</p>
-<p>Make sure that the updates don't clobber or overwrite whatever the user is typing.</p>
+<p>Make sure that the updates don't "clobber" or overwrite or reset whatever the user is typing. The easiest way to do that is to remember what the server sent previously for an item, and not update the HTML DOM unless the server sends something different from what it sent the last time.</p>
 <p>Use Fetch API, not XMLHttpRequest.</p>
-<p><strong>Hint:</strong> The <code>input</code> event of a <code>text</code> type <code>&lt;input&gt;</code> will fire every time the text changes at all (every keypress if they're typing.)</p>
+<p><strong>Hint:</strong> The <code>input</code> event of a <code>text</code> type <code>&lt;input&gt;</code> will happen every time the text changes at all (every keypress if the user istyping.) The <code>change</code> event only happens when the user changes their focus to a different element.</p>
 <h4 id="optimize-communications">Optimize Communications</h4>
 <p>Optimize communications so that the frontend doesn't have to ask the backend for the details of unchanged items.</p>
 <ul>
