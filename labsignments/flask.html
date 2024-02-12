@@ -49,6 +49,7 @@
 <li><a href="#create-model-classes">Create Model Classes</a></li>
 <li><a href="#create-api-for-model">Create API for Model</a></li>
 <li><a href="#create-the-ui-in-js">Create the UI in JS</a></li>
+<li><a href="#call-the-backend">Call the backend</a></li>
 <li><a href="#add-polling">Add polling</a></li>
 <li><a href="#optimize-communications">Optimize Communications</a></li>
 <li><a href="#make-it-look-nice">Make it look nice</a></li>
@@ -151,12 +152,32 @@ For example, <code>GET /outline/8/9/</code> should return some JSON like:</p>
 I suggest making model proxy classes that are responsible for synchronizing with the model objects in the Flask backend,
 by making calls using the Fetch API.</p>
 <p><strong>Hint:</strong> Using the "event.preventDefault();" on form <code>submit</code> events will prevent the browser from trying to submit the form,
-so you can handle form submission in you custom JS code instead.</p>
+so you can handle form submission in your custom JS code instead.</p>
+<h4 id="call-the-backend">Call the backend</h4>
+<ul>
+<li>To get an item, GET the item's URL on the backend.<ul>
+<li>GET should return JSON for the item. The item's children should be represented as an array or object with URLs of the children, not the full representation of the children.</li>
+</ul>
+</li>
+<li>To add an outline item, POST to the item's parent's URL on the backend.<ul>
+<li>POST should return JSON for the new child item including the new child's URL, text, etc. This should be the same contents as a GET that immediately follows the POST to the URL of the new child item.</li>
+</ul>
+</li>
+<li>To update an item's text, PUT to the item's URL on the backend.<ul>
+<li>PUT should return JSON for the item including the updated information. This should be the same contents as a GET that immediately follows the PUT.</li>
+</ul>
+</li>
+<li>To delete an item, DELETE to the item's URL on the backend.<ul>
+<li>Backend can respond with HTTP 204 No Content if successful.</li>
+</ul>
+</li>
+</ul>
 <h4 id="add-polling">Add polling</h4>
-<p>Add polling in your code to get live updates. </p>
+<p>Add polling in your code to get live updates.</p>
 <p>Each browser window that has the outline open should be able to see all the changes that the other browser windows make in a reasonable 
 amount of time (less than a few seconds).</p>
 <p>Make sure that the updates don't clobber or overwrite whatever the user is typing.</p>
+<p>Use Fetch API, not XMLHttpRequest.</p>
 <p><strong>Hint:</strong> The <code>input</code> event of a <code>text</code> type <code>&lt;input&gt;</code> will fire every time the text changes at all (every keypress if they're typing.)</p>
 <h4 id="optimize-communications">Optimize Communications</h4>
 <p>Optimize communications so that the frontend doesn't have to ask the backend for the details of unchanged items.</p>
@@ -168,6 +189,8 @@ amount of time (less than a few seconds).</p>
 </ul>
 </li>
 </ul>
+<p>Optional: Also consider adding code to make sure the frontend doesn't make another request to the same endpoint while the first request is still in progress. You can do this by using the <code>finally()</code> method on a promise to run code whether or not the promise resolves or rejects.</p>
+<p>Optional: Also consider adding code to batch updates to the backend, e.g. instead of every keypress while typing, limit PUT requests to one update per second while typing.</p>
 <h4 id="make-it-look-nice">Make it look nice</h4>
 <p>Add CSS to make your outline look nice. You should give it your own personal style, but it should be pleasing and easy-to-use.</p>
 <h3 id="restrictions">Restrictions</h3>
@@ -177,7 +200,7 @@ amount of time (less than a few seconds).</p>
 <li>All of your Python code must be in <code>outliner.py</code>.</li>
 <li>All of your CSS code must be in <code>style.css</code>.</li>
 <li>All of your JS code must be in <code>main.js</code>.</li>
-<li>All of your HTML must be created dynamically using plain JS in <code>main.js</code>.<ul>
+<li>All of your elements must be created dynamically using plain JS to manipulate the DOM in <code>main.js</code>.<ul>
 <li>You must not modify <code>ui.html</code>.</li>
 <li><code>ui.html</code> must be the only HTML served by flask (on the route <code>/</code>).</li>
 </ul>
@@ -188,27 +211,38 @@ amount of time (less than a few seconds).</p>
 <li>You must not use CSS libraries, frameworks, preprocessors or transpilers.</li>
 <li>You must not use frontend frameworks, HTML frameworks, preprocessors or transpilers. </li>
 <li>If you borrow CSS from examples online, always cite the author, give the source URL, and the date you downloaded it.</li>
-<li>You <strong>must not</strong> modify the HTML except by using JS to add and remove elements.<ul>
-<li>You <strong>must not</strong> modify the <code>ui.html</code> or add other HTML files.</li>
+<li>You <strong>must not</strong> modify the HTML.<ul>
+<li>Use JS to modify the DOM.</li>
+<li>You must not modify the <code>ui.html</code> or add other HTML files.</li>
+<li>You must not have flask send any other HTML.</li>
 </ul>
 </li>
 </ul>
 <h3 id="requirements">Requirements</h3>
 <ul>
-<li>A functioning outline editor </li>
+<li>A functioning outline editor <ul>
 <li>Has a root item</li>
 <li>Can add items under any item</li>
 <li>Can delete items</li>
 <li>Can add text to items</li>
 <li>Changes in one window are reflected in a few seconds on all the other windows.</li>
 <li>Changes aren't overwritten by old data.</li>
+<li>Demonstrates correct usage of promises.</li>
+<li>Demonstrates live modification of elements of the DOM.</li>
+</ul>
+</li>
 <li>A git repository that does not contain built (compiled, transpiled, bundled) or downloaded artifacts, including but not limited to:<ul>
 <li><code>virtualenv</code> <code>venv</code> etc.</li>
 <li><code>.pyc</code> files, <code>__pycache__</code> directories.</li>
 </ul>
 </li>
-<li>A flask app <code>outline.py</code> that serves the files <code>ui.html</code>, <code>main.js</code>, `</li>
-<li>This contains the output HTML produced by Pelican.</li>
+<li>A flask app <code>outline.py</code> that serves the files <code>ui.html</code>, <code>main.js</code>, <code>favicon.ico</code>, and <code>style.css</code>.<ul>
+<li>Maintains a model of the outline in memory.</li>
+<li>Makes the outline available by JSON API endpoints.</li>
+<li>Demonstrates GET POST PUT and DELETE functionality.</li>
+<li>It doesn't send multiple items at once, instead it sends URLs to child items which must be fetched separately.</li>
+</ul>
+</li>
 <li>Your site should look the same on github pages as it does on your local dev server.</li>
 </ul>
 <h3 id="submission-instructions">Submission Instructions</h3>
