@@ -44,7 +44,16 @@
 <li><a href="#description">Description</a></li>
 <li><a href="#getting-started">Getting Started</a><ul>
 <li><a href="#prepare-your-repo">Prepare your Repo</a></li>
-<li><a href="#installing-venv-with-pip">Installing venv with pip</a></li>
+<li><a href="#create-the-virtual-environment">Create the Virtual Environment</a><ul>
+<li><a href="#if-you-have-multiple-versions-of-python-installed">If you have multiple versions of python installed:</a></li>
+<li><a href="#check-if-you-have-pip">Check if you have pip</a></li>
+<li><a href="#check-if-you-have-venv-or-virtualenv">Check if you have venv or virtualenv</a></li>
+<li><a href="#if-youre-on-ubuntu-or-debian-and-dont-have-venv-or-virtualenv">If you're on Ubuntu or Debian and don't have venv or virtualenv:</a></li>
+<li><a href="#if-you-have-pip-installed-but-not-venv">If you have pip installed but not venv:</a></li>
+<li><a href="#create-a-virtual-environment">Create a Virtual Environment</a></li>
+</ul>
+</li>
+<li><a href="#activate-virtual-environment">Activate Virtual Environment</a></li>
 <li><a href="#installing-node-js-and-npm">Installing node JS and npm</a></li>
 </ul>
 </li>
@@ -69,17 +78,30 @@ By the end of this lab you will make a simple emoji picker app.</p>
 <li>Create an appropriate <code>.gitignore</code> file, to prevent unwanted files being commited to your repository.</li>
 </ol>
 <p>Place this gitignore within the root of your project. You can combine <a href="https://github.com/github/gitignore/blob/main/Python.gitignore">this one</a> and <a href="https://github.com/github/gitignore/blob/main/Node.gitignore">this one</a> and <a href="https://github.com/django/django/blob/main/.gitignore">this one</a> for your django+node project. Double check you're not staging any unwanted files before you commit. The <code>git status</code> command can help with that.</p>
-<h4 id="installing-venv-with-pip">Installing venv with pip</h4>
+<h4 id="create-the-virtual-environment">Create the Virtual Environment</h4>
 <p>Virtual environment is a CLI tool for managing python dependencies. Different projects have different dependencies, and version requirements. A virtual environment allows you to manage your dependencies specific to your project.</p>
-<p>To install follow these steps (Note that you need pip installed and configured):</p>
+<h5 id="if-you-have-multiple-versions-of-python-installed">If you have multiple versions of python installed:</h5>
+<p>Always end the python command with the version number. </p>
+<p>For example, on the undergrad machines ugXX.cs.ualberta.ca: you can use <code>python3.11</code>.</p>
+<h5 id="check-if-you-have-pip">Check if you have pip</h5>
+<p><code>python3.XX -m pip</code> should give information about how to use pip.</p>
+<p>For example, on the undergrad machines ugXX.cs.ualberta.ca: you can use <code>python3.11 -m pip</code>.</p>
+<h5 id="check-if-you-have-venv-or-virtualenv">Check if you have venv or virtualenv</h5>
+<p><code>python3.XX -m venv --help</code> should give information about how to use venv.</p>
+<p>If you don't have <code>venv</code>, try <code>virtualenv</code>: <code>python -m virtualenv --help</code> should give information about how to use virtualenv.</p>
+<p>For example, on the undergrad machines ugXX.cs.ualberta.ca: you can use <code>python3.11 -m venv --help</code>.</p>
+<h5 id="if-youre-on-ubuntu-or-debian-and-dont-have-venv-or-virtualenv">If you're on Ubuntu or Debian and don't have venv or virtualenv:</h5>
+<p>`</p>
+<h5 id="if-you-have-pip-installed-but-not-venv">If you have pip installed but not venv:</h5>
 <ol>
 <li><code>python -m pip install --user virtualenv</code></li>
 <li>Check installation: <code>python -m virtualenv --help</code> </li>
 </ol>
-<p>For more info check <a href="https://virtualenv.pypa.io/en/latest/installation.html">here</a>.
-To create and use a virtual environment:</p>
+<p>For more info check <a href="https://virtualenv.pypa.io/en/latest/installation.html">here</a>.</p>
+<h5 id="create-a-virtual-environment">Create a Virtual Environment</h5>
+<h4 id="activate-virtual-environment">Activate Virtual Environment</h4>
+<p>To use a virtual environment:</p>
 <ol>
-<li><code>virtualenv venv --python=python3</code></li>
 <li><code>source venv/bin/activate</code></li>
 </ol>
 <p>The first command will create a directory named <code>venv</code>. Contained in the directory is your
