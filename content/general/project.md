@@ -737,6 +737,22 @@ When building your API, try to adhere to these rules for easy compatibility with
     * You **may** need to add some additional things for compatibility with other groups due to varying interpretations.
     * You **may** add additional endpoints and JSON keys as long as you provide the ones listed above.
 
+## Test Requirements
+
+The REST API must be fully tested.
+    * Every API endpoint must be tested.
+    * Every API functionality must be tested.
+    * Every API method must be tested.
+    * Every user story must be tested at the API level.
+
+These would be system/acceptance tests if the project didn't have a frontend.
+
+Testing the user stories at the API level should automatically give you almost all of the tests you need for every API endpoint, every API functionality, and every API method.
+
+Not every user story has an API to test. For example, adding/removing servers to connect with usually does not have an API. For these functions, please test them in whatever way is most convienent for your project, and then verify them using the API. For example, you could write a test that adds a server to connect with by calling Python code or modifying the database directly, then use the API to check that the new server connection is working.
+
+Front-end (Selenium, etc.) tests are not required. Code coverage (line coverage, statement coverage, branch coverage, MC/DC, etc.) is not required. Unit testing is not required.
+
 # Take-aways
 
 * 1 Working Website

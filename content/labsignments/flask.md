@@ -137,6 +137,8 @@ Each browser window that has the outline open should be able to see all the chan
 
 Make sure that the updates don't "clobber" or overwrite or reset whatever the user is typing. The easiest way to do that is to remember what the server sent previously for an item, and not update the HTML DOM unless the server sends something different from what it sent the last time.
 
+For simplicity, you can ignore the conflict problem when two people are editing the same outline item at the same time.
+
 Use Fetch API, **not XMLHttpRequest**.
 
 **Hint:** The `input` event of a `text` type `<input>` will happen every time the text changes at all (every keypress if the user istyping.) The `change` event only happens when the user changes their focus to a different element.
