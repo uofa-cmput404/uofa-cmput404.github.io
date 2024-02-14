@@ -183,6 +183,7 @@ so you can handle form submission in your custom JS code instead.</p>
 Use <code>fetch()</code> and promises, not the old <code>XMLHttpRequest</code>.</p>
 <p>Each browser window that has the outline open should be able to see all the changes that the other browser windows make in a reasonable amount of time (less than a few seconds).</p>
 <p>Make sure that the updates don't "clobber" or overwrite or reset whatever the user is typing. The easiest way to do that is to remember what the server sent previously for an item, and not update the HTML DOM unless the server sends something different from what it sent the last time.</p>
+<p>For simplicity, you can ignore the conflict problem when two people are editing the same outline item at the same time.</p>
 <p>Use Fetch API, <strong>not XMLHttpRequest</strong>.</p>
 <p><strong>Hint:</strong> The <code>input</code> event of a <code>text</code> type <code>&lt;input&gt;</code> will happen every time the text changes at all (every keypress if the user istyping.) The <code>change</code> event only happens when the user changes their focus to a different element.</p>
 <h4 id="optimize-communications">Optimize Communications</h4>

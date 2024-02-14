@@ -71,6 +71,7 @@
 </li>
 <li><a href="#requirements">Requirements</a><ul>
 <li><a href="#api-requirements">API Requirements</a></li>
+<li><a href="#test-requirements">Test Requirements</a></li>
 </ul>
 </li>
 <li><a href="#take-aways">Take-aways</a></li>
@@ -915,6 +916,16 @@ shortcut to get the image if authenticated to see it.</p>
 </ul>
 </li>
 </ul>
+<h4 id="test-requirements">Test Requirements</h4>
+<p>The REST API must be fully tested.
+    * Every API endpoint must be tested.
+    * Every API functionality must be tested.
+    * Every API method must be tested.
+    * Every user story must be tested at the API level.</p>
+<p>These would be system/acceptance tests if the project didn't have a frontend.</p>
+<p>Testing the user stories at the API level should automatically give you almost all of the tests you need for every API endpoint, every API functionality, and every API method.</p>
+<p>Not every user story has an API to test. For example, adding/removing servers to connect with usually does not have an API. For these functions, please test them in whatever way is most convienent for your project, and then verify them using the API. For example, you could write a test that adds a server to connect with by calling Python code or modifying the database directly, then use the API to check that the new server connection is working.</p>
+<p>Front-end (Selenium, etc.) tests are not required. Code coverage (line coverage, statement coverage, branch coverage, MC/DC, etc.) is not required. Unit testing is not required.</p>
 <h3 id="take-aways">Take-aways</h3>
 <ul>
 <li>1 Working Website</li>
