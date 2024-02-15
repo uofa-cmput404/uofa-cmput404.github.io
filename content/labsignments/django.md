@@ -22,19 +22,50 @@ By the end of this lab you will make a simple emoji picker app.
 
 Place this gitignore within the root of your project. You can combine [this one](https://github.com/github/gitignore/blob/main/Python.gitignore) and [this one](https://github.com/github/gitignore/blob/main/Node.gitignore) and [this one](https://github.com/django/django/blob/main/.gitignore) for your django+node project. Double check you're not staging any unwanted files before you commit. The `git status` command can help with that.
 
-## Installing venv with pip
+## Create the Virtual Environment
 
 Virtual environment is a CLI tool for managing python dependencies. Different projects have different dependencies, and version requirements. A virtual environment allows you to manage your dependencies specific to your project.
 
-To install follow these steps (Note that you need pip installed and configured):
+### If you have multiple versions of python installed:
+
+Always end the python command with the version number. 
+
+For example, on the undergrad machines ugXX.cs.ualberta.ca: you can use `python3.11`.
+
+### Check if you have pip
+
+`python3.XX -m pip` should give information about how to use pip.
+
+For example, on the undergrad machines ugXX.cs.ualberta.ca: you can use `python3.11 -m pip`.
+
+### Check if you have venv or virtualenv
+
+`python3.XX -m venv --help` should give information about how to use venv.
+
+If you don't have `venv`, try `virtualenv`: `python -m virtualenv --help` should give information about how to use virtualenv.
+
+For example, on the undergrad machines ugXX.cs.ualberta.ca: you can use `python3.11 -m venv --help`.
+
+### If you're on Ubuntu or Debian and don't have venv or virtualenv:
+
+`
+
+### If you have pip installed but not venv:
 
 1. `python -m pip install --user virtualenv`
 2. Check installation: `python -m virtualenv --help` 
 
 For more info check [here](https://virtualenv.pypa.io/en/latest/installation.html).
-To create and use a virtual environment:
 
-1. `virtualenv venv --python=python3`
+### Create a Virtual Environment
+
+
+
+
+## Activate Virtual Environment
+
+To use a virtual environment:
+
 2. `source venv/bin/activate`
 
 The first command will create a directory named `venv`. Contained in the directory is your
