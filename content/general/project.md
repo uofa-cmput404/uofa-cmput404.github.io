@@ -681,8 +681,7 @@ shortcut to get the image if authenticated to see it.
             },
             "comments":"http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/de305d54-75b4-431b-adb2-eb6b9e546013/comments"
             "published":"2015-03-09T13:07:04+00:00",
-            "visibility":"FRIENDS",
-            "unlisted":false
+            "visibility":"FRIENDS"
         },
         {
             "type":"post",
@@ -704,8 +703,7 @@ shortcut to get the image if authenticated to see it.
             },
             "comments":"http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/de305d54-75b4-431b-adb2-eb6b9e546013/comments"
             "published":"2015-03-09T13:07:04+00:00",
-            "visibility":"FRIENDS",
-            "unlisted":false
+            "visibility":"FRIENDS"
         }
     ]
 }
