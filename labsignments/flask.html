@@ -111,17 +111,17 @@ Your code must remember which items go inside of other items and the order of th
 <p>Each item in the outline and each author needs a URL in the Flask backend that is accessible by the JS frontend.</p>
 <ul>
 <li><code>GET /outline/</code> should get a JSON respresentation of the root item.</li>
-<li><code>GET /outline/1/2/3/</code> should get a JSON representation of the 3rd item in the 2nd item in 1st item in the root item.</li>
-<li><code>POST /outline/4/</code> should create a new item inside of the 4th item inside of the root item.<ul>
+<li><code>GET /outline/1/2/3/</code> should get a JSON representation of the 4th item in the 3rd item in 2nd item in the root item.</li>
+<li><code>POST /outline/4/</code> should create a new item inside of the 5th item inside of the root item.<ul>
 <li>It should return the appropriate HTTP status code, along with the JSON representation of the new item.</li>
 </ul>
 </li>
-<li><code>PUT /outline/5/6/</code> should modify the text of the 6th item inside of the 5th item inside of the outline.<ul>
+<li><code>PUT /outline/5/6/</code> should modify the text of the 7th item inside of the 6th item inside of the outline.<ul>
 <li>It should return the appropriate HTTP status code.</li>
 <li>It should return the new JSON representation of the 6th item inside of the 5th item inside of the outline.</li>
 </ul>
 </li>
-<li><code>DELETE /outline/7/</code> should delete the 7th item inside of the root item.\<ul>
+<li><code>DELETE /outline/7/</code> should delete the 8th item inside of the root item.\<ul>
 <li>It should return the appropriate HTTP status code.</li>
 </ul>
 </li>
