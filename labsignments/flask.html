@@ -101,11 +101,11 @@ In flask you can do this by <code>from flask import Response</code> then returni
 without getting errors in the browser.
 Check the console to make sure you don't have any errors.</p>
 <h4 id="create-model-classes">Create Model Classes</h4>
-<p>Create model class(es) to represent the state of the outline and users.
+<p>Create model class(es) to represent the state of the outline.
 Think about what you learned in CMPUT 301.</p>
 <p>Your class for outline items must be nestable (a tree) so that any item in the outline can have items inside of it.
 Each item needs to be able to store some text and sub-items.
-Your code must remember which items go inside of other items, the order of the items, each authors color, and which item each author is editing.</p>
+Your code must remember which items go inside of other items and the order of the items.</p>
 <p>It does not need to save this to a database or file, it's fine to just keep it in memory.</p>
 <h4 id="create-api-for-model">Create API for Model</h4>
 <p>Each item in the outline and each author needs a URL in the Flask backend that is accessible by the JS frontend.</p>
