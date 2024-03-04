@@ -68,13 +68,13 @@ It does not need to save this to a database or file, it's fine to just keep it i
 Each item in the outline and each author needs a URL in the Flask backend that is accessible by the JS frontend.
 
 * `GET /outline/` should get a JSON respresentation of the root item.
-* `GET /outline/1/2/3/` should get a JSON representation of the 3rd item in the 2nd item in 1st item in the root item.
-* `POST /outline/4/` should create a new item inside of the 4th item inside of the root item.
+* `GET /outline/1/2/3/` should get a JSON representation of the 4th item in the 3rd item in 2nd item in the root item.
+* `POST /outline/4/` should create a new item inside of the 5th item inside of the root item.
     * It should return the appropriate HTTP status code, along with the JSON representation of the new item.
-* `PUT /outline/5/6/` should modify the text of the 6th item inside of the 5th item inside of the outline.
+* `PUT /outline/5/6/` should modify the text of the 7th item inside of the 6th item inside of the outline.
     * It should return the appropriate HTTP status code.
     * It should return the new JSON representation of the 6th item inside of the 5th item inside of the outline.
-* `DELETE /outline/7/` should delete the 7th item inside of the root item.\
+* `DELETE /outline/7/` should delete the 8th item inside of the root item.\
     * It should return the appropriate HTTP status code.
 
 In the JSON representation of the outline items, there must be an `id` key that gives the URL for the outline item.
