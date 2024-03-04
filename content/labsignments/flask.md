@@ -54,12 +54,12 @@ Check the console to make sure you don't have any errors.
 
 ## Create Model Classes
 
-Create model class(es) to represent the state of the outline and users.
+Create model class(es) to represent the state of the outline.
 Think about what you learned in CMPUT 301.
 
 Your class for outline items must be nestable (a tree) so that any item in the outline can have items inside of it.
 Each item needs to be able to store some text and sub-items.
-Your code must remember which items go inside of other items, the order of the items, each authors color, and which item each author is editing.
+Your code must remember which items go inside of other items and the order of the items.
 
 It does not need to save this to a database or file, it's fine to just keep it in memory.
 
