@@ -911,6 +911,18 @@ https://github.com/uofa-cmput404/w24-project-example-team/tree/part1
 
 ## Project Part 2: Distribution
 
+### Requirements
+
+* Everyone on the team must be able to deploy their own *instance* (copy) of the project to their own Heroku app with their own Heroku Postgres database. This doesn't need to be demonstrated, but it needs to be easy to do using what is in the project repo.
+* At least two different team members must be able to demonstrate a fully working implementation, running on Heroku.
+    * Both instances must be running the same code but have different servers & databases.
+* At least two different team members must be able to demonstrate their instances coordinating. All user stories involving multiple authors must work in both situations:
+    * All authors on the same instance
+    * Authors on different instances
+* For example if the user story is "As an author, I want to be able to approve or deny other authors following me, so that I don't get followed by people I don't like."
+    * This needs to work when the author following is on a different instance from the author they are following.
+    * It also needs to work if they're on the same instance.
+
 ### Submission
 
 Due 4PM on the day of your lab.
