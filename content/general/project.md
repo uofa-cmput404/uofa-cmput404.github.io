@@ -318,6 +318,8 @@ If something is paginated it has query options:
     * DELETE [local]: remove FOREIGN_AUTHOR_ID as a follower of AUTHOR_ID
     * PUT [local]: Add FOREIGN_AUTHOR_ID as a follower of AUTHOR_ID (must be authenticated)
     * GET [local, remote] check if FOREIGN_AUTHOR_ID is a follower of AUTHOR_ID
+        * Should return 404 if they're not
+        * Should return similar format to Follow Request below if they are.
 * Example: GET ://service/authors/{AUTHOR_ID}/followers
 
 ```.js
