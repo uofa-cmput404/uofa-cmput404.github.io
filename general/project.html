@@ -461,7 +461,11 @@ She should also see that I've liked and commented her post.</p>
 <li>URL: ://service/authors/{AUTHOR_ID}/followers/{FOREIGN_AUTHOR_ID}<ul>
 <li>DELETE [local]: remove FOREIGN_AUTHOR_ID as a follower of AUTHOR_ID</li>
 <li>PUT [local]: Add FOREIGN_AUTHOR_ID as a follower of AUTHOR_ID (must be authenticated)</li>
-<li>GET [local, remote] check if FOREIGN_AUTHOR_ID is a follower of AUTHOR_ID</li>
+<li>GET [local, remote] check if FOREIGN_AUTHOR_ID is a follower of AUTHOR_ID<ul>
+<li>Should return 404 if they're not</li>
+<li>Should return similar format to Follow Request below if they are.</li>
+</ul>
+</li>
 </ul>
 </li>
 <li>Example: GET ://service/authors/{AUTHOR_ID}/followers</li>
