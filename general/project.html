@@ -459,6 +459,10 @@ She should also see that I've liked and commented her post.</p>
 </ul>
 </li>
 <li>URL: ://service/authors/{AUTHOR_ID}/followers/{FOREIGN_AUTHOR_ID}<ul>
+<li>Note: foreign author ID should be a percent encoded URL of the foreign author. An example URL would be:<ul>
+<li><code>http://example-node-1/authors/178aba49-ca39-4741-b227-f40d072b1222/followers/http%3A%2F%2Fexample-node-2%2Fauthors%2F5f57808f-0bc9-4b3d-bdd1-bb07c976d12d</code></li>
+</ul>
+</li>
 <li>DELETE [local]: remove FOREIGN_AUTHOR_ID as a follower of AUTHOR_ID</li>
 <li>PUT [local]: Add FOREIGN_AUTHOR_ID as a follower of AUTHOR_ID (must be authenticated)</li>
 <li>GET [local, remote] check if FOREIGN_AUTHOR_ID is a follower of AUTHOR_ID<ul>
