@@ -315,6 +315,8 @@ If something is paginated it has query options:
 * URL: ://service/authors/{AUTHOR_ID}/followers
     * GET [local, remote]: get a list of authors who are AUTHOR_ID's followers
 * URL: ://service/authors/{AUTHOR_ID}/followers/{FOREIGN_AUTHOR_ID}
+    * Note: foreign author ID should be a percent encoded URL of the foreign author. An example URL would be:
+        * `http://example-node-1/authors/178aba49-ca39-4741-b227-f40d072b1222/followers/http%3A%2F%2Fexample-node-2%2Fauthors%2F5f57808f-0bc9-4b3d-bdd1-bb07c976d12d`
     * DELETE [local]: remove FOREIGN_AUTHOR_ID as a follower of AUTHOR_ID
     * PUT [local]: Add FOREIGN_AUTHOR_ID as a follower of AUTHOR_ID (must be authenticated)
     * GET [local, remote] check if FOREIGN_AUTHOR_ID is a follower of AUTHOR_ID
