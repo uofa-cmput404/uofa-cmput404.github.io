@@ -596,7 +596,6 @@ shortcut to get the image if authenticated to see it.
 
 ```.js
 {
-    "@context": "https://www.w3.org/ns/activitystreams",
     "summary": "Lara Croft Likes your post",         
     "type": "Like",
     "author":{
@@ -625,7 +624,6 @@ shortcut to get the image if authenticated to see it.
     "type":"liked",
     "items":[
         {
-            "@context": "https://www.w3.org/ns/activitystreams",
             "summary": "Lara Croft Likes your post",         
             "type": "Like",
             "author":{
