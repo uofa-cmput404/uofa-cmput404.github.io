@@ -546,20 +546,12 @@ She should also see that I've liked and commented her post.</p>
 <li>friends-only posts: must be authenticated</li>
 </ul>
 </li>
-<li>DELETE [local,remote] remove the post whose id is POST_ID<ul>
+<li>DELETE [local] remove the post whose id is POST_ID<ul>
 <li>local posts: must be authenticated locally as the author</li>
-<li>remote posts: must be authenticated locally as the author's server<ul>
-<li>The remote server should do this when a post is deleted</li>
 </ul>
 </li>
-</ul>
-</li>
-<li>PUT [local,remote] update a post where its id is POST_ID<ul>
+<li>PUT [local] update a post where its id is POST_ID<ul>
 <li>local posts: must be authenticated locally as the author</li>
-<li>remote posts: must be authenticated locally as the author's server<ul>
-<li>The remote server should do this when a post is edited</li>
-</ul>
-</li>
 </ul>
 </li>
 </ul>
