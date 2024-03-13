@@ -394,14 +394,10 @@ If something is paginated it has query options:
 * URL: ://service/authors/{AUTHOR_ID}/posts/{POST_ID}
     * GET [local, remote] get the public post whose id is POST_ID
         * friends-only posts: must be authenticated
-    * DELETE [local,remote] remove the post whose id is POST_ID
+    * DELETE [local] remove the post whose id is POST_ID
         * local posts: must be authenticated locally as the author
-        * remote posts: must be authenticated locally as the author's server
-            * The remote server should do this when a post is deleted
-    * PUT [local,remote] update a post where its id is POST_ID
+    * PUT [local] update a post where its id is POST_ID
         * local posts: must be authenticated locally as the author
-        * remote posts: must be authenticated locally as the author's server
-            * The remote server should do this when a post is edited
 * Creation URL ://service/authors/{AUTHOR_ID}/posts/
     * GET [local, remote] get the recent posts from author AUTHOR_ID (paginated)
         * Not authenticated: only public posts.
