@@ -245,10 +245,38 @@ If something is paginated it has query options:
 * Page 4 of objects but 40 per page http://service/author/{author_id}/posts/{post_id}/comments?page=4&size=40
 * 1 based indexing. First page is 1.
 
-# Objects
+# Communication
 
-* HTTP Methods not explicitly listed are not allowed methods
+* HTTP Methods (PUT POST GET DELETE) not explicitly listed are not allowed methods
      * Most HTTP methods are local only, and provided for local node use.
+     * Local node use means for use by the frontend to communicate with the backend it came from.
+* You are free to add your own endpoints for local node use, but you must document and test them.
+
+## Who talks to Who
+
+* Required: The backends talk to each other, mostly trough POST requests to the inbox URLs for remote authors.
+* Optional: The frontend for a single node talks to the backend for a single node.
+* Forbidden: The frontend talks to a backend of another node. 
+ 
+## Overview
+
+Almost all server-to-server communication proceeds by the server where something (post/like/comment/follow request) was created POSTing that thing that was created to the relevant authors inbox on a remote node.
+
+Server-to-server (marked as "[remote]") request other than "POST to inbox" are rarely needed.
+
+## Example (Server-to-Server API View)
+
+1. I sign up for SocialDistribution on http://node1
+2. node1 administrator approves my account.
+3. Now an author object exists that represents me at http://node1/api/authors/555555555
+4. I use the interface to make a follow request to Steph, who is node2/api/authors/777777777
+5. My server POSTs the follow request to Steph's inbox at http://node2/api/authors/777777777/inbox
+6. When Steph logs in, she sees my follow request and approves it.
+7. Now Steph's server (node2) knows that I am following her.
+8. Steph makes a public post.
+9. Steph's server (node1) sends Steph's new post to my inbox with POST http://node1/api/authors/555555555/inbox.
+10. I eventually see Steph's new post, and click like on it.
+11. My server sends the like to Steph's inbox with POST http://node2/api/authors/777777777/inbox
 
 ## Authors
 
