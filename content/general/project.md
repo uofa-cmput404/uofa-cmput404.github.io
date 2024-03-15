@@ -262,7 +262,7 @@ If something is paginated it has query options:
 
 Almost all server-to-server communication proceeds by the server where something (post/like/comment/follow request) was created POSTing that thing that was created to the relevant authors inbox on a remote node.
 
-Server-to-server (marked as "[remote]") request other than "POST to inbox" are rarely needed.
+Server-to-server (marked as "[remote]") request other than "POST to inbox" are rarely needed, but you should support them in case the remote server needs to check something.
 
 ## Example (Server-to-Server API View)
 
@@ -277,6 +277,8 @@ Server-to-server (marked as "[remote]") request other than "POST to inbox" are r
 9. Steph's server (node1) sends Steph's new post to my inbox with POST http://node1/api/authors/555555555/inbox.
 10. I eventually see Steph's new post, and click like on it.
 11. My server sends the like to Steph's inbox with POST http://node2/api/authors/777777777/inbox
+
+# API Endpoints
 
 ## Authors
 
