@@ -56,7 +56,10 @@
 <li><a href="#pagination">Pagination</a></li>
 </ul>
 </li>
-<li><a href="#objects">Objects</a><ul>
+<li><a href="#communication">Communication</a><ul>
+<li><a href="#who-talks-to-who">Who talks to Who</a></li>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#example-server-to-server-api-view">Example (Server-to-Server API View)</a></li>
 <li><a href="#authors">Authors</a></li>
 <li><a href="#single-author">Single Author</a></li>
 <li><a href="#followers">Followers</a></li>
@@ -378,13 +381,38 @@ She should also see that I've liked and commented her post.</p>
 <li>Page 4 of objects but 40 per page http://service/author/{author_id}/posts/{post_id}/comments?page=4&amp;size=40</li>
 <li>1 based indexing. First page is 1.</li>
 </ul>
-<h3 id="objects">Objects</h3>
+<h3 id="communication">Communication</h3>
 <ul>
-<li>HTTP Methods not explicitly listed are not allowed methods<ul>
+<li>HTTP Methods (PUT POST GET DELETE) not explicitly listed are not allowed methods<ul>
 <li>Most HTTP methods are local only, and provided for local node use.</li>
+<li>Local node use means for use by the frontend to communicate with the backend it came from.</li>
 </ul>
 </li>
+<li>You are free to add your own endpoints for local node use, but you must document and test them.</li>
 </ul>
+<h4 id="who-talks-to-who">Who talks to Who</h4>
+<ul>
+<li>Required: The backends talk to each other, mostly trough POST requests to the inbox URLs for remote authors.</li>
+<li>Optional: The frontend for a single node talks to the backend for a single node.</li>
+<li>Forbidden: The frontend talks to a backend of another node. </li>
+</ul>
+<h4 id="overview">Overview</h4>
+<p>Almost all server-to-server communication proceeds by the server where something (post/like/comment/follow request) was created POSTing that thing that was created to the relevant authors inbox on a remote node.</p>
+<p>Server-to-server (marked as "[remote]") request other than "POST to inbox" are rarely needed, but you should support them in case the remote server needs to check something.</p>
+<h4 id="example-server-to-server-api-view">Example (Server-to-Server API View)</h4>
+<ol>
+<li>I sign up for SocialDistribution on http://node1</li>
+<li>node1 administrator approves my account.</li>
+<li>Now an author object exists that represents me at http://node1/api/authors/555555555</li>
+<li>I use the interface to make a follow request to Steph, who is node2/api/authors/777777777</li>
+<li>My server POSTs the follow request to Steph's inbox at http://node2/api/authors/777777777/inbox</li>
+<li>When Steph logs in, she sees my follow request and approves it.</li>
+<li>Now Steph's server (node2) knows that I am following her.</li>
+<li>Steph makes a public post.</li>
+<li>Steph's server (node1) sends Steph's new post to my inbox with POST http://node1/api/authors/555555555/inbox.</li>
+<li>I eventually see Steph's new post, and click like on it.</li>
+<li>My server sends the like to Steph's inbox with POST http://node2/api/authors/777777777/inbox</li>
+</ol>
 <h4 id="authors">Authors</h4>
 <ul>
 <li>URL: ://service/authors/<ul>
