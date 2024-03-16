@@ -212,7 +212,7 @@ She should also see that I've liked and commented her post.</p>
 <li>As an author, posts I create that are in CommonMark can link to images, so that I can illustrate my posts.</li>
 <li>As a server admin, images can be hosted on my server, so that my users can use them in their CommonMark posts.</li>
 <li>As an author, I want to delete my own posts locally, so I can remove posts that are out of date or made by mistake.</li>
-<li>As an author, I want my deletions to take effect remotely, so I know remote users don't keep seeing my deleted posts forever.</li>
+<li>~~As an author, I want my deletions to take effect remotely, so I know remote users don't keep seeing my deleted posts forever.~~</li>
 <li>As an author, I want to be able to use my web-browser to manage/author my posts, so I don't have to use a clunky API.</li>
 <li>As an author, I want to be able to make posts that are unlisted, that are publicly shareable by URI alone (or for embedding images).</li>
 </ul>
@@ -412,10 +412,11 @@ She should also see that I've liked and commented her post.</p>
 <li>When Steph logs in, she sees my follow request and approves it.</li>
 <li>Now Steph's server (node2) knows that I am following her.</li>
 <li>Steph makes a public post.</li>
-<li>Steph's server (node1) sends Steph's new post to my inbox with POST http://node1/api/authors/555555555/inbox.</li>
+<li>Steph's server (node2) sends Steph's new post to my inbox with POST http://node1/api/authors/555555555/inbox.</li>
 <li>I eventually see Steph's new post, and click like on it.</li>
 <li>My server sends the like to Steph's inbox with POST http://node2/api/authors/777777777/inbox</li>
 </ol>
+<p>The Frontend-to-Backend (also known as [local]) communication for this scenario is up to your team, this only describes the Backend-to-Backend communication between two different nodes.</p>
 <h3 id="api-endpoints">API Endpoints</h3>
 <h4 id="authors">Authors</h4>
 <ul>
