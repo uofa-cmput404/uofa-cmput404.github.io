@@ -124,7 +124,7 @@ Posts, likes, comments, posts, are all sent to the inboxes of the authors that s
     * As an author, posts I create that are in CommonMark can link to images, so that I can illustrate my posts.
     * As a server admin, images can be hosted on my server, so that my users can use them in their CommonMark posts.
     * As an author, I want to delete my own posts locally, so I can remove posts that are out of date or made by mistake.
-    * As an author, I want my deletions to take effect remotely, so I know remote users don't keep seeing my deleted posts forever.
+    * DELETED ~~As an author, I want my deletions to take effect remotely, so I know remote users don't keep seeing my deleted posts forever.~~
     * As an author, I want to be able to use my web-browser to manage/author my posts, so I don't have to use a clunky API.
     * As an author, I want to be able to make posts that are unlisted, that are publicly shareable by URI alone (or for embedding images).
 * Reading
@@ -274,9 +274,11 @@ Server-to-server (marked as "[remote]") request other than "POST to inbox" are r
 6. When Steph logs in, she sees my follow request and approves it.
 7. Now Steph's server (node2) knows that I am following her.
 8. Steph makes a public post.
-9. Steph's server (node1) sends Steph's new post to my inbox with POST http://node1/api/authors/555555555/inbox.
+9. Steph's server (node2) sends Steph's new post to my inbox with POST http://node1/api/authors/555555555/inbox.
 10. I eventually see Steph's new post, and click like on it.
 11. My server sends the like to Steph's inbox with POST http://node2/api/authors/777777777/inbox
+
+The Frontend-to-Backend (also known as [local]) communication for this scenario is up to your team, this only describes the Backend-to-Backend communication between two different nodes.
 
 # API Endpoints
 
