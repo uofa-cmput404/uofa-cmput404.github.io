@@ -58,7 +58,7 @@ Violation of the restrictions will result in a mark of zero.
 
 * Must use Python3
 * Must run on Ubuntu (Use the undergrad lab machines, for example the ones in CSC 2-29 or install an Ubuntu VM to check this)
-* The only allowed imports are `socketserver` and `pathlib`: You will recieve a zero mark for using any other imports/libraries.
+* The only allowed imports are `socketserver` and `pathlib`: You will receive a zero mark for using any other imports/libraries.
 * Your code must not modify the code out of its scope (must not do dependency injection), must not run anything at the top level (outside of functions/classes/defining constants), and must not try to work around or modify the test suite.
 
 # Submission Instructions
