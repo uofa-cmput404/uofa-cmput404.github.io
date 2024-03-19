@@ -254,7 +254,7 @@ All students are expected to consult the [Academic Integrity website ](https://w
 
 Exams are confidential. No discussion of the contents of the exam is permitted except with instructors.
 
-# Apropriate Collaboration: Quizzes & Participation
+# Appropriate Collaboration: Quizzes & Participation
 
 Quizzes and Participation are **Solo Effort** and must be completed by the student registered in the course without external assistance from any individual or organization. *Students may only submit work authored by themselves.*
 
