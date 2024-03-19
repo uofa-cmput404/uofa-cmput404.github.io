@@ -51,7 +51,7 @@ The discussion forum is on the eClass.
 
 If your question is related to implementation/configuration issues in the projects/assignments, the TAs are best suited to help you. You can attend TA office hours remotely. **TAs do not provide help outside of Labs and Scheduled Office Hours.**
 
-If your question is related to content covered in class and you need further explanation, please post on the disucssion forum.
+If your question is related to content covered in class and you need further explanation, please post on the discussion forum.
 
 ## Instructor
 
