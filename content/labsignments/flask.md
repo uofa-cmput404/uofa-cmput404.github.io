@@ -110,7 +110,7 @@ A third approach is to register custom elements and add them to the DOM, or even
 
 **Hint:** Using proper OOAD will save you a lot of work. Apply the skills you learned in CMPUT 301.
 I suggest making model proxy classes that are responsible for synchronizing with the model objects in the Flask backend, by making calls using the Fetch API. 
-If you only use "own properties" for things the server sends, you can serialize the model proxy objects to JSON for sending, and apply updates directly to the model proxy objects from deserialized JSON when recieving.
+If you only use "own properties" for things the server sends, you can serialize the model proxy objects to JSON for sending, and apply updates directly to the model proxy objects from deserialized JSON when receiving.
 
 **Hint:** Using the "event.preventDefault();" on form `submit` events will prevent the browser from trying to submit the form,
 so you can handle form submission in your custom JS code instead.

@@ -14,7 +14,7 @@ summary: Lab Procedure, Lab Assignments, Lab Marking
 * [H01 Monday Signup Sheet](https://docs.google.com/spreadsheets/d/1ZJqCYGK09KJNLWI8ebkx93Ab-B1K7yDdkyQfdTWI0uQ/edit)
 * [H02 Wednesday Signup Sheet](https://docs.google.com/spreadsheets/d/1LscS7mbhwcghDxp4ZZ0zYfIq8E5AyJBCO4cI5nNabHA/edit)
 
-* You **must demo your individual lab work to a TA** during the lab to recieve marks.
+* You **must demo your individual lab work to a TA** during the lab to receive marks.
     * If you submit on eClass but don't demo you will get a zero.
     * You can demo over Zoom or in person.
     * Demos are during the second half of your registered lab section on BearTracks (6:00 PM-7:50)
@@ -104,4 +104,4 @@ Note that simply reading the code to the TA does **not** count as understanding.
     * Your code works perfectly
     * You can explain your code to the TA with no problem
     * But, you plagiarized, misrepresented your work, or other academic misconduct (cheating)
-    * Grade: 100, and you get interviewed by the instructor, and you get interviewed by the Dean's office, and you probably get sanctioned by the Dean's office, and you probably recieve letter of reprimand, and the Dean's officer can set your grade to 0 anyway. Or the Dean's officer might fail you for the entire course, or whatever they decide, they have their own rules.
+    * Grade: 100, and you get interviewed by the instructor, and you get interviewed by the Dean's office, and you probably get sanctioned by the Dean's office, and you probably receive letter of reprimand, and the Dean's officer can set your grade to 0 anyway. Or the Dean's officer might fail you for the entire course, or whatever they decide, they have their own rules.
