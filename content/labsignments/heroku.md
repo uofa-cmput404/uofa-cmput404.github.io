@@ -1057,7 +1057,7 @@ Make sure you push to github classroom **BEFORE 4PM on the day of your lab secti
 
 Submit a link to your repo in the form `https://github.com/uofa-cmput404/w24-h0x-labsignment-heroku-yourgithubname` on eClass. **Do not** submit a link to a branch, a file, or the clone url. If you do not do this we will not know which github submission is yours.
 
-After you recieve your grade, you can delete your Heroku app to save credits/money.
+After you receive your grade, you can delete your Heroku app to save credits/money.
 
 # Collaboration
 
