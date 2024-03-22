@@ -124,7 +124,7 @@ Posts, likes, comments, posts, are all sent to the inboxes of the authors that s
     * As an author, posts I create that are in CommonMark can link to images, so that I can illustrate my posts.
     * As a server admin, images can be hosted on my server, so that my users can use them in their CommonMark posts.
     * As an author, I want to delete my own posts locally, so I can remove posts that are out of date or made by mistake.
-    * DELETED ~~As an author, I want my deletions to take effect remotely, so I know remote users don't keep seeing my deleted posts forever.~~
+    * DELETED <del>As an author, I want my deletions to take effect remotely, so I know remote users don't keep seeing my deleted posts forever.</del>
     * As an author, I want to be able to use my web-browser to manage/author my posts, so I don't have to use a clunky API.
     * As an author, I want to be able to make posts that are unlisted, that are publicly shareable by URI alone (or for embedding images).
 * Reading
@@ -616,7 +616,7 @@ shortcut to get the image if authenticated to see it.
 
 * You can like posts and comments
 * Send them to the inbox of the author of the post or comment
-* URL: ://service/authors/{AUTHOR_ID}/inbox/
+* URL: ://service/authors/{AUTHOR_ID}/inbox
     * POST [local, remote]: send a like object to AUTHOR_ID
 * URL: ://service/authors/{AUTHOR_ID}/posts/{POST_ID}/likes
     * GET [local, remote] a list of likes from other authors on AUTHOR_ID's post POST_ID
