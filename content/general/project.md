@@ -117,7 +117,7 @@ Posts, likes, comments, posts, are all sent to the inboxes of the authors that s
 * Posting
     * As an author, I want to make public posts, so that any other author can see them.
     * As an author, I want to edit my posts locally, so that I'm not stuck with a typo on a popular post.
-    * As an author, I want my edits to take effect remotely, so that people don't keep seeing the old version.
+    * <del>As an author, I want my edits to take effect remotely, so that people don't keep seeing the old version.</del>
     * As an author, posts I make can be in CommonMark, so I can give my posts some basic formatting.
     * As an author, posts I make can be in simple plain text, because I don't always want all the formatting features of CommonMark.
     * As an author, posts I create can be images, so that I can share pictures and drawings.
