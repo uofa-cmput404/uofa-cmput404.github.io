@@ -1109,6 +1109,7 @@ Guide for a good presentation:
     * An example of such a scenario is the one in the "Scenario" section above. But don't use that one, come up with your own that shows
     off your app.
 * Rehearse your presentation in person as a team to make sure it is close to 5 minutes.
+* Make sure your team has a laptop that works with the projector *before* the presentation day.
 
 During the other team's presentations:
 
