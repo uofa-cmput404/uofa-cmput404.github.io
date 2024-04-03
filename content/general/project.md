@@ -1110,6 +1110,14 @@ Guide for a good presentation:
     off your app.
 * Rehearse your presentation in person as a team to make sure it is close to 5 minutes.
 
+During the other team's presentations:
+
+* Rudeness to the other teams will not be tolerated.
+* Your team must arrive on time. Late teams will not be allowed to present.
+* You and your team must stay for all presentations and respectfully support the other teams.
+* You may ask thoughtful questions after each presentation.
+* Wait until after questions to applaud.
+
 ### Marking
 
 * 10 Marks
