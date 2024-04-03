@@ -1084,6 +1084,32 @@ Submit only the link to the tag in the following format:
 
 https://github.com/uofa-cmput404/w24-project-example-team/tree/part4
 
+### Presentation
+
+Your presentation will be 5 minutes max. Then you will have a minute or two for questions.
+
+Your presentation should focus on:
+
+* Important functions
+    * You won't have time for every function in 5 minutes, so make sure to cover the most important functions.
+* Your UI
+    * This is what makes your project different from the other teams, so be sure to show it off!
+    * We don't really need to see the Django admin panel.
+* Federation
+    * Demonstrate your working connection with other team(s).
+
+Guide for a good presentation:
+
+* Ideally, everyone in your team should take turns speaking.
+    * However, I do understand that some people have public speaking anxiety, so you won't be penalized if someone doesn't speak.
+* Ideally, your presentation will use your live web app.
+    * The most successful teams in the past use note cards.
+    * Prepare backup slides in case something goes wrong that prevents you from doing a live demo.
+* The best presentations tell a story, walking through a typical user scenario.
+    * An example of such a scenario is the one in the "Scenario" section above. But don't use that one, come up with your own that shows
+    off your app.
+* Rehearse your presentation in person as a team to make sure it is close to 5 minutes.
+
 ### Marking
 
 * 10 Marks
