@@ -295,7 +295,7 @@ The Frontend-to-Backend (also known as [local]) communication for this scenario 
 ```.js
 {
     "type": "authors",      
-    "items":[
+    "authors":[
         {
             "type":"author",
             "id":"http://127.0.0.1:5454/authors/1d698d25ff008f7538453c120f581471",
@@ -359,7 +359,7 @@ The Frontend-to-Backend (also known as [local]) communication for this scenario 
 ```.js
 {
     "type": "followers",      
-    "items":[
+    "followers":[
         {
             "type":"author",
             "id":"http://127.0.0.1:5454/authors/1d698d25ff008f7538453c120f581471",
@@ -497,7 +497,7 @@ The Frontend-to-Backend (also known as [local]) communication for this scenario 
         "size":5,
         "post":"http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/de305d54-75b4-431b-adb2-eb6b9e546013"
         "id":"http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/de305d54-75b4-431b-adb2-eb6b9e546013/comments"
-        "items":[
+        "comments":[
             {
                 "type":"comment",
                 "author":{
@@ -585,7 +585,7 @@ shortcut to get the image if authenticated to see it.
     "size":5,
     "post":"http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/de305d54-75b4-431b-adb2-eb6b9e546013"
     "id":"http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/de305d54-75b4-431b-adb2-eb6b9e546013/comments"
-    "items":[
+    "comments":[
         {
             "type":"comment",
             "author":{
@@ -652,7 +652,7 @@ shortcut to get the image if authenticated to see it.
 ```.js
 {
     "type":"liked",
-    "items":[
+    "likes":[
         {
             "summary": "Lara Croft Likes your post",         
             "type": "Like",
