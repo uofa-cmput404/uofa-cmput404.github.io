@@ -1,6 +1,6 @@
-title: HTTP Lab
+title: HTTP Lab2
 date: 2024-07-17
-tags: curl, http
+tags: socket, http, socketserver
 authors: Samuel Iwuchukwu, Hazel Victoria Campbell
 status: published
 
