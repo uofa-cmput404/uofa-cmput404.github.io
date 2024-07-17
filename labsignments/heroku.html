@@ -76,7 +76,7 @@
 <li><a href="#setting-up-the-heroku-cli">Setting up the Heroku CLI</a></li>
 <li><a href="#preparing-our-django-application-for-heroku">Preparing our Django Application for Heroku</a></li>
 <li><a href="#deploying-our-django-application-to-heroku">Deploying our Django Application to Heroku</a></li>
-<li><a href="#make-a-postgres-database-on-heroku">Make a Postgres Database on Heroku</a></li>
+<li><a href="#using-a-postgres-database-on-heroku">Using a Postgres Database on Heroku</a></li>
 <li><a href="#checking-your-heroku-app">Checking your heroku app</a></li>
 </ul>
 </li>
@@ -220,7 +220,7 @@ need to use the noted alternate instructions. Your repo would look like this, wi
 <span class="p">]</span>
 </code></pre></div>
 
-<p>Within <em>urls.py</em> (the outer one) include the following code.</p>
+<p>Within <code>lab3/urls.py</code> include the following code.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">django.contrib</span> <span class="kn">import</span> <span class="n">admin</span>
 <span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">include</span><span class="p">,</span> <span class="n">path</span>
 
@@ -806,8 +806,8 @@ If you do have a project subfolder it should look like this:
 
 </aside>
 
-<p>Pip install <a href="https://gunicorn.org/">gunicorn</a> and <a href="https://github.com/pkrefta/django-on-heroku">django-on-heroku</a>.</p>
-<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>gunicorn<span class="w"> </span>django-on-heroku
+<p>Pip install <a href="https://gunicorn.org/">gunicorn</a>, <a href="https://github.com/evansd/whitenoise">whitenoise</a>, <a href="https://github.com/jazzband/dj-database-url/">dj-database-url</a>, and <a href="https://github.com/psycopg/psycopg2">psycopg2-binary</a>.</p>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>gunicorn<span class="w"> </span>whitenoise<span class="w"> </span>dj-database-url<span class="w"> </span>psycopg2-binary
 </code></pre></div>
 
 <p>Save the new python requirements into the <em>requirements.txt</em> file.</p>
@@ -827,12 +827,22 @@ If you do have a project subfolder it should look like this:
 </code></pre></div>
 
 </aside>
-<p>Within <em>settings.py</em>, add the following statements:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">django_on_heroku</span> <span class="c1"># top of the file</span>
+<p>Within <em>settings.py</em>, add/edit the following statements:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Update this variable</span>
+<span class="n">ALLOWED_HOSTS</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">]</span>
 
-<span class="c1"># ...</span>
+<span class="c1"># Add at the bottom of the file</span>
+<span class="n">STATIC_ROOT</span> <span class="o">=</span> <span class="n">BASE_DIR</span> <span class="o">/</span> <span class="s2">&quot;staticfiles&quot;</span> 
+<span class="n">STATIC_URL</span> <span class="o">=</span> <span class="s2">&quot;/static/&quot;</span>
+</code></pre></div>
 
-<span class="n">django_on_heroku</span><span class="o">.</span><span class="n">settings</span><span class="p">(</span><span class="nb">locals</span><span class="p">())</span> <span class="c1"># bottom of the file</span>
+<p>and then edit the <code>MIDDLEWARE</code> list to have <code>whitenoise.middleware.WhiteNoiseMiddleware</code> right after <code>django.middleware.security.SecurityMiddleware</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">MIDDLEWARE</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="c1"># ...</span>
+    <span class="s2">&quot;django.middleware.security.SecurityMiddleware&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;whitenoise.middleware.WhiteNoiseMiddleware&quot;</span><span class="p">,</span>
+    <span class="c1"># ...</span>
+<span class="p">]</span>
 </code></pre></div>
 
 <h5 id="deploying-our-django-application-to-heroku">Deploying our Django Application to Heroku</h5>
@@ -840,7 +850,7 @@ If you do have a project subfolder it should look like this:
 <p>Commit your files and deploy the application using a the heroku command line tool. See <a href="https://devcenter.heroku.com/articles/git">their article on how to do this</a>. Follow the instructions for an existing app, not a new app: <code>use heroku git:remote</code>, <strong>not</strong> <code>heroku create</code>.
 If you used <code>heroku create</code>, please see <a href="https://stackoverflow.com/questions/50421071/git-i-made-a-repository-inside-a-repository-and-now-i-just-want-the-one-big-rep">this stackoverflow question</a> about how to return to a single repository.</p>
 <p>You should have a heroku app. You should see it if you run the <code>heroku list</code> command. In the following, <code>APPNAME</code> refers to this heroku app's name.</p>
-<h5 id="make-a-postgres-database-on-heroku">Make a Postgres Database on Heroku</h5>
+<h5 id="using-a-postgres-database-on-heroku">Using a Postgres Database on Heroku</h5>
 <div class="highlight"><pre><span></span><code>heroku addons:create heroku-postgresql:mini
 </code></pre></div>
 
@@ -851,7 +861,36 @@ If you used <code>heroku create</code>, please see <a href="https://stackoverflo
 </code></pre></div>
 
 <p>You should get an output like that contains a line that starts with <code>DATABASE_URL=postgres://</code> followed by a username and a password.</p>
-<p>Check that django is now using your heroku postgres database:</p>
+<p>We now need to update our code to support saving data on Heroku using this environment variable. Edit <code>settings.py</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># at the very top of the file</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">dj_database_url</span>
+
+<span class="c1"># ...</span>
+
+<span class="c1"># Replace the old DATABASES variable declaration with this if statement</span>
+
+<span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;DATABASE_URL&quot;</span><span class="p">)</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="c1"># Running on Heroku</span>
+    <span class="n">DATABASES</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;default&quot;</span><span class="p">:</span> <span class="n">dj_database_url</span><span class="o">.</span><span class="n">config</span><span class="p">(</span>
+            <span class="n">conn_max_age</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span>
+            <span class="n">conn_health_checks</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">ssl_require</span><span class="o">=</span><span class="kc">True</span>
+        <span class="p">)</span>
+    <span class="p">}</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="c1"># Running locally.</span>
+    <span class="n">DATABASES</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;default&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;ENGINE&quot;</span><span class="p">:</span> <span class="s2">&quot;django.db.backends.sqlite3&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;NAME&quot;</span><span class="p">:</span> <span class="n">BASE_DIR</span> <span class="o">/</span> <span class="s2">&quot;db.sqlite3&quot;</span><span class="p">,</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+</code></pre></div>
+
+<p>Commit your files and deploy the application again using the heroku command line tool.</p>
+<p>Once it is deployed, check that django is now using your heroku postgres database:</p>
 <aside class="option1">
 <div class="highlight"><pre><span></span><code><span class="c1"># If your django project is your git repo root</span>
 heroku<span class="w"> </span>run<span class="w"> </span><span class="s2">&quot;python3 manage.py diffsettings&quot;</span>
@@ -868,7 +907,7 @@ heroku<span class="w"> </span>run<span class="w"> </span><span class="s2">&quot;
 <div class="highlight"><pre><span></span><code>DATABASES = {&#39;default&#39;: {&#39;NAME&#39;: &#39;random letters&#39;, &#39;USER&#39;: &#39;random letters&#39;, &#39;PASSWORD&#39;: &#39;big hex number&#39;, &#39;HOST&#39;: &#39;something.amazonaws.com&#39;, &#39;PORT&#39;: 5432, &#39;CONN_MAX_AGE&#39;: 600, &#39;CONN_HEALTH_CHECKS&#39;: False, &#39;ENGINE&#39;: &#39;django.db.backends.postgresql&#39;, &#39;OPTIONS&#39;: {&#39;sslmode&#39;: &#39;require&#39;}, &#39;ATOMIC_REQUESTS&#39;: False, &#39;AUTOCOMMIT&#39;: True, &#39;TIME_ZONE&#39;: None, &#39;TEST&#39;: {&#39;CHARSET&#39;: None, &#39;COLLATION&#39;: None, &#39;MIGRATE&#39;: True, &#39;MIRROR&#39;: None, &#39;NAME&#39;: None}}}
 </code></pre></div>
 
-<p>If it contains <code>sqlite3</code>, something is wrong. Please check that you followed the steps starting with adding <code>django-on-heroku</code> correctly.</p>
+<p>If it contains <code>sqlite3</code>, something is wrong. Please check that you followed the steps correctly.</p>
 <p>Run your migrations, create a Superuser, and ensure your application functionality works.</p>
 <aside class="option1">
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>heroku<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>manage.py<span class="w"> </span>migrate
