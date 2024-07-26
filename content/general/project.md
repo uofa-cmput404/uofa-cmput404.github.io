@@ -124,7 +124,7 @@ Posts, likes, comments, posts, are all sent to the inboxes of the authors that s
     * As an author, posts I create that are in CommonMark can link to images, so that I can illustrate my posts.
     * As a server admin, images can be hosted on my server, so that my users can use them in their CommonMark posts.
     * As an author, I want to delete my own posts locally, so I can remove posts that are out of date or made by mistake.
-    * DELETED <del>As an author, I want my deletions to take effect remotely, so I know remote users don't keep seeing my deleted posts forever.</del>
+    * <del>As an author, I want my deletions to take effect remotely, so I know remote users don't keep seeing my deleted posts forever.</del>
     * As an author, I want to be able to use my web-browser to manage/author my posts, so I don't have to use a clunky API.
     * As an author, I want to be able to make posts that are unlisted, that are publicly shareable by URI alone (or for embedding images).
 * Reading
@@ -295,7 +295,7 @@ The Frontend-to-Backend (also known as [local]) communication for this scenario 
 ```.js
 {
     "type": "authors",      
-    "items":[
+    "authors":[
         {
             "type":"author",
             "id":"http://127.0.0.1:5454/authors/1d698d25ff008f7538453c120f581471",
@@ -359,7 +359,7 @@ The Frontend-to-Backend (also known as [local]) communication for this scenario 
 ```.js
 {
     "type": "followers",      
-    "items":[
+    "followers":[
         {
             "type":"author",
             "id":"http://127.0.0.1:5454/authors/1d698d25ff008f7538453c120f581471",
@@ -450,16 +450,16 @@ The Frontend-to-Backend (also known as [local]) communication for this scenario 
     // id of the post
     "id":"http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/764efa883dda1e11db47671c4a3bbd9e"
     // where did you get this post from?
-    "source":"http://lastplaceigotthisfrom.com/posts/yyyyy",
+    "source":"http://lastplaceigotthisfrom.com/authors/xxxxxx/posts/yyyyyy",
     // where is it actually from
-    "origin":"http://whereitcamefrom.com/posts/zzzzz",
+    "origin":"http://whereitcamefrom.com/authors/wwwwww/posts/zzzzzz",
     // a brief description of the post
     "description":"This post discusses stuff -- brief",
     // The content type of the post
     // assume either
     // text/markdown -- common mark
     // text/plain -- UTF-8
-    // application/base64
+    // application/base64 # this an image that is neither a jpeg or png
     // image/png;base64 # this is an embedded png -- images are POSTS. So you might have a user make 2 posts if a post includes an image!
     // image/jpeg;base64 # this is an embedded jpeg
     // for HTML you will want to strip tags before displaying
@@ -647,12 +647,12 @@ shortcut to get the image if authenticated to see it.
     * GET [local, remote] list what public things AUTHOR_ID liked.
       * It's a list of of likes originating from this author
       * Note: be careful here private information could be disclosed.
-* Example liked object:
+* Example Format:
 
 ```.js
 {
     "type":"liked",
-    "items":[
+    "likes":[
         {
             "summary": "Lara Croft Likes your post",         
             "type": "Like",
@@ -695,8 +695,8 @@ shortcut to get the image if authenticated to see it.
             "type":"post",
             "title":"A Friendly post title about a post about web dev",
             "id":"http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/764efa883dda1e11db47671c4a3bbd9e"
-            "source":"http://lastplaceigotthisfrom.com/authors/xxxxxx/posts/yyyyy",
-            "origin":"http://whereitcamefrom.com/authors/yyyyyy/posts/zzzzz",
+            "source":"http://lastplaceigotthisfrom.com/authors/xxxxxx/posts/yyyyyy",
+            "origin":"http://whereitcamefrom.com/authors/wwwwww/posts/zzzzzz",
             "description":"This post discusses stuff -- brief",
             "contentType":"text/plain",
             "content":"Þā wæs on burgum Bēowulf Scyldinga, lēof lēod-cyning, longe þrāge folcum gefrǣge (fæder ellor hwearf, aldor of earde), oð þæt him eft onwōc hēah Healfdene; hēold þenden lifde, gamol and gūð-rēow, glæde Scyldingas. Þǣm fēower bearn forð-gerīmed in worold wōcun, weoroda rǣswan, Heorogār and Hrōðgār and Hālga til; hȳrde ic, þat Elan cwēn Ongenþēowes wæs Heaðoscilfinges heals-gebedde. Þā wæs Hrōðgāre here-spēd gyfen, wīges weorð-mynd, þæt him his wine-māgas georne hȳrdon, oð þæt sēo geogoð gewēox, mago-driht micel. Him on mōd bearn, þæt heal-reced hātan wolde, medo-ærn micel men gewyrcean, þone yldo bearn ǣfre gefrūnon, and þǣr on innan eall gedǣlan geongum and ealdum, swylc him god sealde, būton folc-scare and feorum gumena. Þā ic wīde gefrægn weorc gebannan manigre mǣgðe geond þisne middan-geard, folc-stede frætwan. Him on fyrste gelomp ǣdre mid yldum, þæt hit wearð eal gearo, heal-ærna mǣst; scōp him Heort naman, sē þe his wordes geweald wīde hæfde. Hē bēot ne ālēh, bēagas dǣlde, sinc æt symle. Sele hlīfade hēah and horn-gēap: heaðo-wylma bād, lāðan līges; ne wæs hit lenge þā gēn þæt se ecg-hete āðum-swerian 85 æfter wæl-nīðe wæcnan scolde. Þā se ellen-gǣst earfoðlīce þrāge geþolode, sē þe in þȳstrum bād, þæt hē dōgora gehwām drēam gehȳrde hlūdne in healle; þǣr wæs hearpan swēg, swutol sang scopes. Sægde sē þe cūðe frum-sceaft fīra feorran reccan",
@@ -717,8 +717,8 @@ shortcut to get the image if authenticated to see it.
             "type":"post",
             "title":"DID YOU READ MY POST YET?",
             "id":"http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/999999983dda1e11db47671c4a3bbd9e",
-            "source":"http://lastplaceigotthisfrom.com/authors/xxxxxx/posts/yyyyy",
-            "origin":"http://whereitcamefrom.com/authors/wwwwww/posts/zzzzz",
+            "source":"http://lastplaceigotthisfrom.com/authors/xxxxxx/posts/yyyyyy",
+            "origin":"http://whereitcamefrom.com/authors/wwwwww/posts/zzzzzz",
             "description":"Whatever",
             "contentType":"text/plain",
             "content":"Are you even reading my posts Arjun?",
