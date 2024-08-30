@@ -14,6 +14,15 @@ summary: Lab Procedure, Lab Assignments, Lab Marking
 Big lab! This lab contains two phases. In Phase One, you will build a simple Django website. Understand the fundamentals of Django's MVC architecture using the built in models and views.
 In Phase Two, you will deploy the Django application to [Heroku](https://www.heroku.com/). Understand the reasoning behind Platform as a Service (PaaS) businesses like Heroku. You may follow the official documentation.
 
+## Learning Goals
+
+* Using esbuild to bundle and create static files with NPM packages for Django to server using whitenoise from Heroku.
+* Django config (Level 2)
+* Django routes (Level 2)
+* Django models
+* Using Django with Postgres backend on Heroku
+* Using Django with Sqlite backend for local testing
+
 ## Warning!
 
 The University's firewall (UWS) blocks new domains for 24 hours to prevent scam domains.
@@ -168,7 +177,7 @@ urlpatterns = [
 ]
 ```
 
-Within *urls.py* (the outer one) include the following code.
+Within `lab3/urls.py` include the following code.
 
 ```python
 from django.contrib import admin
@@ -873,10 +882,10 @@ If you do have a project subfolder it should look like this:
 ```
 </aside>
 
-Pip install [gunicorn](https://gunicorn.org/) and [django-on-heroku](https://github.com/pkrefta/django-on-heroku).
+Pip install [gunicorn](https://gunicorn.org/), [whitenoise](https://github.com/evansd/whitenoise), [dj-database-url](https://github.com/jazzband/dj-database-url/), and [psycopg2-binary](https://github.com/psycopg/psycopg2).
 
 ```bash
-pip install gunicorn django-on-heroku
+pip install gunicorn whitenoise dj-database-url psycopg2-binary
 ```
 
 Save the new python requirements into the *requirements.txt* file.
@@ -903,14 +912,26 @@ web: gunicorn lab3.wsgi --chdir lab3
 ```
 </aside>
 
-Within *settings.py*, add the following statements:
+Within *settings.py*, add/edit the following statements:
 
 ```python
-import django_on_heroku # top of the file
+# Update this variable
+ALLOWED_HOSTS = ["*"]
 
-# ...
+# Add at the bottom of the file
+STATIC_ROOT = BASE_DIR / "staticfiles" 
+STATIC_URL = "/static/"
+```
 
-django_on_heroku.settings(locals()) # bottom of the file
+and then edit the `MIDDLEWARE` list to have `whitenoise.middleware.WhiteNoiseMiddleware` right after `django.middleware.security.SecurityMiddleware`:
+
+```python
+MIDDLEWARE = [
+    # ...
+    "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
+    # ...
+]
 ```
 
 ### Deploying our Django Application to Heroku
@@ -922,7 +943,7 @@ If you used `heroku create`, please see [this stackoverflow question](https://st
 
 You should have a heroku app. You should see it if you run the `heroku list` command. In the following, `APPNAME` refers to this heroku app's name.
 
-### Make a Postgres Database on Heroku
+### Using a Postgres Database on Heroku
 
 ```
 heroku addons:create heroku-postgresql:mini
@@ -939,7 +960,39 @@ heroku run env
 
 You should get an output like that contains a line that starts with `DATABASE_URL=postgres://` followed by a username and a password.
 
-Check that django is now using your heroku postgres database:
+We now need to update our code to support saving data on Heroku using this environment variable. Edit `settings.py`:
+
+```python
+# at the very top of the file
+import os
+import dj_database_url
+
+# ...
+
+# Replace the old DATABASES variable declaration with this if statement
+
+if os.environ.get("DATABASE_URL") != None:
+    # Running on Heroku
+    DATABASES = {
+        "default": dj_database_url.config(
+            conn_max_age=600,
+            conn_health_checks=True,
+            ssl_require=True
+        )
+    }
+else:
+    # Running locally.
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "db.sqlite3",
+        }
+    }
+```
+
+Commit your files and deploy the application again using the heroku command line tool.
+
+Once it is deployed, check that django is now using your heroku postgres database:
 
 <aside markdown="block" class="option1">
 ```bash
@@ -961,7 +1014,7 @@ The output should contain a line like this that says `'default'` and has `'ENGIN
 DATABASES = {'default': {'NAME': 'random letters', 'USER': 'random letters', 'PASSWORD': 'big hex number', 'HOST': 'something.amazonaws.com', 'PORT': 5432, 'CONN_MAX_AGE': 600, 'CONN_HEALTH_CHECKS': False, 'ENGINE': 'django.db.backends.postgresql', 'OPTIONS': {'sslmode': 'require'}, 'ATOMIC_REQUESTS': False, 'AUTOCOMMIT': True, 'TIME_ZONE': None, 'TEST': {'CHARSET': None, 'COLLATION': None, 'MIGRATE': True, 'MIRROR': None, 'NAME': None}}}
 ```
 
-If it contains `sqlite3`, something is wrong. Please check that you followed the steps starting with adding `django-on-heroku` correctly.
+If it contains `sqlite3`, something is wrong. Please check that you followed the steps correctly.
 
 Run your migrations, create a Superuser, and ensure your application functionality works.
 

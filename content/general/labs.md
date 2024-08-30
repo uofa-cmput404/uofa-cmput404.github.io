@@ -36,6 +36,7 @@ If you are worried about your audio, video, zoom, internet connection, etc. atte
 3. [Heroku]({filename}/labsignments/heroku.md)
 4. [Pelican]({filename}/labsignments/pelican.md)
 5. [Flask]({filename}/labsignments/flask.md)
+6. [HTTP2]({filename}/labsignments/http2.md)
 
 [All labsignments]({category}labsignments)
 
