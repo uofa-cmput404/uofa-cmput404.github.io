@@ -808,6 +808,7 @@ Front-end (Selenium, etc.) tests are not required. Code coverage (line coverage,
     * Splitting frontend/backend hosting is not allowed, this has caused too many problems.
 * License your code properly (use an OSI approved license)
     * Put your name (or some representation of you like GeneralHuxFan768) on it!
+* Force-push, rebase, and other git operations that remove history from github are strictly forbidden and you may recieve a zero or be removed from your team.
 
 ## Things that are allowed
 
@@ -1115,9 +1116,9 @@ During the other team's presentations:
 
 * Rudeness to the other teams will not be tolerated.
 * Your team must arrive on time. Late teams will not be allowed to present.
-* You and your team must stay for all presentations and respectfully support the other teams.
+* You and your team must stay for all presentations and show respect, support, and appreciation for the other teams hard work.
 * You may ask thoughtful questions after each presentation.
-* Wait until after questions to applaud.
+* Wait until after questions to applaud. Otherwise, everyone ends up awkwardly applauding each team twice.
 
 ### Marking
 
