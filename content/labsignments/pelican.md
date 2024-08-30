@@ -91,11 +91,11 @@ mkdir -p templates/mytheme/templates
 
 On Windows you need to create the same structure.
 
-Within the `templates/mytheme/templates` directory, create a new file `base.html`. Within the `templates/mytheme/static` directory, create a new file `style.css`.
+Within the `templates/mytheme/templates` directory, create a new file `base.html`. Within the `templates/mytheme/static` directory, create a new file `fancy.css`.
 
 ```bash
 touch templates/mytheme/templates/base.html
-touch templates/mytheme/static/style.css
+touch templates/mytheme/static/fancy.css
 ```
 
 Add the following content to the file `templates/mytheme/templates/base.html`.
@@ -105,11 +105,11 @@ Add the following content to the file `templates/mytheme/templates/base.html`.
 
 {% block head %}
 {{ super() }}
-  <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/style.css" />
+  <link id="stylesheet" rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/fancy.css" />
 {% endblock %}
 ```
 
-Modify the content of the `templates/mytheme/static/style.css` file to your preference. A quick sample stylesheet can be found below.
+Modify the content of the `templates/mytheme/static/fancy.css` file to your preference. A quick sample stylesheet can be found below.
 
 ```css
 html, body {
@@ -121,7 +121,7 @@ html, body {
 }
 ```
 
-This is just to get you started, you will have to add a lot to `style.css` later!
+This is just to get you started, you will have to add a lot to `fancy.css` later!
 
 Add your theme to your *pelicanconf.py* file.
 
@@ -259,52 +259,50 @@ the HTML you put in your `<body>`.
 
 ## Phase Three: Playing around with CSS
 
-Write CSS to enable your site to have dark mode, light mode, print mode, and responsiveness in both desktop and mobile views.  
+Write CSS to enable your site to have fancy mode, 90s mode, minimal mode, and responsiveness in both desktop and mobile views.  
 
-* Light Mode: You can take inspiration from modern websites such as Amazon, Facebook, Google, Github, or Microsoft, but **do not copy their code.**
+* Fancy Mode: You can take inspiration from modern websites such as Amazon, Facebook, Google, Github, or Microsoft, but **do not copy their code.**
   * These websites have thousands of lines copyrighted CSS that you do not need and do not have permission from Amazon/Facebook/Google to copy. However, you can use your browser's Dev Tools to see how they accomplish certain things and take inspiration from that.
   * Try to make your light mode look like a standard, modern website. Try to make it look like a website that you would want to use.
-* Dark Mode: You can take inspiration from the [oatmeal comic](https://theoatmeal.com/comics/design_hell?fbclid=IwAR32De0TRFISnARpWunp3jvoCF1k1iXdotYZbvenRJOvqUCeaJwABk91JFw) or [space jam](https://www.spacejam.com/1996/). Try to make it like those 90s websites.
-* Print Mode: Try to make the page look good and clean for printing. Use a minimalism-style design. Minimalism is about removing any unnecessary elements of the design such as lines, colors, shapes, and backgrounds.
+* 90s Mode: You can take inspiration from the [oatmeal comic](https://theoatmeal.com/comics/design_hell?fbclid=IwAR32De0TRFISnARpWunp3jvoCF1k1iXdotYZbvenRJOvqUCeaJwABk91JFw) or [space jam](https://www.spacejam.com/1996/). Try to make it like those 90s websites.
+* Minimal Mode: Try to make the page look good and clean for printing. Use a minimalism-style design. Minimalism is about removing any unnecessary elements of the design such as lines, colors, shapes, and backgrounds.
   * Try to make your print mode look good for printing. Check what it looks like by printing it to a PDF file (you don't need to print it to physical paper).
 * Every part of the page should be very different between the 3 modes.
 * You should include CSS that styles every visible HTML element on the pages.
 * You should NOT include CSS that styles elements which your page does not have.
 * Include some changes that make your site uniquely yours. For exmaple: your favorite color, your favorite fonts, etc.
 
-You should use media queries to achieve these. Here is an example:
+You should use 3 javascript buttons to switch between these. For example, inside your `/templates/mytheme/templates/base.html` you can add the following to a block of your choice.
+
+```html
+    <button onclick="changeStylesheet('fancy.css')">fancy mode</button>
+    <button onclick="changeStylesheet('minimal.css')">minimal mode</button>
+    <button onclick="changeStylesheet('90s.css')">90s mode</button>
+    
+    <script>
+    const stylesheetRegex = /[^/]*\.css$/
+
+    function changeStylesheet(style){
+        let element = document.getElementById("_stylesheet")
+        element.setAttribute("href", element.getAttribute("href").replace(stylesheetRegex, style))
+    }
+    </script>
+```
+Then create the corresponding CSS files:
+
+- `templates/mytheme/static/minimal.css`
+- `templates/mytheme/static/90s.css`
+
+`templates/mytheme/static/fancy.css` should already exist from earlier. Clicking on one of the buttons will replace the stylesheet with the one corresponding with each mode. 
+
+**NOTE:** The 3 css files aren't allowed to share any code. To be on the safe side, you can create each style from scratch to produce 3 unique sets of styling rules for your site.
+
+
+Additionally, use media queries to apply different styling for different screen sizes. Here is an example:
 
 ```
-/* Light mode styles */
-  @media (prefers-color-scheme: light) {
-    html,body {
-      background-color: #d7a1a1;
-      /* Add more styling for light theme */
-    }
-    /* Add more styling for light theme */
 
-  }
-/* Dark mode styles */
-  
-  @media (prefers-color-scheme: dark) {
-    html, body {
-      background-color: #0f0f0f;
-       /* Add more styling for dark theme */
-    }
-    /* Add more styling for dark theme */
-
-  }
-
-  /* Styles for printing */
-  @media print {
-    html,body {
-      background-color: #fff;
-      /* Add more styling for printing */
-    }
-  
-    /* Additional styles for printed pages */
-  }
-  /* Extra small devices (phones, 600px and down) */
+/* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
   /* Add styling here */
 }
@@ -334,16 +332,7 @@ You can read more about CSS and Media Queries [here](https://developer.mozilla.o
 
 ### Testing it on the Browser
 
-You can use a browser to test out the different modes in the developer tools or developer console. [Firefox Developer Edition](https://www.mozilla.org/en-US/firefox/developer/) has light mode, dark mode and printing mode button in the tools. You can just click and toggle between different modes. Chrome has some instructions on how to do this [here](https://developer.chrome.com/docs/devtools/rendering/emulate-css/).
-
-1. Open your browser.
-2. Right click and select "Inspect (Q)"
-  * Keyboard shortcut for Windows: CTRL+ SHIFT + I
-  * Keyboard shortcut for MAC: Command + Option + I.
-
-Once you have opened the Firefox Developer Tools, you can toggle between dark mode, light mode and print mode by clicking on those buttons.
-<br><img id="toggle-mode" alt="toggle-mode" src="{attach}Firefox-mode-toggle.png" style="width: 50%;"> <br>
-In case your dark mode is not working in firefox, please check your firefox settings and see if the privacy.resistFingerprinting is set to false, otherwise it will always override with light mode. 
+Click on the different buttons to test out each mode. 
 
 You should also try simulating various devices with different displays to make sure your website is "responsive." Both browsers have a button
 to enable device simulation mode. Firefox's button looks like a phone in front of a tablet.
@@ -374,7 +363,7 @@ Violation of the restrictions will result in a mark of zero.
 
 * A functioning Pelican site 
   * featuring four articles
-  * with different stylings in dark mode, light mode, and print mode
+  * with different stylings in fancy mode, minimal mode, and 90s mode
   * responsive in both mobile and desktop views
   * deployed on GitHub Pages.
 * A git repository with a `main` or `src` branch that does not contain built (compiled, transpiled, bundled) or downloaded artifacts, including but not limited to:
