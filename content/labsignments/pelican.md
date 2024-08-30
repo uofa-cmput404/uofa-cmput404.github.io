@@ -272,39 +272,60 @@ Write CSS to enable your site to have dark mode, light mode, print mode, and res
 * You should NOT include CSS that styles elements which your page does not have.
 * Include some changes that make your site uniquely yours. For exmaple: your favorite color, your favorite fonts, etc.
 
-You should use media queries to achieve these. Here is an example:
+> [!IMPORTANT]  
+> The task is to write 3 unique sets of styling rules from scratch. Each mode should be styled differently to a **comical** extent. Switching between normal mode, dark mode, and print mode should be like visiting 3 thematically unrelated websites. Changing colors is insufficient to distinguish between modes. If users do not feel like they accidently navigated to a different website when switching modes your modes are not different enough from each other.  
+
+You should use 2 javascript buttons to achieve these. For example, inside your `/templates/mytheme/templates/base.html` you can add the following to a block of your choice.
+
+```html
+ <button onclick="toggleDarkMode()">dark mode</button>
+    <button onclick="togglePrintMode()">print mode</button>
+    
+    <script>
+
+    function toggleDarkMode() { 
+        var element = document.documentElement;
+        element.classList.toggle("dark-mode");
+        element.classList.remove("print-mode");
+    }
+
+    function togglePrintMode() {
+        var element = document.documentElement;
+        element.classList.toggle("print-mode");
+        element.classList.remove("dark-mode");
+    }
 
 ```
-/* Light mode styles */
-  @media (prefers-color-scheme: light) {
-    html,body {
-      background-color: #d7a1a1;
-      /* Add more styling for light theme */
-    }
-    /* Add more styling for light theme */
 
-  }
-/* Dark mode styles */
-  
-  @media (prefers-color-scheme: dark) {
-    html, body {
-      background-color: #0f0f0f;
-       /* Add more styling for dark theme */
-    }
-    /* Add more styling for dark theme */
+This will add two buttons to your pages which, when clicked, will toggle a `dark-mode` or `print-mode` css class to the html tag of your website respectively. 
 
-  }
+In your `templates/mytheme/static/style.css` you can create new CSS rules
+incorporating these classes. 
 
-  /* Styles for printing */
-  @media print {
-    html,body {
-      background-color: #fff;
-      /* Add more styling for printing */
-    }
-  
-    /* Additional styles for printed pages */
-  }
-  /* Extra small devices (phones, 600px and down) */
+```css
+
+/* Dark mode styles example */
+.dark-mode, .dark-mode > *{
+    background-color: pink;
+}
+
+/* Styles for printing example*/
+.print-mode, .print-mode > *{
+    background-color: blue;
+}
+
+```
+
+Note that the `>` is the child combinator in CSS, while `*` is the universal selector. Thus, `.dark-mode > *` should be read as `apply to all elements that are children of a parent with the class 'dark-mode'`. 
+
+If you wanted to style dark mode paragraphs differently you could use the selector `.dark-mode > p`. 
+
+
+Additionally, use media queries to apply different styling for different screen sizes. Here is an example:
+
+```
+
+/* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
   /* Add styling here */
 }
