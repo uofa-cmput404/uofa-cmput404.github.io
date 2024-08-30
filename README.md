@@ -1,5 +1,9 @@
 # cmput404.github.io
 
+## Pull Requests
+
+My github notifications are flooded and useless. Please contact via the contact form when you make a PR.
+
 ## Installation
 
 You want ghp-import and pelican, both of which you can apt-get if you want.
