@@ -105,7 +105,7 @@ Add the following content to the file `templates/mytheme/templates/base.html`.
 
 {% block head %}
 {{ super() }}
-  <link id="stylesheet" rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/fancy.css" />
+  <link id="_stylesheet" rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/fancy.css" />
 {% endblock %}
 ```
 
