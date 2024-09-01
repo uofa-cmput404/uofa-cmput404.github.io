@@ -1,7 +1,7 @@
 Title: Heroku Lab
 date: 2024-01-25
 tags: labs
-authors: Xin Yang
+authors: Xin Yang, William Qi
 status: Published
 summary: Lab Procedure, Lab Assignments, Lab Marking
 
@@ -30,11 +30,11 @@ The University's firewall (UWS) blocks new domains for 24 hours to prevent scam 
 This *might* affect your Heroku domain.The University's firewall is also inconsistent so it doesn't *always* seem to do this.
 We have complained about this every semester since forever, but IST simply does not care.
 
-Double check that your Heroku is not blocked before you demo. We will **not** give you an extension if you Heroku is blocked.
+Double check that your Heroku is not blocked before your walkthrough. We will **not** give you an extension if you Heroku is blocked.
 
 You have several options to make sure this doesn't happen:
 
-* Connect to your Heroku with your web browser on UWS at least 2 days before your demo.
+* Connect to your Heroku with your web browser on UWS at least 2 days before your walkthrough.
     * It doesn't have to be fully working, the firewall just needs to see that the domain does in fact exist.
 * Bypass the Unversity's DNS server by adding the hostname and IP address of your heroku site to your hosts file.
     * Follow the steps of the "Checking your heroku app" below.
@@ -47,7 +47,7 @@ You have several options to make sure this doesn't happen:
         * Windows 10/11: <https://allthings.how/how-to-edit-hosts-file-in-windows-11/>
     * If it stops working check again with nslookup and update it.
 * Use a VPN service or proxy.
-* Demo over Zoom using Shaw or Telus internet, or another internet not provided by the University.
+* Walkthrough us your lab over using another internet not provided by the University while in the lab.
 
 # Getting Started
 
@@ -60,23 +60,43 @@ Place this gitignore within the root of your project. You can combine [this one]
 
 Make sure your `.gitignore` contains `*.sqlite3`.
 
-## Installing venv with pip
+## Create the Virtual Environment
 
 Virtual environment is a CLI tool for managing python dependencies. Different projects have different dependencies, and version requirements. A virtual environment allows you to manage your dependencies specific to your project.
 
-To install follow these steps (Note that you need pip installed and configured):
+### If you have multiple versions of python installed:
 
-1. `python -m pip install --user virtualenv`
+Always end the python command with the version number. 
+
+For example, on the undergrad machines ugXX.cs.ualberta.ca: you can use `python3.11`.
+
+### Check if you have pip
+
+`python3.XX -m pip` should give information about how to use pip.
+
+For example, on the undergrad machines ugXX.cs.ualberta.ca: you can use `python3.11 -m pip`.
+
+### Check if you have venv or virtualenv
+
+`python3.XX -m venv --help` should give information about how to use venv.
+
+If you don't have `venv`, try `virtualenv`: `python -m virtualenv --help` should give information about how to use virtualenv.
+
+For example, on the undergrad machines ugXX.cs.ualberta.ca: you can use `python3.11 -m venv --help`.
+
+### If you don't have venv or virtualenv:
+
+1. Run `python3.XX -m pip install --user virtualenv`
 2. Check installation: `python -m virtualenv --help` 
 
 For more info check [here](https://virtualenv.pypa.io/en/latest/installation.html).
-To create and use a virtual environment:
 
-1. `virtualenv venv --python=python3`
-2. `source venv/bin/activate`
+### Create a Virtual Environment
 
-The first command will create a directory named `venv`. Contained in the directory is your
-project dependecy installation and the `activate` script. Run `deactivate` to exit the virtual environment.
+1. `python3.XX -m virtualenv venv` (or `python3.XX -m venv venv`)
+2. `source venv/bin/activate` (or `cd venv/scripts && activate.bat` if you're on Windows)
+
+The first command will create a directory named `venv`. Contained in the directory is your project dependency installations and the `activate` script to enter the virtual environment. When you want to exit the environment, run `deactivate`.
 
 # Lab Instructions
 
@@ -143,7 +163,7 @@ You will need to be inside the `lab3` folder to run manage.py.
 ```
 </aside>
 
-Now that the server’s running, visit [http://127.0.0.1:8000/](http://127.0.0.1:8000/) with your web browser. You’ll see a “Congratulations!” page, with a rocket taking off. It worked!
+Now that the server’s running, visit [http://localhost:8000/](http://localhost:8000/) with your web browser. You’ll see a “Congratulations!” page, with a rocket taking off. It worked!
 
 ----
 
@@ -177,7 +197,7 @@ urlpatterns = [
 ]
 ```
 
-Within `lab3/urls.py` include the following code.
+Within `lab3/urls.py` replace it with the following code.
 
 ```python
 from django.contrib import admin
@@ -220,7 +240,7 @@ DATABASES = {
 }
 ```
 
-Within *polls/models.py* include the following code.
+Within *polls/models.py* include the following code. The attributes defined in each class represent the data fields that the model should store.
 
 ```python
 from django.db import models
@@ -282,7 +302,6 @@ python manage.py createsuperuser
 
 You will be asked to enter your username, email, and password (twice for confirmation).
 
-
 Make the polls app modifiable in the admin by editing the *polls/admin.py* file to be the following:
 
 ```python
@@ -294,7 +313,7 @@ admin.site.register(Choice)
 admin.site.register(Question)
 ```
 
-Start the development server again and go to `/admin` on your local domain – e.g., [http://127.0.0.1:8000/admin/](http://127.0.0.1:8000/admin/). You should see the admin’s login screen and can login with your admin account.
+Start the development server again and go to `/admin` on your local domain – e.g., [http://localhost:8000/admin/](http://localhost:8000/admin/). You should see the admin’s login screen and can login with your admin account.
 
 ```bash
 python manage.py runserver
@@ -304,7 +323,7 @@ python manage.py runserver
 
 * Official Docs [Part 3](https://docs.djangoproject.com/en/5.0/intro/tutorial03/)
 
-Add some additional views to the *polls/views.py* file. Include the following methods:
+Add some additional views to the *polls/views.py* file. Include the following functions:
 
 ```python
 def detail(request, question_id):
@@ -346,10 +365,9 @@ Take a look in your browser, at `/polls/34/`. It’ll run the detail() function 
 Update the *polls/views.py* `index` method so the questions are returned.
 
 ```python
+# Change the imports to this!
 from django.http import HttpResponse
-
 from .models import Question
-
 
 def index(request):
     latest_question_list = Question.objects.order_by("-pub_date")[:5]
@@ -383,15 +401,17 @@ Within the newly created empty *polls/templates/polls/index.html* file, write th
 Update the `index` view in *polls/views.py* to use the new template.
 
 ```python
+# Change the imports to this!
+from django.http import HttpResponse
 from django.shortcuts import render
-
 from .models import Question
-
 
 def index(request):
     latest_question_list = Question.objects.order_by("-pub_date")[:5]
     context = {"latest_question_list": latest_question_list}
     return render(request, "polls/index.html", context)
+
+# Do not modify the rest of the views
 ```
 
 Add a new template file for the poll details view.
@@ -414,11 +434,13 @@ For the newly created template in *polls/templates/polls/detail.html*, update th
 Update the `detail` view in *polls/views.py* to use the new template.
 
 ```python
-from django.shortcuts import get_object_or_404, render
-
+# Change the imports to this!
+from django.http import HttpResponse
+from django.shortcuts import render, get_object_or_404
 from .models import Question
 
 # ...
+
 def detail(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
     return render(request, "polls/detail.html", {"question": question})
@@ -496,11 +518,11 @@ path('<int:question_id>/vote/', views.vote, name='vote'),
 We also created a dummy implementation of the `vote()` function in *polls/views.py*. Let’s update the `vote` view in *polls/views.py* to handle the new template.
 
 ```python
+# Change the imports to this!
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
-
-from .models import Choice, Question
+from .models import Question, Choice
 
 # ...
 def vote(request, question_id):
@@ -529,9 +551,6 @@ def vote(request, question_id):
 After voting, the application should redirect to a view displaying the results. Update the `results` view in *polls/views.py*
 
 ```python
-from django.shortcuts import get_object_or_404, render
-
-
 def results(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
     return render(request, "polls/results.html", {"question": question})
@@ -567,7 +586,6 @@ Amend the *polls/urls.py* url configuration. Note that the name of the matched p
 
 ```python
 from django.urls import path
-
 from . import views
 
 app_name = "polls"
@@ -586,9 +604,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 from django.views import generic
-
 from .models import Choice, Question
-
 
 class IndexView(generic.ListView):
     template_name = "polls/index.html"
@@ -598,16 +614,13 @@ class IndexView(generic.ListView):
         """Return the last five published questions."""
         return Question.objects.order_by("-pub_date")[:5]
 
-
 class DetailView(generic.DetailView):
     model = Question
     template_name = "polls/detail.html"
 
-
 class ResultsView(generic.DetailView):
     model = Question
     template_name = "polls/results.html"
-
 
 def vote(request, question_id):
     ...  # same as above, no changes needed.
@@ -621,13 +634,14 @@ Based from the DRF (Django Rest Framework) tutorial [here](https://www.django-re
 
 To convert your queries to or from a JSON object you can use Django's serializers to serialize or deserialize Django QuerySets to or from JSON objects.  
 
-First install the Django Rest Framework library using `pip`
+First install the Django Rest Framework library using `pip` and make sure to update our `requirements.txt` file
 
 ```bash
 pip install djangorestframework
+pip freeze > requirements.txt
 ```
 
-Then add the `rest_framework` app to `INSTALLED_APPS` in our `settings.py` file
+Then add the `rest_framework` app to the **bottom** of our `INSTALLED_APPS` in our `settings.py` file
 
 ```python
 INSTALLED_APPS = [
@@ -671,11 +685,12 @@ Once you have the serializers you now need to write some API views using the new
 Edit the `polls/views.py` file, and add the following
 
 ```python
+# ADD these three imports!
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .serializers import QuestionSerializer
 
-...
+# ...
 
 
 @api_view(['GET'])
@@ -699,7 +714,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    ...
+    # ...
     path('api/questions/', views.get_questions, name='get_questions'),
 ]
 ```
@@ -714,7 +729,7 @@ You should see a list of question in a json format.
 
 ### Updating a Question Using our Serializer
 
-We can use the serializer to update the `question_text` field of our question entries.
+We can use the serializer to update the `question_text` field of our question entries. Add another function to `polls/views.py`
 
 ```python
 @api_view(['GET','POST'])
@@ -737,7 +752,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    ...
+    # ...
     path('api/question/<int:pk>', views.update_question, name='update_question'),
 ]
 ```
@@ -938,24 +953,26 @@ MIDDLEWARE = [
 
 First, [create an app](https://dashboard.heroku.com/new-app) on your Heroku dashboard. Keep in mind that a Heroku app is different from a Django app.
 
-Commit your files and deploy the application using a the heroku command line tool. See [their article on how to do this](https://devcenter.heroku.com/articles/git). Follow the instructions for an existing app, not a new app: `use heroku git:remote`, **not** `heroku create`.
+Commit your files and deploy the application using a the heroku command line tool. See [their article on how to do this](https://devcenter.heroku.com/articles/git). Follow the instructions for an existing app, not a new app. Use `heroku git:remote`, **NOT** `heroku create`.
 If you used `heroku create`, please see [this stackoverflow question](https://stackoverflow.com/questions/50421071/git-i-made-a-repository-inside-a-repository-and-now-i-just-want-the-one-big-rep) about how to return to a single repository.
 
-You should have a heroku app. You should see it if you run the `heroku list` command. In the following, `APPNAME` refers to this heroku app's name.
+You should have a heroku app. You should see it if you run the `heroku list` command. **In the following, `APPNAME` refers to this heroku app's name.**
 
 ### Using a Postgres Database on Heroku
 
-```
-heroku addons:create heroku-postgresql:mini
-```
-
-You can manage your mini postgres on your heroku dashboard under the app addons.
-<br><img id="access-panel" alt="access panel" src="{attach}postgres-add-on.png" style="width: 50%;">
-
-Check that heroku is configuring the database:
+Heroku provides additional services in addition to project hosting. In this case, we will need to add a postgresql database to our app.
 
 ```
-heroku run env
+heroku addons:create heroku-postgresql:essential-0 --app APPNAME
+```
+
+You can manage your essentials-0 postgres on your heroku dashboard under the resources section > add-ons.
+<br><img id="access-panel" alt="access panel" src="{attach}postgres-add-on.png" style="width: 100%;">
+
+Check that heroku is configuring the database: (You may need to wait a bit for the add-on to be installed)
+
+```
+heroku run "env" --app APPNAME
 ```
 
 You should get an output like that contains a line that starts with `DATABASE_URL=postgres://` followed by a username and a password.
@@ -997,13 +1014,13 @@ Once it is deployed, check that django is now using your heroku postgres databas
 <aside markdown="block" class="option1">
 ```bash
 # If your django project is your git repo root
-heroku run "python3 manage.py diffsettings"
+heroku run "python3 manage.py diffsettings" --app APPNAME
 ```
 </aside>
 <aside markdown="block" class="option2">
 ```bash
 # If your django project is in a folder
-heroku run "python3 lab3/manage.py diffsettings"
+heroku run "python3 lab3/manage.py diffsettings" --app APPNAME
 ```
 </aside>
 
@@ -1019,18 +1036,20 @@ If it contains `sqlite3`, something is wrong. Please check that you followed the
 Run your migrations, create a Superuser, and ensure your application functionality works.
 
 <aside markdown="block" class="option1">
+
 ```bash
-$ heroku run python manage.py migrate
-$ heroku run python manage.py createsuperuser
+heroku run "python manage.py migrate" --app APPNAME
+heroku run "python manage.py createsuperuser" --app APPNAME
 ```
+
 </aside>
 
 <aside markdown="block" class="option2">
 If your Django project is in a folder in your repo like `lab3`, you will need something like:
 
 ```bash
-$ heroku run python lab3/manage.py migrate
-$ heroku run python lab3/manage.py createsuperuser
+heroku run "python lab3/manage.py migrate" --app APPNAME
+heroku run "python lab3/manage.py createsuperuser" --app APPNAME
 ```
 </aside>
 
@@ -1042,12 +1061,12 @@ Note: Please make sure that the Heroku app uses Postgres as the backend database
 
 You can verify the backend in use by login into the dashboard of the Heroku app: [https://dashboard.heroku.com/apps/APP_NAME](https://dashboard.heroku.com/apps/APP_NAME), then click the `Resources` tab, you should see `Heroku Postgres` under the `Add-ons` Section.
 
-If a different Heroku backend is used (e.g., SQLite), or if you try to create the Heroku app through the Heroku webpage, you can follow the below instructions to enable Postgres.
+If you try to create the Heroku app through the Heroku webpage, you can follow the below instructions to enable Postgres.
 [https://www.geeksforgeeks.org/deploying-django-app-on-heroku-with-postgres-as-backend/](https://www.geeksforgeeks.org/deploying-django-app-on-heroku-with-postgres-as-backend/)
 
 ### Checking your heroku app
 
-You can use the `heroku open` command to open your heroku app in a web browser. 
+You can use the `heroku open --app APPNAME` command to open your heroku app in a web browser. 
 
 * Add your apps hostname, cname, and ip address to the README.md file in your git repo. You **must** do this to help us mark your work. 
     * First get your heroku apps hostname, it will look something like `example-app-1234567890ab.herokuapp.com`.
@@ -1079,7 +1098,7 @@ Violation of the restrictions will result in a mark of zero.
 
 * Must use Python3
 * Must run on Ubuntu (Use the undergrad lab machines, for example the ones in CSC 2-29 or install an Ubuntu VM to check this)
-* Must run on your machine (whatever machine you use to demo)
+* Must run on your machine (whatever machine you use to show us)
 * Must be running on heroku, with some polls that you created for the TA to look at when they mark it.
 * Git repo must not contain 
 
