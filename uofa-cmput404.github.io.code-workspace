@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"languageToolLinter.languageTool.ignoredWordsInWorkspace": [
+			"dyno"
+		],
+		"makefile.configureOnOpen": false
+	}
+}

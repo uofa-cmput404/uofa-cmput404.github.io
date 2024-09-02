@@ -41,6 +41,30 @@ body {
   line-height: 1.3;
 }
 
+h6 {
+  font-size: 120%;
+}
+
+h5 {
+  font-size: 130%;
+}
+
+h4 {
+  font-size: 140%;
+}
+
+h3 {
+  font-size: 150%;
+}
+
+h2 {
+  font-size: 160%;
+}
+
+h1 {
+  font-size: 170%;
+}
+
 h1, h2, h3, h4, h5, h6 {
   padding-bottom: 0;
   margin-bottom: 0;
@@ -176,6 +200,20 @@ p>img {
   margin-left: auto;
   margin-right: auto;
   display: block;
+}
+
+/** Special **/
+
+.warning {
+  border-width: 0.5ch;
+  border-style: dashed;
+  border-color: yellow;
+  background-color: white;
+  font-weight: bolder;
+  border-image-source: repeating-linear-gradient(-45deg, black, black 10px, yellow 10px, yellow 20px);
+  border-image-repeat: round;
+  padding: 0.5ch 1ch;
+  border-image-slice: 5;
 }
 
 /** Code Highlighting **/

@@ -1,5 +1,5 @@
 title: Project: Distributed Social Networking
-date: 2024-01-06
+date: 2024-09-01
 tags: project, grading
 authors: Hazel Victoria Campbell
 status: published
@@ -741,7 +741,8 @@ shortcut to get the image if authenticated to see it.
 
 # Requirements
 
-* WARNING: Check this over again
+<p class="warning">Failure to meet these requirements will result in a score of zero for project parts.</p>
+
 * Implement the webservice as described in the user stories
 * Provide a webservice interface that is restful
 * Provide a web UI interface that is usable
@@ -749,7 +750,7 @@ shortcut to get the image if authenticated to see it.
 * Prove your project by connecting with at least 2 other groups.
 * Prove your project by connecting with at least 3 other groups.
 * Make a video demo of your blog (desktop-recorder is ok) 
-    * Your video may not be a part of your presentation.
+    * Your video may **not** be a part of your presentation.
 * Make a presentation about your blog 
 * Follow the guidelines in the [project spec]({filename}/general/project.md) for URLs and services
 * Allow users to accept or reject follow requests
@@ -781,34 +782,64 @@ Not every user story has an API to test. For example, adding/removing servers to
 
 Front-end (Selenium, etc.) tests are not required. Code coverage (line coverage, statement coverage, branch coverage, MC/DC, etc.) is not required. Unit testing is not required.
 
+## Infrastructure and Software Requirements
+
+<p class="warning">Failure to meet these requirements will result in a score of zero for project parts.</p>
+
+* <input type="checkbox"> You must use a single git repository on GitHub Classroom that contains everything.
+    * <input type="checkbox"> Must have a `development` branch.
+    * <input type="checkbox"> Must have a `production` branch.
+    * Must **not** contain built (compiled, transpiled, bundled) or downloaded artifacts, including but not limited to:
+        * <input type="checkbox"> No downloaded Python packages, `virtualenv` `venv` etc.
+        * <input type="checkbox"> No built Python artifacts: `.pyc` files, `__pycache__` directories, etc.
+        * <input type="checkbox"> No downloaded JS packages: `node_modules` etc.
+        * <input type="checkbox"> No HTML/CSS/JS output produced by compiler/transpiler/bundler
+        * <input type="checkbox"> No esbuild, vite, rollup, webpack, etc. output.
+    * If you want to keep a copy at the end of the semester, do not use GitHub fork: clone it to your computer, and push it to a new GitHub repository (manual fork).
+    * Force-push, rebase, and other git operations that remove history from GitHub are strictly forbidden, and you may receive a zero for project parts or be removed from your team.
+- <input type="checkbox"> Your project must be compatible with Firefox browser.
+    * Firefox will be used as the standard for marking. We will not check your code in multiple browsers to try to get it working.
+- <input type="checkbox"> Your project must be hosted on an approved hosting solution.
+    * Heroku
+        * An entire instance of your project must need more than: 
+            * <input type="checkbox"> A single web "dyno"
+            * <input type="checkbox"> with a single PostgreSQL add-on
+        * <input type="checkbox"> Every teammate must be able to deploy their own project instance to their own Heroku.
+    * Individual hosting on approval: you must get approval in advance from the instructor. 
+        * You are responsible for any problems that come up as a result.
+        * You are responsible for any surprise fees that come up as a result.
+        * Often when people use some other hosting service that isn't Heroku they get shut off, blocked by firewalls, and/or hit with surprise fees.
+        * This only applies on an individual basis: teammates must still use Heroku.
+            * Project code must still be deployable by teammates to Heroku.
+        * Database provider must be the same provider as your website hosting.
+- <input type="checkbox"> Every teammate must be able to deploy their own project instance.
+    * This means 6 instances of the same project but running as different servers.
+- <input type="checkbox"> Use a single Django or Flask server per instance.
+    * A single Django or Flask server must serve *everything*:
+        * Frontend (for browser) dynamic 
+        * Frontend (for browser) static content
+            * <input type="checkbox"> Use [whitenoise](https://whitenoise.readthedocs.io/en/latest/) for static content.
+        * Backend API
+            * Use routes to distinguish.
+        * Use Python 3.11+
+    * Splitting frontend/backend hosting is strictly not allowed. Splitting static/dynamic is strictly not allowed. They must be a part of the same Django or Flask server.
+- <input type="checkbox"> Deployed instances (Heroku): Must use a PostgreSQL database for all content storage.
+- <input type="checkbox"> Local development instances (your laptop): PostgreSQL or SQLite for all content storage.
+    * SQLite is recommended.
+- <input type="checkbox"> Everything that's not in a database files must be code managed by GitHub.
+    * Code checked into git must be clean. 
+    * Cloud (e.g. Firebase), NoSQL, key-value, and file system storage are strictly forbidden.
+* License your code properly (use an OSI approved license)
+    * Put your name (or some representation of you like GeneralHuxFan768) on it!
+
 # Take-aways
 
 * 1 Working Website
-* 1 Github git repo
+* 1 GitHub git repo
 * 1 Presentation
     * May not include the video
 * 1 OpenAPI ('Swagger') specification for your API 
 * 1 Video
- 
-# Restrictions
-
-*  You must use a single git repository that contains everything.
-*  Must run on:
-    *  Heroku or Cybera VM
-        * Other hosting on approval: you must get approval in advance from the instructor.
-            * You are responsible for any problems that come up as a result.
-            * You are responsible for any surprise fees that come up as a result.
-            * Often when groups use some other hosting service that isn't Heroku they get shut off, blocked by firewalls, and/or hit with surprise fees.
-    * Use Django or Flask (otherwise get approval from the instructor)
-        * You must use a single django or a single flask to serve both frontend (for browser) and backend api, distinguish between the two using routes or django "apps" or whatever.
-        * Use Python 3.8+ (otherwise get approval from the instructor)
-    * Must use a postgres, sqlite, or mariadb database for storage.
-        * For Heroku this must be postgres (sqlite doesn't work correctly on Heroku).
-        * Database provider must be the same provider as your website hosting.
-    * Splitting frontend/backend hosting is not allowed, this has caused too many problems.
-* License your code properly (use an OSI approved license)
-    * Put your name (or some representation of you like GeneralHuxFan768) on it!
-* Force-push, rebase, and other git operations that remove history from github are strictly forbidden and you may recieve a zero or be removed from your team.
 
 ## Things that are allowed
 
