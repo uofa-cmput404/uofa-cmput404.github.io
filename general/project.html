@@ -78,10 +78,10 @@
 <li><a href="#requirements">Requirements</a><ul>
 <li><a href="#api-requirements">API Requirements</a></li>
 <li><a href="#test-requirements">Test Requirements</a></li>
+<li><a href="#infrastructure-and-software-requirements">Infrastructure and Software Requirements</a></li>
 </ul>
 </li>
-<li><a href="#take-aways">Take-aways</a></li>
-<li><a href="#restrictions">Restrictions</a><ul>
+<li><a href="#take-aways">Take-aways</a><ul>
 <li><a href="#things-that-are-allowed">Things that are allowed</a></li>
 </ul>
 </li>
@@ -213,7 +213,7 @@ She should also see that I've liked and commented her post.</p>
 <li>As an author, posts I create that are in CommonMark can link to images, so that I can illustrate my posts.</li>
 <li>As a server admin, images can be hosted on my server, so that my users can use them in their CommonMark posts.</li>
 <li>As an author, I want to delete my own posts locally, so I can remove posts that are out of date or made by mistake.</li>
-<li>DELETED <del>As an author, I want my deletions to take effect remotely, so I know remote users don't keep seeing my deleted posts forever.</del></li>
+<li><del>As an author, I want my deletions to take effect remotely, so I know remote users don't keep seeing my deleted posts forever.</del></li>
 <li>As an author, I want to be able to use my web-browser to manage/author my posts, so I don't have to use a clunky API.</li>
 <li>As an author, I want to be able to make posts that are unlisted, that are publicly shareable by URI alone (or for embedding images).</li>
 </ul>
@@ -437,7 +437,7 @@ She should also see that I've liked and commented her post.</p>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;authors&quot;</span><span class="p">,</span><span class="w">      </span>
-<span class="w">    </span><span class="s2">&quot;items&quot;</span><span class="o">:</span><span class="p">[</span>
+<span class="w">    </span><span class="s2">&quot;authors&quot;</span><span class="o">:</span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span>
 <span class="w">            </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;author&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/1d698d25ff008f7538453c120f581471&quot;</span><span class="p">,</span>
@@ -510,7 +510,7 @@ She should also see that I've liked and commented her post.</p>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;followers&quot;</span><span class="p">,</span><span class="w">      </span>
-<span class="w">    </span><span class="s2">&quot;items&quot;</span><span class="o">:</span><span class="p">[</span>
+<span class="w">    </span><span class="s2">&quot;followers&quot;</span><span class="o">:</span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span>
 <span class="w">            </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;author&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/1d698d25ff008f7538453c120f581471&quot;</span><span class="p">,</span>
@@ -617,16 +617,16 @@ She should also see that I've liked and commented her post.</p>
 <span class="w">    </span><span class="c1">// id of the post</span>
 <span class="w">    </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/764efa883dda1e11db47671c4a3bbd9e&quot;</span>
 <span class="w">    </span><span class="c1">// where did you get this post from?</span>
-<span class="w">    </span><span class="s2">&quot;source&quot;</span><span class="o">:</span><span class="s2">&quot;http://lastplaceigotthisfrom.com/posts/yyyyy&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;source&quot;</span><span class="o">:</span><span class="s2">&quot;http://lastplaceigotthisfrom.com/authors/xxxxxx/posts/yyyyyy&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="c1">// where is it actually from</span>
-<span class="w">    </span><span class="s2">&quot;origin&quot;</span><span class="o">:</span><span class="s2">&quot;http://whereitcamefrom.com/posts/zzzzz&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;origin&quot;</span><span class="o">:</span><span class="s2">&quot;http://whereitcamefrom.com/authors/wwwwww/posts/zzzzzz&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="c1">// a brief description of the post</span>
 <span class="w">    </span><span class="s2">&quot;description&quot;</span><span class="o">:</span><span class="s2">&quot;This post discusses stuff -- brief&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="c1">// The content type of the post</span>
 <span class="w">    </span><span class="c1">// assume either</span>
 <span class="w">    </span><span class="c1">// text/markdown -- common mark</span>
 <span class="w">    </span><span class="c1">// text/plain -- UTF-8</span>
-<span class="w">    </span><span class="c1">// application/base64</span>
+<span class="w">    </span><span class="c1">// application/base64 # this an image that is neither a jpeg or png</span>
 <span class="w">    </span><span class="c1">// image/png;base64 # this is an embedded png -- images are POSTS. So you might have a user make 2 posts if a post includes an image!</span>
 <span class="w">    </span><span class="c1">// image/jpeg;base64 # this is an embedded jpeg</span>
 <span class="w">    </span><span class="c1">// for HTML you will want to strip tags before displaying</span>
@@ -824,11 +824,11 @@ shortcut to get the image if authenticated to see it.</p>
 <li>Note: be careful here private information could be disclosed.</li>
 </ul>
 </li>
-<li>Example liked object:</li>
+<li>Example Format:</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;liked&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;items&quot;</span><span class="o">:</span><span class="p">[</span>
+<span class="w">    </span><span class="s2">&quot;likes&quot;</span><span class="o">:</span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span>
 <span class="w">            </span><span class="s2">&quot;summary&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Lara Croft Likes your post&quot;</span><span class="p">,</span><span class="w">         </span>
 <span class="w">            </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Like&quot;</span><span class="p">,</span>
@@ -874,8 +874,8 @@ shortcut to get the image if authenticated to see it.</p>
 <span class="w">            </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;post&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;title&quot;</span><span class="o">:</span><span class="s2">&quot;A Friendly post title about a post about web dev&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/764efa883dda1e11db47671c4a3bbd9e&quot;</span>
-<span class="w">            </span><span class="s2">&quot;source&quot;</span><span class="o">:</span><span class="s2">&quot;http://lastplaceigotthisfrom.com/authors/xxxxxx/posts/yyyyy&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;origin&quot;</span><span class="o">:</span><span class="s2">&quot;http://whereitcamefrom.com/authors/yyyyyy/posts/zzzzz&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;source&quot;</span><span class="o">:</span><span class="s2">&quot;http://lastplaceigotthisfrom.com/authors/xxxxxx/posts/yyyyyy&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;origin&quot;</span><span class="o">:</span><span class="s2">&quot;http://whereitcamefrom.com/authors/wwwwww/posts/zzzzzz&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;description&quot;</span><span class="o">:</span><span class="s2">&quot;This post discusses stuff -- brief&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;contentType&quot;</span><span class="o">:</span><span class="s2">&quot;text/plain&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;content&quot;</span><span class="o">:</span><span class="s2">&quot;Þā wæs on burgum Bēowulf Scyldinga, lēof lēod-cyning, longe þrāge folcum gefrǣge (fæder ellor hwearf, aldor of earde), oð þæt him eft onwōc hēah Healfdene; hēold þenden lifde, gamol and gūð-rēow, glæde Scyldingas. Þǣm fēower bearn forð-gerīmed in worold wōcun, weoroda rǣswan, Heorogār and Hrōðgār and Hālga til; hȳrde ic, þat Elan cwēn Ongenþēowes wæs Heaðoscilfinges heals-gebedde. Þā wæs Hrōðgāre here-spēd gyfen, wīges weorð-mynd, þæt him his wine-māgas georne hȳrdon, oð þæt sēo geogoð gewēox, mago-driht micel. Him on mōd bearn, þæt heal-reced hātan wolde, medo-ærn micel men gewyrcean, þone yldo bearn ǣfre gefrūnon, and þǣr on innan eall gedǣlan geongum and ealdum, swylc him god sealde, būton folc-scare and feorum gumena. Þā ic wīde gefrægn weorc gebannan manigre mǣgðe geond þisne middan-geard, folc-stede frætwan. Him on fyrste gelomp ǣdre mid yldum, þæt hit wearð eal gearo, heal-ærna mǣst; scōp him Heort naman, sē þe his wordes geweald wīde hæfde. Hē bēot ne ālēh, bēagas dǣlde, sinc æt symle. Sele hlīfade hēah and horn-gēap: heaðo-wylma bād, lāðan līges; ne wæs hit lenge þā gēn þæt se ecg-hete āðum-swerian 85 æfter wæl-nīðe wæcnan scolde. Þā se ellen-gǣst earfoðlīce þrāge geþolode, sē þe in þȳstrum bād, þæt hē dōgora gehwām drēam gehȳrde hlūdne in healle; þǣr wæs hearpan swēg, swutol sang scopes. Sægde sē þe cūðe frum-sceaft fīra feorran reccan&quot;</span><span class="p">,</span>
@@ -896,8 +896,8 @@ shortcut to get the image if authenticated to see it.</p>
 <span class="w">            </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;post&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;title&quot;</span><span class="o">:</span><span class="s2">&quot;DID YOU READ MY POST YET?&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/999999983dda1e11db47671c4a3bbd9e&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;source&quot;</span><span class="o">:</span><span class="s2">&quot;http://lastplaceigotthisfrom.com/authors/xxxxxx/posts/yyyyy&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;origin&quot;</span><span class="o">:</span><span class="s2">&quot;http://whereitcamefrom.com/authors/wwwwww/posts/zzzzz&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;source&quot;</span><span class="o">:</span><span class="s2">&quot;http://lastplaceigotthisfrom.com/authors/xxxxxx/posts/yyyyyy&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;origin&quot;</span><span class="o">:</span><span class="s2">&quot;http://whereitcamefrom.com/authors/wwwwww/posts/zzzzzz&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;description&quot;</span><span class="o">:</span><span class="s2">&quot;Whatever&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;contentType&quot;</span><span class="o">:</span><span class="s2">&quot;text/plain&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;content&quot;</span><span class="o">:</span><span class="s2">&quot;Are you even reading my posts Arjun?&quot;</span><span class="p">,</span>
@@ -919,8 +919,9 @@ shortcut to get the image if authenticated to see it.</p>
 </code></pre></div>
 
 <h3 id="requirements">Requirements</h3>
+<p class="warning">Failure to meet these requirements will result in a score of zero for project parts.</p>
+
 <ul>
-<li>WARNING: Check this over again</li>
 <li>Implement the webservice as described in the user stories</li>
 <li>Provide a webservice interface that is restful</li>
 <li>Provide a web UI interface that is usable</li>
@@ -928,7 +929,7 @@ shortcut to get the image if authenticated to see it.</p>
 <li>Prove your project by connecting with at least 2 other groups.</li>
 <li>Prove your project by connecting with at least 3 other groups.</li>
 <li>Make a video demo of your blog (desktop-recorder is ok) <ul>
-<li>Your video may not be a part of your presentation.</li>
+<li>Your video may <strong>not</strong> be a part of your presentation.</li>
 </ul>
 </li>
 <li>Make a presentation about your blog </li>
@@ -957,47 +958,98 @@ shortcut to get the image if authenticated to see it.</p>
 <p>Testing the user stories at the API level should automatically give you almost all of the tests you need for every API endpoint, every API functionality, and every API method.</p>
 <p>Not every user story has an API to test. For example, adding/removing servers to connect with usually does not have an API. For these functions, please test them in whatever way is most convienent for your project, and then verify them using the API. For example, you could write a test that adds a server to connect with by calling Python code or modifying the database directly, then use the API to check that the new server connection is working.</p>
 <p>Front-end (Selenium, etc.) tests are not required. Code coverage (line coverage, statement coverage, branch coverage, MC/DC, etc.) is not required. Unit testing is not required.</p>
-<h3 id="take-aways">Take-aways</h3>
+<h4 id="infrastructure-and-software-requirements">Infrastructure and Software Requirements</h4>
+<p class="warning">Failure to meet these requirements will result in a score of zero for project parts.</p>
+
 <ul>
-<li>1 Working Website</li>
-<li>1 Github git repo</li>
-<li>1 Presentation<ul>
-<li>May not include the video</li>
+<li><input type="checkbox"> You must use a single git repository on GitHub Classroom that contains everything.<ul>
+<li><input type="checkbox"> Must have a <code>development</code> branch.</li>
+<li><input type="checkbox"> Must have a <code>production</code> branch.</li>
+<li>Must <strong>not</strong> contain built (compiled, transpiled, bundled) or downloaded artifacts, including but not limited to:<ul>
+<li><input type="checkbox"> No downloaded Python packages, <code>virtualenv</code> <code>venv</code> etc.</li>
+<li><input type="checkbox"> No built Python artifacts: <code>.pyc</code> files, <code>__pycache__</code> directories, etc.</li>
+<li><input type="checkbox"> No downloaded JS packages: <code>node_modules</code> etc.</li>
+<li><input type="checkbox"> No HTML/CSS/JS output produced by compiler/transpiler/bundler</li>
+<li><input type="checkbox"> No esbuild, vite, rollup, webpack, etc. output.</li>
 </ul>
 </li>
-<li>1 OpenAPI ('Swagger') specification for your API </li>
-<li>1 Video</li>
+<li>If you want to keep a copy at the end of the semester, do not use GitHub fork: clone it to your computer, and push it to a new GitHub repository (manual fork).</li>
+<li>Force-push, rebase, and other git operations that remove history from GitHub are strictly forbidden, and you may receive a zero for project parts or be removed from your team.</li>
 </ul>
-<h3 id="restrictions">Restrictions</h3>
-<ul>
-<li>You must use a single git repository that contains everything.</li>
-<li>Must run on:<ul>
-<li>Heroku or Cybera VM<ul>
-<li>Other hosting on approval: you must get approval in advance from the instructor.<ul>
+</li>
+<li><input type="checkbox"> Your project must be compatible with Firefox browser.<ul>
+<li>Firefox will be used as the standard for marking. We will not check your code in multiple browsers to try to get it working.</li>
+</ul>
+</li>
+<li><input type="checkbox"> Your project must be hosted on an approved hosting solution.<ul>
+<li>Heroku<ul>
+<li>An entire instance of your project must need more than: <ul>
+<li><input type="checkbox"> A single web "dyno"</li>
+<li><input type="checkbox"> with a single PostgreSQL add-on</li>
+</ul>
+</li>
+<li><input type="checkbox"> Every teammate must be able to deploy their own project instance to their own Heroku.</li>
+</ul>
+</li>
+<li>Individual hosting on approval: you must get approval in advance from the instructor. <ul>
 <li>You are responsible for any problems that come up as a result.</li>
 <li>You are responsible for any surprise fees that come up as a result.</li>
-<li>Often when groups use some other hosting service that isn't Heroku they get shut off, blocked by firewalls, and/or hit with surprise fees.</li>
+<li>Often when people use some other hosting service that isn't Heroku they get shut off, blocked by firewalls, and/or hit with surprise fees.</li>
+<li>This only applies on an individual basis: teammates must still use Heroku.<ul>
+<li>Project code must still be deployable by teammates to Heroku.</li>
 </ul>
 </li>
-</ul>
-</li>
-<li>Use Django or Flask (otherwise get approval from the instructor)<ul>
-<li>You must use a single django or a single flask to serve both frontend (for browser) and backend api, distinguish between the two using routes or django "apps" or whatever.</li>
-<li>Use Python 3.8+ (otherwise get approval from the instructor)</li>
-</ul>
-</li>
-<li>Must use a postgres, sqlite, or mariadb database for storage.<ul>
-<li>For Heroku this must be postgres (sqlite doesn't work correctly on Heroku).</li>
 <li>Database provider must be the same provider as your website hosting.</li>
 </ul>
 </li>
-<li>Splitting frontend/backend hosting is not allowed, this has caused too many problems.</li>
+</ul>
+</li>
+<li><input type="checkbox"> Every teammate must be able to deploy their own project instance.<ul>
+<li>This means 6 instances of the same project but running as different servers.</li>
+</ul>
+</li>
+<li><input type="checkbox"> Use a single Django or Flask server per instance.<ul>
+<li>A single Django or Flask server must serve <em>everything</em>:<ul>
+<li>Frontend (for browser) dynamic </li>
+<li>Frontend (for browser) static content<ul>
+<li><input type="checkbox"> Use <a href="https://whitenoise.readthedocs.io/en/latest/">whitenoise</a> for static content.</li>
+</ul>
+</li>
+<li>Backend API<ul>
+<li>Use routes to distinguish.</li>
+</ul>
+</li>
+<li>Use Python 3.11+</li>
+</ul>
+</li>
+<li>Splitting frontend/backend hosting is strictly not allowed. Splitting static/dynamic is strictly not allowed. They must be a part of the same Django or Flask server.</li>
+</ul>
+</li>
+<li><input type="checkbox"> Deployed instances (Heroku): Must use a PostgreSQL database for all content storage.</li>
+<li><input type="checkbox"> Local development instances (your laptop): PostgreSQL or SQLite for all content storage.<ul>
+<li>SQLite is recommended.</li>
+</ul>
+</li>
+<li><input type="checkbox"> Everything that's not in a database files must be code managed by GitHub.<ul>
+<li>Code checked into git must be clean. </li>
+<li>Cloud (e.g. Firebase), NoSQL, key-value, and file system storage are strictly forbidden.</li>
 </ul>
 </li>
 <li>License your code properly (use an OSI approved license)<ul>
 <li>Put your name (or some representation of you like GeneralHuxFan768) on it!</li>
 </ul>
 </li>
+</ul>
+<h3 id="take-aways">Take-aways</h3>
+<ul>
+<li>1 Working Website</li>
+<li>1 GitHub git repo</li>
+<li>1 Presentation<ul>
+<li>May not include the video</li>
+</ul>
+</li>
+<li>1 OpenAPI ('Swagger') specification for your API </li>
+<li>1 Video</li>
 </ul>
 <h4 id="things-that-are-allowed">Things that are allowed</h4>
 <ul>
@@ -1344,9 +1396,9 @@ off your app.</li>
 <ul>
 <li>Rudeness to the other teams will not be tolerated.</li>
 <li>Your team must arrive on time. Late teams will not be allowed to present.</li>
-<li>You and your team must stay for all presentations and respectfully support the other teams.</li>
+<li>You and your team must stay for all presentations and show respect, support, and appreciation for the other teams hard work.</li>
 <li>You may ask thoughtful questions after each presentation.</li>
-<li>Wait until after questions to applaud.</li>
+<li>Wait until after questions to applaud. Otherwise, everyone ends up awkwardly applauding each team twice.</li>
 </ul>
 <h5 id="marking_4">Marking</h5>
 <ul>
@@ -1479,8 +1531,8 @@ off your app.</li>
 <span class="w">     </span><span class="n">The</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">trademarks</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">copyright</span><span class="w"> </span><span class="n">holders</span><span class="w"> </span><span class="n">may</span><span class="w"> </span><span class="ow">NOT</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">used</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">advertising</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">publicity</span><span class="w"> </span><span class="n">pertaining</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="k">work</span><span class="w"> </span><span class="k">without</span><span class="w"> </span><span class="k">specific</span><span class="p">,</span><span class="w"> </span><span class="n">written</span><span class="w"> </span><span class="k">prior</span><span class="w"> </span><span class="n">permission</span><span class="p">.</span><span class="w"> </span><span class="n">Title</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">copyright</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="k">work</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="k">at</span><span class="w"> </span><span class="ow">all</span><span class="w"> </span><span class="n">times</span><span class="w"> </span><span class="n">remain</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="n">copyright</span><span class="w"> </span><span class="n">holders</span><span class="p">.</span>
 </code></pre></div>
   <footer>
-    <p>Published: <time datetime="2024-01-06T00:00:00-07:00">
-      Sat, 06 Jan 2024 at 00:00 MST
+    <p>Published: <time datetime="2024-09-01T00:00:00-06:00">
+      Sun, 01 Sep 2024 at 00:00 MDT
     </time></p>
     <address>
       By           <a href="../author/hazel-victoria-campbell.html">Hazel Victoria Campbell</a>

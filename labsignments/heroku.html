@@ -43,12 +43,20 @@
 <div class="toc">
 <ul>
 <li><a href="#description">Description</a><ul>
+<li><a href="#learning-goals">Learning Goals</a></li>
 <li><a href="#warning">Warning!</a></li>
 </ul>
 </li>
 <li><a href="#getting-started">Getting Started</a><ul>
 <li><a href="#prepare-your-repo">Prepare your Repo</a></li>
-<li><a href="#installing-venv-with-pip">Installing venv with pip</a></li>
+<li><a href="#create-the-virtual-environment">Create the Virtual Environment</a><ul>
+<li><a href="#if-you-have-multiple-versions-of-python-installed">If you have multiple versions of python installed:</a></li>
+<li><a href="#check-if-you-have-pip">Check if you have pip</a></li>
+<li><a href="#check-if-you-have-venv-or-virtualenv">Check if you have venv or virtualenv</a></li>
+<li><a href="#if-you-dont-have-venv-or-virtualenv">If you don't have venv or virtualenv:</a></li>
+<li><a href="#create-a-virtual-environment">Create a Virtual Environment</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#lab-instructions">Lab Instructions</a><ul>
@@ -92,14 +100,23 @@
 <h3 id="description">Description</h3>
 <p>Big lab! This lab contains two phases. In Phase One, you will build a simple Django website. Understand the fundamentals of Django's MVC architecture using the built in models and views.
 In Phase Two, you will deploy the Django application to <a href="https://www.heroku.com/">Heroku</a>. Understand the reasoning behind Platform as a Service (PaaS) businesses like Heroku. You may follow the official documentation.</p>
+<h4 id="learning-goals">Learning Goals</h4>
+<ul>
+<li>Using esbuild to bundle and create static files with NPM packages for Django to server using whitenoise from Heroku.</li>
+<li>Django config (Level 2)</li>
+<li>Django routes (Level 2)</li>
+<li>Django models</li>
+<li>Using Django with Postgres backend on Heroku</li>
+<li>Using Django with Sqlite backend for local testing</li>
+</ul>
 <h4 id="warning">Warning!</h4>
 <p>The University's firewall (UWS) blocks new domains for 24 hours to prevent scam domains.</p>
 <p>This <em>might</em> affect your Heroku domain.The University's firewall is also inconsistent so it doesn't <em>always</em> seem to do this.
 We have complained about this every semester since forever, but IST simply does not care.</p>
-<p>Double check that your Heroku is not blocked before you demo. We will <strong>not</strong> give you an extension if you Heroku is blocked.</p>
+<p>Double check that your Heroku is not blocked before your walkthrough. We will <strong>not</strong> give you an extension if you Heroku is blocked.</p>
 <p>You have several options to make sure this doesn't happen:</p>
 <ul>
-<li>Connect to your Heroku with your web browser on UWS at least 2 days before your demo.<ul>
+<li>Connect to your Heroku with your web browser on UWS at least 2 days before your walkthrough.<ul>
 <li>It doesn't have to be fully working, the firewall just needs to see that the domain does in fact exist.</li>
 </ul>
 </li>
@@ -120,7 +137,7 @@ We have complained about this every semester since forever, but IST simply does 
 </ul>
 </li>
 <li>Use a VPN service or proxy.</li>
-<li>Demo over Zoom using Shaw or Telus internet, or another internet not provided by the University.</li>
+<li>Walkthrough us your lab over using another internet not provided by the University while in the lab.</li>
 </ul>
 <h3 id="getting-started">Getting Started</h3>
 <h4 id="prepare-your-repo">Prepare your Repo</h4>
@@ -130,21 +147,30 @@ We have complained about this every semester since forever, but IST simply does 
 </ol>
 <p>Place this gitignore within the root of your project. You can combine <a href="https://github.com/github/gitignore/blob/main/Python.gitignore">this one</a> and <a href="https://github.com/github/gitignore/blob/main/Node.gitignore">this one</a> and <a href="https://github.com/django/django/blob/main/.gitignore">this one</a> for your django+node project. Double check you're not staging any unwanted files before you commit. The <code>git status</code> command can help with that.</p>
 <p>Make sure your <code>.gitignore</code> contains <code>*.sqlite3</code>.</p>
-<h4 id="installing-venv-with-pip">Installing venv with pip</h4>
+<h4 id="create-the-virtual-environment">Create the Virtual Environment</h4>
 <p>Virtual environment is a CLI tool for managing python dependencies. Different projects have different dependencies, and version requirements. A virtual environment allows you to manage your dependencies specific to your project.</p>
-<p>To install follow these steps (Note that you need pip installed and configured):</p>
+<h5 id="if-you-have-multiple-versions-of-python-installed">If you have multiple versions of python installed:</h5>
+<p>Always end the python command with the version number. </p>
+<p>For example, on the undergrad machines ugXX.cs.ualberta.ca: you can use <code>python3.11</code>.</p>
+<h5 id="check-if-you-have-pip">Check if you have pip</h5>
+<p><code>python3.XX -m pip</code> should give information about how to use pip.</p>
+<p>For example, on the undergrad machines ugXX.cs.ualberta.ca: you can use <code>python3.11 -m pip</code>.</p>
+<h5 id="check-if-you-have-venv-or-virtualenv">Check if you have venv or virtualenv</h5>
+<p><code>python3.XX -m venv --help</code> should give information about how to use venv.</p>
+<p>If you don't have <code>venv</code>, try <code>virtualenv</code>: <code>python -m virtualenv --help</code> should give information about how to use virtualenv.</p>
+<p>For example, on the undergrad machines ugXX.cs.ualberta.ca: you can use <code>python3.11 -m venv --help</code>.</p>
+<h5 id="if-you-dont-have-venv-or-virtualenv">If you don't have venv or virtualenv:</h5>
 <ol>
-<li><code>python -m pip install --user virtualenv</code></li>
+<li>Run <code>python3.XX -m pip install --user virtualenv</code></li>
 <li>Check installation: <code>python -m virtualenv --help</code> </li>
 </ol>
-<p>For more info check <a href="https://virtualenv.pypa.io/en/latest/installation.html">here</a>.
-To create and use a virtual environment:</p>
+<p>For more info check <a href="https://virtualenv.pypa.io/en/latest/installation.html">here</a>.</p>
+<h5 id="create-a-virtual-environment">Create a Virtual Environment</h5>
 <ol>
-<li><code>virtualenv venv --python=python3</code></li>
-<li><code>source venv/bin/activate</code></li>
+<li><code>python3.XX -m virtualenv venv</code> (or <code>python3.XX -m venv venv</code>)</li>
+<li><code>source venv/bin/activate</code> (or <code>cd venv/scripts &amp;&amp; activate.bat</code> if you're on Windows)</li>
 </ol>
-<p>The first command will create a directory named <code>venv</code>. Contained in the directory is your
-project dependecy installation and the <code>activate</code> script. Run <code>deactivate</code> to exit the virtual environment.</p>
+<p>The first command will create a directory named <code>venv</code>. Contained in the directory is your project dependency installations and the <code>activate</code> script to enter the virtual environment. When you want to exit the environment, run <code>deactivate</code>.</p>
 <h3 id="lab-instructions">Lab Instructions</h3>
 <h4 id="phase-one-django-polls-app">Phase One: Django Polls App</h4>
 <h5 id="creating-a-django-project">Creating a Django Project</h5>
@@ -194,7 +220,7 @@ need to use the noted alternate instructions. Your repo would look like this, wi
 </code></pre></div>
 
 </aside>
-<p>Now that the server’s running, visit <a href="http://127.0.0.1:8000/">http://127.0.0.1:8000/</a> with your web browser. You’ll see a “Congratulations!” page, with a rocket taking off. It worked!</p>
+<p>Now that the server’s running, visit <a href="http://localhost:8000/">http://localhost:8000/</a> with your web browser. You’ll see a “Congratulations!” page, with a rocket taking off. It worked!</p>
 <hr>
 <h5 id="creating-a-django-app">Creating a Django App</h5>
 <ul>
@@ -220,7 +246,7 @@ need to use the noted alternate instructions. Your repo would look like this, wi
 <span class="p">]</span>
 </code></pre></div>
 
-<p>Within <code>lab3/urls.py</code> include the following code.</p>
+<p>Within <code>lab3/urls.py</code> replace it with the following code.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">django.contrib</span> <span class="kn">import</span> <span class="n">admin</span>
 <span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">include</span><span class="p">,</span> <span class="n">path</span>
 
@@ -253,7 +279,7 @@ need to use the noted alternate instructions. Your repo would look like this, wi
 <span class="p">}</span>
 </code></pre></div>
 
-<p>Within <em>polls/models.py</em> include the following code.</p>
+<p>Within <em>polls/models.py</em> include the following code. The attributes defined in each class represent the data fields that the model should store.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
 
 <span class="k">class</span> <span class="nc">Question</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
@@ -309,7 +335,7 @@ need to use the noted alternate instructions. Your repo would look like this, wi
 <span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">Question</span><span class="p">)</span>
 </code></pre></div>
 
-<p>Start the development server again and go to <code>/admin</code> on your local domain – e.g., <a href="http://127.0.0.1:8000/admin/">http://127.0.0.1:8000/admin/</a>. You should see the admin’s login screen and can login with your admin account.</p>
+<p>Start the development server again and go to <code>/admin</code> on your local domain – e.g., <a href="http://localhost:8000/admin/">http://localhost:8000/admin/</a>. You should see the admin’s login screen and can login with your admin account.</p>
 <div class="highlight"><pre><span></span><code>python<span class="w"> </span>manage.py<span class="w"> </span>runserver
 </code></pre></div>
 
@@ -317,7 +343,7 @@ need to use the noted alternate instructions. Your repo would look like this, wi
 <ul>
 <li>Official Docs <a href="https://docs.djangoproject.com/en/5.0/intro/tutorial03/">Part 3</a></li>
 </ul>
-<p>Add some additional views to the <em>polls/views.py</em> file. Include the following methods:</p>
+<p>Add some additional views to the <em>polls/views.py</em> file. Include the following functions:</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">detail</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">question_id</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="s2">&quot;You&#39;re looking at question </span><span class="si">%s</span><span class="s2">.&quot;</span> <span class="o">%</span> <span class="n">question_id</span><span class="p">)</span>
 
@@ -350,10 +376,9 @@ need to use the noted alternate instructions. Your repo would look like this, wi
 <hr>
 <h5 id="making-views-render-model-data">Making views render model data</h5>
 <p>Update the <em>polls/views.py</em> <code>index</code> method so the questions are returned.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponse</span>
-
+<div class="highlight"><pre><span></span><code><span class="c1"># Change the imports to this!</span>
+<span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponse</span>
 <span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Question</span>
-
 
 <span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
     <span class="n">latest_question_list</span> <span class="o">=</span> <span class="n">Question</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s2">&quot;-pub_date&quot;</span><span class="p">)[:</span><span class="mi">5</span><span class="p">]</span>
@@ -381,15 +406,17 @@ touch<span class="w"> </span>polls/templates/polls/index.html
 </code></pre></div>
 
 <p>Update the <code>index</code> view in <em>polls/views.py</em> to use the new template.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span>
-
+<div class="highlight"><pre><span></span><code><span class="c1"># Change the imports to this!</span>
+<span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponse</span>
+<span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span>
 <span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Question</span>
-
 
 <span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
     <span class="n">latest_question_list</span> <span class="o">=</span> <span class="n">Question</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s2">&quot;-pub_date&quot;</span><span class="p">)[:</span><span class="mi">5</span><span class="p">]</span>
     <span class="n">context</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;latest_question_list&quot;</span><span class="p">:</span> <span class="n">latest_question_list</span><span class="p">}</span>
     <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s2">&quot;polls/index.html&quot;</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+
+<span class="c1"># Do not modify the rest of the views</span>
 </code></pre></div>
 
 <p>Add a new template file for the poll details view.</p>
@@ -406,11 +433,13 @@ touch<span class="w"> </span>polls/templates/polls/index.html
 </code></pre></div>
 
 <p>Update the <code>detail</code> view in <em>polls/views.py</em> to use the new template.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">get_object_or_404</span><span class="p">,</span> <span class="n">render</span>
-
+<div class="highlight"><pre><span></span><code><span class="c1"># Change the imports to this!</span>
+<span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponse</span>
+<span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span><span class="p">,</span> <span class="n">get_object_or_404</span>
 <span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Question</span>
 
 <span class="c1"># ...</span>
+
 <span class="k">def</span> <span class="nf">detail</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">question_id</span><span class="p">):</span>
     <span class="n">question</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">Question</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="n">question_id</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s2">&quot;polls/detail.html&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;question&quot;</span><span class="p">:</span> <span class="n">question</span><span class="p">})</span>
@@ -473,11 +502,11 @@ touch<span class="w"> </span>polls/templates/polls/index.html
 </code></pre></div>
 
 <p>We also created a dummy implementation of the <code>vote()</code> function in <em>polls/views.py</em>. Let’s update the <code>vote</code> view in <em>polls/views.py</em> to handle the new template.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponse</span><span class="p">,</span> <span class="n">HttpResponseRedirect</span>
-<span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">get_object_or_404</span><span class="p">,</span> <span class="n">render</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Change the imports to this!</span>
+<span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponse</span><span class="p">,</span> <span class="n">HttpResponseRedirect</span>
+<span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span><span class="p">,</span> <span class="n">get_object_or_404</span>
 <span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">reverse</span>
-
-<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Choice</span><span class="p">,</span> <span class="n">Question</span>
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Question</span><span class="p">,</span> <span class="n">Choice</span>
 
 <span class="c1"># ...</span>
 <span class="k">def</span> <span class="nf">vote</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">question_id</span><span class="p">):</span>
@@ -504,10 +533,7 @@ touch<span class="w"> </span>polls/templates/polls/index.html
 </code></pre></div>
 
 <p>After voting, the application should redirect to a view displaying the results. Update the <code>results</code> view in <em>polls/views.py</em></p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">get_object_or_404</span><span class="p">,</span> <span class="n">render</span>
-
-
-<span class="k">def</span> <span class="nf">results</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">question_id</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">results</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">question_id</span><span class="p">):</span>
     <span class="n">question</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">Question</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="n">question_id</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s2">&quot;polls/results.html&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;question&quot;</span><span class="p">:</span> <span class="n">question</span><span class="p">})</span>
 </code></pre></div>
@@ -535,7 +561,6 @@ touch<span class="w"> </span>polls/templates/polls/index.html
 </ol>
 <p>Amend the <em>polls/urls.py</em> url configuration. Note that the name of the matched pattern in the path strings of the second and third patterns has changed from <code>&lt;question_id&gt;</code> to <code>&lt;pk&gt;</code>.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">path</span>
-
 <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">views</span>
 
 <span class="n">app_name</span> <span class="o">=</span> <span class="s2">&quot;polls&quot;</span>
@@ -552,9 +577,7 @@ touch<span class="w"> </span>polls/templates/polls/index.html
 <span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">get_object_or_404</span><span class="p">,</span> <span class="n">render</span>
 <span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">reverse</span>
 <span class="kn">from</span> <span class="nn">django.views</span> <span class="kn">import</span> <span class="n">generic</span>
-
 <span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Choice</span><span class="p">,</span> <span class="n">Question</span>
-
 
 <span class="k">class</span> <span class="nc">IndexView</span><span class="p">(</span><span class="n">generic</span><span class="o">.</span><span class="n">ListView</span><span class="p">):</span>
     <span class="n">template_name</span> <span class="o">=</span> <span class="s2">&quot;polls/index.html&quot;</span>
@@ -564,16 +587,13 @@ touch<span class="w"> </span>polls/templates/polls/index.html
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the last five published questions.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">Question</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s2">&quot;-pub_date&quot;</span><span class="p">)[:</span><span class="mi">5</span><span class="p">]</span>
 
-
 <span class="k">class</span> <span class="nc">DetailView</span><span class="p">(</span><span class="n">generic</span><span class="o">.</span><span class="n">DetailView</span><span class="p">):</span>
     <span class="n">model</span> <span class="o">=</span> <span class="n">Question</span>
     <span class="n">template_name</span> <span class="o">=</span> <span class="s2">&quot;polls/detail.html&quot;</span>
 
-
 <span class="k">class</span> <span class="nc">ResultsView</span><span class="p">(</span><span class="n">generic</span><span class="o">.</span><span class="n">DetailView</span><span class="p">):</span>
     <span class="n">model</span> <span class="o">=</span> <span class="n">Question</span>
     <span class="n">template_name</span> <span class="o">=</span> <span class="s2">&quot;polls/results.html&quot;</span>
-
 
 <span class="k">def</span> <span class="nf">vote</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">question_id</span><span class="p">):</span>
     <span class="o">...</span>  <span class="c1"># same as above, no changes needed.</span>
@@ -583,11 +603,12 @@ touch<span class="w"> </span>polls/templates/polls/index.html
 <h5 id="serializing-and-deserializing-queries-optional-but-highly-recommended-to-do">Serializing and Deserializing Queries (Optional, but highly recommended to do)</h5>
 <p>Based from the DRF (Django Rest Framework) tutorial <a href="https://www.django-rest-framework.org/tutorial/1-serialization/">here</a></p>
 <p>To convert your queries to or from a JSON object you can use Django's serializers to serialize or deserialize Django QuerySets to or from JSON objects.  </p>
-<p>First install the Django Rest Framework library using <code>pip</code></p>
+<p>First install the Django Rest Framework library using <code>pip</code> and make sure to update our <code>requirements.txt</code> file</p>
 <div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>djangorestframework
+pip<span class="w"> </span>freeze<span class="w"> </span>&gt;<span class="w"> </span>requirements.txt
 </code></pre></div>
 
-<p>Then add the <code>rest_framework</code> app to <code>INSTALLED_APPS</code> in our <code>settings.py</code> file</p>
+<p>Then add the <code>rest_framework</code> app to the <strong>bottom</strong> of our <code>INSTALLED_APPS</code> in our <code>settings.py</code> file</p>
 <div class="highlight"><pre><span></span><code><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
     <span class="o">...</span>
     <span class="s1">&#39;rest_framework&#39;</span>
@@ -622,11 +643,12 @@ touch<span class="w"> </span>polls/templates/polls/index.html
 <h5 id="update-our-views-using-our-serializer">Update our views using our Serializer</h5>
 <p>Once you have the serializers you now need to write some API views using the new Serializer class</p>
 <p>Edit the <code>polls/views.py</code> file, and add the following</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">rest_framework.decorators</span> <span class="kn">import</span> <span class="n">api_view</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># ADD these three imports!</span>
+<span class="kn">from</span> <span class="nn">rest_framework.decorators</span> <span class="kn">import</span> <span class="n">api_view</span>
 <span class="kn">from</span> <span class="nn">rest_framework.response</span> <span class="kn">import</span> <span class="n">Response</span>
 <span class="kn">from</span> <span class="nn">.serializers</span> <span class="kn">import</span> <span class="n">QuestionSerializer</span>
 
-<span class="o">...</span>
+<span class="c1"># ...</span>
 
 
 <span class="nd">@api_view</span><span class="p">([</span><span class="s1">&#39;GET&#39;</span><span class="p">])</span>
@@ -646,7 +668,7 @@ touch<span class="w"> </span>polls/templates/polls/index.html
 <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">views</span>
 
 <span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="o">...</span>
+    <span class="c1"># ...</span>
     <span class="n">path</span><span class="p">(</span><span class="s1">&#39;api/questions/&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">get_questions</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;get_questions&#39;</span><span class="p">),</span>
 <span class="p">]</span>
 </code></pre></div>
@@ -657,7 +679,7 @@ touch<span class="w"> </span>polls/templates/polls/index.html
 
 <p>You should see a list of question in a json format.</p>
 <h5 id="updating-a-question-using-our-serializer">Updating a Question Using our Serializer</h5>
-<p>We can use the serializer to update the <code>question_text</code> field of our question entries.</p>
+<p>We can use the serializer to update the <code>question_text</code> field of our question entries. Add another function to <code>polls/views.py</code></p>
 <div class="highlight"><pre><span></span><code><span class="nd">@api_view</span><span class="p">([</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span><span class="s1">&#39;POST&#39;</span><span class="p">])</span>
 <span class="k">def</span> <span class="nf">update_question</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">pk</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -676,7 +698,7 @@ touch<span class="w"> </span>polls/templates/polls/index.html
 <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">views</span>
 
 <span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="o">...</span>
+    <span class="c1"># ...</span>
     <span class="n">path</span><span class="p">(</span><span class="s1">&#39;api/question/&lt;int:pk&gt;&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">update_question</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;update_question&#39;</span><span class="p">),</span>
 <span class="p">]</span>
 </code></pre></div>
@@ -847,17 +869,18 @@ If you do have a project subfolder it should look like this:
 
 <h5 id="deploying-our-django-application-to-heroku">Deploying our Django Application to Heroku</h5>
 <p>First, <a href="https://dashboard.heroku.com/new-app">create an app</a> on your Heroku dashboard. Keep in mind that a Heroku app is different from a Django app.</p>
-<p>Commit your files and deploy the application using a the heroku command line tool. See <a href="https://devcenter.heroku.com/articles/git">their article on how to do this</a>. Follow the instructions for an existing app, not a new app: <code>use heroku git:remote</code>, <strong>not</strong> <code>heroku create</code>.
+<p>Commit your files and deploy the application using a the heroku command line tool. See <a href="https://devcenter.heroku.com/articles/git">their article on how to do this</a>. Follow the instructions for an existing app, not a new app. Use <code>heroku git:remote</code>, <strong>NOT</strong> <code>heroku create</code>.
 If you used <code>heroku create</code>, please see <a href="https://stackoverflow.com/questions/50421071/git-i-made-a-repository-inside-a-repository-and-now-i-just-want-the-one-big-rep">this stackoverflow question</a> about how to return to a single repository.</p>
-<p>You should have a heroku app. You should see it if you run the <code>heroku list</code> command. In the following, <code>APPNAME</code> refers to this heroku app's name.</p>
+<p>You should have a heroku app. You should see it if you run the <code>heroku list</code> command. <strong>In the following, <code>APPNAME</code> refers to this heroku app's name.</strong></p>
 <h5 id="using-a-postgres-database-on-heroku">Using a Postgres Database on Heroku</h5>
-<div class="highlight"><pre><span></span><code>heroku addons:create heroku-postgresql:mini
+<p>Heroku provides additional services in addition to project hosting. In this case, we will need to add a postgresql database to our app.</p>
+<div class="highlight"><pre><span></span><code>heroku addons:create heroku-postgresql:essential-0 --app APPNAME
 </code></pre></div>
 
-<p>You can manage your mini postgres on your heroku dashboard under the app addons.
-<br><img id="access-panel" alt="access panel" src="../labsignments/postgres-add-on.png" style="width: 50%;"></p>
-<p>Check that heroku is configuring the database:</p>
-<div class="highlight"><pre><span></span><code>heroku run env
+<p>You can manage your essentials-0 postgres on your heroku dashboard under the resources section &gt; add-ons.
+<br><img id="access-panel" alt="access panel" src="../labsignments/postgres-add-on.png" style="width: 100%;"></p>
+<p>Check that heroku is configuring the database: (You may need to wait a bit for the add-on to be installed)</p>
+<div class="highlight"><pre><span></span><code>heroku run &quot;env&quot; --app APPNAME
 </code></pre></div>
 
 <p>You should get an output like that contains a line that starts with <code>DATABASE_URL=postgres://</code> followed by a username and a password.</p>
@@ -893,13 +916,13 @@ If you used <code>heroku create</code>, please see <a href="https://stackoverflo
 <p>Once it is deployed, check that django is now using your heroku postgres database:</p>
 <aside class="option1">
 <div class="highlight"><pre><span></span><code><span class="c1"># If your django project is your git repo root</span>
-heroku<span class="w"> </span>run<span class="w"> </span><span class="s2">&quot;python3 manage.py diffsettings&quot;</span>
+heroku<span class="w"> </span>run<span class="w"> </span><span class="s2">&quot;python3 manage.py diffsettings&quot;</span><span class="w"> </span>--app<span class="w"> </span>APPNAME
 </code></pre></div>
 
 </aside>
 <aside class="option2">
 <div class="highlight"><pre><span></span><code><span class="c1"># If your django project is in a folder</span>
-heroku<span class="w"> </span>run<span class="w"> </span><span class="s2">&quot;python3 lab3/manage.py diffsettings&quot;</span>
+heroku<span class="w"> </span>run<span class="w"> </span><span class="s2">&quot;python3 lab3/manage.py diffsettings&quot;</span><span class="w"> </span>--app<span class="w"> </span>APPNAME
 </code></pre></div>
 
 </aside>
@@ -910,15 +933,15 @@ heroku<span class="w"> </span>run<span class="w"> </span><span class="s2">&quot;
 <p>If it contains <code>sqlite3</code>, something is wrong. Please check that you followed the steps correctly.</p>
 <p>Run your migrations, create a Superuser, and ensure your application functionality works.</p>
 <aside class="option1">
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>heroku<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>manage.py<span class="w"> </span>migrate
-$<span class="w"> </span>heroku<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>manage.py<span class="w"> </span>createsuperuser
+<div class="highlight"><pre><span></span><code>heroku<span class="w"> </span>run<span class="w"> </span><span class="s2">&quot;python manage.py migrate&quot;</span><span class="w"> </span>--app<span class="w"> </span>APPNAME
+heroku<span class="w"> </span>run<span class="w"> </span><span class="s2">&quot;python manage.py createsuperuser&quot;</span><span class="w"> </span>--app<span class="w"> </span>APPNAME
 </code></pre></div>
 
 </aside>
 <aside class="option2">
 <p>If your Django project is in a folder in your repo like <code>lab3</code>, you will need something like:</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>heroku<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>lab3/manage.py<span class="w"> </span>migrate
-$<span class="w"> </span>heroku<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>lab3/manage.py<span class="w"> </span>createsuperuser
+<div class="highlight"><pre><span></span><code>heroku<span class="w"> </span>run<span class="w"> </span><span class="s2">&quot;python lab3/manage.py migrate&quot;</span><span class="w"> </span>--app<span class="w"> </span>APPNAME
+heroku<span class="w"> </span>run<span class="w"> </span><span class="s2">&quot;python lab3/manage.py createsuperuser&quot;</span><span class="w"> </span>--app<span class="w"> </span>APPNAME
 </code></pre></div>
 
 </aside>
@@ -926,10 +949,10 @@ $<span class="w"> </span>heroku<span class="w"> </span>run<span class="w"> </spa
 <p>Go to <code>/polls</code> on your Heroku deployed site, you should be able to use the Polls app from Heroku. </p>
 <p>Note: Please make sure that the Heroku app uses Postgres as the backend database. If you created the Heroku app through Git integration, this should be a default setting.</p>
 <p>You can verify the backend in use by login into the dashboard of the Heroku app: <a href="https://dashboard.heroku.com/apps/APP_NAME">https://dashboard.heroku.com/apps/APP_NAME</a>, then click the <code>Resources</code> tab, you should see <code>Heroku Postgres</code> under the <code>Add-ons</code> Section.</p>
-<p>If a different Heroku backend is used (e.g., SQLite), or if you try to create the Heroku app through the Heroku webpage, you can follow the below instructions to enable Postgres.
+<p>If you try to create the Heroku app through the Heroku webpage, you can follow the below instructions to enable Postgres.
 <a href="https://www.geeksforgeeks.org/deploying-django-app-on-heroku-with-postgres-as-backend/">https://www.geeksforgeeks.org/deploying-django-app-on-heroku-with-postgres-as-backend/</a></p>
 <h5 id="checking-your-heroku-app">Checking your heroku app</h5>
-<p>You can use the <code>heroku open</code> command to open your heroku app in a web browser. </p>
+<p>You can use the <code>heroku open --app APPNAME</code> command to open your heroku app in a web browser. </p>
 <ul>
 <li>Add your apps hostname, cname, and ip address to the README.md file in your git repo. You <strong>must</strong> do this to help us mark your work. <ul>
 <li>First get your heroku apps hostname, it will look something like <code>example-app-1234567890ab.herokuapp.com</code>.</li>
@@ -978,7 +1001,7 @@ $<span class="w"> </span>heroku<span class="w"> </span>run<span class="w"> </spa
 <ul>
 <li>Must use Python3</li>
 <li>Must run on Ubuntu (Use the undergrad lab machines, for example the ones in CSC 2-29 or install an Ubuntu VM to check this)</li>
-<li>Must run on your machine (whatever machine you use to demo)</li>
+<li>Must run on your machine (whatever machine you use to show us)</li>
 <li>Must be running on heroku, with some polls that you created for the TA to look at when they mark it.</li>
 <li>Git repo must not contain </li>
 </ul>
@@ -1040,6 +1063,7 @@ $<span class="w"> </span>heroku<span class="w"> </span>run<span class="w"> </spa
     </time></p>
     <address>
       By           <a href="../author/xin-yang.html">Xin Yang</a>
+          <a href="../author/william-qi.html">William Qi</a>
     </address>
     <p>
         Category: <a href="../category/labsignments.html">labsignments</a>

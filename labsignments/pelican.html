@@ -141,9 +141,9 @@ mkdir<span class="w"> </span>-p<span class="w"> </span>templates/mytheme/templat
 </code></pre></div>
 
 <p>On Windows you need to create the same structure.</p>
-<p>Within the <code>templates/mytheme/templates</code> directory, create a new file <code>base.html</code>. Within the <code>templates/mytheme/static</code> directory, create a new file <code>style.css</code>.</p>
+<p>Within the <code>templates/mytheme/templates</code> directory, create a new file <code>base.html</code>. Within the <code>templates/mytheme/static</code> directory, create a new file <code>fancy.css</code>.</p>
 <div class="highlight"><pre><span></span><code>touch<span class="w"> </span>templates/mytheme/templates/base.html
-touch<span class="w"> </span>templates/mytheme/static/style.css
+touch<span class="w"> </span>templates/mytheme/static/fancy.css
 </code></pre></div>
 
 <p>Add the following content to the file <code>templates/mytheme/templates/base.html</code>.</p>
@@ -151,11 +151,11 @@ touch<span class="w"> </span>templates/mytheme/static/style.css
 
 {% block head %}
 {{ super() }}
-  <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/css&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;{{ SITEURL }}/theme/style.css&quot;</span> <span class="p">/&gt;</span>
+  <span class="p">&lt;</span><span class="nt">link</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;_stylesheet&quot;</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/css&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;{{ SITEURL }}/theme/fancy.css&quot;</span> <span class="p">/&gt;</span>
 {% endblock %}
 </code></pre></div>
 
-<p>Modify the content of the <code>templates/mytheme/static/style.css</code> file to your preference. A quick sample stylesheet can be found below.</p>
+<p>Modify the content of the <code>templates/mytheme/static/fancy.css</code> file to your preference. A quick sample stylesheet can be found below.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">html</span><span class="o">,</span><span class="w"> </span><span class="nt">body</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="w">  </span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
@@ -165,7 +165,7 @@ touch<span class="w"> </span>templates/mytheme/static/style.css
 <span class="p">}</span>
 </code></pre></div>
 
-<p>This is just to get you started, you will have to add a lot to <code>style.css</code> later!</p>
+<p>This is just to get you started, you will have to add a lot to <code>fancy.css</code> later!</p>
 <p>Add your theme to your <em>pelicanconf.py</em> file.</p>
 <div class="highlight"><pre><span></span><code><span class="n">THEME</span> <span class="o">=</span> <span class="s1">&#39;templates/mytheme&#39;</span>
 </code></pre></div>
@@ -265,50 +265,43 @@ book from: the Project Gutenberg.</p>
 <p>Compare the output HTML from Pelican with that of the HTML you wrote for your books. Pelican should have added a lot more HTML around
 the HTML you put in your <code>&lt;body&gt;</code>.</p>
 <h4 id="phase-three-playing-around-with-css">Phase Three: Playing around with CSS</h4>
-<p>Write CSS to enable your site to have dark mode, light mode, print mode, and responsiveness in both desktop and mobile views.  </p>
+<p>Write CSS to enable your site to have fancy mode, 90s mode, minimal mode, and responsiveness in both desktop and mobile views.  </p>
 <ul>
-<li>Light Mode: You can take inspiration from modern websites such as Amazon, Facebook, Google, Github, or Microsoft, but <strong>do not copy their code.</strong></li>
+<li>Fancy Mode: You can take inspiration from modern websites such as Amazon, Facebook, Google, Github, or Microsoft, but <strong>do not copy their code.</strong></li>
 <li>These websites have thousands of lines copyrighted CSS that you do not need and do not have permission from Amazon/Facebook/Google to copy. However, you can use your browser's Dev Tools to see how they accomplish certain things and take inspiration from that.</li>
 <li>Try to make your light mode look like a standard, modern website. Try to make it look like a website that you would want to use.</li>
-<li>Dark Mode: You can take inspiration from the <a href="https://theoatmeal.com/comics/design_hell?fbclid=IwAR32De0TRFISnARpWunp3jvoCF1k1iXdotYZbvenRJOvqUCeaJwABk91JFw">oatmeal comic</a> or <a href="https://www.spacejam.com/1996/">space jam</a>. Try to make it like those 90s websites.</li>
-<li>Print Mode: Try to make the page look good and clean for printing. Use a minimalism-style design. Minimalism is about removing any unnecessary elements of the design such as lines, colors, shapes, and backgrounds.</li>
+<li>90s Mode: You can take inspiration from the <a href="https://theoatmeal.com/comics/design_hell?fbclid=IwAR32De0TRFISnARpWunp3jvoCF1k1iXdotYZbvenRJOvqUCeaJwABk91JFw">oatmeal comic</a> or <a href="https://www.spacejam.com/1996/">space jam</a>. Try to make it like those 90s websites.</li>
+<li>Minimal Mode: Try to make the page look good and clean for printing. Use a minimalism-style design. Minimalism is about removing any unnecessary elements of the design such as lines, colors, shapes, and backgrounds.</li>
 <li>Try to make your print mode look good for printing. Check what it looks like by printing it to a PDF file (you don't need to print it to physical paper).</li>
 <li>Every part of the page should be very different between the 3 modes.</li>
 <li>You should include CSS that styles every visible HTML element on the pages.</li>
 <li>You should NOT include CSS that styles elements which your page does not have.</li>
 <li>Include some changes that make your site uniquely yours. For exmaple: your favorite color, your favorite fonts, etc.</li>
 </ul>
-<p>You should use media queries to achieve these. Here is an example:</p>
-<div class="highlight"><pre><span></span><code><span class="o">/*</span><span class="w"> </span><span class="n">Light</span><span class="w"> </span><span class="nb">mode</span><span class="w"> </span><span class="n">styles</span><span class="w"> </span><span class="o">*/</span>
-<span class="w">  </span><span class="p">@</span><span class="n">media</span><span class="w"> </span><span class="p">(</span><span class="n">prefers</span><span class="o">-</span><span class="nb">color</span><span class="o">-</span><span class="n">scheme</span><span class="p">:</span><span class="w"> </span><span class="nb">light</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">html</span><span class="p">,</span><span class="n">body</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="n">background</span><span class="o">-</span><span class="nb">color</span><span class="p">:</span><span class="w"> </span>#<span class="n">d7a1a1</span><span class="p">;</span>
-<span class="w">      </span><span class="o">/*</span><span class="w"> </span><span class="n">Add</span><span class="w"> </span><span class="n">more</span><span class="w"> </span><span class="n">styling</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nb">light</span><span class="w"> </span><span class="n">theme</span><span class="w"> </span><span class="o">*/</span>
+<p>You should use 3 javascript buttons to switch between these. For example, inside your <code>/templates/mytheme/templates/base.html</code> you can add the following to a block of your choice.</p>
+<div class="highlight"><pre><span></span><code>    <span class="p">&lt;</span><span class="nt">button</span> <span class="na">onclick</span><span class="o">=</span><span class="s">&quot;changeStylesheet(&#39;fancy.css&#39;)&quot;</span><span class="p">&gt;</span>fancy mode<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">button</span> <span class="na">onclick</span><span class="o">=</span><span class="s">&quot;changeStylesheet(&#39;minimal.css&#39;)&quot;</span><span class="p">&gt;</span>minimal mode<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">button</span> <span class="na">onclick</span><span class="o">=</span><span class="s">&quot;changeStylesheet(&#39;90s.css&#39;)&quot;</span><span class="p">&gt;</span>90s mode<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+
+    <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">stylesheetRegex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sr">/[^/]*\.css$/</span>
+
+<span class="w">    </span><span class="kd">function</span><span class="w"> </span><span class="nx">changeStylesheet</span><span class="p">(</span><span class="nx">style</span><span class="p">){</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="nx">element</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;_stylesheet&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">element</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="s2">&quot;href&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">element</span><span class="p">.</span><span class="nx">getAttribute</span><span class="p">(</span><span class="s2">&quot;href&quot;</span><span class="p">).</span><span class="nx">replace</span><span class="p">(</span><span class="nx">stylesheetRegex</span><span class="p">,</span><span class="w"> </span><span class="nx">style</span><span class="p">))</span>
 <span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="o">/*</span><span class="w"> </span><span class="n">Add</span><span class="w"> </span><span class="n">more</span><span class="w"> </span><span class="n">styling</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nb">light</span><span class="w"> </span><span class="n">theme</span><span class="w"> </span><span class="o">*/</span>
+<span class="w">    </span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div>
 
-<span class="w">  </span><span class="p">}</span>
-<span class="o">/*</span><span class="w"> </span><span class="n">Dark</span><span class="w"> </span><span class="nb">mode</span><span class="w"> </span><span class="n">styles</span><span class="w"> </span><span class="o">*/</span>
-
-<span class="w">  </span><span class="p">@</span><span class="n">media</span><span class="w"> </span><span class="p">(</span><span class="n">prefers</span><span class="o">-</span><span class="nb">color</span><span class="o">-</span><span class="n">scheme</span><span class="p">:</span><span class="w"> </span><span class="n">dark</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">html</span><span class="p">,</span><span class="w"> </span><span class="n">body</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="n">background</span><span class="o">-</span><span class="nb">color</span><span class="p">:</span><span class="w"> </span>#<span class="mf">0f0</span><span class="n">f0f</span><span class="p">;</span>
-<span class="w">       </span><span class="o">/*</span><span class="w"> </span><span class="n">Add</span><span class="w"> </span><span class="n">more</span><span class="w"> </span><span class="n">styling</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">dark</span><span class="w"> </span><span class="n">theme</span><span class="w"> </span><span class="o">*/</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="o">/*</span><span class="w"> </span><span class="n">Add</span><span class="w"> </span><span class="n">more</span><span class="w"> </span><span class="n">styling</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">dark</span><span class="w"> </span><span class="n">theme</span><span class="w"> </span><span class="o">*/</span>
-
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="o">/*</span><span class="w"> </span><span class="n">Styles</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">printing</span><span class="w"> </span><span class="o">*/</span>
-<span class="w">  </span><span class="p">@</span><span class="n">media</span><span class="w"> </span><span class="nb">print</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">html</span><span class="p">,</span><span class="n">body</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="n">background</span><span class="o">-</span><span class="nb">color</span><span class="p">:</span><span class="w"> </span>#<span class="n">fff</span><span class="p">;</span>
-<span class="w">      </span><span class="o">/*</span><span class="w"> </span><span class="n">Add</span><span class="w"> </span><span class="n">more</span><span class="w"> </span><span class="n">styling</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">printing</span><span class="w"> </span><span class="o">*/</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="o">/*</span><span class="w"> </span><span class="n">Additional</span><span class="w"> </span><span class="n">styles</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">printed</span><span class="w"> </span><span class="n">pages</span><span class="w"> </span><span class="o">*/</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="w">  </span><span class="o">/*</span><span class="w"> </span><span class="n">Extra</span><span class="w"> </span><span class="n">small</span><span class="w"> </span><span class="n">devices</span><span class="w"> </span><span class="p">(</span><span class="n">phones</span><span class="p">,</span><span class="w"> </span><span class="mi">600</span><span class="n">px</span><span class="w"> </span><span class="nb">and</span><span class="w"> </span><span class="n">down</span><span class="p">)</span><span class="w"> </span><span class="o">*/</span>
+<p>Then create the corresponding CSS files:</p>
+<ul>
+<li><code>templates/mytheme/static/minimal.css</code></li>
+<li><code>templates/mytheme/static/90s.css</code></li>
+</ul>
+<p><code>templates/mytheme/static/fancy.css</code> should already exist from earlier. Clicking on one of the buttons will replace the stylesheet with the one corresponding with each mode. </p>
+<p><strong>NOTE:</strong> The 3 css files aren't allowed to share any code. To be on the safe side, you can create each style from scratch to produce 3 unique sets of styling rules for your site.</p>
+<p>Additionally, use media queries to apply different styling for different screen sizes. Here is an example:</p>
+<div class="highlight"><pre><span></span><code><span class="o">/*</span><span class="w"> </span><span class="n">Extra</span><span class="w"> </span><span class="n">small</span><span class="w"> </span><span class="n">devices</span><span class="w"> </span><span class="p">(</span><span class="n">phones</span><span class="p">,</span><span class="w"> </span><span class="mi">600</span><span class="n">px</span><span class="w"> </span><span class="nb">and</span><span class="w"> </span><span class="n">down</span><span class="p">)</span><span class="w"> </span><span class="o">*/</span>
 <span class="p">@</span><span class="n">media</span><span class="w"> </span><span class="n">only</span><span class="w"> </span><span class="n">screen</span><span class="w"> </span><span class="nb">and</span><span class="w"> </span><span class="p">(</span><span class="nb">max</span><span class="o">-</span><span class="n">width</span><span class="p">:</span><span class="w"> </span><span class="mi">600</span><span class="n">px</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="o">/*</span><span class="w"> </span><span class="n">Add</span><span class="w"> </span><span class="n">styling</span><span class="w"> </span><span class="n">here</span><span class="w"> </span><span class="o">*/</span>
 <span class="p">}</span>
@@ -336,16 +329,7 @@ the HTML you put in your <code>&lt;body&gt;</code>.</p>
 
 <p>You can read more about CSS and Media Queries <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_media_queries/Using_media_queries">here</a></p>
 <h5 id="testing-it-on-the-browser">Testing it on the Browser</h5>
-<p>You can use a browser to test out the different modes in the developer tools or developer console. <a href="https://www.mozilla.org/en-US/firefox/developer/">Firefox Developer Edition</a> has light mode, dark mode and printing mode button in the tools. You can just click and toggle between different modes. Chrome has some instructions on how to do this <a href="https://developer.chrome.com/docs/devtools/rendering/emulate-css/">here</a>.</p>
-<ol>
-<li>Open your browser.</li>
-<li>Right click and select "Inspect (Q)"</li>
-<li>Keyboard shortcut for Windows: CTRL+ SHIFT + I</li>
-<li>Keyboard shortcut for MAC: Command + Option + I.</li>
-</ol>
-<p>Once you have opened the Firefox Developer Tools, you can toggle between dark mode, light mode and print mode by clicking on those buttons.
-<br><img id="toggle-mode" alt="toggle-mode" src="../labsignments/Firefox-mode-toggle.png" style="width: 50%;"> <br>
-In case your dark mode is not working in firefox, please check your firefox settings and see if the privacy.resistFingerprinting is set to false, otherwise it will always override with light mode. </p>
+<p>Click on the different buttons to test out each mode. </p>
 <p>You should also try simulating various devices with different displays to make sure your website is "responsive." Both browsers have a button
 to enable device simulation mode. Firefox's button looks like a phone in front of a tablet.
 You can change to Desktop and mobile view by click on this button.
@@ -375,7 +359,7 @@ You can change to Desktop and mobile view by click on this button.
 <ul>
 <li>A functioning Pelican site </li>
 <li>featuring four articles</li>
-<li>with different stylings in dark mode, light mode, and print mode</li>
+<li>with different stylings in fancy mode, minimal mode, and 90s mode</li>
 <li>responsive in both mobile and desktop views</li>
 <li>deployed on GitHub Pages.</li>
 <li>A git repository with a <code>main</code> or <code>src</code> branch that does not contain built (compiled, transpiled, bundled) or downloaded artifacts, including but not limited to:<ul>
