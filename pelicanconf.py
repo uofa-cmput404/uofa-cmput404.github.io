@@ -69,11 +69,16 @@ INDEX_SAVE_AS="all.html"
 
 MENUITEMS=[
     ("Outline", "/general/outline.html"),
-    ("eClass", "https://eclass.srv.ualberta.ca/course/view.php?id=95227"),
-    ("Schedule", "/general/schedule.html"),
+    ("eClass & Grades", "/#eclass"),
+    ("Schedule", "/#schedule"),
     ("Labs", "/general/labs.html"),
     ("Project", "/general/project.html"),
+    ("Individual", "/general/individual.html"),
     ("Resources", "/general/resources.html"),
+    ("Discussion Forum", "/general/help.html#discussion-forum"),
+    ("News & Notices", "/#news-notices"),
+    ("Lecture Zoom", "/#lecture-zoom"),
+    ("Slides", "/general/slides.html"),
     ("Help", "/general/help.html"),
 ]
 
