@@ -1,4 +1,4 @@
-title: Home
+Title: Home
 save_as: index.html
 
 ----
@@ -8,9 +8,9 @@ save_as: index.html
 * [Course Outline/Syllabus]({filename}/general/outline.md)
 * [How to get Help]({filename}/general/help.md)
     * [Wellness Supports]({filename}/general/help.md#wellness-supports)
-* [Reference Material, eBooks, & Resources]({filename}/general/resources.md)
+* [Reference Material, e-books, & Resources]({filename}/general/resources.md)
 * Lecture Material
-    * [CMPUT404 Slides XT](https://uofa-cmput404.github.io/slides-xt/)
+    * [CMPUT404 Slides XT](https://uofa-cmput404.github.io/slides-xt/) <!-- @LT-IGNORE:MORFOLOGIK_RULE_EN_CA@ -->
         * [Old CMPUT404 Slides](https://uofa-cmput404.github.io/cmput404-slides/)
 * [Lab Information & Demo Signup]({filename}/general/labs.md)
 * [Project: SocialDistribution]({filename}/general/project.md)

@@ -6,7 +6,8 @@
 	],
 	"settings": {
 		"languageToolLinter.languageTool.ignoredWordsInWorkspace": [
-			"dyno"
+			"dyno",
+			"socialdistribution"
 		],
 		"makefile.configureOnOpen": false
 	}
