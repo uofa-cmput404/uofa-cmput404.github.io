@@ -7,6 +7,14 @@ summary: Distributed Social Networking (SocialDistribution)
 
 ---
 
+<style>
+    html body main {
+        background-image: url("/theme/draft.png");
+        background-repeat: repeat;
+        background-size: 100%;
+    }
+</style>
+
 [TOC]
 
 # Description
@@ -90,9 +98,10 @@ Posts, likes, comments, posts, are all sent to the inboxes of the authors that s
 
 * Part 0 - sign up a repo
 * Part 1 - 1/2 way implementation
-* Part 2 - Complete implementation
-* Part 3 - Connect with Groups
-* Part 4 - Finish it off!
+* Part 2 - Lonely implementation
+* Part 3 - Connected implementation
+* Part 4 - Connect with Groups
+* Part 5 - Finish it off!
 
 # Collaboration
    

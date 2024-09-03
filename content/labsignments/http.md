@@ -6,6 +6,14 @@ status: published
 
 ----
 
+<style>
+    html body main {
+        background-image: url("/theme/draft.png");
+        background-repeat: repeat;
+        background-size: 100%;
+    }
+</style>
+
 [TOC]
 
 # Description

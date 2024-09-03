@@ -34,9 +34,10 @@ If you are worried about your audio, video, zoom, internet connection, etc. atte
 1. [HTTP]({filename}/labsignments/http.md)
 2. [Django]({filename}/labsignments/django.md)
 3. [Heroku]({filename}/labsignments/heroku.md)
-4. [Pelican]({filename}/labsignments/pelican.md)
-5. [Flask]({filename}/labsignments/flask.md)
-6. [HTTP2]({filename}/labsignments/http2.md)
+4. [JS]({filename}/labsignments/js.md)
+5. [Pelican]({filename}/labsignments/pelican.md)
+6. [Flask]({filename}/labsignments/flask.md)
+
 
 [All labsignments]({category}labsignments)
 
