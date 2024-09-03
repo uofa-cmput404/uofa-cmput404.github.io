@@ -362,29 +362,47 @@ Receiving assignment solutions or answers to exam questions from an unauthorized
 
 These are also contract cheating:
 
-* On other UAlberta services and linked services as someone else:
-    * Zoom
-    * gmail
-    * Google Chat, Drive, ...
-    * Lab computers
-    * Wi-Fi
-    * ...
-* Sharing your login credentials or anonymous ID for an external service, website, or app. Examples:
-    * Repository hosting services: GitHub, GitHub Classroom, Bitbucket, GitLab, etc.
-    * Mentimeter
-    * online quizzes
-    * textbook websites/apps
-    * KnowledgeTree/MasteryGrids
-    * online tutorials
-    * online practice systems
-    * online homework systems
-    * ...
+<table><tr>
+<td><ul>
+    <li>Logging in as someone else</li>
+    <li>Sharing your login credentials</li>
+    <li>Sharing your anonymous ID</li>
+    <li>Using someone else's anonymous ID</li>
+    <li>Allowing someone else to log in as you</li>
+    <li>Representing yourself as someone else</li>
+    <li>Having someone else represent themselves as you</li>
+</ul></td>
+<td><ul>
+    <li>On other UAlberta services and linked services:<ul>
+        <li>Zoom</li>
+        <li>gmail</li>
+        <li>Google Chat, Drive, ...</li>
+        <li>Lab computers</li>
+        <li>Wi-Fi</li>
+        <li>...</li>
+    </ul></li>
+    <li>On an external service, website, or app:<ul>
+        <li>repository hosting services: GitHub, GitHub Classroom, Bitbucket, GitLab, ...</li>
+        <li>live quiz services: Mentimeter, ...</li>
+        <li>Textbook websites/apps</li>
+        <li>KnowledgeTree/MasteryGrids</li>
+        <li>online tutorials</li>
+        <li>online practice systems</li>
+        <li>online homework systems</li>
+    </ul></li>
+</ul></td>
+<td>
+</td>
+</tr></table>
+
 * Misrepresenting authorship to a version control system such as git:
     * Forging git commit metadata (author, time, etc.)
     * Creating git commits where the author recorded did not create the changes being committed.
     * ...
 * Submitting participation exercises for someone else.
 * Representing yourself as someone else, or having someone else represent themselves as you to an instructor, TA, or other UA employee.
+    * Attending lecture/lab/seminar for someone else.
+    * Having someone else attend lecture/lab/seminar for you.
 
 ### Academic Integrity Issues Related to Minor Formative Assessments
 
@@ -621,6 +639,7 @@ Policy about course outlines can be found in [Course Requirements, Evaluations P
 ## Update History
 
 * 2024-09-02: Initial version.
+* 2024-09-02: Clarify formatting of contract cheating: cs courses section.
 
 ## Copyright
 
