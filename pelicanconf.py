@@ -73,12 +73,11 @@ MENUITEMS=[
     ("Schedule", "/#schedule"),
     ("Labs", "/general/labs.html"),
     ("Project", "/general/project.html"),
-    ("Individual", "/general/individual.html"),
     ("Resources", "/general/resources.html"),
     ("Discussion Forum", "/general/help.html#discussion-forum"),
     ("News & Notices", "/#news-notices"),
     ("Lecture Zoom", "/#lecture-zoom"),
-    ("Slides", "/general/slides.html"),
+    ("Slides", "https://uofa-cmput404.github.io/slides-xt/"),
     ("Help", "/general/help.html"),
 ]
 

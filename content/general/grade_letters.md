@@ -9,6 +9,8 @@ summary: Grading System, Percentages and Letters, Breakpoint Calculation
 
 [TOC]
 
+<h2>This does not apply to the current semester. See the current outline.</h2>
+
 # Grading System: Percentages and Letters
 
 We do not use pre-defined percentages of your final mark to compute your final grade, but instead use our judgement of how your final percentage indicates the level of mastery in the table below for an A, B, C, D+. This is done after the final exam. 
