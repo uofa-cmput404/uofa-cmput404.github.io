@@ -894,21 +894,32 @@ The most successful teams:
 * Any concerns about teamwork must be brought to the instructor's (not the TA) attention *by email* well before the last lab.
     * It takes time to investigate these things. 
 
-## Project Part 0: Group Formation
+## <a id="part0" href="#part0">Project Part 0</a>: Group Formation
+
+You must form a group with only students from your same lab section. You can have different lecture sections, but your lab section must be the same. Furthermore, everyone must attend their registered lab section.
+
+* There can be maximum 6 students per team.
+* All team members must be registered for and attending the same lab section.
+* Your team name must be from the list of [CSS colour names](https://developer.mozilla.org/en-US/docs/Web/CSS/named-color).
+* Use the [GitHub Classroom Link on eClass](https://eclass.srv.ualberta.ca/course/modedit.php?update=8120398)
+    * EVERY teammate should submit a link to your teams GitHub repo on eClass.
+* Add a license and a README. The README should contain the names of the teammates.
+* Use the format https://github.com/uofa-cmput404/f24-project-team-name
+
+Do not submit a clone link or a link to a branch or file.
 
 * 1 mark
 * Submitted on eClass by all members
 * 1 Github repo with a README and LICENSE
+* Team name is a CSS color name
 
-## Project Part 1: Centralized
+## <a id="part1" href="#part1">Project Part 1</a>: Centralized
 
 ### Submission
 
-Due 4PM on the day of your lab.
+Due 4PM on Monday.
 
-eClass has a limitation where it only shows the due date for the last lab section of the week, but for Monday labs it is due Monday. For Wednesday labs it is due Wednesday.
-
-Create a git tag "part1" before 4PM and submit only the link to your tag. 
+Create a git tag "part1" in your production branch before 4PM and submit only the link to your tag.
 
 * A tag is just a name for a commit, so do not create the tag until you have your final commit for part 1!
 
@@ -916,7 +927,9 @@ Don't forget to push the tag to GitHub.
 
 Submit only the link to the tag in the following format:
 
-https://github.com/uofa-cmput404/w24-project-example-team/tree/part1
+https://github.com/uofa-cmput404/f24-project-example-team/tree/part1
+
+* Every team member must submit the link to eclass.
 
 ### Marking
 

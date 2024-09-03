@@ -57,7 +57,7 @@ DATE_FORMATS = {
 
 STATIC_PATHS=[PATH]
 
-PATH_METADATA = '(?P<path_no_ext>.*)\..*'
+PATH_METADATA = r'(?P<path_no_ext>.*)\..*'
 SLUGIFY_SOURCE = "basename"
 ARTICLE_URL = ARTICLE_SAVE_AS = PAGE_URL = PAGE_SAVE_AS = '{path_no_ext}.html'
 STATIC_URL = STATIC_SAVE_AS = '{path}'
@@ -73,6 +73,7 @@ MENUITEMS=[
     ("Schedule", "/#schedule"),
     ("Labs", "/general/labs.html"),
     ("Project", "/general/project.html"),
+    ("Participation", "/general/individual.html"),
     ("Resources", "/general/resources.html"),
     ("Discussion Forum", "/general/help.html#discussion-forum"),
     ("News & Notices", "/#news-notices"),

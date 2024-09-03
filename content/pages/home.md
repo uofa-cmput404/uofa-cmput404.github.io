@@ -14,6 +14,7 @@ save_as: index.html
         * [Old CMPUT404 Slides](https://uofa-cmput404.github.io/cmput404-slides/)
 * [Lab Information & Demo Signup]({filename}/general/labs.md)
 * [Project: SocialDistribution]({filename}/general/project.md)
+* [Participation]({filename}/general/individual.md#participation)
 * [Contact Info]({filename}/general/help.md#contact-instructor)
     * Students: see [How to get Help]({filename}/general/help.md)
 
