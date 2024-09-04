@@ -11,8 +11,8 @@ summary: Lab Procedure, Lab Assignments, Lab Marking
 
 # Lab Procedure
 
-* [H01 Monday Signup Sheet](https://docs.google.com/spreadsheets/d/1ZJqCYGK09KJNLWI8ebkx93Ab-B1K7yDdkyQfdTWI0uQ/edit)
-* [H02 Wednesday Signup Sheet](https://docs.google.com/spreadsheets/d/1LscS7mbhwcghDxp4ZZ0zYfIq8E5AyJBCO4cI5nNabHA/edit)
+* [H01 Monday Signup Sheet](https://docs.google.com/spreadsheets/d/1TgVe_SXOEQHiH2ZrGsdccL6wndSUhZhIVqDX4HA7wvk/edit)
+* [H02 Wednesday Signup Sheet](https://docs.google.com/spreadsheets/d/1EBqOV0GJHfQvzm4jrQYani2ghWrfVuQMHtoesph4kMc/edit)
 
 * You **must demo your individual lab work to a TA** during the lab to receive marks.
     * If you submit on eClass but don't demo you will get a zero.
