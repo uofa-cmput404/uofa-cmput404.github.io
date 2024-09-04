@@ -1,4 +1,4 @@
-title: Individual
+Title: Individual
 date: 2024-03-20
 tags: assignment, grading
 authors: Hazel Victoria Campbell
