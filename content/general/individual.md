@@ -8,12 +8,9 @@ summary: Individual Assignments, Participation
 
 [TOC]
 
-# Assignments
-
-* [Assignment 0: Getting started]({filename}individual/assignment0.md)
-* [Assignment 1]({filename}individual/assignment1.md)
-
 # Participation
+
+You can earn lecture participation credit by attending lecture on time. Instructions will be given during lecture.
 
 <p class="warning">Do <em>not</em> enter your real name, CCID, or student ID into Mentimeter.</p>
 
