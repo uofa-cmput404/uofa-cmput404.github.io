@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+          <title>CMPUT 404 - Lab 3 - Common Gateway Interface</title>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Web Applications and Architecture" />
+
+  <link rel="icon" href="../theme/favicon.ico" />
+  <link rel="stylesheet" type="text/css" href="../theme/style.css" />
+  <link rel="stylesheet" type="text/css" href="../theme/404.css" />
+
+
+
+
+    <meta name="tags" content="homework" />
+    <meta name="tags" content="lab" />
+
+</head>
+
+<body>
+        <header>
+              <hgroup><h1><a href="../">CMPUT 404</a></h1><p>Web Applications and Architecture</p></hgroup>
+        <nav><ul>
+            <li><a href="/general/outline.html">Outline</a></li>
+            <li><a href="/#eclass">eClass & Grades</a></li>
+            <li><a href="/#schedule">Schedule</a></li>
+            <li><a href="/general/labs.html">Labs</a></li>
+            <li><a href="/general/project.html">Project</a></li>
+            <li><a href="/general/individual.html">Participation</a></li>
+            <li><a href="/general/resources.html">Resources</a></li>
+            <li><a href="/general/help.html#discussion-forum">Discussion Forum</a></li>
+            <li><a href="/#news-notices">News & Notices</a></li>
+            <li><a href="/#lecture-zoom">Lecture Zoom</a></li>
+            <li><a href="https://uofa-cmput404.github.io/slides-xt/">Slides</a></li>
+            <li><a href="/general/help.html">Help</a></li>
+        </ul></nav>
+        </header>
+        <main>
+<article>
+  <header>
+    <h2>
+      <a href="../old_labs/lab-3.html" rel="bookmark"
+         title="Permalink to Lab 3 - Common Gateway Interface">Lab 3 - Common Gateway Interface</a></h2>
+ 
+  </header>
+  <hr>
+<p>Explore the Common Gateway Interface. Refer to the <a href="https://docs.python.org/3/library/cgi.html">CGI documentation</a>.</p>
+<p>Answers to the questions should be submitted to <em>Lab 3</em> on eClass.</p>
+<h5 id="common-gateway-interface">Common Gateway Interface</h5>
+<p>Fork and clone the lab repository. <a href="https://github.com/uofa-cmput404/cgi-lab">https://github.com/uofa-cmput404/cgi-lab</a></p>
+<p>Activate a python3 virtual environment.</p>
+<p>Start the <code>cgi_server.py</code> in a background terminal window.</p>
+<p>Initialize an empty file (this will be your CGI script).</p>
+<div class="highlight"><pre><span></span><code>touch<span class="w"> </span>hello.py
+</code></pre></div>
+
+<p>Make your CGI script executable.</p>
+<div class="highlight"><pre><span></span><code>chmod<span class="w"> </span>+x<span class="w"> </span>hello.py
+</code></pre></div>
+
+<p>Make the very first line of your CGI script the shebang:</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python3</span>
+</code></pre></div>
+
+<p>Examine the environment variables given to the CGI script.</p>
+<p><strong>Question 1</strong>: How do you inspect all environment variables in Python?</p>
+<hr>
+<p>Make your CGI script serve the environment back as JSON. What changes if we add query parameters?</p>
+<p>Modify your CGI script to report the values of the query parameters in the HTML.</p>
+<p><strong>Question 2</strong>: What environment variable contains the query parameter data?</p>
+<hr>
+<p>Modify your CGI script to report the user’s browser in the HTML.</p>
+<p><strong>Question 3</strong>: What environment variable contains information about the user’s browser?</p>
+<hr>
+<p>Modify your CGI script to contain a login form that POSTs to itself. You may use <code>login_page()</code> in <em>templates.py</em>.</p>
+<p>Modify your CGI script to report the values of the POSTed data in the HTML.</p>
+<p><strong>Question 4</strong>: How does the POSTed data come to the CGI script?</p>
+<hr>
+<p>Edit the username and password in <code>secret.py</code> and delete the <code>raise</code> line; then import it in your login CGI script.</p>
+<p>Modify your CGI script to set a cookie if the login is correct.</p>
+<p><strong>Question 5</strong>: What is the HTTP header syntax to set a cookie from the server?</p>
+<hr>
+<p>Modify your CGI script so it displays a secret message if the cookie says the user is logged in. You may use <code>secret_page()</code> from <em>templates.py</em>.</p>
+<p><strong>Question 6</strong>: What is the HTTP header syntax the browser uses to send the cookie back?</p>
+<hr>
+<p>Clear the cookie in the browser or use a private/incognito browser window</p>
+<p>Use the cookie to appear to be logged in to the CGI script without logging in.
+    * Within the JavaScript console, enter: <code>document.cookie = "key=value"</code></p>
+<p><strong>Question 7</strong>: In your own words, what are cookies used for?</p>
+<p><strong>Question 8</strong>: What is the link to your code on GitHub?</p>
+<hr>
+<p><em>Optional:</em> Capture the cookie using <em>proxy.py</em>.</p>
+  <footer>
+    <p>Published: <time datetime="2019-01-07T08:40:00-07:00">
+      Mon, 07 Jan 2019 at 08:40 MST
+    </time></p>
+    <p>Last updated: <time datetime="2019-01-22T10:50:00-07:00">
+      Tue, 22 Jan 2019 at 10:50 MST
+    </time></p>
+    <address>
+      By           <a href="../author/alexander-wong.html">Alexander Wong</a>
+    </address>
+    <p>
+        Category: <a href="../category/old_labs.html">old_labs</a>
+    </p>
+    <p>
+        Tags:
+            <a href="../tag/homework.html">homework</a>
+            <a href="../tag/lab.html">lab</a>
+    </p>
+  </footer>
+  </article>
+        </main>
+        <footer>
+                <address>
+                Proudly powered by <a rel="nofollow" href="https://getpelican.com/">Pelican</a>,
+                which takes great advantage of <a rel="nofollow" href="https://www.python.org/">Python</a>.
+                </address>
+        </footer>
+</body>
+</html>

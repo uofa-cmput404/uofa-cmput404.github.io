@@ -1,0 +1,1588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+          <title>CMPUT 404 - Project: Distributed Social Networking</title>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Web Applications and Architecture" />
+
+  <link rel="icon" href="../theme/favicon.ico" />
+  <link rel="stylesheet" type="text/css" href="../theme/style.css" />
+  <link rel="stylesheet" type="text/css" href="../theme/404.css" />
+
+
+
+
+    <meta name="tags" content="project" />
+    <meta name="tags" content="grading" />
+
+</head>
+
+<body>
+        <header>
+              <hgroup><h1><a href="../">CMPUT 404</a></h1><p>Web Applications and Architecture</p></hgroup>
+        <nav><ul>
+            <li><a href="/general/outline.html">Outline</a></li>
+            <li><a href="/#eclass">eClass & Grades</a></li>
+            <li><a href="/#schedule">Schedule</a></li>
+            <li><a href="/general/labs.html">Labs</a></li>
+            <li><a href="/general/project.html">Project</a></li>
+            <li><a href="/general/individual.html">Participation</a></li>
+            <li><a href="/general/resources.html">Resources</a></li>
+            <li><a href="/general/help.html#discussion-forum">Discussion Forum</a></li>
+            <li><a href="/#news-notices">News & Notices</a></li>
+            <li><a href="/#lecture-zoom">Lecture Zoom</a></li>
+            <li><a href="https://uofa-cmput404.github.io/slides-xt/">Slides</a></li>
+            <li><a href="/general/help.html">Help</a></li>
+        </ul></nav>
+        </header>
+        <main>
+<article>
+  <header>
+    <h2>
+      <a href="../general/project.html" rel="bookmark"
+         title="Permalink to Project: Distributed Social Networking">Project: Distributed Social Networking</a></h2>
+ 
+  </header>
+  <hr>
+<style>
+    html body main {
+        background-image: url("/theme/draft.png");
+        background-repeat: repeat;
+        background-size: 100%;
+    }
+</style>
+
+<div class="toc">
+<ul>
+<li><a href="#description">Description</a><ul>
+<li><a href="#scenario">Scenario</a></li>
+<li><a href="#scenario-summary">Scenario Summary</a></li>
+<li><a href="#project-parts">Project Parts</a></li>
+</ul>
+</li>
+<li><a href="#collaboration">Collaboration</a></li>
+<li><a href="#user-stories">User Stories</a></li>
+<li><a href="#main-concepts">Main Concepts</a><ul>
+<li><a href="#authentication">Authentication</a></li>
+<li><a href="#pagination">Pagination</a></li>
+</ul>
+</li>
+<li><a href="#communication">Communication</a><ul>
+<li><a href="#who-talks-to-who">Who talks to Who</a></li>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#example-server-to-server-api-view">Example (Server-to-Server API View)</a></li>
+</ul>
+</li>
+<li><a href="#api-endpoints">API Endpoints</a><ul>
+<li><a href="#authors">Authors</a></li>
+<li><a href="#single-author">Single Author</a></li>
+<li><a href="#followers">Followers</a></li>
+<li><a href="#friendfollow-request">Friend/Follow Request</a></li>
+<li><a href="#post">Post</a></li>
+<li><a href="#image-posts">Image Posts</a></li>
+<li><a href="#comments">Comments</a></li>
+<li><a href="#likes">Likes</a></li>
+<li><a href="#liked">Liked</a></li>
+<li><a href="#inbox">Inbox</a></li>
+</ul>
+</li>
+<li><a href="#requirements">Requirements</a><ul>
+<li><a href="#api-requirements">API Requirements</a></li>
+<li><a href="#test-requirements">Test Requirements</a></li>
+<li><a href="#infrastructure-and-software-requirements">Infrastructure and Software Requirements</a></li>
+</ul>
+</li>
+<li><a href="#take-aways">Take-aways</a><ul>
+<li><a href="#things-that-are-allowed">Things that are allowed</a></li>
+</ul>
+</li>
+<li><a href="#groupwork-tips">Groupwork Tips</a></li>
+<li><a href="#submission-instructions">Submission Instructions</a></li>
+<li><a href="#warning">Warning!!!!</a></li>
+<li><a href="#marking">Marking</a><ul>
+<li><a href="#project-part-0-group-formation">Project Part 0: Group Formation</a></li>
+<li><a href="#project-part-1-centralized">Project Part 1: Centralized</a><ul>
+<li><a href="#submission">Submission</a></li>
+<li><a href="#marking_1">Marking</a></li>
+</ul>
+</li>
+<li><a href="#project-part-2-distribution">Project Part 2: Distribution</a><ul>
+<li><a href="#requirements_1">Requirements</a></li>
+<li><a href="#submission_1">Submission</a></li>
+<li><a href="#marking_2">Marking</a></li>
+</ul>
+</li>
+<li><a href="#project-part-3-federation">Project Part 3: Federation</a><ul>
+<li><a href="#submission_2">Submission</a></li>
+<li><a href="#marking_3">Marking</a></li>
+</ul>
+</li>
+<li><a href="#project-part-4-polish">Project Part 4: Polish</a><ul>
+<li><a href="#submission_3">Submission</a></li>
+<li><a href="#presentation">Presentation</a></li>
+<li><a href="#marking_4">Marking</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#license">License</a></li>
+</ul>
+</div>
+<h3 id="description">Description</h3>
+<p>The web is fundamentally interconnected and peer to peer. There's
+no really great reason why we should all use facebook.com or
+google+ or myspace or something like that. If these social networks
+came up with an API you could probably link between them and use
+the social network you wanted. Furthermore you might gain some
+autonomy.</p>
+<p>Thus in the spirit of diaspora https://diasporafoundation.org/ we
+want to build something like diaspora but far far simpler.</p>
+<p>This blogging/social network platform will allow the importing of
+other sources of information (github) as well allow the
+distribution and sharing of posts and content.</p>
+<p>An author sitting on one server can aggregate
+the posts of authors they follow on other servers.   </p>
+<p>We are going to go with an inbox model where by you share posts to
+your followers by sending them your posts. This is similar to
+activity pub: https://www.w3.org/TR/activitypub/ Activity Pub is
+great, but too complex for a class project.</p>
+<p>We also won't be adding much in the way of encryption or security
+to this platform. We're keeping it simple and restful.</p>
+<p>Choose at least 3 other groups to work with!</p>
+<h4 id="scenario">Scenario</h4>
+<p>I log into SocialDistribution. I see my stream which is filled with
+posts that have arrived in my inbox combined with public posts that my server knows about.
+I browse them and I click like
+on anything by my friend Steph who is on another node.</p>
+<p>When I click like, my node sends a like object to Steph's inbox
+that references her post.</p>
+<p>I then comment on Steph's post. This sends a comment object to
+Steph's inbox that references her post.</p>
+<p>Steph's node will process events at her inbox and record the
+comments and likes appropriately.</p>
+<p>Then I write a public post, a public service announcement (PSA)
+about how public service announcements are pretentious performative
+social media and you shouldn't make them. The irony is lost on me.
+I make an unlisted image post that contains an image for the PSA
+and reference it from my PSA post. Nonetheless my node records my
+post and makes a URL for both posts and then proceeds to send my
+public posts to the inboxes of everyone who follows me. My node
+knows who follows me and thus can just send the public post to each
+of those inboxes. Perhaps there will be a scaling problem in the
+future.</p>
+<p>Later I write a friends-only post about how much I hate the movie The Room (2003).
+Tommy Wiseau can't see it because I'm not friends with Tommy Wiseau, but this post is sent to Steph's inbox and she can see it because she's my friend.</p>
+<p>When Steph logs into her node she'll see her stream and my public
+post and my friends-only post will be on her stream.
+She should also see that I've liked and commented her post.</p>
+<h4 id="scenario-summary">Scenario Summary</h4>
+<p>All actions from authors are routed through the inbox of the receiving authors by the node itself.</p>
+<p>Nodes will store copies of posts because they receive them in the inbox.</p>
+<p>Likes and comments on posts are all sent to the inbox of the author.</p>
+<p>Public posts are sent to the inboxes of all followers of the author.</p>
+<p>Friends-only posts are sent to the inboxes of all friends of the author.</p>
+<p>Posts, likes, comments, posts, are all sent to the inboxes of the authors that should be able to see them.</p>
+<h4 id="project-parts">Project Parts</h4>
+<ul>
+<li>Part 0 - sign up a repo</li>
+<li>Part 1 - 1/2 way implementation</li>
+<li>Part 2 - Lonely implementation</li>
+<li>Part 3 - Connected implementation</li>
+<li>Part 4 - Connect with Groups</li>
+<li>Part 5 - Finish it off!</li>
+</ul>
+<h3 id="collaboration">Collaboration</h3>
+<ul>
+<li>You may consult with others but the submission should be your own team's source code.</li>
+<li>You may work with 5 other students (groups of 5)</li>
+<li>Work will be submitted together</li>
+<li>Collaboration must be documented in the README.md file</li>
+<li>Any external source code must be referenced and documented in the README.md file.</li>
+<li>You make collaborate/consult with other groups in order to get your webservices to integrate with each other</li>
+</ul>
+<h3 id="user-stories">User Stories</h3>
+<ul>
+<li>Identity<ul>
+<li>As an author, I want a consistent identity per server, so that URLs to me/my posts are predictable and don't stop working.<ul>
+<li>Note: This includces API links and web frontend links.</li>
+<li>Note: This doesn't include authors/posts that are deleted.</li>
+</ul>
+</li>
+<li>As a server admin, I want to host multiple authors on my server, so I can have a friendly online community.</li>
+<li>As an author, I want a public page with my profile information, so that I can link people to it.</li>
+<li>As an author, I want to my (new, public) github activity to be automatically turned into public posts, so everyone can see my github activity too.</li>
+<li>As an author, I want my profile page to show my public posts (most recent first), so they can decide if they want to follow me.</li>
+<li>As an author, I want to be able to use my web-browser to manage my profile, so I don't have to use a clunky API.</li>
+</ul>
+</li>
+<li>Posting<ul>
+<li>As an author, I want to make public posts, so that any other author can see them.</li>
+<li>As an author, I want to edit my posts locally, so that I'm not stuck with a typo on a popular post.</li>
+<li><del>As an author, I want my edits to take effect remotely, so that people don't keep seeing the old version.</del></li>
+<li>As an author, posts I make can be in CommonMark, so I can give my posts some basic formatting.</li>
+<li>As an author, posts I make can be in simple plain text, because I don't always want all the formatting features of CommonMark.</li>
+<li>As an author, posts I create can be images, so that I can share pictures and drawings.</li>
+<li>As an author, posts I create that are in CommonMark can link to images, so that I can illustrate my posts.</li>
+<li>As a server admin, images can be hosted on my server, so that my users can use them in their CommonMark posts.</li>
+<li>As an author, I want to delete my own posts locally, so I can remove posts that are out of date or made by mistake.</li>
+<li><del>As an author, I want my deletions to take effect remotely, so I know remote users don't keep seeing my deleted posts forever.</del></li>
+<li>As an author, I want to be able to use my web-browser to manage/author my posts, so I don't have to use a clunky API.</li>
+<li>As an author, I want to be able to make posts that are unlisted, that are publicly shareable by URI alone (or for embedding images).</li>
+</ul>
+</li>
+<li>Reading<ul>
+<li>As an author, I want a "stream" page which shows me all the public posts my server knows about and all the posts by people I follow.</li>
+<li>As an author, I want my "stream" page to be sorted with the most recent posts first. </li>
+</ul>
+</li>
+<li>Visibility<ul>
+<li>As an author, posts I create can be friends-only, so that I don't have to worry about people I don't know seeing them.</li>
+<li>As an author, I want my friends-only posts and images to only be visible to my friends, so I can feel safe about posting.<ul>
+<li>Note: public posts (and image posts) are public.</li>
+</ul>
+</li>
+<li>As an author, other authors cannot modify my posts, so that I don't get impersonated.</li>
+<li>As an author, posts I create should always be visible to me, so I can find them to edit them or review them or get the link or whatever I want to do with them.</li>
+</ul>
+</li>
+<li>Sharing<ul>
+<li>As an author, I can share other author's public posts, so I can make things go viral!</li>
+<li>As an author, posts that I share will show up on the timeline of anyone who is following me. </li>
+<li>As a server admin, I want to share public images with users on other servers, so that they are visible by users of other servers.</li>
+<li>As an author, I want my friends-only/unlisted images and posts sto <em>not</em> be shareable, so I know that if someone wants to re-post it they'll at least have to take a screenshot.<ul>
+<li>Note: public posts (and image posts) are re-shareable.</li>
+</ul>
+</li>
+<li>As an author, I should be able to browse the public posts of everyone, so that I can see what's going on beyond authors I follow.</li>
+</ul>
+</li>
+<li>Following/Friends<ul>
+<li>As an author, I want to follow local authors, so that I can see their public posts.</li>
+<li>As an author, I want to follow remote authors, so that I can see their public posts.</li>
+<li>As an author, I want to be able to approve or deny other authors following me, so that I don't get followed by people I don't like.</li>
+<li>As an author, I want to know if I have follow requests, so I can approve them.</li>
+<li>As an author, I want to unfollow authors I am following, so that I don't have to see their posts anymore.</li>
+<li>As an author, if I am following a local author and they are following me, I want us to be considered friends, so that they can see my friends-only posts.</li>
+<li>As an author, I want to unfriend remote authors by unfollowing them, so that they can no longer see my friends-only posts.</li>
+<li>As an author, my server will know about my followers, who I am following, and my friends, so that I don't have to keep track of it myself.</li>
+</ul>
+</li>
+<li>Comments/Likes<ul>
+<li>As an author, I want to comment on posts that I can access, so I can make a witty reply.</li>
+<li>As an author, I want to like posts that I can access, so I can show my appreciation.</li>
+<li>As an author, when someone sends me a public post I want to see the likes, so I can tell if its good or not.</li>
+<li>As an author, comments on my friends-only posts are visible only to my friends and the comment's author.</li>
+</ul>
+</li>
+<li>Server Management<ul>
+<li>As a server admin, I want to be able add, modify, and delete authors, to fix problems or remove unwanted users.</li>
+<li>As a server admin, I want to OPTIONALLY be able allow users to sign up but require my OK to finally be on my server, so that I can prevent unwanted users or spam bots.</li>
+<li>As a server admin, I want to be able to connect to remote servers by entering only the URL of the remote server, a username, and a password, so that I don't have to edit code.</li>
+<li>As a server admin, I want a RESTful interface for most operations, so that I can connect to other servers and allow my users to use alternate clients other than the web frontend.</li>
+<li>As a server admin, I want to be able to add nodes to share with.</li>
+<li>As a server admin, I want to be able to remove nodes and stop sharing with them.</li>
+<li>As a server admin, I can prevent nodes from connecting to my node if they don't have a valid username and password.</li>
+<li>As a server admin, node to node connections can be authenticated with HTTP Basic Auth, so that I don't have to deal with tokens.</li>
+<li>As a server admin, I can disable the node to node interfaces for connections that I no longer want, in case another node goes bad.</li>
+<li>As a server admin, I want everything to be stored in a well-indexed relational database, so that my website is snappy and I can write SQL to fix things if I need to, make backups, etc...<ul>
+<li>We strongly recommend Postgres on Heroku and sqlite for testing on your local machine.</li>
+<li>We strongly recommend against other DBaaS (e.g. Firebase), since this always seems to cause problems for teams who chose them.</li>
+</ul>
+</li>
+<li>As a server admin, I don't want arrays to be stored in database fields, so that my server won't get slower over time.</li>
+<li>As a server admin, I don't want to have seperate frontend and backend web servers, so I don't have to manage two webservers/services.</li>
+</ul>
+</li>
+</ul>
+<h3 id="main-concepts">Main Concepts</h3>
+<ul>
+<li>Author<ul>
+<li>makes posts</li>
+<li>following other authors</li>
+<li>can have followers</li>
+<li>makes friends</li>
+<li>likes posts</li>
+<li>comments on posts</li>
+<li>a generally nice person</li>
+</ul>
+</li>
+<li>Server Admin<ul>
+<li>manages a node</li>
+<li>allows people to sign up</li>
+<li>responsible for private data :(</li>
+</ul>
+</li>
+<li>Follower<ul>
+<li>Someone who follows you</li>
+<li>Your server will send posts to their inbox</li>
+</ul>
+</li>
+<li>Following<ul>
+<li>Someone you follow</li>
+<li>Their server will send posts to your inbox</li>
+</ul>
+</li>
+<li>Friend<ul>
+<li>You follow them and they follow you</li>
+</ul>
+</li>
+<li>Server<ul>
+<li>a host that hosts authors and vouches for them</li>
+</ul>
+</li>
+<li>Restful service<ul>
+<li>The model of the service and its API</li>
+</ul>
+</li>
+<li>UI<ul>
+<li>The HTML/CSS/JS coated version user interface </li>
+</ul>
+</li>
+<li>Public Post<ul>
+<li>this is a post that will show up publicly. </li>
+<li>it has a public URL</li>
+<li>anyone can see it</li>
+<li>Public posts can be liked</li>
+<li>public posts can have comments</li>
+</ul>
+</li>
+<li>Friends-Only Post<ul>
+<li>this is a post that is shared to friends (followers)</li>
+<li>since it is sent, it is a message and not changeable</li>
+<li>Friends-Only posts can be liked</li>
+<li>Friends-Only posts can have comments sent back to the author via the author's inbox</li>
+</ul>
+</li>
+<li>Inbox<ul>
+<li>This is what a READER or USER of the social network has. They follow authors, and the authors they follow send objects to their inbox.</li>
+<li>This is something that only exists in the API. There is no special inbox in the User Interface, posts sent to a user's inbox are integrated into a their stream.</li>
+<li>This forms the backbone of the timeline of the social media user.</li>
+<li>This receives likes and comments.</li>
+</ul>
+</li>
+<li>Stream<ul>
+<li>The user interface showing date-sorted (most recent first) local, public posts combined with posts from everyone that user follows.</li>
+</ul>
+</li>
+<li>Remote<ul>
+<li>A node to node connection. Requests from another node. HTTP Basic Auth authenticated.</li>
+</ul>
+</li>
+<li>Local<ul>
+<li>A local user accessing the REST API. Likely will use their cookie-auth, basic auth, or token auth. Local usually implies you check whether or not the user should have access. For instance local API access to the inbox should be limited to only that authenticated authors---don't snoop!</li>
+</ul>
+</li>
+<li>Profile Page<ul>
+<li>A page that shows information about me as well as my public posts.</li>
+</ul>
+</li>
+</ul>
+<h4 id="authentication">Authentication</h4>
+<ul>
+<li>Remote node authentication is global between nodes. It requires an admin to allow node to node access.</li>
+<li>Remote node authentication is done solely with HTTP basic auth</li>
+<li>Local auth uses your local auth mechanisms (cookies, tokens, basic auth).</li>
+<li>Local refers the RESTful API for authors on that server.<ul>
+<li>This is useful for frameworks like react, vue, or angular to get access to data, and enable a more client heavy UI.</li>
+<li>Even if your frontend does not use them, endpoints marked [local] should be usable by a future Android/iOS client to achieve the same functionality as frontend.</li>
+</ul>
+</li>
+</ul>
+<h4 id="pagination">Pagination</h4>
+<p>If something is paginated it has query options:</p>
+<ul>
+<li>page - how many pages of objects have been delivered</li>
+<li>size - how big is a page</li>
+<li>Page 4 of objects http://service/author/{author_id}/posts/{post_id}/comments?page=4</li>
+<li>Page 4 of objects but 40 per page http://service/author/{author_id}/posts/{post_id}/comments?page=4&amp;size=40</li>
+<li>1 based indexing. First page is 1.</li>
+</ul>
+<h3 id="communication">Communication</h3>
+<ul>
+<li>HTTP Methods (PUT POST GET DELETE) not explicitly listed are not allowed methods<ul>
+<li>Most HTTP methods are local only, and provided for local node use.</li>
+<li>Local node use means for use by the frontend to communicate with the backend it came from.</li>
+</ul>
+</li>
+<li>You are free to add your own endpoints for local node use, but you must document and test them.</li>
+</ul>
+<h4 id="who-talks-to-who">Who talks to Who</h4>
+<ul>
+<li>Required: The backends talk to each other, mostly trough POST requests to the inbox URLs for remote authors.</li>
+<li>Optional: The frontend for a single node talks to the backend for a single node.</li>
+<li>Forbidden: The frontend talks to a backend of another node. </li>
+</ul>
+<h4 id="overview">Overview</h4>
+<p>Almost all server-to-server communication proceeds by the server where something (post/like/comment/follow request) was created POSTing that thing that was created to the relevant authors inbox on a remote node.</p>
+<p>Server-to-server (marked as "[remote]") request other than "POST to inbox" are rarely needed, but you should support them in case the remote server needs to check something.</p>
+<h4 id="example-server-to-server-api-view">Example (Server-to-Server API View)</h4>
+<ol>
+<li>I sign up for SocialDistribution on http://node1</li>
+<li>node1 administrator approves my account.</li>
+<li>Now an author object exists that represents me at http://node1/api/authors/555555555</li>
+<li>I use the interface to make a follow request to Steph, who is node2/api/authors/777777777</li>
+<li>My server POSTs the follow request to Steph's inbox at http://node2/api/authors/777777777/inbox</li>
+<li>When Steph logs in, she sees my follow request and approves it.</li>
+<li>Now Steph's server (node2) knows that I am following her.</li>
+<li>Steph makes a public post.</li>
+<li>Steph's server (node2) sends Steph's new post to my inbox with POST http://node1/api/authors/555555555/inbox.</li>
+<li>I eventually see Steph's new post, and click like on it.</li>
+<li>My server sends the like to Steph's inbox with POST http://node2/api/authors/777777777/inbox</li>
+</ol>
+<p>The Frontend-to-Backend (also known as [local]) communication for this scenario is up to your team, this only describes the Backend-to-Backend communication between two different nodes.</p>
+<h3 id="api-endpoints">API Endpoints</h3>
+<h4 id="authors">Authors</h4>
+<ul>
+<li>URL: ://service/authors/<ul>
+<li>GET [local, remote]: retrieve all profiles on the server (paginated)<ul>
+<li>page: how many pages</li>
+<li>size: how big is a page</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Example query: GET ://service/authors?page=10&amp;size=5 <ul>
+<li>Gets the 5 authors, authors 45 to 49.</li>
+</ul>
+</li>
+<li>Example: GET ://service/authors/</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;authors&quot;</span><span class="p">,</span><span class="w">      </span>
+<span class="w">    </span><span class="s2">&quot;authors&quot;</span><span class="o">:</span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;author&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/1d698d25ff008f7538453c120f581471&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;url&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/1d698d25ff008f7538453c120f581471&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;host&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;displayName&quot;</span><span class="o">:</span><span class="s2">&quot;Greg Johnson&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;github&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://github.com/gjohnson&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;profileImage&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://i.imgur.com/k7XVwpB.jpeg&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;author&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;host&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;displayName&quot;</span><span class="o">:</span><span class="s2">&quot;Lara Croft&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;url&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;github&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://github.com/laracroft&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;profileImage&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://i.imgur.com/k7XVwpB.jpeg&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h4 id="single-author">Single Author</h4>
+<ul>
+<li>URL: ://service/authors/{AUTHOR_ID}/<ul>
+<li>GET [local, remote]: retrieve AUTHOR_ID's profile</li>
+<li>PUT [local]: update AUTHOR_ID's profile</li>
+</ul>
+</li>
+<li>Example Format:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;author&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// ID of the Author</span>
+<span class="w">    </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// the home host of the author</span>
+<span class="w">    </span><span class="s2">&quot;host&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// the display name of the author</span>
+<span class="w">    </span><span class="s2">&quot;displayName&quot;</span><span class="o">:</span><span class="s2">&quot;Lara Croft&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// url to the authors profile</span>
+<span class="w">    </span><span class="s2">&quot;url&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// HATEOS url for Github API</span>
+<span class="w">    </span><span class="s2">&quot;github&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://github.com/laracroft&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// Image from a public domain</span>
+<span class="w">    </span><span class="s2">&quot;profileImage&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://i.imgur.com/k7XVwpB.jpeg&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h4 id="followers">Followers</h4>
+<ul>
+<li>URL: ://service/authors/{AUTHOR_ID}/followers<ul>
+<li>GET [local, remote]: get a list of authors who are AUTHOR_ID's followers</li>
+</ul>
+</li>
+<li>URL: ://service/authors/{AUTHOR_ID}/followers/{FOREIGN_AUTHOR_ID}<ul>
+<li>Note: foreign author ID should be a percent encoded URL of the foreign author. An example URL would be:<ul>
+<li><code>http://example-node-1/authors/178aba49-ca39-4741-b227-f40d072b1222/followers/http%3A%2F%2Fexample-node-2%2Fauthors%2F5f57808f-0bc9-4b3d-bdd1-bb07c976d12d</code></li>
+</ul>
+</li>
+<li>DELETE [local]: remove FOREIGN_AUTHOR_ID as a follower of AUTHOR_ID</li>
+<li>PUT [local]: Add FOREIGN_AUTHOR_ID as a follower of AUTHOR_ID (must be authenticated)</li>
+<li>GET [local, remote] check if FOREIGN_AUTHOR_ID is a follower of AUTHOR_ID<ul>
+<li>Should return 404 if they're not</li>
+<li>Should return similar format to Follow Request below if they are.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Example: GET ://service/authors/{AUTHOR_ID}/followers</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;followers&quot;</span><span class="p">,</span><span class="w">      </span>
+<span class="w">    </span><span class="s2">&quot;followers&quot;</span><span class="o">:</span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;author&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/1d698d25ff008f7538453c120f581471&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;url&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/1d698d25ff008f7538453c120f581471&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;host&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;displayName&quot;</span><span class="o">:</span><span class="s2">&quot;Greg Johnson&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;github&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://github.com/gjohnson&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;profileImage&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://i.imgur.com/k7XVwpB.jpeg&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;author&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;host&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;displayName&quot;</span><span class="o">:</span><span class="s2">&quot;Lara Croft&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;url&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;github&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://github.com/laracroft&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;profileImage&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://i.imgur.com/k7XVwpB.jpeg&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h4 id="friendfollow-request">Friend/Follow Request</h4>
+<ul>
+<li>When author 1 tries to follow author 2, author 1's server send the follow request to author 2's server.</li>
+<li>If the author 2 accepts the Follow Request then author 1 is following author 2.<ul>
+<li>If author 2 is also already following author 1, then they are now friends.</li>
+</ul>
+</li>
+<li>Sent to inbox of "object" </li>
+<li>Example format:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Follow&quot;</span><span class="p">,</span><span class="w">      </span>
+<span class="w">    </span><span class="s2">&quot;summary&quot;</span><span class="o">:</span><span class="s2">&quot;Greg wants to follow Lara&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;actor&quot;</span><span class="o">:</span><span class="p">{</span>
+<span class="w">        </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;author&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/1d698d25ff008f7538453c120f581471&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;url&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/1d698d25ff008f7538453c120f581471&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;host&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;displayName&quot;</span><span class="o">:</span><span class="s2">&quot;Greg Johnson&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;github&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://github.com/gjohnson&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;profileImage&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://i.imgur.com/k7XVwpB.jpeg&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="s2">&quot;object&quot;</span><span class="o">:</span><span class="p">{</span>
+<span class="w">        </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;author&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="c1">// ID of the Author</span>
+<span class="w">        </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="c1">// the home host of the author</span>
+<span class="w">        </span><span class="s2">&quot;host&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="c1">// the display name of the author</span>
+<span class="w">        </span><span class="s2">&quot;displayName&quot;</span><span class="o">:</span><span class="s2">&quot;Lara Croft&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="c1">// url to the authors profile</span>
+<span class="w">        </span><span class="s2">&quot;url&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="c1">// HATEOS url for Github API</span>
+<span class="w">        </span><span class="s2">&quot;github&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://github.com/laracroft&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="c1">// Image from a public domain</span>
+<span class="w">        </span><span class="s2">&quot;profileImage&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://i.imgur.com/k7XVwpB.jpeg&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h4 id="post">Post</h4>
+<ul>
+<li>URL: ://service/authors/{AUTHOR_ID}/posts/{POST_ID}<ul>
+<li>GET [local, remote] get the public post whose id is POST_ID<ul>
+<li>friends-only posts: must be authenticated</li>
+</ul>
+</li>
+<li>DELETE [local] remove the post whose id is POST_ID<ul>
+<li>local posts: must be authenticated locally as the author</li>
+</ul>
+</li>
+<li>PUT [local] update a post where its id is POST_ID<ul>
+<li>local posts: must be authenticated locally as the author</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Creation URL ://service/authors/{AUTHOR_ID}/posts/<ul>
+<li>GET [local, remote] get the recent posts from author AUTHOR_ID (paginated)<ul>
+<li>Not authenticated: only public posts.</li>
+<li>Authenticated locally as author: all posts.</li>
+<li>Authenticated locally as friend of author: public + friends-only posts.</li>
+<li>Authenticated as remote server: This probably should not happen. Remember, the way remote server becomes aware of local posts is by local server pushing those posts to inbox, not by remote server pulling.</li>
+</ul>
+</li>
+<li>POST [local] create a new post but generate a new id<ul>
+<li>Authenticated locally as author</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Be aware that Posts can be images that need base64 decoding.<ul>
+<li>posts can also hyperlink to images that are public</li>
+</ul>
+</li>
+<li>Example Format:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;post&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// title of a post</span>
+<span class="w">    </span><span class="s2">&quot;title&quot;</span><span class="o">:</span><span class="s2">&quot;A post title about a post about web dev&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// id of the post</span>
+<span class="w">    </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/764efa883dda1e11db47671c4a3bbd9e&quot;</span>
+<span class="w">    </span><span class="c1">// where did you get this post from?</span>
+<span class="w">    </span><span class="s2">&quot;source&quot;</span><span class="o">:</span><span class="s2">&quot;http://lastplaceigotthisfrom.com/authors/xxxxxx/posts/yyyyyy&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// where is it actually from</span>
+<span class="w">    </span><span class="s2">&quot;origin&quot;</span><span class="o">:</span><span class="s2">&quot;http://whereitcamefrom.com/authors/wwwwww/posts/zzzzzz&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// a brief description of the post</span>
+<span class="w">    </span><span class="s2">&quot;description&quot;</span><span class="o">:</span><span class="s2">&quot;This post discusses stuff -- brief&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// The content type of the post</span>
+<span class="w">    </span><span class="c1">// assume either</span>
+<span class="w">    </span><span class="c1">// text/markdown -- common mark</span>
+<span class="w">    </span><span class="c1">// text/plain -- UTF-8</span>
+<span class="w">    </span><span class="c1">// application/base64 # this an image that is neither a jpeg or png</span>
+<span class="w">    </span><span class="c1">// image/png;base64 # this is an embedded png -- images are POSTS. So you might have a user make 2 posts if a post includes an image!</span>
+<span class="w">    </span><span class="c1">// image/jpeg;base64 # this is an embedded jpeg</span>
+<span class="w">    </span><span class="c1">// for HTML you will want to strip tags before displaying</span>
+<span class="w">    </span><span class="s2">&quot;contentType&quot;</span><span class="o">:</span><span class="s2">&quot;text/plain&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;content&quot;</span><span class="o">:</span><span class="s2">&quot;Þā wæs on burgum Bēowulf Scyldinga, lēof lēod-cyning, longe þrāge folcum gefrǣge (fæder ellor hwearf, aldor of earde), oð þæt him eft onwōc hēah Healfdene; hēold þenden lifde, gamol and gūð-rēow, glæde Scyldingas. Þǣm fēower bearn forð-gerīmed in worold wōcun, weoroda rǣswan, Heorogār and Hrōðgār and Hālga til; hȳrde ic, þat Elan cwēn Ongenþēowes wæs Heaðoscilfinges heals-gebedde. Þā wæs Hrōðgāre here-spēd gyfen, wīges weorð-mynd, þæt him his wine-māgas georne hȳrdon, oð þæt sēo geogoð gewēox, mago-driht micel. Him on mōd bearn, þæt heal-reced hātan wolde, medo-ærn micel men gewyrcean, þone yldo bearn ǣfre gefrūnon, and þǣr on innan eall gedǣlan geongum and ealdum, swylc him god sealde, būton folc-scare and feorum gumena. Þā ic wīde gefrægn weorc gebannan manigre mǣgðe geond þisne middan-geard, folc-stede frætwan. Him on fyrste gelomp ǣdre mid yldum, þæt hit wearð eal gearo, heal-ærna mǣst; scōp him Heort naman, sē þe his wordes geweald wīde hæfde. Hē bēot ne ālēh, bēagas dǣlde, sinc æt symle. Sele hlīfade hēah and horn-gēap: heaðo-wylma bād, lāðan līges; ne wæs hit lenge þā gēn þæt se ecg-hete āðum-swerian 85 æfter wæl-nīðe wæcnan scolde. Þā se ellen-gǣst earfoðlīce þrāge geþolode, sē þe in þȳstrum bād, þæt hē dōgora gehwām drēam gehȳrde hlūdne in healle; þǣr wæs hearpan swēg, swutol sang scopes. Sægde sē þe cūðe frum-sceaft fīra feorran reccan&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// the author has an ID where by authors can be disambiguated</span>
+<span class="w">    </span><span class="s2">&quot;author&quot;</span><span class="o">:</span><span class="p">{</span>
+<span class="w">        </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;author&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="c1">// ID of the Author</span>
+<span class="w">        </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="c1">// the home host of the author</span>
+<span class="w">        </span><span class="s2">&quot;host&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="c1">// the display name of the author</span>
+<span class="w">        </span><span class="s2">&quot;displayName&quot;</span><span class="o">:</span><span class="s2">&quot;Lara Croft&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="c1">// url to the authors profile</span>
+<span class="w">        </span><span class="s2">&quot;url&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="c1">// HATEOS url for Github API</span>
+<span class="w">        </span><span class="s2">&quot;github&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://github.com/laracroft&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="c1">// Image from a public domain (optional, can be missing)</span>
+<span class="w">        </span><span class="s2">&quot;profileImage&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://i.imgur.com/k7XVwpB.jpeg&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="c1">// comments about the post</span>
+<span class="w">    </span><span class="c1">// return a maximum number of comments</span>
+<span class="w">    </span><span class="c1">// total number of comments for this post</span>
+<span class="w">    </span><span class="s2">&quot;count&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1023</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// the first page of comments</span>
+<span class="w">    </span><span class="s2">&quot;comments&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/de305d54-75b4-431b-adb2-eb6b9e546013/comments&quot;</span>
+<span class="w">    </span><span class="c1">// commentsSrc is OPTIONAL and can be missing</span>
+<span class="w">    </span><span class="c1">// You should return ~ 5 comments per post.</span>
+<span class="w">    </span><span class="c1">// should be sorted newest(first) to oldest(last)</span>
+<span class="w">    </span><span class="c1">// this is to reduce API call counts</span>
+<span class="w">    </span><span class="s2">&quot;commentsSrc&quot;</span><span class="o">:</span><span class="p">{</span>
+<span class="w">        </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;comments&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;page&quot;</span><span class="o">:</span><span class="mf">1</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;size&quot;</span><span class="o">:</span><span class="mf">5</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;post&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/de305d54-75b4-431b-adb2-eb6b9e546013&quot;</span>
+<span class="w">        </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/de305d54-75b4-431b-adb2-eb6b9e546013/comments&quot;</span>
+<span class="w">        </span><span class="s2">&quot;comments&quot;</span><span class="o">:</span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;comment&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;author&quot;</span><span class="o">:</span><span class="p">{</span>
+<span class="w">                    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;author&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="c1">// ID of the Author (UUID)</span>
+<span class="w">                    </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/1d698d25ff008f7538453c120f581471&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="c1">// url to the authors information</span>
+<span class="w">                    </span><span class="s2">&quot;url&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/1d698d25ff008f7538453c120f581471&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;host&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;displayName&quot;</span><span class="o">:</span><span class="s2">&quot;Greg Johnson&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="c1">// HATEOS url for Github API</span>
+<span class="w">                    </span><span class="s2">&quot;github&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://github.com/gjohnson&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="c1">// Image from a public domain</span>
+<span class="w">                    </span><span class="s2">&quot;profileImage&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://i.imgur.com/k7XVwpB.jpeg&quot;</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="s2">&quot;comment&quot;</span><span class="o">:</span><span class="s2">&quot;Sick Olde English&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;contentType&quot;</span><span class="o">:</span><span class="s2">&quot;text/markdown&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="c1">// ISO 8601 TIMESTAMP</span>
+<span class="w">                </span><span class="s2">&quot;published&quot;</span><span class="o">:</span><span class="s2">&quot;2015-03-09T13:07:04+00:00&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="c1">// ID of the Comment (UUID)</span>
+<span class="w">                </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/de305d54-75b4-431b-adb2-eb6b9e546013/comments/f6255bb01c648fe967714d52a89e8e9c&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">// ISO 8601 TIMESTAMP</span>
+<span class="w">    </span><span class="s2">&quot;published&quot;</span><span class="o">:</span><span class="s2">&quot;2015-03-09T13:07:04+00:00&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// visibility [&quot;PUBLIC&quot;,&quot;FRIENDS&quot;,&quot;UNLISTED&quot;]</span>
+<span class="w">    </span><span class="s2">&quot;visibility&quot;</span><span class="o">:</span><span class="s2">&quot;PUBLIC&quot;</span>
+<span class="w">    </span><span class="c1">// for visibility PUBLIC means it is open to the wild web</span>
+<span class="w">    </span><span class="c1">// FRIENDS means if we&#39;re friends I can see the post</span>
+<span class="w">    </span><span class="c1">// FRIENDS should&#39;ve already been sent the post so they don&#39;t need this</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h4 id="image-posts">Image Posts</h4>
+<p>Image Posts are just posts that are images. But they are encoded as base64 data.
+You can inline an image post using a data url or you can use this 
+shortcut to get the image if authenticated to see it.</p>
+<ul>
+<li>URL: ://service/authors/{AUTHOR_ID}/posts/{POST_ID}/image<ul>
+<li>GET [local, remote] get the public post converted to binary as an iamge</li>
+<li>return 404 if not an image</li>
+</ul>
+</li>
+<li>This end point decodes image posts as images. This allows the use of
+    image tags in markdown.</li>
+<li>You can use this to proxy or cache images.</li>
+</ul>
+<h4 id="comments">Comments</h4>
+<ul>
+<li>URL: ://service/authors/{AUTHOR_ID}/posts/{POST_ID}/comments<ul>
+<li>GET [local, remote] get the list of comments of the post whose id is POST_ID (paginated)</li>
+<li>POST [local] if you post an object of "type":"comment", it will add your comment to the post whose id is POST_ID</li>
+</ul>
+</li>
+<li>example comment from ://service/authors/{AUTHOR_ID}/posts/{POST_ID}/comments</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;comment&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;author&quot;</span><span class="o">:</span><span class="p">{</span>
+<span class="w">        </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;author&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="c1">// ID of the Author (UUID)</span>
+<span class="w">        </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/1d698d25ff008f7538453c120f581471&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="c1">// url to the authors information</span>
+<span class="w">        </span><span class="s2">&quot;url&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/1d698d25ff008f7538453c120f581471&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;host&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;displayName&quot;</span><span class="o">:</span><span class="s2">&quot;Greg Johnson&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="c1">// HATEOS url for Github API</span>
+<span class="w">        </span><span class="s2">&quot;github&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://github.com/gjohnson&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="c1">// Image from a public domain</span>
+<span class="w">        </span><span class="s2">&quot;profileImage&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://i.imgur.com/k7XVwpB.jpeg&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="s2">&quot;comment&quot;</span><span class="o">:</span><span class="s2">&quot;Sick Olde English&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;contentType&quot;</span><span class="o">:</span><span class="s2">&quot;text/markdown&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// ISO 8601 TIMESTAMP</span>
+<span class="w">    </span><span class="s2">&quot;published&quot;</span><span class="o">:</span><span class="s2">&quot;2015-03-09T13:07:04+00:00&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// ID of the Comment (UUID)</span>
+<span class="w">    </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/de305d54-75b4-431b-adb2-eb6b9e546013/comments/f6255bb01c648fe967714d52a89e8e9c&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<ul>
+<li>example comments from a post:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;comments&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;page&quot;</span><span class="o">:</span><span class="mf">1</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;size&quot;</span><span class="o">:</span><span class="mf">5</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;post&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/de305d54-75b4-431b-adb2-eb6b9e546013&quot;</span>
+<span class="w">    </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/de305d54-75b4-431b-adb2-eb6b9e546013/comments&quot;</span>
+<span class="w">    </span><span class="s2">&quot;comments&quot;</span><span class="o">:</span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;comment&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;author&quot;</span><span class="o">:</span><span class="p">{</span>
+<span class="w">                </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;author&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="c1">// ID of the Author (UUID)</span>
+<span class="w">                </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/1d698d25ff008f7538453c120f581471&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="c1">// url to the authors information</span>
+<span class="w">                </span><span class="s2">&quot;url&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/1d698d25ff008f7538453c120f581471&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;host&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;displayName&quot;</span><span class="o">:</span><span class="s2">&quot;Greg Johnson&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="c1">// HATEOS url for Github API</span>
+<span class="w">                </span><span class="s2">&quot;github&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://github.com/gjohnson&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="c1">// Image from a public domain</span>
+<span class="w">                </span><span class="s2">&quot;profileImage&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://i.imgur.com/k7XVwpB.jpeg&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="s2">&quot;comment&quot;</span><span class="o">:</span><span class="s2">&quot;Sick Olde English&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;contentType&quot;</span><span class="o">:</span><span class="s2">&quot;text/markdown&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="c1">// ISO 8601 TIMESTAMP</span>
+<span class="w">            </span><span class="s2">&quot;published&quot;</span><span class="o">:</span><span class="s2">&quot;2015-03-09T13:07:04+00:00&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="c1">// ID of the Comment (UUID)</span>
+<span class="w">            </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/de305d54-75b4-431b-adb2-eb6b9e546013/comments/f6255bb01c648fe967714d52a89e8e9c&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h4 id="likes">Likes</h4>
+<ul>
+<li>You can like posts and comments</li>
+<li>Send them to the inbox of the author of the post or comment</li>
+<li>URL: ://service/authors/{AUTHOR_ID}/inbox<ul>
+<li>POST [local, remote]: send a like object to AUTHOR_ID</li>
+</ul>
+</li>
+<li>URL: ://service/authors/{AUTHOR_ID}/posts/{POST_ID}/likes<ul>
+<li>GET [local, remote] a list of likes from other authors on AUTHOR_ID's post POST_ID</li>
+</ul>
+</li>
+<li>URL: ://service/authors/{AUTHOR_ID}/posts/{POST_ID}/comments/{COMMENT_ID}/likes<ul>
+<li>GET [local, remote] a list of likes from other authors on AUTHOR_ID's post POST_ID comment COMMENT_ID</li>
+</ul>
+</li>
+<li>Example like object:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;summary&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Lara Croft Likes your post&quot;</span><span class="p">,</span><span class="w">         </span>
+<span class="w">    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Like&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;author&quot;</span><span class="o">:</span><span class="p">{</span>
+<span class="w">        </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;author&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;host&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;displayName&quot;</span><span class="o">:</span><span class="s2">&quot;Lara Croft&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;url&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;github&quot;</span><span class="o">:</span><span class="s2">&quot;http://github.com/laracroft&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;profileImage&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://i.imgur.com/k7XVwpB.jpeg&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="s2">&quot;object&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/764efa883dda1e11db47671c4a3bbd9e&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h4 id="liked">Liked</h4>
+<ul>
+<li>URL: ://service/authors/{AUTHOR_ID}/liked<ul>
+<li>GET [local, remote] list what public things AUTHOR_ID liked.</li>
+<li>It's a list of of likes originating from this author</li>
+<li>Note: be careful here private information could be disclosed.</li>
+</ul>
+</li>
+<li>Example Format:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;liked&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;likes&quot;</span><span class="o">:</span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;summary&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Lara Croft Likes your post&quot;</span><span class="p">,</span><span class="w">         </span>
+<span class="w">            </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Like&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;author&quot;</span><span class="o">:</span><span class="p">{</span>
+<span class="w">                </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;author&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;host&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;displayName&quot;</span><span class="o">:</span><span class="s2">&quot;Lara Croft&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;url&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;github&quot;</span><span class="o">:</span><span class="s2">&quot;http://github.com/laracroft&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;profileImage&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://i.imgur.com/k7XVwpB.jpeg&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="s2">&quot;object&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/764efa883dda1e11db47671c4a3bbd9e&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h4 id="inbox">Inbox</h4>
+<ul>
+<li>The inbox is all the new posts from who you follow, as well as follow requests, likes, and comments you should be aware of</li>
+<li>The inbox is the API equivalent of the stream in the UI</li>
+<li>URL: ://service/authors/{AUTHOR_ID}/inbox<ul>
+<li>GET [local]: if authenticated get a list of posts sent to AUTHOR_ID (paginated)<ul>
+<li>Should be sorted most recent first</li>
+</ul>
+</li>
+<li>POST [local, remote]: send a post to the author</li>
+<li>if the type is "post" then add that post to AUTHOR_ID's inbox</li>
+<li>if the type is "follow" then add that follow is added to AUTHOR_ID's inbox to approve later</li>
+<li>if the type is "Like" then add that like to AUTHOR_ID's inbox</li>
+<li>if the type is "comment" then add that comment to AUTHOR_ID's inbox</li>
+<li>DELETE [local]: clear the inbox</li>
+</ul>
+</li>
+<li>Example, retrieving an inbox:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;inbox&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;author&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/c1e3db8ccea4541a0f3d7e5c75feb3fb&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;items&quot;</span><span class="o">:</span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;post&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;title&quot;</span><span class="o">:</span><span class="s2">&quot;A Friendly post title about a post about web dev&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/764efa883dda1e11db47671c4a3bbd9e&quot;</span>
+<span class="w">            </span><span class="s2">&quot;source&quot;</span><span class="o">:</span><span class="s2">&quot;http://lastplaceigotthisfrom.com/authors/xxxxxx/posts/yyyyyy&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;origin&quot;</span><span class="o">:</span><span class="s2">&quot;http://whereitcamefrom.com/authors/wwwwww/posts/zzzzzz&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;description&quot;</span><span class="o">:</span><span class="s2">&quot;This post discusses stuff -- brief&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;contentType&quot;</span><span class="o">:</span><span class="s2">&quot;text/plain&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;content&quot;</span><span class="o">:</span><span class="s2">&quot;Þā wæs on burgum Bēowulf Scyldinga, lēof lēod-cyning, longe þrāge folcum gefrǣge (fæder ellor hwearf, aldor of earde), oð þæt him eft onwōc hēah Healfdene; hēold þenden lifde, gamol and gūð-rēow, glæde Scyldingas. Þǣm fēower bearn forð-gerīmed in worold wōcun, weoroda rǣswan, Heorogār and Hrōðgār and Hālga til; hȳrde ic, þat Elan cwēn Ongenþēowes wæs Heaðoscilfinges heals-gebedde. Þā wæs Hrōðgāre here-spēd gyfen, wīges weorð-mynd, þæt him his wine-māgas georne hȳrdon, oð þæt sēo geogoð gewēox, mago-driht micel. Him on mōd bearn, þæt heal-reced hātan wolde, medo-ærn micel men gewyrcean, þone yldo bearn ǣfre gefrūnon, and þǣr on innan eall gedǣlan geongum and ealdum, swylc him god sealde, būton folc-scare and feorum gumena. Þā ic wīde gefrægn weorc gebannan manigre mǣgðe geond þisne middan-geard, folc-stede frætwan. Him on fyrste gelomp ǣdre mid yldum, þæt hit wearð eal gearo, heal-ærna mǣst; scōp him Heort naman, sē þe his wordes geweald wīde hæfde. Hē bēot ne ālēh, bēagas dǣlde, sinc æt symle. Sele hlīfade hēah and horn-gēap: heaðo-wylma bād, lāðan līges; ne wæs hit lenge þā gēn þæt se ecg-hete āðum-swerian 85 æfter wæl-nīðe wæcnan scolde. Þā se ellen-gǣst earfoðlīce þrāge geþolode, sē þe in þȳstrum bād, þæt hē dōgora gehwām drēam gehȳrde hlūdne in healle; þǣr wæs hearpan swēg, swutol sang scopes. Sægde sē þe cūðe frum-sceaft fīra feorran reccan&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;author&quot;</span><span class="o">:</span><span class="p">{</span>
+<span class="w">                </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;author&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;host&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;displayName&quot;</span><span class="o">:</span><span class="s2">&quot;Lara Croft&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;url&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;github&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://github.com/laracroft&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;profileImage&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://i.imgur.com/k7XVwpB.jpeg&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="s2">&quot;comments&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/de305d54-75b4-431b-adb2-eb6b9e546013/comments&quot;</span>
+<span class="w">            </span><span class="s2">&quot;published&quot;</span><span class="o">:</span><span class="s2">&quot;2015-03-09T13:07:04+00:00&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;visibility&quot;</span><span class="o">:</span><span class="s2">&quot;FRIENDS&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;post&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;title&quot;</span><span class="o">:</span><span class="s2">&quot;DID YOU READ MY POST YET?&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/999999983dda1e11db47671c4a3bbd9e&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;source&quot;</span><span class="o">:</span><span class="s2">&quot;http://lastplaceigotthisfrom.com/authors/xxxxxx/posts/yyyyyy&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;origin&quot;</span><span class="o">:</span><span class="s2">&quot;http://whereitcamefrom.com/authors/wwwwww/posts/zzzzzz&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;description&quot;</span><span class="o">:</span><span class="s2">&quot;Whatever&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;contentType&quot;</span><span class="o">:</span><span class="s2">&quot;text/plain&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;content&quot;</span><span class="o">:</span><span class="s2">&quot;Are you even reading my posts Arjun?&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;author&quot;</span><span class="o">:</span><span class="p">{</span>
+<span class="w">                </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;author&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;host&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;displayName&quot;</span><span class="o">:</span><span class="s2">&quot;Lara Croft&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;url&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;github&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://github.com/laracroft&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;profileImage&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://i.imgur.com/k7XVwpB.jpeg&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="s2">&quot;comments&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/de305d54-75b4-431b-adb2-eb6b9e546013/comments&quot;</span>
+<span class="w">            </span><span class="s2">&quot;published&quot;</span><span class="o">:</span><span class="s2">&quot;2015-03-09T13:07:04+00:00&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;visibility&quot;</span><span class="o">:</span><span class="s2">&quot;FRIENDS&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h3 id="requirements">Requirements</h3>
+<p class="warning">Failure to meet these requirements will result in a score of zero for project parts.</p>
+
+<ul>
+<li>Implement the webservice as described in the user stories</li>
+<li>Provide a webservice interface that is restful</li>
+<li>Provide a web UI interface that is usable</li>
+<li>Prove your project by connecting with at least 1 clone of your project.</li>
+<li>Prove your project by connecting with at least 2 other groups.</li>
+<li>Prove your project by connecting with at least 3 other groups.</li>
+<li>Make a video demo of your blog (desktop-recorder is ok) <ul>
+<li>Your video may <strong>not</strong> be a part of your presentation.</li>
+</ul>
+</li>
+<li>Make a presentation about your blog </li>
+<li>Follow the guidelines in the <a href="../general/project.html">project spec</a> for URLs and services</li>
+<li>Allow users to accept or reject follow requests</li>
+<li>Images get the same protection that posts get as they are POSTS   </li>
+</ul>
+<h4 id="api-requirements">API Requirements</h4>
+<p>When building your API, try to adhere to these rules for easy compatibility with other groups:</p>
+<ul>
+<li>REST API calls may be prefixed. ie. <code>http://service_address/api/authors/{AUTHOR_ID}/posts/</code></li>
+<li>Document your service address, port, hostname, prefix(if used), and the username/password for HTTP Basic Auth in your README so that HTTP clients can connect to your API.</li>
+<li>You <strong>must</strong> be compatible with the API specification and examples listed above in this document. <ul>
+<li>You <strong>may</strong> need to add some additional things for compatibility with other groups due to varying interpretations.</li>
+<li>You <strong>may</strong> add additional endpoints and JSON keys as long as you provide the ones listed above.</li>
+</ul>
+</li>
+</ul>
+<h4 id="test-requirements">Test Requirements</h4>
+<p>The REST API must be fully tested.
+    * Every API endpoint must be tested.
+    * Every API functionality must be tested.
+    * Every API method must be tested.
+    * Every user story must be tested at the API level.</p>
+<p>These would be system/acceptance tests if the project didn't have a frontend.</p>
+<p>Testing the user stories at the API level should automatically give you almost all of the tests you need for every API endpoint, every API functionality, and every API method.</p>
+<p>Not every user story has an API to test. For example, adding/removing servers to connect with usually does not have an API. For these functions, please test them in whatever way is most convienent for your project, and then verify them using the API. For example, you could write a test that adds a server to connect with by calling Python code or modifying the database directly, then use the API to check that the new server connection is working.</p>
+<p>Front-end (Selenium, etc.) tests are not required. Code coverage (line coverage, statement coverage, branch coverage, MC/DC, etc.) is not required. Unit testing is not required.</p>
+<h4 id="infrastructure-and-software-requirements">Infrastructure and Software Requirements</h4>
+<p class="warning">Failure to meet these requirements will result in a score of zero for project parts.</p>
+
+<ul>
+<li><input type="checkbox"> You must use a single git repository on GitHub Classroom that contains everything.<ul>
+<li><input type="checkbox"> Must have a <code>development</code> branch.</li>
+<li><input type="checkbox"> Must have a <code>production</code> branch.</li>
+<li>Must <strong>not</strong> contain built (compiled, transpiled, bundled) or downloaded artifacts, including but not limited to:<ul>
+<li><input type="checkbox"> No downloaded Python packages, <code>virtualenv</code> <code>venv</code> etc.</li>
+<li><input type="checkbox"> No built Python artifacts: <code>.pyc</code> files, <code>__pycache__</code> directories, etc.</li>
+<li><input type="checkbox"> No downloaded JS packages: <code>node_modules</code> etc.</li>
+<li><input type="checkbox"> No HTML/CSS/JS output produced by compiler/transpiler/bundler</li>
+<li><input type="checkbox"> No esbuild, vite, rollup, webpack, etc. output.</li>
+</ul>
+</li>
+<li>If you want to keep a copy at the end of the semester, do not use GitHub fork: clone it to your computer, and push it to a new GitHub repository (manual fork).</li>
+<li>Force-push, rebase, and other git operations that remove history from GitHub are strictly forbidden, and you may receive a zero for project parts or be removed from your team.</li>
+</ul>
+</li>
+<li><input type="checkbox"> Your project must be compatible with Firefox browser.<ul>
+<li>Firefox will be used as the standard for marking. We will not check your code in multiple browsers to try to get it working.</li>
+</ul>
+</li>
+<li><input type="checkbox"> Your project must be hosted on an approved hosting solution.<ul>
+<li>Heroku<ul>
+<li>An entire instance of your project must need more than: <ul>
+<li><input type="checkbox"> A single web "dyno"</li>
+<li><input type="checkbox"> with a single PostgreSQL add-on</li>
+</ul>
+</li>
+<li><input type="checkbox"> Every teammate must be able to deploy their own project instance to their own Heroku.</li>
+</ul>
+</li>
+<li>Individual hosting on approval: you must get approval in advance from the instructor. <ul>
+<li>You are responsible for any problems that come up as a result.</li>
+<li>You are responsible for any surprise fees that come up as a result.</li>
+<li>Often when people use some other hosting service that isn't Heroku they get shut off, blocked by firewalls, and/or hit with surprise fees.</li>
+<li>This only applies on an individual basis: teammates must still use Heroku.<ul>
+<li>Project code must still be deployable by teammates to Heroku.</li>
+</ul>
+</li>
+<li>Database provider must be the same provider as your website hosting.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><input type="checkbox"> Every teammate must be able to deploy their own project instance.<ul>
+<li>This means 6 instances of the same project but running as different servers.</li>
+</ul>
+</li>
+<li><input type="checkbox"> Use a single Django or Flask server per instance.<ul>
+<li>A single Django or Flask server must serve <em>everything</em>:<ul>
+<li>Frontend (for browser) dynamic </li>
+<li>Frontend (for browser) static content<ul>
+<li><input type="checkbox"> Use <a href="https://whitenoise.readthedocs.io/en/latest/">whitenoise</a> for static content.</li>
+</ul>
+</li>
+<li>Backend API<ul>
+<li>Use routes to distinguish.</li>
+</ul>
+</li>
+<li>Use Python 3.11+</li>
+</ul>
+</li>
+<li>Splitting frontend/backend hosting is strictly not allowed. Splitting static/dynamic is strictly not allowed. They must be a part of the same Django or Flask server.</li>
+</ul>
+</li>
+<li><input type="checkbox"> Deployed instances (Heroku): Must use a PostgreSQL database for all content storage.</li>
+<li><input type="checkbox"> Local development instances (your laptop): PostgreSQL or SQLite for all content storage.<ul>
+<li>SQLite is recommended.</li>
+</ul>
+</li>
+<li><input type="checkbox"> Everything that's not in a database files must be code managed by GitHub.<ul>
+<li>Code checked into git must be clean. </li>
+<li>Cloud (e.g. Firebase), NoSQL, key-value, and file system storage are strictly forbidden.</li>
+</ul>
+</li>
+<li>License your code properly (use an OSI approved license)<ul>
+<li>Put your name (or some representation of you like GeneralHuxFan768) on it!</li>
+</ul>
+</li>
+</ul>
+<h3 id="take-aways">Take-aways</h3>
+<ul>
+<li>1 Working Website</li>
+<li>1 GitHub git repo</li>
+<li>1 Presentation<ul>
+<li>May not include the video</li>
+</ul>
+</li>
+<li>1 OpenAPI ('Swagger') specification for your API </li>
+<li>1 Video</li>
+</ul>
+<h4 id="things-that-are-allowed">Things that are allowed</h4>
+<ul>
+<li>You may use React if you choose, but generally this is more difficult and takes more work so it is not recommended.<ul>
+<li>Django templates or lighter-weight frameworks like Vue are generally easier and take less work.</li>
+<li>If you use React, you must still serve everything (including React js and html) through the same Django/Flask server that is serving the API backend.</li>
+</ul>
+</li>
+</ul>
+<h3 id="groupwork-tips">Groupwork Tips</h3>
+<ul>
+<li>These optional. They are just advice. They usually lead to less conflict and a better end result.</li>
+</ul>
+<p>The most successful teams:</p>
+<ul>
+<li>Do not use pull requests.<ul>
+<li>Pull requests are great in general, but they tend to cause problems because the project is very small and groups are also small.</li>
+</ul>
+</li>
+<li>Use very very few branches (e.g. production and staging).<ul>
+<li>Do not use author branches (or branches where a single author is the only one touching them).</li>
+</ul>
+</li>
+<li>Commit, pull, push the code they're working on, to the same branch that everyone else is working on, at least once an hour.<ul>
+<li>Commit code that doesn't break the overall project.</li>
+<li>Avoid your version being broken for more than an hour.</li>
+<li>Do not stay up all night, change everything, and push a hundred changes all over the code base as one giant pull request.</li>
+</ul>
+</li>
+<li>Divide teamwork by user story, instead of frontend vs backend.</li>
+</ul>
+<h3 id="submission-instructions">Submission Instructions</h3>
+<ul>
+<li>Submission will be by GitHub Classroom. Please follow the link on eClass.</li>
+</ul>
+<h3 id="warning">Warning!!!!</h3>
+<p>This spec is subject to change!</p>
+<h3 id="marking">Marking</h3>
+<ul>
+<li>Usually all teammates will share the same mark.</li>
+<li>An individual student's marks will be reduced if the instructor (or a TA in consultation with the instructor) finds that:<ul>
+<li>The student is not contributing or contributing significantly less than their teammates.</li>
+<li>The individual student is significantly preventing their teammates from participating or contributing.</li>
+<li>The individual student's is significantly misusing git/github/heroku/other software tools.</li>
+<li>The indivudual student is engaging in significant "intellectual violence."<ul>
+<li>Intellectual violence is when one teammate uses their skill, knowledge, or experience, to intimidate or control the other teammate(s) rather than sharing and helping them learn.</li>
+</ul>
+</li>
+<li>The individual student is not communicating or only communicating very rarely with their team.</li>
+<li>The individual student does not complete the peer feedback form (-1 mark for each part 1-4).</li>
+</ul>
+</li>
+<li>Any concerns about teamwork must be brought to the instructor's (not the TA) attention <em>by email</em> well before the last lab.<ul>
+<li>It takes time to investigate these things. </li>
+</ul>
+</li>
+</ul>
+<h4 id="project-part-0-group-formation"><a id="part0" href="#part0">Project Part 0</a>: Group Formation</h4>
+<p>You must form a group with only students from your same lab section. You can have different lecture sections, but your lab section must be the same. Furthermore, everyone must attend their registered lab section.</p>
+<ul>
+<li>There can be maximum 6 students per team.</li>
+<li>All team members must be registered for and attending the same lab section.</li>
+<li>Your team name must be from the list of <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/named-color">CSS colour names</a>.</li>
+<li>Use the <a href="https://eclass.srv.ualberta.ca/course/modedit.php?update=8120398">GitHub Classroom Link on eClass</a><ul>
+<li>EVERY teammate should submit a link to your teams GitHub repo on eClass.</li>
+</ul>
+</li>
+<li>Add a license and a README. The README should contain the names of the teammates.</li>
+<li>Use the format https://github.com/uofa-cmput404/f24-project-team-name</li>
+</ul>
+<p>Do not submit a clone link or a link to a branch or file.</p>
+<ul>
+<li>1 mark</li>
+<li>Submitted on eClass by all members</li>
+<li>1 Github repo with a README and LICENSE</li>
+<li>Team name is a CSS color name</li>
+</ul>
+<h4 id="project-part-1-centralized"><a id="part1" href="#part1">Project Part 1</a>: Centralized</h4>
+<h5 id="submission">Submission</h5>
+<p>Due 4PM on Monday.</p>
+<p>Create a git tag "part1" in your production branch before 4PM and submit only the link to your tag.</p>
+<ul>
+<li>A tag is just a name for a commit, so do not create the tag until you have your final commit for part 1!</li>
+</ul>
+<p>Don't forget to push the tag to GitHub.</p>
+<p>Submit only the link to the tag in the following format:</p>
+<p>https://github.com/uofa-cmput404/f24-project-example-team/tree/part1</p>
+<ul>
+<li>Every team member must submit the link to eclass.</li>
+</ul>
+<h5 id="marking_1">Marking</h5>
+<ul>
+<li>7 Marks</li>
+<li>Total Project<ul>
+<li>Excellent 7: Excellent effort. Relatively consistent. At least ½
+of the project implemented. Clean code. 1/2 includes both UI and webservice.</li>
+<li>Good 6: Good quality. Some inconsistency. About ½ of
+the project implemented</li>
+<li>Satisfactory 5: Codebase in places. Passes some tests. Some
+parts run</li>
+<li>Unsatisfactory 3: Effort exists, it's missing lots of components but something is there.</li>
+<li>Failure 0: Missing. No attempted. Not complete enough to evaluate.</li>
+</ul>
+</li>
+<li>Code Base <ul>
+<li>Excellent : Excellent effort. Relatively consistent. At least ½
+of the project implemented. Clean code</li>
+<li>Good : Good quality. Some inconsistency. About ½ of
+the project implemented</li>
+<li>Satisfactory : Codebase in places. Passes some tests. Some
+parts run</li>
+<li>Unsatisfactory : Does not meet Satisfactory level</li>
+</ul>
+</li>
+<li>Test Cases <ul>
+<li>Excellent: System is well tested</li>
+<li>Good: System has some blind spots for testing</li>
+<li>Satisfactory: Effort was placed on testing but it is inconsistent.</li>
+<li>Unsatisfactory: test cases are inappropriate but exist.</li>
+<li>Failure: Missing test cases</li>
+</ul>
+</li>
+<li>UI 2<ul>
+<li>Excellent: UI Exists and is coherent. Shows evidence of
+planning.</li>
+<li>Good: UI Exists. Some issues</li>
+<li>Satisfactory: UI Exists, it's not good. It has issues.</li>
+<li>Unsatisfactory: A UI was attempted, a UI exists.</li>
+<li>Failure: No UI, or what was attempted is not substantial.</li>
+</ul>
+</li>
+<li>Tool Use<ul>
+<li>Excellent: Use of at least Git is Evidence and Obvious</li>
+<li>Good: Frequent but inconsistent use of Git, etc.</li>
+<li>Satisfactory: Uses Git, etc.</li>
+<li>Unsatisfactory: Limited of tool use</li>
+<li>Failure: Used filesharing and email attachments instead of git</li>
+</ul>
+</li>
+<li>TA Demo<ul>
+<li>Excellent: Coherent demo, shows off features. Limited snags.</li>
+<li>Good: Coherent demo, shows off features. Some snags.</li>
+<li>Satisfactory: Lots of snags. Can demo it.</li>
+<li>Unsatifactory: Unfinished, hard to demo.</li>
+<li>Failure: no demo or unable to demo.</li>
+</ul>
+</li>
+<li>Web Service API &amp; Documentation<ul>
+<li>Excellent: Documented, adheres to the specification &amp; examples listed above where it exists. Open API specification exists, has clear descriptions,
+and has example requests and responses from your API. </li>
+<li>Good: Documented, exists, tries to adhere to requirements. Open API specification exists,
+and has some descriptions and a few example requests and responses.</li>
+<li>Satisfactory: Some of the webservice exists. Open API specification exists, but no descriptions
+or example requests and responses.</li>
+<li>Unsatisfactory: Well you tried right? Open API specification does not exist.</li>
+<li>Failure: Ok you didn't try. </li>
+</ul>
+</li>
+<li>Design<ul>
+<li>Excellent: Adheres to standards, well designed</li>
+<li>Good: Adheres to standards somewhat, some awkward parts</li>
+<li>Satisfactory: Some good parts, some nasty parts</li>
+<li>Unsatisfactory: Little effort went into documenting and
+designing the project</li>
+<li>Failure: failure to learn from the class and apply concepts even remedially.</li>
+</ul>
+</li>
+</ul>
+<h4 id="project-part-2-distribution">Project Part 2: Distribution</h4>
+<h5 id="requirements_1">Requirements</h5>
+<ul>
+<li>Everyone on the team must be able to deploy their own <em>instance</em> (copy) of the project to their own Heroku app with their own Heroku Postgres database. This doesn't need to be demonstrated, but it needs to be easy to do using what is in the project repo.</li>
+<li>At least two different team members must be able to demonstrate a fully working implementation, running on Heroku.<ul>
+<li>Both instances must be running the same code but have different servers &amp; databases.</li>
+</ul>
+</li>
+<li>At least two different team members must be able to demonstrate their instances coordinating. All user stories involving multiple authors must work in both situations:<ul>
+<li>All authors on the same instance</li>
+<li>Authors on different instances</li>
+</ul>
+</li>
+<li>For example if the user story is "As an author, I want to be able to approve or deny other authors following me, so that I don't get followed by people I don't like."<ul>
+<li>This needs to work when the author following is on a different instance from the author they are following.</li>
+<li>It also needs to work if they're on the same instance.</li>
+</ul>
+</li>
+</ul>
+<h5 id="submission_1">Submission</h5>
+<p>Due 4PM on the day of your lab.</p>
+<p>eClass has a limitation where it only shows the due date for the last lab section of the week, but for Monday labs it is due Monday. For Wednesday labs it is due Wednesday.</p>
+<p>Create a git tag "part2" before 4PM and submit only the link to your tag.</p>
+<p>Don't forget to push the tag to GitHub.</p>
+<p>Submit only the link to the tag in the following format:</p>
+<p>https://github.com/uofa-cmput404/w24-project-example-team/tree/part2</p>
+<h5 id="marking_2">Marking</h5>
+<ul>
+<li>7 Marks</li>
+<li>Total Project<ul>
+<li>Excellent 7: Excellent effort. Relatively consistent. All of the project implemented. Clean code. Coordinates and connects fine with another instance of itself. API follows spec &amp; examples listed in this document.</li>
+<li>Good 6: Good quality. Some inconsistency. All of the project implemented except several user stories. Fixable and functional connection with another instance of itself.</li>
+<li>Satisfactory 5: Codebase in places. Passes some tests. Most parts run. Some things coordinate and connect with another instance of itself.</li>
+<li>Unsatisfactory 3: Effort exists, it's missing lots of components but at least ½ is there.</li>
+<li>Failure 0: Missing. No attempted. Not complete enough to evaluate.</li>
+</ul>
+</li>
+<li>Web Service Coordination<ul>
+<li>Excellent: Web service coordinates with another instance of itself successfully. Most interoperation requirements met.</li>
+<li>Good: Web service coordinates with another instance of itself successfully. Most interoperation requirements met. Some snags.</li>
+<li>Satisfactory: The basics of coordination with another instance of itself are covered. Probably many snags.</li>
+<li>Unsatisfactory 0: Coordination with another instance of itself barely works.</li>
+<li>Failure: Failure to coordinate and connect with another instance of itself.</li>
+</ul>
+</li>
+<li>Code Base <ul>
+<li>Excellent : Excellent effort. Relatively consistent. All of the project implemented. Clean code.</li>
+<li>Good : Good quality. Some inconsistency. All of the project implemented except several user stories.</li>
+<li>Satisfactory : At least half of codebase in place. Passes some tests. Some parts run.</li>
+<li>Unsatisfactory : Does not meet Satisfactory level.</li>
+</ul>
+</li>
+<li>Test Cases <ul>
+<li>Excellent: System is well tested.</li>
+<li>Good: System has some blind spots for testing.</li>
+<li>Satisfactory: Effort was placed on testing but it is inconsistent.</li>
+<li>Unsatisfactory: test cases are inappropriate but exist.</li>
+<li>Failure: Missing test cases.</li>
+</ul>
+</li>
+<li>UI<ul>
+<li>Excellent: UI Exists and is coherent. Shows evidence of planning.</li>
+<li>Good: UI Exists. Some issues.</li>
+<li>Satisfactory: UI Exists, it's not good. It has issues.</li>
+<li>Unsatisfactory: A UI was attempted, a UI exists.</li>
+<li>Failure: No UI, or what was attempted is not substantial.</li>
+</ul>
+</li>
+<li>Tool Use<ul>
+<li>Excellent: Use of at least Git is Evidence and Obvious</li>
+<li>Good: Frequent but inconsistent use of Git, etc.</li>
+<li>Satisfactory: Uses Git, etc.</li>
+<li>Unsatisfactory: Limited of tool use</li>
+<li>Failure: Used filesharing and email attachments instead of git</li>
+</ul>
+</li>
+<li>TA Demo<ul>
+<li>Excellent: Coherent demo, shows off features. Limited snags.</li>
+<li>Good: Coherent demo, shows off features. Some snags.</li>
+<li>Satisfactory: Lots of snags. Can demo it.</li>
+<li>Unsatifactory: Unfinished, hard to demo.</li>
+<li>Failure: no demo or unable to demo.</li>
+</ul>
+</li>
+<li>Web Service API &amp; Documentation<ul>
+<li>Excellent: Documented, adheres to the specification &amp; examples listed above.  Open API specification exists, has clear descriptions, and has example requests and responses from your API. </li>
+<li>Good: Documented, exists, tries to adhere to requirements. Open API specification exists, and has some descriptions and a few example requests and responses.</li>
+<li>Satisfactory: Some of the webservice exists. Open API specification exists, but no descriptions or example requests and responses.</li>
+<li>Unsatisfactory: Well you tried right? Open API specification does not exist.</li>
+<li>Failure: Ok you didn't try. </li>
+</ul>
+</li>
+<li>Design<ul>
+<li>Excellent: Adheres to standards, well designed.</li>
+<li>Good: Adheres to standards somewhat, some awkward parts.</li>
+<li>Satisfactory: Some good parts, some nasty parts.</li>
+<li>Unsatisfactory: Little effort went into documenting and designing the project.</li>
+<li>Failure: Failure to learn from the class and apply concepts even remedially.</li>
+</ul>
+</li>
+</ul>
+<h4 id="project-part-3-federation">Project Part 3: Federation</h4>
+<h5 id="submission_2">Submission</h5>
+<p>Due 4PM on the day of your lab.</p>
+<p>eClass has a limitation where it only shows the due date for the last lab section of the week, but for Monday labs it is due Monday. For Wednesday labs it is due Wednesday.</p>
+<p>Create a git tag "part3" before 4PM and submit only the link to your tag.</p>
+<p>Don't forget to push the tag to GitHub.</p>
+<p>Submit only the link to the tag in the following format:</p>
+<p>https://github.com/uofa-cmput404/w24-project-example-team/tree/part3</p>
+<h5 id="marking_3">Marking</h5>
+<ul>
+<li>5 Marks</li>
+<li>Total Project<ul>
+<li>Excellent 5: Excellent effort. Coordinates and connects fine with 2 or more groups and another instance of itself. API follows spec &amp; examples listed in this document.</li>
+<li>Good 4: Some issues, not quite excellent but definitely fixable and functional with 1 or more groups and another instance itself. API follows spec &amp; examples listed in this document.</li>
+<li>Satisfactory 3: There are issues, it does run, it does coordinate with 1 or more groups.</li>
+<li>Unsatisfactory 2: Not connected to other groups, still connects to another instance of itself.</li>
+<li>Failure 0: Missing. No attempted. Not complete enough to evaluate.</li>
+</ul>
+</li>
+<li>Web Service API &amp; Documentation<ul>
+<li>Excellent: Documented, adheres to requirements to augments them with compatibility. Open API specification exists, has clear descriptions, and has example requests and responses from your API.</li>
+<li>Good: Documented, exists, tries to adhere to requirements. Open API specification exists, and has some descriptions and a few example requests and responses.</li>
+<li>Satisfactory: Some of the webservice exists. Open API specification exists, but no descriptions or example requests and responses.</li>
+<li>Unsatisfactory: Webservice exists, barely. Open API specification does not exist.</li>
+<li>Failure: it is not usable.</li>
+</ul>
+</li>
+<li>Web Service Coordination<ul>
+<li>Excellent: Web service coordinates with 2+ other group projects and itself successfully. Most interoperation requirements met.</li>
+<li>Good: Web service coordinates with 1+ other group projects and itself successfully. Most interoperation requirements met. Some snags.</li>
+<li>Satisfactory: The basics of coordination are covered. Probably many snags.</li>
+<li>Unsatisfactory 0: Coordination barely works.</li>
+<li>Failure: failure to coordinate</li>
+</ul>
+</li>
+<li>Design<ul>
+<li>Excellent: Adheres to standards, well designed.</li>
+<li>Good: Adheres to standards somewhat, some awkward parts.</li>
+<li>Satisfactory: Some good parts, some nasty parts.</li>
+<li>Unsatisfactory: Little effort went into documenting and designing the project.</li>
+<li>Failure: failure to apply what was learned in class.</li>
+</ul>
+</li>
+</ul>
+<h4 id="project-part-4-polish">Project Part 4: Polish</h4>
+<h5 id="submission_3">Submission</h5>
+<p>Due 4PM on the day of your lab.</p>
+<p>eClass has a limitation where it only shows the due date for the last lab section of the week, but for Monday labs it is due Monday. For Wednesday labs it is due Wednesday.</p>
+<p>Create a git tag "part4" before 4PM and submit only the link to your tag.</p>
+<p>Don't forget to push the tag to GitHub.</p>
+<p>Submit only the link to the tag in the following format:</p>
+<p>https://github.com/uofa-cmput404/w24-project-example-team/tree/part4</p>
+<h5 id="presentation">Presentation</h5>
+<p>Your presentation will be 5 minutes max. Then you will have a minute or two for questions.</p>
+<p>Your presentation should focus on:</p>
+<ul>
+<li>Important functions<ul>
+<li>You won't have time for every function in 5 minutes, so make sure to cover the most important functions.</li>
+</ul>
+</li>
+<li>Your UI<ul>
+<li>This is what makes your project different from the other teams, so be sure to show it off!</li>
+<li>We don't really need to see the Django admin panel.</li>
+</ul>
+</li>
+<li>Federation<ul>
+<li>Demonstrate your working connection with other team(s).</li>
+</ul>
+</li>
+</ul>
+<p>Guide for a good presentation:</p>
+<ul>
+<li>Ideally, everyone in your team should take turns speaking.<ul>
+<li>However, I do understand that some people have public speaking anxiety, so you won't be penalized if someone doesn't speak.</li>
+</ul>
+</li>
+<li>Ideally, your presentation will use your live web app.<ul>
+<li>The most successful teams in the past use note cards.</li>
+<li>Prepare backup slides in case something goes wrong that prevents you from doing a live demo.</li>
+</ul>
+</li>
+<li>The best presentations tell a story, walking through a typical user scenario.<ul>
+<li>An example of such a scenario is the one in the "Scenario" section above. But don't use that one, come up with your own that shows
+off your app.</li>
+</ul>
+</li>
+<li>Rehearse your presentation in person as a team to make sure it is close to 5 minutes.</li>
+<li>Make sure your team has a laptop that works with the projector <em>before</em> the presentation day.</li>
+</ul>
+<p>During the other team's presentations:</p>
+<ul>
+<li>Rudeness to the other teams will not be tolerated.</li>
+<li>Your team must arrive on time. Late teams will not be allowed to present.</li>
+<li>You and your team must stay for all presentations and show respect, support, and appreciation for the other teams hard work.</li>
+<li>You may ask thoughtful questions after each presentation.</li>
+<li>Wait until after questions to applaud. Otherwise, everyone ends up awkwardly applauding each team twice.</li>
+</ul>
+<h5 id="marking_4">Marking</h5>
+<ul>
+<li>10 Marks</li>
+<li>Total Project<ul>
+<li>Excellent 10: Excellent effort. Coordinates and connects fine. Good demo. Clear application of what was learned in class. 3 or more groups connected. Posts with embedded images are visible. Image posts are visible. API follows spec &amp; examples listed in this document.</li>
+<li>Good 8: Some issues, not quite excellent but definitely operational and functional. 2 or more groups connected. Posts with embedded images are visible. Image posts are visible. API follows spec &amp; examples listed in this document.</li>
+<li>Satisfactory 6: There are issues, it does run, it does coordinate. Meets satisfactory aspects of rubric. 2 or more group connected. Image posts are visible. API follows spec &amp; examples listed in this document.</li>
+<li>Unsatisfactory 4: Well you tried, but it's hardly working. Meets unsatisfactory aspects of rubric. 1 or more group connected.</li>
+<li>Failure 0: Missing. No attempted. Not complete enough to evaluate. Often hits failure aspects of rubric.</li>
+</ul>
+</li>
+<li>Note: these are ordered by importance, but you need to meet all these parts and we care about the final quality.</li>
+<li>Code Base<ul>
+<li>Excellent: Excellent effort. Relatively consistent. At least 90% of requirements implemented. Clean code</li>
+<li>Good: Good quality. Some inconsistency. About 90% of requirements implemented.</li>
+<li>Satisfactory: Codebase in places. Passes some tests. Some parts run.</li>
+<li>Unsatisfactory: Does not meet Satisfactory level</li>
+</ul>
+</li>
+<li>UI 3<ul>
+<li>Excellent: UI Exists and works well. Shows evidence of planning. Looks great.</li>
+<li>Good: UI Exists.  Looks good</li>
+<li>Satisfactory: UI exists. Looks poor.</li>
+<li>Unsatisfactory: UI exists. Doesn't work well. Worse than poor.</li>
+<li>Failure: Missing or unusable.</li>
+</ul>
+</li>
+<li>Web Service Coordination<ul>
+<li>Excellent: Web service coordinates with 2+ other group projects successfully. Most interoperation requirements met.</li>
+<li>Good: Web service coordinates with 2+ other group projects successfully. Most interoperation requirements met. Some snags.</li>
+<li>Satisfactory: The basics of coordination are covered. Probably many snags.</li>
+<li>Unsatisfactory: Coordination doesn't work or barely works.</li>
+</ul>
+</li>
+<li>Web Service API &amp; Documentation<ul>
+<li>Excellent: Documented, adheres to requirements to augments them with compatibility.  Open API specification exists, has clear descriptions, and has example requests and responses from your API. </li>
+<li>Good: Documented, exists, tries to adhere to requirements.  Open API specification exists, and has some descriptions and a few example requests and responses.</li>
+<li>Satisfactory: Some of the webservice exists. Open API specification exists, and has a few example requests and responses.</li>
+<li>Unsatisfactory: Effort taken but incomplete. Open API specification exists, but no descriptions or example requests and responses.</li>
+<li>Failure: API or Documentation Missing. Open API specification does not exist.</li>
+</ul>
+</li>
+<li>Test Cases<ul>
+<li>Excellent: System is well tested</li>
+<li>Good: System has some tests</li>
+<li>Unsatisfactory: test cases are inappropriate</li>
+<li>Failure: Missing test cases</li>
+</ul>
+</li>
+<li>Tool Use<ul>
+<li>Excellent: Use of at least Git is Evidence and Obvious</li>
+<li>Good: Frequent but inconsistent use of Git, etc.</li>
+<li>Satisfactory: Infrequent use of Git, etc.</li>
+<li>Unsatisfactory: Limited tool use</li>
+<li>Failure: lack of tool use</li>
+</ul>
+</li>
+<li>Design<ul>
+<li>Excellent: Adheres to standards, well designed</li>
+<li>Good: Adheres to standards somewhat, some awkward parts</li>
+<li>Satisfactory: Some good parts, some nasty parts</li>
+<li>Unsatisfactory: Little effort went into documenting and designing the project</li>
+<li>Failure: clear lack of design</li>
+</ul>
+</li>
+<li>Adhering to Standards<ul>
+<li>Excellent: Excellent attempt at making a standards compliant website. Most things are compliant.</li>
+<li>Good: An attempt at making a standards compliant website. Some not compliant.</li>
+<li>Satisfactory: Inconsistent.</li>
+<li>Unsatisfactory: poor attempt to meet standards.</li>
+<li>Failure: failed to apply what was learned in class</li>
+</ul>
+</li>
+<li>Addressing Feedback:<ul>
+<li>Excellent: TAs suggestions were implemented, TA approves of implementation set.</li>
+<li>Good: The good TA suggestions were implemented ;)</li>
+<li>Satisfactory: Feedback ignored mostly, but some followed.</li>
+<li>Unsatisfactory: Majority of Feedback ignored.</li>
+<li>Failure: Feedback ignored.</li>
+</ul>
+</li>
+<li>Presentation:<ul>
+<li>Excellent: Presentation within time, shows teamwork, promotes the application, uses the live application to show functionality.</li>
+<li>Good: Presentation nearly within time, some team works, reasonable presentation.</li>
+<li>Satisfactory: Presentation exists but has problems.</li>
+<li>Unsatisfactory: Missing or terrible presentation (lack of practice, lack of preparation, irrelevant) OR presentation includes the video demo.</li>
+<li>Failure: no presentation</li>
+</ul>
+</li>
+<li>Video Demo:<ul>
+<li>Excellent: Video is well presented and not boring, less than 2 minutes. Posted to the discussion forum thread to share it with everyone in the class.</li>
+<li>Good: Video presents the functionality and is less than 2 minutes.</li>
+<li>Satisfactory: Video is longer than 2 minutes, or doesn't accurately present the project.</li>
+<li>Unsatisfactory: A video exists and it is a demo.</li>
+<li>Failure: lack of video, failure to make a video.</li>
+</ul>
+</li>
+<li>AJAX<ul>
+<li>Excellent: Uses AJAX appropriately and well (documented)</li>
+<li>Good: Uses some AJAX (documented)</li>
+<li>Satisfactory: AJAX not really used</li>
+<li>Unsatisfactory: An attempt was made.</li>
+<li>Failure: No AJAX</li>
+</ul>
+</li>
+</ul>
+<h3 id="license">License</h3>
+<div class="highlight"><pre><span></span><code> <span class="k">*</span> Parts of this document are derived from the W3C Documentation for Activity Pub
+ <span class="k">*</span> Copyright © 2018 W3C® (MIT, ERCIM, Keio, Beihang). W3C liability, trademark and permissive document license rules apply. 
+ <span class="k">*</span> https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="w">     </span><span class="n">License</span>
+
+<span class="w">     </span><span class="k">By</span><span class="w"> </span><span class="n">obtaining</span><span class="w"> </span><span class="ow">and</span><span class="o">/</span><span class="ow">or</span><span class="w"> </span><span class="n">copying</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="k">work</span><span class="p">,</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="p">(</span><span class="n">the</span><span class="w"> </span><span class="n">licensee</span><span class="p">)</span><span class="w"> </span><span class="n">agree</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">have</span><span class="w"> </span><span class="k">read</span><span class="p">,</span><span class="w"> </span><span class="n">understood</span><span class="p">,</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">comply</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">following</span><span class="w"> </span><span class="n">terms</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">conditions</span><span class="p">.</span>
+
+<span class="w">     </span><span class="n">Permission</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">copy</span><span class="p">,</span><span class="w"> </span><span class="k">modify</span><span class="p">,</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">distribute</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="k">work</span><span class="p">,</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="k">without</span><span class="w"> </span><span class="n">modification</span><span class="p">,</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="ow">any</span><span class="w"> </span><span class="n">purpose</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="k">without</span><span class="w"> </span><span class="n">fee</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">royalty</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">hereby</span><span class="w"> </span><span class="n">granted</span><span class="p">,</span><span class="w"> </span><span class="n">provided</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="k">include</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">following</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="ow">ALL</span><span class="w"> </span><span class="n">copies</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="k">work</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">portions</span><span class="w"> </span><span class="n">thereof</span><span class="p">,</span><span class="w"> </span><span class="n">including</span><span class="w"> </span><span class="nl">modifications</span><span class="p">:</span>
+
+<span class="w">         </span><span class="n">The</span><span class="w"> </span><span class="k">full</span><span class="w"> </span><span class="nc">text</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="n">NOTICE</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">location</span><span class="w"> </span><span class="n">viewable</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">users</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">redistributed</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">derivative</span><span class="w"> </span><span class="k">work</span><span class="p">.</span>
+<span class="w">         </span><span class="ow">Any</span><span class="w"> </span><span class="n">pre</span><span class="o">-</span><span class="n">existing</span><span class="w"> </span><span class="n">intellectual</span><span class="w"> </span><span class="n">property</span><span class="w"> </span><span class="n">disclaimers</span><span class="p">,</span><span class="w"> </span><span class="n">notices</span><span class="p">,</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">terms</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">conditions</span><span class="p">.</span><span class="w"> </span><span class="k">If</span><span class="w"> </span><span class="k">none</span><span class="w"> </span><span class="n">exist</span><span class="p">,</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">W3C</span><span class="w"> </span><span class="n">Software</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">Document</span><span class="w"> </span><span class="n">Short</span><span class="w"> </span><span class="n">Notice</span><span class="w"> </span><span class="n">should</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">included</span><span class="p">.</span>
+<span class="w">         </span><span class="n">Notice</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ow">any</span><span class="w"> </span><span class="n">changes</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">modifications</span><span class="p">,</span><span class="w"> </span><span class="n">through</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">copyright</span><span class="w"> </span><span class="k">statement</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">code</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">document</span><span class="w"> </span><span class="n">such</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="ss">&quot;This software or document includes material copied from or derived from [title and URI of the W3C document]. Copyright © [YEAR] W3C® (MIT, ERCIM, Keio, Beihang).&quot;</span><span class="w"> </span>
+
+<span class="w">     </span><span class="n">Disclaimers</span>
+
+<span class="w">     </span><span class="n">THIS</span><span class="w"> </span><span class="k">WORK</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="n">PROVIDED</span><span class="w"> </span><span class="ss">&quot;AS IS,&quot;</span><span class="w"> </span><span class="ow">AND</span><span class="w"> </span><span class="n">COPYRIGHT</span><span class="w"> </span><span class="n">HOLDERS</span><span class="w"> </span><span class="n">MAKE</span><span class="w"> </span><span class="k">NO</span><span class="w"> </span><span class="n">REPRESENTATIONS</span><span class="w"> </span><span class="ow">OR</span><span class="w"> </span><span class="n">WARRANTIES</span><span class="p">,</span><span class="w"> </span><span class="n">EXPRESS</span><span class="w"> </span><span class="ow">OR</span><span class="w"> </span><span class="n">IMPLIED</span><span class="p">,</span><span class="w"> </span><span class="n">INCLUDING</span><span class="w"> </span><span class="n">BUT</span><span class="w"> </span><span class="ow">NOT</span><span class="w"> </span><span class="n">LIMITED</span><span class="w"> </span><span class="k">TO</span><span class="p">,</span><span class="w"> </span><span class="n">WARRANTIES</span><span class="w"> </span><span class="k">OF</span><span class="w"> </span><span class="n">MERCHANTABILITY</span><span class="w"> </span><span class="ow">OR</span><span class="w"> </span><span class="n">FITNESS</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="ow">ANY</span><span class="w"> </span><span class="n">PARTICULAR</span><span class="w"> </span><span class="n">PURPOSE</span><span class="w"> </span><span class="ow">OR</span><span class="w"> </span><span class="n">THAT</span><span class="w"> </span><span class="n">THE</span><span class="w"> </span><span class="k">USE</span><span class="w"> </span><span class="k">OF</span><span class="w"> </span><span class="n">THE</span><span class="w"> </span><span class="n">SOFTWARE</span><span class="w"> </span><span class="ow">OR</span><span class="w"> </span><span class="n">DOCUMENT</span><span class="w"> </span><span class="n">WILL</span><span class="w"> </span><span class="ow">NOT</span><span class="w"> </span><span class="n">INFRINGE</span><span class="w"> </span><span class="ow">ANY</span><span class="w"> </span><span class="n">THIRD</span><span class="w"> </span><span class="n">PARTY</span><span class="w"> </span><span class="n">PATENTS</span><span class="p">,</span><span class="w"> </span><span class="n">COPYRIGHTS</span><span class="p">,</span><span class="w"> </span><span class="n">TRADEMARKS</span><span class="w"> </span><span class="ow">OR</span><span class="w"> </span><span class="n">OTHER</span><span class="w"> </span><span class="n">RIGHTS</span><span class="p">.</span>
+
+<span class="w">     </span><span class="n">COPYRIGHT</span><span class="w"> </span><span class="n">HOLDERS</span><span class="w"> </span><span class="n">WILL</span><span class="w"> </span><span class="ow">NOT</span><span class="w"> </span><span class="n">BE</span><span class="w"> </span><span class="n">LIABLE</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="ow">ANY</span><span class="w"> </span><span class="n">DIRECT</span><span class="p">,</span><span class="w"> </span><span class="n">INDIRECT</span><span class="p">,</span><span class="w"> </span><span class="n">SPECIAL</span><span class="w"> </span><span class="ow">OR</span><span class="w"> </span><span class="n">CONSEQUENTIAL</span><span class="w"> </span><span class="n">DAMAGES</span><span class="w"> </span><span class="n">ARISING</span><span class="w"> </span><span class="k">OUT</span><span class="w"> </span><span class="k">OF</span><span class="w"> </span><span class="ow">ANY</span><span class="w"> </span><span class="k">USE</span><span class="w"> </span><span class="k">OF</span><span class="w"> </span><span class="n">THE</span><span class="w"> </span><span class="n">SOFTWARE</span><span class="w"> </span><span class="ow">OR</span><span class="w"> </span><span class="n">DOCUMENT</span><span class="p">.</span>
+
+<span class="w">     </span><span class="n">The</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">trademarks</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">copyright</span><span class="w"> </span><span class="n">holders</span><span class="w"> </span><span class="n">may</span><span class="w"> </span><span class="ow">NOT</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">used</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">advertising</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">publicity</span><span class="w"> </span><span class="n">pertaining</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="k">work</span><span class="w"> </span><span class="k">without</span><span class="w"> </span><span class="k">specific</span><span class="p">,</span><span class="w"> </span><span class="n">written</span><span class="w"> </span><span class="k">prior</span><span class="w"> </span><span class="n">permission</span><span class="p">.</span><span class="w"> </span><span class="n">Title</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">copyright</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="k">work</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="k">at</span><span class="w"> </span><span class="ow">all</span><span class="w"> </span><span class="n">times</span><span class="w"> </span><span class="n">remain</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="n">copyright</span><span class="w"> </span><span class="n">holders</span><span class="p">.</span>
+</code></pre></div>
+  <footer>
+    <p>Published: <time datetime="2024-09-01T00:00:00-06:00">
+      Sun, 01 Sep 2024 at 00:00 MDT
+    </time></p>
+    <address>
+      By           <a href="../author/hazel-victoria-campbell.html">Hazel Victoria Campbell</a>
+    </address>
+    <p>
+        Category: <a href="../category/general.html">general</a>
+    </p>
+    <p>
+        Tags:
+            <a href="../tag/project.html">project</a>
+            <a href="../tag/grading.html">grading</a>
+    </p>
+  </footer>
+  </article>
+        </main>
+        <footer>
+                <address>
+                Proudly powered by <a rel="nofollow" href="https://getpelican.com/">Pelican</a>,
+                which takes great advantage of <a rel="nofollow" href="https://www.python.org/">Python</a>.
+                </address>
+        </footer>
+</body>
+</html>

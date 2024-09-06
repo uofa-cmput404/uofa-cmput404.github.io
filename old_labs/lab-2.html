@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+          <title>CMPUT 404 - Lab - TCP Proxy</title>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Web Applications and Architecture" />
+
+  <link rel="icon" href="../theme/favicon.ico" />
+  <link rel="stylesheet" type="text/css" href="../theme/style.css" />
+  <link rel="stylesheet" type="text/css" href="../theme/404.css" />
+
+
+
+
+    <meta name="tags" content="homework" />
+    <meta name="tags" content="lab" />
+
+</head>
+
+<body>
+        <header>
+              <hgroup><h1><a href="../">CMPUT 404</a></h1><p>Web Applications and Architecture</p></hgroup>
+        <nav><ul>
+            <li><a href="/general/outline.html">Outline</a></li>
+            <li><a href="/#eclass">eClass & Grades</a></li>
+            <li><a href="/#schedule">Schedule</a></li>
+            <li><a href="/general/labs.html">Labs</a></li>
+            <li><a href="/general/project.html">Project</a></li>
+            <li><a href="/general/individual.html">Participation</a></li>
+            <li><a href="/general/resources.html">Resources</a></li>
+            <li><a href="/general/help.html#discussion-forum">Discussion Forum</a></li>
+            <li><a href="/#news-notices">News & Notices</a></li>
+            <li><a href="/#lecture-zoom">Lecture Zoom</a></li>
+            <li><a href="https://uofa-cmput404.github.io/slides-xt/">Slides</a></li>
+            <li><a href="/general/help.html">Help</a></li>
+        </ul></nav>
+        </header>
+        <main>
+<article>
+  <header>
+    <h2>
+      <a href="../old_labs/lab-2.html" rel="bookmark"
+         title="Permalink to Lab - TCP Proxy">Lab - TCP Proxy</a></h2>
+ 
+  </header>
+  <hr>
+<p>Create a tcp client, proxy server, echo server in Python. Understand how sockets work in relation to web requests. Use <a href="https://docs.python.org/3.4/library/multiprocessing.html?highlight=process">multiprocessing</a> for forking new processes.</p>
+<p>Answers to the questions should be submitted to <em>Lab: TCP Proxy</em> on eClass.</p>
+<ul>
+<li><a href="https://docs.python.org/3/library/socket.html">Python socket documentation</a></li>
+<li><a href="https://www.w3.org/Protocols/HTTP/1.0/spec.html">w3 HTTP 1.0 Specification</a><ul>
+<li>Also good: <a href="https://tecfa.unige.ch/moo/book2/node93.html">Intro to HTTP 1.0</a></li>
+</ul>
+</li>
+</ul>
+<h5 id="sockets">Sockets</h5>
+<p>Create a github repository for this lab and initialize a clean Python3 virtual environment.</p>
+<ol>
+<li>
+<p>Make a file called <em>client.py</em> which uses the <a href="https://docs.python.org/3/library/socket.html">socket</a> library to connect to <code>www.google.com</code> and requests a page.</p>
+</li>
+<li>
+<p>Make your program output whatever was sent to it onto the terminal.</p>
+<ul>
+<li><strong>Question 1</strong>: How do you specify a TCP socket in Python?</li>
+</ul>
+</li>
+<li>
+<p>Make a file called <em>echo_server.py</em> that listens for incoming connections and echos any received data.</p>
+<ul>
+<li>
+<p>Test echoing example: <code>$ echo "Foobar" | nc localhost 8001 -q 1</code> should return Foobar, provided the port used is <code>8001</code></p>
+</li>
+<li>
+<p><strong>Question 2</strong>: What is the difference between a client socket and a server socket in Python?</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Print out information about what is connected to the server socket to the terminal.</p>
+<ul>
+<li>
+<p><strong>Question 3</strong>: How do we instruct the OS to let us reuse the same bind port?</p>
+</li>
+<li>
+<p><strong>Question 4</strong>: What information do we get about incoming connections?</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Print out whatever is sent to your server program.</p>
+<ul>
+<li><strong>Question 5</strong>: What is returned by <code>recv()</code> from the server after it is done sending the HTTP request?</li>
+</ul>
+</li>
+<li>
+<p>Create a file called <em>proxy_server.py</em> and connect to Google. Create a file called <em>proxy_client.py</em> and connect to your proxy server.</p>
+</li>
+<li>
+<p>Forward whatever is received on the server socket to <code>www.google.com</code>. Take the response from <code>www.google.com</code> and send it to the original connection.</p>
+</li>
+<li>
+<p>Make your proxy server and echo server forking so multiple programs can use it simultaneously.</p>
+</li>
+<li>
+<p>Push your code to GitHub.</p>
+<ul>
+<li><strong>Question 6</strong>: Provide a link to your code on GitHub.</li>
+</ul>
+</li>
+</ol>
+  <footer>
+    <p>Published: <time datetime="2019-01-07T08:30:00-07:00">
+      Mon, 07 Jan 2019 at 08:30 MST
+    </time></p>
+    <p>Last updated: <time datetime="2023-09-18T19:14:00-06:00">
+      Mon, 18 Sep 2023 at 19:14 MDT
+    </time></p>
+    <address>
+      By           <a href="../author/hazel-victoria-campbell.html">Hazel Victoria Campbell</a>
+          <a href="../author/alexander-wong.html">Alexander Wong</a>
+    </address>
+    <p>
+        Category: <a href="../category/old_labs.html">old_labs</a>
+    </p>
+    <p>
+        Tags:
+            <a href="../tag/homework.html">homework</a>
+            <a href="../tag/lab.html">lab</a>
+    </p>
+  </footer>
+  </article>
+        </main>
+        <footer>
+                <address>
+                Proudly powered by <a rel="nofollow" href="https://getpelican.com/">Pelican</a>,
+                which takes great advantage of <a rel="nofollow" href="https://www.python.org/">Python</a>.
+                </address>
+        </footer>
+</body>
+</html>
