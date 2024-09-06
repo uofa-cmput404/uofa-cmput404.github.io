@@ -1,9 +1,11 @@
-Title: Django Lab
-date: 2024-01-16
-tags: labs
-authors: Alireza Azimi
-status: Published
-summary: Lab Procedure, Lab Assignments, Lab Marking
+
+# Title: Django Lab  
+**Date:** 2024-09-05  
+**Tags:** labs  
+**Authors:** Alireza Azimi, Mo Adel Abdelghany
+**Status:** Fall 2024 draft
+**Summary:** Lab Procedure, Lab Assignments, Lab Marking  
+
 ----
 
 <style>
@@ -15,297 +17,429 @@ summary: Lab Procedure, Lab Assignments, Lab Marking
 </style>
 
 [TOC]
+---
 
 # Description
 
-The purpose of this lab is to familiarize you with setting up a virtual environment, developing in django and using npm.
-By the end of this lab you will make a simple emoji picker app.
+The purpose of this lab is to familiarize you with setting up a virtual environment, developing with Django, and using npm to incorporate external packages like an emoji picker and a markdown editor. By the end of this lab, you will build a simple web app where users can add emojis and edit content using Markdown.
 
 # Getting Started
 
+### Introduction to HTML and JavaScript
+
+Before diving into Django and npm, let’s go over some basics of HTML and JavaScript.
+
+### HTML Basics
+
+HTML is the structure of a webpage. It defines elements such as **headings** (`<h1>`, `<h2>`, etc.), **paragraphs** (`<p>`), and **divs** (`<div>`) to organize content.
+
+#### Example HTML Structure:
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Web Page</title>
+</head>
+<body>
+    <h1>Welcome to My Web Page</h1>
+    <div>
+        <p>This is a paragraph inside a div.</p>
+    </div>
+</body>
+</html>
+```
+
+- **Headings** help organize content by importance. Use `<h1>` for the most important heading and `<h6>` for the least important.
+- **Divs** are containers that group elements together. You can style or manipulate all content inside a div.
+
+### JavaScript Basics
+
+JavaScript is used to add interactivity to a web page. You can manipulate the **DOM** (Document Object Model), which represents the structure of the page, to change content, styles, or even add new elements.
+
+#### Example JavaScript:
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS Example</title>
+</head>
+<body>
+    <h1 id="heading">Hello, World!</h1>
+    <button id="changeTextBtn">Change Text</button>
+
+    <script>
+        const button = document.getElementById('changeTextBtn');
+        button.addEventListener('click', function() {
+            document.getElementById('heading').textContent = 'You clicked the button!';
+        });
+    </script>
+</body>
+</html>
+```
+
+---
+
 ## Prepare your Repo
 
-1. Get the github classroom link from eClass, create your assignment, and clone it.
-2. Create an appropriate `.gitignore` file, to prevent unwanted files being commited to your repository.
+1. Get the GitHub classroom link from eClass, create your assignment, and clone it.
+2. Create an appropriate `.gitignore` file to prevent unwanted files from being committed to your repository. 
 
-Place this gitignore within the root of your project. You can combine [this one](https://github.com/github/gitignore/blob/main/Python.gitignore) and [this one](https://github.com/github/gitignore/blob/main/Node.gitignore) and [this one](https://github.com/django/django/blob/main/.gitignore) for your django+node project. Double check you're not staging any unwanted files before you commit. The `git status` command can help with that.
+Place this `.gitignore` file in the root of your project. You can combine [this one](https://github.com/github/gitignore/blob/main/Python.gitignore), [this one](https://github.com/github/gitignore/blob/main/Node.gitignore), and [this one](https://github.com/django/django/blob/main/.gitignore) for your Django + Node project. Use `git status` to ensure you're not staging any unwanted files before committing.
 
 ## Create the Virtual Environment
 
-Virtual environment is a CLI tool for managing python dependencies. Different projects have different dependencies, and version requirements. A virtual environment allows you to manage your dependencies specific to your project.
+A virtual environment is a tool for managing Python dependencies specific to your project. Each project may have different requirements, and a virtual environment helps you manage these dependencies independently.
 
-### If you have multiple versions of python installed:
+### Setting up Python:
 
-Always end the python command with the version number. 
+If you have multiple versions of Python installed, always specify the version number:
 
-For example, on the undergrad machines ugXX.cs.ualberta.ca: you can use `python3.11`.
+```bash
+python3.11 -m venv venv
+```
 
-### Check if you have pip
+### Check for pip and venv/virtualenv:
 
-`python3.XX -m pip` should give information about how to use pip.
+To verify if you have pip:
 
-For example, on the undergrad machines ugXX.cs.ualberta.ca: you can use `python3.11 -m pip`.
+```bash
+python3.11 -m pip
+```
 
-### Check if you have venv or virtualenv
+To check if `venv` or `virtualenv` is installed:
 
-`python3.XX -m venv --help` should give information about how to use venv.
+```bash
+python3.11 -m venv --help
+```
 
-If you don't have `venv`, try `virtualenv`: `python -m virtualenv --help` should give information about how to use virtualenv.
+If you don't have `venv`, install it using pip:
 
-For example, on the undergrad machines ugXX.cs.ualberta.ca: you can use `python3.11 -m venv --help`.
+```bash
+python -m pip install --user virtualenv
+```
 
-### If you're on Ubuntu or Debian and don't have venv or virtualenv:
+### Activate Virtual Environment:
 
-`
+To activate the virtual environment:
 
-### If you have pip installed but not venv:
+```bash
+source venv/bin/activate
+```
 
-1. `python -m pip install --user virtualenv`
-2. Check installation: `python -m virtualenv --help` 
+Deactivate the virtual environment using:
 
-For more info check [here](https://virtualenv.pypa.io/en/latest/installation.html).
+```bash
+deactivate
+```
 
-### Create a Virtual Environment
+---
 
+## Installing Node.js and npm
 
+To install Node.js, download the LTS version from the [Node.js website](https://nodejs.org/en/download). The installation will include npm as well, which we will use to manage JavaScript packages.
 
-
-## Activate Virtual Environment
-
-To use a virtual environment:
-
-2. `source venv/bin/activate`
-
-The first command will create a directory named `venv`. Contained in the directory is your
-project dependecy installation and the `activate` script. Run `deactivate` to exit the virtual environment.
-
-## Installing node JS and npm
-
-To install node js, you can download the appropriate installer directly from the node js
-[website](https://nodejs.org/en/download). Make sure to download the LTS version. The installation 
-will include npm as well.
+---
 
 # Lab Instructions
 
-The framework we will be using for this lab is [django](https://www.djangoproject.com/), a high-level python web framework. Django is a well documented framework, with a large developer community. The official django [documentation](https://docs.djangoproject.com/en/5.0/) is also an ideal place to learn more and look up specific features.
+## Django Setup
 
-Get started by creating a virtual environment and installing django: 
+We will use [Django](https://www.djangoproject.com/), a high-level Python web framework. It simplifies web development by providing a built-in ORM, an admin panel, and much more. The [official documentation](https://docs.djangoproject.com/en/5.0/) is a valuable resource.
 
-1. Within your assignment directory create a virtual environment: `virtualenv venv --python=python3`
-2. Activate the virtual environment: `source venv/bin/activate`
-3. Add the line `Django>=5.0.1` to a new file, `requirements.txt`, at the top level of your repo.
-4. Install django: `python -m pip install -r requirements.txt`
-5. Verify installation by running a python shell and using: `import django`
+### Steps to Set Up Django:
 
-To create a django project:
+1. Create a virtual environment and install Django:
+   ```bash
+   virtualenv venv --python=python3
+   source venv/bin/activate
+   echo "Django>=5.0.1" > requirements.txt
+   python -m pip install -r requirements.txt
+   ```
 
-1. Run `django-admin startproject lab2`
-2. Verify "lab2" directory containing project files is created
-3. move into directory: `cd lab2`
-4. Run `python manage.py runserver 0.0.0.0:8000`
-5. In your browser access `localhost:8000`
+2. Start a new Django project:
+   ```bash
+   django-admin startproject lab2
+   cd lab2
+   python manage.py runserver 0.0.0.0:8000
+   ```
 
-If all went well you should see a "Congratulations!" with a rocket flying off.
+You should see a "Congratulations!" page when visiting `localhost:8000`.
 
-In this lab we will be using an emoji picker package to display emojis on a django webpage. We will create a webapp called "emojis" using django. To create a new webapp inside your django project run `python manage.py startapp emojis`. This will create an `emojis` directory in your folder. Locate `emojis/views.py` and add the following code:
+### Creating a Django Webapp
 
-```python
-from django.http import HttpResponse # Make sure to include this import
+We will create a Django webapp called `emojis` to build a simple emoji picker app.
 
+1. Create a new app:
+   ```bash
+   python manage.py startapp emojis
+   ```
 
-def index(request):
-    return HttpResponse("This is the emoji app.")
+2. In `emojis/views.py`, add the following code:
+   ```python
+   from django.http import HttpResponse
+
+   def index(request):
+       return HttpResponse("This is the emoji app.")
+   ```
+
+3. Create a `urls.py` file inside `emojis` and add the following code:
+   ```python
+   from django.urls import path
+   from . import views
+
+   urlpatterns = [
+       path("", views.index, name="index"),
+   ]
+   ```
+
+4. Update `lab2/urls.py` to include the new app:
+   ```python
+   from django.urls import include, path
+   urlpatterns = [
+       path("emojis/", include("emojis.urls")),
+       path("admin/", admin.site.urls),
+   ]
+   ```
+
+---
+
+## Adding HTML Templates
+
+Django allows you to render HTML templates. Let’s create an HTML page to display the emoji picker.
+
+1. Inside the `emojis` directory, create a `templates` directory.
+2. Inside `templates`, create an `index.html` file with the following boilerplate:
+   ```html
+   <!DOCTYPE html>
+   <html lang="en">
+       <head>
+           <meta charset="UTF-8">
+           <title>Emojis App</title>
+       </head>
+       <body>
+           <h1>Welcome to Emojis!</h1>
+       </body>
+   </html>
+   ```
+
+3. Update `emojis/views.py` to render the template:
+   ```python
+   from django.shortcuts import render
+
+   def index(request):
+       return render(request, "index.html")
+   ```
+
+Now, visiting `localhost:8000/emojis` will display the HTML template.
+
+---
+
+## Adding Markdown Editor
+
+In this section, we will integrate a **Markdown editor** so that users can write content in Markdown format and see it rendered as HTML in the browser. We'll use the popular npm package `marked` for parsing Markdown content and converting it to HTML.
+
+### Steps to Add the Markdown Editor:
+
+1. Install the `marked` package using npm:
+   ```bash
+   npm install --save-dev marked
+   ```
+
+2. Update your `main.js` file to incorporate both the Markdown editor and the emoji picker:
+
+```js
+import { Picker } from "emoji-mart"; // Import the emoji picker
+import { marked } from "marked"; // Import the markdown converter
+
+// Set up emoji picker
+const pickerOptions = { onEmojiSelect: (emoji) => {
+  const textarea = document.getElementById('markdown-editor');
+  textarea.value += emoji.native; // Add selected emoji to the editor
+}};
+const picker = new Picker(pickerOptions);
+document.getElementById('emoji-picker').appendChild(picker); // Add emoji picker to the DOM
+
+// Handle Markdown conversion and rendering
+document.getElementById('convert-btn').addEventListener('click', () => {
+  const markdownText = document.getElementById('markdown-editor').value;
+  const htmlOutput = marked(markdownText); // Convert markdown to HTML
+  document.getElementById('markdown-output').innerHTML = htmlOutput; // Display HTML content
+});
 ```
 
-Create a `urls.py` within the `emojis` directory, and add the following code:
-```python
-from django.urls import path
+3. Modify your `index.html` file to include both the Markdown editor and the emoji picker:
 
-from . import views # . referes to the current module we are in
-
-urlpatterns = [
-    path("", views.index, name="index"),
-]
-```
-
-Ensure your `lab2/urls.py` looks like this:
-
-```python
-from django.contrib import admin
-from django.urls import include, path # make sure you have "include"
-
-urlpatterns = [
-    path("emojis/", include("emojis.urls")),
-    path("admin/", admin.site.urls),
-]
-```
-
-Make sure to register your app with the project by modifying `lab2/settings.py`:
-```python
-INSTALLED_APPS = [
-    'emojis.apps.EmojisConfig', # don't forget to add this line !!
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-]
-```
-
-Access the emojis app using: `localhost:8000/emojis` from your browser.
-
-Now it's pretty boring receiving a plain text response. Let's try rendering an html page. One way to achieve this using django is with `templates`:
-
-1. Create `templates` directory inside `emojis`. Django will look for this directory by default.
-2. Inside templates create a file called `index.html`.
-
-Place the following html boilerplate inside `index.html`:
 ```html
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Emojis App</title>
-    </head>
-    <body>
-        <h1>Welcome to Emojis!</h1>
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <title>Markdown and Emoji App</title>
+</head>
+<body>
+    <h1>Welcome to the Markdown and Emoji App!</h1>
+    
+    <div id="emoji-picker"></div> <!-- Emoji Picker -->
+
+    <div>
+        <h3>Markdown Editor</h3>
+        <textarea id="markdown-editor" rows="10" cols="50" placeholder="Write in Markdown..."></textarea>
+        <button id="convert-btn">Convert to HTML</button>
+    </div>
+
+    <h3>Output</h3>
+    <div id="markdown-output"></div> <!-- Rendered HTML output -->
+    
+
+
+    <script src="{% static 'main.min.js' %}"></script> <!-- Load bundled JS -->
+</body>
 </html>
 ```
 
-Go back to `emojis/views.py` and make sure to render this html template:
+4. Bundle the `main.js` file again using esbuild:
+
+```bash
+npx esbuild main.js --bundle --minify --sourcemap --outfile=./emojis/static/main.min.js
+```
+
+---
+
+## Integrating with Django Models (ORM)
+
+Now that we have a Markdown editor and emoji picker set up, let’s store the content users create in a Django model.
+
+1. Update `emojis/models.py` to create a model for storing user-created pages:
+
 ```python
-from django.shortcuts import render # Import this shortcut function
+from django.db import models
+
+class Page(models.Model):
+    title = models.CharField(max_length=200)
+    content = models.TextField()  # Markdown content
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title
+```
+
+2. In `emojis/views.py`, create a new view to handle saving the Markdown content to the database:
+
+```python
+from django.shortcuts import render
+from django.http import JsonResponse
+from .models import Page
 
 def index(request):
     return render(request, "index.html")
+
+def save_page(request):
+    if request.method == 'POST':
+        title = request.POST.get('title', 'Untitled')
+        content = request.POST.get('content', '')
+        Page.objects.create(title=title, content=content)
+        return JsonResponse({'status': 'success'})
 ```
 
-Now you should get a big welcome message when you access `localhost:8000/emojis`.
+3. In `emojis/urls.py`, add the new route for saving content:
 
-Npm is a package manager for node JS. Node JS is a runtime environment for JavaScript. The node JS developer community use npm to distribute useful packages. For this lab we will be using [emoji-mart](https://www.npmjs.com/package/emoji-mart) to create a fun browser based emoji picker. Ensure you have npm and node installed ([Refer to Getting Started](/labsignments/django.html#installing-node-js-and-npm))
+```python
+from django.urls import path
+from . import views
 
-To use the package we need to install the JavaScript module using npm:
-
-1. Run `npm install --save-dev emoji-mart` in your project root where `manage.py` is.
-2. This should create a new directory called `node_modules`
-3. Locate `node_modules/emoji-mart` to verify installation
-4. Create a directory called `static` inside `emojis`, where you made the `templates` directory
-5. Create a file called `main.js` where `node_modules` is located (but not inside `node_modules`)
-
-Within `main.js` add the following code:
-```js
-import { Picker } from "emoji-mart"; // import Picker class from module
-// This is where you would import other modules you installed with npm too, but for this example we only have the emoji-mart.
-
-const pickerOptions = { onEmojiSelect: console.log }
-const picker = new Picker(pickerOptions) // instantiate object
-document.body.appendChild(picker) // add to DOM
+urlpatterns = [
+    path("", views.index, name="index"),
+    path("save/", views.save_page, name="save_page"),
+]
 ```
-Now this file won't be able do much here, but it will be useful within a browser environment. To make `main.js` run in a browser, it must be in a compatible format. Fortunately, there are tools such as webpack, vite, and esbuild that can build or transpile our javascript code into a format the browser can handle. The tool we will be using for this lab is [esbuild](https://esbuild.github.io/getting-started/):
 
-1. First install esbuild using npm: `npm install --save-exact --save-dev esbuild`
-2. Transpile `main.js` to the static directory: `npx esbuild main.js --bundle --minify --sourcemap --outfile=./emojis/static/main.min.js`
-3. Verify `main.min.js` is created within `emojis/static`
-4. Add a line to your `.gitignore` to prevent `main.min.js` from being added to git.
-
-Now that we have our static files ready to go, modify your `index.html` to load your main.js file.
+4. Modify the HTML form in `index.html` to send data to the server and save the page:
 
 ```html
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Emojis App</title>
-    </head>
-    <body>
-        <h1>Welcome to Emojis!</h1>
-    </body>
-    <script src="{% static 'main.min.js' %}"></script>
-</html>
+<form id="save-form" method="POST">
+    <input type="text" name="title" id="page-title" placeholder="Page Title">
+    <textarea id="markdown-editor" name="content" rows="10" cols="50"></textarea>
+    <button id="save-btn" type="submit">Save Page</button>
+</form>
 ```
 
-You should now be able to see the emoji picker on `localhost:8000/emojis`.
+5. In `main.js`, handle the form submission using JavaScript and send the content via a POST request:
 
-## Phase Two: Automation
+```js
+document.getElementById('save-btn').addEventListener('click', function(e) {
+    e.preventDefault();
 
-Double check that your git repository doesn't contain any built or reinstallable artifacts such as:
+    const title = document.getElementById('page-title').value;
+    const content = document.getElementById('markdown-editor').value;
 
-* The virtual environment (venv)
-* node_modules
-* main.min.js
+    fetch('/save/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': getCookie('csrftoken') // Ensure you include CSRF token
+        },
+        body: JSON.stringify({title: title, content: content})
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data); // Handle the response from the server
+    });
+});
+```
 
-Make sure that it does contain:
+---
 
-* package.json
-* requirements.txt
-* All files you created and/or edited
-* The files that django-admin startproject created
+## Serving Static Files with Whitenoise
 
-Write a python script and (and add it to your repository) that:
+Now that we have a Django app with Markdown editing, emoji picking, and content storage, we need to serve static files efficiently. We'll use **Whitenoise** for this.
 
-1. Creates the virtualenv if it doesn't already exist
-2. Activates the virtualenv if it's not already active
-3. Installs everything from `requirements.txt` to virtualenv if its not already installed
-4. Runs `npm install` to install every depencency from `package.json` to node_modules
-5. Runs esbuild to build `main.min.js`
-6. Starts the django server
+1. Install Whitenoise:
+   ```bash
+   pip install whitenoise
+   ```
 
-Do not have it install python, venv, or node. We will assume that every web developer has these installed already.
+2. Update `settings.py` to use Whitenoise:
 
-Your goal is to have a repository by the end that is just the stuff you need for your script to
-install dependencies of your project and get it started, regardless of what computer your
-repository is cloned to.
+```python
+MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # Add this line
+    # other middleware...
+]
 
-That is you should be able to log onto a different computer with a different OS and run the python
-script you wrote and it should download the pypi packages it needs with pip, download the npm packages
-it needs with npm, and then runs your project.
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-* Assuming python, virtualenv, and node are already installed:
-    * your repo + your script = a fully working app
-    * while keeping our repo clean of things that can just be downloaded or compiled/transpiled/etc. again
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+```
 
-# Restrictions
+3. Run `collectstatic` to gather all static files:
+   ```bash
+   python manage.py collectstatic
+   ```
 
-Violation of the restrictions will result in a mark of zero.
+4. Restart the Django server, and now Whitenoise will handle serving static files, including the JavaScript bundle.
 
-* Must use Python3
-* Must run on Ubuntu (Use the undergrad lab machines, for example the ones in CSC 2-29 or install an Ubuntu VM to check this)
-* Must run on your machine (whatever machine you use to demo)
+---
 
-# Requirements
+## Conclusion and Submission
 
-* A working Django 5 application
-    * using the latest Django version from pypi
-        * downloaded with pip into a virtualenv
-    * that can serve a template that uses
-        * JS code bundled by esbuild
-            * which loads a JS library
-                * that was intalled by npm
-* A git repository that does not contain built (compiled, transpiled, bundled) or downloaded artifacts, including but not limited to:
-    * virtualenv
-    * node_modules
-    * main.min.js
+At the end of this lab, you will have built a fully functioning web app with the following features:
+- An emoji picker using the `emoji-mart` npm package.
+- A Markdown editor where users can write content and convert it to HTML.
+- Content storage in a Django model using the ORM.
+- Efficient serving of static files with Whitenoise.
 
-# Submission Instructions
+### Submission Instructions
+1. Push your code to GitHub Classroom **before the deadline**.
+2. Ensure your repository contains only the necessary files, and your `.gitignore` excludes built files (`venv/`, `node_modules/`, `main.min.js`).
 
-Make sure you push to github classroom **BEFORE 4PM on the day of your lab section!** You will not be able to push after that!
+Submit your repository link on eClass.
 
-Submit a link to your repo in the form `https://github.com/uofa-cmput404/w24-h0x-labsignment-django-yourgithubname` on eClass. **Do not** submit a link to a branch, a file, or the clone url. If you do not do this we will not know which github submission is yours.
+---
 
-# Collaboration
-
-* You may consult with others (exchange high-level ideas) but the submission should be your own source code.
-* Collaboration must be documented in your source code.
-* Any source code you got from anywhere else must be cited in the source code.
-* You can only use source code that **you understand**: see the [lab marking info]({filename}/general/labs.md#lab-marking)
-
-# Tips
-
-Django is a complex framework and maybe overwhelming at times. You should consult the documentation should you run into any issues with the framework. 
-
-If you're unable to load a static file or resource, it maybe because you're not referencing it correctly. It may be in a different directory or you have a typo when you are referencing that particular resource using its path. 
-
-Another common problem is not being able to render the templates even though you're directory structure is correct. Make sure your app is registered in `settings.py` otherwise it may not render.
+### Further Tips
+- If you encounter issues with static files, ensure your file paths are correct and that Django’s `STATIC_URL` is configured properly.
+- For more detailed error handling or improving the user interface, consider adding feedback when content is saved or emoji selection is confirmed.
+```
