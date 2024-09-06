@@ -1,11 +1,9 @@
 Title: HTTP Lab
 date: 2024-07-17
-tags: curl, http, socket, socketserver
+tags: curl, http, socket, socketserver <!-- @LT-IGNORE:MORFOLOGIK_RULE_EN_CA(http)@ -->
 authors: Hazel Victoria Campbell, Samuel Iwuchukwu, Sadia Zahin Prodhan
 status: Published
 summary: Lab Procedure, Lab Assignments, Lab Marking
-
-----
 
 ----
 
@@ -20,11 +18,12 @@ summary: Lab Procedure, Lab Assignments, Lab Marking
 [TOC]
 
 ---
+
 # Description
 
-Your task is to build a HTTP 1.1 compliant webserver and a basic HTTP client. This lab is designed to give you a hands-on, ground-up understanding of the basics of HTTP by implementing both the client and server sides.
+Your task is to build an HTTP/1.1 compliant webserver and a basic HTTP client. This lab is designed to give you a hands-on, ground-up understanding of the basics of HTTP by implementing both the client and server sides.
 
-The webserver will serve static content from the `www` directory in the same directory where you start the webserver. The client will be used to make HTTP requests to the server or any standard server.
+The webserver will serve static content from the `www` directory in the same directory where you start the webserver. The client will be used to make HTTP requests to the server or any HTTP/1.1 server.
 
 # Getting Started
 
@@ -46,18 +45,25 @@ The webserver will serve static content from the `www` directory in the same dir
 * As a developer, I want my custom client to interact with a standard server and my custom server to interact with a standard client. My custom client should also be able to interact with my custom server.
 
 # Task 1: Implement the HTTP Client
+
 ## Client Requirements
 
-  * Connect to a server (custom or standard) at a specified address.
-  * Send request with appropriate headers.
-  * Receive and process responses from the server.
-  * Implement basic HTTP GET
-  * Implement basic HTTP POST
-  * HTTP POST can post vars
-  * HTTP POST handles at least Content-Type: application/x-www-form-urlencoded
-  * Handle 404 requests and 200 requests
-  * Handle a wider range of status codes (e.g., 301 for redirects, 500 for server errors) and act accordingly
-  * Support virtual hosting by correctly setting the Host header in GET and POST requests
+* A single python program called `httpclient.py`
+* Run it by using a command like:
+    * `httpclient.py GET http://servername:port/path`
+    * or `httpclient.py GET http://127.0.0.1:port/path` (or another ipv4 address)
+    * or `httpclient.py GET http://[::1]:port/path` (or another ipv6 address)
+    * or `httpclient.py POST http://servername:port/path` (or an ipv4/ipv6 address)
+* Connect to a server at an address and port specified on the command line.
+* Send request with appropriate headers.
+* Receive and process responses from the server.
+* Implement basic HTTP GET
+* Implement basic HTTP POST
+* HTTP POST can post vars
+* HTTP POST handles at least Content-Type: application/x-www-form-urlencoded
+* Handle 404 requests and 200 requests
+* Handle a wider range of status codes (e.g., 301 for redirects, 500 for server errors) and act accordingly
+* Support virtual hosting by correctly setting the Host header in GET and POST requests
  
 To make your client communicate with the server, follow these steps:
   - Import the libraries needed (socket)
@@ -74,15 +80,24 @@ import socket
 
 ## Create a context manager
 
-Create a context manager to ensure you close the socket once the block of code is executed
-Utilize the context manager on the socket module to create a new socket object, This object has an overloaded constructor but we would utilize the two arguments constructor and pass the address family and the socket type. (i.e socket.AF_INET and socket.SOCK_STREAM)
+Create a context manager to ensure you close the socket once the block of code is executed.
+Utilize the context manager on the socket module to create a new socket object. This object has an overloaded constructor. The two arguments to the constructor are the address family and the socket type. (i.e. socket.AF_INET and socket.SOCK_STREAM)
 
-1. socket.AF_INET : represents the address type (for IPv4)
+1. socket.AF_INET : represents the address type (for IPv4, IPv6, and DNS names)
 2. socket.SOCK_STREAM : represents the socket type (TCP socket)
+
+## Correctly parse URL
+
+1. Make sure it starts with `http://` or stop with an error.
+2. Separate the IP address, port, and path.
+    * If the IP address is a IPv6 address, remove the square brackets around it.
+3. Make sure the path is percent decoded.
+    * You do not need to percent decode anything but the path.
+4. You do not need to handle query or fragment parts.
 
 ## Connect to a remote socket at specified address
 
-Connect to a remote socket at specified address. This uses the socket.connect(address) method to connect with the host address. The address is a tuple that holds the host or ip address and the port number of the server
+Connect to a remote socket at specified address. This uses the socket.connect(address) method to connect with the host address. The address is a tuple that holds the host or IP address and the port number of the server
 
 ```python
 with socket.socket(socket.AF_INET,socket.SOCK_STREAM) as sock:
@@ -92,7 +107,7 @@ with socket.socket(socket.AF_INET,socket.SOCK_STREAM) as sock:
 
 ## Prepare your request
 
-This would be formatted to include the HTTP method,  protocol, Host address, Content-Type and Content length and finally the data
+This would be formatted to include the HTTP method, protocol, Host address, Content-Type and Content length and finally the data
 
 ##  Pass your request byte as a parameter to socket.sendall function
 
