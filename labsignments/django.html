@@ -44,7 +44,8 @@
          title="Permalink to Django Lab">Django Lab</a></h2>
  
   </header>
-  <style>
+  <hr>
+<style>
     html body main {
         background-image: url("/theme/draft.png");
         background-repeat: repeat;
@@ -52,294 +53,393 @@
     }
 </style>
 
-<div class="toc">
-<ul>
-<li><a href="#description">Description</a></li>
-<li><a href="#getting-started">Getting Started</a><ul>
-<li><a href="#prepare-your-repo">Prepare your Repo</a></li>
-<li><a href="#create-the-virtual-environment">Create the Virtual Environment</a><ul>
-<li><a href="#if-you-have-multiple-versions-of-python-installed">If you have multiple versions of python installed:</a></li>
-<li><a href="#check-if-you-have-pip">Check if you have pip</a></li>
-<li><a href="#check-if-you-have-venv-or-virtualenv">Check if you have venv or virtualenv</a></li>
-<li><a href="#if-youre-on-ubuntu-or-debian-and-dont-have-venv-or-virtualenv">If you're on Ubuntu or Debian and don't have venv or virtualenv:</a></li>
-<li><a href="#if-you-have-pip-installed-but-not-venv">If you have pip installed but not venv:</a></li>
-<li><a href="#create-a-virtual-environment">Create a Virtual Environment</a></li>
-</ul>
-</li>
-<li><a href="#activate-virtual-environment">Activate Virtual Environment</a></li>
-<li><a href="#installing-node-js-and-npm">Installing node JS and npm</a></li>
-</ul>
-</li>
-<li><a href="#lab-instructions">Lab Instructions</a><ul>
-<li><a href="#phase-two-automation">Phase Two: Automation</a></li>
-</ul>
-</li>
-<li><a href="#restrictions">Restrictions</a></li>
-<li><a href="#requirements">Requirements</a></li>
-<li><a href="#submission-instructions">Submission Instructions</a></li>
-<li><a href="#collaboration">Collaboration</a></li>
-<li><a href="#tips">Tips</a></li>
-</ul>
-</div>
+<h4 id="toc">[TOC]</h4>
 <h3 id="description">Description</h3>
-<p>The purpose of this lab is to familiarize you with setting up a virtual environment, developing in django and using npm.
-By the end of this lab you will make a simple emoji picker app.</p>
+<p>The purpose of this lab is to familiarize you with setting up a virtual environment, developing with Django, and using npm to incorporate external packages like an emoji picker and a markdown editor. By the end of this lab, you will build a simple web app where users can add emojis and edit content using Markdown.</p>
 <h3 id="getting-started">Getting Started</h3>
-<h4 id="prepare-your-repo">Prepare your Repo</h4>
-<ol>
-<li>Get the github classroom link from eClass, create your assignment, and clone it.</li>
-<li>Create an appropriate <code>.gitignore</code> file, to prevent unwanted files being commited to your repository.</li>
-</ol>
-<p>Place this gitignore within the root of your project. You can combine <a href="https://github.com/github/gitignore/blob/main/Python.gitignore">this one</a> and <a href="https://github.com/github/gitignore/blob/main/Node.gitignore">this one</a> and <a href="https://github.com/django/django/blob/main/.gitignore">this one</a> for your django+node project. Double check you're not staging any unwanted files before you commit. The <code>git status</code> command can help with that.</p>
-<h4 id="create-the-virtual-environment">Create the Virtual Environment</h4>
-<p>Virtual environment is a CLI tool for managing python dependencies. Different projects have different dependencies, and version requirements. A virtual environment allows you to manage your dependencies specific to your project.</p>
-<h5 id="if-you-have-multiple-versions-of-python-installed">If you have multiple versions of python installed:</h5>
-<p>Always end the python command with the version number. </p>
-<p>For example, on the undergrad machines ugXX.cs.ualberta.ca: you can use <code>python3.11</code>.</p>
-<h5 id="check-if-you-have-pip">Check if you have pip</h5>
-<p><code>python3.XX -m pip</code> should give information about how to use pip.</p>
-<p>For example, on the undergrad machines ugXX.cs.ualberta.ca: you can use <code>python3.11 -m pip</code>.</p>
-<h5 id="check-if-you-have-venv-or-virtualenv">Check if you have venv or virtualenv</h5>
-<p><code>python3.XX -m venv --help</code> should give information about how to use venv.</p>
-<p>If you don't have <code>venv</code>, try <code>virtualenv</code>: <code>python -m virtualenv --help</code> should give information about how to use virtualenv.</p>
-<p>For example, on the undergrad machines ugXX.cs.ualberta.ca: you can use <code>python3.11 -m venv --help</code>.</p>
-<h5 id="if-youre-on-ubuntu-or-debian-and-dont-have-venv-or-virtualenv">If you're on Ubuntu or Debian and don't have venv or virtualenv:</h5>
-<p>`</p>
-<h5 id="if-you-have-pip-installed-but-not-venv">If you have pip installed but not venv:</h5>
-<ol>
-<li><code>python -m pip install --user virtualenv</code></li>
-<li>Check installation: <code>python -m virtualenv --help</code> </li>
-</ol>
-<p>For more info check <a href="https://virtualenv.pypa.io/en/latest/installation.html">here</a>.</p>
-<h5 id="create-a-virtual-environment">Create a Virtual Environment</h5>
-<h4 id="activate-virtual-environment">Activate Virtual Environment</h4>
-<p>To use a virtual environment:</p>
-<ol>
-<li><code>source venv/bin/activate</code></li>
-</ol>
-<p>The first command will create a directory named <code>venv</code>. Contained in the directory is your
-project dependecy installation and the <code>activate</code> script. Run <code>deactivate</code> to exit the virtual environment.</p>
-<h4 id="installing-node-js-and-npm">Installing node JS and npm</h4>
-<p>To install node js, you can download the appropriate installer directly from the node js
-<a href="https://nodejs.org/en/download">website</a>. Make sure to download the LTS version. The installation 
-will include npm as well.</p>
-<h3 id="lab-instructions">Lab Instructions</h3>
-<p>The framework we will be using for this lab is <a href="https://www.djangoproject.com/">django</a>, a high-level python web framework. Django is a well documented framework, with a large developer community. The official django <a href="https://docs.djangoproject.com/en/5.0/">documentation</a> is also an ideal place to learn more and look up specific features.</p>
-<p>Get started by creating a virtual environment and installing django: </p>
-<ol>
-<li>Within your assignment directory create a virtual environment: <code>virtualenv venv --python=python3</code></li>
-<li>Activate the virtual environment: <code>source venv/bin/activate</code></li>
-<li>Add the line <code>Django&gt;=5.0.1</code> to a new file, <code>requirements.txt</code>, at the top level of your repo.</li>
-<li>Install django: <code>python -m pip install -r requirements.txt</code></li>
-<li>Verify installation by running a python shell and using: <code>import django</code></li>
-</ol>
-<p>To create a django project:</p>
-<ol>
-<li>Run <code>django-admin startproject lab2</code></li>
-<li>Verify "lab2" directory containing project files is created</li>
-<li>move into directory: <code>cd lab2</code></li>
-<li>Run <code>python manage.py runserver 0.0.0.0:8000</code></li>
-<li>In your browser access <code>localhost:8000</code></li>
-</ol>
-<p>If all went well you should see a "Congratulations!" with a rocket flying off.</p>
-<p>In this lab we will be using an emoji picker package to display emojis on a django webpage. We will create a webapp called "emojis" using django. To create a new webapp inside your django project run <code>python manage.py startapp emojis</code>. This will create an <code>emojis</code> directory in your folder. Locate <code>emojis/views.py</code> and add the following code:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponse</span> <span class="c1"># Make sure to include this import</span>
-
-
-<span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="s2">&quot;This is the emoji app.&quot;</span><span class="p">)</span>
-</code></pre></div>
-
-<p>Create a <code>urls.py</code> within the <code>emojis</code> directory, and add the following code:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">path</span>
-
-<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">views</span> <span class="c1"># . referes to the current module we are in</span>
-
-<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="n">path</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;index&quot;</span><span class="p">),</span>
-<span class="p">]</span>
-</code></pre></div>
-
-<p>Ensure your <code>lab2/urls.py</code> looks like this:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">django.contrib</span> <span class="kn">import</span> <span class="n">admin</span>
-<span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">include</span><span class="p">,</span> <span class="n">path</span> <span class="c1"># make sure you have &quot;include&quot;</span>
-
-<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="n">path</span><span class="p">(</span><span class="s2">&quot;emojis/&quot;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="s2">&quot;emojis.urls&quot;</span><span class="p">)),</span>
-    <span class="n">path</span><span class="p">(</span><span class="s2">&quot;admin/&quot;</span><span class="p">,</span> <span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">urls</span><span class="p">),</span>
-<span class="p">]</span>
-</code></pre></div>
-
-<p>Make sure to register your app with the project by modifying <code>lab2/settings.py</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s1">&#39;emojis.apps.EmojisConfig&#39;</span><span class="p">,</span> <span class="c1"># don&#39;t forget to add this line !!</span>
-    <span class="s1">&#39;django.contrib.admin&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;django.contrib.auth&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;django.contrib.contenttypes&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;django.contrib.sessions&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;django.contrib.messages&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;django.contrib.staticfiles&#39;</span><span class="p">,</span>
-<span class="p">]</span>
-</code></pre></div>
-
-<p>Access the emojis app using: <code>localhost:8000/emojis</code> from your browser.</p>
-<p>Now it's pretty boring receiving a plain text response. Let's try rendering an html page. One way to achieve this using django is with <code>templates</code>:</p>
-<ol>
-<li>Create <code>templates</code> directory inside <code>emojis</code>. Django will look for this directory by default.</li>
-<li>Inside templates create a file called <code>index.html</code>.</li>
-</ol>
-<p>Place the following html boilerplate inside <code>index.html</code>:</p>
+<h5 id="introduction-to-html-and-javascript">Introduction to HTML and JavaScript</h5>
+<p>Before diving into Django and npm, let’s go over some basics of HTML and JavaScript.</p>
+<h5 id="html-basics">HTML Basics</h5>
+<p>HTML is the structure of a webpage. It defines elements such as <strong>headings</strong> (<code>&lt;h1&gt;</code>, <code>&lt;h2&gt;</code>, etc.), <strong>paragraphs</strong> (<code>&lt;p&gt;</code>), and <strong>divs</strong> (<code>&lt;div&gt;</code>) to organize content.</p>
+<h6 id="example-html-structure">Example HTML Structure:</h6>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;en&quot;</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Emojis App<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
-    <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Welcome to Emojis!<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
-    <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>My Web Page<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Welcome to My Web Page<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>This is a paragraph inside a div.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </code></pre></div>
 
-<p>Go back to <code>emojis/views.py</code> and make sure to render this html template:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span> <span class="c1"># Import this shortcut function</span>
+<ul>
+<li><strong>Headings</strong> help organize content by importance. Use <code>&lt;h1&gt;</code> for the most important heading and <code>&lt;h6&gt;</code> for the least important.</li>
+<li><strong>Divs</strong> are containers that group elements together. You can style or manipulate all content inside a div.</li>
+</ul>
+<h5 id="javascript-basics">JavaScript Basics</h5>
+<p>JavaScript is used to add interactivity to a web page. You can manipulate the <strong>DOM</strong> (Document Object Model), which represents the structure of the page, to change content, styles, or even add new elements.</p>
+<h6 id="example-javascript">Example JavaScript:</h6>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;en&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>JS Example<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h1</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;heading&quot;</span><span class="p">&gt;</span>Hello, World!<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;changeTextBtn&quot;</span><span class="p">&gt;</span>Change Text<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+
+    <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">button</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;changeTextBtn&#39;</span><span class="p">);</span>
+<span class="w">        </span><span class="nx">button</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;heading&#39;</span><span class="p">).</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;You clicked the button!&#39;</span><span class="p">;</span>
+<span class="w">        </span><span class="p">});</span>
+<span class="w">    </span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<hr>
+<h4 id="prepare-your-repo">Prepare your Repo</h4>
+<ol>
+<li>Get the GitHub classroom link from eClass, create your assignment, and clone it.</li>
+<li>Create an appropriate <code>.gitignore</code> file to prevent unwanted files from being committed to your repository. </li>
+</ol>
+<p>Place this <code>.gitignore</code> file in the root of your project. You can combine <a href="https://github.com/github/gitignore/blob/main/Python.gitignore">this one</a>, <a href="https://github.com/github/gitignore/blob/main/Node.gitignore">this one</a>, and <a href="https://github.com/django/django/blob/main/.gitignore">this one</a> for your Django + Node project. Use <code>git status</code> to ensure you're not staging any unwanted files before committing.</p>
+<h4 id="create-the-virtual-environment">Create the Virtual Environment</h4>
+<p>A virtual environment is a tool for managing Python dependencies specific to your project. Each project may have different requirements, and a virtual environment helps you manage these dependencies independently.</p>
+<h5 id="setting-up-python">Setting up Python:</h5>
+<p>If you have multiple versions of Python installed, always specify the version number:</p>
+<div class="highlight"><pre><span></span><code>python3.11<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>venv
+</code></pre></div>
+
+<h5 id="check-for-pip-and-venvvirtualenv">Check for pip and venv/virtualenv:</h5>
+<p>To verify if you have pip:</p>
+<div class="highlight"><pre><span></span><code>python3.11<span class="w"> </span>-m<span class="w"> </span>pip
+</code></pre></div>
+
+<p>To check if <code>venv</code> or <code>virtualenv</code> is installed:</p>
+<div class="highlight"><pre><span></span><code>python3.11<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>--help
+</code></pre></div>
+
+<p>If you don't have <code>venv</code>, install it using pip:</p>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--user<span class="w"> </span>virtualenv
+</code></pre></div>
+
+<h5 id="activate-virtual-environment">Activate Virtual Environment:</h5>
+<p>To activate the virtual environment:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">source</span><span class="w"> </span>venv/bin/activate
+</code></pre></div>
+
+<p>Deactivate the virtual environment using:</p>
+<div class="highlight"><pre><span></span><code>deactivate
+</code></pre></div>
+
+<hr>
+<h4 id="installing-nodejs-and-npm">Installing Node.js and npm</h4>
+<p>To install Node.js, download the LTS version from the <a href="https://nodejs.org/en/download">Node.js website</a>. The installation will include npm as well, which we will use to manage JavaScript packages.</p>
+<hr>
+<h3 id="lab-instructions">Lab Instructions</h3>
+<h4 id="django-setup">Django Setup</h4>
+<p>We will use <a href="https://www.djangoproject.com/">Django</a>, a high-level Python web framework. It simplifies web development by providing a built-in ORM, an admin panel, and much more. The <a href="https://docs.djangoproject.com/en/5.0/">official documentation</a> is a valuable resource.</p>
+<h5 id="steps-to-set-up-django">Steps to Set Up Django:</h5>
+<ol>
+<li>
+<p>Create a virtual environment and install Django:
+   <code>bash
+   virtualenv venv --python=python3
+   source venv/bin/activate
+   echo "Django&gt;=5.0.1" &gt; requirements.txt
+   python -m pip install -r requirements.txt</code></p>
+</li>
+<li>
+<p>Start a new Django project:
+   <code>bash
+   django-admin startproject lab2
+   cd lab2
+   python manage.py runserver 0.0.0.0:8000</code></p>
+</li>
+</ol>
+<p>You should see a "Congratulations!" page when visiting <code>localhost:8000</code>.</p>
+<h5 id="creating-a-django-webapp">Creating a Django Webapp</h5>
+<p>We will create a Django webapp called <code>emojis</code> to build a simple emoji picker app.</p>
+<ol>
+<li>
+<p>Create a new app:
+   <code>bash
+   python manage.py startapp emojis</code></p>
+</li>
+<li>
+<p>In <code>emojis/views.py</code>, add the following code:
+   ```python
+   from django.http import HttpResponse</p>
+</li>
+</ol>
+<p>def index(request):
+       return HttpResponse("This is the emoji app.")
+   ```</p>
+<ol>
+<li>Create a <code>urls.py</code> file inside <code>emojis</code> and add the following code:
+   ```python
+   from django.urls import path
+   from . import views</li>
+</ol>
+<p>urlpatterns = [
+       path("", views.index, name="index"),
+   ]
+   ```</p>
+<ol>
+<li>Update <code>lab2/urls.py</code> to include the new app:
+   <code>python
+   from django.urls import include, path
+   urlpatterns = [
+       path("emojis/", include("emojis.urls")),
+       path("admin/", admin.site.urls),
+   ]</code></li>
+</ol>
+<hr>
+<h4 id="adding-html-templates">Adding HTML Templates</h4>
+<p>Django allows you to render HTML templates. Let’s create an HTML page to display the emoji picker.</p>
+<ol>
+<li>Inside the <code>emojis</code> directory, create a <code>templates</code> directory.</li>
+<li>Inside <code>templates</code>, create an <code>index.html</code> file with the following boilerplate:
+   ```html
+   <!DOCTYPE html></li>
+</ol>
+<html lang="en">
+       <head>
+           <meta charset="UTF-8">
+           <title>Emojis App</title>
+       </head>
+       <body>
+           <h1>Welcome to Emojis!</h1>
+       </body>
+   </html>
+
+<ol>
+<li>Update <code>emojis/views.py</code> to render the template:
+   ``` 
+   from django.shortcuts import render</li>
+</ol>
+<p>def index(request):
+       return render(request, "index.html")
+   ```</p>
+<p>Now, visiting <code>localhost:8000/emojis</code> will display the HTML template.</p>
+<hr>
+<h4 id="adding-markdown-editor">Adding Markdown Editor</h4>
+<p>In this section, we will integrate a <strong>Markdown editor</strong> so that users can write content in Markdown format and see it rendered as HTML in the browser. We'll use the popular npm package <code>marked</code> for parsing Markdown content and converting it to HTML.</p>
+<h5 id="steps-to-add-the-markdown-editor">Steps to Add the Markdown Editor:</h5>
+<ol>
+<li>
+<p>Install the <code>marked</code> package using npm:
+   <code>bash
+   npm install --save-dev marked</code></p>
+</li>
+<li>
+<p>Update your <code>main.js</code> file to incorporate both the Markdown editor and the emoji picker:</p>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Picker</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;emoji-mart&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// Import the emoji picker</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">marked</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;marked&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// Import the markdown converter</span>
+
+<span class="c1">// Set up emoji picker</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">pickerOptions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">onEmojiSelect</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">emoji</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">textarea</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;markdown-editor&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">textarea</span><span class="p">.</span><span class="nx">value</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nx">emoji</span><span class="p">.</span><span class="kr">native</span><span class="p">;</span><span class="w"> </span><span class="c1">// Add selected emoji to the editor</span>
+<span class="p">}};</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">picker</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Picker</span><span class="p">(</span><span class="nx">pickerOptions</span><span class="p">);</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;emoji-picker&#39;</span><span class="p">).</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">picker</span><span class="p">);</span><span class="w"> </span><span class="c1">// Add emoji picker to the DOM</span>
+
+<span class="c1">// Handle Markdown conversion and rendering</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;convert-btn&#39;</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">markdownText</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;markdown-editor&#39;</span><span class="p">).</span><span class="nx">value</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">htmlOutput</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">marked</span><span class="p">(</span><span class="nx">markdownText</span><span class="p">);</span><span class="w"> </span><span class="c1">// Convert markdown to HTML</span>
+<span class="w">  </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;markdown-output&#39;</span><span class="p">).</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">htmlOutput</span><span class="p">;</span><span class="w"> </span><span class="c1">// Display HTML content</span>
+<span class="p">});</span>
+</code></pre></div>
+
+<ol>
+<li>Modify your <code>index.html</code> file to include both the Markdown editor and the emoji picker:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;en&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Markdown and Emoji App<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Welcome to the Markdown and Emoji App!<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;emoji-picker&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span> <span class="cm">&lt;!-- Emoji Picker --&gt;</span>
+
+    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>Markdown Editor<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">textarea</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;markdown-editor&quot;</span> <span class="na">rows</span><span class="o">=</span><span class="s">&quot;10&quot;</span> <span class="na">cols</span><span class="o">=</span><span class="s">&quot;50&quot;</span> <span class="na">placeholder</span><span class="o">=</span><span class="s">&quot;Write in Markdown...&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">textarea</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;convert-btn&quot;</span><span class="p">&gt;</span>Convert to HTML<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+
+    <span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>Output<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;markdown-output&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span> <span class="cm">&lt;!-- Rendered HTML output --&gt;</span>
+
+
+
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;{% static &#39;main.min.js&#39; %}&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span> <span class="cm">&lt;!-- Load bundled JS --&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<ol>
+<li>Bundle the <code>main.js</code> file again using esbuild:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>npx<span class="w"> </span>esbuild<span class="w"> </span>main.js<span class="w"> </span>--bundle<span class="w"> </span>--minify<span class="w"> </span>--sourcemap<span class="w"> </span>--outfile<span class="o">=</span>./emojis/static/main.min.js
+</code></pre></div>
+
+<hr>
+<h4 id="integrating-with-django-models-orm">Integrating with Django Models (ORM)</h4>
+<p>Now that we have a Markdown editor and emoji picker set up, let’s store the content users create in a Django model.</p>
+<ol>
+<li>Update <code>emojis/models.py</code> to create a model for storing user-created pages:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
+
+<span class="k">class</span> <span class="nc">Page</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+    <span class="n">content</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">()</span>  <span class="c1"># Markdown content</span>
+    <span class="n">created_at</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now_add</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">title</span>
+</code></pre></div>
+
+<ol>
+<li>In <code>emojis/views.py</code>, create a new view to handle saving the Markdown content to the database:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span>
+<span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">JsonResponse</span>
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Page</span>
 
 <span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s2">&quot;index.html&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">save_page</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;POST&#39;</span><span class="p">:</span>
+        <span class="n">title</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">,</span> <span class="s1">&#39;Untitled&#39;</span><span class="p">)</span>
+        <span class="n">content</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;content&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+        <span class="n">Page</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">,</span> <span class="n">content</span><span class="o">=</span><span class="n">content</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">JsonResponse</span><span class="p">({</span><span class="s1">&#39;status&#39;</span><span class="p">:</span> <span class="s1">&#39;success&#39;</span><span class="p">})</span>
 </code></pre></div>
 
-<p>Now you should get a big welcome message when you access <code>localhost:8000/emojis</code>.</p>
-<p>Npm is a package manager for node JS. Node JS is a runtime environment for JavaScript. The node JS developer community use npm to distribute useful packages. For this lab we will be using <a href="https://www.npmjs.com/package/emoji-mart">emoji-mart</a> to create a fun browser based emoji picker. Ensure you have npm and node installed (<a href="/labsignments/django.html#installing-node-js-and-npm">Refer to Getting Started</a>)</p>
-<p>To use the package we need to install the JavaScript module using npm:</p>
 <ol>
-<li>Run <code>npm install --save-dev emoji-mart</code> in your project root where <code>manage.py</code> is.</li>
-<li>This should create a new directory called <code>node_modules</code></li>
-<li>Locate <code>node_modules/emoji-mart</code> to verify installation</li>
-<li>Create a directory called <code>static</code> inside <code>emojis</code>, where you made the <code>templates</code> directory</li>
-<li>Create a file called <code>main.js</code> where <code>node_modules</code> is located (but not inside <code>node_modules</code>)</li>
+<li>In <code>emojis/urls.py</code>, add the new route for saving content:</li>
 </ol>
-<p>Within <code>main.js</code> add the following code:</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Picker</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;emoji-mart&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// import Picker class from module</span>
-<span class="c1">// This is where you would import other modules you installed with npm too, but for this example we only have the emoji-mart.</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">path</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">views</span>
 
-<span class="kd">const</span><span class="w"> </span><span class="nx">pickerOptions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">onEmojiSelect</span><span class="o">:</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="w"> </span><span class="p">}</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">picker</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Picker</span><span class="p">(</span><span class="nx">pickerOptions</span><span class="p">)</span><span class="w"> </span><span class="c1">// instantiate object</span>
-<span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">picker</span><span class="p">)</span><span class="w"> </span><span class="c1">// add to DOM</span>
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">path</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;index&quot;</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s2">&quot;save/&quot;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">save_page</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;save_page&quot;</span><span class="p">),</span>
+<span class="p">]</span>
 </code></pre></div>
 
-<p>Now this file won't be able do much here, but it will be useful within a browser environment. To make <code>main.js</code> run in a browser, it must be in a compatible format. Fortunately, there are tools such as webpack, vite, and esbuild that can build or transpile our javascript code into a format the browser can handle. The tool we will be using for this lab is <a href="https://esbuild.github.io/getting-started/">esbuild</a>:</p>
 <ol>
-<li>First install esbuild using npm: <code>npm install --save-exact --save-dev esbuild</code></li>
-<li>Transpile <code>main.js</code> to the static directory: <code>npx esbuild main.js --bundle --minify --sourcemap --outfile=./emojis/static/main.min.js</code></li>
-<li>Verify <code>main.min.js</code> is created within <code>emojis/static</code></li>
-<li>Add a line to your <code>.gitignore</code> to prevent <code>main.min.js</code> from being added to git.</li>
+<li>Modify the HTML form in <code>index.html</code> to send data to the server and save the page:</li>
 </ol>
-<p>Now that we have our static files ready to go, modify your <code>index.html</code> to load your main.js file.</p>
-<div class="highlight"><pre><span></span><code>{% load static %}
-<span class="cp">&lt;!DOCTYPE html&gt;</span>
-<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;en&quot;</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Emojis App<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
-    <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Welcome to Emojis!<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
-    <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;{% static &#39;main.min.js&#39; %}&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">form</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;save-form&quot;</span> <span class="na">method</span><span class="o">=</span><span class="s">&quot;POST&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;title&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;page-title&quot;</span> <span class="na">placeholder</span><span class="o">=</span><span class="s">&quot;Page Title&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">textarea</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;markdown-editor&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;content&quot;</span> <span class="na">rows</span><span class="o">=</span><span class="s">&quot;10&quot;</span> <span class="na">cols</span><span class="o">=</span><span class="s">&quot;50&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">textarea</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;save-btn&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span><span class="p">&gt;</span>Save Page<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
 </code></pre></div>
 
-<p>You should now be able to see the emoji picker on <code>localhost:8000/emojis</code>.</p>
-<h4 id="phase-two-automation">Phase Two: Automation</h4>
-<p>Double check that your git repository doesn't contain any built or reinstallable artifacts such as:</p>
-<ul>
-<li>The virtual environment (venv)</li>
-<li>node_modules</li>
-<li>main.min.js</li>
-</ul>
-<p>Make sure that it does contain:</p>
-<ul>
-<li>package.json</li>
-<li>requirements.txt</li>
-<li>All files you created and/or edited</li>
-<li>The files that django-admin startproject created</li>
-</ul>
-<p>Write a python script and (and add it to your repository) that:</p>
 <ol>
-<li>Creates the virtualenv if it doesn't already exist</li>
-<li>Activates the virtualenv if it's not already active</li>
-<li>Installs everything from <code>requirements.txt</code> to virtualenv if its not already installed</li>
-<li>Runs <code>npm install</code> to install every depencency from <code>package.json</code> to node_modules</li>
-<li>Runs esbuild to build <code>main.min.js</code></li>
-<li>Starts the django server</li>
+<li>In <code>main.js</code>, handle the form submission using JavaScript and send the content via a POST request:</li>
 </ol>
-<p>Do not have it install python, venv, or node. We will assume that every web developer has these installed already.</p>
-<p>Your goal is to have a repository by the end that is just the stuff you need for your script to
-install dependencies of your project and get it started, regardless of what computer your
-repository is cloned to.</p>
-<p>That is you should be able to log onto a different computer with a different OS and run the python
-script you wrote and it should download the pypi packages it needs with pip, download the npm packages
-it needs with npm, and then runs your project.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;save-btn&#39;</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;page-title&#39;</span><span class="p">).</span><span class="nx">value</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">content</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;markdown-editor&#39;</span><span class="p">).</span><span class="nx">value</span><span class="p">;</span>
+
+<span class="w">    </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">&#39;/save/&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;POST&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">headers</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="s1">&#39;Content-Type&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;application/json&#39;</span><span class="p">,</span>
+<span class="w">            </span><span class="s1">&#39;X-CSRFToken&#39;</span><span class="o">:</span><span class="w"> </span><span class="nx">getCookie</span><span class="p">(</span><span class="s1">&#39;csrftoken&#39;</span><span class="p">)</span><span class="w"> </span><span class="c1">// Ensure you include CSRF token</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="nx">title</span><span class="p">,</span><span class="w"> </span><span class="nx">content</span><span class="o">:</span><span class="w"> </span><span class="nx">content</span><span class="p">})</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span><span class="w"> </span><span class="c1">// Handle the response from the server</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div>
+
+<hr>
+<h4 id="serving-static-files-with-whitenoise">Serving Static Files with Whitenoise</h4>
+<p>Now that we have a Django app with Markdown editing, emoji picking, and content storage, we need to serve static files efficiently. We'll use <strong>Whitenoise</strong> for this.</p>
+<ol>
+<li>
+<p>Install Whitenoise:
+   <code>bash
+   pip install whitenoise</code></p>
+</li>
+<li>
+<p>Update <code>settings.py</code> to use Whitenoise:</p>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="n">MIDDLEWARE</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;whitenoise.middleware.WhiteNoiseMiddleware&#39;</span><span class="p">,</span>  <span class="c1"># Add this line</span>
+    <span class="c1"># other middleware...</span>
+<span class="p">]</span>
+
+<span class="n">STATICFILES_STORAGE</span> <span class="o">=</span> <span class="s1">&#39;whitenoise.storage.CompressedManifestStaticFilesStorage&#39;</span>
+
+<span class="n">STATIC_URL</span> <span class="o">=</span> <span class="s1">&#39;/static/&#39;</span>
+<span class="n">STATIC_ROOT</span> <span class="o">=</span> <span class="n">BASE_DIR</span> <span class="o">/</span> <span class="s1">&#39;staticfiles&#39;</span>
+</code></pre></div>
+
+<ol>
+<li>
+<p>Run <code>collectstatic</code> to gather all static files:
+   <code>bash
+   python manage.py collectstatic</code></p>
+</li>
+<li>
+<p>Restart the Django server, and now Whitenoise will handle serving static files, including the JavaScript bundle.</p>
+</li>
+</ol>
+<hr>
+<h4 id="conclusion-and-submission">Conclusion and Submission</h4>
+<p>At the end of this lab, you will have built a fully functioning web app with the following features:
+- An emoji picker using the <code>emoji-mart</code> npm package.
+- A Markdown editor where users can write content and convert it to HTML.
+- Content storage in a Django model using the ORM.
+- Efficient serving of static files with Whitenoise.</p>
+<h5 id="submission-instructions">Submission Instructions</h5>
+<ol>
+<li>Push your code to GitHub Classroom <strong>before the deadline</strong>.</li>
+<li>Ensure your repository contains only the necessary files, and your <code>.gitignore</code> excludes built files (<code>venv/</code>, <code>node_modules/</code>, <code>main.min.js</code>).</li>
+</ol>
+<p>Submit your repository link on eClass.</p>
+<hr>
+<h5 id="further-tips">Further Tips</h5>
 <ul>
-<li>Assuming python, virtualenv, and node are already installed:<ul>
-<li>your repo + your script = a fully working app</li>
-<li>while keeping our repo clean of things that can just be downloaded or compiled/transpiled/etc. again</li>
+<li>If you encounter issues with static files, ensure your file paths are correct and that Django’s <code>STATIC_URL</code> is configured properly.</li>
+<li>For more detailed error handling or improving the user interface, consider adding feedback when content is saved or emoji selection is confirmed.</li>
 </ul>
-</li>
-</ul>
-<h3 id="restrictions">Restrictions</h3>
-<p>Violation of the restrictions will result in a mark of zero.</p>
-<ul>
-<li>Must use Python3</li>
-<li>Must run on Ubuntu (Use the undergrad lab machines, for example the ones in CSC 2-29 or install an Ubuntu VM to check this)</li>
-<li>Must run on your machine (whatever machine you use to demo)</li>
-</ul>
-<h3 id="requirements">Requirements</h3>
-<ul>
-<li>A working Django 5 application<ul>
-<li>using the latest Django version from pypi<ul>
-<li>downloaded with pip into a virtualenv</li>
-</ul>
-</li>
-<li>that can serve a template that uses<ul>
-<li>JS code bundled by esbuild<ul>
-<li>which loads a JS library<ul>
-<li>that was intalled by npm</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>A git repository that does not contain built (compiled, transpiled, bundled) or downloaded artifacts, including but not limited to:<ul>
-<li>virtualenv</li>
-<li>node_modules</li>
-<li>main.min.js</li>
-</ul>
-</li>
-</ul>
-<h3 id="submission-instructions">Submission Instructions</h3>
-<p>Make sure you push to github classroom <strong>BEFORE 4PM on the day of your lab section!</strong> You will not be able to push after that!</p>
-<p>Submit a link to your repo in the form <code>https://github.com/uofa-cmput404/w24-h0x-labsignment-django-yourgithubname</code> on eClass. <strong>Do not</strong> submit a link to a branch, a file, or the clone url. If you do not do this we will not know which github submission is yours.</p>
-<h3 id="collaboration">Collaboration</h3>
-<ul>
-<li>You may consult with others (exchange high-level ideas) but the submission should be your own source code.</li>
-<li>Collaboration must be documented in your source code.</li>
-<li>Any source code you got from anywhere else must be cited in the source code.</li>
-<li>You can only use source code that <strong>you understand</strong>: see the <a href="../general/labs.html#lab-marking">lab marking info</a></li>
-</ul>
-<h3 id="tips">Tips</h3>
-<p>Django is a complex framework and maybe overwhelming at times. You should consult the documentation should you run into any issues with the framework. </p>
-<p>If you're unable to load a static file or resource, it maybe because you're not referencing it correctly. It may be in a different directory or you have a typo when you are referencing that particular resource using its path. </p>
-<p>Another common problem is not being able to render the templates even though you're directory structure is correct. Make sure your app is registered in <code>settings.py</code> otherwise it may not render.</p>
   <footer>
-    <p>Published: <time datetime="2024-01-16T00:00:00-07:00">
-      Tue, 16 Jan 2024 at 00:00 MST
+    <p>Published: <time datetime="2024-09-05T00:00:00-06:00">
+      Thu, 05 Sep 2024 at 00:00 MDT
     </time></p>
     <address>
       By           <a href="../author/alireza-azimi.html">Alireza Azimi</a>
+          <a href="../author/mo-adel-abdelghany.html">Mo Adel Abdelghany</a>
     </address>
     <p>
         Category: <a href="../category/labsignments.html">labsignments</a>
