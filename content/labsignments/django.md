@@ -1,10 +1,11 @@
 
-# Title: Django Lab  
-**Date:** 2024-09-05  
-**Tags:** labs  
-**Authors:** Alireza Azimi, Mo Adel Abdelghany
-**Status:** Fall 2024 draft
-**Summary:** Lab Procedure, Lab Assignments, Lab Marking  
+Title: Django Lab
+date: 2024-09-05
+tags: labs
+authors: Alireza Azimi, Mo Adel Abdelghany
+status: Published
+summary: Lab Procedure, Lab Assignments, Lab Marking
+----
 
 ----
 
