@@ -1,17 +1,24 @@
-**Title:** HTTP Lab
+Title: HTTP Lab
+date: 2024-07-17
+tags: curl, http, socket, socketserver
+authors: Hazel Victoria Campbell, Samuel Iwuchukwu, Sadia Zahin Prodhan
+status: Published
+summary: Lab Procedure, Lab Assignments, Lab Marking
 
-**Date:** 2024-07-17
+----
 
-**Tags:** curl, http, socket, socketserver
+----
 
-**Authors:** Hazel Victoria Campbell, Samuel Iwuchukwu, Sadia Zahin Prodhan
-
-**Status:** Published
-
----
+<style>
+    html body main {
+        background-image: url("/theme/draft.png");
+        background-repeat: repeat;
+        background-size: 100%;
+    }
+</style>
 
 [TOC]
-
+---
 # Description
 
 Your task is to build a HTTP 1.1 compliant webserver and a basic HTTP client. This lab is designed to give you a hands-on, ground-up understanding of the basics of HTTP by implementing both the client and server sides.
@@ -124,6 +131,7 @@ We would utilize the recv method in socket class to receive response from the se
 * Tests must execute within 60 seconds.
 * The server must be started by calling the `main` function.
 * The server must handle requests from both custom and standard clients.
+* Pass the free-tests
 
 Getting your server to talk to a client involves the following steps
 

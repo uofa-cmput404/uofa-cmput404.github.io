@@ -1,4 +1,3 @@
-
 Title: Django Lab
 date: 2024-09-05
 tags: labs
@@ -223,10 +222,10 @@ Django allows you to render HTML templates. Let’s create an HTML page to displ
            <h1>Welcome to Emojis!</h1>
        </body>
    </html>
-   ```
+   
 
 3. Update `emojis/views.py` to render the template:
-   ```python
+   ``` 
    from django.shortcuts import render
 
    def index(request):
@@ -443,4 +442,3 @@ Submit your repository link on eClass.
 ### Further Tips
 - If you encounter issues with static files, ensure your file paths are correct and that Django’s `STATIC_URL` is configured properly.
 - For more detailed error handling or improving the user interface, consider adding feedback when content is saved or emoji selection is confirmed.
-```
