@@ -136,10 +136,6 @@
 <div class="highlight"><pre><span></span><code><span class="nb">source</span><span class="w"> </span>venv/bin/activate
 </code></pre></div>
 
-<p>Deactivate the virtual environment using:</p>
-<div class="highlight"><pre><span></span><code>deactivate
-</code></pre></div>
-
 <hr>
 <h4 id="installing-nodejs-and-npm">Installing Node.js and npm</h4>
 <p>To install Node.js, download the LTS version from the <a href="https://nodejs.org/en/download">Node.js website</a>. The installation will include npm as well, which we will use to manage JavaScript packages.</p>
@@ -149,43 +145,38 @@
 <p>We will use <a href="https://www.djangoproject.com/">Django</a>, a high-level Python web framework. It simplifies web development by providing a built-in ORM, an admin panel, and much more. The <a href="https://docs.djangoproject.com/en/5.0/">official documentation</a> is a valuable resource.</p>
 <h5 id="steps-to-set-up-django">Steps to Set Up Django:</h5>
 <ol>
-<li>
-<p>Create a virtual environment and install Django:
-   <code>bash
-   virtualenv venv --python=python3
+<li>Create a virtual environment and install Django:</li>
+</ol>
+<p><code>virtualenv venv --python=python3
    source venv/bin/activate
    echo "Django&gt;=5.0.1" &gt; requirements.txt
    python -m pip install -r requirements.txt</code></p>
-</li>
-<li>
-<p>Start a new Django project:
-   <code>bash
-   django-admin startproject lab2
+<ol>
+<li>Start a new Django project:</li>
+</ol>
+<p><code>django-admin startproject lab2
    cd lab2
    python manage.py runserver 0.0.0.0:8000</code></p>
-</li>
-</ol>
 <p>You should see a "Congratulations!" page when visiting <code>localhost:8000</code>.</p>
 <h5 id="creating-a-django-webapp">Creating a Django Webapp</h5>
 <p>We will create a Django webapp called <code>emojis</code> to build a simple emoji picker app.</p>
 <ol>
 <li>
 <p>Create a new app:
-   <code>bash
-   python manage.py startapp emojis</code></p>
+   <code>python manage.py startapp emojis</code></p>
 </li>
 <li>
-<p>In <code>emojis/views.py</code>, add the following code:
-   ```python
-   from django.http import HttpResponse</p>
+<p>In <code>emojis/views.py</code>, add the following code:</p>
 </li>
 </ol>
+<p>```
+   from django.http import HttpResponse</p>
 <p>def index(request):
-       return HttpResponse("This is the emoji app.")
-   ```</p>
+       return HttpResponse("This is the emoji app.")</p>
+<p>```</p>
 <ol>
 <li>Create a <code>urls.py</code> file inside <code>emojis</code> and add the following code:
-   ```python
+   ```
    from django.urls import path
    from . import views</li>
 </ol>
@@ -195,8 +186,7 @@
    ```</p>
 <ol>
 <li>Update <code>lab2/urls.py</code> to include the new app:
-   <code>python
-   from django.urls import include, path
+   <code>from django.urls import include, path
    urlpatterns = [
        path("emojis/", include("emojis.urls")),
        path("admin/", admin.site.urls),
@@ -369,7 +359,7 @@
 <span class="w">        </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;POST&#39;</span><span class="p">,</span>
 <span class="w">        </span><span class="nx">headers</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="s1">&#39;Content-Type&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;application/json&#39;</span><span class="p">,</span>
-<span class="w">            </span><span class="s1">&#39;X-CSRFToken&#39;</span><span class="o">:</span><span class="w"> </span><span class="nx">getCookie</span><span class="p">(</span><span class="s1">&#39;csrftoken&#39;</span><span class="p">)</span><span class="w"> </span><span class="c1">// Ensure you include CSRF token</span>
+<span class="w">            </span><span class="s1">&#39;X-CSRFToken&#39;</span><span class="o">:</span><span class="w"> </span><span class="nx">getCookie</span><span class="p">(</span><span class="s1">&#39;csrftoken&#39;</span><span class="p">)</span><span class="w"> </span><span class="c1">//  CSRF token</span>
 <span class="w">        </span><span class="p">},</span>
 <span class="w">        </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="nx">title</span><span class="p">,</span><span class="w"> </span><span class="nx">content</span><span class="o">:</span><span class="w"> </span><span class="nx">content</span><span class="p">})</span>
 <span class="w">    </span><span class="p">})</span>
@@ -386,29 +376,27 @@
 <ol>
 <li>
 <p>Install Whitenoise:
-   <code>bash
-   pip install whitenoise</code></p>
+   <code>pip install whitenoise</code></p>
 </li>
 <li>
 <p>Update <code>settings.py</code> to use Whitenoise:</p>
 </li>
 </ol>
-<div class="highlight"><pre><span></span><code><span class="n">MIDDLEWARE</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s1">&#39;whitenoise.middleware.WhiteNoiseMiddleware&#39;</span><span class="p">,</span>  <span class="c1"># Add this line</span>
-    <span class="c1"># other middleware...</span>
-<span class="p">]</span>
+<div class="highlight"><pre><span></span><code>MIDDLEWARE = [
+    &#39;whitenoise.middleware.WhiteNoiseMiddleware&#39;,  # line for middleware
+    # other middleware...
+]
 
-<span class="n">STATICFILES_STORAGE</span> <span class="o">=</span> <span class="s1">&#39;whitenoise.storage.CompressedManifestStaticFilesStorage&#39;</span>
+STATICFILES_STORAGE = &#39;whitenoise.storage.CompressedManifestStaticFilesStorage&#39;
 
-<span class="n">STATIC_URL</span> <span class="o">=</span> <span class="s1">&#39;/static/&#39;</span>
-<span class="n">STATIC_ROOT</span> <span class="o">=</span> <span class="n">BASE_DIR</span> <span class="o">/</span> <span class="s1">&#39;staticfiles&#39;</span>
+STATIC_URL = &#39;/static/&#39;
+STATIC_ROOT = BASE_DIR / &#39;staticfiles&#39;
 </code></pre></div>
 
 <ol>
 <li>
 <p>Run <code>collectstatic</code> to gather all static files:
-   <code>bash
-   python manage.py collectstatic</code></p>
+   <code>python manage.py collectstatic</code></p>
 </li>
 <li>
 <p>Restart the Django server, and now Whitenoise will handle serving static files, including the JavaScript bundle.</p>
