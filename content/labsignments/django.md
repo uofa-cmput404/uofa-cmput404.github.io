@@ -128,11 +128,7 @@ To activate the virtual environment:
 source venv/bin/activate
 ```
 
-Deactivate the virtual environment using:
 
-```bash
-deactivate
-```
 
 ---
 
@@ -151,7 +147,8 @@ We will use [Django](https://www.djangoproject.com/), a high-level Python web fr
 ### Steps to Set Up Django:
 
 1. Create a virtual environment and install Django:
-   ```bash
+
+   ```
    virtualenv venv --python=python3
    source venv/bin/activate
    echo "Django>=5.0.1" > requirements.txt
@@ -159,7 +156,8 @@ We will use [Django](https://www.djangoproject.com/), a high-level Python web fr
    ```
 
 2. Start a new Django project:
-   ```bash
+
+   ```
    django-admin startproject lab2
    cd lab2
    python manage.py runserver 0.0.0.0:8000
@@ -172,20 +170,22 @@ You should see a "Congratulations!" page when visiting `localhost:8000`.
 We will create a Django webapp called `emojis` to build a simple emoji picker app.
 
 1. Create a new app:
-   ```bash
+   ```
    python manage.py startapp emojis
    ```
 
 2. In `emojis/views.py`, add the following code:
-   ```python
+
+   ```
    from django.http import HttpResponse
 
    def index(request):
-       return HttpResponse("This is the emoji app.")
+       return HttpResponse("This is the emoji app.") #
    ```
 
 3. Create a `urls.py` file inside `emojis` and add the following code:
-   ```python
+   
+   ```
    from django.urls import path
    from . import views
 
@@ -195,7 +195,8 @@ We will create a Django webapp called `emojis` to build a simple emoji picker ap
    ```
 
 4. Update `lab2/urls.py` to include the new app:
-   ```python
+
+   ```
    from django.urls import include, path
    urlpatterns = [
        path("emojis/", include("emojis.urls")),
@@ -203,7 +204,7 @@ We will create a Django webapp called `emojis` to build a simple emoji picker ap
    ]
    ```
 
----
+
 
 ## Adding HTML Templates
 
@@ -378,7 +379,7 @@ document.getElementById('save-btn').addEventListener('click', function(e) {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'X-CSRFToken': getCookie('csrftoken') // Ensure you include CSRF token
+            'X-CSRFToken': getCookie('csrftoken') //  CSRF token
         },
         body: JSON.stringify({title: title, content: content})
     })
@@ -396,15 +397,15 @@ document.getElementById('save-btn').addEventListener('click', function(e) {
 Now that we have a Django app with Markdown editing, emoji picking, and content storage, we need to serve static files efficiently. We'll use **Whitenoise** for this.
 
 1. Install Whitenoise:
-   ```bash
+   ```
    pip install whitenoise
    ```
 
 2. Update `settings.py` to use Whitenoise:
 
-```python
+```
 MIDDLEWARE = [
-    'whitenoise.middleware.WhiteNoiseMiddleware',  # Add this line
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # line for middleware
     # other middleware...
 ]
 
@@ -415,7 +416,7 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 ```
 
 3. Run `collectstatic` to gather all static files:
-   ```bash
+   ```
    python manage.py collectstatic
    ```
 
