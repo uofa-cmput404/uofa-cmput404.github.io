@@ -172,27 +172,26 @@
 <p>```
    from django.http import HttpResponse</p>
 <p>def index(request):
-       return HttpResponse("This is the emoji app.")</p>
-<p>```</p>
+       return HttpResponse("This is the emoji app.") #
+   ```</p>
 <ol>
-<li>Create a <code>urls.py</code> file inside <code>emojis</code> and add the following code:
-   ```
-   from django.urls import path
-   from . import views</li>
+<li>Create a <code>urls.py</code> file inside <code>emojis</code> and add the following code:</li>
 </ol>
+<p>```
+   from django.urls import path
+   from . import views</p>
 <p>urlpatterns = [
        path("", views.index, name="index"),
    ]
    ```</p>
 <ol>
-<li>Update <code>lab2/urls.py</code> to include the new app:
-   <code>from django.urls import include, path
+<li>Update <code>lab2/urls.py</code> to include the new app:</li>
+</ol>
+<p><code>from django.urls import include, path
    urlpatterns = [
        path("emojis/", include("emojis.urls")),
        path("admin/", admin.site.urls),
-   ]</code></li>
-</ol>
-<hr>
+   ]</code></p>
 <h4 id="adding-html-templates">Adding HTML Templates</h4>
 <p>Django allows you to render HTML templates. Let’s create an HTML page to display the emoji picker.</p>
 <ol>

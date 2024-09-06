@@ -57,7 +57,57 @@
     }
 </style>
 
-<h4 id="toc">[TOC]</h4>
+<div class="toc">
+<ul>
+<li><a href="#description">Description</a></li>
+<li><a href="#getting-started">Getting Started</a></li>
+<li><a href="#collaboration">Collaboration</a></li>
+<li><a href="#user-stories">User Stories</a></li>
+<li><a href="#task-1-implement-the-http-client">Task 1: Implement the HTTP Client</a><ul>
+<li><a href="#client-requirements">Client Requirements</a></li>
+<li><a href="#import-the-python-socket-module">Import the python socket module</a></li>
+<li><a href="#create-a-context-manager">Create a context manager</a></li>
+<li><a href="#connect-to-a-remote-socket-at-specified-address">Connect to a remote socket at specified address</a></li>
+<li><a href="#prepare-your-request">Prepare your request</a></li>
+<li><a href="#pass-your-request-byte-as-a-parameter-to-socketsendall-function">Pass your request byte as a parameter to socket.sendall function</a></li>
+<li><a href="#process-and-receive-response">Process and receive response</a></li>
+</ul>
+</li>
+<li><a href="#task-2-implement-the-http-server">Task 2: Implement the HTTP Server</a><ul>
+<li><a href="#server-requirements">Server Requirements</a></li>
+<li><a href="#import-the-libraries-needed-socketserver-and-pathlib">Import the libraries needed (socketserver and pathlib)</a></li>
+<li><a href="#create-a-custom-server-class-to-inherit-from-the-tcpserver-class">Create a custom server class to inherit from the TCPServer class</a></li>
+<li><a href="#create-the-custom-httphandler-class">Create the custom HttpHandler class</a></li>
+<li><a href="#implement-the-handle-method">Implement the handle method</a><ul>
+<li><a href="#receive-and-decode-request">Receive and decode request</a></li>
+<li><a href="#extract-the-method-and-path-from-the-request-line">Extract the method and path from the request line</a></li>
+<li><a href="#extract-the-headers-and-store-in-a-dictionary">Extract the headers and store in a dictionary</a></li>
+<li><a href="#decide-the-action-to-take-based-on-the-http-method-type">Decide the action to take based on the Http method type</a></li>
+</ul>
+</li>
+<li><a href="#serve-multiple-ip-addresses-from-a-single-domain">Serve Multiple IP Addresses from a Single Domain</a></li>
+<li><a href="#start-the-server">Start the server</a></li>
+</ul>
+</li>
+<li><a href="#task-3-testing">Task 3: Testing</a><ul>
+<li><a href="#scenario-1-ensure-that-your-custom-client-can-send-requests-to-your-custom-server-and-receive-the-expected-response">Scenario 1 : Ensure that your custom client can send requests to your custom server and receive the expected response</a></li>
+<li><a href="#scenario-2-verify-that-your-custom-client-can-interact-with-standard-servers-correctly-sending-requests-and-processing-responses">Scenario 2: Verify that your custom client can interact with standard servers, correctly sending requests and processing responses.</a></li>
+<li><a href="#scenario-3-ensure-that-standard-clients-web-browsers-postman-curl-can-communicate-with-your-custom-server-and-receive-the-correct-responses">Scenario 3: Ensure that standard clients (web browsers, Postman, curl) can communicate with your custom server and receive the correct responses.</a></li>
+</ul>
+</li>
+<li><a href="#restrictions">Restrictions</a></li>
+<li><a href="#submission-instructions">Submission Instructions</a></li>
+<li><a href="#tips">Tips</a><ul>
+<li><a href="#ubuntu-on-windows">Ubuntu on Windows</a></li>
+<li><a href="#ubuntu-on-macos-arm">Ubuntu on macOS ARM:</a></li>
+<li><a href="#for-macos-with-homebrew">For macOS with homebrew:</a></li>
+<li><a href="#for-windows-10-with-pip">For Windows 10 with pip:</a></li>
+<li><a href="#ubuntu-lab-computers">Ubuntu Lab Computers</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<hr>
 <h3 id="description">Description</h3>
 <p>Your task is to build a HTTP 1.1 compliant webserver and a basic HTTP client. This lab is designed to give you a hands-on, ground-up understanding of the basics of HTTP by implementing both the client and server sides.</p>
 <p>The webserver will serve static content from the <code>www</code> directory in the same directory where you start the webserver. The client will be used to make HTTP requests to the server or any standard server.</p>
