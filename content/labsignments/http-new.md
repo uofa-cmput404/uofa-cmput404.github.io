@@ -32,10 +32,19 @@ The webserver will serve static content from the `www` directory in the same dir
 
 # Collaboration
 
-- You may consult with others (exchange high-level ideas) but the submission should be your own source code.
-- Collaboration must be documented in your source code.
-- Any source code you got from anywhere else must be cited in the source code.
-- You can only use source code that **you understand**: see the [lab marking info]({filename}/general/labs.md#lab-marking)
+* You may consult with others (exchange high-level ideas) but the submission should be your own source code.
+* Collaboration must be documented in your source code.
+* Any source code you got from anywhere else must be cited in the source code.
+* You can only use source code that **you understand**: see the [lab marking info]({filename}/general/labs.md#lab-marking)
+* **Yes, the instructors and TAs are all aware that ChatGPT can solve this assignment.**
+    * There are also plenty of solutions all over the internet... that's the reason ChatGPT can solve it.
+    * You are not being graded on your ability to use an LLM or google for a solution. Instead, you are being graded on your ability to understand how HTTP and network communications work.
+    * If you cannot explain your solution to the TA and instructor, you will get a mark of zero.
+    * If you use code from a LLM "AI" or from somewhere else, you must cite it, or you will be written up for plagiarism. See the outline for how to cite it.
+    * Here are the only code you don't have to cite:
+        * Code from this course's slides
+        * The starter code from GitHub Classroom
+        * Code written by an instructor or TA and hosted on this website: `uofa-cmput404.github.io`
 
 # User Stories
 
@@ -89,7 +98,9 @@ Utilize the context manager on the socket module to create a new socket object. 
 ## Correctly parse URL
 
 1. Make sure it starts with `http://` or stop with an error.
+    * We do not support HTTPS in this lab.
 2. Separate the IP address, port, and path.
+    * If the port is not specified, use the default port 80.
     * If the IP address is a IPv6 address, remove the square brackets around it.
 3. Make sure the path is percent decoded.
     * You do not need to percent decode anything but the path.
@@ -107,9 +118,13 @@ with socket.socket(socket.AF_INET,socket.SOCK_STREAM) as sock:
 
 ## Prepare your request
 
-This would be formatted to include the HTTP method, protocol, Host address, Content-Type and Content length and finally the data
+This would be correctly formatted to include the HTTP method, protocol, Host address, Content-Type and Content length and finally the data.
+
+* Hint: don't forget the headers end with a blank line!
 
 ##  Pass your request byte as a parameter to socket.sendall function
+
+<!-- TODO: replace this with the socket.makefile code -->
 
 Call the sendall function that accepts raw bytes to send the request to the server. Remember data is transmitted as bytes over the internet  and not strings. To convert the request string message to a byte, you encode the request using the utf-8 encoding.
 
@@ -132,6 +147,7 @@ We would utilize the recv method in socket class to receive response from the se
        response += part
 
 ```
+
 # Task 2: Implement the HTTP Server
 
 ## Server Requirements
@@ -263,32 +279,56 @@ def main():
        server.serve_forever() 
 ```
 # Task 3: Testing
+
 ## Scenario 1 : Ensure that your custom client can send requests to your custom server and receive the expected response
+
 You have implemented both a custom HTTP client and server. The server serves files from a directory and handles different types of HTTP requests (e.g., GET, POST).
 Use your custom client to send a GET request to your custom server to retrieve a specific file (e.g., index.html).
 Your client should receive the correct HTML content from the server, indicating that the file was successfully served. The response should include the correct status code (200 OK) and appropriate headers.
-## Scenario 2: Verify that your custom client can interact with standard servers, correctly sending requests and processing responses.
-Your custom client needs to be tested against a well-known, standard server like Google's web server. Use your custom client to send a GET request to google.com.
-The client should receive a response containing the HTML content of Google's homepage, along with appropriate headers.
 
-## Scenario 3:  Ensure that standard clients (web browsers, Postman, curl) can communicate with your custom server and receive the correct responses.
-You want to verify that your custom server can handle requests from standard clients, such as Postman.
-Use Postman to send a GET request to your custom server to retrieve 'index.html'. Then, use a web browser and curl to perform the same test.
-Postman should receive the correct content, with appropriate status codes and headers. 
+## Scenario 2: Verify that your custom client can interact with standard servers, correctly sending requests and processing responses.
+
+Your custom client needs to be tested against a well-known, standard server like Google's web server. Use your custom client to send a GET request to google.com. Most servers (such as google) will only return a redirect to force your client to use encryption (HTTPS). If you test against a standard server like google, the client should receive a response containing the redirect.
+
+Here are some standard HTTP test servers that support unencrypted HTTP/1.1. Make sure the servers correctly understand the GET and POST requests your client is making. Note these are all IPv4 only, because IST. These servers should return 200 OK. They also respond with a description of the way the server interpreted the request, so you can check that the server is interpreting it correctly.
+
+* Dr. Campbell's
+    * <http://buttercup.cs.ualberta.ca:9000/> (get and post, IPv4 only)
+    * <http://129.128.184.44:9000/>
+* Dr. Hindle's
+    * <http://webdocs.cs.ualberta.ca/~hindle1/1.py>
+    * <http://webdocs.cs.ualberta.ca/~hindle1/2.cgi>
+    * <http://129.128.243.190/~hindle1/1.py>
+    * <http://129.128.243.190/~hindle1/2.cgi>
+* <http://httpbin.org/get> (get only)
+* <http://httpbin.org/post> (post only)
+
+## Scenario 3: Ensure that standard clients (web browsers, Postman, curl) can communicate with your custom server and receive the correct responses.
+
+You want to verify that your custom server can handle requests from standard clients, such as [Postman](https://www.postman.com/downloads/).
+Use Postman to send a GET request to your custom server to retrieve 'index.html'. Then, use a web browser and curl to perform the same test. 
+Postman should receive the correct content, with appropriate status codes and headers.
+
+
+
 # Restrictions
 
 Violation of the restrictions will result in a mark of zero.
 
 * Must use Python3
 * Must run on Ubuntu (Use the undergrad lab machines, for example the ones in CSC 2-29 or install an Ubuntu VM to check this)
-* The only allowed imports are `socketserver` and `pathlib`: You will receive a zero mark for using any other imports/libraries.
+* Must work with Firefox
+* The only allowed imports are `socketserver`, `re`, `socket`, and `pathlib`: You will receive a zero mark for using any other imports/libraries.
+    * `re` library is optional, only use it if you know regular expressions.
+    * Use of `urllib`, `http`, `requests`, and similar libraries is extra double forbidden and will result in a mark of `-0.0`. Please do not ask to use these libraries, they defeat the purpose of the assignment.
+* Use of `recv` or `sendall` will result in 
 * Your code must not modify the code out of its scope (must not do dependency injection), must not run anything at the top level (outside of functions/classes/defining constants), and must not try to work around or modify the test suite.
 
 # Submission Instructions
 
-Make sure you push to github classroom **BEFORE 4PM on the day of your lab section!** You will not be able to push after that!
+Make sure you push to GitHub classroom **BEFORE 4PM on the day of your lab section!** You will not be able to push after that!
 
-Submit a link to your repo in the form `https://github.com/uofa-cmput404/w24-h0x-labsignment-http-yourgithubname` on eClass. **Do not** submit a link to a branch, a file, or the clone url. If you do not do this we will not know which github submission is yours.
+Submit a link to your repo in the form `https://github.com/uofa-cmput404/w24-h0x-labsignment-http-yourgithubname` on eClass. **Do not** submit a link to a branch, a file, or the clone URL. If you do not do this we will not know which GitHub submission is yours.
 
 # Tips
 
