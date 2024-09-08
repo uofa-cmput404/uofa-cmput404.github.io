@@ -73,6 +73,7 @@ The webserver will serve static content from the `www` directory in the same dir
 * Handle 404 requests and 200 requests
 * Handle a wider range of status codes (e.g., 301 for redirects, 500 for server errors) and act accordingly
 * Support virtual hosting by correctly setting the Host header in GET and POST requests
+* Pass the free-tests
  
 To make your client communicate with the server, follow these steps:
   - Import the libraries needed (socket)
@@ -124,7 +125,6 @@ This would be correctly formatted to include the HTTP method, protocol, Host add
 
 ##  Pass your request byte as a parameter to socket.sendall function
 
-<!-- TODO: replace this with the socket.makefile code -->
 
 Call the sendall function that accepts raw bytes to send the request to the server. Remember data is transmitted as bytes over the internet  and not strings. To convert the request string message to a byte, you encode the request using the utf-8 encoding.
 
@@ -134,17 +134,18 @@ sock.sendall(request.encode("utf-8"))
 ```
 
 ## Process and receive response
+<!-- TODO: replace this with the socket.makefile code  (DONE) -->
 
-We would utilize the recv method in socket class to receive response from the server. We need to create a bytes variable to accept responses. The recv() method takes the buffer size as an argument to capture the maximum amount of bytes to be received by the client. We set it 1024 for our case
+The "read_response" function reads the entire HTTP response from a server after a request has been made through a socket connection. It converts the socket into a file-like object (sock_file) using the makefile('rb') method, which allows the response to be read as raw bytes. The makefile() method simplifies the process of reading from and writing to the socket by providing file-like methods (read, write, etc.), making it easier to handle network communication. The function reads all the data from the server in one go and stores it in a byte string called response. Finally, it returns this byte string, containing the full response, including headers and any accompanying data, such as HTML content or binary files. 
 
 ```python
 # Receive the response
-   response = b""
-   while True:
-       part = sock.recv(1024)
-       if not part:
-           break
-       response += part
+   def read_response(self):
+        response = b""
+        with self.socket.makefile('rb') as sock_file:  
+            response = sock_file.read()
+        return response
+    
 
 ```
 
