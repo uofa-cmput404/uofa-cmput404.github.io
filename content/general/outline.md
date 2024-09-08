@@ -285,18 +285,22 @@ A working smartphone, tablet, or laptop computer with an up-to-date web browser 
 
 # Remote Delivery Considerations
 
-Unless otherwise instructed by an instructor, **this course requires attendance in-person or via Zoom during the scheduled lectures and labs.** Some lectures or labs require in-person attendance, like the last lab for presentations, and for exams.
+## Hybrid Synchronous Delivery
 
-* **Most Lectures** will be given in **hybrid** format. The lecture will be given in the lecture room on campus. At the same time, the lecture will also be streamed via Zoom and a recording of the lecture content will be made.
-    * Lecture recordings will be available **on request only**. If you want a lecture recording, you must contact the instructor.
-    * Students are expected to attend during the lecture either on Zoom or in-person.
-    * **Presentations and Guest Lectures** will be given **in-person only.**
-* **Most lab sessions** will be available in a hybrid format: you may attend either in-person or online.
-    * For group projects, the entire group must be online, or the entire group must be in-person.
-    * For **group presentation**, you must present **in-person**.
-* **Exams** must be taken **in-person**. They will not be online. You must bring your Student ID (One Card).
-* **Scheduled office hours** will be available **in-person**.
-    * Additional **office appointments** will be conducted **online** (usually Zoom, maybe Google Meet). Email the instructor to set up an appointment.
+This course requires **live attendance** in-person. All labs, all exams, all presentations, and some lectures require in-person attendance. 
+
+* **Some Lectures** will be available in **hybrid synchronous** format. All lectures will be given in the lecture room on campus. At the same time, some lecture will also be streamed via Zoom and a recording of the lecture content will be made.
+    * Zoom access is provided as a convenience only.
+    * Zoom access is provided on a best-effort basis.
+    * Students are expected to attend **during the lecture** either on Zoom or in-person.
+    * Zoom access may be cancelled at any time.
+    * You must be **available** to attend lectures in person.
+        * You must be in Edmonton.
+        * You must not have a scheduling conflict with this course.
+        * Scheduling conflicts and travel **will not** be accommodated.
+* **Labs** must be attended **in-person only**.
+* **Exams** must be taken **in-person only**. They will not be online. You must bring your Student ID (One Card).
+* **Presentations and Guest Lectures** will be given **in-person only**.
 
 ## Technology Requirements
 
@@ -640,6 +644,7 @@ Policy about course outlines can be found in [Course Requirements, Evaluations P
 
 * 2024-09-02: Initial version.
 * 2024-09-02: Clarify formatting of contract cheating: cs courses section.
+* 2024-09-08: Fix Hybrid Synchronous Delivery section: remove on request only.
 
 ## Copyright
 

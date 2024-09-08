@@ -557,6 +557,8 @@ To quit the ssh connection to the lab machine, use the exit command or press con
 
 Try using the more command to scroll page by page. For example, you can pipe the output of curl to more to scroll through the output of curl page by page:
 
+```.sh
 curl -s url | more
+```
 
-(The -s option to curl prevents curl from displaying download progress. You can combine it with other curl options like -i and -L.)
+(The `-s` option to curl prevents curl from displaying download progress. You can combine it with other curl options like `-i` and `-L`.)
