@@ -17,7 +17,7 @@
     <meta name="tags" content="curl" />
     <meta name="tags" content="http" />
     <meta name="tags" content="socket" />
-    <meta name="tags" content="socketserver" />
+    <meta name="tags" content="socketserver <!-- @LT-IGNORE:MORFOLOGIK_RULE_EN_CA(http)@ -->" />
 
 </head>
 
@@ -48,7 +48,6 @@
  
   </header>
   <hr>
-<hr>
 <style>
     html body main {
         background-image: url("/theme/draft.png");
@@ -67,6 +66,7 @@
 <li><a href="#client-requirements">Client Requirements</a></li>
 <li><a href="#import-the-python-socket-module">Import the python socket module</a></li>
 <li><a href="#create-a-context-manager">Create a context manager</a></li>
+<li><a href="#correctly-parse-url">Correctly parse URL</a></li>
 <li><a href="#connect-to-a-remote-socket-at-specified-address">Connect to a remote socket at specified address</a></li>
 <li><a href="#prepare-your-request">Prepare your request</a></li>
 <li><a href="#pass-your-request-byte-as-a-parameter-to-socketsendall-function">Pass your request byte as a parameter to socket.sendall function</a></li>
@@ -109,8 +109,8 @@
 </div>
 <hr>
 <h3 id="description">Description</h3>
-<p>Your task is to build a HTTP 1.1 compliant webserver and a basic HTTP client. This lab is designed to give you a hands-on, ground-up understanding of the basics of HTTP by implementing both the client and server sides.</p>
-<p>The webserver will serve static content from the <code>www</code> directory in the same directory where you start the webserver. The client will be used to make HTTP requests to the server or any standard server.</p>
+<p>Your task is to build an HTTP/1.1 compliant webserver and a basic HTTP client. This lab is designed to give you a hands-on, ground-up understanding of the basics of HTTP by implementing both the client and server sides.</p>
+<p>The webserver will serve static content from the <code>www</code> directory in the same directory where you start the webserver. The client will be used to make HTTP requests to the server or any HTTP/1.1 server.</p>
 <h3 id="getting-started">Getting Started</h3>
 <ol>
 <li>Clone the GitHub classroom repository from eClass.</li>
@@ -122,6 +122,19 @@
 <li>Collaboration must be documented in your source code.</li>
 <li>Any source code you got from anywhere else must be cited in the source code.</li>
 <li>You can only use source code that <strong>you understand</strong>: see the <a href="../general/labs.html#lab-marking">lab marking info</a></li>
+<li><strong>Yes, the instructors and TAs are all aware that ChatGPT can solve this assignment.</strong><ul>
+<li>There are also plenty of solutions all over the internet... that's the reason ChatGPT can solve it.</li>
+<li>You are not being graded on your ability to use an LLM or google for a solution. Instead, you are being graded on your ability to understand how HTTP and network communications work.</li>
+<li>If you cannot explain your solution to the TA and instructor, you will get a mark of zero.</li>
+<li>If you use code from a LLM "AI" or from somewhere else, you must cite it, or you will be written up for plagiarism. See the outline for how to cite it.</li>
+<li>Here are the only code you don't have to cite:<ul>
+<li>Code from this course's slides</li>
+<li>The starter code from GitHub Classroom</li>
+<li>Code written by an instructor or TA and hosted on this website: <code>uofa-cmput404.github.io</code></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 <h3 id="user-stories">User Stories</h3>
 <ul>
@@ -133,7 +146,15 @@
 <h3 id="task-1-implement-the-http-client">Task 1: Implement the HTTP Client</h3>
 <h4 id="client-requirements">Client Requirements</h4>
 <ul>
-<li>Connect to a server (custom or standard) at a specified address.</li>
+<li>A single python program called <code>httpclient.py</code></li>
+<li>Run it by using a command like:<ul>
+<li><code>httpclient.py GET http://servername:port/path</code></li>
+<li>or <code>httpclient.py GET http://127.0.0.1:port/path</code> (or another ipv4 address)</li>
+<li>or <code>httpclient.py GET http://[::1]:port/path</code> (or another ipv6 address)</li>
+<li>or <code>httpclient.py POST http://servername:port/path</code> (or an ipv4/ipv6 address)</li>
+</ul>
+</li>
+<li>Connect to a server at an address and port specified on the command line.</li>
 <li>Send request with appropriate headers.</li>
 <li>Receive and process responses from the server.</li>
 <li>Implement basic HTTP GET</li>
@@ -143,6 +164,7 @@
 <li>Handle 404 requests and 200 requests</li>
 <li>Handle a wider range of status codes (e.g., 301 for redirects, 500 for server errors) and act accordingly</li>
 <li>Support virtual hosting by correctly setting the Host header in GET and POST requests</li>
+<li>Pass the free-tests</li>
 </ul>
 <p>To make your client communicate with the server, follow these steps:
   - Import the libraries needed (socket)
@@ -154,35 +176,56 @@
 </code></pre></div>
 
 <h4 id="create-a-context-manager">Create a context manager</h4>
-<p>Create a context manager to ensure you close the socket once the block of code is executed
-Utilize the context manager on the socket module to create a new socket object, This object has an overloaded constructor but we would utilize the two arguments constructor and pass the address family and the socket type. (i.e socket.AF_INET and socket.SOCK_STREAM)</p>
+<p>Create a context manager to ensure you close the socket once the block of code is executed.
+Utilize the context manager on the socket module to create a new socket object. This object has an overloaded constructor. The two arguments to the constructor are the address family and the socket type. (i.e. socket.AF_INET and socket.SOCK_STREAM)</p>
 <ol>
-<li>socket.AF_INET : represents the address type (for IPv4)</li>
+<li>socket.AF_INET : represents the address type (for IPv4, IPv6, and DNS names)</li>
 <li>socket.SOCK_STREAM : represents the socket type (TCP socket)</li>
 </ol>
+<h4 id="correctly-parse-url">Correctly parse URL</h4>
+<ol>
+<li>Make sure it starts with <code>http://</code> or stop with an error.<ul>
+<li>We do not support HTTPS in this lab.</li>
+</ul>
+</li>
+<li>Separate the IP address, port, and path.<ul>
+<li>If the port is not specified, use the default port 80.</li>
+<li>If the IP address is a IPv6 address, remove the square brackets around it.</li>
+</ul>
+</li>
+<li>Make sure the path is percent decoded.<ul>
+<li>You do not need to percent decode anything but the path.</li>
+</ul>
+</li>
+<li>You do not need to handle query or fragment parts.</li>
+</ol>
 <h4 id="connect-to-a-remote-socket-at-specified-address">Connect to a remote socket at specified address</h4>
-<p>Connect to a remote socket at specified address. This uses the socket.connect(address) method to connect with the host address. The address is a tuple that holds the host or ip address and the port number of the server</p>
+<p>Connect to a remote socket at specified address. This uses the socket.connect(address) method to connect with the host address. The address is a tuple that holds the host or IP address and the port number of the server</p>
 <div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span><span class="n">socket</span><span class="o">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span> <span class="k">as</span> <span class="n">sock</span><span class="p">:</span>
    <span class="n">sock</span><span class="o">.</span><span class="n">connect</span><span class="p">((</span><span class="n">HOST</span><span class="p">,</span><span class="n">PORT</span><span class="p">))</span>
    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;connected to server at host </span><span class="si">{</span><span class="n">HOST</span><span class="si">}</span><span class="s2"> and port </span><span class="si">{</span><span class="n">PORT</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </code></pre></div>
 
 <h4 id="prepare-your-request">Prepare your request</h4>
-<p>This would be formatted to include the HTTP method,  protocol, Host address, Content-Type and Content length and finally the data</p>
+<p>This would be correctly formatted to include the HTTP method, protocol, Host address, Content-Type and Content length and finally the data.</p>
+<ul>
+<li>Hint: don't forget the headers end with a blank line!</li>
+</ul>
 <h4 id="pass-your-request-byte-as-a-parameter-to-socketsendall-function">Pass your request byte as a parameter to socket.sendall function</h4>
 <p>Call the sendall function that accepts raw bytes to send the request to the server. Remember data is transmitted as bytes over the internet  and not strings. To convert the request string message to a byte, you encode the request using the utf-8 encoding.</p>
 <div class="highlight"><pre><span></span><code><span class="n">sock</span><span class="o">.</span><span class="n">sendall</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">))</span>
 </code></pre></div>
 
 <h4 id="process-and-receive-response">Process and receive response</h4>
-<p>We would utilize the recv method in socket class to receive response from the server. We need to create a bytes variable to accept responses. The recv() method takes the buffer size as an argument to capture the maximum amount of bytes to be received by the client. We set it 1024 for our case</p>
+<!-- TODO: replace this with the socket.makefile code  (DONE) -->
+
+<p>The "read_response" function reads the entire HTTP response from a server after a request has been made through a socket connection. It converts the socket into a file-like object (sock_file) using the makefile('rb') method, which allows the response to be read as raw bytes. The makefile() method simplifies the process of reading from and writing to the socket by providing file-like methods (read, write, etc.), making it easier to handle network communication. The function reads all the data from the server in one go and stores it in a byte string called response. Finally, it returns this byte string, containing the full response, including headers and any accompanying data, such as HTML content or binary files. </p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Receive the response</span>
-   <span class="n">response</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">&quot;&quot;</span>
-   <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-       <span class="n">part</span> <span class="o">=</span> <span class="n">sock</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>
-       <span class="k">if</span> <span class="ow">not</span> <span class="n">part</span><span class="p">:</span>
-           <span class="k">break</span>
-       <span class="n">response</span> <span class="o">+=</span> <span class="n">part</span>
+   <span class="k">def</span> <span class="nf">read_response</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">&quot;&quot;</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">socket</span><span class="o">.</span><span class="n">makefile</span><span class="p">(</span><span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">sock_file</span><span class="p">:</span>  
+            <span class="n">response</span> <span class="o">=</span> <span class="n">sock_file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">response</span>
 </code></pre></div>
 
 <h3 id="task-2-implement-the-http-server">Task 2: Implement the HTTP Server</h3>
@@ -299,23 +342,45 @@ HTTP/1.1
 Use your custom client to send a GET request to your custom server to retrieve a specific file (e.g., index.html).
 Your client should receive the correct HTML content from the server, indicating that the file was successfully served. The response should include the correct status code (200 OK) and appropriate headers.</p>
 <h4 id="scenario-2-verify-that-your-custom-client-can-interact-with-standard-servers-correctly-sending-requests-and-processing-responses">Scenario 2: Verify that your custom client can interact with standard servers, correctly sending requests and processing responses.</h4>
-<p>Your custom client needs to be tested against a well-known, standard server like Google's web server. Use your custom client to send a GET request to google.com.
-The client should receive a response containing the HTML content of Google's homepage, along with appropriate headers.</p>
-<h4 id="scenario-3-ensure-that-standard-clients-web-browsers-postman-curl-can-communicate-with-your-custom-server-and-receive-the-correct-responses">Scenario 3:  Ensure that standard clients (web browsers, Postman, curl) can communicate with your custom server and receive the correct responses.</h4>
-<p>You want to verify that your custom server can handle requests from standard clients, such as Postman.
-Use Postman to send a GET request to your custom server to retrieve 'index.html'. Then, use a web browser and curl to perform the same test.
-Postman should receive the correct content, with appropriate status codes and headers. </p>
+<p>Your custom client needs to be tested against a well-known, standard server like Google's web server. Use your custom client to send a GET request to google.com. Most servers (such as google) will only return a redirect to force your client to use encryption (HTTPS). If you test against a standard server like google, the client should receive a response containing the redirect.</p>
+<p>Here are some standard HTTP test servers that support unencrypted HTTP/1.1. Make sure the servers correctly understand the GET and POST requests your client is making. Note these are all IPv4 only, because IST. These servers should return 200 OK. They also respond with a description of the way the server interpreted the request, so you can check that the server is interpreting it correctly.</p>
+<ul>
+<li>Dr. Campbell's<ul>
+<li><a href="http://buttercup.cs.ualberta.ca:9000/">http://buttercup.cs.ualberta.ca:9000/</a> (get and post, IPv4 only)</li>
+<li><a href="http://129.128.184.44:9000/">http://129.128.184.44:9000/</a></li>
+</ul>
+</li>
+<li>Dr. Hindle's<ul>
+<li><a href="http://webdocs.cs.ualberta.ca/~hindle1/1.py">http://webdocs.cs.ualberta.ca/~hindle1/1.py</a></li>
+<li><a href="http://webdocs.cs.ualberta.ca/~hindle1/2.cgi">http://webdocs.cs.ualberta.ca/~hindle1/2.cgi</a></li>
+<li><a href="http://129.128.243.190/~hindle1/1.py">http://129.128.243.190/~hindle1/1.py</a></li>
+<li><a href="http://129.128.243.190/~hindle1/2.cgi">http://129.128.243.190/~hindle1/2.cgi</a></li>
+</ul>
+</li>
+<li><a href="http://httpbin.org/get">http://httpbin.org/get</a> (get only)</li>
+<li><a href="http://httpbin.org/post">http://httpbin.org/post</a> (post only)</li>
+</ul>
+<h4 id="scenario-3-ensure-that-standard-clients-web-browsers-postman-curl-can-communicate-with-your-custom-server-and-receive-the-correct-responses">Scenario 3: Ensure that standard clients (web browsers, Postman, curl) can communicate with your custom server and receive the correct responses.</h4>
+<p>You want to verify that your custom server can handle requests from standard clients, such as <a href="https://www.postman.com/downloads/">Postman</a>.
+Use Postman to send a GET request to your custom server to retrieve 'index.html'. Then, use a web browser and curl to perform the same test. 
+Postman should receive the correct content, with appropriate status codes and headers.</p>
 <h3 id="restrictions">Restrictions</h3>
 <p>Violation of the restrictions will result in a mark of zero.</p>
 <ul>
 <li>Must use Python3</li>
 <li>Must run on Ubuntu (Use the undergrad lab machines, for example the ones in CSC 2-29 or install an Ubuntu VM to check this)</li>
-<li>The only allowed imports are <code>socketserver</code> and <code>pathlib</code>: You will receive a zero mark for using any other imports/libraries.</li>
+<li>Must work with Firefox</li>
+<li>The only allowed imports are <code>socketserver</code>, <code>re</code>, <code>socket</code>, and <code>pathlib</code>: You will receive a zero mark for using any other imports/libraries.<ul>
+<li><code>re</code> library is optional, only use it if you know regular expressions.</li>
+<li>Use of <code>urllib</code>, <code>http</code>, <code>requests</code>, and similar libraries is extra double forbidden and will result in a mark of <code>-0.0</code>. Please do not ask to use these libraries, they defeat the purpose of the assignment.</li>
+</ul>
+</li>
+<li>Use of <code>recv</code> or <code>sendall</code> will result in </li>
 <li>Your code must not modify the code out of its scope (must not do dependency injection), must not run anything at the top level (outside of functions/classes/defining constants), and must not try to work around or modify the test suite.</li>
 </ul>
 <h3 id="submission-instructions">Submission Instructions</h3>
-<p>Make sure you push to github classroom <strong>BEFORE 4PM on the day of your lab section!</strong> You will not be able to push after that!</p>
-<p>Submit a link to your repo in the form <code>https://github.com/uofa-cmput404/w24-h0x-labsignment-http-yourgithubname</code> on eClass. <strong>Do not</strong> submit a link to a branch, a file, or the clone url. If you do not do this we will not know which github submission is yours.</p>
+<p>Make sure you push to GitHub classroom <strong>BEFORE 4PM on the day of your lab section!</strong> You will not be able to push after that!</p>
+<p>Submit a link to your repo in the form <code>https://github.com/uofa-cmput404/w24-h0x-labsignment-http-yourgithubname</code> on eClass. <strong>Do not</strong> submit a link to a branch, a file, or the clone URL. If you do not do this we will not know which GitHub submission is yours.</p>
 <h3 id="tips">Tips</h3>
 <h4 id="ubuntu-on-windows">Ubuntu on Windows</h4>
 <p>Install Ubuntu on Windows using WSL2. </p>
@@ -496,7 +561,7 @@ Go to Start and enter cmd in the search bar. Click Command Prompt</p>
             <a href="../tag/curl.html">curl</a>
             <a href="../tag/http.html">http</a>
             <a href="../tag/socket.html">socket</a>
-            <a href="../tag/socketserver.html">socketserver</a>
+            <a href="../tag/socketserver.html">socketserver <!-- @LT-IGNORE:MORFOLOGIK_RULE_EN_CA(http)@ --></a>
     </p>
   </footer>
   </article>
