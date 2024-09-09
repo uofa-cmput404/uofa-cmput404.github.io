@@ -73,13 +73,16 @@ To make your client communicate with the server, follow these steps:
   - Connect to server and send request
   - Receive and Process Responses
 
-Client must have a `HTTPClient` class with a `command(self, method, url, args)` method.
-
-* `method` will be `'GET'` or `'POST'`
-* `url` will be a url including path, but not including query arguments or fragment
-* `args` will be a dict
-    * This should become the query args for `GET`
-    * This should become the posted body for `POST`
+* Client must have a `HTTPClient` class with a `command(self, method, url, args)` method.
+    * `method` will be `'GET'` or `'POST'`
+    * `url` will be a url including path, but not including query arguments or fragment
+    * `args` will be a dict
+        * This should become the query args for `GET`
+        * This should become the posted body for `POST`
+    * `command` method should return an `HTTPResponse`
+* Client must have a `HTTPResponse` class .
+    * It must have a `code` attribute which is an `int` response code like `200` for OK.
+    * It must have a `body` attribute which is a `str` containing just the body. No headers.
 
 ## Import the python socket module
 
@@ -102,9 +105,8 @@ Utilize the context manager on the socket module to create a new socket object. 
 2. Separate the IP address, port, and path.
     * If the port is not specified, use the default port 80.
     * If the IP address is a IPv6 address, remove the square brackets around it.
-3. Make sure the path is percent decoded.
-    * You do not need to percent decode anything but the path.
-4. You do not need to handle query or fragment parts.
+3. If it is a GET request, the params need to made into query parameters.
+4. The path and query params must be correctly percent encoded.
 
 ## Connect to a remote socket at specified address
 
