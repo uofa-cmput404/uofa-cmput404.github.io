@@ -253,20 +253,6 @@ def parse_headers(self):
 
 All other method other than GET and POST are met with a 405 error
 
-##  Serve Multiple IP Addresses from a Single Domain
-Implementation for serving multiple IP addresses from a single domain. Get the host header to determine the domain and apply this to the path
-
-```python
-# Get the Host header to determine the domain
-       host = headers.get('Host', '')
-
-
-       # Base directory to serve files from
-       base_dir = pathlib.Path(f"www/{host}").resolve()
-       # Parse and sanitize the path
-       sanitized_path = base_dir / pathlib.Path(path.lstrip('/')).resolve()
-
-```
 ## Start the server
 
 Start the server by calling the serve_forever method and pass the HOST, PORT
