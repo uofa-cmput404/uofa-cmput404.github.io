@@ -6,8 +6,6 @@ status: Published
 summary: Lab Procedure, Lab Assignments, Lab Marking
 ----
 
-----
-
 <style>
     html body main {
         background-image: url("/theme/draft.png");
@@ -17,6 +15,7 @@ summary: Lab Procedure, Lab Assignments, Lab Marking
 </style>
 
 [TOC]
+
 ---
 
 # Description
