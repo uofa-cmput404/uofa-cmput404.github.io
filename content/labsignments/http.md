@@ -106,6 +106,7 @@ Utilize the context manager on the socket module to create a new socket object. 
     * If the port is not specified, use the default port 80.
     * If the IP address is a IPv6 address, remove the square brackets around it.
 3. If it is a GET request, the params need to made into query parameters.
+    * If it is a POST request the params should become the post body instead, and they should not be added to the query parameters.
 4. The path and query params must be correctly percent encoded.
 
 ## Connect to a remote socket at specified address
