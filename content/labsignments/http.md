@@ -162,6 +162,7 @@ The "read_response" function reads the entire HTTP response from a server after 
 * Tests must execute within 60 seconds.
 * The server must be started by calling the `main` function.
 * The server must handle requests from both custom and standard clients.
+* The server must correctly percent decode incoming paths.
 * Pass the free-tests
 
 Getting your server to talk to a client involves the following steps
