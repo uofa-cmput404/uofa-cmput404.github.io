@@ -250,6 +250,7 @@ Utilize the context manager on the socket module to create a new socket object. 
 <li>Tests must execute within 60 seconds.</li>
 <li>The server must be started by calling the <code>main</code> function.</li>
 <li>The server must handle requests from both custom and standard clients.</li>
+<li>The server must correctly percent decode incoming paths.</li>
 <li>Pass the free-tests</li>
 </ul>
 <p>Getting your server to talk to a client involves the following steps</p>
@@ -383,7 +384,6 @@ Postman should receive the correct content, with appropriate status codes and he
 <li>Use of <code>urllib</code>, <code>http</code>, <code>requests</code>, and similar libraries is extra double forbidden and will result in a mark of <code>-0.0</code>. Please do not ask to use these libraries, they defeat the purpose of the assignment.</li>
 </ul>
 </li>
-<li>Use of <code>recv</code> or <code>sendall</code> will result in </li>
 <li>Your code must not modify the code out of its scope (must not do dependency injection), must not run anything at the top level (outside of functions/classes/defining constants), and must not try to work around or modify the test suite.</li>
 </ul>
 <h3 id="submission-instructions">Submission Instructions</h3>
