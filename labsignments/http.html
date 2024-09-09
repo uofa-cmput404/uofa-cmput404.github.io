@@ -77,7 +77,6 @@
 <li><a href="#decide-the-action-to-take-based-on-the-http-method-type">Decide the action to take based on the Http method type</a></li>
 </ul>
 </li>
-<li><a href="#serve-multiple-ip-addresses-from-a-single-domain">Serve Multiple IP Addresses from a Single Domain</a></li>
 <li><a href="#start-the-server">Start the server</a></li>
 </ul>
 </li>
@@ -324,18 +323,6 @@ HTTP/1.1
 
 <h5 id="decide-the-action-to-take-based-on-the-http-method-type">Decide the action to take based on the Http method type</h5>
 <p>All other method other than GET and POST are met with a 405 error</p>
-<h4 id="serve-multiple-ip-addresses-from-a-single-domain">Serve Multiple IP Addresses from a Single Domain</h4>
-<p>Implementation for serving multiple IP addresses from a single domain. Get the host header to determine the domain and apply this to the path</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Get the Host header to determine the domain</span>
-       <span class="n">host</span> <span class="o">=</span> <span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;Host&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
-
-
-       <span class="c1"># Base directory to serve files from</span>
-       <span class="n">base_dir</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;www/</span><span class="si">{</span><span class="n">host</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span>
-       <span class="c1"># Parse and sanitize the path</span>
-       <span class="n">sanitized_path</span> <span class="o">=</span> <span class="n">base_dir</span> <span class="o">/</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span>
-</code></pre></div>
-
 <h4 id="start-the-server">Start the server</h4>
 <p>Start the server by calling the serve_forever method and pass the HOST, PORT</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
