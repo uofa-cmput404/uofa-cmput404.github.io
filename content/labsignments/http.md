@@ -321,7 +321,6 @@ Violation of the restrictions will result in a mark of zero.
 * The only allowed imports are `socketserver`, `re`, `socket`, `pathlib`, and `argv`: You will receive a zero mark for using any other imports/libraries.
     * `re` library is optional, only use it if you know regular expressions.
     * Use of `urllib`, `http`, `requests`, and similar libraries is extra double forbidden and will result in a mark of `-0.0`. Please do not ask to use these libraries, they defeat the purpose of the assignment.
-* Use of `recv` or `sendall` will result in 
 * Your code must not modify the code out of its scope (must not do dependency injection), must not run anything at the top level (outside of functions/classes/defining constants), and must not try to work around or modify the test suite.
 
 # Submission Instructions
