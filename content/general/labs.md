@@ -25,10 +25,6 @@ summary: Lab Procedure, Lab Assignments, Lab Marking
 
 The TAs will do their best to keep strictly to the schedule on the demo signup sheet.
 
-Online/Zoom demos are a privilege. If you are not prepared for your online demo, the TA will not mark your work and will move on to the next student. It doesn't matter if you're having audio problems, video problems, zoom problems, internet problems, etc. when your time slot is over, the TA will move on to the next student, and you will lose marks.
-
-If you are worried about your audio, video, zoom, internet connection, etc. attend and demo in person instead of online.
-
 # Labsignments (Lab Assignments)
 
 1. [HTTP]({filename}/labsignments/http.md)
