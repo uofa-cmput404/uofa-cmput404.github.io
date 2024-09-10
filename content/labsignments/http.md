@@ -251,7 +251,7 @@ def parse_headers(self):
 
 ### Decide the action to take based on the Http method type
 
-All other method other than GET and POST are met with a 405 error
+All other method other than GET are met with a 405 error
 
 ## Start the server
 
