@@ -901,7 +901,7 @@ You must form a group with only students from your same lab section. You can hav
 * There can be maximum 6 students per team.
 * All team members must be registered for and attending the same lab section.
 * Your team name must be from the list of [CSS colour names](https://developer.mozilla.org/en-US/docs/Web/CSS/named-color).
-* Use the [GitHub Classroom Link on eClass](https://eclass.srv.ualberta.ca/course/modedit.php?update=8120398)
+* Use the [GitHub Classroom Link on eClass](https://eclass.srv.ualberta.ca/course/view.php?update=8120398)
     * EVERY teammate should submit a link to your teams GitHub repo on eClass.
 * Add a license and a README. The README should contain the names of the teammates.
 * Use the format https://github.com/uofa-cmput404/f24-project-team-name
