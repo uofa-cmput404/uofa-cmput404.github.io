@@ -127,15 +127,15 @@ Posts, likes, comments, posts, are all sent to the inboxes of the authors that s
     * As an author, I want to be able to use my web-browser to manage my profile, so I don't have to use a clunky API.
 * Posting
     * As an author, I want to make posts, so I can share my thoughts and pictures with other local authors.
-    * As an author, I want my node to send my posts to my remote followers and friends, so that remote authors following me can see them. *Part 3-5 only*
+    * As an author, I want my node to send my posts to my remote followers and friends, so that remote authors following me can see them. *⧟ Part 3-5 only*
     * As an author, I want to edit my posts locally, so that I'm not stuck with a typo on a popular post.
-    * As an author, I want my node to re-send posts I've edited to everywhere they were already sent, so that people don't keep seeing the old version. *Part 3-5 only*
+    * As an author, I want my node to re-send posts I've edited to everywhere they were already sent, so that people don't keep seeing the old version. *⧟ Part 3-5 only*
     * As an author, posts I make can be in CommonMark, so I can give my posts some basic formatting.
     * As an author, posts I make can be in simple plain text, because I don't always want all the formatting features of CommonMark.
     * As an author, posts I create can be images, so that I can share pictures and drawings.
     * As an author, posts I create that are in CommonMark can link to images, so that I can illustrate my posts.
     * As an author, I want to delete my own posts locally, so I can remove posts that are out of date or made by mistake.
-    * As an author, I want my node to re-send posts I've deleted to everyone they were already sent, so I know remote users don't keep seeing my deleted posts forever. *Part 3-5 only*
+    * As an author, I want my node to re-send posts I've deleted to everyone they were already sent, so I know remote users don't keep seeing my deleted posts forever. *⧟ Part 3-5 only*
     * As an author, I want to be able to use my web-browser to manage/author my posts, so I don't have to use a clunky API.
     * As an author, other authors cannot modify my posts, so that I don't get impersonated.
 * Reading
@@ -159,14 +159,14 @@ Posts, likes, comments, posts, are all sent to the inboxes of the authors that s
 * Sharing
     * As an author, I can share other author's public posts, so I can make things go viral! (repost, boost, retweet, etc)
     * As an author, posts that I share will show up on the timeline of anyone who is following me. 
-    * As a node admin, I want to share public images with users on other nodes, so that they are visible by users of other nodes. *Part 3-5 only.*
+    * As a node admin, I want to share public images with users on other nodes, so that they are visible by users of other nodes. *⧟ Part 3-5 only.*
     * As an author, I want my friends-only/unlisted images and posts to *not* be shareable, so I know that if someone wants to share it they'll at least have to take a screenshot.
         * Note: public posts (and image posts) are re-shareable.
     * As an author, I should be able to browse the public posts of everyone, so that I can see what's going on beyond authors I follow.
         * Note: this should include all local public posts and all public posts received in any inbox.
 * Following/Friends
     * As an author, I want to follow local authors, so that I can see their public posts.
-    * As an author, I want to follow remote authors, so that I can see their public posts. *Part 3-5 only.*
+    * As an author, I want to follow remote authors, so that I can see their public posts. *⧟ Part 3-5 only.*
     * As an author, I want to be able to approve or deny other authors following me, so that I don't get followed by people I don't like.
     * As an author, I want to know if I have "follow requests," so I can approve them.
     * As an author, I want to unfollow authors I am following, so that I don't have to see their posts anymore.
@@ -184,11 +184,11 @@ Posts, likes, comments, posts, are all sent to the inboxes of the authors that s
     * As a node admin, I want to OPTIONALLY be able to allow users to sign up but require my OK to finally be on my node, so that I can prevent unwanted users spambots.
     * As a node admin, I want to be able to connect to remote nodes by entering only the URL of the remote node, a username, and a password, so that I don't have to edit code.
     * As a node admin, I want a RESTful interface for most operations, so that I can connect to other nodes and allow my users to use alternate clients other than the web frontend.
-    * As a node admin, I want to be able to add nodes to share with.
-    * As a node admin, I want to be able to remove nodes and stop sharing with them.
-    * As a node admin, I can prevent nodes from connecting to my node if they don't have a valid username and password.
-    * As a node admin, node to node connections can be authenticated with HTTP Basic Auth, so that I don't have to deal with tokens.
-    * As a node admin, I can disable the node to node interfaces for connections that I no longer want, in case another node goes bad.
+    * As a node admin, I want to be able to add nodes to share with. *⧟ Part 3-5 only.*
+    * As a node admin, I want to be able to remove nodes and stop sharing with them. *⧟ Part 3-5 only.*
+    * As a node admin, I can prevent nodes from connecting to my node if they don't have a valid username and password. *⧟ Part 3-5 only.*
+    * As a node admin, node to node connections can be authenticated with HTTP Basic Auth, so that I don't have to deal with tokens. *⧟ Part 3-5 only.*
+    * As a node admin, I can disable the node to node interfaces for connections that I no longer want, in case another node goes bad. *⧟ Part 3-5 only.*
     * As a node admin, I want everything to be stored in a well-indexed relational database, so that my website is snappy, and I can write SQL to fix things if I need to, make backups, etc...
         * Use Postgres on Heroku and SQLite for testing on your local machine.
         * Other DBaaS (e.g. Firebase) is forbidden.
@@ -1160,7 +1160,8 @@ Do not submit a clone link or a link to a branch or file.
 ### Requirements
 
 For this part you need:
-* ½ of the user stories except those marked for later parts, like "*Part 3-5 only*"
+
+* ½ of the user stories except those marked for later parts, like "*⧟ Part 3-5 only.*"
     * They work in the UI.
     * They work in the local API (imagine you are building an API for a future Android client)
     * It's obvious how to perform the user stories in the UI.
@@ -1187,7 +1188,9 @@ Submit only the link to the tag in the following format:
 
 https://github.com/uofa-cmput404/f24-project-example-team/tree/part1
 
-* Every team member must submit the link to eclass.
+* Every team member must submit the link to eClass.
+* If you don't submit the link to eClass you will get a zero for the project part regardless of what your team gets.
+* Submitted frontend framework form if using a frontend framework. (Link coming soon...)
 
 ### Marking
 
