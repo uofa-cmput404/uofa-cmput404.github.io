@@ -325,6 +325,8 @@ Unlisted                | control panel     | link + stream |  link + stream |  
 Friends Only            | control panel     |               |                |
 Deleted                 | control panel     |               |                |
 
+----
+
 Database/Node2Node     | Type | Author         | Friend                  | Follower                   | Anyone
 -----------------------|------|----------------|-------------------------|----------------------------|--------
 New Public             | push | from           | to `inbox`              | to `inbox`                 |
@@ -1141,7 +1143,7 @@ You must form a group with only students from your same lab section. You can hav
 * There can be maximum 6 students per team.
 * All team members must be registered for and attending the same lab section.
 * Your team name must be from the list of [CSS colour names](https://developer.mozilla.org/en-US/docs/Web/CSS/named-color).
-* Use the [GitHub Classroom Link on eClass](https://eclass.srv.ualberta.ca/course/view.php?update=8120398)
+* Use the [GitHub Classroom Link on eClass](https://eclass.srv.ualberta.ca/mod/assign/view.php?id=8120400&forceview=1)
     * EVERY teammate should submit a link to your teams GitHub repo on eClass.
 * Add a license and a README. The README should contain the names of the teammates.
 * Use the format https://github.com/uofa-cmput404/f24-project-team-name
@@ -1164,11 +1166,12 @@ For this part you need:
     * It's obvious how to perform the user stories in the UI.
     * They are tested. See the [test requirements](#test-requirements).
     * You can walk the TA through how do the user stories in the UI, in the API, and walk the TA through the relevant code, tests, and documentation.
+        * Without bugs, snags, hiccups, or blockers!
 * Everything implemented is also documented. See the [documentation requirements](#documentation-requirements).
     * There are examples in the API documentation for the ½ of the user stories chosen above.
 * Code follows the [code requirements](#code-requirements).
-* The UI is good-looking, easy to read, easy to navigate.
-* Teammates are using Git and GitHub according to the [tool use requirements](#tool-use-requirements)
+* The UI is good-looking, easy to read, easy to navigate, easy to understand.
+* Teammates are using Git and GitHub often and effectively according to the [tool use requirements](#tool-use-requirements)
 
 ### Submission
 
@@ -1196,7 +1199,7 @@ https://github.com/uofa-cmput404/f24-project-example-team/tree/part1
 * User Stories: API
     * Excellent 8 (A): At least ½ of the user stories with a relevant API are usable using the API. Adheres to the specification.
     * Good 7 (B): Almost ½ of the user stories with a relevant API are usable using the API. Adheres to the specification
-    * Satisfactory 6 (C): At least 3/8ths of the user with a relevant API stories are usable using the API. Very close to adhering to the specification
+    * Satisfactory 6 (C): At least 3/8ths of the user stories with a relevant API are usable using the API. Very close to adhering to the specification.
     * Unsatisfactory 4-5 (D): At least ¼ of the user with a relevant API stories are usable using the API. Some parts deviate from the specification.
     * Attempt 0-3 (F): Missing API or major deviations from the specification.
 * Test Cases
