@@ -18,9 +18,7 @@ summary: Lab Procedure, Lab Assignments, Lab Marking
     * If you submit on eClass but don't demo you will get a zero.
     * You can demo over Zoom or in person.
     * Demos are during the second half of your registered lab section on BearTracks (6:00 PM-7:50)
-* Labs are due on eClass/Github at 4PM before the date of your registered lab in section in BearTracks.
-    * If you are in the Monday lab, your due date is 4PM Monday.
-    * If you are in the Wednesday lab, your due date is 4PM Wednesday.
+* Labs are due on eClass/Github at 4PM on Monday.
     * If you demo but don't submit you will get a zero.
 
 The TAs will do their best to keep strictly to the schedule on the demo signup sheet.
