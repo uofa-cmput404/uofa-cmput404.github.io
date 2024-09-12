@@ -118,17 +118,19 @@ Replies may take several days because there are hundreds of students. Currently,
 
 # Wellness Supports
 
-Welcome to 2024! I hope that you are happily settling into the winter semester at University of Alberta. If you’re still feeling the stress of exams or hoping to develop good health habits going into this new semester, we’re here to help! 
-
-Did you know that there are many services available, both in person and virtually, for students to help with physical well-being? Whether you need a new exercise class, access to more affordable groceries, or mental health supports, read on to discover what is available at U of A! Taking care of your physical self can help improve your mental well-being and increase your success in your classes as well.
-
 Here are a few key places to connect with resources:
+
+## Safety and Security for Students
+
+UA's [Safety and Security for Students](https://www.ualberta.ca/current-students/safety-and-security.html) page.
+
+Protective Services [780-492-5050](tel:780-492-5050)
 
 ## Physical Well-being Supports
 
 *   **[Campus Food Bank](https://campusfoodbank.com/)** 
 *   **[WECAN Food Basket](https://internalcomms.cmail19.com/t/d-l-vuytlz-ihirhlhytl-k/)** (affordable groceries)
-*   **[Campus and Community Recreation Winter 2024 schedule](https://www.ualberta.ca/campus-community-recreation/our-programs/rec-guide/index.html)** 
+*   **[Campus and Community Recreation](https://www.ualberta.ca/campus-community-recreation/our-programs/rec-guide/index.html)** 
 *   **[Campus and Community Recreation YouTube Channel](https://www.youtube.com/@CampusCommunityRecreation)**
 *   **[Weekly free mindfulness and yoga class through Counselling & Clinical Services](https://www.ualberta.ca/current-students/counselling/workshops.html?utm_medium=email&utm_campaign=WCSI_Jan%202024&utm_content=WCSI_Jan%202024+CID_ba92968704987d94bc0c32e21ef6d5c6&utm_source=cm_internal_comms&utm_term=Weekly%20free%20mindfulness%20and%20yoga%20class%20through%20Counselling%20%20Clinical%20Services)**
 *   **[Use a treadmill desk when studying in the library](https://guides.library.ualberta.ca/wellbeing)**
@@ -137,7 +139,7 @@ Here are a few key places to connect with resources:
 
 All mental health & wellbeing supports offered to undergraduate students are listed on the **[Health + Wellness](https://www.ualberta.ca/campus-life/health-wellness/index.html?utm_medium=email&utm_campaign=WCSI_Jan%202024&utm_content=WCSI_Jan%202024+CID_ba92968704987d94bc0c32e21ef6d5c6&utm_source=cm_internal_comms&utm_term=Health%20%20Wellness#mental-health-support)** page, including options for peer support programs, medical care, and other wellness programs open to you. Counselling & Clinical Services also offers a range of **[workshops](https://www.ualberta.ca/current-students/counselling/workshops.html?utm_medium=email&utm_campaign=WCSI_Jan%202024&utm_content=WCSI_Jan%202024+CID_ba92968704987d94bc0c32e21ef6d5c6&utm_source=cm_internal_comms&utm_term=workshops)** for you to learn how to be a peer support for other students. 
 
-If you are unsure how to access a resource, please contact the **[Office of the Dean of Students](https://www.ualberta.ca/dean-of-students/index.html?utm_medium=email&utm_campaign=WCSI_Jan%202024&utm_content=WCSI_Jan%202024+CID_ba92968704987d94bc0c32e21ef6d5c6&utm_source=cm_internal_comms&utm_term=Office%20of%20the%20Dean%20of%20Students)** for a full listing of services.
+If you are unsure how to access a resource, please contact the **[Office of the Dean of Students](https://www.ualberta.ca/dean-of-students/index.html)** for a full listing of services.
 
 ## Need Help Now?
 
@@ -149,11 +151,13 @@ If you or someone you know is in need of immediate assistance, please reach out 
 
 This [Self-Care Guide](https://drive.google.com/file/d/1t5fqgXCG369tt5hDxrzQuvlTdy2W46RB/view?usp=sharing), originally designed by the Faculty of Native Studies, has broader application for use during students’ learning. It provides some ideas and strategies to consider that can help navigate emotionally challenging or triggering material.
 
-## Safety and Security for Students
+## 🤝 Get involved, make friends, and thrive! 🤝
 
-UA's [Safety and Security for Students](https://www.ualberta.ca/current-students/safety-and-security.html) page.
+Building a strong social network can greatly benefit your mental health.
 
-Protective Services [780-492-5050](tel:780-492-5050)
+-   **Students Groups: [BearsDen](https://alberta.campuslabs.ca/engage/)** is a one-stop online spot for all student groups on campus. Students can search for events or groups that suit their interests.
+
+-   **Campus Events:** Campus events are posted by a variety of groups. Commonly, students can find events on **[uab.ca/events](https://www.ualberta.ca/en/events/index.html#sort=relevancy), [uasuevents.ca,](https://www.su.ualberta.ca/events/)** or go to their respective **[faculty association's web page](https://www2.su.ualberta.ca/governance/cofa/)** for upcoming events.
 
 # Where to NOT get help
 

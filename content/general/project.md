@@ -1192,60 +1192,59 @@ https://github.com/uofa-cmput404/f24-project-example-team/tree/part1
 * If you don't submit the link to eClass you will get a zero for the project part regardless of what your team gets.
 * Submitted frontend framework form if using a frontend framework. (Link coming soon...)
 
-### Marking
+### Markingwh
 
 * User Stories: UI
-    * Excellent 8 (A): At least ½ of the user stories are usable using the UI.
-    * Good 7 (B): Almost ½ of the user stories are usable using the UI.
-    * Satisfactory 6 (C): At least 3/8ths of the user stories are usable using the UI.
-    * Unsatisfactory 4-5 (D): At least ¼ of the user stories are usable using the UI.
+    * Excellent: At least ½ of the user stories are usable using the UI.
+    * Good: Almost ½ of the user stories are usable using the UI.
+    * Satisfactory: At least 3/8ths of the user stories are usable using the UI.
+    * Unsatisfactory: At least ¼ of the user stories are usable using the UI.
 * User Stories: API
-    * Excellent 8 (A): At least ½ of the user stories with a relevant API are usable using the API. Adheres to the specification.
-    * Good 7 (B): Almost ½ of the user stories with a relevant API are usable using the API. Adheres to the specification
-    * Satisfactory 6 (C): At least 3/8ths of the user stories with a relevant API are usable using the API. Very close to adhering to the specification.
-    * Unsatisfactory 4-5 (D): At least ¼ of the user with a relevant API stories are usable using the API. Some parts deviate from the specification.
-    * Attempt 0-3 (F): Missing API or major deviations from the specification.
+    * Excellent: At least ½ of the user stories with a relevant API are usable using the API. Adheres to the specification.
+    * Good: Almost ½ of the user stories with a relevant API are usable using the API. Adheres to the specification
+    * Satisfactory: At least 3/8ths of the user stories with a relevant API are usable using the API. Very close to adhering to the specification.
+    * Unsatisfactory: At least ¼ of the user with a relevant API stories are usable using the API. Some parts deviate from the specification.
+    * Attempt: Missing API or major deviations from the specification.
 * Test Cases
     * *User stories that have an API must be tested through the API. Other user stories can be tested by directly calling Django code.*
     * *Tests do not count unless they are accurately testing the functionality.*
-    * Excellent 8 (A): At least ½ of the user stories have tests written and pass those tests. 
-    * Good 7 (B): At least ½ of the user have tests written, most pass tests.
-    * Satisfactory 6 (C): At least 3/8ths of the user have tests written, most pass tests.
-    * Unsatisfactory 4-5 (D): At least ¼ of the user have tests written, most pass tests.
+    * Excellent: At least ½ of the user stories have tests written and pass those tests. 
+    * Good: At least ½ of the user have tests written, most pass tests.
+    * Satisfactory: At least 3/8ths of the user have tests written, most pass tests.
+    * Unsatisfactory: At least ¼ of the user have tests written, most pass tests.
 * UI Design (HTML & CSS)
-    * Excellent 8 (A): Looks impressive! It's obvious how to do any of the ½ of the user stories.
-    * Good 7 (B): Looks good. It's not obvious how you would use the UI to do some of ½ of the user stories.
-    * Satisfactory 6 (C): HTML & CSS exists, it does not look good. Mostly easy to understand. It has issues. There is some way to do ½ of the user stories, even if it's not obvious.
-    * Unsatisfactory 4-5 (D): HTML & CSS exists. Major UI issues. Hard to navigate. Hard to understand. There is some way to do almost all the ½ of the user stories.
-    * Attempt 1-3 (F): Some pieces of the HTML & CSS exist, but some pieces of the HTML & CSS are missing that would be needed to do ½ of the user stories.
-    * No attempt 0 (F): Very little HTML & CSS.
+    * Excellent: Looks impressive! It's obvious how to do any of the ½ of the user stories.
+    * Good: Looks good. It's not obvious how you would use the UI to do some of ½ of the user stories.
+    * Satisfactory: HTML & CSS exists, it does not look good. Mostly easy to understand. It has issues. There is some way to do ½ of the user stories, even if it's not obvious.
+    * Unsatisfactory: HTML & CSS exists. Major UI issues. Hard to navigate. Hard to understand. There is some way to do almost all the ½ of the user stories.
+    * Attempt: Some pieces of the HTML & CSS exist, but some pieces of the HTML & CSS are missing that would be needed to do ½ of the user stories.
+    * No attempt: Very little HTML & CSS.
 * Tool Use
-    * *PRs are not required.*
-    * Excellent 8 (A): Use of Git, GitHub issues, etc. is Evidence and Obvious. Commits/merges/PRs are small and frequent. Commit messages are helpful information for teammates. All the teammates are working at the same time, and using GitHub **and git** to help communicate and improve teamwork. You laugh in the face of merge conflicts! Well organized repository and branches.
-    * Good 7 (B): Frequent but inconsistent use of Git, etc. Commits/merges/PRs are medium and with inconsistent frequency. All the teammates are working at the same time. Using GitHub to help communicate. Well organized repository and branches.
-    * Satisfactory 6 (C): Uses Git, etc. Has some oversized merges. Commits/merges/PRs are large and far apart. All the teammates are working at the same time. Well organized repository and branches.
-    * Unsatisfactory 4-5 (D): Limited of tool use. Only one teammate seems to be working at a time. Git exists but it has built artifacts in it. Git is disorganized.
+    * Excellent: Use of Git, GitHub issues, etc. is Evidence and Obvious. Commits/merges/PRs are small and frequent. Commit messages are helpful information for teammates. All the teammates are working at the same time, and using GitHub **and git** to help communicate and improve teamwork. You laugh in the face of merge conflicts! Well organized repository and branches. *PRs are not required.*
+    * Good: Frequent but inconsistent use of Git, etc. Commits/merges/PRs are medium and with inconsistent frequency. All the teammates are working at the same time. Using GitHub to help communicate. Well organized repository and branches.
+    * Satisfactory: Uses Git, etc. Has some oversized merges. Commits/merges/PRs are large and far apart. All the teammates are working at the same time. Well organized repository and branches.
+    * Unsatisfactory: Limited of tool use. Only one teammate seems to be working at a time. Git exists but it has built artifacts in it. Git is disorganized.
     * Failure: Used file sharing, email attachments, sending files/code through discord, chat, messengers, or similar tools to work together. Git exists but it not being used, or it is being misused.
     * *Failure to commit and tag on time, failure to submit a link to the tag, etc. will result in an overall mark of zero for this project part: not just a zero for Tool Use.*
     * *Force push, rebase, or other operations that destroy git history, along with forging git history, authorship, messages, dates, etc. will also result in an overall mark of zero for this project part, and you will be reported to the Faculty under the Student Academic Integrity Policy.*
 * TA Walkthrough
-    * Excellent 8 (A): Able to walk through ½ user stories with UI and API. No snags, bugs, last second workarounds, or missing pieces. Code is easily located. Documentation is easily located.
-    * Good 7 (B): A couple of snags, bugs, last second workarounds.
-    * Satisfactory 6 (C): Some snags bugs, last second workarounds, or tiny missing pieces.
-    * Unsatisfactory 4-5 (D): Many snags, bugs, last second workarounds, small missing pieces.
-    * Attempt 0-3 (F): No walkthrough. Unable to demo. Showstopper bugs. Major missing pieces.
+    * Excellent: Able to walk through ½ user stories with UI and API. No snags, bugs, last second workarounds, or missing pieces. Code is easily located. Documentation is easily located.
+    * Good: A couple of snags, bugs, last second workarounds.
+    * Satisfactory: Some snags bugs, last second workarounds, or tiny missing pieces.
+    * Unsatisfactory: Many snags, bugs, last second workarounds, small missing pieces.
+    * Attempt: No walkthrough. Unable to demo. Showstopper bugs. Major missing pieces.
 * Web Service API Documentation
-    * Excellent 8 (A): Well documented. Highly detailed. Clear descriptions, has useful example requests and responses from your API for every use of the API and ½ of user stories. 
-    * Good 7 (B): Well documented, medium detail. A few things are unclear. Has example requests and responses from your API for every use of the API and ½ of user stories. 
-    * Satisfactory 6 (C): Well documented, but missing details. Every endpoint is documented.  Some things are unclear. Example requests and responses have a few issues. Slightly less than ½ of user stories have examples.
-    * Unsatisfactory 4-5 (D): Low on details. Many things are unclear. Every endpoint is documented. Missing some example requests and responses.
-    * Attempt 0-3 (F): Major pieces of documentation are missing. 
+    * Excellent: Well documented. Highly detailed. Clear descriptions, has useful example requests and responses from your API for every use of the API and ½ of user stories. 
+    * Good: Well documented, medium detail. A few things are unclear. Has example requests and responses from your API for every use of the API and ½ of user stories. 
+    * Satisfactory: Well documented, but missing details. Every endpoint is documented.  Some things are unclear. Example requests and responses have a few issues. Slightly less than ½ of user stories have examples.
+    * Unsatisfactory: Low on details. Many things are unclear. Every endpoint is documented. Missing some example requests and responses.
+    * Attempt: Major pieces of documentation are missing. 
 * Standards & Code Style
-    * Excellent 8 (A): Adheres to standards, code is well organized and clean. Code is easy to read. Comments add to code readablility when necessary. Code meets Python, JS, HTML and CS style guides. Excellent indentation, naming. Code units only do one thing. It's easy to find the code responsible for handling any of the ½ user stories.
-    * Good 7 (B): Adheres to standards, code is well organized and clean. Missing comments. Some minor issues with code style. Code units only do one thing. It takes a little digging sometimes to find the code responsible for a user story.
-    * Satisfactory 6 (C): Adheres to standards, there is an attempt at organization. Commented out code, unreachable code, or code with no clear purpose. Code units only do one thing. Occasional spots of poor style. It's not clear where the code for a user story will be.
-    * Unsatisfactory: 4-5 (D): Browser, Python, transpiler, bundler, etc. warnings. Code is poorly organized God files/classes/functions. Have to search or grep code to find the code responsible for something.
-    * Attempt 0-3 (F): HTML errors, browser errors, CSS errors, JS errors, Python errors. Code is disorganized. Code is hard to find. Code is missing.
+    * Excellent: Adheres to standards, code is well organized and clean. Code is easy to read. Comments add to code readablility when necessary. Code meets Python, JS, HTML and CS style guides. Excellent indentation, naming. Code units only do one thing. It's easy to find the code responsible for handling any of the ½ user stories.
+    * Good: Adheres to standards, code is well organized and clean. Missing comments. Some minor issues with code style. Code units only do one thing. It takes a little digging sometimes to find the code responsible for a user story.
+    * Satisfactory: Adheres to standards, there is an attempt at organization. Commented out code, unreachable code, or code with no clear purpose. Code units only do one thing. Occasional spots of poor style. It's not clear where the code for a user story will be.
+    * Unsatisfactory: Browser, Python, transpiler, bundler, etc. warnings. Code is poorly organized God files/classes/functions. Have to search or grep code to find the code responsible for something.
+    * Attempt: HTML errors, browser errors, CSS errors, JS errors, Python errors. Code is disorganized. Code is hard to find. Code is missing.
 
 ## Project Part 2: Centralized Prototype
 
