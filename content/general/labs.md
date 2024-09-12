@@ -14,14 +14,14 @@ summary: Lab Procedure, Lab Assignments, Lab Marking
 * [H01 Monday Signup Sheet](https://docs.google.com/spreadsheets/d/1TgVe_SXOEQHiH2ZrGsdccL6wndSUhZhIVqDX4HA7wvk/edit)
 * [H02 Wednesday Signup Sheet](https://docs.google.com/spreadsheets/d/1EBqOV0GJHfQvzm4jrQYani2ghWrfVuQMHtoesph4kMc/edit)
 
-* You **must demo your individual lab work to a TA** during the lab to receive marks.
-    * If you submit on eClass but don't demo you will get a zero.
-    * You can demo over Zoom or in person.
-    * Demos are during the second half of your registered lab section on BearTracks (6:00 PM-7:50)
+* You **must walkthrough your individual lab work to a TA** during the lab to receive marks.
+    * If you submit on eClass but don't walkthrough your code with a TA you will get a zero.
+    * You MUST walkthrough your lab in person.
+    * Walkthroughs are during the second half of your registered lab section on BearTracks (6:00 PM-7:50)
 * Labs are due on eClass/Github at 4PM on Monday.
-    * If you demo but don't submit you will get a zero.
+    * If you walkthrough your code with a TA but don't submit you will get a zero.
 
-The TAs will do their best to keep strictly to the schedule on the demo signup sheet.
+The TAs will do their best to keep strictly to the schedule on the walkthrough signup sheet.
 
 # Labsignments (Lab Assignments)
 
@@ -39,7 +39,7 @@ The TAs will do their best to keep strictly to the schedule on the demo signup s
 
 ## Rubric
 
-Your grade on the lab is the percentage of your code that you **completed and** can demonstrate to the TA during your demo that you **understand.** You must be able to explain your code to the TA and explain why you chose to write your code the way you did.
+Your grade on the lab is the percentage of your code that you **completed and** can demonstrate to the TA during your walkthrough that you **understand.** You must be able to explain your code to the TA and explain why you chose to write your code the way you did.
 
 For example, you might be asked to explain:
 
@@ -58,11 +58,11 @@ Note that simply reading the code to the TA does **not** count as understanding.
     * Grade: 100
 2. Example:
     * Your code works perfectly.
-    * You can explain most of your code to the TA during the demo, but you can't explain why you chose to use a `while` loop instead of a `for` loop for a critical component.
+    * You can explain most of your code to the TA during the walkthrough, but you can't explain why you chose to use a `while` loop instead of a `for` loop for a critical component.
     * Grade: 90
 3. Example:
     * Your code works perfectly.
-    * You can explain some of your code to the TA during the demo.
+    * You can explain some of your code to the TA during the walkthrough.
     * But, it seems like you don't understand half of the code for one of two problems in the lab.
     * Grade: 75
 4. Example:
