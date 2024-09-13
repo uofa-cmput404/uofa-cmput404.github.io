@@ -204,16 +204,19 @@ p>img {
 
 /** Special **/
 
-.warning {
+.warning, .longWarning {
   border-width: 0.5ch;
   border-style: dashed;
   border-color: yellow;
   background-color: white;
-  font-weight: bolder;
   border-image-source: repeating-linear-gradient(-45deg, black, black 10px, yellow 10px, yellow 20px);
   border-image-repeat: round;
   padding: 0.5ch 1ch;
   border-image-slice: 5;
+}
+
+.warning {
+  font-weight: bolder;
 }
 
 /** Code Highlighting **/

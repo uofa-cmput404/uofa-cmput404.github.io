@@ -84,10 +84,20 @@
 <li><a href="#adding-html-templates">Adding HTML Templates</a></li>
 <li><a href="#adding-markdown-editor">Adding Markdown Editor</a><ul>
 <li><a href="#steps-to-add-the-markdown-editor">Steps to Add the Markdown Editor:</a></li>
+<li><a href="#django-integration">Django Integration</a></li>
+<li><a href="#task-backend-for-storing-wiki-pages">TASK - Backend For Storing Wiki Pages</a></li>
 </ul>
 </li>
-<li><a href="#integrating-with-django-models-orm">Integrating with Django Models (ORM)</a></li>
+<li><a href="#displaying-wiki-pages">Displaying Wiki Pages</a><ul>
+<li><a href="#homepage">Homepage</a></li>
+<li><a href="#wiki-page">Wiki Page</a></li>
+</ul>
+</li>
 <li><a href="#serving-static-files-with-whitenoise">Serving Static Files with Whitenoise</a></li>
+<li><a href="#task-emoji-picker">TASK - Emoji Picker</a></li>
+<li><a href="#task-adding-likes">TASK - Adding Likes</a></li>
+<li><a href="#task-displaying-likes">TASK - Displaying Likes</a></li>
+<li><a href="#requirements">Requirements</a></li>
 <li><a href="#conclusion-and-submission">Conclusion and Submission</a><ul>
 <li><a href="#submission-instructions">Submission Instructions</a></li>
 <li><a href="#further-tips">Further Tips</a></li>
@@ -99,7 +109,7 @@
 </div>
 <hr>
 <h3 id="description">Description</h3>
-<p>The purpose of this lab is to familiarize you with setting up a virtual environment, developing with Django, and using npm to incorporate external packages like an emoji picker and a markdown editor. By the end of this lab, you will build a simple web app where users can add emojis and edit content using Markdown.</p>
+<p>The purpose of this lab is to familiarize you with setting up a virtual environment, developing with Django, and using npm to incorporate external packages like an emoji picker and a markdown editor. By the end of this lab, you will build a simple wiki app where users can add emojis, likes, edit content using Markdown, and delete content.</p>
 <h3 id="getting-started">Getting Started</h3>
 <h5 id="introduction-to-html-and-javascript">Introduction to HTML and JavaScript</h5>
 <p>Before diving into Django and npm, let’s go over some basics of HTML and JavaScript.</p>
@@ -186,129 +196,131 @@
 <hr>
 <h3 id="lab-instructions">Lab Instructions</h3>
 <h4 id="django-setup">Django Setup</h4>
-<p>We will use <a href="https://www.djangoproject.com/">Django</a>, a high-level Python web framework. It simplifies web development by providing a built-in ORM, an admin panel, and much more. The <a href="https://docs.djangoproject.com/en/5.0/">official documentation</a> is a valuable resource.</p>
+<p>We will use <a href="https://www.djangoproject.com/">Django</a>, a high-level Python web framework. It simplifies web development by providing a built-in ORM, an admin panel, and much more. The <a href="https://docs.djangoproject.com/en/5.0/">official documentation</a> is a valuable resource and <strong>you will find it very helpful</strong> to reference it during this lab for anything that is unclear.</p>
 <h5 id="steps-to-set-up-django">Steps to Set Up Django:</h5>
 <ol>
 <li>Create a virtual environment and install Django:</li>
 </ol>
-<p><code>virtualenv venv --python=python3
-   source venv/bin/activate
-   echo "Django&gt;=5.0.1" &gt; requirements.txt
-   python -m pip install -r requirements.txt</code></p>
-<ol>
-<li>Start a new Django project:</li>
-</ol>
-<p><code>django-admin startproject lab2
-   cd lab2
-   python manage.py runserver 0.0.0.0:8000</code></p>
-<p>You should see a "Congratulations!" page when visiting <code>localhost:8000</code>.</p>
-<h5 id="creating-a-django-webapp">Creating a Django Webapp</h5>
-<p>We will create a Django webapp called <code>emojis</code> to build a simple emoji picker app.</p>
-<ol>
-<li>
-<p>Create a new app:
-   <code>python manage.py startapp emojis</code></p>
-</li>
-<li>
-<p>In <code>emojis/views.py</code>, add the following code:</p>
-</li>
-</ol>
-<p>```
-   from django.http import HttpResponse</p>
-<p>def index(request):
-       return HttpResponse("This is the emoji app.") #
-   ```</p>
-<ol>
-<li>Create a <code>urls.py</code> file inside <code>emojis</code> and add the following code:</li>
-</ol>
-<p>```
-   from django.urls import path
-   from . import views</p>
-<p>urlpatterns = [
-       path("", views.index, name="index"),
-   ]
-   ```</p>
-<ol>
-<li>Update <code>lab2/urls.py</code> to include the new app:</li>
-</ol>
-<p><code>from django.urls import include, path
-   urlpatterns = [
-       path("emojis/", include("emojis.urls")),
-       path("admin/", admin.site.urls),
-   ]</code></p>
-<h4 id="adding-html-templates">Adding HTML Templates</h4>
-<p>Django allows you to render HTML templates. Let’s create an HTML page to display the emoji picker.</p>
-<ol>
-<li>Inside the <code>emojis</code> directory, create a <code>templates</code> directory.</li>
-<li>Inside <code>templates</code>, create an <code>index.html</code> file with the following boilerplate:
-   ```html
-   <!DOCTYPE html></li>
-</ol>
-<html lang="en">
-       <head>
-           <meta charset="UTF-8">
-           <title>Emojis App</title>
-       </head>
-       <body>
-           <h1>Welcome to Emojis!</h1>
-       </body>
-   </html>
-
-<ol>
-<li>Update <code>emojis/views.py</code> to render the template:
-   ``` 
-   from django.shortcuts import render</li>
-</ol>
-<p>def index(request):
-       return render(request, "index.html")
-   ```</p>
-<p>Now, visiting <code>localhost:8000/emojis</code> will display the HTML template.</p>
-<hr>
-<h4 id="adding-markdown-editor">Adding Markdown Editor</h4>
-<p>In this section, we will integrate a <strong>Markdown editor</strong> so that users can write content in Markdown format and see it rendered as HTML in the browser. We'll use the popular npm package <code>marked</code> for parsing Markdown content and converting it to HTML.</p>
-<h5 id="steps-to-add-the-markdown-editor">Steps to Add the Markdown Editor:</h5>
-<ol>
-<li>
-<p>Install the <code>marked</code> package using npm:
-   <code>bash
-   npm install --save-dev marked</code></p>
-</li>
-<li>
-<p>Update your <code>main.js</code> file to incorporate both the Markdown editor and the emoji picker:</p>
-</li>
-</ol>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Picker</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;emoji-mart&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// Import the emoji picker</span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">marked</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;marked&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// Import the markdown converter</span>
-
-<span class="c1">// Set up emoji picker</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">pickerOptions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">onEmojiSelect</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">emoji</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">textarea</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;markdown-editor&#39;</span><span class="p">);</span>
-<span class="w">  </span><span class="nx">textarea</span><span class="p">.</span><span class="nx">value</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nx">emoji</span><span class="p">.</span><span class="kr">native</span><span class="p">;</span><span class="w"> </span><span class="c1">// Add selected emoji to the editor</span>
-<span class="p">}};</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">picker</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Picker</span><span class="p">(</span><span class="nx">pickerOptions</span><span class="p">);</span>
-<span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;emoji-picker&#39;</span><span class="p">).</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">picker</span><span class="p">);</span><span class="w"> </span><span class="c1">// Add emoji picker to the DOM</span>
-
-<span class="c1">// Handle Markdown conversion and rendering</span>
-<span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;convert-btn&#39;</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">markdownText</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;markdown-editor&#39;</span><span class="p">).</span><span class="nx">value</span><span class="p">;</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">htmlOutput</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">marked</span><span class="p">(</span><span class="nx">markdownText</span><span class="p">);</span><span class="w"> </span><span class="c1">// Convert markdown to HTML</span>
-<span class="w">  </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;markdown-output&#39;</span><span class="p">).</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">htmlOutput</span><span class="p">;</span><span class="w"> </span><span class="c1">// Display HTML content</span>
-<span class="p">});</span>
+<div class="highlight"><pre><span></span><code>virtualenv venv --python=python3
+source venv/bin/activate
+echo &quot;Django&gt;=5.0.1&quot; &gt; requirements.txt
+python -m pip install -r requirements.txt
 </code></pre></div>
 
 <ol>
-<li>Modify your <code>index.html</code> file to include both the Markdown editor and the emoji picker:</li>
+<li>Start a new Django project:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>django-admin startproject lab2
+cd lab2
+python manage.py runserver 0.0.0.0:8000
+</code></pre></div>
+
+<p>You should see a "Congratulations!" page when visiting <code>localhost:8000</code>.</p>
+<h5 id="creating-a-django-webapp">Creating a Django Webapp</h5>
+<p>We will create a Django webapp called <code>wiki</code> to build a simple wiki app.</p>
+<p><strong>Create a new app:</strong></p>
+<div class="highlight"><pre><span></span><code>python manage.py startapp wiki
+</code></pre></div>
+
+<p><strong>Modify <code>lab2/settings.py</code> to register your new wiki app to Django</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;wiki&#39;</span><span class="p">,</span> <span class="c1"># Add this line!</span>
+    <span class="s1">&#39;django.contrib.admin&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.auth&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.contenttypes&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.sessions&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.messages&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.staticfiles&#39;</span><span class="p">,</span>
+<span class="p">]</span>
+</code></pre></div>
+
+<p><strong>In <code>wiki/views.py</code>, add the following code:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponse</span>
+
+<span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="s2">&quot;This is the wiki app.&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p><strong>Create a <code>urls.py</code> file inside <code>wiki</code> and add the following code:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">path</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">views</span>
+
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">path</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;index&quot;</span><span class="p">)</span>
+<span class="p">]</span>
+</code></pre></div>
+
+<p><strong>Update <code>lab2/urls.py</code> to include the new app:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">include</span><span class="p">,</span> <span class="n">path</span>
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">path</span><span class="p">(</span><span class="s2">&quot;wiki/&quot;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="s2">&quot;wiki.urls&quot;</span><span class="p">)),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s2">&quot;admin/&quot;</span><span class="p">,</span> <span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">urls</span><span class="p">),</span>
+<span class="p">]</span>
+</code></pre></div>
+
+<h4 id="adding-html-templates">Adding HTML Templates</h4>
+<p>Django allows you to render HTML templates. Let’s create an HTML page to display a homepage.</p>
+<ol>
+<li>Inside the <code>wiki</code> directory, create a <code>templates</code> directory.</li>
+<li>Inside <code>templates</code>, create an <code>index.html</code> file with the following boilerplate:</li>
 </ol>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;en&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Wiki App<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Welcome to your wiki!<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<ol>
+<li>Update <code>wiki/views.py</code> to render the template:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span>
+
+<span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s2">&quot;index.html&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Now, visiting <code>localhost:8000/wiki</code> will display the HTML template.</p>
+<h4 id="adding-markdown-editor">Adding Markdown Editor</h4>
+<p>In this section, we will integrate a <strong>Markdown editor</strong> so that users can write content in Markdown format and see it rendered as HTML in the browser. We'll use the popular npm package <code>marked</code> for parsing Markdown content and converting it to HTML.</p>
+<h5 id="steps-to-add-the-markdown-editor">Steps to Add the Markdown Editor:</h5>
+<p>Install the <code>marked</code> package in the root directory of your repository:</p>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>--save-dev<span class="w"> </span>marked
+</code></pre></div>
+
+<p>Create a new directory in the root directory called <code>webapp</code> and create a <code>markdown-editor.js</code> file in it.</p>
+<p>Update your <code>markdown-editor.js</code> file to the following:</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">marked</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;marked&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// Import the markdown converter</span>
+
+<span class="c1">// Handle Markdown conversion and rendering</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;convert-btn&#39;</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">e</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span><span class="w">   </span><span class="c1">// Prevents native functionality for this event</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">markdownText</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;markdown-editor&#39;</span><span class="p">).</span><span class="nx">value</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">htmlOutput</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">marked</span><span class="p">(</span><span class="nx">markdownText</span><span class="p">);</span><span class="w"> </span><span class="c1">// Convert markdown to HTML</span>
+<span class="w">  </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;markdown-output&#39;</span><span class="p">).</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">htmlOutput</span><span class="p">;</span><span class="w"> </span><span class="c1">// Add the generated HTML code to the output div element</span>
+<span class="p">});</span>
+</code></pre></div>
+
+<p>This file (<code>webapp/markdown-editor.js</code>) depends on a node dependency and needs to be bundled with a tool called <code>esbuild</code> to make it ready to be able to run on a browser.</p>
+<p>In your <strong>base repository directory</strong>, run the following command to use <code>esbuild</code> to bundle your <code>markdown-editor.js</code> file.
+<code>npx esbuild ./webapp/markdown-editor.js --bundle --minify --sourcemap --outfile=./lab2/wiki/static/markdown-editor.min.js</code></p>
+<p>This command bundles your <code>markdown-editor.js</code> file and all the imports that it needs into one huge file called <code>markdown-editor.min.js</code>. It is now ready to be included into your Django application!</p>
+<h5 id="django-integration">Django Integration</h5>
+<p>While we do have the JavaScript for our markdown editor, we still need the HTML for the editor! Create a new HTML file called <code>editor.html</code> in <code>lab2/wiki/templates/</code> and add the following content:</p>
+<div class="highlight"><pre><span></span><code>{% load static %}
+<span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;en&quot;</span><span class="p">&gt;</span>
 <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Markdown and Emoji App<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>New Wiki Page<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
 <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Welcome to the Markdown and Emoji App!<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
-
-    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;emoji-picker&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span> <span class="cm">&lt;!-- Emoji Picker --&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Welcome to the Wiki App!<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
 
     <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
         <span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>Markdown Editor<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
@@ -319,143 +331,360 @@
     <span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>Output<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;markdown-output&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span> <span class="cm">&lt;!-- Rendered HTML output --&gt;</span>
 
-
-
-    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;{% static &#39;main.min.js&#39; %}&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span> <span class="cm">&lt;!-- Load bundled JS --&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;{% static &#39;markdown-editor.min.js&#39; %}&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span> <span class="cm">&lt;!-- Load bundled JS --&gt;</span>
 <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </code></pre></div>
 
-<ol>
-<li>Bundle the <code>main.js</code> file again using esbuild:</li>
-</ol>
-<div class="highlight"><pre><span></span><code>npx<span class="w"> </span>esbuild<span class="w"> </span>main.js<span class="w"> </span>--bundle<span class="w"> </span>--minify<span class="w"> </span>--sourcemap<span class="w"> </span>--outfile<span class="o">=</span>./emojis/static/main.min.js
+<p>Add a new view function that will render this template in <code>wiki/views.py</code></p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">editor</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s2">&quot;editor.html&quot;</span><span class="p">)</span>
 </code></pre></div>
 
-<hr>
-<h4 id="integrating-with-django-models-orm">Integrating with Django Models (ORM)</h4>
-<p>Now that we have a Markdown editor and emoji picker set up, let’s store the content users create in a Django model.</p>
-<ol>
-<li>Update <code>emojis/models.py</code> to create a model for storing user-created pages:</li>
-</ol>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
-
-<span class="k">class</span> <span class="nc">Page</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
-    <span class="n">title</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
-    <span class="n">content</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">()</span>  <span class="c1"># Markdown content</span>
-    <span class="n">created_at</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now_add</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">title</span>
-</code></pre></div>
-
-<ol>
-<li>In <code>emojis/views.py</code>, create a new view to handle saving the Markdown content to the database:</li>
-</ol>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span>
-<span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">JsonResponse</span>
-<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Page</span>
-
-<span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s2">&quot;index.html&quot;</span><span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">save_page</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;POST&#39;</span><span class="p">:</span>
-        <span class="n">title</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">,</span> <span class="s1">&#39;Untitled&#39;</span><span class="p">)</span>
-        <span class="n">content</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;content&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
-        <span class="n">Page</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">,</span> <span class="n">content</span><span class="o">=</span><span class="n">content</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">JsonResponse</span><span class="p">({</span><span class="s1">&#39;status&#39;</span><span class="p">:</span> <span class="s1">&#39;success&#39;</span><span class="p">})</span>
-</code></pre></div>
-
-<ol>
-<li>In <code>emojis/urls.py</code>, add the new route for saving content:</li>
-</ol>
+<p>In <code>wiki/urls.py</code>, add the new route for our markdown editor:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">path</span>
 <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">views</span>
 
 <span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
     <span class="n">path</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;index&quot;</span><span class="p">),</span>
-    <span class="n">path</span><span class="p">(</span><span class="s2">&quot;save/&quot;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">save_page</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;save_page&quot;</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s2">&quot;add/&quot;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">editor</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;add&quot;</span><span class="p">),</span>
 <span class="p">]</span>
 </code></pre></div>
 
-<ol>
-<li>Modify the HTML form in <code>index.html</code> to send data to the server and save the page:</li>
-</ol>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">form</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;save-form&quot;</span> <span class="na">method</span><span class="o">=</span><span class="s">&quot;POST&quot;</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;title&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;page-title&quot;</span> <span class="na">placeholder</span><span class="o">=</span><span class="s">&quot;Page Title&quot;</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">textarea</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;markdown-editor&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;content&quot;</span> <span class="na">rows</span><span class="o">=</span><span class="s">&quot;10&quot;</span> <span class="na">cols</span><span class="o">=</span><span class="s">&quot;50&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">textarea</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;save-btn&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span><span class="p">&gt;</span>Save Page<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+<p>If you navigate to <code>localhost:8000/add/</code> you should see your markdown editor!</p>
+<p>We now have a visible markdown editor, but we have no way of actually storing data yet. So let’s store the content users create in a Django model.</p>
+<p>Update <code>wiki/models.py</code> to create a model for storing user-created pages:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
+
+<span class="k">class</span> <span class="nc">Page</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">AutoField</span><span class="p">(</span><span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+    <span class="n">content</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">()</span>  <span class="c1"># Markdown content</span>
+    <span class="n">created_at</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now_add</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;#</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">title</span><span class="si">}</span><span class="s2">&quot;</span>
 </code></pre></div>
 
-<ol>
-<li>In <code>main.js</code>, handle the form submission using JavaScript and send the content via a POST request:</li>
-</ol>
-<div class="highlight"><pre><span></span><code><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;save-btn&#39;</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+<p>After creating the model, run <code>python3.11 manage.py makemigrations</code> and <code>python3.11 manage.py migrate</code> to create/update and apply our database schema.</p>
+<h5 id="task-backend-for-storing-wiki-pages">TASK - Backend For Storing Wiki Pages</h5>
+<p>Update the contents of <code>wiki/templates/editor.html</code> to this: <strong>(DO NOT MODIFY THE HTML)</strong></p>
+<div class="highlight"><pre><span></span><code>{% load static %}
+<span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;en&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>New Wiki Page<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Welcome to the Wiki App!<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
 
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;page-title&#39;</span><span class="p">).</span><span class="nx">value</span><span class="p">;</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">content</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;markdown-editor&#39;</span><span class="p">).</span><span class="nx">value</span><span class="p">;</span>
+    <span class="p">&lt;</span><span class="nt">form</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;save-form&quot;</span> <span class="na">method</span><span class="o">=</span><span class="s">&quot;POST&quot;</span> <span class="na">action</span><span class="o">=</span><span class="s">&quot;/wiki/save/&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;title&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;page-title&quot;</span> <span class="na">placeholder</span><span class="o">=</span><span class="s">&quot;Page Title&quot;</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">textarea</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;markdown-editor&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;content&quot;</span> <span class="na">rows</span><span class="o">=</span><span class="s">&quot;10&quot;</span> <span class="na">cols</span><span class="o">=</span><span class="s">&quot;50&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">textarea</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;convert-btn&quot;</span><span class="p">&gt;</span>Convert to HTML<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;save-btn&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span><span class="p">&gt;</span>Save Page<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+        {% csrf_token %}
+    <span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
 
-<span class="w">    </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">&#39;/save/&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;POST&#39;</span><span class="p">,</span>
-<span class="w">        </span><span class="nx">headers</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="s1">&#39;Content-Type&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;application/json&#39;</span><span class="p">,</span>
-<span class="w">            </span><span class="s1">&#39;X-CSRFToken&#39;</span><span class="o">:</span><span class="w"> </span><span class="nx">getCookie</span><span class="p">(</span><span class="s1">&#39;csrftoken&#39;</span><span class="p">)</span><span class="w"> </span><span class="c1">//  CSRF token</span>
-<span class="w">        </span><span class="p">},</span>
-<span class="w">        </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="nx">title</span><span class="p">,</span><span class="w"> </span><span class="nx">content</span><span class="o">:</span><span class="w"> </span><span class="nx">content</span><span class="p">})</span>
-<span class="w">    </span><span class="p">})</span>
-<span class="w">    </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
-<span class="w">    </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span><span class="w"> </span><span class="c1">// Handle the response from the server</span>
-<span class="w">    </span><span class="p">});</span>
+    <span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>Output<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;markdown-output&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span> <span class="cm">&lt;!-- Rendered HTML output --&gt;</span>
+
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;{% static &#39;markdown-editor.min.js&#39; %}&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span> <span class="cm">&lt;!-- Load bundled JS --&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<p><strong>Your task</strong> is to create the backend logic for handling the submission of the add wiki page. Your logic <strong>MUST</strong> use the <code>Page</code> model that we created earlier in the lab and your logic <strong>MUST</strong> be run when sending a POST request to <code>/wiki/save/</code>.</p>
+<h4 id="displaying-wiki-pages">Displaying Wiki Pages</h4>
+<p>While it's great that we can store wiki pages, we need a way to access them ourselves.</p>
+<h5 id="homepage">Homepage</h5>
+<p>Change the <code>index.html</code> template in <code>wiki/templates</code>. Replace its contents with the following code snippet in it:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;en&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>My Wiki | Home<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>My Wiki Pages<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;/wiki/add/&quot;</span><span class="p">&gt;</span>Add Article<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+            {% for page in pages %}
+                <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;{{ page.url }}&quot;</span><span class="p">&gt;</span>{{ page.title }}<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+            {% endfor %}
+        <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<p>Modify <code>wiki/views.py</code> to replace the <code>index</code> function and also add a new function:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span><span class="p">,</span> <span class="n">get_object_or_404</span>
+<span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">reverse</span>
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Page</span>
+
+<span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="n">pages</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="n">page_objects</span> <span class="o">=</span> <span class="n">Page</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">page</span> <span class="ow">in</span> <span class="n">page_objects</span><span class="p">:</span>
+        <span class="n">pages</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+            <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="n">page</span><span class="o">.</span><span class="n">title</span><span class="p">,</span>
+            <span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;view&quot;</span><span class="p">,</span> <span class="n">kwargs</span><span class="o">=</span><span class="p">{</span> <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="n">page</span><span class="o">.</span><span class="n">id</span> <span class="p">})</span>
+        <span class="p">})</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s2">&quot;index.html&quot;</span><span class="p">,</span> <span class="p">{</span> <span class="s2">&quot;pages&quot;</span><span class="p">:</span> <span class="n">pages</span> <span class="p">})</span>
+
+<span class="k">def</span> <span class="nf">view_page</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="nb">id</span><span class="p">):</span>
+    <span class="n">page</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">Page</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="nb">id</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s2">&quot;page.html&quot;</span><span class="p">,</span> <span class="p">{</span> <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="n">page</span><span class="o">.</span><span class="n">title</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">page</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="nb">id</span> <span class="p">})</span>
+</code></pre></div>
+
+<p>Modify <code>wiki/urls.py</code> to include our new view function.</p>
+<div class="highlight"><pre><span></span><code><span class="n">path</span><span class="p">(</span><span class="s2">&quot;page/&lt;int:id&gt;/&quot;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">view_page</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;view&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<h5 id="wiki-page">Wiki Page</h5>
+<p>Create a new file <code>wiki/templates/page.html</code> and paste the following snippet in:</p>
+<div class="highlight"><pre><span></span><code>{% load static %}
+<span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>{{ title }}<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span> 
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;content&quot;</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;display: none;&quot;</span><span class="p">&gt;</span>
+            {{ content }}
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;{% static &#39;markdown-renderer.min.js&#39; %}&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span> <span class="cm">&lt;!-- Load bundled JS --&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<p>In the <code>webapp</code> folder, create a new file called <code>markdown-renderer.js</code> and paste the following snippet in:</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">marked</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;marked&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// Import the markdown converter</span>
+
+<span class="c1">// Handle rendering</span>
+<span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;load&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">markdownText</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">textContent</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">htmlOutput</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">marked</span><span class="p">(</span><span class="nx">markdownText</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">contentDiv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;content&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">contentDiv</span><span class="p">.</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">htmlOutput</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">contentDiv</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;block&#39;</span><span class="p">;</span>
 <span class="p">});</span>
 </code></pre></div>
 
-<hr>
+<p><code>esbuild</code> it with this command and then your website should now have a functional wiki!
+<code>npx esbuild ./webapp/markdown-renderer.js --bundle --minify --sourcemap --outfile=./lab2/wiki/static/markdown-renderer.min.js</code></p>
 <h4 id="serving-static-files-with-whitenoise">Serving Static Files with Whitenoise</h4>
-<p>Now that we have a Django app with Markdown editing, emoji picking, and content storage, we need to serve static files efficiently. We'll use <strong>Whitenoise</strong> for this.</p>
+<p>Now that we have a Django app with Markdown editing and content storage, we need to configure our static hosting middleware. In a production environment, Django will not export static files which is why we need to use a static middleware. Changing the <code>DEBUG</code> variable in <code>lab2/settings.py</code> to <code>False</code>, running <code>python3 manage.py runserver</code>, and then navigating to <code>localhost:8000/wiki/add/</code> will not allow you to preview any markdown code. We can use <strong>Whitenoise</strong> (a static file middleware) to resolve this. You can learn more about <a href="https://whitenoise.readthedocs.io/en/latest/django.html">Whitenoise here</a>. </p>
 <ol>
-<li>
-<p>Install Whitenoise:
-   <code>pip install whitenoise</code></p>
-</li>
-<li>
-<p>Update <code>settings.py</code> to use Whitenoise:</p>
-</li>
+<li>Install Whitenoise:</li>
 </ol>
-<div class="highlight"><pre><span></span><code>MIDDLEWARE = [
-    &#39;whitenoise.middleware.WhiteNoiseMiddleware&#39;,  # line for middleware
-    # other middleware...
-]
-
-STATICFILES_STORAGE = &#39;whitenoise.storage.CompressedManifestStaticFilesStorage&#39;
-
-STATIC_URL = &#39;/static/&#39;
-STATIC_ROOT = BASE_DIR / &#39;staticfiles&#39;
+<div class="highlight"><pre><span></span><code>pip install whitenoise
 </code></pre></div>
 
 <ol>
-<li>
-<p>Run <code>collectstatic</code> to gather all static files:
-   <code>python manage.py collectstatic</code></p>
-</li>
-<li>
-<p>Restart the Django server, and now Whitenoise will handle serving static files, including the JavaScript bundle.</p>
-</li>
+<li>Update <code>settings.py</code> to use Whitenoise:</li>
 </ol>
-<hr>
+<div class="highlight"><pre><span></span><code><span class="n">MIDDLEWARE</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="c1"># ...</span>
+    <span class="s1">&#39;django.middleware.security.SecurityMiddleware&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;whitenoise.middleware.WhiteNoiseMiddleware&#39;</span><span class="p">,</span>  <span class="c1"># MAKE SURE IT&#39;S AFTER THE SECURITY MIDDLEWARE!</span>
+    <span class="c1"># ...</span>
+<span class="p">]</span>
+
+<span class="n">STATIC_URL</span> <span class="o">=</span> <span class="s1">&#39;/static/&#39;</span>
+<span class="n">STATIC_ROOT</span> <span class="o">=</span> <span class="n">BASE_DIR</span> <span class="o">/</span> <span class="s1">&#39;staticfiles&#39;</span>
+</code></pre></div>
+
+<ol>
+<li>Run <code>collectstatic</code> to gather all static files:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">collectstatic</span>
+</code></pre></div>
+
+<ol>
+<li>Restart the Django server, and now Whitenoise will handle serving static files, including the JavaScript bundles.</li>
+</ol>
+<h4 id="task-emoji-picker">TASK - Emoji Picker</h4>
+<p>Add a new file to <code>webapp</code> called <code>emoji-editor.js</code> and paste the following code in it:</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Picker</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;emoji-mart&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// Import the emoji picker</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">pickerOptions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">onEmojiSelect</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">emoji</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">textarea</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;markdown-editor&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">textarea</span><span class="p">.</span><span class="nx">value</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nx">emoji</span><span class="p">.</span><span class="kr">native</span><span class="p">;</span><span class="w"> </span><span class="c1">// Add selected emoji to the editor</span>
+<span class="p">}};</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">picker</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Picker</span><span class="p">(</span><span class="nx">pickerOptions</span><span class="p">);</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;emoji-picker&#39;</span><span class="p">).</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">picker</span><span class="p">);</span><span class="w"> </span><span class="c1">// Add emoji picker to the DOM</span>
+</code></pre></div>
+
+<p>Update <code>wiki/templates/editor.html</code> to the following:</p>
+<div class="highlight"><pre><span></span><code>{% load static %}
+<span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;en&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>New Wiki Page<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Welcome to the Wiki App!<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;emoji-picker&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+
+    <span class="p">&lt;</span><span class="nt">form</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;save-form&quot;</span> <span class="na">method</span><span class="o">=</span><span class="s">&quot;POST&quot;</span> <span class="na">action</span><span class="o">=</span><span class="s">&quot;/wiki/save/&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;title&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;page-title&quot;</span> <span class="na">placeholder</span><span class="o">=</span><span class="s">&quot;Page Title&quot;</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">textarea</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;markdown-editor&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;content&quot;</span> <span class="na">rows</span><span class="o">=</span><span class="s">&quot;10&quot;</span> <span class="na">cols</span><span class="o">=</span><span class="s">&quot;50&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">textarea</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;convert-btn&quot;</span><span class="p">&gt;</span>Convert to HTML<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;save-btn&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span><span class="p">&gt;</span>Save Page<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+        {% csrf_token %}
+    <span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+
+    <span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>Output<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;markdown-output&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span> <span class="cm">&lt;!-- Rendered HTML output --&gt;</span>
+
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;{% static &#39;markdown-editor.min.js&#39; %}&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;{% static &#39;emoji-editor.min.js&#39; %}&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<p><strong>Your task</strong> is to esbuild <code>emoji-editor.js</code> into <code>wiki/static/emoji-editor.min.js</code>. After esbuilding, Check <code>localhost:8000/wiki/add/</code> to confirm that there is a working emoji picker.</p>
+<h4 id="task-adding-likes">TASK - Adding Likes</h4>
+<p>Update <code>wiki/templates/page.html</code> to the following:</p>
+<div class="highlight"><pre><span></span><code>{% load static %}
+<span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>{{ title }}<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span> 
+        <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">form</span> <span class="na">action</span><span class="o">=</span><span class="s">&quot;/wiki/{{ id }}/like/&quot;</span> <span class="na">method</span><span class="o">=</span><span class="s">&quot;POST&quot;</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;button&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;Like Post ({{ like_count }} likes)&quot;</span> <span class="p">/&gt;</span>
+                {% csrf_token %}
+            <span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;content&quot;</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;display: none;&quot;</span><span class="p">&gt;</span>
+            {{ content }}
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;{% static &#39;markdown-renderer.min.js&#39; %}&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span> <span class="cm">&lt;!-- Load bundled JS --&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<p><strong>Your task</strong> is to update the backend code to store likes and when each like was created. It should pass a <code>like_count</code> to the context dictionary when calling <code>render</code> in the <code>view_page</code> view. The route and logic to add a like should be accessible when a POST request is sent to <code>/wiki/&lt;id&gt;/like/</code></p>
+<h4 id="task-displaying-likes">TASK - Displaying Likes</h4>
+<p>Add a new file in <code>wiki/templates/</code> called <code>likes.html</code> and paste in the following:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>{{ title }} | Likes<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Likes for {{ title }}<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">ol</span><span class="p">&gt;</span>
+            {% for like_date in likes %}
+                <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>{{ like_date }}<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+            {% endfor %}
+        <span class="p">&lt;/</span><span class="nt">ol</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;/wiki/{{ id }}/&quot;</span><span class="p">&gt;&lt;</span> <span class="nt">Go</span> <span class="na">Back</span><span class="err">&lt;/</span><span class="na">a</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<p>Replace the contents of <code>wiki/templates/page.html</code> with</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>{{ title }}<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span> 
+        <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">form</span> <span class="na">action</span><span class="o">=</span><span class="s">&quot;/wiki/{{ id }}/like/&quot;</span> <span class="na">method</span><span class="o">=</span><span class="s">&quot;POST&quot;</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;button&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;Like Post ({{ like_count }} likes)&quot;</span> <span class="p">/&gt;</span>
+                {% csrf_token %}
+            <span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;/wiki/{{ id }}/likes/&quot;</span><span class="p">&gt;</span>View All Likes<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;content&quot;</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;display: none;&quot;</span><span class="p">&gt;</span>
+            {{ content }}
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;{% static &#39;markdown-renderer.min.js&#39; %}&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span> <span class="cm">&lt;!-- Load bundled JS --&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<p><strong>Your task</strong> is to render a list of every single like a specific wiki page recieved and when they were created. This route should be accessible at <code>/wiki/&lt;id&gt;/likes/</code>, and it should render the <code>likes.html</code> template.</p>
+<p>When rendering the <code>likes.html</code> template, you will need to pass in to the context argument the following:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">        </span><span class="c1">// id of the wiki page</span>
+<span class="w">    </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">    </span><span class="c1">// title of the wiki page,</span>
+<span class="w">    </span><span class="nt">&quot;likes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">     </span><span class="c1">// list of STRING representations of each like that was received for this specific wiki page</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h4 id="requirements">Requirements</h4>
+<ul>
+<li>Must use Python3</li>
+<li>Must run on Ubuntu (Use the undergrad lab machines, for example the ones in CSC 2-29 or install an Ubuntu VM to check this)</li>
+<li>A working Django 5 application<ul>
+<li>using the latest Django version from pypi<ul>
+<li>downloaded with pip into a virtualenv</li>
+</ul>
+</li>
+<li>with a wiki homepage that displays all wiki pages created at <code>/wiki/</code></li>
+<li>with a wiki page creation page at <code>/wiki/add/</code><ul>
+<li>must have a markdown editor and emoji picker</li>
+<li>must have used esbuild to compile the markdown editor/emoji picker into the code</li>
+</ul>
+</li>
+<li>with individual wiki pages that display their respective content in markdown at <code>/wiki/&lt;id&gt;/</code><ul>
+<li>must have the functionality to add a like to a wiki page when a POST request is sent to <code>/wiki/&lt;id&gt;/like/</code></li>
+<li>must have a likes list page that shows when each like for that specific page was created at <code>/wiki/&lt;id&gt;/likes/</code></li>
+</ul>
+</li>
+<li>using Django's ORM system to store wiki pages</li>
+<li>with correctly setup Whitenoise middleware</li>
+</ul>
+</li>
+<li>A git repository that does not contain built (compiled, transpiled, bundled) or downloaded artifacts, including but not limited to:<ul>
+<li><code>virtualenv</code> <code>venv</code> etc.</li>
+<li><code>.pyc</code> files, <code>__pycache__</code> directories.</li>
+<li><code>node_modules</code></li>
+<li><code>db.sqlite3</code> or any other databases.<ul>
+<li><code>db.sqlite3</code> <em>should never leave your computer.</em> It is for local development only.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Your git repository SHOULD contain:<ul>
+<li>The code you worked on during the lab.</li>
+</ul>
+</li>
+</ul>
 <h4 id="conclusion-and-submission">Conclusion and Submission</h4>
 <p>At the end of this lab, you will have built a fully functioning web app with the following features:
 - An emoji picker using the <code>emoji-mart</code> npm package.
 - A Markdown editor where users can write content and convert it to HTML.
 - Content storage in a Django model using the ORM.
+- A working wiki website
+- A working like system for each wiki page
 - Efficient serving of static files with Whitenoise.</p>
+<p>Please confirm you have completed <strong>the four tasks</strong> in this lab.
+- Creating the backend for storing wiki pages
+- Adding an emoji picker to the markdown editor
+- Adding support for liking wiki pages
+- Adding support for viewing all of the likes a wiki page received (and when they were created)</p>
 <h5 id="submission-instructions">Submission Instructions</h5>
 <ol>
 <li>Push your code to GitHub Classroom <strong>before the deadline</strong>.</li>
-<li>Ensure your repository contains only the necessary files, and your <code>.gitignore</code> excludes built files (<code>venv/</code>, <code>node_modules/</code>, <code>main.min.js</code>).</li>
+<li>Ensure your repository contains only the necessary files, and your <code>.gitignore</code> excludes built files (<code>venv/</code>, <code>node_modules/</code>, <code>*.min.js</code>, <code>*.min.js.map</code>).</li>
 </ol>
 <p>Submit your repository link on eClass.</p>
 <hr>
@@ -463,6 +692,7 @@ STATIC_ROOT = BASE_DIR / &#39;staticfiles&#39;
 <ul>
 <li>If you encounter issues with static files, ensure your file paths are correct and that Django’s <code>STATIC_URL</code> is configured properly.</li>
 <li>For more detailed error handling or improving the user interface, consider adding feedback when content is saved or emoji selection is confirmed.</li>
+<li>Consult the <a href="https://docs.djangoproject.com/en/5.1/">Django Documentation</a>.</li>
 </ul>
   <footer>
     <p>Published: <time datetime="2024-09-05T00:00:00-06:00">
@@ -471,6 +701,7 @@ STATIC_ROOT = BASE_DIR / &#39;staticfiles&#39;
     <address>
       By           <a href="../author/alireza-azimi.html">Alireza Azimi</a>
           <a href="../author/mo-adel-abdelghany.html">Mo Adel Abdelghany</a>
+          <a href="../author/william-qi.html">William Qi</a>
     </address>
     <p>
         Category: <a href="../category/labsignments.html">labsignments</a>
