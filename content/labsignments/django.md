@@ -377,7 +377,7 @@ Update the contents of `wiki/templates/editor.html` to this: **(DO NOT MODIFY TH
 </html>
 ```
 
-**Your task** is to create the backend logic for handling the submission of the add wiki page. Your logic **MUST** use the `Page` model that we created earlier in the lab and your logic **MUST** be run when sending a POST request to `/wiki/save/`.
+**Your task** is to create the backend logic for handling the submission of the add wiki page. Your logic **MUST** use the `Page` model that we created earlier in the lab and your logic **MUST** be run when sending a POST request to `/wiki/save/`. It **MUST** redirect to `/wiki/` after saving the page.
 
 ## Displaying Wiki Pages
 
@@ -443,8 +443,9 @@ Create a new file `wiki/templates/page.html` and paste the following snippet in:
         <title>{{ title }}</title>
     </head>
     <body> 
-        <div id="content" style="display: none;">
-            {{ content }}
+        <div id="content" style="display: none;">{{ content }}</div>
+        <div>
+            <a href="/wiki/">&lt; Go Back</a>
         </div>
     </body>
     <script src="{% static 'markdown-renderer.min.js' %}"></script> <!-- Load bundled JS -->
@@ -477,7 +478,12 @@ Now that we have a Django app with Markdown editing and content storage, we need
 pip install whitenoise
 ```
 
-2. Update `settings.py` to use Whitenoise:
+2. Navigate to the root directory in your repository and add Whitenoise to your `requirements.txt`
+```
+pip freeze requirements.txt
+```
+
+2. Update `lab2/settings.py` to use Whitenoise:
 
 ```py
 MIDDLEWARE = [
@@ -512,6 +518,11 @@ const picker = new Picker(pickerOptions);
 document.getElementById('emoji-picker').appendChild(picker); // Add emoji picker to the DOM
 ```
 
+Navigate to the root directory in your repository and then install `emoji-mart` from npm.
+```bash
+npm install --save-dev emoji-mart
+```
+
 Update `wiki/templates/editor.html` to the following:
 ```html
 {% load static %}
@@ -525,6 +536,7 @@ Update `wiki/templates/editor.html` to the following:
     <h1>Welcome to the Wiki App!</h1>
 
     <div id="emoji-picker"></div>
+    <br>
 
     <form id="save-form" method="POST" action="/wiki/save/">
         <input type="text" name="title" id="page-title" placeholder="Page Title"><br>
@@ -558,21 +570,22 @@ Update `wiki/templates/page.html` to the following:
     </head>
     <body> 
         <div>
-            <form action="/wiki/{{ id }}/like/" method="POST">
-                <input type="button" value="Like Post ({{ like_count }} likes)" />
+            <form action="/wiki/page/{{ id }}/like/" method="POST">
+                <input type="submit" value="Like Post ({{ like_count }} likes)" />
                 {% csrf_token %}
             </form>
         </div>
         <br>
-        <div id="content" style="display: none;">
-            {{ content }}
+        <div id="content" style="display: none;">{{ content }}</div>
+        <div>
+            <a href="/wiki/">&lt; Go Back</a>
         </div>
     </body>
     <script src="{% static 'markdown-renderer.min.js' %}"></script> <!-- Load bundled JS -->
 </html>
 ```
 
-**Your task** is to update the backend code to store likes and when each like was created. It should pass a `like_count` to the context dictionary when calling `render` in the `view_page` view. The route and logic to add a like should be accessible when a POST request is sent to `/wiki/<id>/like/`
+**Your task** is to update the backend code to store likes and when each like was created. It should pass a `like_count` to the context dictionary when calling `render` in the `view_page` view. The route and logic to add a like should be accessible when a POST request is sent to `/wiki/page/<id>/like/`. After liking the page, it must redirect to the same wiki page.
 
 ## TASK - Displaying Likes
 
@@ -591,13 +604,14 @@ Add a new file in `wiki/templates/` called `likes.html` and paste in the followi
             {% endfor %}
         </ol>
         <br>
-        <a href="/wiki/{{ id }}/">< Go Back</a>
+        <a href="/wiki/page/{{ id }}/">&lt; Go Back</a>
     </body>
 </html>
 ```
 
 Replace the contents of `wiki/templates/page.html` with
 ```html
+{% load static %}
 <!DOCTYPE html>
 <html>
     <head>
@@ -605,30 +619,31 @@ Replace the contents of `wiki/templates/page.html` with
     </head>
     <body> 
         <div>
-            <form action="/wiki/{{ id }}/like/" method="POST">
-                <input type="button" value="Like Post ({{ like_count }} likes)" />
+            <form action="/wiki/page/{{ id }}/like/" method="POST">
+                <input type="submit" value="Like Post ({{ like_count }} likes)" /><br><br>
+                <a href="/wiki/page/{{ id }}/likes/">View All Likes</a>
                 {% csrf_token %}
             </form>
-            <br><br>
-            <a href="/wiki/{{ id }}/likes/">View All Likes</a>
+           
         </div>
         <br>
-        <div id="content" style="display: none;">
-            {{ content }}
+        <div id="content" style="display: none;">{{ content }}</div>
+        <div>
+            <a href="/wiki/">&lt; Go Back</a>
         </div>
     </body>
     <script src="{% static 'markdown-renderer.min.js' %}"></script> <!-- Load bundled JS -->
 </html>
 ```
 
-**Your task** is to render a list of every single like a specific wiki page recieved and when they were created. This route should be accessible at `/wiki/<id>/likes/`, and it should render the `likes.html` template.
+**Your task** is to render a list of every single like a specific wiki page recieved and when they were created. This route should be accessible at `/wiki/page/<id>/likes/`, and it should render the `likes.html` template.
 
 When rendering the `likes.html` template, you will need to pass in to the context argument the following:
 ```json
 {
     "id": 0,        // id of the wiki page
     "title": "",    // title of the wiki page,
-    "likes": []     // list of STRING representations of each like that was received for this specific wiki page
+    "likes": []     // list of STRING representations of the date of each like that was received for this specific wiki page
 }
 ```
 
@@ -643,15 +658,19 @@ When rendering the `likes.html` template, you will need to pass in to the contex
     * with a wiki page creation page at `/wiki/add/`
         * must have a markdown editor and emoji picker
         * must have used esbuild to compile the markdown editor/emoji picker into the code
-    * with individual wiki pages that display their respective content in markdown at `/wiki/<id>/`
-        * must have the functionality to add a like to a wiki page when a POST request is sent to `/wiki/<id>/like/`
-        * must have a likes list page that shows when each like for that specific page was created at `/wiki/<id>/likes/`
-    * using Django's ORM system to store wiki pages
+        * when saving a wiki page, it should make a POST Request to `/wiki/save/` and then redirect to `/wiki/`
+    * with individual wiki pages that display their respective content in markdown at `/wiki/page/<id>/`
+        * must have the functionality to add a like to a wiki page when a POST request is sent to `/wiki/page/<id>/like/`
+            * must redirect to the same wiki page that was liked
+        * must have a likes list page that shows when each like for that specific page was created at `/wiki/page/<id>/likes/`
+    * using Django's ORM system to store wiki pages and likes
     * with correctly setup Whitenoise middleware
 * A git repository that does not contain built (compiled, transpiled, bundled) or downloaded artifacts, including but not limited to:
     * `virtualenv` `venv` etc.
     * `.pyc` files, `__pycache__` directories.
     * `node_modules`
+    * `*.min.js`
+    * `*.min.js.map`
     * `db.sqlite3` or any other databases.
         * `db.sqlite3` *should never leave your computer.* It is for local development only.
 * Your git repository SHOULD contain:
@@ -675,7 +694,7 @@ Please confirm you have completed **the four tasks** in this lab.
 
 ### Submission Instructions
 1. Push your code to GitHub Classroom **before the deadline**.
-2. Ensure your repository contains only the necessary files, and your `.gitignore` excludes built files (`venv/`, `node_modules/`, `*.min.js`, `*.min.js.map`).
+2. Ensure your repository contains only the necessary files, and your `.gitignore` excludes built files (`venv/`, `node_modules/`, `*.min.js`, `*.min.js.map`, `db.sqlite3`, etc).
 
 Submit your repository link on eClass.
 
