@@ -111,12 +111,28 @@ To check if `venv` or `virtualenv` is installed:
 
 ```bash
 python3.11 -m venv --help
+python3.11 -m virtualenv --help
 ```
 
-If you don't have `venv`, install it using pip:
+Either `venv` or `virtualenv` will work. 
+
+If you don't have either, install `virtualenv` using pip.
 
 ```bash
 python -m pip install --user virtualenv
+```
+
+### Create Virtual Environment
+
+Run `venv` or `virtualenv` and tell it to create a virtual environment directory, called `venv`.
+
+Note the first `venv` or `virtualenv` is the name of the Python module.
+The second `venv` is the name of a directory (folder) you'd like it to create.
+
+```bash
+python -m venv venv
+# or
+python -m virtualenv venv
 ```
 
 ### Activate Virtual Environment:
@@ -126,10 +142,6 @@ To activate the virtual environment:
 ```bash
 source venv/bin/activate
 ```
-
-
-
----
 
 ## Installing Node.js and npm
 
