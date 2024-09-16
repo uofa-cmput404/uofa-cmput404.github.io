@@ -6,27 +6,27 @@ status: Published
 summary: Lab Procedure, Lab Assignments, Lab Marking
 ----
 
-<style>
-    html body main {
-        background-image: url("/theme/draft.png");
-        background-repeat: repeat;
-        background-size: 100%;
-    }
-</style>
-
 [TOC]
 
 ---
 
 # Description
 
-The purpose of this lab is to familiarize you with setting up a virtual environment, developing with Django, and using npm to incorporate external packages like an emoji picker and a markdown editor. By the end of this lab, you will build a simple wiki app where users can add emojis, likes, edit content using Markdown, and delete content.
+The purpose of this lab is to familiarize you with setting up a virtual environment, developing with Django, and using NPM to incorporate external packages like an emoji picker and a markdown editor. By the end of this lab, you will build a simple wiki app where users can add emojis, likes, edit content using Markdown, and delete content.
+
+At the end of this lab, you will have built a fully functioning web app with the following features:
+- An emoji picker using the `emoji-mart` NPM package.
+- A Markdown editor where users can write content and convert it to HTML.
+- Content storage in a Django model using the ORM.
+- A working wiki website
+- A working like system for each wiki page
+- Efficient serving of static files with WhiteNoise.
 
 # Getting Started
 
 ### Introduction to HTML and JavaScript
 
-Before diving into Django and npm, let’s go over some basics of HTML and JavaScript.
+Before diving into Django and NPM, let’s go over some basics of HTML and JavaScript.
 
 ### HTML Basics
 
@@ -91,27 +91,39 @@ Place this `.gitignore` file in the root of your project. You can combine [this 
 
 A virtual environment is a tool for managing Python dependencies specific to your project. Each project may have different requirements, and a virtual environment helps you manage these dependencies independently.
 
-### Setting up Python:
+### Windows OS
 
-If you have multiple versions of Python installed, always specify the version number:
+These commands are assuming you are using Linux or macOS. On Windows the commands need to be different.
+We recommend using WSL2 to run Ubuntu in a VM.
+You can install Ubuntu on Windows following [these instructions]({filename}http.md#ubuntu-on-windows).
 
-```bash
-python3.11 -m venv venv
+### Setting up Python
+
+Check your Python version with `--version`.
+
+If you have multiple versions of Python installed, always specify the version number.
+For example, on the lab machines there are multiple versions of Python installed.
+
+```txt
+hazelcam@innisfree:~>python --version
+Python 2.7.18
+hazelcam@innisfree:~>python3 --version
+Python 3.8.10
+hazelcam@innisfree:~>python3.8 --version
+Python 3.8.10
+hazelcam@innisfree:~>python3.11 --version
+Python 3.11.10
 ```
+
+So, to use Python 3.11 on the lab machines, we need to run it as `python3.11` not `python3` or `python`.
 
 ### Check for pip and venv/virtualenv:
-
-To verify if you have pip:
-
-```bash
-python3.11 -m pip
-```
 
 To check if `venv` or `virtualenv` is installed:
 
 ```bash
-python3.11 -m venv --help
-python3.11 -m virtualenv --help
+python -m venv --help
+python -m virtualenv --help
 ```
 
 Either `venv` or `virtualenv` will work. 
@@ -121,6 +133,8 @@ If you don't have either, install `virtualenv` using pip.
 ```bash
 python -m pip install --user virtualenv
 ```
+
+If you don't have `pip` or `venv` or `virtualenv`, you need to install newer version of Python.
 
 ### Create Virtual Environment
 
@@ -143,30 +157,69 @@ To activate the virtual environment:
 source venv/bin/activate
 ```
 
-## Installing Node.js and npm
+If it is activated your command prompt should start with `(venv)` or whatever you called the directory virtualenv or venv made.
 
-To install Node.js, download the LTS version from the [Node.js website](https://nodejs.org/en/download). The installation will include npm as well, which we will use to manage JavaScript packages.
+```text
+hazelcam@innisfree:~>source venv/bin/activate
+(venv) hazelcam@innisfree:~>
+```
 
----
+<p class="warning">Remember to never commit your virtual environment directory (folder) to git.
+Make sure it is listed in the <code>.gitignore</code>.
+</p>
+
+## Installing Node.js and NPM
+
+To install Node.js, download the LTS version from the [Node.js website](https://nodejs.org/en/download). The installation will include NPM as well, which we will use to manage JavaScript packages.
 
 # Lab Instructions
 
 ## Django Setup
 
-We will use [Django](https://www.djangoproject.com/), a high-level Python web framework. It simplifies web development by providing a built-in ORM, an admin panel, and much more. The [official documentation](https://docs.djangoproject.com/en/5.0/) is a valuable resource and **you will find it very helpful** to reference it during this lab for anything that is unclear.
+We will use [Django](https://www.djangoproject.com/), a high-level Python web framework. It simplifies web development by providing a built-in ORM, an admin panel, and much more. The [official documentation](https://docs.djangoproject.com/en/5.1/) is a valuable resource, and **you will find it very helpful** to reference it during this lab for anything that is unclear.
 
-### Steps to Set Up Django:
+### Install Django
 
-1. Create a virtual environment and install Django:
+Make sure your virtual environment is created and activated as above.
 
 ```
-virtualenv venv --python=python3
-source venv/bin/activate
 echo "Django>=5.0.1" > requirements.txt
 python -m pip install -r requirements.txt
 ```
 
-2. Start a new Django project:
+### If you're using an Ubuntu VM (such as UTM or WSL)
+
+You will need to point your browser to the VM's IP address, not `127.0.0.1` or `localhost`.
+Here is an example from an Ubuntu WSL install on Windows:
+
+```txt
+hazelcam@Roxanne:~$ ip addr show
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet 10.255.255.254/32 brd 10.255.255.254 scope global lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host
+       valid_lft forever preferred_lft forever
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP group default qlen 1000
+    link/ether 00:15:5d:8c:d5:00 brd ff:ff:ff:ff:ff:ff
+    inet 172.23.110.83/20 brd 172.23.111.255 scope global eth0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::215:5dff:fe8c:d500/64 scope link
+       valid_lft forever preferred_lft forever
+```
+
+In this case the VM's address is `172.23.110.83`.
+So later when I want to see my Django site,
+I will need to put `http://172.23.110.83:8000/` into my browser, instead of `localhost`.
+
+### Follow the Django Tutorial
+
+This is optional (not graded), but it will help you get familiar with Django. 
+<https://docs.djangoproject.com/en/5.1/intro/tutorial01/>
+
+### Start a new Django project
 
 ```
 django-admin startproject lab2
@@ -259,7 +312,7 @@ Now, visiting `localhost:8000/wiki` will display the HTML template.
 
 ## Adding Markdown Editor
 
-In this section, we will integrate a **Markdown editor** so that users can write content in Markdown format and see it rendered as HTML in the browser. We'll use the popular npm package `marked` for parsing Markdown content and converting it to HTML.
+In this section, we will integrate a **Markdown editor** so that users can write content in Markdown format and see it rendered as HTML in the browser. We'll use the popular NPM package `marked` for parsing Markdown content and converting it to HTML.
 
 ### Steps to Add the Markdown Editor:
 
@@ -478,24 +531,24 @@ window.addEventListener('load', () => {
 });
 ```
 
-`esbuild` it with this command and then your website should now have a functional wiki!
+Use `esbuild` to transpile it with this command and then your website should now have a functional wiki!
 `npx esbuild ./webapp/markdown-renderer.js --bundle --minify --sourcemap --outfile=./lab2/wiki/static/markdown-renderer.min.js`
 
-## Serving Static Files with Whitenoise
+## Serving Static Files with WhiteNoise
 
-Now that we have a Django app with Markdown editing and content storage, we need to configure our static hosting middleware. In a production environment, Django will not export static files which is why we need to use a static middleware. Changing the `DEBUG` variable in `lab2/settings.py` to `False`, running `python3 manage.py runserver`, and then navigating to `localhost:8000/wiki/add/` will not allow you to preview any markdown code. We can use **Whitenoise** (a static file middleware) to resolve this. You can learn more about [Whitenoise here](https://whitenoise.readthedocs.io/en/latest/django.html). 
+Now that we have a Django app with Markdown editing and content storage, we need to configure our static hosting middleware. In a production environment, Django will not export static files which is why we need to use a static middleware. Changing the `DEBUG` variable in `lab2/settings.py` to `False`, running `python3 manage.py runserver`, and then navigating to `localhost:8000/wiki/add/` will not allow you to preview any Markdown code. We can use **WhiteNoise** (a static file middleware) to resolve this. You can learn more about [WhiteNoise here](https://whitenoise.readthedocs.io/en/latest/django.html). 
 
-1. Install Whitenoise:
+1. Install WhiteNoise:
 ```
 pip install whitenoise
 ```
 
-2. Navigate to the root directory in your repository and add Whitenoise to your `requirements.txt`
+2. Navigate to the root directory in your repository and add WhiteNoise to your `requirements.txt`
 ```
 pip freeze requirements.txt
 ```
 
-2. Update `lab2/settings.py` to use Whitenoise:
+2. Update `lab2/settings.py` to use WhiteNoise:
 
 ```py
 MIDDLEWARE = [
@@ -514,7 +567,7 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 python manage.py collectstatic
 ```
 
-4. Restart the Django server, and now Whitenoise will handle serving static files, including the JavaScript bundles.
+4. Restart the Django server, and now WhiteNoise will handle serving static files, including the JavaScript bundles.
 
 ## TASK - Emoji Picker
 
@@ -530,7 +583,7 @@ const picker = new Picker(pickerOptions);
 document.getElementById('emoji-picker').appendChild(picker); // Add emoji picker to the DOM
 ```
 
-Navigate to the root directory in your repository and then install `emoji-mart` from npm.
+Navigate to the root directory in your repository and then install `emoji-mart` from NPM.
 ```bash
 npm install --save-dev emoji-mart
 ```
@@ -568,7 +621,7 @@ Update `wiki/templates/editor.html` to the following:
 </html>
 ```
 
-**Your task** is to esbuild `emoji-editor.js` into `wiki/static/emoji-editor.min.js`. After esbuilding, Check `localhost:8000/wiki/add/` to confirm that there is a working emoji picker.
+**Your task** is to transpile `emoji-editor.js` into `wiki/static/emoji-editor.min.js` using `esbuild`. After bundling, Check `localhost:8000/wiki/add/` to confirm that there is a working emoji picker.
 
 ## TASK - Adding Likes
 
@@ -598,6 +651,8 @@ Update `wiki/templates/page.html` to the following:
 ```
 
 **Your task** is to update the backend code to store likes and when each like was created. It should pass a `like_count` to the context dictionary when calling `render` in the `view_page` view. The route and logic to add a like should be accessible when a POST request is sent to `/wiki/page/<id>/like/`. After liking the page, it must redirect to the same wiki page.
+
+If you are not sure what to do, consult the Django Tutorial and the Documentation linked above!
 
 ## TASK - Displaying Likes
 
@@ -648,7 +703,7 @@ Replace the contents of `wiki/templates/page.html` with
 </html>
 ```
 
-**Your task** is to render a list of every single like a specific wiki page recieved and when they were created. This route should be accessible at `/wiki/page/<id>/likes/`, and it should render the `likes.html` template.
+**Your task** is to render a list of every single like a specific wiki page received and when they were created. This route should be accessible at `/wiki/page/<id>/likes/`, and it should render the `likes.html` template.
 
 When rendering the `likes.html` template, you will need to pass in to the context argument the following:
 ```json
@@ -664,51 +719,47 @@ When rendering the `likes.html` template, you will need to pass in to the contex
 * Must use Python3
 * Must run on Ubuntu (Use the undergrad lab machines, for example the ones in CSC 2-29 or install an Ubuntu VM to check this)
 * A working Django 5 application
-    * using the latest Django version from pypi
-        * downloaded with pip into a virtualenv
+    * using the latest Django version from [PyPI](https://pypi.org/)
+        * downloaded with pip into a virtual environment
     * with a wiki homepage that displays all wiki pages created at `/wiki/`
     * with a wiki page creation page at `/wiki/add/`
         * must have a markdown editor and emoji picker
-        * must have used esbuild to compile the markdown editor/emoji picker into the code
+        * must have used `esbuild` to transpile the markdown editor/emoji picker into the code
         * when saving a wiki page, it should make a POST Request to `/wiki/save/` and then redirect to `/wiki/`
-    * with individual wiki pages that display their respective content in markdown at `/wiki/page/<id>/`
+    * with individual wiki pages that display their respective content in Markdown at `/wiki/page/<id>/`
         * must have the functionality to add a like to a wiki page when a POST request is sent to `/wiki/page/<id>/like/`
-            * must redirect to the same wiki page that was liked
+            * must redirect back to the same wiki page that was liked
         * must have a likes list page that shows when each like for that specific page was created at `/wiki/page/<id>/likes/`
     * using Django's ORM system to store wiki pages and likes
-    * with correctly setup Whitenoise middleware
-* A git repository that does not contain built (compiled, transpiled, bundled) or downloaded artifacts, including but not limited to:
-    * `virtualenv` `venv` etc.
+    * with correctly setup WhiteNoise middleware
+* A git repository that does not contain built (compiled, transpiled, bundled, migrated) or downloaded artifacts, including but not limited to:
+    * `virtualenv` `venv` or other virtual environments, etc.
     * `.pyc` files, `__pycache__` directories.
     * `node_modules`
     * `*.min.js`
     * `*.min.js.map`
-    * `db.sqlite3` or any other databases.
-        * `db.sqlite3` *should never leave your computer.* It is for local development only.
+    * Databases like `db.sqlite3` or any other databases.
+        * The `db.sqlite3` database *should never leave your computer.* It is for local development only.
 * Your git repository SHOULD contain:
     * The code you worked on during the lab.
 
 ## Conclusion and Submission
 
-At the end of this lab, you will have built a fully functioning web app with the following features:
-- An emoji picker using the `emoji-mart` npm package.
-- A Markdown editor where users can write content and convert it to HTML.
-- Content storage in a Django model using the ORM.
-- A working wiki website
-- A working like system for each wiki page
-- Efficient serving of static files with Whitenoise.
-
-Please confirm you have completed **the four tasks** in this lab.
+Please confirm you have completed **the four tasks** in this lab and the [requirements](#requirements).
 - Creating the backend for storing wiki pages
 - Adding an emoji picker to the markdown editor
 - Adding support for liking wiki pages
-- Adding support for viewing all of the likes a wiki page received (and when they were created)
+- Adding support for viewing all the likes a wiki page received (and when they were created)
 
 ### Submission Instructions
-1. Push your code to GitHub Classroom **before the deadline**.
-2. Ensure your repository contains only the necessary files, and your `.gitignore` excludes built files (`venv/`, `node_modules/`, `*.min.js`, `*.min.js.map`, `db.sqlite3`, etc).
 
-Submit your repository link on eClass.
+Ensure your repository contains only the necessary files, and your `.gitignore` excludes built files (`venv/`, `node_modules/`, `*.min.js`, `*.min.js.map`, `db.sqlite3`, etc).
+
+Make sure you push to GitHub classroom **BEFORE the deadline!** You will not be able to push after that!
+
+Submit a link to your repo in the form `https://github.com/uofa-cmput404/w24-h0x-labsignment-django-yourgithubname` on eClass. **Do not** submit a link to a branch, a file, or the clone URL. 
+
+<p class="warning">If you do not submit a link to your repo on eClass using the correct format above, you will get a zero.</p>
 
 ---
 
