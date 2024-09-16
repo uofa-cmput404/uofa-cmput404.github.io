@@ -132,7 +132,7 @@ The [Faculty of Science Student Services](https://www.ualberta.ca/science/studen
 | What                    | Weight | Collaboration | Due Date <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
 |-------------------------|--------|---------------|-----------
 | Participation           | 10%    | [Solo Effort](#solo-effort) | Most Lectures <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
-| Lab Assignments (5-6)   | 30%    | [Consultation](#consultation) | Mondays 4PM <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
+| Lab Assignments(5 or 6) | 30%    | [Consultation](#consultation) | Mondays 4PM <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
 | Project Part 0          | 1%     | [Teamwork](#teamwork) | Tuesday, September 17, 4PM <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
 | Project Part 1          | 5%     | [Teamwork](#teamwork) | Monday, October 21, 4PM <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
 | Project Part 2          | 5%     | [Teamwork](#teamwork) | Monday, November 4, 4PM <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
@@ -645,6 +645,7 @@ Policy about course outlines can be found in [Course Requirements, Evaluations P
 * 2024-09-02: Initial version.
 * 2024-09-02: Clarify formatting of contract cheating: cs courses section.
 * 2024-09-08: Fix Hybrid Synchronous Delivery section: remove on request only.
+* 2024-09-16: Clarify 5 or 6 lab assignments.
 
 ## Copyright
 
