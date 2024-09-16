@@ -765,5 +765,4 @@ Submit a link to your repo in the form `https://github.com/uofa-cmput404/w24-h0x
 
 ### Further Tips
 - If you encounter issues with static files, ensure your file paths are correct and that Django’s `STATIC_URL` is configured properly.
-- For more detailed error handling or improving the user interface, consider adding feedback when content is saved or emoji selection is confirmed.
 - Consult the [Django Documentation](https://docs.djangoproject.com/en/5.1/).
