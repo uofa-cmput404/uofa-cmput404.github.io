@@ -12,7 +12,7 @@ summary: Lab Procedure, Lab Assignments, Lab Marking
 
 # Description
 
-The purpose of this lab is to familiarize you with setting up a virtual environment, developing with Django, and using NPM to incorporate external packages like an emoji picker and a markdown editor. By the end of this lab, you will build a simple wiki app where users can add emojis, likes, edit content using Markdown, and delete content.
+The purpose of this lab is to familiarize you with setting up a virtual environment, developing with Django, and using NPM to incorporate external packages like an emoji picker and a markdown editor. By the end of this lab, you will build a simple wiki app where users can add emojis, likes, and edit content using Markdown.
 
 At the end of this lab, you will have built a fully functioning web app with the following features:
 - An emoji picker using the `emoji-mart` NPM package.
