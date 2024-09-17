@@ -187,6 +187,12 @@ echo "Django>=5.0.1" > requirements.txt
 python -m pip install -r requirements.txt
 ```
 
+**If you are encountering an issue with this command in regards to a library called `html5lib` you will need to update your pip version first.**
+```
+wget https://bootstrap.pypa.io/get-pip.py -O ./get-pip.py
+python3.11 ./get-pip.py
+```
+
 ### If you're using an Ubuntu VM (such as UTM or WSL)
 
 You will need to point your browser to the VM's IP address, not `127.0.0.1` or `localhost`.
@@ -316,9 +322,10 @@ In this section, we will integrate a **Markdown editor** so that users can write
 
 ### Steps to Add the Markdown Editor:
 
-Install the `marked` package in the root directory of your repository:
+Install the `marked` and `esbuild` packages in the root directory of your repository:
 ```bash
 npm install --save-dev marked
+npm install --save-dev esbuild
 ```
 
 Create a new directory in the root directory called `webapp` and create a `markdown-editor.js` file in it.
