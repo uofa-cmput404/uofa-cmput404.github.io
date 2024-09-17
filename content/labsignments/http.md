@@ -1,6 +1,6 @@
 Title: HTTP Lab
 date: 2024-07-17
-tags: curl, http, socket, socketserver <!-- @LT-IGNORE:MORFOLOGIK_RULE_EN_CA(http)@ -->
+tags: curl, http, socket, socketserver, labs <!-- @LT-IGNORE:MORFOLOGIK_RULE_EN_CA(http)@ -->
 authors: Hazel Victoria Campbell, Samuel Iwuchukwu, Sadia Zahin Prodhan
 status: Published
 summary: Lab Procedure, Lab Assignments, Lab Marking

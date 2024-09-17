@@ -19,7 +19,7 @@ summary: Lab Procedure, Lab Assignments, Lab Marking
 
 # Description
 
-Big lab! This lab contains two phases. In Phase One, you will build a simple Django website. Understand the fundamentals of Django's MVC architecture using the built in models and views.
+This lab contains two phases. In Phase One, you will build a simple Django website. Understand the fundamentals of Django's MVC architecture using the built-in models and views.
 In Phase Two, you will deploy the Django application to [Heroku](https://www.heroku.com/). Understand the reasoning behind Platform as a Service (PaaS) businesses like Heroku. You may follow the official documentation.
 
 ## Learning Goals
@@ -27,7 +27,7 @@ In Phase Two, you will deploy the Django application to [Heroku](https://www.her
 * Using esbuild to bundle and create static files with NPM packages for Django to server using whitenoise from Heroku.
 * Django config (Level 2)
 * Django routes (Level 2)
-* Django models
+* Django models (Level 2)
 * Using Django with Postgres backend on Heroku
 * Using Django with Sqlite backend for local testing
 
