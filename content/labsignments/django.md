@@ -416,7 +416,7 @@ class Page(models.Model):
         return f"#{self.id} - {self.title}"
 ```
 
-After creating the model, run `python3.11 manage.py makemigrations` and `python3.11 manage.py migrate` to create/update and apply our database schema.
+After creating the model, run `python3.11 manage.py makemigrations` and `python3.11 manage.py migrate` to create/update and apply our database schema. This will additionally create a `db.sqlite3` file within your project directory, which stores all of your database data as an SQLite3 database.
 
 ### TASK - Backend For Storing Wiki Pages
 
