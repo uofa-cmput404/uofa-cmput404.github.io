@@ -98,12 +98,12 @@ Posts, likes, comments, posts, are all sent to the inboxes of the authors that s
 
 ## Project Parts 
 
-* Part 0 - sign up a repo
-* Part 1 - 1/2 way implementation
-* Part 2 - Lonely implementation
-* Part 3 - Connected implementation
-* Part 4 - Connect with Groups
-* Part 5 - Finish it off!
+* Part 0: sign up a repo
+* Part 1: 1/2 way implementation
+* Part 2: Centralized implementation
+* Part 3: Connected implementation
+* Part 4: Connect with Groups
+* Part 5: Finish it off!
 
 # Collaboration
    
@@ -196,6 +196,7 @@ Posts, likes, comments, posts, are all sent to the inboxes of the authors that s
     * As a node admin, I don't want to have seperate frontend and backend web servers, so I don't have to manage two web servers/services.
     * As a node admin, I want deleted posts stay in the database and only be removed from the UI and API, so I can see what was deleted.
     * As a node admin, I want my node's UI to only communicate with my nodes web server, so I can prevent XSS.
+    * As a node admin, I want the API objects (authors, posts, etc.) to be [identified by their full URL](#ids), to prevent collisions with other node's numbering schemes. *⧟ Part 3-5 only.*
 
 # Main Concepts
 
@@ -301,7 +302,7 @@ Posts, likes, comments, posts, are all sent to the inboxes of the authors that s
 * Inbox
     * **An inbox is not something the user ever actually sees. It is an API endpoint *only*.**
     * This is what a READER or USER of the social network has. They follow authors, and the authors they follow send objects to their inbox.
-    * This is something that only exists in the API. There is no special inbox in the User Interface, posts sent to a user's inbox are integrated into a their stream.
+    * This is something that only exists in the API. There is no special inbox in the User Interface, posts sent to a user's inbox are integrated into their stream.
     * This forms the backbone of the timeline of the social media user.
     * This receives likes and comments.
 * Stream
@@ -309,7 +310,7 @@ Posts, likes, comments, posts, are all sent to the inboxes of the authors that s
 * Remote
     * A node to node connection. Requests from another node. HTTP Basic Auth authenticated.
 * Local
-    * A local user accessing the REST API. Likely will use their cookie-auth, basic auth, or token auth. Local usually implies you check whether or not the user should have access. For node local API access to the inbox should be limited to only that authenticated authors---don't snoop!
+    * A local user accessing the REST API. Likely will use their cookie-auth, basic auth, or token auth. Local usually implies you check if the user should have access. For node local API access to the inbox should be limited to only that authenticated authors --- don't snoop!
 * Profile Page
     * A page that shows information about me as well as my public posts.
 * Push
@@ -318,47 +319,47 @@ Posts, likes, comments, posts, are all sent to the inboxes of the authors that s
     * When the node that needs the information requests from the node that has it.
 
 
-Frontend/API Visibility | Admin             | Friend        | Follower       | Everyone
+Frontend/API Visibility | Admin             | Friend        | Follower       | Everyone <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
 ------------------------|-------------------|---------------|----------------|----------------
-Public                  | control panel     | link + stream |  link + stream |  link + stream
-Unlisted                | control panel     | link + stream |  link + stream |  link
+Public                  | control panel     | link + stream |  link + stream |  link + stream <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
+Unlisted                | control panel     | link + stream |  link + stream |  link <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
 Friends Only            | control panel     |               |                |
-Deleted                 | control panel     |               |                |
+Deleted                 | control panel     |               |                | <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
 
 ----
 
-Database/Node2Node     | Type | Author         | Friend                  | Follower                   | Anyone
+Database/Node2Node     | Type | Author         | Friend                  | Follower                   | Anyone <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
 -----------------------|------|----------------|-------------------------|----------------------------|--------
-New Public             | push | from           | to `inbox`              | to `inbox`                 |
-New Unlisted           | push |                | to `inbox`              | to `inbox`                 |
-New Friends Only       | push |                | to `inbox`              |                            |
-Deleted Public         | push |                | to `inbox`              | to `inbox`                 | to inboxes post was sent to before
-Deleted Unlisted       | push |                | to `inbox`              | to `inbox`                 | to inboxes post was sent to before
-Deleted Friends Only   | push |                | to `inbox`              |                            | to inboxes post was sent to before
-Edited Public          | push |                | to `inbox`              | to `inbox`                 | to inboxes post was sent to before
-Edited Unlisted        | push | from           | to `inbox`              | to `inbox`                 | to inboxes post was sent to before
-Edited Friends Only    | push | from           | to `inbox`              |                            | to inboxes post was sent to before
-Commented Public       | push | to `inbox`     | from                    | from                       | from
-Commented Unlisted     | push | to `inbox`     | from                    | from                       | from
-Commented Friends Only | push | to `inbox`     | from                    |                            |
-Liked Public           | push | to `inbox`     | from                    | from                       | from
-Liked Unlisted         | push | to `inbox`     | from                    | from                       | from
-Liked Friends Only     | push | to `inbox`     | from                    |                            |
-Follow                 | push | to `inbox`     |                         |                            | from
-Follow-back (friend)   | push | from           |                         | to `inbox`                 |
-Unfollow               | push |                | *not yet implemented*   | *not yet implemented*      |
-View Public            | pull | to `post`      | optional from           | optional from              | optional from
-View Unlisted          | pull | to `post`      | optional from           | optional from              | optional from
-View Friends-Only      | pull |                | *not yet implemented*   |                            |
-View Deleted           | pull |                |                         |                            |
-View Following         | pull | to `followers` | optional from           | optional from              |
+New Public             | push | from           | to `inbox`              | to `inbox`                 | <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
+New Unlisted           | push |                | to `inbox`              | to `inbox`                 | <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
+New Friends Only       | push |                | to `inbox`              |                            | <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
+Deleted Public         | push |                | to `inbox`              | to `inbox`                 | to inboxes post was sent to before <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
+Deleted Unlisted       | push |                | to `inbox`              | to `inbox`                 | to inboxes post was sent to before <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
+Deleted Friends Only   | push |                | to `inbox`              |                            | to inboxes post was sent to before <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
+Edited Public          | push |                | to `inbox`              | to `inbox`                 | to inboxes post was sent to before <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
+Edited Unlisted        | push | from           | to `inbox`              | to `inbox`                 | to inboxes post was sent to before <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
+Edited Friends Only    | push | from           | to `inbox`              |                            | to inboxes post was sent to before <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
+Commented Public       | push | to `inbox`     | from                    | from                       | from <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
+Commented Unlisted     | push | to `inbox`     | from                    | from                       | from <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
+Commented Friends Only | push | to `inbox`     | from                    |                            | <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
+Liked Public           | push | to `inbox`     | from                    | from                       | from <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
+Liked Unlisted         | push | to `inbox`     | from                    | from                       | from <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
+Liked Friends Only     | push | to `inbox`     | from                    |                            | <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
+Follow                 | push | to `inbox`     |                         |                            | from <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
+Follow-back (friend)   | push | from           |                         | to `inbox`                 | <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
+Unfollow               | push |                | *not yet implemented*   | *not yet implemented*      | <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
+View Public            | pull | to `post`      | optional from           | optional from              | optional from <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
+View Unlisted          | pull | to `post`      | optional from           | optional from              | optional from <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
+View Friends-Only      | pull |                | *not yet implemented*   |                            | <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
+View Deleted           | pull |                |                         |                            | <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
+View Following         | pull | to `followers` | optional from           | optional from              | <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
 
 Notes on the above tables:
-    * This can work entirely on push from the author's server to another author's inbox.
-    * Yes, this means that only the local node (node where the post came from) will have a complete list of comments/likes. Mastodon/Diaspora also have this problem.
-    * "Unfollow" the API is missing this functionality.
-    * Yes, a node may have an out of date list of followers if a remote follower unfollows.
-    * "View Friends-Only" the API is missing this functionality. 
+* This can work entirely on push from the author's server to another author's inbox.
+* Yes, this means that only the local node (node where the post came from) will have a complete list of comments/likes. Mastodon/Diaspora also have this problem.
+* "Unfollow" the API is missing this functionality.
+* Yes, a node may have an out of date list of followers if a remote follower unfollows.
+* "View Friends-Only" the API is missing this functionality. 
 
 ## Authentication
 
@@ -369,7 +370,7 @@ Notes on the above tables:
     * It could be the web UI you make
     * It could also be another custom UI (like an android app)
 * Local refers the RESTful API for authors on that node.
-    * This is useful for frameworks like react, vue, or angular to get access to data, and enable a more client heavy UI.
+    * This is useful for frameworks like React, Vue, or Angular to get access to data, and enable a more client heavy UI.
     * Even if your frontend does not use them, endpoints marked [local] should be usable by a future Android/iOS client to achieve the same functionality as frontend.
 
 ## Pagination
@@ -399,7 +400,7 @@ If something is paginated it has query options:
 
 Almost all node-to-node communication proceeds by the node where something (post/like/comment/follow request) was created POSTing that thing that was created to the relevant authors inbox on a remote node.
 
-node-to-node (marked as "[remote]") request other than "POST to inbox" are rarely needed, but you should support them in case the remote node needs to check something.
+Node-to-node (marked as "[remote]") request other than "POST to inbox" are rarely needed, but you should support them in case the remote node needs to check something.
 
 ## Example (node-to-node API View)
 
@@ -417,179 +418,94 @@ The Frontend-to-Backend (also known as [local]) communication for this scenario 
 10. I eventually see Steph's new post, and click like on it.
 11. My node sends the like to Steph's inbox with POST http://node2/api/authors/777777777/inbox
 
-# API Endpoints
+## IDs
 
-## Authors
+Posts may be generated a UUID, or ID#, or whatever for internal database/model use. However, on the API the post or author should always have a fully qualified URL as its ID, and you must always identify remote objects (authors, posts, likes, comments, ...) as their full URL, including the URL of the node they came from. This means you will need to look up authors and posts in your database by their full URL ID, even if they are local.
 
-* URL: ://service/authors/
-    * GET [local, remote]: retrieve all profiles on the node (paginated)
-        * page: how many pages
-        * size: how big is a page
-* Example query: GET ://service/authors?page=10&size=5 
-    * Gets the 5 authors, authors 45 to 49.
-* Example: GET ://service/authors/
+Consider the following scenario: if two nodes both have an author with primary key 2, your node should never be able to be confused about which node's author the database is referring to, because all posts/likes/comments/follows from that author contain the author's full URL.
 
-```.js
+Consider the following scenario #2: `http://node1/api/authors/0192019f-b832-74b2-b2c4-f7aadc972cb2` is Jane, and `http://node2/api/authors/0192019f-b832-74b2-b2c4-f7aadc972cb2` is John. Jane and John still need to be able to like/comment/follow/post with each other. That means, your database should not connect models using the field containing `0192019f-b832-74b2-b2c4-f7aadc972cb2`, but instead, the field containing `http://node1/api/authors/0192019f-b832-74b2-b2c4-f7aadc972cb2`.
+
+Hint: In Django, set `unique=True` on the field. Then use `models.ForeignKey` with source and destination field names to relate the two models (join the two tables).
+
+# API Objects
+
+## Example Author Objects
+
+```js
 {
-    "type": "authors",      
-    "authors":[
-        {
-            "type":"author",
-            "id":"http://127.0.0.1:5454/authors/1d698d25ff008f7538453c120f581471",
-            "url":"http://127.0.0.1:5454/authors/1d698d25ff008f7538453c120f581471",
-            "host":"http://127.0.0.1:5454/",
-            "displayName":"Greg Johnson",
-            "github": "http://github.com/gjohnson",
-            "profileImage": "https://i.imgur.com/k7XVwpB.jpeg"
-        },
-        {
-            "type":"author",
-            "id":"http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e",
-            "host":"http://127.0.0.1:5454/",
-            "displayName":"Lara Croft",
-            "url":"http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e",
-            "github": "http://github.com/laracroft",
-            "profileImage": "https://i.imgur.com/k7XVwpB.jpeg"
-        }
-    ]
+    // Author object must always have type author
+    "type":"author",
+    // The full API URL for the author
+    "id":"http://nodeaaaa/api/authors/111",
+    // The full API URL for the author's node
+    "host":"http://nodeaaaa/api/",
+    // How the user would like the name to be displayed
+    "displayName":"Greg Johnson",
+    // URL of the user's github
+    "github": "http://github.com/gjohnson",
+    // URL of the user's profile image (external image in this example)
+    "profileImage": "https://i.imgur.com/k7XVwpB.jpeg"
+    // URL of the user's HTML profile page
+    // It could include an id number/uuid or not
+    "page": "http://nodeaaaa/authors/greg"
 }
 ```
 
-## Single Author
-
-* URL: ://service/authors/{AUTHOR_ID}/
-    * GET [local, remote]: retrieve AUTHOR_ID's profile
-    * PUT [local]: update AUTHOR_ID's profile
-* Example Format:
-
-```.js
+```js
 {
     "type":"author",
-    // ID of the Author
-    "id":"http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e",
-    // the home host of the author
-    "host":"http://127.0.0.1:5454/",
-    // the display name of the author
+    "id":"http://nodebbbb/api/authors/222",
+    "host":"http://nodebbb/api/",
     "displayName":"Lara Croft",
-    // url to the authors profile
-    "url":"http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e",
-    // HATEOS url for Github API
     "github": "http://github.com/laracroft",
-    // Image from a public domain
-    "profileImage": "https://i.imgur.com/k7XVwpB.jpeg"
+    // This author used an image they posted
+    "profileImage": "http://nodebbb/api/authors/222/posts/217/image"
+    // URL of the user's HTML profile page
+    // It could include an id number/uuid or not
+    "page":"http://nodebbb/authors/222",
 }
 ```
-## Followers
 
-* URL: ://service/authors/{AUTHOR_ID}/followers
-    * GET [local, remote]: get a list of authors who are AUTHOR_ID's followers
-* URL: ://service/authors/{AUTHOR_ID}/followers/{FOREIGN_AUTHOR_ID}
-    * Note: foreign author ID should be a percent encoded URL of the foreign author. An example URL would be:
-        * `http://example-node-1/authors/178aba49-ca39-4741-b227-f40d072b1222/followers/http%3A%2F%2Fexample-node-2%2Fauthors%2F5f57808f-0bc9-4b3d-bdd1-bb07c976d12d`
-    * DELETE [local]: remove FOREIGN_AUTHOR_ID as a follower of AUTHOR_ID
-    * PUT [local]: Add FOREIGN_AUTHOR_ID as a follower of AUTHOR_ID (must be authenticated)
-    * GET [local, remote] check if FOREIGN_AUTHOR_ID is a follower of AUTHOR_ID
-        * Should return 404 if they're not
-        * Should return similar format to Follow Request below if they are.
-* Example: GET ://service/authors/{AUTHOR_ID}/followers
+## Example Follow Request Object
 
-```.js
+```js
 {
-    "type": "followers",      
-    "followers":[
-        {
-            "type":"author",
-            "id":"http://127.0.0.1:5454/authors/1d698d25ff008f7538453c120f581471",
-            "url":"http://127.0.0.1:5454/authors/1d698d25ff008f7538453c120f581471",
-            "host":"http://127.0.0.1:5454/",
-            "displayName":"Greg Johnson",
-            "github": "http://github.com/gjohnson",
-            "profileImage": "https://i.imgur.com/k7XVwpB.jpeg"
-        },
-        {
-            "type":"author",
-            "id":"http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e",
-            "host":"http://127.0.0.1:5454/",
-            "displayName":"Lara Croft",
-            "url":"http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e",
-            "github": "http://github.com/laracroft",
-            "profileImage": "https://i.imgur.com/k7XVwpB.jpeg"
-        }
-    ]
-}
-```
-   
-## Follow Request
-
-* When author 1 tries to follow author 2, author 1's node send the follow request to author 2's node.
-* If the author 2 accepts the Follow Request then author 1 is following author 2.
-    * If author 2 is also already following author 1, then they are now friends.
-* Sent to inbox of "object" 
-* Example format:
-
-```.js
-{
-    "type": "Follow",      
+    "type": "follow",      
     "summary":"Greg wants to follow Lara",
     "actor":{
         "type":"author",
-        "id":"http://127.0.0.1:5454/authors/1d698d25ff008f7538453c120f581471",
-        "url":"http://127.0.0.1:5454/authors/1d698d25ff008f7538453c120f581471",
-        "host":"http://127.0.0.1:5454/",
+        "id":"http://nodeaaaa/api/authors/111",
+        "host":"http://nodeaaaa/api/",
         "displayName":"Greg Johnson",
         "github": "http://github.com/gjohnson",
-        "profileImage": "https://i.imgur.com/k7XVwpB.jpeg"
+        "profileImage": "https://i.imgur.com/k7XVwpB.jpeg",
+        "page": "http://nodeaaaa/authors/greg"
     },
     "object":{
         "type":"author",
-        // ID of the Author
-        "id":"http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e",
-        // the home host of the author
-        "host":"http://127.0.0.1:5454/",
-        // the display name of the author
+        "id":"http://nodebbbb/api/authors/222",
+        "host":"http://nodebbbb/api/",
         "displayName":"Lara Croft",
-        // url to the authors profile
-        "url":"http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e",
-        // HATEOS url for Github API
+        "page":"http://nodebbbb/authors/222",
         "github": "http://github.com/laracroft",
-        // Image from a public domain
-        "profileImage": "https://i.imgur.com/k7XVwpB.jpeg"
+        "profileImage": "http://nodebbbb/api/authors/222/posts/217/image"
     }
 }
 ```
 
-## Post
+## Example Post Object
 
-* URL: ://service/authors/{AUTHOR_ID}/posts/{POST_ID}
-    * GET [local, remote] get the public post whose id is POST_ID
-        * friends-only posts: must be authenticated
-    * DELETE [local] remove the post whose id is POST_ID
-        * local posts: must be authenticated locally as the author
-    * PUT [local] update a post where its id is POST_ID
-        * local posts: must be authenticated locally as the author
-* Creation URL ://service/authors/{AUTHOR_ID}/posts/
-    * GET [local, remote] get the recent posts from author AUTHOR_ID (paginated)
-        * Not authenticated: only public posts.
-        * Authenticated locally as author: all posts.
-        * Authenticated locally as friend of author: public + friends-only posts.
-        * Authenticated as remote node: This probably should not happen. Remember, the way remote node becomes aware of local posts is by local node pushing those posts to inbox, not by remote node pulling.
-    * POST [local] create a new post but generate a new id
-        * Authenticated locally as author
-* Be aware that Posts can be images that need base64 decoding.
-    * posts can also hyperlink to images that are public
-* Example Format:
+* Public post
 
-```.js
+```js
 {
     "type":"post",
     // title of a post
     "title":"A post title about a post about web dev",
     // id of the post
-    "id":"http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/764efa883dda1e11db47671c4a3bbd9e"
-    // where did you get this post from?
-    "source":"http://lastplaceigotthisfrom.com/authors/xxxxxx/posts/yyyyyy",
-    // where is it actually from
-    "origin":"http://whereitcamefrom.com/authors/wwwwww/posts/zzzzzz",
+    // must be the original URL on the node the post came from
+    "id":"http://nodebbbb/api/authors/222/posts/249"
     // a brief description of the post
     "description":"This post discusses stuff -- brief",
     // The content type of the post
@@ -606,59 +522,118 @@ The Frontend-to-Backend (also known as [local]) communication for this scenario 
     "author":{
         "type":"author",
         // ID of the Author
-        "id":"http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e",
+        "id":"http://nodebbbb/api/authors/222",
         // the home host of the author
-        "host":"http://127.0.0.1:5454/",
+        "host":"http://nodebbbb/api/",
         // the display name of the author
         "displayName":"Lara Croft",
         // url to the authors profile
-        "url":"http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e",
+        "page":"http://nodebbbb/authors/222",
         // HATEOS url for Github API
         "github": "http://github.com/laracroft",
-        // Image from a public domain (optional, can be missing)
-        "profileImage": "https://i.imgur.com/k7XVwpB.jpeg"
+        "profileImage": "http://nodebbbb/api/authors/222/posts/217/image"
     },
     // comments about the post
-    // return a maximum number of comments
-    // total number of comments for this post
-    "count": 1023,
-    // the first page of comments
-    "comments":"http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/de305d54-75b4-431b-adb2-eb6b9e546013/comments"
-    // commentsSrc is OPTIONAL and can be missing
-    // You should return ~ 5 comments per post.
-    // should be sorted newest(first) to oldest(last)
-    // this is to reduce API call counts
-    "commentsSrc":{
+    "comments":{
         "type":"comments",
+        // this may or may not be the same as page for the post,
+        // depending if there's a seperate URL to just see the comments
+        "page":"http://nodebbbb/authors/222/posts/249",
+        "id":"http://nodebbbb/api/authors/222/posts/249/comments"
+        // comments.page, comments.size, comments.count,
+        // comments.src are only sent if:
+        // * public
+        // * unlisted
+        // * friends-only and sending it to a friend
+        // You should return ~ 5 comments per post.
+        // should be sorted newest(first) to oldest(last)
+        // this is to reduce API call counts
+        // number of the first page of comments
         "page":1,
+        // size of comment pages
         "size":5,
-        "post":"http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/de305d54-75b4-431b-adb2-eb6b9e546013"
-        "id":"http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/de305d54-75b4-431b-adb2-eb6b9e546013/comments"
-        "comments":[
+        // total number of comments for this post
+        "count": 1023,
+        // the first page of comments
+        "src":[
             {
                 "type":"comment",
                 "author":{
                     "type":"author",
-                    // ID of the Author (UUID)
-                    "id":"http://127.0.0.1:5454/authors/1d698d25ff008f7538453c120f581471",
-                    // url to the authors information
-                    "url":"http://127.0.0.1:5454/authors/1d698d25ff008f7538453c120f581471",
-                    "host":"http://127.0.0.1:5454/",
+                    "id":"http://nodeaaaa/api/authors/111",
+                    "page":"http://nodeaaaa/authors/greg",
+                    "host":"http://nodeaaaa/api/",
                     "displayName":"Greg Johnson",
-                    // HATEOS url for Github API
                     "github": "http://github.com/gjohnson",
-                    // Image from a public domain
                     "profileImage": "https://i.imgur.com/k7XVwpB.jpeg"
                 },
                 "comment":"Sick Olde English",
                 "contentType":"text/markdown",
                 // ISO 8601 TIMESTAMP
                 "published":"2015-03-09T13:07:04+00:00",
-                // ID of the Comment (UUID)
-                "id":"http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/de305d54-75b4-431b-adb2-eb6b9e546013/comments/f6255bb01c648fe967714d52a89e8e9c",
+                // ID of the Comment
+                "id":"http://nodeaaaa/api/authors/111/commented/130",
+                "post": "http://nodebbbb/api/authors/222/posts/249",
+                // this may or may not be the same as page for the post,
+                // depending if there's a seperate URL to just see the one comment in html
+                "page": "http://nodebbbb/authors/222/posts/249"
+                // it could also be something like
+                // "page":"http://nodeaaaa/api/authors/greg/comments/130"
+                // likes on the comment, not to be confused with likes on the post
+                "likes": {
+                    "type": "likes",
+                    "id": "http://nodeaaaa/api/authors/111/commented/130/likes",
+                    // in this example nodebbbb has a html page just for the likes
+                    "page": "http://nodeaaaa/authors/greg/comments/130/likes"
+                    "page": 1,
+                    "size": 50,
+                    "count": 0,
+                    "src": [],
+                },
             }
         ]
-    }
+    },
+    // likes on the post
+    "likes":{
+        "type":"likes",
+        // this may or may not be the same as page for the post,
+        // depending if there's a seperate URL to just see the comments
+        "page":"http://nodeaaaa/authors/222/posts/249"
+        "id":"http://nodeaaaa/api/authors/222/posts/249/likes"
+        // likes.page, likes.size, likes.count,
+        // likes.src should be sent for public and unlisted posts
+        // in order to reduce API calls
+        // You should return ~ 5 likes per post.
+        // should be sorted newest(first) to oldest(last)
+        // this is to reduce API call counts
+        // number of the first page of likes
+        "page":1,
+        // size of a page of likes
+        "size":50,
+        // total number of likes
+        "count": 9001,
+        // the first page of likes
+        "src":[
+            {
+                "type":"like",
+                "author":{
+                    "type":"author",
+                    "id":"http://nodeaaaa/api/authors/111",
+                    "page":"http://nodeaaaa/authors/greg",
+                    "host":"http://nodeaaaa/api/",
+                    "displayName":"Greg Johnson",
+                    "github": "http://github.com/gjohnson",
+                    "profileImage": "https://i.imgur.com/k7XVwpB.jpeg"
+                },
+                // ISO 8601 TIMESTAMP
+                "published":"2015-03-09T13:07:04+00:00",
+                // ID of the Comment (UUID)
+                "id":"http://nodeaaaa/api/authors/111/liked/166",
+                // this should be the object they liked
+                "object": "http://nodebbbb/authors/222/posts/249"
+            }
+        ]
+    },
     // ISO 8601 TIMESTAMP
     "published":"2015-03-09T13:07:04+00:00",
     // visibility ["PUBLIC","FRIENDS","UNLISTED","DELETED"]
@@ -670,7 +645,444 @@ The Frontend-to-Backend (also known as [local]) communication for this scenario 
 }
 ```
 
-## Image Posts
+* Example, Friends-Only post:
+```js
+{
+    "type":"post",
+    "title":"DID YOU READ MY POST YET?",
+    "id": "http://nodebbbb/api/authors/222/posts/293",
+    "page": "http://nodebbbb/authors/222/posts/293",
+    "description":"Whatever",
+    "contentType":"text/plain",
+    "content":"Are you even reading my posts Arjun?",
+    "author":{
+        "type":"author",
+        "id":"http://nodebbbb/api/authors/222",
+        "host":"http://nodebbbb/api/",
+        "displayName":"Lara Croft",
+        "page":"http://nodebbbb/authors/222",
+        "github": "http://github.com/laracroft",
+        "profileImage": "https://i.imgur.com/k7XVwpB.jpeg"
+    },
+    "comments": {
+        "type": "comments",
+        "id": "http://nodebbbb/api/authors/222/posts/293/comments",
+        // in this example nodebbbb has a html page just for the comments
+        "page": "http://nodebbbb/authors/222/posts/293/comments",
+        "page": 1,
+        "size": 5,
+        "count": 0,
+        "src": [],
+    },
+    "likes": {
+        "type": "likes",
+        "id": "http://127.0.0.1:5454/api/authors/222/posts/293/likes",
+        // in this example nodebbbb has a html page just for the likes
+        "page": "http://nodebbbb/authors/222/posts/293/likes"
+        "page": 1,
+        "size": 50,
+        "count": 0,
+        "src": [],
+    },
+    "published":"2015-03-09T13:07:04+00:00",
+    "visibility":"FRIENDS"
+}
+```
+
+## Example Comment Object
+
+```js
+{
+    "type":"comment",
+    "author":{
+        "type":"author",
+        "id":"http://nodeaaaa/api/authors/111",
+        "page":"http://nodeaaaa/authors/greg",
+        "host":"http://nodeaaaa/api/",
+        "displayName":"Greg Johnson",
+        "github": "http://github.com/gjohnson",
+        "profileImage": "https://i.imgur.com/k7XVwpB.jpeg"
+    },
+    "comment":"Sick Olde English",
+    "contentType":"text/markdown",
+    // ISO 8601 TIMESTAMP
+    "published":"2015-03-09T13:07:04+00:00",
+    // ID of the Comment
+    "id": "http://nodeaaaa/api/authors/111/commented/130",
+    "post": "http://nodebbbb/api/authors/222/posts/249",
+    // likes on the comment
+    "likes":{
+        "type":"likes",
+        // this may or may not be the same as page for the post
+        // this may or may not be the same as page for the comment
+        // depending if there's a seperate URL to just see the comments
+        "page":"http://nodeaaaa/authors/222/posts/249"
+        "id":"http://nodeaaaa/api/authors/111/commented/130/likes"
+        // likes.page, likes.size, likes.count,
+        // likes.src should be sent for comments on public and unlisted posts
+        // in order to reduce API calls
+        // You should return ~ 5 likes per post.
+        // should be sorted newest(first) to oldest(last)
+        // this is to reduce API call counts
+        // number of the first page of likes
+        "page":1,
+        // size of a page of likes
+        "size":50,
+        // total number of likes
+        "count": 9001,
+        // the first page of likes
+        "src":[
+            {
+                "type":"like",
+                "author":{
+                    "type":"author",
+                    "id":"http://nodebbbb/api/authors/222",
+                    "host":"http://nodebbbb/api/",
+                    "displayName":"Lara Croft",
+                    "page":"http://nodebbbb/authors/222",
+                    "github": "http://github.com/laracroft",
+                    "profileImage": "http://nodebbbb/api/authors/222/posts/217/image"
+                },
+                // ISO 8601 TIMESTAMP
+                "published":"2015-03-09T13:07:04+00:00",
+                // ID of the Comment (UUID)
+                "id": "http://nodeaaaa/api/authors/222/liked/255",
+                "object": "http://nodeaaaa/api/authors/111/commented/130"
+            }
+        ]
+    },
+}
+```
+
+## Example Comments Object
+
+```js
+{
+    "type":"comments",
+    // this may or may not be the same as page for the post,
+    // depending if there's a seperate URL to just see the comments
+    "page":"http://nodebbbb/authors/222/posts/249",
+    "id":"http://nodebbbb/api/authors/222/posts/249/comments"
+    // comments.page, comments.size, comments.count,
+    // comments.src are only sent if:
+    // * public
+    // * unlisted
+    // * friends-only and sending it to a friend
+    // You should return ~ 5 comments per post.
+    // should be sorted newest(first) to oldest(last)
+    // this is to reduce API call counts
+    // number of the first page of comments
+    "page":1,
+    // size of comment pages
+    "size":5,
+    // total number of comments for this post
+    "count": 1023,
+    // the first page of comments
+    "src":[
+        {
+            "type":"comment",
+            "author":{
+                "type":"author",
+                "id":"http://nodeaaaa/api/authors/111",
+                "page":"http://nodeaaaa/authors/greg",
+                "host":"http://nodeaaaa/api/",
+                "displayName":"Greg Johnson",
+                "github": "http://github.com/gjohnson",
+                "profileImage": "https://i.imgur.com/k7XVwpB.jpeg"
+            },
+            "comment":"Sick Olde English",
+            "contentType":"text/markdown",
+            // ISO 8601 TIMESTAMP
+            "published":"2015-03-09T13:07:04+00:00",
+            // ID of the Comment
+            "id":"http://nodeaaaa/api/authors/111/commented/130",
+            "post": "http://nodebbbb/api/authors/222/posts/249",
+            // this may or may not be the same as page for the post,
+            // depending if there's a seperate URL to just see the one comment in html
+            "page": "http://nodebbbb/authors/222/posts/249"
+            // it could also be something like
+            // "page":"http://nodeaaaa/api/authors/greg/comments/130"
+            // likes on the comment, not to be confused with likes on the post
+            "likes": {
+                "type": "likes",
+                "id": "http://nodeaaaa/api/authors/111/commented/130/likes",
+                // in this example nodebbbb has a html page just for the likes
+                "page": "http://nodeaaaa/authors/greg/comments/130/likes"
+                "page": 1,
+                "size": 50,
+                "count": 0,
+                "src": [],
+            },
+        }
+    ]
+}
+```
+
+## Example Like Object
+
+```js
+{
+    "type":"like",
+    "author":{
+        "type":"author",
+        "id":"http://nodeaaaa/api/authors/111",
+        "page":"http://nodeaaaa/authors/greg",
+        "host":"http://nodeaaaa/api/",
+        "displayName":"Greg Johnson",
+        "github": "http://github.com/gjohnson",
+        "profileImage": "https://i.imgur.com/k7XVwpB.jpeg"
+    },
+    // ISO 8601 TIMESTAMP
+    "published":"2015-03-09T13:07:04+00:00",
+    // ID of the Comment (UUID)
+    "id":"http://nodeaaaa/api/authors/111/liked/166",
+    "object": "http://nodebbbb/authors/222/posts/249"
+}
+```
+
+```js
+{
+    "type":"like",
+    "author":{
+        "type":"author",
+        "id":"http://nodebbbb/api/authors/222",
+        "host":"http://nodebbbb/api/",
+        "displayName":"Lara Croft",
+        "page":"http://nodebbbb/authors/222",
+        "github": "http://github.com/laracroft",
+        "profileImage": "http://nodebbbb/api/authors/222/posts/217/image"
+    },
+    // ISO 8601 TIMESTAMP
+    "published":"2015-03-09T13:07:04+00:00",
+    // ID of the Comment (UUID)
+    "id": "http://nodeaaaa/api/authors/222/liked/255",
+    "object": "http://nodeaaaa/api/authors/111/commented/130"
+}
+```
+
+## Example Likes Object
+
+```js
+{
+    "type":"likes",
+    // this may or may not be the same as page for the post,
+    // depending if there's a seperate URL to just see the comments
+    "page":"http://nodeaaaa/authors/222/posts/249"
+    "id":"http://nodeaaaa/api/authors/222/posts/249/likes"
+    // likes.page, likes.size, likes.count,
+    // likes.src should be sent for public and unlisted posts
+    // in order to reduce API calls
+    // You should return ~ 5 likes per post.
+    // should be sorted newest(first) to oldest(last)
+    // this is to reduce API call counts
+    // number of the first page of likes
+    "page":1,
+    // size of a page of likes
+    "size":50,
+    // total number of likes
+    "count": 9001,
+    // the first page of likes
+    "src":[
+        {
+            "type":"like",
+            "author":{
+                "type":"author",
+                "id":"http://nodeaaaa/api/authors/111",
+                "page":"http://nodeaaaa/authors/greg",
+                "host":"http://nodeaaaa/api/",
+                "displayName":"Greg Johnson",
+                "github": "http://github.com/gjohnson",
+                "profileImage": "https://i.imgur.com/k7XVwpB.jpeg"
+            },
+            // ISO 8601 TIMESTAMP
+            "published":"2015-03-09T13:07:04+00:00",
+            // ID of the Comment (UUID)
+            "id":"http://nodeaaaa/api/authors/111/liked/166",
+            // this should be the object they liked
+            "object": "http://nodebbbb/authors/222/posts/249"
+        }
+    ]
+},
+```
+
+```js
+{
+    "type": "likes",
+    "id": "http://nodeaaaa/api/authors/111/commented/130/likes",
+    // in this example nodebbbb has a html page just for the likes
+    "page": "http://nodeaaaa/authors/greg/comments/130/likes"
+    "page": 1,
+    "size": 50,
+    "count": 0,
+    "src": [],
+}
+```
+
+# API Endpoints
+
+## Authors API
+
+* URL: `://service/api/authors/`
+    * GET [local, remote]: retrieve all profiles on the node (paginated)
+        * page: how many pages
+        * size: how big is a page
+* Example query: GET `://service/api/authors?page=10&size=5`
+    * Gets the 5 authors, authors 45 to 49.
+
+* Example: GET `http://nodeaaaa/api/authors/`
+
+```js
+{
+    "type": "authors",      
+    "authors":[
+        {
+            "type":"author",
+            "id":"http://nodeaaaa/api/authors/111",
+            "host":"http://nodeaaaa/api/",
+            "displayName":"Greg Johnson",
+            "github": "http://github.com/gjohnson",
+            "profileImage": "https://i.imgur.com/k7XVwpB.jpeg",
+            "page": "http://nodeaaaa/authors/greg"
+        },
+        {
+            // A second author object...
+        },
+        {
+            // A third author object...
+        }
+    ]
+}
+```
+
+## Single Author API
+
+* URL: `://service/api/authors/{AUTHOR_ID}/`
+    * GET [local, remote]: retrieve `AUTHOR_ID`'s profile
+    * PUT [local]: update `AUTHOR_ID`'s profile
+
+* Example GET `http://nodeaaaa/api/authors/111`:
+```js
+{
+    // must be type author
+    "type":"author",
+    // should match the URL for get
+    // must match the logged in author for PUT
+    "id":"http://nodeaaaa/api/authors/111",
+    // should match the host we're making the request to
+    "host":"http://nodeaaaa/api/",
+    // get/update the display name of the author
+    "displayName":"Lara Croft",
+    // get/update the github of the author
+    "github": "http://github.com/gjohnson",
+    // get/update the profile picture of the author
+    "profileImage": "https://i.imgur.com/k7XVwpB.jpeg",
+    // get the HTML profile page
+    "page": "http://nodeaaaa/authors/greg"
+}
+```
+
+## Followers API
+
+* URL: `://service/authors/api/{AUTHOR_ID}/followers`
+    * GET [local, remote]: get a list of authors who are `AUTHOR_ID`'s followers
+* URL: `://service/authors/api/{AUTHOR_ID}/followers/{FOREIGN_AUTHOR_ID}`
+    * Note: foreign author ID should be a percent encoded URL of the foreign author. An example URL would be:
+        * `http://example-node-1/api/authors/178aba49-ca39-4741-b227-f40d072b1222/followers/http%3A%2F%2Fexample-node-2%2Fauthors%2F5f57808f-0bc9-4b3d-bdd1-bb07c976d12d`
+    * DELETE [local]: remove `FOREIGN_AUTHOR_ID` as a follower of `AUTHOR_ID` (must be authenticated)
+    * PUT [local]: Add `FOREIGN_AUTHOR_ID` as a follower of `AUTHOR_ID` (must be authenticated)
+    * GET [local, remote] check if `FOREIGN_AUTHOR_ID` is a follower of `AUTHOR_ID`
+        * Should return 404 if they're not
+        * This is how you can check if follow request is accepted
+        
+* Example: GET `http://nodeaaa/api/authors/111/followers`
+
+```js
+{
+    "type": "followers",      
+    "followers":[
+        {
+            "type":"author",
+            "id":"http://nodebbbb/api/authors/222",
+            "host":"http://nodebbbb/api/",
+            "displayName":"Lara Croft",
+            "page":"http://nodebbbb/authors/222",
+            "github": "http://github.com/laracroft",
+            "profileImage": "http://nodebbbb/api/authors/222/posts/217/image"
+        },
+        {
+            // Second follower author object
+        },
+        {
+            // Third follower author object
+        }
+    ]
+}
+```
+
+* Example: GET `http://nodeaaa/api/authors/111/followers/http%3A%2F%2Fnodebbbb%2Fapi%2Fauthors%2F222`
+
+```js
+// if laura follows greg, otherwise 404
+{
+        "type":"author",
+        "id":"http://nodebbbb/api/authors/222",
+        "host":"http://nodebbbb/api/",
+        "displayName":"Lara Croft",
+        "page":"http://nodebbbb/authors/222",
+        "github": "http://github.com/laracroft",
+        "profileImage": "http://nodebbbb/api/authors/222/posts/217/image"
+}
+```
+   
+## Follow Request API
+
+* URL: `://service/api/authors/{AUTHOR_ID}/inbox`
+    * `POST` [remote]: send a follow request to `AUTHOR_ID`
+        * `AUTHOR_ID` will be the `object` below
+* When author 1 tries to follow author 2, author 1's node send the follow request to author 2's node.
+* If the author 2 accepts the Follow Request then author 1 is following author 2.
+    * If author 2 is also already following author 1, then they are now friends.
+* Sent to inbox of "object" 
+* See the [follow request object](#example-follow-request-object)
+
+```js
+{
+    "type": "follow",      
+    "summary":"actor wants to follow object",
+    "actor":{
+        "type":"author",
+        // The rest of the author object for the author who wants to follow
+    },
+    "object":{
+        "type":"author",
+        // The rest of the author object for the author they want to follow
+    }
+}
+```
+
+## Posts API
+
+* URL: `://service/authors/{AUTHOR_ID}/posts/{POST_ID}`
+    * GET [local, remote] get the public post whose `ID` is `POST_ID`
+        * friends-only posts: must be authenticated
+    * DELETE [local] remove the post whose `ID` is `POST_ID`
+        * local posts: must be authenticated locally as the author
+    * PUT [local] update a post where its `ID` is `POST_ID`
+        * local posts: must be authenticated locally as the author
+* Creation URL ://service/authors/{AUTHOR_ID}/posts/
+    * GET [local, remote] get the recent posts from author `AUTHOR_ID` (paginated)
+        * Not authenticated: only public posts.
+        * Authenticated locally as author: all posts.
+        * Authenticated locally as friend of author: public + friends-only posts.
+        * Authenticated as remote node: This probably should not happen. Remember, the way remote node becomes aware of local posts is by local node pushing those posts to inbox, not by remote node pulling.
+    * POST [local] create a new post but generate a new `ID`
+        * Authenticated locally as author
+* Be aware that Posts can be images that need base64 decoding.
+    * posts can also hyperlink to images that are public
+* Uses the same format as the [post object](#example-post-object)
+* For [local] service, fields included may differ. For example, when first creating the post, there's no reason to have likes, comments, etc. because it doesn't exist yet. Be sure to document this!
+
+### Image Posts
 
 Image Posts are just posts that are images. But they are encoded as base64 data.
 You can inline an image post using a data URL, or you can use this 
@@ -682,199 +1094,153 @@ shortcut to get the image if authenticated to see it.
 * This end point decodes image posts as images. This allows the use of image tags in Markdown.
 * You can use this to proxy or cache images.
 
-## Comments
+## Comments API
 
-* URL: ://service/authors/{AUTHOR_ID}/posts/{POST_ID}/comments
-    * GET [local, remote] get the list of comments of the post whose id is POST_ID (paginated)
-    * POST [local] if you post an object of "type":"comment", it will add your comment to the post whose id is POST_ID
-* example comment from ://service/authors/{AUTHOR_ID}/posts/{POST_ID}/comments
+* URL: `://service/authors/{AUTHOR_ID}/inbox`
+    * `POST` [remote]: comment on a post by `AUTHOR_ID`
+    * Body is a [comment object](#example-comment)
+* URL: `://service/authors/{AUTHOR_ID}/posts/{POST_ID}/comments`
+    * `GET` [local, remote]: the comments on the post
+    * Body is a [comments object](#example-comments)
+* URL: `://service/authors/{AUTHOR_ID}/post/{POST_ID}/comment/{REMOTE_COMMENT_ID}`
+    * GET [local, remote] get the comment
+* Example: GET `http://nodebbbb/api/authors/222/posts/249/comments/http%3A%2F%2Fnodeaaaa%2Fapi%2Fauthors%2F111%2Fcommented%2F130`:
 
-```.js
+```js
 {
     "type":"comment",
     "author":{
         "type":"author",
-        // ID of the Author (UUID)
-        "id":"http://127.0.0.1:5454/authors/1d698d25ff008f7538453c120f581471",
-        // url to the authors information
-        "url":"http://127.0.0.1:5454/authors/1d698d25ff008f7538453c120f581471",
-        "host":"http://127.0.0.1:5454/",
+        "id":"http://nodeaaaa/api/authors/111",
+        "page":"http://nodeaaaa/authors/greg",
+        "host":"http://nodeaaaa/api/",
         "displayName":"Greg Johnson",
-        // HATEOS url for Github API
         "github": "http://github.com/gjohnson",
-        // Image from a public domain
         "profileImage": "https://i.imgur.com/k7XVwpB.jpeg"
-    }
+    },
     "comment":"Sick Olde English",
     "contentType":"text/markdown",
     // ISO 8601 TIMESTAMP
     "published":"2015-03-09T13:07:04+00:00",
-    // ID of the Comment (UUID)
-    "id":"http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/de305d54-75b4-431b-adb2-eb6b9e546013/comments/f6255bb01c648fe967714d52a89e8e9c",
-}
-```
-* example comments from a post:
-
-```.js
-{
-    "type":"comments",
-    "page":1,
-    "size":5,
-    "post":"http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/de305d54-75b4-431b-adb2-eb6b9e546013"
-    "id":"http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/de305d54-75b4-431b-adb2-eb6b9e546013/comments"
-    "comments":[
-        {
-            "type":"comment",
-            "author":{
-                "type":"author",
-                // ID of the Author (UUID)
-                "id":"http://127.0.0.1:5454/authors/1d698d25ff008f7538453c120f581471",
-                // url to the authors information
-                "url":"http://127.0.0.1:5454/authors/1d698d25ff008f7538453c120f581471",
-                "host":"http://127.0.0.1:5454/",
-                "displayName":"Greg Johnson",
-                // HATEOS url for Github API
-                "github": "http://github.com/gjohnson",
-                // Image from a public domain
-                "profileImage": "https://i.imgur.com/k7XVwpB.jpeg"
-            },
-            "comment":"Sick Olde English",
-            "contentType":"text/markdown",
-            // ISO 8601 TIMESTAMP
-            "published":"2015-03-09T13:07:04+00:00",
-            // ID of the Comment (UUID)
-            "id":"http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/de305d54-75b4-431b-adb2-eb6b9e546013/comments/f6255bb01c648fe967714d52a89e8e9c",
-        }
-    ]
+    // ID of the Comment
+    "id": "http://nodeaaaa/api/authors/111/commented/130",
+    "post": "http://nodebbbb/api/authors/222/posts/249",
 }
 ```
 
-## Likes
 
-* You can like posts and comments
-* Send them to the inbox of the author of the post or comment
-* URL: ://service/authors/{AUTHOR_ID}/inbox
-    * POST [local, remote]: send a like object to AUTHOR_ID
-* URL: ://service/authors/{AUTHOR_ID}/posts/{POST_ID}/likes
-    * GET [local, remote] a list of likes from other authors on AUTHOR_ID's post POST_ID
-* URL: ://service/authors/{AUTHOR_ID}/posts/{POST_ID}/comments/{COMMENT_ID}/likes
-    * GET [local, remote] a list of likes from other authors on AUTHOR_ID's post POST_ID comment COMMENT_ID
-* Example like object:
+## Commented API
 
-```.js
+* URL: `://service/authors/{AUTHOR_ID}/commented`
+    * GET [local, remote] get the list of comments `AUTHOR_ID` has made on:
+        * [local] any post
+        * [remote] public and unlisted posts
+        * paginated
+    * POST [local] if you post an object of "type":"comment", it will add your comment to the post whose `ID` is in the `post` field
+        * Then the node you posted it to is responsible for forwarding it to the correct inbox
+* URL: `://service/authors/{AUTHOR_ID}/commented/{COMMENT_ID}`
+    * GET [local, remote] get this comment
+* Example: GET `http://nodeaaaa/api/authors/111/comments`:
+
+```js
+[
+    {
+        "type":"comment",
+        "author":{
+            "type":"author",
+            "id":"http://nodeaaaa/api/authors/111",
+            "page":"http://nodeaaaa/authors/greg",
+            "host":"http://nodeaaaa/api/",
+            "displayName":"Greg Johnson",
+            "github": "http://github.com/gjohnson",
+            "profileImage": "https://i.imgur.com/k7XVwpB.jpeg"
+        },
+        "comment":"Sick Olde English",
+        "contentType":"text/markdown",
+        // ISO 8601 TIMESTAMP
+        "published":"2015-03-09T13:07:04+00:00",
+        // ID of the Comment
+        "id":"http://nodeaaaa/api/authors/111/commented/130",
+        "post": "http://nodebbbb/api/authors/222/posts/249",
+        // this may or may not be the same as page for the post,
+        // depending if there's a seperate URL to just see the one comment in html
+        "page": "http://nodebbbb/authors/222/posts/249"
+        // it could also be something like
+        // "page":"http://nodeaaaa/api/authors/greg/comments/130"
+    }
+]
+```
+
+* Example: GET `http://nodeaaaa/api/authors/111/commented/130`:
+```js
 {
-    "summary": "Lara Croft Likes your post",         
-    "type": "Like",
+    "type":"comment",
     "author":{
         "type":"author",
-        "id":"http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e",
-        "host":"http://127.0.0.1:5454/",
-        "displayName":"Lara Croft",
-        "url":"http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e",
-        "github":"http://github.com/laracroft",
+        "id":"http://nodeaaaa/api/authors/111",
+        "page":"http://nodeaaaa/authors/greg",
+        "host":"http://nodeaaaa/api/",
+        "displayName":"Greg Johnson",
+        "github": "http://github.com/gjohnson",
         "profileImage": "https://i.imgur.com/k7XVwpB.jpeg"
     },
-    "object":"http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/764efa883dda1e11db47671c4a3bbd9e"
+    "comment":"Sick Olde English",
+    "contentType":"text/markdown",
+    // ISO 8601 TIMESTAMP
+    "published":"2015-03-09T13:07:04+00:00",
+    // ID of the Comment
+    "id":"http://nodeaaaa/api/authors/111/commented/130",
+    "post": "http://nodebbbb/api/authors/222/posts/249",
+    // this may or may not be the same as page for the post,
+    // depending if there's a seperate URL to just see the one comment in html
+    "page": "http://nodebbbb/authors/222/posts/249"
+    // it could also be something like
+    // "page":"http://nodeaaaa/api/authors/greg/comments/130"
 }
 ```
 
-## Liked
+## Likes API
 
-* URL: ://service/authors/{AUTHOR_ID}/liked
-    * GET [local, remote] list what public things AUTHOR_ID liked.
-      * It's a list of of likes originating from this author
-      * Note: be careful here private information could be disclosed.
-* Example Format:
+* URL: `://service/authors/{AUTHOR_ID}/inbox`
+    * `POST` [remote]: send a like object to `AUTHOR_ID`
+    * Body is [like object](#example-like-object)
+* URL: `://service/authors/{AUTHOR_ID}/posts/{POST_ID}/likes`
+    * "Who Liked This Post"
+    * `GET` [local, remote] a list of likes from other authors on `AUTHOR_ID`'s post `POST_ID`
+    * Body is [likes object](#example-likes-object)
+* URL: `://service/authors/{AUTHOR_ID}/posts/{POST_ID}/comments/{COMMENT_ID}/likes`
+    * "Who Liked This Comment"
+    * `GET` [local, remote] a list of likes from other authors on AUTHOR_ID's post `POST_ID` comment `COMMENT_ID`
+    * Body is [likes object](#example-likes-object)
 
-```.js
-{
-    "type":"liked",
-    "likes":[
-        {
-            "summary": "Lara Croft Likes your post",         
-            "type": "Like",
-            "author":{
-                "type":"author",
-                "id":"http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e",
-                "host":"http://127.0.0.1:5454/",
-                "displayName":"Lara Croft",
-                "url":"http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e",
-                "github":"http://github.com/laracroft",
-                "profileImage": "https://i.imgur.com/k7XVwpB.jpeg"
-            },
-            "object":"http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/764efa883dda1e11db47671c4a3bbd9e"
-        }
-    ]
-}
-```
+## Liked API
+
+* URL: `://service/authors/{AUTHOR_ID}/liked`
+    * "Things Liked By Author"
+    * `GET` [local, remote] a list of likes by AUTHOR_ID
+    * Body is [likes object](#example-likes-object)
+* URL: `://service/authors/{AUTHOR_ID}/liked/{LIKE_ID}`
+    * `GET` [local, remote] a single like
+    * Body is [like object](#example-like-object)
+
+## Other Local APIs
+
+Local APIs, such as "stream", that aren't specified here, are up to your design. However, you must document and test them.
 
 ## Inbox
 
-* The inbox is all the new posts from who you follow, as well as follow requests, likes, and comments you should be aware of
-* The inbox is the API equivalent of the stream in the UI
+* The inbox receives all the new posts from who you follow, as well as "follow requests," likes, and comments you should be aware of. 
+* Remember: the inbox is not something on the UI or the API for local clients! The inbox is the way that a node becomes aware of posts, likes, comments, follow requests, that it should be aware of from other nodes.
 * URL: ://service/authors/{AUTHOR_ID}/inbox
-    * GET [local]: if authenticated get a list of posts sent to AUTHOR_ID (paginated)
-        * Should be sorted most recent first
-    * POST [local, remote]: send a post to the author
+    * POST [remote]: send a post to the author
       * if the type is "post" then add that post to AUTHOR_ID's inbox
       * if the type is "follow" then add that follow is added to AUTHOR_ID's inbox to approve later
       * if the type is "Like" then add that like to AUTHOR_ID's inbox
       * if the type is "comment" then add that comment to AUTHOR_ID's inbox
-    * DELETE [local]: clear the inbox
-* Example, retrieving an inbox:
-
-```.js
-{
-    "type":"inbox",
-    "author":"http://127.0.0.1:5454/authors/c1e3db8ccea4541a0f3d7e5c75feb3fb",
-    "items":[
-        {
-            "type":"post",
-            "title":"A Friendly post title about a post about web dev",
-            "id":"http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/764efa883dda1e11db47671c4a3bbd9e"
-            "source":"http://lastplaceigotthisfrom.com/authors/xxxxxx/posts/yyyyyy",
-            "origin":"http://whereitcamefrom.com/authors/wwwwww/posts/zzzzzz",
-            "description":"This post discusses stuff -- brief",
-            "contentType":"text/plain",
-            "content":"Þā wæs on burgum Bēowulf Scyldinga, lēof lēod-cyning, longe þrāge folcum gefrǣge (fæder ellor hwearf, aldor of earde), oð þæt him eft onwōc hēah Healfdene; hēold þenden lifde, gamol and gūð-rēow, glæde Scyldingas. Þǣm fēower bearn forð-gerīmed in worold wōcun, weoroda rǣswan, Heorogār and Hrōðgār and Hālga til; hȳrde ic, þat Elan cwēn Ongenþēowes wæs Heaðoscilfinges heals-gebedde. Þā wæs Hrōðgāre here-spēd gyfen, wīges weorð-mynd, þæt him his wine-māgas georne hȳrdon, oð þæt sēo geogoð gewēox, mago-driht micel. Him on mōd bearn, þæt heal-reced hātan wolde, medo-ærn micel men gewyrcean, þone yldo bearn ǣfre gefrūnon, and þǣr on innan eall gedǣlan geongum and ealdum, swylc him god sealde, būton folc-scare and feorum gumena. Þā ic wīde gefrægn weorc gebannan manigre mǣgðe geond þisne middan-geard, folc-stede frætwan. Him on fyrste gelomp ǣdre mid yldum, þæt hit wearð eal gearo, heal-ærna mǣst; scōp him Heort naman, sē þe his wordes geweald wīde hæfde. Hē bēot ne ālēh, bēagas dǣlde, sinc æt symle. Sele hlīfade hēah and horn-gēap: heaðo-wylma bād, lāðan līges; ne wæs hit lenge þā gēn þæt se ecg-hete āðum-swerian 85 æfter wæl-nīðe wæcnan scolde. Þā se ellen-gǣst earfoðlīce þrāge geþolode, sē þe in þȳstrum bād, þæt hē dōgora gehwām drēam gehȳrde hlūdne in healle; þǣr wæs hearpan swēg, swutol sang scopes. Sægde sē þe cūðe frum-sceaft fīra feorran reccan",
-            "author":{
-                "type":"author",
-                "id":"http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e",
-                "host":"http://127.0.0.1:5454/",
-                "displayName":"Lara Croft",
-                "url":"http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e",
-                "github": "http://github.com/laracroft",
-                "profileImage": "https://i.imgur.com/k7XVwpB.jpeg"
-            },
-            "comments":"http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/de305d54-75b4-431b-adb2-eb6b9e546013/comments"
-            "published":"2015-03-09T13:07:04+00:00",
-            "visibility":"FRIENDS"
-        },
-        {
-            "type":"post",
-            "title":"DID YOU READ MY POST YET?",
-            "id":"http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/999999983dda1e11db47671c4a3bbd9e",
-            "source":"http://lastplaceigotthisfrom.com/authors/xxxxxx/posts/yyyyyy",
-            "origin":"http://whereitcamefrom.com/authors/wwwwww/posts/zzzzzz",
-            "description":"Whatever",
-            "contentType":"text/plain",
-            "content":"Are you even reading my posts Arjun?",
-            "author":{
-                "type":"author",
-                "id":"http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e",
-                "host":"http://127.0.0.1:5454/",
-                "displayName":"Lara Croft",
-                "url":"http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e",
-                "github": "http://github.com/laracroft",
-                "profileImage": "https://i.imgur.com/k7XVwpB.jpeg"
-            },
-            "comments":"http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/de305d54-75b4-431b-adb2-eb6b9e546013/comments"
-            "published":"2015-03-09T13:07:04+00:00",
-            "visibility":"FRIENDS"
-        }
-    ]
-}
-```
+* When sending/updating posts, body is a [post object](#example-post-object)
+* When sending/updating comments, body is a [comment object](#example-comment-object)
+* When sending/updating likes, body is a [like object](#example-like-object)
+* When sending/updating follow requests, body is a [follow object](#example-follow-request-object)
 
 # Requirements
 
@@ -927,6 +1293,9 @@ Frontend (Selenium, etc.) tests are not required. Code coverage (line coverage, 
 ## Documentation Requirements
 
 * Every API endpoint is documented.
+    * When the API endpoint should be used
+    * How the API endpoint should be used
+    * Why the API endpoint should or should not be used
 * Every API endpoint has multiple examples.
 * Every JSON field in both request and response
     * Has a type 
@@ -937,6 +1306,7 @@ Frontend (Selenium, etc.) tests are not required. Code coverage (line coverage, 
 * Explanation of anything interesting about each endpoint
     * Whether it is paginated, ...
         * How to use the pagination, ...
+* If you are using some automated documentation generation, you must augment that documentation with examples, types, explanations, when, what, how, why, why not...
 
 ## Code Requirements
 
@@ -1029,7 +1399,7 @@ Frontend (Selenium, etc.) tests are not required. Code coverage (line coverage, 
         * <input type="checkbox"> No built Python artifacts: `.pyc` files, `__pycache__` directories, etc.
         * <input type="checkbox"> No downloaded JS packages: `node_modules` etc.
         * <input type="checkbox"> No HTML/CSS/JS output produced by compiler/transpiler/bundler
-        * <input type="checkbox"> No esbuild, vite, rollup, webpack, etc. output.
+        * <input type="checkbox"> No `esbuild`, `vite`, `rollup`, `webpack`, etc. output is included in the GitHub repository.
         * Failure to meet the above restrictions may result in a mark of zero.
     * Note: If you want to keep a copy at the end of the semester, do not use GitHub fork: clone it to your computer, and push it to a new GitHub repository (manual fork).
     * Force-push, rebase, and other git operations that remove history from GitHub are strictly forbidden, and you may receive a zero for project parts or be removed from your team.
@@ -1128,8 +1498,8 @@ The most successful teams:
 * Excellent 8 (A+): Clean code. Meets the requirements and ads extra polish. Everything is tested properly. Passes all tests. The API is documented in detail. The API is implemented as specified, and adds extra for compatibility. The UI meets all requirements, and has extra polish.
 * Good 7 (B+): Code is mostly clean but has some rough spots. At most a couple of minor bugs. Almost all the requirements are met. Everything is tested. Passes almost all tests. Almost everything is documented. Almost all the API is implemented according to spec.
 * Satisfactory 6 (C+): Code is low quality but working. Some bugs. Inconsistency. ¾ of the requirements are met. Almost everything is tested. Passes most tests. Most things are documented. API is implemented but doesn't meet spec.
-* Unsatisfactory 4-5 (D-D+): There are significant bugs and issues. ½ of the requirements are met. ½ the tests exist and pass. At least ½ of the documentation is present. At least ½ of the API exists and works. At least ½ of the UI exists and works. At least ½ of the API exists and works.
-* Partial Attempt 1-4 (F): Poor quality. Large pieces of code missing, some pieces exist. Some requirements are met. Some of the UI exists. Some of the API exists.
+* Unsatisfactory 4 (D): There are significant bugs and issues. ½ of the requirements are met. ½ the tests exist and pass. At least ½ of the documentation is present. At least ½ of the API exists and works. At least ½ of the UI exists and works. At least ½ of the API exists and works. <!-- @LT-IGNORE:ENGLISH_WORD_REPEAT_BEGINNING_RULE@ -->
+* Partial Attempt 1 (F): Poor quality. Large pieces of code missing, some pieces exist. Some requirements are met. Some of the UI exists. Some of the API exists. <!-- @LT-IGNORE:ENGLISH_WORD_REPEAT_BEGINNING_RULE@ -->
 * Failure 0 (F): Missing. Not attempted. Not complete enough to make an evaluation. Violated a restriction. 
 
 UI amount complete is marked by your TA testing user stories manually.
@@ -1198,6 +1568,8 @@ https://github.com/uofa-cmput404/f24-project-example-team/tree/part1
 * *Tests do not count unless they are accurately testing the functionality.*
 * *Failure to commit and tag on time, failure to submit a link to the tag, etc. will result in an overall mark of zero for this project part: not just a zero for Tool Use.*
 * *Force push, rebase, or other operations that destroy git history, along with forging git history, authorship, messages, dates, etc. will also result in an overall mark of zero for this project part, and you will be reported to the Faculty under the Student Academic Integrity Policy.*
+* *1/2 of the user stories does **not** include those marked for ⧟ later project parts.*
+
 * Excellent
     * User Stories UI: At least ½ of the user stories are usable using the UI.
     * User Stories API: At least ½ of the user stories with a relevant API are usable using the API. Adheres to the specification.
@@ -1205,7 +1577,7 @@ https://github.com/uofa-cmput404/f24-project-example-team/tree/part1
     * UI Design: Looks impressive! It's obvious how to do any of the ½ of the user stories.
     * Tool use: Use of Git, GitHub issues, etc. is Evidence and Obvious. Commits/merges/PRs are small and frequent. Commit messages are helpful information for teammates. All the teammates are working at the same time, and using GitHub **and git** to help communicate and improve teamwork. You laugh in the face of merge conflicts! Well organized repository and branches. 
     * TA Walkthrough: Able to walk through ½ user stories with UI and API. No snags, bugs, last second workarounds, or missing pieces. Code is easily located. Documentation is easily located.
-    * Web Service API Documentation: Well documented. Highly detailed. Clear descriptions, has useful example requests and responses from your API for every use of the API and ½ of user stories. 
+    * Web Service API Documentation: Well documented. Highly detailed. Clear descriptions, has useful example requests and responses from your API for every use of the API and ½ of user stories. If using automated documentation generation, there is extra documentation added on top of that.
     * Standards & Code Style: Adheres to standards, code is well organized and clean. Code is easy to read. Comments add to code readablility when necessary. Code meets Python, JS, HTML and CS style guides. Excellent indentation, naming. Code units only do one thing. It's easy to find the code responsible for handling any of the ½ user stories.
 * Good
     * User Stories UI: Almost ½ of the user stories are usable using the UI.
@@ -1214,7 +1586,7 @@ https://github.com/uofa-cmput404/f24-project-example-team/tree/part1
     * UI Design: Looks good. It's not obvious how you would use the UI to do some of ½ of the user stories.
     * Tool use: Frequent but inconsistent use of Git, etc. Commits/merges/PRs are medium and with inconsistent frequency. All the teammates are working at the same time. Using GitHub to help communicate. Well organized repository and branches.
     * TA Walkthrough: A couple of snags, bugs, last second workarounds.
-    * Web Service API Documentation: Well documented, medium detail. A few things are unclear. Has example requests and responses from your API for every use of the API and ½ of user stories. 
+    * Web Service API Documentation: Well documented, medium detail. A few things are unclear. Has example requests and responses from your API for every use of the API and ½ of user stories. If using automated documentation generation, there is extra documentation added on top of that.
     * Standards & Code Style: Adheres to standards, code is well organized and clean. Missing comments. Some minor issues with code style. Code units only do one thing. It takes a little digging sometimes to find the code responsible for a user story.
 * Satisfactory
     * User Stories UI: At least 3/8ths of the user stories are usable using the UI.
@@ -1224,7 +1596,7 @@ https://github.com/uofa-cmput404/f24-project-example-team/tree/part1
     * UI Design: HTML & CSS exists, it does not look good. Mostly easy to understand. It has issues. There is some way to do ½ of the user stories, even if it's not obvious.
     * Tool use: Uses Git, etc. Has some oversized merges. Commits/merges/PRs are large and far apart. All the teammates are working at the same time. Well organized repository and branches.
     * TA Walkthrough: Some snags bugs, last second workarounds, or tiny missing pieces.
-    * Web Service API Documentation: Well documented, but missing details. Every endpoint is documented.  Some things are unclear. Example requests and responses have a few issues. Slightly less than ½ of user stories have examples.
+    * Web Service API Documentation: Well documented, but missing details. Every endpoint is documented.  Some things are unclear. Example requests and responses have a few issues. Slightly less than ½ of user stories have examples. If using automated documentation generation, there is extra documentation added on top of that.
     * Standards & Code Style: Adheres to standards, there is an attempt at organization. Commented out code, unreachable code, or code with no clear purpose. Code units only do one thing. Occasional spots of poor style. It's not clear where the code for a user story will be.
 * Unsatisfactory
     * User Stories UI: At least ¼ of the user stories are usable using the UI.
@@ -1233,7 +1605,7 @@ https://github.com/uofa-cmput404/f24-project-example-team/tree/part1
     * UI Design: HTML & CSS exists. Major UI issues. Hard to navigate. Hard to understand. There is some way to do almost all the ½ of the user stories.
     * Tool use: Limited of tool use. Only one teammate seems to be working at a time. Git is disorganized.
     * TA Walkthrough: Many snags, bugs, last second workarounds, small missing pieces.
-    * Web Service API Documentation: Low on details. Many things are unclear. Every endpoint is documented. Missing some example requests and responses.
+    * Web Service API Documentation: Low on details. Many things are unclear. Every endpoint is documented. Missing some example requests and responses. If using automated documentation generation, there is extra documentation added on top of that.
     * Standards & Code Style: Browser, Python, transpiler, bundler, etc. warnings. Code is poorly organized God files/classes/functions. Have to search or grep code to find the code responsible for something.
 * Attempt
     * User Stories UI: Less than ¼ of the user stories are usable using the UI or major deviations from the user stories.
@@ -1242,7 +1614,7 @@ https://github.com/uofa-cmput404/f24-project-example-team/tree/part1
     * UI Design: Some pieces of the HTML & CSS exist, but some pieces of the HTML & CSS are missing that would be needed to do ½ of the user stories.
     * Tool use: Very limited of tool use. Git is disorganized. Git exists but it has built artifacts in it. Git has commits that do not contribute anything, but have large diffs, such as changing whitespace of every line in a file.<!-- @LT-IGNORE:ENGLISH_WORD_REPEAT_BEGINNING_RULE@ -->
     * TA Walkthrough: Showstopper bugs. Major missing pieces.
-    * Web Service API Documentation: Major pieces of documentation are missing or only has autogenerated documentation.
+    * Web Service API Documentation: Major pieces of documentation are missing or only has autogenerated documentation. 
     * Standards & Code Style: HTML errors, browser errors, CSS errors, JS errors, Python errors. Code is disorganized. Code is hard to find. Code is missing.
 * No attempt
     * User Stories UI: No user stories are usable using the UI.
@@ -1251,7 +1623,7 @@ https://github.com/uofa-cmput404/f24-project-example-team/tree/part1
     * UI Design: No HTML/CSS exists.
     * Tool use: Used file sharing, email attachments, sending files/code through discord, chat, messengers, or similar tools to work together. Git exists but it not being used, or it is being misused.
     * TA Walkthrough: No walkthrough. Unable to demo. 
-    * Web Service API Documentation: Documentation is missing or unable to find documentation.
+    * Web Service API Documentation: Documentation is missing or unable to find documentation. 
     * Standards & Code Style: Project doesn't run/load.
 
 ## Project Part 2: Centralized Prototype
@@ -1593,9 +1965,11 @@ During the other team's presentations:
 # License
 
      * Parts of this document are derived from the W3C Documentation for Activity Pub
+     * Additional Authors: Karim Baaba, Ali Sajedi, Kyle Richelhoff, Chris Pavlicek, Derek Dowling, Olexiy Berjanskii, Erin Torbiak, Abram Hindle, Braedy Kuzma, Nhan Nguyen, Hazel Victoria Campbell
      * Copyright © 2018 W3C® (MIT, ERCIM, Keio, Beihang). W3C liability, trademark and permissive document license rules apply. 
      * https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
-```.plain
+
+```txt
      License
      
      By obtaining and/or copying this work, you (the licensee) agree that you have read, understood, and will comply with the following terms and conditions.
