@@ -397,7 +397,7 @@ urlpatterns = [
 ]
 ```
 
-If you navigate to `localhost:8000/add/` you should see your markdown editor!
+If you navigate to `localhost:8000/wiki/add/` you should see your markdown editor!
 
 We now have a visible markdown editor, but we have no way of actually storing data yet. So let’s store the content users create in a Django model.
 
