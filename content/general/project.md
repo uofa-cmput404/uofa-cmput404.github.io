@@ -1515,8 +1515,8 @@ You must form a group with only students from your same lab section. You can hav
 * Your team name must be from the list of [CSS colour names](https://developer.mozilla.org/en-US/docs/Web/CSS/named-color).
 * Use the [GitHub Classroom Link on eClass](https://eclass.srv.ualberta.ca/mod/assign/view.php?id=8120400&forceview=1)
     * EVERY teammate should submit a link to your teams GitHub repo on eClass.
-* Add a license and a README. The README should contain the names of the teammates.
-* Use the format https://github.com/uofa-cmput404/f24-project-team-name
+* Add a license and a README. The README should contain the names of the teammates. (You don't have to use your real name if you don't want Microsoft/GitHub to know who you are.)
+* Use the format `https://github.com/uofa-cmput404/f24-project-team-name` where `team-name` is your css color.
 
 Do not submit a clone link or a link to a branch or file.
 
