@@ -314,7 +314,7 @@ def index(request):
     return render(request, "index.html")
 ```
 
-Now, visiting `localhost:8000/wiki` will display the HTML template.
+Now, visiting `localhost:8000/wiki/` will display the HTML template.
 
 ## Adding Markdown Editor
 
