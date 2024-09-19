@@ -546,35 +546,35 @@ Use `esbuild` to transpile it with this command and then your website should now
 Now that we have a Django app with Markdown editing and content storage, we need to configure our static hosting middleware. In a production environment, Django will not export static files which is why we need to use a static middleware. Changing the `DEBUG` variable in `lab2/settings.py` to `False`, running `python3 manage.py runserver`, and then navigating to `localhost:8000/wiki/add/` will not allow you to preview any Markdown code. (note that you will also have to update `ALLOWED_HOSTS` to `['*']` if you would like to see it yourself) We can use **WhiteNoise** (a static file middleware) to resolve this. You can learn more about [WhiteNoise here](https://whitenoise.readthedocs.io/en/latest/django.html). 
 
 1. Install WhiteNoise:
-```
-pip install whitenoise
-```
+    ```
+    pip install whitenoise
+    ```
 
 2. Navigate to the root directory in your repository and add WhiteNoise to your `requirements.txt`
-```
-pip freeze requirements.txt
-```
+    
+    ```
+    pip freeze requirements.txt
+    ```
 
-2. Update `lab2/settings.py` to use WhiteNoise:
+3. Update `lab2/settings.py` to use WhiteNoise:
 
-```py
-MIDDLEWARE = [
-    # ...
-    'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',  # MAKE SURE IT'S AFTER THE SECURITY MIDDLEWARE!
-    # ...
-]
+        :::python
+        MIDDLEWARE = [
+            # ...
+            'django.middleware.security.SecurityMiddleware',
+            'whitenoise.middleware.WhiteNoiseMiddleware',  # MAKE SURE IT'S AFTER THE SECURITY MIDDLEWARE!
+            # ...
+        ]
 
-STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / 'staticfiles'
-```
+        STATIC_URL = '/static/'
+        STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-3. Run `collectstatic` to gather all static files:
-```py
-python manage.py collectstatic
-```
+4. Run `collectstatic` to gather all static files:
 
-4. Restart the Django server, and now WhiteNoise will handle serving static files, including the JavaScript bundles.
+        :::python
+        python manage.py collectstatic
+
+5. Restart the Django server, and now WhiteNoise will handle serving static files, including the JavaScript bundles.
 
 ## TASK - Emoji Picker
 
@@ -753,6 +753,7 @@ When rendering the `likes.html` template, you will need to pass in to the contex
 ## Conclusion and Submission
 
 Please confirm you have completed **the four tasks** in this lab and the [requirements](#requirements).
+
 - Creating the backend for storing wiki pages
 - Adding an emoji picker to the markdown editor
 - Adding support for liking wiki pages
