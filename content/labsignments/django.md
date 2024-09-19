@@ -398,6 +398,7 @@ urlpatterns = [
 ```
 
 If you navigate to `localhost:8000/wiki/add/` you should see your markdown editor!
+Examples of how to use markdown can be found [here](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax) if you would like to test it out yourself.
 
 We now have a visible markdown editor, but we have no way of actually storing data yet. So let’s store the content users create in a Django model.
 
@@ -420,7 +421,7 @@ After creating the model, run `python3.11 manage.py makemigrations` and `python3
 
 ### TASK - Backend For Storing Wiki Pages
 
-Update the contents of `wiki/templates/editor.html` to this: **(DO NOT MODIFY THE HTML)**
+Replace the contents of `wiki/templates/editor.html` with this:
 ```html
 {% load static %}
 <!DOCTYPE html>
@@ -553,7 +554,7 @@ Now that we have a Django app with Markdown editing and content storage, we need
 2. Navigate to the root directory in your repository and add WhiteNoise to your `requirements.txt`
     
     ```
-    pip freeze requirements.txt
+    pip freeze > requirements.txt
     ```
 
 3. Update `lab2/settings.py` to use WhiteNoise:
