@@ -543,7 +543,7 @@ Use `esbuild` to transpile it with this command and then your website should now
 
 ## Serving Static Files with WhiteNoise
 
-Now that we have a Django app with Markdown editing and content storage, we need to configure our static hosting middleware. In a production environment, Django will not export static files which is why we need to use a static middleware. Changing the `DEBUG` variable in `lab2/settings.py` to `False`, running `python3 manage.py runserver`, and then navigating to `localhost:8000/wiki/add/` will not allow you to preview any Markdown code. We can use **WhiteNoise** (a static file middleware) to resolve this. You can learn more about [WhiteNoise here](https://whitenoise.readthedocs.io/en/latest/django.html). 
+Now that we have a Django app with Markdown editing and content storage, we need to configure our static hosting middleware. In a production environment, Django will not export static files which is why we need to use a static middleware. Changing the `DEBUG` variable in `lab2/settings.py` to `False`, running `python3 manage.py runserver`, and then navigating to `localhost:8000/wiki/add/` will not allow you to preview any Markdown code. (note that you will also have to update `ALLOWED_HOSTS` to `['*']` if you would like to see it yourself) We can use **WhiteNoise** (a static file middleware) to resolve this. You can learn more about [WhiteNoise here](https://whitenoise.readthedocs.io/en/latest/django.html). 
 
 1. Install WhiteNoise:
 ```
