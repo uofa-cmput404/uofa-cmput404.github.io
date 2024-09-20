@@ -110,17 +110,29 @@ The first command will create a directory named `venv`. Contained in the directo
 
 ## Phase One: Django Polls App
 
+**For phase one of this lab,** you will be creating a polls application that allows end users to be able to create and be able to answer multiple choice polls.
+
 ### Creating a Django Project
 
 * Official Docs [Overview](https://docs.djangoproject.com/en/5.0/intro/overview/), [Installation](https://docs.djangoproject.com/en/5.0/intro/install/)
 
+Make sure to use a **virtual environment** for this lab and that it is activated as shown above!
 
-Make sure to use a **virtual environment** for this lab!
+```
+echo "Django>=5.0.1" > requirements.txt
+python -m pip install -r requirements.txt
+```
+
+**If you are encountering an issue with this command in regards to a library called `html5lib` you will need to update your pip version first.**
+```
+wget https://bootstrap.pypa.io/get-pip.py -O ./get-pip.py
+python3.11 ./get-pip.py
+```
 
 If you're doing this on **Windows** please make sure to follow the Windows
 instructions for Lab 1 before starting this lab!
 
-Follow Labsignments 2 to create a virtual environment and install Django. You can tell Django is installed and which version by running the following command in a shell prompt:
+You can tell Django is installed and which version by running the following command in a shell prompt:
 
 ```bash
 python -m django --version
@@ -132,7 +144,10 @@ Initialize a new Django project in your repo.
 Recommended option: Django project in root of repo.
 
 ```bash
+# We are creating a project named "lab3" in the relative directory "." (our current directory)
 django-admin startproject lab3 .
+
+# The manage.py file is a script included in all Django projects that lets you run various tasks (e.g. starting the server)
 python manage.py runserver
 ```
 
@@ -185,35 +200,40 @@ Create a new application within your django project called **polls**.
 python manage.py startapp polls
 ```
 
-Modify the *polls/views.py* file to look like the following.
-
-```python
-from django.http import HttpResponse
-
-def index(request):
-    return HttpResponse("Hello, world. You're at the polls index.")
-```
-
-Create a file at *polls/urls.py* with the following code.
+Create a file at *polls/urls.py* with the following code. This will handle incoming traffic to the `polls/` route that we will be creating in this phase of this lab.
 
 ```python
 from django.urls import path
 from . import views
 
+# urlpatterns contains all of the routes that this application supports routing for.
+# this routes traffic from polls/ to the index function that we defined earlier in the views file.
 urlpatterns = [
     path("", views.index, name="index"),
 ]
 ```
 
-Within `lab3/urls.py` replace it with the following code.
+We will need also need to add a index view for our polls application when it receives traffic at `polls/`. Modify the *polls/views.py* file to look like the following.
+
+```python
+from django.http import HttpResponse
+
+# Later on, the index function will be used to handle incoming requests to polls/ and it will return the hello world string shown below.
+def index(request):
+    return HttpResponse("Hello, world. You're at the polls index.")
+```
+
+Within `lab3/urls.py`, we need to modify it to route traffic to our newly added `polls/views.py`. replace it with the following code.
 
 ```python
 from django.contrib import admin
 from django.urls import include, path
 
+# this urlpatterns is different from the polls urlpatterns because lab3 is a project rather than an app. 
+# This urls.py is the base and forwards requests to the urls.py of the applications
 urlpatterns = [
-    path("polls/", include("polls.urls")),
-    path("admin/", admin.site.urls),
+    path("polls/", include("polls.urls")),  # All requests sent to polls/ should be handled by polls/urls.py
+    path("admin/", admin.site.urls),    # Django has a built in admin panel we will use later
 ]
 ```
 
@@ -234,8 +254,9 @@ If you get an error page here, check that you’re going to [http://localhost:80
 
 * Official Docs [Part 2](https://docs.djangoproject.com/en/5.0/intro/tutorial02/)
 
-Time to create our first models. Open up *settings.py* and ensure that the default database is set to `sqlite3`.
+Time to create our first models for our polls application. Open up *settings.py* and ensure that the default database is set to `sqlite3`.
 
+It should look like this:
 ```python
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
@@ -248,26 +269,31 @@ DATABASES = {
 }
 ```
 
-Within *polls/models.py* include the following code. The attributes defined in each class represent the data fields that the model should store.
+Within *polls/models.py* include the following code. Django's ORM allows you to define the properties you want stored in the database for a specific object (you can think of this as like an SQL table!) and provides you the ability to store, retrieve, and delete data from your Django database without having to write the database-specific code yourself. The attributes defined in each class represent the data fields that the model should store in the database.
 
 ```python
+from datetime import datetime
 from django.db import models
 
-class Question(models.Model):
-    question_text = models.CharField(max_length=200)
-    pub_date = models.DateTimeField("date published")
+class MultipleChoiceQuestion(models.Model):
+    question_text = models.CharField(max_length=200)    # Store the question in a char field in the database
+    pub_date = models.DateTimeField("date published", default=datetime.now)   # Store the published date in a datetime field in the database
 
-class Choice(models.Model):
-    question = models.ForeignKey(Question, on_delete=models.CASCADE)
-    choice_text = models.CharField(max_length=200)
-    votes = models.IntegerField(default=0)
+class MultipleChoiceOption(models.Model):
+    question = models.ForeignKey(MultipleChoiceQuestion, on_delete=models.CASCADE)  # All multiple choice options belong to a multiple choice question
+    choice_text = models.CharField(max_length=200)  # Store the text for this option in the database
+    votes = models.IntegerField(default=0)          # Store the amount of votes this choice has received
 ```
 
-To activate our poll application in our project, add it to the installed apps within `lab3/settings.py`. This file already exists, you do not need to create it.
+With this, we are creating both a `MultipleChoiceQuestion` and `MultipleChoiceOption` model. Multiple Choice Questions have options to choose from. Because this is a RDBMS, each `MultipleChoiceOption` links to a specific `MultipleChoiceQuestion` instance. Which is why we use `models.ForeignKey` to specify a foreign reference to the `MultipleChoiceQuestion` model. For more information, you can check out the official documentation [here](https://docs.djangoproject.com/en/5.1/topics/db/examples/many_to_one/).
+
+To activate our poll application in our project, we need to add it to the installed apps within `lab3/settings.py`. 
+
+Our application is `polls.apps.PollsConfig`. (`polls` is the application we created, `apps` is the module within it, and `PollsConfig` is the app configuration class defined within `polls/apps.py`)
 
 ```python
 INSTALLED_APPS = [
-    "polls.apps.PollsConfig",
+    "polls.apps.PollsConfig",   # Include this line in your INSTALLED_APPS variable!
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -280,6 +306,7 @@ INSTALLED_APPS = [
 Make the database migrations.
 
 ```bash
+# Database migrations are responsible for applying your model definitions to the actual database! It's important to note that this does not modify your database yet.
 python manage.py makemigrations polls
 ```
 
@@ -295,14 +322,15 @@ Migrations for 'polls':
 Run the migration command to create the tables in your database.
 
 ```bash
+# This command takes the migrations we created earlier to modify the database, and applies them to the actual database.
 python manage.py migrate
 ```
 
-Make sure your `.gitignore` contains `*.sqlite3`, and that you don't have db.sqlite3 in your git repo.
+Each Django project starts out using the default SQLite3 database provider, and that data is stored in the `db.sqlite3` file. Make sure your `.gitignore` contains `*.sqlite3`, and that you commit your change so that your `db.sqlite3` does not get pushed to your github repo.
 
 ### Using Django Admin
 
-Create a user that can log into the admin site.
+Django comes with a builtin admin dashboard that allows us to see and modify the model data that we have created. However, we need credentials in order to login to the admin dashboard. Run this command and to create a admin user that can log into the admin site. 
 
 ```bash
 python manage.py createsuperuser
@@ -315,33 +343,43 @@ Make the polls app modifiable in the admin by editing the *polls/admin.py* file 
 ```python
 from django.contrib import admin
 
-from .models import Choice, Question
+from .models import MultipleChoiceOption, MultipleChoiceQuestion
 
-admin.site.register(Choice)
-admin.site.register(Question)
+# These lines register your models with the django admin panel. If you do not include these lines, the data associated with these models will not be visible in your admin panel!
+admin.site.register(MultipleChoiceQuestion)
+admin.site.register(MultipleChoiceOption)
 ```
 
 Start the development server again and go to `/admin` on your local domain – e.g., [http://localhost:8000/admin/](http://localhost:8000/admin/). You should see the admin’s login screen and can login with your admin account.
 
 ```bash
 python manage.py runserver
+# navigate to /admin
 ```
+
+After logging in, you should see both a `MultipleChoiceQuestion` and `MultipleChoiceOption` link.
+
+#### TASK - Create Some Example Multiple Choice Questions
+
+TODO TODO TODO
 
 ### Working with Views
 
 * Official Docs [Part 3](https://docs.djangoproject.com/en/5.0/intro/tutorial03/)
 
-Add some additional views to the *polls/views.py* file. Include the following functions:
+Now that we have some multiple choice questions in the database, let's implement some logic to actually see and answer our polls! Add some additional views to the *polls/views.py* file. Include the following functions:
 
 ```python
-def detail(request, question_id):
+# You'll notice that these functions include a question_id parameter in addition to the request parameter. The question_id parameter is user provided and is parsed from the url by the urlpatterns route in the next code snippet. 
+
+def detail(request, question_id):   # http://localhost:8000/wiki/polls/5/
     return HttpResponse("You're looking at question %s." % question_id)
 
-def results(request, question_id):
+def results(request, question_id):  # http://localhost:8000/wiki/polls/5/results/
     response = "You're looking at the results of question %s."
     return HttpResponse(response % question_id)
 
-def vote(request, question_id):
+def vote(request, question_id):     # http://localhost:8000/wiki/polls/5/vote/
     return HttpResponse("You're voting on question %s." % question_id)
 ```
 
@@ -353,32 +391,32 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    # ex: /polls/
+    # ex: http://localhost:8000/polls/
     path("", views.index, name="index"),
-    # ex: /polls/5/
+    # ex: http://localhost:8000/polls/5/
     path("<int:question_id>/", views.detail, name="detail"),
-    # ex: /polls/5/results/
+    # ex: http://localhost:8000/polls/5/results/
     path("<int:question_id>/results/", views.results, name="results"),
-    # ex: /polls/5/vote/
+    # ex: http://localhost:8000/polls/5/vote/
     path("<int:question_id>/vote/", views.vote, name="vote"),
 ]
 ```
 
-Take a look in your browser, at `/polls/34/`. It’ll run the detail() function and display whatever ID you provide in the URL. Try `/polls/34/results/` and `/polls/34/vote/` too – these will display the placeholder results and voting pages.
+Take a look in your browser, at `http://localhost:8000/polls/34/`. It’ll run the detail() function and display whatever ID you provide in the URL. Try `http://localhost:8000/polls/34/results/` and `http://localhost:8000/polls/34/vote/` too – these will display the placeholder results and voting pages.
 
 ----
 
-### Making views render model data
+### Making Views Render Model Data
 
 Update the *polls/views.py* `index` method so the questions are returned.
 
 ```python
 # Change the imports to this!
 from django.http import HttpResponse
-from .models import Question
+from .models import MultipleChoiceQuestion
 
 def index(request):
-    latest_question_list = Question.objects.order_by("-pub_date")[:5]
+    latest_question_list = MultipleChoiceQuestion.objects.order_by("-pub_date")[:5]
     output = ", ".join([q.question_text for q in latest_question_list])
     return HttpResponse(output)
 
@@ -392,7 +430,7 @@ mkdir -p polls/templates/polls
 touch polls/templates/polls/index.html
 ```
 
-Within the newly created empty *polls/templates/polls/index.html* file, write the following.
+Within the newly created empty *polls/templates/polls/index.html* file, write the following. This HTML template will iterate through every single question in the `latest_question_list` variable we created above, and render an HTML list element with a link to view the question!
 
 ```html
 {% if latest_question_list %}
@@ -422,19 +460,22 @@ def index(request):
 # Do not modify the rest of the views
 ```
 
+If you goto `http://localhost:8000/polls/` you should be able to see a list of the questions that you had created in earlier in the lab in the admin panel!
+
+
 Add a new template file for the poll details view.
 
 ```bash
 touch polls/templates/polls/detail.html
 ```
 
-For the newly created template in *polls/templates/polls/detail.html*, update the content with the template tag for our question:
+For the newly created template in *polls/templates/polls/detail.html*, update the content with the HTML code for our question:
 
 ```html
-<h1>{{ question.question_text }}</h1>
+<h1>{{ question.question_text }}</h1>   <!-- Display the question's text -->
 <ul>
 {% for choice in question.choice_set.all %}
-    <li>{{ choice.choice_text }}</li>
+    <li>{{ choice.choice_text }}</li>   <!-- Display each option's text -->
 {% endfor %}
 </ul>
 ```
@@ -445,12 +486,12 @@ Update the `detail` view in *polls/views.py* to use the new template.
 # Change the imports to this!
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
-from .models import Question
+from .models import MultipleChoiceQuestion
 
 # ...
 
 def detail(request, question_id):
-    question = get_object_or_404(Question, pk=question_id)
+    question = get_object_or_404(MultipleChoiceQuestion, pk=question_id)
     return render(request, "polls/detail.html", {"question": question})
 ```
 
@@ -466,7 +507,10 @@ Remove the hardcoded urls that we specified in the *polls/templates/polls/index.
 
 ----
 
-### Namespacing URL names
+### Namespacing URL Names
+
+As a general good practice, you should always namespace your urls so that it is easier to reference specific paths in the case of a conflict between two apps. e.g. imagine if I also had path named `index` in another app called `poll2`. For functions that depend on the name of a specific path being passed. (E.g. when redirecting to a specific path `redirect("index")`) having that namespace allows for the two apps to share the same view name, but still allow functions that depend on specific paths to resolve to their correct app implementation. (e.g. for redirecting, I could specify `redirect("polls:index")` or `redirect("polls2:index")` depending on which app's index path I want to redirect to)
+
 
 Add an `app_name` in the *polls/urls.py* file to set the application namespace.
 
@@ -475,7 +519,7 @@ from django.urls import path
 
 from . import views
 
-app_name = "polls"
+app_name = "polls"  # Add me!
 urlpatterns = [
     path("", views.index, name="index"),
     path("<int:question_id>/", views.detail, name="detail"),
@@ -496,11 +540,11 @@ Change your *polls/index.html* template to point at the namespaced detail view.
 
 ----
 
-### Writing a simple form
+### Writing a Simple Form
 
 * Official Docs [Part 4](https://docs.djangoproject.com/en/5.0/intro/tutorial04/)
 
-Update the *polls/templates/polls/detail.html* file to match the following:
+While it's great that we can now see a list of all questions we've created, we still don't have a way of actually submitting one of our questions! Update the *polls/templates/polls/detail.html* file to match the following:
 
 ```html
 <form action="{% url 'polls:vote' question.id %}" method="post">
@@ -517,13 +561,13 @@ Update the *polls/templates/polls/detail.html* file to match the following:
 </form>
 ```
 
-Remember, in Part 3, we created a url for the polls application in *polls/urls.py* that includes this line:
+Remember, earlier we created a url for the polls application in *polls/urls.py* that includes this line:
 
 ```python
 path('<int:question_id>/vote/', views.vote, name='vote'),
 ```
 
-We also created a dummy implementation of the `vote()` function in *polls/views.py*. Let’s update the `vote` view in *polls/views.py* to handle the new template.
+We also created a dummy implementation of the `vote()` function in *polls/views.py*. Let’s update the `vote` view in *polls/views.py* to handle the new template and allow us to vote on our questions.
 
 ```python
 # Change the imports to this!
@@ -799,6 +843,8 @@ It is in your best interest to Work through the rest of Django's First Steps Tut
 
 
 ## Phase Two: Heroku
+
+**For phase two of the lab,** we will walk you through the deployment of your Django application onto Heroku.
 
 ### Setting up the Heroku CLI
 
