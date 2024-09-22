@@ -359,9 +359,11 @@ python manage.py runserver
 
 After logging in, you should see both a `MultipleChoiceQuestion` and `MultipleChoiceOption` link.
 
-#### TASK - Create Some Example Multiple Choice Questions
+#### TASK - Create Example Multiple Choice Questions
 
-TODO TODO TODO
+The admin panel lets us view our model data in a visual way, however we havent't created any new data! In the admin panel, click "+ Add" next to `MultipleChoiceQuestion` and create an example multiple choice question. Similarly, do the same process for `MultipleChoiceOption`, except to create options for the `MultipleChoiceQuestion`. 
+
+**Your task** is to create some example `MultipleChoiceQuestion` and `MultipleChoiceOption` objects in the admin panel. This will be important later on as we create our poll application!
 
 ### Working with Views
 
@@ -680,7 +682,7 @@ def vote(request, question_id):
 
 ----
 
-### Serializing and Deserializing Queries (Optional, but highly recommended to do)
+### Serializing and Deserializing Queries
 
 Based from the DRF (Django Rest Framework) tutorial [here](https://www.django-rest-framework.org/tutorial/1-serialization/)
 
@@ -833,6 +835,40 @@ Her is the [API Guide for Serializers](https://www.django-rest-framework.org/api
 
 Here is the [Tutorial guide](https://www.django-rest-framework.org/tutorial/1-serialization/)
 
+### TASK - Question Creation Route
+
+At this point in the lab, we should have a working poll application. However, we need a way to programmatically create and delete questions! 
+
+**Your task** is to add a new api route at `polls/api/question/add` that will add a new multiple choice question when a POST request is received! It should return a 405 when any other method is received. The post payload will contain two fields. 
+
+`question` and `answers`. `question` is a string that MUST be AT LEAST 1 character long and AT MOST 200 characters long. `answers` is a string of answers separated by a comma. 
+
+For example, if an incoming request came in with `question` as `Should pineapple be on pizza?` and `answers` as `yes,no` then it should create 1 `MultipleChoiceQuestion` and 2 `MultipleChoiceOption`s. 
+
+Each answer MUST be AT LEAST 1 character long and AT MOST 200 characters long. If a question or answer is not valid, (or if a `question` or `answers` is not provided) it should not create any `MultipleChoiceQuestion` or `MultipleChoiceOption` and return an appropriately erroring http status response.
+
+You can return any response so long as the HTTP status code returned is 201.
+
+An example CURL request you can use to test your API is:
+```
+TODO
+```
+
+**Task Requirements**
+
+- Should have a route available at `polls/api/question/add` (e.g. localhost:8000/polls/api/question/add)
+    - Should only handle POST and return a 405 when any other method is received.
+- Should verify the payload is correct
+    - Should check that `question` and `answers` were provided
+    - Should check that `question` is between 1-200 characters long
+    - Should check that `answers` is between 1-200 characters long
+    - Should check that there are AT LEAST two answers in `answers`
+    - Should check that each answer is at least 1 character long
+    - Should not create any models if any validation step fails
+    - Should return an appropriately erroring http status code if validation fails
+- Should create a `MultipleChoiceQuestion` and multiple `MultipleChoiceOption` when the payload is valid
+    - Should respond with a status code of 201 after it was created
+
 ### Optional/Outside of Lab
 
 It is in your best interest to Work through the rest of Django's First Steps Tutorials:
@@ -840,7 +876,6 @@ It is in your best interest to Work through the rest of Django's First Steps Tut
 * [Part 5: Testing](https://docs.djangoproject.com/en/5.0/intro/tutorial05/)
 * [Part 6: Static Files](https://docs.djangoproject.com/en/5.0/intro/tutorial06/)
 * [Part 7: Customizing the Admin Site](https://docs.djangoproject.com/en/5.0/intro/tutorial07/)
-
 
 ## Phase Two: Heroku
 
