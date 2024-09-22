@@ -740,7 +740,7 @@ When rendering the `likes.html` template, you will need to pass in to the contex
         * must have a likes list page that shows when each like for that specific page was created at `/wiki/page/<id>/likes/`
     * using Django's ORM system to store wiki pages and likes
     * with correctly setup WhiteNoise middleware
-* A git repository that does not contain built (compiled, transpiled, bundled, migrated) or downloaded artifacts, including but not limited to:
+* A git repository that does not contain built (compiled, transpiled, bundled) or downloaded artifacts, including but not limited to:
     * `virtualenv` `venv` or other virtual environments, etc.
     * `.pyc` files, `__pycache__` directories.
     * `node_modules`
