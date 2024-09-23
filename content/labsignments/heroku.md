@@ -19,8 +19,11 @@ summary: Lab Procedure, Lab Assignments, Lab Marking
 
 # Description
 
-This lab contains two phases. In Phase One, you will build a simple Django website. Understand the fundamentals of Django's MVC architecture using the built-in models and views.
-In Phase Two, you will deploy the Django application to [Heroku](https://www.heroku.com/). Understand the reasoning behind Platform as a Service (PaaS) businesses like Heroku. You may follow the official documentation.
+This lab contains three phases. In Phase one, you will build a simple Django website. Understand the fundamentals of Django's MVC architecture using the built-in models and views.
+
+In Phase two, you will deploy the Django application to [Heroku](https://www.heroku.com/). Understand the reasoning behind Platform as a Service (PaaS) businesses like Heroku. You may follow the official documentation.
+
+In Phase three, you will apply the lab material to add a comment section to your polls application!
 
 ## Learning Goals
 
@@ -33,9 +36,14 @@ In Phase Two, you will deploy the Django application to [Heroku](https://www.her
 
 ## Warning!
 
+There will be no walkthrough for this lab. **PLEASE MAKE SURE YOUR CODE IS WELL COMMENTED!** This will help the TAs to be able to understand your code when they are marking your lab.
+
+<!-- They aren't walking us through this lab bc of holidays. -->
+<!-- ## Warning!
+
 The University's firewall (UWS) blocks new domains for 24 hours to prevent scam domains.
 
-This *might* affect your Heroku domain.The University's firewall is also inconsistent so it doesn't *always* seem to do this.
+This *might* affect your Heroku domain. The University's firewall is also inconsistent so it doesn't *always* seem to do this.
 We have complained about this every semester since forever, but IST simply does not care.
 
 Double check that your Heroku is not blocked before your walkthrough. We will **not** give you an extension if you Heroku is blocked.
@@ -55,7 +63,7 @@ You have several options to make sure this doesn't happen:
         * Windows 10/11: <https://allthings.how/how-to-edit-hosts-file-in-windows-11/>
     * If it stops working check again with nslookup and update it.
 * Use a VPN service or proxy.
-* Walkthrough us your lab over using another internet not provided by the University while in the lab.
+* Walkthrough us your lab over using another internet not provided by the University while in the lab. -->
 
 # Getting Started
 
@@ -289,11 +297,9 @@ With this, we are creating both a `MultipleChoiceQuestion` and `MultipleChoiceOp
 
 To activate our poll application in our project, we need to add it to the installed apps within `lab3/settings.py`. 
 
-Our application is `polls.apps.PollsConfig`. (`polls` is the application we created, `apps` is the module within it, and `PollsConfig` is the app configuration class defined within `polls/apps.py`)
-
 ```python
 INSTALLED_APPS = [
-    "polls.apps.PollsConfig",   # Include this line in your INSTALLED_APPS variable!
+    "polls",   # Include this line in your INSTALLED_APPS variable!
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -361,7 +367,7 @@ After logging in, you should see both a `MultipleChoiceQuestion` and `MultipleCh
 
 #### TASK - Create Example Multiple Choice Questions
 
-The admin panel lets us view our model data in a visual way, however we havent't created any new data! In the admin panel, click "+ Add" next to `MultipleChoiceQuestion` and create an example multiple choice question. Similarly, do the same process for `MultipleChoiceOption`, except to create options for the `MultipleChoiceQuestion`. 
+The admin panel lets us view our model data in a visual way, however we havent't created any new data! In the admin panel, click "+ Add" next to "Multiple choice questions" and create an example multiple choice question. Similarly, do the same process for "Multiple choice options", except to create options for the "Multiple choice options". 
 
 **Your task** is to create some example `MultipleChoiceQuestion` and `MultipleChoiceOption` objects in the admin panel. This will be important later on as we create our poll application!
 
@@ -452,10 +458,10 @@ Update the `index` view in *polls/views.py* to use the new template.
 # Change the imports to this!
 from django.http import HttpResponse
 from django.shortcuts import render
-from .models import Question
+from .models import MultipleChoiceQuestion
 
 def index(request):
-    latest_question_list = Question.objects.order_by("-pub_date")[:5]
+    latest_question_list = MultipleChoiceQuestion.objects.order_by("-pub_date")[:5]
     context = {"latest_question_list": latest_question_list}
     return render(request, "polls/index.html", context)
 
@@ -476,7 +482,7 @@ For the newly created template in *polls/templates/polls/detail.html*, update th
 ```html
 <h1>{{ question.question_text }}</h1>   <!-- Display the question's text -->
 <ul>
-{% for choice in question.choice_set.all %}
+{% for choice in question.multiplechoiceoption_set.all %}
     <li>{{ choice.choice_text }}</li>   <!-- Display each option's text -->
 {% endfor %}
 </ul>
@@ -497,7 +503,7 @@ def detail(request, question_id):
     return render(request, "polls/detail.html", {"question": question})
 ```
 
-Remove the hardcoded urls that we specified in the *polls/templates/polls/index.html* file and replace it with at emplate tag referencing our url.
+Remove the hardcoded urls that we specified in the *polls/templates/polls/index.html* file and replace it with a template tag referencing our url.
 
 ```html
 <!-- old -->
@@ -550,16 +556,16 @@ While it's great that we can now see a list of all questions we've created, we s
 
 ```html
 <form action="{% url 'polls:vote' question.id %}" method="post">
-{% csrf_token %}
-<fieldset>
-    <legend><h1>{{ question.question_text }}</h1></legend>
-    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-    {% for choice in question.choice_set.all %}
-        <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
-        <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
-    {% endfor %}
-</fieldset>
-<input type="submit" value="Vote">
+    {% csrf_token %}
+    <fieldset>
+        <legend><h1>{{ question.question_text }}</h1></legend>
+        {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+        {% for choice in question.multiplechoiceoption_set.all %}
+            <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
+            <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
+        {% endfor %}
+    </fieldset>
+    <input type="submit" value="Vote">
 </form>
 ```
 
@@ -576,14 +582,14 @@ We also created a dummy implementation of the `vote()` function in *polls/views.
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
-from .models import Question, Choice
+from .models import MultipleChoiceQuestion, MultipleChoiceOption
 
 # ...
 def vote(request, question_id):
-    question = get_object_or_404(Question, pk=question_id)
+    question = get_object_or_404(MultipleChoiceQuestion, pk=question_id)
     try:
-        selected_choice = question.choice_set.get(pk=request.POST["choice"])
-    except (KeyError, Choice.DoesNotExist):
+        selected_choice = question.multiplechoiceoption_set.get(pk=request.POST["choice"])
+    except (KeyError, MultipleChoiceOption.DoesNotExist):
         # Redisplay the question voting form.
         return render(
             request,
@@ -606,7 +612,7 @@ After voting, the application should redirect to a view displaying the results. 
 
 ```python
 def results(request, question_id):
-    question = get_object_or_404(Question, pk=question_id)
+    question = get_object_or_404(MultipleChoiceQuestion, pk=question_id)
     return render(request, "polls/results.html", {"question": question})
 ```
 
@@ -616,7 +622,7 @@ Create a template for the results in *polls/templates/polls/results.html*
 <h1>{{ question.question_text }}</h1>
 
 <ul>
-{% for choice in question.choice_set.all %}
+{% for choice in question.multiplechoiceoption_set.all %}
     <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
 {% endfor %}
 </ul>
@@ -630,7 +636,7 @@ Run your application. Use the admin interface to create aquestion, then create m
 
 ### Refactoring: Generic Views
 
-To convert the `poll` application to use generic views, we will:
+To convert the `poll` application to use generic views rather than function views, we will:
 
 1. Convert the old url conf.
 2. Delete some of the old, unnecessary views.
@@ -658,7 +664,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 from django.views import generic
-from .models import Choice, Question
+from .models import MultipleChoiceQuestion, MultipleChoiceOption
 
 class IndexView(generic.ListView):
     template_name = "polls/index.html"
@@ -666,14 +672,16 @@ class IndexView(generic.ListView):
 
     def get_queryset(self):
         """Return the last five published questions."""
-        return Question.objects.order_by("-pub_date")[:5]
+        return MultipleChoiceQuestion.objects.order_by("-pub_date")[:5]
 
 class DetailView(generic.DetailView):
-    model = Question
+    model = MultipleChoiceQuestion
+    context_object_name = "question"
     template_name = "polls/detail.html"
 
 class ResultsView(generic.DetailView):
-    model = Question
+    model = MultipleChoiceQuestion
+    context_object_name = "question"
     template_name = "polls/results.html"
 
 def vote(request, question_id):
@@ -695,7 +703,7 @@ pip install djangorestframework
 pip freeze > requirements.txt
 ```
 
-Then add the `rest_framework` app to the **bottom** of our `INSTALLED_APPS` in our `settings.py` file
+Then add the `rest_framework` app to the **BOTTOM** of our `INSTALLED_APPS` in our `settings.py` file
 
 ```python
 INSTALLED_APPS = [
@@ -710,7 +718,7 @@ Create a file in the `polls` directory named `serializers.py` and add the follow
 
 ```python
 from rest_framework import serializers
-from .models import Question
+from .models import MultipleChoiceQuestion
 
 class QuestionSerializer(serializers.Serializer):
     question_text = serializers.CharField()
@@ -718,13 +726,13 @@ class QuestionSerializer(serializers.Serializer):
 
     def create(self, validated_data):
         """
-        Create and return a new `Question` instance, given the validated data
+        Create and return a new `MultipleChoiceQuestion` instance, given the validated data
         """
-        return Question.object.create(**validated_data)
+        return MultipleChoiceQuestion.objects.create(**validated_data)
     
     def update(self, instance, validated_data):
         """
-        Update and return an existing `Question` instance, given the validated data
+        Update and return an existing `MultipleChoiceQuestion` instance, given the validated data
         """
         instance.question_text = validated_data.get('question_text', instance.question_text)
         instance.pub_date = validated_data.get('pub_date', instance.pub_date)
@@ -746,13 +754,13 @@ from .serializers import QuestionSerializer
 
 # ...
 
-
+# We are adding a new API route that lists question data in JSON format!
 @api_view(['GET'])
 def get_questions(request):
     """
     Get the list of questions on our website
     """
-    questions = Question.objects.all()
+    questions = MultipleChoiceQuestion.objects.all()
     serializer = QuestionSerializer(questions, many=True)
     return Response(serializer.data)
 ```
@@ -789,10 +797,10 @@ We can use the serializer to update the `question_text` field of our question en
 @api_view(['GET','POST'])
 def update_question(request, pk):
     """
-    Get the list of questions on our website
+    Update a specific question
     """
-    questions = Question.objects.get(id=pk)
-    serializer = QuestionSerializer(questions, data=request.data, partial=True)
+    question = MultipleChoiceQuestion.objects.get(id=pk)
+    serializer = QuestionSerializer(question, data=request.data, partial=True)
     if serializer.is_valid():
         serializer.save()
         return Response(serializer.data)
@@ -834,40 +842,6 @@ After clicking the POST button you should see the updated value in the json stru
 Her is the [API Guide for Serializers](https://www.django-rest-framework.org/api-guide/serializers/)
 
 Here is the [Tutorial guide](https://www.django-rest-framework.org/tutorial/1-serialization/)
-
-### TASK - Question Creation Route
-
-At this point in the lab, we should have a working poll application. However, we need a way to programmatically create and delete questions! 
-
-**Your task** is to add a new api route at `polls/api/question/add` that will add a new multiple choice question when a POST request is received! It should return a 405 when any other method is received. The post payload will contain two fields. 
-
-`question` and `answers`. `question` is a string that MUST be AT LEAST 1 character long and AT MOST 200 characters long. `answers` is a string of answers separated by a comma. 
-
-For example, if an incoming request came in with `question` as `Should pineapple be on pizza?` and `answers` as `yes,no` then it should create 1 `MultipleChoiceQuestion` and 2 `MultipleChoiceOption`s. 
-
-Each answer MUST be AT LEAST 1 character long and AT MOST 200 characters long. If a question or answer is not valid, (or if a `question` or `answers` is not provided) it should not create any `MultipleChoiceQuestion` or `MultipleChoiceOption` and return an appropriately erroring http status response.
-
-You can return any response so long as the HTTP status code returned is 201.
-
-An example CURL request you can use to test your API is:
-```
-TODO
-```
-
-**Task Requirements**
-
-- Should have a route available at `polls/api/question/add` (e.g. localhost:8000/polls/api/question/add)
-    - Should only handle POST and return a 405 when any other method is received.
-- Should verify the payload is correct
-    - Should check that `question` and `answers` were provided
-    - Should check that `question` is between 1-200 characters long
-    - Should check that `answers` is between 1-200 characters long
-    - Should check that there are AT LEAST two answers in `answers`
-    - Should check that each answer is at least 1 character long
-    - Should not create any models if any validation step fails
-    - Should return an appropriately erroring http status code if validation fails
-- Should create a `MultipleChoiceQuestion` and multiple `MultipleChoiceOption` when the payload is valid
-    - Should respond with a status code of 201 after it was created
 
 ### Optional/Outside of Lab
 
@@ -1181,6 +1155,189 @@ You can use the `heroku open --app APPNAME` command to open your heroku app in a
 * Make sure your heroku app remembers the results of your polls and your superuser login!
     * If your heroku is not configured properly to use postgres it will forget them randomly! (somewhere between 0 and 24 hours.)
 
+## Phase Three: Comment Section
+
+Congratulations on getting your app deployed to Heroku! Let's add some new features to your application for you to deploy as well!
+
+### TASK - Question Creation Route
+
+At this point in the lab, we should have a working poll application deployed on Heroku. However, we need a way to programmatically create questions without using the admin panel! 
+
+**Your task** is to add a new api route at `polls/api/question/add/` that will add a new multiple choice question when a POST request is received! It should return a 405 when any other method is received. The post payload will contain a JSON object with the properties `question` and `answers`. 
+
+`question` is a string that MUST be AT LEAST 1 character long and AT MOST 200 characters long. `answers` is a array of answers that MUST have at least 1 answer. Each answer MUST be AT LEAST 1 character long and AT MOST 200 characters long. 
+
+For example...
+
+```json
+{
+    "question": "Should pineapple be on pizza?",
+    "answers": [
+        "yes",
+        "no"
+    ]
+}
+```
+
+This should create 1 `MultipleChoiceQuestion` and 2 `MultipleChoiceOption`s. 
+
+If a question or answer is not valid, (or if a `question` or `answers` is not provided) it should not create any `MultipleChoiceQuestion` or `MultipleChoiceOption` and return an appropriately erroring http status response.
+
+You can return any response so long as the HTTP status code returned is 201.
+
+An example CURL request you can use to test your API is:
+
+```
+curl -X POST http://localhost:8000/polls/api/question/add/ \
+    -H "Content-Type: application/json" \
+    -d '{"question":"Should pineapple be on pizza?", "answers":["yes", "no"]}'
+```
+
+**Task Requirements**
+
+- MUST have a route available at `polls/api/question/add/` (e.g. localhost:8000/polls/api/question/add/)
+    - MUST only handle POST and return a 405 when any other method is received.
+- MUST verify the payload is correct
+    - MUST check that `question` and `answers` were provided
+    - MUST check that `question` is between 1-200 characters long
+    - MUST check that each answer is between 1-200 characters long
+    - MUST check that there is AT LEAST one answer in `answers`
+    - MUST check that each answer is at least 1 character long
+    - MUST not create any models if any validation step fails
+    - MUST return an appropriately erroring http status code if validation fails
+- MUST create a `MultipleChoiceQuestion` and multiple `MultipleChoiceOption` when the payload is valid
+    - MUST respond with a status code of 201 after it was created
+
+### TASK - Comment Section
+
+It feels a bit empty if we just have a poll page. So let's go ahead and add a comment section to each poll!
+
+Add a new route in `polls/urls.py` to handle the form submission when a user submits the comment form to add a new comment.
+
+```py
+path('<int:question_id>/add_comment/', views.add_comment, name="add_comment")
+```
+
+Update `polls/views.py` to have a new `add_comment` function that will handle the processing of the comment form.
+
+```py
+def add_comment(request, question_id):
+    # TODO: Your implementation here!
+    pass
+```
+
+Next we need to update our `results.html` template to support rendering/adding comments. Replace the contents of `polls/results.html` file with be the following:
+
+```html
+<h1>{{ question.question_text }}</h1>
+
+<ul>
+{% for choice in question.multiplechoiceoption_set.all %}
+    <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
+{% endfor %}
+</ul>
+
+<a href="{% url 'polls:detail' question.id %}">Vote again?</a>
+
+<div style="border: 1px solid #000; margin: 20px 0 0 0; padding: 0 0 10px 10px;">
+    <h3>Add Comment</h3>
+    <form method="POST" action="{% url 'polls:add_comment' question.id %}">
+        <label style="font-weight: bold;">Username</label><br>
+        <input name="username" type="text" maxlength="32" />
+        <br /><br />
+        <label style="font-weight: bold;">Message</label><br>
+        <textarea name="content" style="min-width: 400px; max-width: 400px;"></textarea><br><br>
+        <input type="submit" />
+        {% csrf_token %}
+    </form>
+</div>
+
+<h2>Comments</h2>
+<div style="display: flex; flex-direction: column; gap: 10px;">
+    {% for comment in question.comment_set.all %}
+        <div style="border: 1px solid #000; padding: 0 0 20px 10px;">
+            <h3>{{ comment.username }} - {{ comment.created_at|date:'Y/m/d H:i' }}</h3>
+            <hr />
+            <div class="content">
+                {{ comment.content }}
+            </div>
+        </div>
+    {% endfor %}
+</div>
+```
+
+**Your task** is to create a new `Comment` model with a `username` char field, a `created_at` date time field, and a `content` text field. It should also have a foreign key reference field to a `MultipleChoiceQuestion` that can be named anything you'd like. **It is important that you do not change the model name or field names/types or else the template will likely not render your comments.** The max length of the `username` field will be 32 characters.
+
+**Secondly,** you must handle the backend for validating and creating a new comment object when a `POST` request is sent and received at your `add_comment` endpoint that we created earlier in this task section. The post payload will contain a `username` and `content` that correspond to the two fields you see when you goto the results page of a poll. After creating the comment, the client should be redirected back to the poll result page so that they can see their new comment. **If either property is blank or invalid,** you should not create a new instance of the `Comment` model and instead just redirect back to the poll result page.
+
+**Task Requirements**
+
+- MUST create a `Comment` model with a...
+    - `username` char field
+    - `created_at` date time field
+    - `content` text field
+    - foreign key reference to the `MultipleChoiceQuestion` the comment belongs to
+- MUST have a route available at `polls/question/<id>/add_comment/`
+    - MUST create a new `Comment` if the `username` and `content` form fields passed to the request are valid
+        - If the fields are not provided, it must not create a new `Comment`
+    - MUST ensure the username field is at most 32 characters
+    - MUST redirect back to the poll result page after processing the request
+- MUST have comments be shown on results page after adding a new comment
+
+### TASK - Markdown Comments
+
+At this point in the lab, you should have a working comment section. Let's add markdown rendering to your comments! Similarly to the last lab, we will need to transpile a javascript file! 
+
+We will need to install `marked` and `esbuild` in our root repository directory again.
+
+```bash
+npm install --save-dev marked
+npm install --save-dev esbuild
+```
+
+Create a new folder in the root repository directory called `webapp`, add a new file called `markdown-renderer.js`, and paste the following javascript code in it:
+```js
+import { marked } from "marked"; // Import the markdown converter
+
+// Handle rendering
+window.addEventListener('load', () => {
+    const contentDivs = document.getElementsByClassName('content');
+    for (const contentDiv of contentDivs) {
+        const markdownText = contentDiv.innerHTML;
+        const htmlOutput = marked(markdownText);
+        contentDiv.innerHTML = htmlOutput;
+    }
+});
+```
+
+Run the transpilation command in the root repository directory so that we can make this JavaScript code ready for use in our browser!
+
+```bash
+# If you ran django-admin startproject lab3 .
+npx esbuild ./webapp/markdown-renderer.js --bundle --minify --sourcemap --outfile=./polls/static/markdown-renderer.min.js
+
+# If you ran django-admin startproject lab3
+npx esbuild ./webapp/markdown-renderer.js --bundle --minify --sourcemap --outfile=./lab3/polls/static/markdown-renderer.min.js
+```
+
+Next, we need to include this javascript file into our HTML! Edit `templates/polls/results.html` and add at the top of the file
+
+```
+{% load static %}
+```
+
+and at the bottom of the file
+
+```html
+<script src="{% static 'markdown-renderer.min.js' %}"></script> <!-- Load bundled JS -->
+```
+
+Congratulations! Your comment section should now have markdown support! You can test this by typing in a comment to any poll with the content `**this text should be bold!**` to see if your markdown renderer is working!
+
+### TASK - Add Some Multiple Choice Questions on Heroku
+
+**Your task** is to make sure that your Heroku instance has 2+ example multiple choice questions of your own choosing.
+
 # Restrictions
 
 Violation of the restrictions will result in a mark of zero.
@@ -1188,8 +1345,7 @@ Violation of the restrictions will result in a mark of zero.
 * Must use Python3
 * Must run on Ubuntu (Use the undergrad lab machines, for example the ones in CSC 2-29 or install an Ubuntu VM to check this)
 * Must run on your machine (whatever machine you use to show us)
-* Must be running on heroku, with some polls that you created for the TA to look at when they mark it.
-* Git repo must not contain 
+* Must be running on heroku, with some polls that you created for the TA to look at when they mark it. 
 
 # Requirements
 
@@ -1199,9 +1355,24 @@ Violation of the restrictions will result in a mark of zero.
     * that is deployed on Heroku
     * using a heroku postgres database
         * you can check what database is being used by the `heroku run "python3 manage.py diffsettings"` command above.
+    * with a polls homepage that displays all polls created at `/polls/`
+        * must have at least 2+ multiple choice questions of your choosing
+    * with a poll vote page at `/polls/<id>/`
+    * with a poll results page at `/polls/<id>/results/`
+        * must have a working comment section
+        * must display comments in Markdown
+    * with a poll vote route at `/polls/<id>/vote/` that processes poll votes
+    * with a poll comment route at `/polls/<id>/add_comment/` that adds and validates comments to a question
+        * must abide by all task requirements mentioned in **TASK - Comment Section** section
+    * with a api route available at `/polls/api/questions/` that displays the 5 most recently published questions
+    * with a api route available at `/polls/api/question/<id>` that updates and validates new multiple choice question information
+    * with a api route available at `/polls/api/question/add/` that creates and validates multiple choice questions
+        * must abide by all task requirements mentioned in **TASK - Question Creation Route** section
+    * using Django's ORM system to store database data
 * A git repository that does not contain built (compiled, transpiled, bundled) or downloaded artifacts, including but not limited to:
     * `virtualenv` `venv` etc.
     * `.pyc` files, `__pycache__` directories.
+    * `*.min.js`, `*.min.js.map` files
     * `node_modules`
     * `db.sqlite3` or any other databases.
         * `db.sqlite3` *should never leave your computer.* It is for local development only.
