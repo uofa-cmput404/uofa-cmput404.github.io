@@ -786,7 +786,7 @@ You should see a list of question in a json format.
 We can use the serializer to update the `question_text` field of our question entries. Add another function to `polls/views.py`
 
 ```python
-@api_view(['GET','POST'])
+@api_view(['POST'])
 def update_question(request, pk):
     """
     Update a specific question
