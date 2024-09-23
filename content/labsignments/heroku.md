@@ -23,7 +23,7 @@ This lab contains three phases. In Phase one, you will build a simple Django web
 
 In Phase two, you will deploy the Django application to [Heroku](https://www.heroku.com/). Understand the reasoning behind Platform as a Service (PaaS) businesses like Heroku. You may follow the official documentation.
 
-In Phase three, you will apply the lab material to add a comment section to your polls application!
+In Phase three, you will apply the lab material to add a new API route and a comment section to your polls application!
 
 ## Learning Goals
 
@@ -721,8 +721,8 @@ from rest_framework import serializers
 from .models import MultipleChoiceQuestion
 
 class QuestionSerializer(serializers.Serializer):
-    question_text = serializers.CharField()
-    pub_date = serializers.DateTimeField()
+    question_text = serializers.CharField() # This serializer expects a question_text char field
+    pub_date = serializers.DateTimeField()  # This serializer expects a pub_date date time field
 
     def create(self, validated_data):
         """
@@ -761,7 +761,7 @@ def get_questions(request):
     Get the list of questions on our website
     """
     questions = MultipleChoiceQuestion.objects.all()
-    serializer = QuestionSerializer(questions, many=True)
+    serializer = QuestionSerializer(questions, many=True)   # many=True specifies that the input is not just a single question
     return Response(serializer.data)
 ```
 
@@ -800,7 +800,7 @@ def update_question(request, pk):
     Update a specific question
     """
     question = MultipleChoiceQuestion.objects.get(id=pk)
-    serializer = QuestionSerializer(question, data=request.data, partial=True)
+    serializer = QuestionSerializer(question, data=request.data, partial=True)  # partial=True means that not all required serializer properties are needed/given to the serializer.
     if serializer.is_valid():
         serializer.save()
         return Response(serializer.data)
@@ -859,7 +859,7 @@ It is in your best interest to Work through the rest of Django's First Steps Tut
 
 Sign up for a Heroku account at [https://signup.heroku.com/](https://signup.heroku.com/). Be sure to **enable multi-factor authentication** (two-factor authentication) or Heroku will not allow you to sign in. 
 
-You can apply for free Heroku credits for 12 months at [https://www.heroku.com/github-students](https://www.heroku.com/github-students) with an eligible GitHub student account [https://education.github.com/pack](https://education.github.com/pack). **We cannot gaurantee that you will get free Heroku credits. As stated in the Course Outline, you may have to pay a small amount for Heroku.**
+You can apply for free Heroku credits for 12 months at [https://www.heroku.com/github-students](https://www.heroku.com/github-students) with an eligible GitHub student account [https://education.github.com/pack](https://education.github.com/pack). **We cannot guarantee that you will get free Heroku credits. As stated in the Course Outline, you may have to pay a small amount for Heroku.**
 
 Note: Remember to clean up all Heroku resources after this course to avoid unexpected charges after exceeding the credit limit or the offer expires.
 
@@ -1155,7 +1155,7 @@ You can use the `heroku open --app APPNAME` command to open your heroku app in a
 * Make sure your heroku app remembers the results of your polls and your superuser login!
     * If your heroku is not configured properly to use postgres it will forget them randomly! (somewhere between 0 and 24 hours.)
 
-## Phase Three: Comment Section
+## Phase Three: More Features
 
 Congratulations on getting your app deployed to Heroku! Let's add some new features to your application for you to deploy as well!
 
@@ -1208,6 +1208,8 @@ curl -X POST http://localhost:8000/polls/api/question/add/ \
 - MUST create a `MultipleChoiceQuestion` and multiple `MultipleChoiceOption` when the payload is valid
     - MUST respond with a status code of 201 after it was created
 
+**Hint**: You may find `rest_framework`'s serializers useful for doing the majority of the validation work for you! We also went through it earlier in the lab! ([Documentation](https://www.django-rest-framework.org/api-guide/serializers/))
+
 ### TASK - Comment Section
 
 It feels a bit empty if we just have a poll page. So let's go ahead and add a comment section to each poll!
@@ -1258,9 +1260,7 @@ Next we need to update our `results.html` template to support rendering/adding c
         <div style="border: 1px solid #000; padding: 0 0 20px 10px;">
             <h3>{{ comment.username }} - {{ comment.created_at|date:'Y/m/d H:i' }}</h3>
             <hr />
-            <div class="content">
-                {{ comment.content }}
-            </div>
+            <div class="content">{{ comment.content }}</div>
         </div>
     {% endfor %}
 </div>
@@ -1279,10 +1279,11 @@ Next we need to update our `results.html` template to support rendering/adding c
     - foreign key reference to the `MultipleChoiceQuestion` the comment belongs to
 - MUST have a route available at `polls/question/<id>/add_comment/`
     - MUST create a new `Comment` if the `username` and `content` form fields passed to the request are valid
-        - If the fields are not provided, it must not create a new `Comment`
+        - If the fields are not provided/empty, it must not create a new `Comment`
     - MUST ensure the username field is at most 32 characters
     - MUST redirect back to the poll result page after processing the request
 - MUST have comments be shown on results page after adding a new comment
+- MUST 404 if the question id provided is invalid
 
 ### TASK - Markdown Comments
 
@@ -1310,7 +1311,7 @@ window.addEventListener('load', () => {
 });
 ```
 
-Run the transpilation command in the root repository directory so that we can make this JavaScript code ready for use in our browser!
+**Your task** is to run the transpilation command in the root repository directory so that we can make this JavaScript code ready for use in our browser!
 
 ```bash
 # If you ran django-admin startproject lab3 .
@@ -1337,6 +1338,10 @@ Congratulations! Your comment section should now have markdown support! You can 
 ### TASK - Add Some Multiple Choice Questions on Heroku
 
 **Your task** is to make sure that your Heroku instance has 2+ example multiple choice questions of your own choosing.
+
+### Deploy Again
+
+After completing every task please make sure to commit your files and deploy the application using the heroku command line tool. See the **Deploying our Django Application to Heroku** section above for more information.
 
 # Restrictions
 
@@ -1405,4 +1410,3 @@ Django is a complex framework and maybe overwhelming at times. You should consul
 If you're unable to load a static file or resource, it maybe because you're not referencing it correctly. It may be in a different directory or you have a typo when you are referencing that particular resource using its path. 
 
 Another common problem is not being able to render the templates even though you're directory structure is correct. Make sure your app is registered in `settings.py` otherwise it may not render.
-
