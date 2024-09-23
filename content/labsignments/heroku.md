@@ -122,13 +122,13 @@ The first command will create a directory named `venv`. Contained in the directo
 
 ### Creating a Django Project
 
-* Official Docs [Overview](https://docs.djangoproject.com/en/5.0/intro/overview/), [Installation](https://docs.djangoproject.com/en/5.0/intro/install/)
+* Based on Official Docs [Overview](https://docs.djangoproject.com/en/5.0/intro/overview/), [Installation](https://docs.djangoproject.com/en/5.0/intro/install/)
 
 Make sure to use a **virtual environment** for this lab and that it is activated as shown above!
 
 ```
 echo "Django>=5.0.1" > requirements.txt
-python -m pip install -r requirements.txt
+python3.11 -m pip install -r requirements.txt
 ```
 
 **If you are encountering an issue with this command in regards to a library called `html5lib` you will need to update your pip version first.**
@@ -200,7 +200,7 @@ Now that the server’s running, visit [http://localhost:8000/](http://localhost
 
 ### Creating a Django App
 
- * Official Docs [Part 1](https://docs.djangoproject.com/en/5.0/intro/tutorial01/)
+ * Based on Official Docs [Part 1](https://docs.djangoproject.com/en/5.0/intro/tutorial01/) (Naming may vary)
 
 Create a new application within your django project called **polls**.
 
@@ -260,7 +260,7 @@ If you get an error page here, check that you’re going to [http://localhost:80
 
 ### Working with Models
 
-* Official Docs [Part 2](https://docs.djangoproject.com/en/5.0/intro/tutorial02/)
+* Based on Official Docs [Part 2](https://docs.djangoproject.com/en/5.0/intro/tutorial02/)
 
 Time to create our first models for our polls application. Open up *settings.py* and ensure that the default database is set to `sqlite3`.
 
@@ -373,7 +373,7 @@ The admin panel lets us view our model data in a visual way, however we havent't
 
 ### Working with Views
 
-* Official Docs [Part 3](https://docs.djangoproject.com/en/5.0/intro/tutorial03/)
+* Based on Official Docs [Part 3](https://docs.djangoproject.com/en/5.0/intro/tutorial03/)
 
 Now that we have some multiple choice questions in the database, let's implement some logic to actually see and answer our polls! Add some additional views to the *polls/views.py* file. Include the following functions:
 
@@ -550,7 +550,7 @@ Change your *polls/index.html* template to point at the namespaced detail view.
 
 ### Writing a Simple Form
 
-* Official Docs [Part 4](https://docs.djangoproject.com/en/5.0/intro/tutorial04/)
+* Based on Official Docs [Part 4](https://docs.djangoproject.com/en/5.0/intro/tutorial04/)
 
 While it's great that we can now see a list of all questions we've created, we still don't have a way of actually submitting one of our questions! Update the *polls/templates/polls/detail.html* file to match the following:
 
@@ -964,6 +964,10 @@ Pip install [gunicorn](https://gunicorn.org/), [whitenoise](https://github.com/e
 
 ```bash
 pip install gunicorn whitenoise dj-database-url psycopg2-binary
+# gunicorn is a production level HTTP Server library
+# whitenoise is a static file hosting middleware library
+# dj-database-url is a library used to format the database url provided by HEROKU to be formatted for Django
+# psycopg2-binary is a database adapter library
 ```
 
 Save the new python requirements into the *requirements.txt* file.
@@ -1025,7 +1029,7 @@ You should have a heroku app. You should see it if you run the `heroku list` com
 
 Heroku provides additional services in addition to project hosting. In this case, we will need to add a postgresql database to our app.
 
-```
+```bash
 heroku addons:create heroku-postgresql:essential-0 --app APPNAME
 ```
 
@@ -1034,7 +1038,7 @@ You can manage your essentials-0 postgres on your heroku dashboard under the res
 
 Check that heroku is configuring the database: (You may need to wait a bit for the add-on to be installed)
 
-```
+```bash
 heroku run "env" --app APPNAME
 ```
 
