@@ -1370,10 +1370,9 @@ Violation of the restrictions will result in a mark of zero.
     * with a api route available at `/polls/api/question/add/` that creates and validates multiple choice questions
         * must abide by all task requirements mentioned in **TASK - Question Creation Route** section
     * using Django's ORM system to store database data
-* A git repository that does not contain built (compiled, transpiled, bundled) or downloaded artifacts, including but not limited to:
+* A git repository that does not contain built (compiled, bundled) or downloaded artifacts, including but not limited to:
     * `virtualenv` `venv` etc.
     * `.pyc` files, `__pycache__` directories.
-    * `*.min.js`, `*.min.js.map` files
     * `node_modules`
     * `db.sqlite3` or any other databases.
         * `db.sqlite3` *should never leave your computer.* It is for local development only.
@@ -1383,6 +1382,7 @@ Violation of the restrictions will result in a mark of zero.
     * `README.md`
         * Has heroku app's hostname, cname, and IP address.
             * cname can be "none" if nslookup doesn't give a cname.
+    * Your transpiled `*.min.js`, and `*.min.js.map` files.
 
 # Submission Instructions
 
