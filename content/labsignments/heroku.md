@@ -31,48 +31,12 @@ In Phase three, you will apply the lab material to add a new API route and a com
 <p class="longWarning">
 There will be no walkthrough for this lab. <strong>PLEASE MAKE SURE YOUR CODE IS WELL COMMENTED!</strong> This will help the TAs to be able to understand your code when they are marking your lab.
 
-Besure to write high-quality comments that give **context** to the code instead of just describing the code. See examples below:
-
-### Bad Comments
-Bad comments describe the code, providing no/little further insight beyond what one might get from simply reading the code. 
-
-A bad comment for a conditional statement describes the condition being tested.
-
-```python
-# If the length of the all embeddings variable is bigger than 1
-if(len(all_embeddings) > 1):
-    <clustering logic>
-else:
-    <skip clustering>
-
-```
-
-A bad comment for a loop provides describes the loop logic. If you are iterating over a collection of things, it describes that you are iterating over a collection. If you are manipulating the objects in the collection, it says that the objects are being manipualted.
-
-```python
-
-
-# Iterate throught all like objects in user_likes. 
-for like_object in user_likes: 
-    # Create a super like and append it to super_likes
-    super_likes.append(SuperLike(like_object))    
-
-
-```
-
-
-A bad comment for a function call describes that a function is being called, specifying the name of the function being called and the variable in which the result is stored.
-
-```python
-# Apply the vstack function from numpy  (https://numpy.org/) to the _embeddings and store the result in all_embeddings.
-all_embeddings = np.vstack(_embeddings)
-```
-
+Be sure to write high-quality comments that give **context** to the code instead of just describing the code. Since we can't do a walkthrough we will be relying on these comments. See examples below:
 
 
 ### Good Comments
 
-Good comments describe 'what' the code code is doing only if that isn't clear from the way the code is written. However their focus is on 'why' something is being done. 
+Good comments describe 'what' the code is doing only if that isn't clear from the way the code is written. However, focus is on 'why' something is being done. 
 
 A good comment for a conditional statement should make it clear why the statement was required. Potentially even giving insight into what would happen if it wasn't there. 
 ```python
@@ -98,26 +62,75 @@ So each 'row' in this variable is an embedding of a timeline entity for this sym
 This is the format expected by do_h_clustering(). 
 '''
 all_embeddings = np.vstack(_embeddings)
-
 ```
 
 A good comment for a loop provides context into why the loop logic is required. If you are iterating over a collection of things, describe the purpose of the operations beind applied. If you are manipulating the objects in the list, why are those manipulations required?
 
 ```python
-
 '''
 All of a premium user's likes are converted into super likes before the like view is displayed.
 The html template will highlight elements in super_likes. While elements in user_likes are treated normally.
 '''
 for like_object in user_likes: 
     super_likes.append(SuperLike(like_object))    
+```
 
+In general, a good comment explains why the code is needed, when it runs, how it relates to other code, and exceptional situations that we need to make sure work correctly.
 
+```py
+    def read_row(self, row): # this is called once for every row in the menti export
+        # Usually each student has their own row, but if they reconnect they might have several
+        name = self.find_name(row) 
+        if name is None: # returned when find_name can't find any codenames in the row
+            return 
+        self.add_name(name) # set up some data structures before we process the questions and answers
+        responded = {question: None for question, _ in self.question_response_count.items()} # we need a new dictionary for every student (row), but we'll fill in the values later
+```
+
+### Bad Comments
+
+Bad comments describe the code, providing no/little further insight beyond what one might get from simply reading the code. 
+
+A bad comment for a conditional statement describes the condition being tested.
+
+```python
+# If the length of the all embeddings variable is bigger than 1
+if(len(all_embeddings) > 1):
+    <clustering logic>
+else:
+    <skip clustering>
 
 ```
 
+A bad comment for a loop provides describes the loop logic. If you are iterating over a collection of things, it describes that you are iterating over a collection. If you are manipulating the objects in the collection, it says that the objects are being manipulated.
 
-</p>
+```python
+# Iterate throught all like objects in user_likes. 
+for like_object in user_likes: 
+    # Create a super like and append it to super_likes
+    super_likes.append(SuperLike(like_object))    
+```
+
+
+A bad comment for a function call describes that a function is being called, specifying the name of the function being called and the variable in which the result is stored.
+
+```python
+# Apply the vstack function from numpy  (https://numpy.org/) to the _embeddings and store the result in all_embeddings.
+all_embeddings = np.vstack(_embeddings)
+```
+
+In general, a bad comment doesn't tell someone who knows the programming language anything they didn't already know. If you need to explain what a variable is for it's usually better to fix the variable name to be descriptive, rather than adding a comment.
+
+```py
+    def read_row(self, row): # reads the row
+        name = self.find_name(row) # find the name
+        if name is None: # if there's no name
+            return # give up
+        self.add_name(name) # add the name
+        responded = {question: None for question, _ in self.question_response_count.items()} # make a dictionary of the questions
+```
+
+### Avoiding the University Firewall
 
 <!-- They aren't walking us through this lab bc of holidays. -->
 
