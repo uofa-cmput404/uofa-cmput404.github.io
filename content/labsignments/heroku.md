@@ -34,9 +34,9 @@ There will be no walkthrough for this lab. **PLEASE MAKE SURE YOUR CODE IS WELL 
 
 This *might* affect your Heroku domain. The University's firewall is also inconsistent so it doesn't *always* seem to do this.
 IST is looking into it, but, I don't know how long that will take. IST claims that this firewall
-triggers after "a proprietary amount of activity." So, please expect that **your Heroku could become blocked by UWS at any time.**
+triggers after "a proprietary amount of activity." So, please expect that **your Heroku could become blocked by UWS at any time.** We will **not** give you an extension if your Heroku is blocked.
 
-Double check that your Heroku is not blocked before your walkthrough. We will **not** give you an extension if your Heroku is blocked.
+<!-- Double check that your Heroku is not blocked before your walkthrough. --> 
 
 You have several options to make sure this doesn't happen:
 
