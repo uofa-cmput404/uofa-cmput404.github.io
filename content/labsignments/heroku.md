@@ -30,6 +30,93 @@ In Phase three, you will apply the lab material to add a new API route and a com
 
 <p class="longWarning">
 There will be no walkthrough for this lab. <strong>PLEASE MAKE SURE YOUR CODE IS WELL COMMENTED!</strong> This will help the TAs to be able to understand your code when they are marking your lab.
+
+Besure to write high-quality comments that give **context** to the code instead of just describing the code. See examples below:
+
+### Bad Comments
+Bad comments describe the code, providing no/little further insight beyond what one might get from simply reading the code. 
+
+A bad comment for a conditional statement describes the condition being tested.
+
+```python
+# If the length of the all embeddings variable is bigger than 1
+if(len(all_embeddings) > 1):
+    <clustering logic>
+else:
+    <skip clustering>
+
+```
+
+A bad comment for a loop provides describes the loop logic. If you are iterating over a collection of things, it describes that you are iterating over a collection. If you are manipulating the objects in the collection, it says that the objects are being manipualted.
+
+```python
+
+
+# Iterate throught all like objects in user_likes. 
+for like_object in user_likes: 
+    # Create a super like and append it to super_likes
+    super_likes.append(SuperLike(like_object))    
+
+
+```
+
+
+A bad comment for a function call describes that a function is being called, specifying the name of the function being called and the variable in which the result is stored.
+
+```python
+# Apply the vstack function from numpy  (https://numpy.org/) to the _embeddings and store the result in all_embeddings.
+all_embeddings = np.vstack(_embeddings)
+```
+
+
+
+### Good Comments
+
+Good comments describe 'what' the code code is doing only if that isn't clear from the way the code is written. However their focus is on 'why' something is being done. 
+
+A good comment for a conditional statement should make it clear why the statement was required. Potentially even giving insight into what would happen if it wasn't there. 
+```python
+
+'''
+More than one item should exist for clustering to take place. So if we only have one DataEntry in
+a timeline/trace, then it just goes in its own cluster and we skip the clustering process. 
+'''
+if(len(all_embeddings) > 1):
+    <clustering logic>
+else:
+    <skip clustering>
+```
+
+A good comment for a function call describes why the function is invoked. In dynamically typed languages like python it can also be helpful to describe what to expect from the result of a function call/operation. 
+
+```python
+'''
+all_embeddings will contain an n by m vector where n is the number of dimensions for the embeddings, and m is the number of embeddings (or timeline entities of this symbol). 
+
+So each 'row' in this variable is an embedding of a timeline entity for this symbol.
+
+This is the format expected by do_h_clustering(). 
+'''
+all_embeddings = np.vstack(_embeddings)
+
+```
+
+A good comment for a loop provides context into why the loop logic is required. If you are iterating over a collection of things, describe the purpose of the operations beind applied. If you are manipulating the objects in the list, why are those manipulations required?
+
+```python
+
+'''
+All of a premium user's likes are converted into super likes before the like view is displayed.
+The html template will highlight elements in super_likes. While elements in user_likes are treated normally.
+'''
+for like_object in user_likes: 
+    super_likes.append(SuperLike(like_object))    
+
+
+
+```
+
+
 </p>
 
 <!-- They aren't walking us through this lab bc of holidays. -->
