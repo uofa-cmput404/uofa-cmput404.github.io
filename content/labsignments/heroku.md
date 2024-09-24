@@ -28,7 +28,9 @@ In Phase three, you will apply the lab material to add a new API route and a com
 
 ## Warning!
 
-There will be no walkthrough for this lab. **PLEASE MAKE SURE YOUR CODE IS WELL COMMENTED!** This will help the TAs to be able to understand your code when they are marking your lab.
+<p class="warning">
+There will be no walkthrough for this lab. <strong>PLEASE MAKE SURE YOUR CODE IS WELL COMMENTED!</strong> This will help the TAs to be able to understand your code when they are marking your lab.
+</p>
 
 <!-- They aren't walking us through this lab bc of holidays. -->
 
