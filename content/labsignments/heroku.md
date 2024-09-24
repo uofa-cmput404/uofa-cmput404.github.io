@@ -33,35 +33,46 @@ In Phase Two, you will deploy the Django application to [Heroku](https://www.her
 
 ## Warning!
 
-The University's firewall (UWS) blocks new domains for 24 hours to prevent scam domains.
+The University's firewall (UWS) blocks "new" domains for 24 hours to prevent scam domains.
 
-This *might* affect your Heroku domain.The University's firewall is also inconsistent so it doesn't *always* seem to do this.
-We have complained about this every semester since forever, but IST simply does not care.
+This *might* affect your Heroku domain. The University's firewall is also inconsistent so it doesn't *always* seem to do this.
+IST is looking into it, but, I don't know how long that will take. IST claims that this firewall
+triggers after "a proprietary amount of activity." So, please expect that **your Heroku could become blocked by UWS at any time.**
 
-Double check that your Heroku is not blocked before your walkthrough. We will **not** give you an extension if you Heroku is blocked.
+Double check that your Heroku is not blocked before your walkthrough. We will **not** give you an extension if your Heroku is blocked.
 
 You have several options to make sure this doesn't happen:
 
-* Connect to your Heroku with your web browser on UWS at least 2 days before your walkthrough.
-    * It doesn't have to be fully working, the firewall just needs to see that the domain does in fact exist.
-* Bypass the Unversity's DNS server by adding the hostname and IP address of your heroku site to your hosts file.
-    * Follow the steps of the "Checking your heroku app" below.
+* ~~Connect to your Heroku with your web browser on UWS at least 2 days before your walkthrough.~~
+    * ~~It doesn't have to be fully working, the firewall just needs to see that the domain does in fact exist.~~
+    * On further information from IST this will not work.
+
+---
+
+* **Here are the things that will work:**
+* Bypass the University's DNS server by adding the hostname and IP address of your Heroku site to your hosts file.
+    * Follow the steps of the "Checking your Heroku app" below.
     * Then add it your hosts file:
         * It uses the format `ip-address host-name host-name` on each line.
             * Example (has CNAME): `46.137.15.86 ie02.ingress.herokuapp.com example-app-1234567890ab.herokuapp.com`
             * Example (no CNAME): `34.201.81.34 lab3test-fbb81150e720.herokuapp.com`
-        * Linux: edit /etc/hosts as superuser. and add it in the format .
-        * MacOS: <https://kinsta.com/knowledgebase/edit-mac-hosts-file/>
+        * Linux: edit /etc/hosts as superuser.
+        * macOS: <https://kinsta.com/knowledgebase/edit-mac-hosts-file/>
         * Windows 10/11: <https://allthings.how/how-to-edit-hosts-file-in-windows-11/>
     * If it stops working check again with nslookup and update it.
 * Use a VPN service or proxy.
 * Walkthrough us your lab over using another internet not provided by the University while in the lab.
+* Windows: [enable DoH](https://learn.microsoft.com/en-us/windows-server/networking/dns/doh-client-support).
+* Firefox: [enable DoH](https://support.mozilla.org/en-US/kb/firefox-dns-over-https).
+* Chrome: [enable DoH](https://simpledns.plus/kb/195-how-to-enable-dns-over-https-doh-in-chrome)
+    * Edge: Should be similar to chrome.
+    * Other chrome-based browsers: should be similar to chrome.
 
 # Getting Started
 
 ## Prepare your Repo
 
-1. Get the github classroom link from eClass, create your assignment, and clone it.
+1. Get the GitHub classroom link from eClass, create your assignment, and clone it.
 2. Create an appropriate `.gitignore` file, to prevent unwanted files being commited to your repository.
 
 Place this gitignore within the root of your project. You can combine [this one](https://github.com/github/gitignore/blob/main/Python.gitignore) and [this one](https://github.com/github/gitignore/blob/main/Node.gitignore) and [this one](https://github.com/django/django/blob/main/.gitignore) for your django+node project. Double check you're not staging any unwanted files before you commit. The `git status` command can help with that.
