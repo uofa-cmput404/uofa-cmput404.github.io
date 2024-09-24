@@ -212,9 +212,11 @@ Violation of the restrictions will result in a mark of zero.
 
 # Submission Instructions
 
-Make sure you push to github classroom **BEFORE 4PM on the day of your lab section!** You will not be able to push after that!
+Make sure you push to GitHub classroom **BEFORE 4PM on the day of your lab section!** You will not be able to push after that!
 
-Submit a link to your repo in the form `https://github.com/uofa-cmput404/w24-h0x-labsignment-flask-yourgithubname`. **Do not** submit a link to a branch, a file, or the clone url. If you do not do this we will not know which github submission is yours.
+Submit a link to your repo in the form `https://github.com/uofa-cmput404/w24-h0x-labsignment-flask-yourgithubname`. **Do not** submit a link to a branch, a file, or the clone URL. If you do not do this we will not know which GitHub submission is yours.
+
+<p class="warning">If you do not submit a link to your repo on eClass on time using the correct format above, you will get a zero.</p>
 
 # Collaboration
 

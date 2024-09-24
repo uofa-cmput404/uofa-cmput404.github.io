@@ -335,7 +335,7 @@ Make sure you push to GitHub classroom **BEFORE the deadline!** You will not be 
 
 Submit a link to your repo in the form `https://github.com/uofa-cmput404/w24-h0x-labsignment-http-yourgithubname` on eClass. **Do not** submit a link to a branch, a file, or the clone URL. 
 
-<p class="warning">If you do not submit a link to your repo on eClass using the correct format above, you will get a zero.</p>
+<p class="warning">If you do not submit a link to your repo on eClass on time using the correct format above, you will get a zero.</p>
 
 # Tips
 

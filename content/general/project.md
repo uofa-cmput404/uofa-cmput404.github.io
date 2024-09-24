@@ -7,15 +7,11 @@ summary: Distributed Social Networking (SocialDistribution)
 
 ---
 
-<style>
-    html body main {
-        background-image: url("/theme/draft.png");
-        background-repeat: repeat;
-        background-size: 100%;
-    }
-</style>
-
 [TOC]
+
+# Disclaimer
+
+<p class="warning">This spec is subject to change as we go through the semester!</p>
 
 # Description
 
@@ -1101,7 +1097,7 @@ shortcut to get the image if authenticated to see it.
     * Body is a [comment object](#example-comment)
 * URL: `://service/authors/{AUTHOR_ID}/posts/{POST_ID}/comments`
     * `GET` [local, remote]: the comments on the post
-    * Body is a [comments object](#example-comments)
+    * Body is a ["comments" object](#example-comments)
 * URL: `://service/authors/{AUTHOR_ID}/post/{POST_ID}/comment/{REMOTE_COMMENT_ID}`
     * GET [local, remote] get the comment
 * Example: GET `http://nodebbbb/api/authors/222/posts/249/comments/http%3A%2F%2Fnodeaaaa%2Fapi%2Fauthors%2F111%2Fcommented%2F130`:
@@ -1264,8 +1260,8 @@ Local APIs, such as "stream", that aren't specified here, are up to your design.
    
 When building your API, try to adhere to these rules for easy compatibility with other groups:
    
-* REST API calls may be prefixed. ie. `http://service_address/api/authors/{AUTHOR_ID}/posts/`
-* Document your service address, port, hostname, prefix(if used), and the username/password for HTTP Basic Auth in your README so that HTTP clients can connect to your API.
+* REST API calls may be prefixed like: `http://service_address/api/authors/{AUTHOR_ID}/posts/`
+* Document your service address, port, hostname, prefix (if used), and the username/password for HTTP Basic Auth in your README so that HTTP clients can connect to your API.
 * You **must** be compatible with the API specification and examples listed above in this document. 
     * You **may** need to add some additional things for compatibility with other groups due to varying interpretations.
     * You **may** add additional endpoints and JSON keys as long as you provide the ones listed above.
@@ -1274,12 +1270,13 @@ When building your API, try to adhere to these rules for easy compatibility with
 ## Test Requirements
 
 The REST API must be fully tested.
-    * Every API endpoint must be tested.
-    * Every API functionality must be tested.
-    * Every API method must be tested.
-    * Every user story must be tested at the API level.
-    * If a user story does not have an API, it must be tested by calling the Django code directly.
-    * Tests that don't actually test what they say they're testing do not count.
+
+* Every API endpoint must be tested.
+* Every API functionality must be tested.
+* Every API method must be tested.
+* Every user story must be tested at the API level.
+* If a user story does not have an API, it must be tested by calling the Django code directly.
+* Tests that don't actually test what they say they're testing do not count.
 
 These would be system/acceptance tests if the project didn't have a frontend.
 
@@ -1380,13 +1377,16 @@ Frontend (Selenium, etc.) tests are not required. Code coverage (line coverage, 
     </ul></li>
 </ul>
 <p>If you want to use React or a similar frontend framework such as Angular, Vue, Solid, Svelte... (there are dozens of these), despite these warnings, then all team members must fill out the frontend framework form. We offer this option only becuase some students want the experience for their resumé. However, it involves extra work. If <strong style="color: darkred;">all team members</strong> do not fill out the frontend framework form agreeing to use a front end framework despite the extra work required and the above warnings then you are not allowed to use a frontend frameworks, and using them will result in a mark of zero.</p>
+
+<a href="https://docs.google.com/forms/d/e/1FAIpQLSeLNdEsy3jyMHjZxNCfkl9pjdl_UyUhE6ZtHmUk5EP08KGhgg/viewform?usp=sf_link" style="font-size:200%">Frontend Framework Consent Form</a>
+
 <ul>
     <li>Backend frameworks are limited to Django and Flask only. We suggest Django. Flask requires extra work.</li>
     <li>Server-side rendering is limited to Jinja templates (provided by Django), or another templating engine that can run in Django/Flask.</li>
     <li>Combined frontend-backend frameworks, and server-side component rendering is not allowed unless you can get it working in Django on Heroku.<ul>
         <li>Server side rendering requiring a node server is not allowed.</li>
         <li>Anything requiring a node server is not allowed.</li>
-        <li>Next.js, ... and similar frameworks are not allowed.</li>
+        <li>Next.js, ... and similar server-side frameworks are not allowed. The only allowed server-side frameworks are Django and Flask.</li>
     </ul></li>
 </ul>
 </aside>
@@ -1440,7 +1440,7 @@ Frontend (Selenium, etc.) tests are not required. Code coverage (line coverage, 
 * License your code properly (use an OSI approved license)
     * Put your name (or some representation of you like GeneralHuxFan768) on it!
 
-# Take-aways
+# Takeaways
 
 * 1 Working Website
 * 1 GitHub git repo
@@ -1473,11 +1473,7 @@ The most successful teams:
 
 # Submission Instructions
 
-* Submission will be by GitHub Classroom. Please follow the link on eClass.
-
-# Warning!!!!
-   
-   This spec is subject to change!
+* Submission will be by GitHub Classroom. Please follow the link on eClass. Make sure you also submit a link on eClass on time!
 
 # Marking
 
@@ -1486,7 +1482,7 @@ The most successful teams:
     * The student is not contributing or contributing significantly less than their teammates.
     * The individual student is significantly preventing their teammates from participating or contributing.
     * The individual student's is significantly misusing git/GitHub/Heroku/other software tools.
-    * The indivudual student is engaging in significant "intellectual violence."
+    * The individual student is engaging in significant "intellectual violence."
         * Intellectual violence is when one teammate uses their skill, knowledge, or experience, to intimidate or control the other teammate(s) rather than sharing and helping them learn.
     * The individual student is not communicating or only communicating very rarely with their team.
     * The individual student does not complete the peer feedback form (-1 mark for each part 1-4).
@@ -1516,14 +1512,14 @@ You must form a group with only students from your same lab section. You can hav
 * Use the [GitHub Classroom Link on eClass](https://eclass.srv.ualberta.ca/mod/assign/view.php?id=8120400&forceview=1)
     * EVERY teammate should submit a link to your teams GitHub repo on eClass.
 * Add a license and a README. The README should contain the names of the teammates. (You don't have to use your real name if you don't want Microsoft/GitHub to know who you are.)
-* Use the format `https://github.com/uofa-cmput404/f24-project-team-name` where `team-name` is your css color.
+* Use the format `https://github.com/uofa-cmput404/f24-project-team-name` where `team-name` is your CSS colour.
 
 Do not submit a clone link or a link to a branch or file.
 
 * 1 mark
 * Submitted on eClass by all members
-* 1 Github repo with a README and LICENSE
-* Team name is a CSS color name
+* 1 GitHub repo with a README and LICENSE
+* Team name is a CSS colour name
 
 ## <a id="part1" href="#part1">Project Part 1</a>: Halfway Prototype
 
@@ -1546,7 +1542,7 @@ For this part you need:
 
 ### Submission
 
-Due 4PM on Monday.<!-- @LT-IGNORE:CONFUSION_DUE_DO@ -->
+Due 4PM on Monday. <!-- @LT-IGNORE:CONFUSION_DUE_DO@ -->
 
 Create a git tag "part1" in your production branch before 4PM and submit only the link to your tag.
 
@@ -1582,7 +1578,7 @@ https://github.com/uofa-cmput404/f24-project-example-team/tree/part1
 * Good
     * User Stories UI: Almost ½ of the user stories are usable using the UI.
     * User Stories API: Almost ½ of the user stories with a relevant API are usable using the API. Adheres to the specification.
-    * Test Cases: At least ½ of the user have tests written, most pass tests.
+    * Test Cases: At least ½ of the user stories have tests written, most pass tests.
     * UI Design: Looks good. It's not obvious how you would use the UI to do some of ½ of the user stories.
     * Tool use: Frequent but inconsistent use of Git, etc. Commits/merges/PRs are medium and with inconsistent frequency. All the teammates are working at the same time. Using GitHub to help communicate. Well organized repository and branches.
     * TA Walkthrough: A couple of snags, bugs, last second workarounds.
@@ -1615,7 +1611,7 @@ https://github.com/uofa-cmput404/f24-project-example-team/tree/part1
     * Tool use: Very limited of tool use. Git is disorganized. Git exists but it has built artifacts in it. Git has commits that do not contribute anything, but have large diffs, such as changing whitespace of every line in a file.<!-- @LT-IGNORE:ENGLISH_WORD_REPEAT_BEGINNING_RULE@ -->
     * TA Walkthrough: Showstopper bugs. Major missing pieces.
     * Web Service API Documentation: Major pieces of documentation are missing or only has autogenerated documentation. 
-    * Standards & Code Style: HTML errors, browser errors, CSS errors, JS errors, Python errors. Code is disorganized. Code is hard to find. Code is missing.
+    * Standards & Code Style: HTML errors, browser errors, CSS errors, JS errors, Python errors. Code is disorganized. Code is hard to find. Code is missing. <!-- @LT-IGNORE:ENGLISH_WORD_REPEAT_BEGINNING_RULE@ -->
 * No attempt
     * User Stories UI: No user stories are usable using the UI.
     * User Stories API: No user stories are usable using the API.
@@ -1630,11 +1626,11 @@ https://github.com/uofa-cmput404/f24-project-example-team/tree/part1
 
 ### Submission
 
-Due 4PM on Monday.
+Due 4PM on Monday. <!-- @LT-IGNORE:CONFUSION_DUE_DO@ -->
 
 Create a git tag "part2" in your production branch before 4PM and submit only the link to your tag.
 
-* A tag is just a name for a commit, so do not create the tag until you have your final commit for part 1!
+* A tag is just a name for a commit, so do not create the tag until you have your final commit for part 2!
 
 Don't forget to push the tag to GitHub.
 
@@ -1646,68 +1642,76 @@ https://github.com/uofa-cmput404/f24-project-example-team/tree/part1
 
 ### Marking
 
-* 7 Marks
-* Total Project
-    * Excellent 7: Excellent effort. Relatively consistent. All the 6: Good quality. Some inconsistency. 90% of
-    the project implemented
-    * Satisfactory 5: Codebase in places. Passes some tests. Some parts run
-    * Unsatisfactory 3: Effort exists, it's missing lots of components but something is there.
-    * Failure 0: Missing. No attempted. Not complete enough to evaluate.
-* Code Base 
-    * Excellent : Excellent effort. Relatively consistent. At least ½
-    of the project implemented. Clean code
-    * Good : Good quality. Some inconsistency. About ½ of
-    the project implemented
-    * Satisfactory : Codebase in places. Passes some tests. Some
-    parts run
-    * Unsatisfactory : Does not meet Satisfactory level
-* Test Cases 
-    * Excellent: System is well tested
-    * Good: System has some blind spots for testing
-    * Satisfactory: Effort was placed on testing but it is inconsistent.
-    * Unsatisfactory: test cases are inappropriate but exist.
-    * Failure: Missing test cases
-* UI 2
-    * Excellent: UI Exists and is coherent. Shows evidence of
-    planning.
-    * Good: UI Exists. Some issues
-    * Satisfactory: UI Exists, it's not good. It has issues.
-    * Unsatisfactory: A UI was attempted, a UI exists.
-    * Failure: No UI, or what was attempted is not substantial.
-* Tool Use
-    * Excellent: Use of at least Git is Evidence and Obvious
-    * Good: Frequent but inconsistent use of Git, etc.
-    * Satisfactory: Uses Git, etc.
-    * Unsatisfactory: Limited of tool use
-    * Failure: Used filesharing and email attachments instead of git
-* TA Walkthrough
-    * Excellent: Coherent demo, shows off features. Limited snags.
-    * Good: Coherent demo, shows off features. Some snags.
-    * Satisfactory: Lots of snags. Can demo it.
-    * Unsatisfactory: Unfinished, hard to demo.
-    * Failure: no demo or unable to demo.
-* Web Service API & Documentation
-    * Excellent: Documented, adheres to the specification & examples listed above where it exists. Open API specification exists, has clear descriptions,
-    and has example requests and responses from your API. 
-    * Good: Documented, exists, tries to adhere to requirements. Open API specification exists,
-    and has some descriptions and a few example requests and responses.
-    * Satisfactory: Some of the webservice exists. Open API specification exists, but no descriptions
-    or example requests and responses.
-    * Unsatisfactory: Well you tried right? Open API specification does not exist.
-    * Failure: Ok you didn't try. 
-* Design
-    * Excellent: Adheres to standards, well-designed
-    * Good: Adheres to standards somewhat, some awkward parts
-    * Satisfactory: Some good parts, some nasty parts
-    * Unsatisfactory: Little effort went into documenting and
-    designing the project
-    * Failure: failure to learn from the class and apply concepts even remedially.
+* *"All user stories" does **not** include those marked for ⧟ later project parts.*
+* *Almost all ~ 95% of the user stories not marked for ⧟ later project parts.*
+
+* Excellent
+    * **Addressing Feedback**: TAs suggestions were implemented, TA approves of implementation set.
+    * User Stories UI: All the user stories are usable using the UI. 
+    * User Stories API: All the user stories with a relevant API are usable using the API. Adheres to the specification.
+    * Test Cases: All the of the user stories have tests written and pass those tests. 
+    * UI Design: Looks impressive! It's obvious how to do any of the user stories.
+    * Tool use: Use of Git, GitHub issues, etc. is Evidence and Obvious. Commits/merges/PRs are small and frequent. Commit messages are helpful information for teammates. All the teammates are working at the same time, and using GitHub **and git** to help communicate and improve teamwork. You laugh in the face of merge conflicts! Well organized repository and branches. 
+    * TA Walkthrough: Able to walk through every user story with UI and API. No snags, bugs, last second workarounds, or missing pieces. Code is easily located. Documentation is easily located.
+    * Web Service API Documentation: Well documented. Highly detailed. Clear descriptions, has useful example requests and responses from your API for every use of the API for every user story. If using automated documentation generation, there is extra documentation added on top of that.
+    * Standards & Code Style: Adheres to standards, code is well organized and clean. Code is easy to read. Comments add to code readablility when necessary. Code meets Python, JS, HTML and CS style guides. Excellent indentation, naming. Code units only do one thing. It's easy to find the code responsible for handling any of the user stories.
+* Good
+    * **Addressing Feedback**: Almost all TA's suggestions were implemented, TA approves of implementation set.
+    * User Stories UI: Almost all user stories are usable using the UI.
+    * User Stories API: Almost all user stories with a relevant API are usable using the API. Adheres to the specification.
+    * Test Cases: Almost all user stories have tests written, most pass tests.
+    * UI Design: Looks good. It's not obvious how you would use the UI to do some of the user stories.
+    * Tool use: Frequent but inconsistent use of Git, etc. Commits/merges/PRs are medium and with inconsistent frequency. All the teammates are working at the same time. Using GitHub to help communicate. Well organized repository and branches.
+    * TA Walkthrough: A couple of snags, bugs, last second workarounds.
+    * Web Service API Documentation: Well documented, medium detail. A few things are unclear. Has example requests and responses from your API for every use of the API and almost all the user stories. If using automated documentation generation, there is extra documentation added on top of that.
+    * Standards & Code Style: Adheres to standards, code is well organized and clean. Missing comments. Some minor issues with code style. Code units only do one thing. It takes a little digging sometimes to find the code responsible for a user story.
+* Satisfactory
+    * **Addressing Feedback**: 3/4ths of TA's suggestions were implemented, TA approves of most of the changes made to address feedback.
+    * User Stories UI: At least 3/4ths of the user stories are usable using the UI.
+    * User Stories API: At least 3/4ths of the user stories with a relevant API are usable using the API. Very close to adhering to the specification.
+    * Unsatisfactory: At least 3/4ths of the API with relevant user stories are usable using the API. Some parts deviate from the specification.
+    * Test Cases: At least 3/4ths of the user have tests written, most pass tests.
+    * UI Design: HTML & CSS exists, it does not look good. Mostly easy to understand. It has issues. There is some way to do all user stories, even if it's not obvious.
+    * Tool use: Uses Git, etc. Has some oversized merges. Commits/merges/PRs are large and far apart. All the teammates are working at the same time. Well organized repository and branches.
+    * TA Walkthrough: Some snags bugs, last second workarounds, or tiny missing pieces.
+    * Web Service API Documentation: Well documented, but missing details. Every endpoint is documented.  Some things are unclear. Example requests and responses have a few issues. Almost all user stories have examples. If using automated documentation generation, there is extra documentation added on top of that.
+    * Standards & Code Style: Adheres to standards, there is an attempt at organization. Commented out code, unreachable code, or code with no clear purpose. Code units only do one thing. Occasional spots of poor style. It's not clear where the code for a user story will be.
+* Unsatisfactory
+    * **Addressing Feedback**: Most of TA's suggestions were implemented, TA approves of most of the changes made to address feedback.
+    * User Stories UI: At least half of the user stories are usable using the UI.
+    * User Stories API: At least half of the user stories with a relevant API are usable using the API. Very close to adhering to the specification.
+    * Test Cases: At least half of the user have tests written, most pass tests.
+    * UI Design: HTML & CSS exists. Major UI issues. Hard to navigate. Hard to understand. There is some way to do almost all user stories.
+    * Tool use: Limited of tool use. Only one teammate seems to be working at a time. Git is disorganized.
+    * TA Walkthrough: Many snags, bugs, last second workarounds, small missing pieces.
+    * Web Service API Documentation: Low on details. Many things are unclear. Every endpoint is documented. Missing some example requests and responses. If using automated documentation generation, there is extra documentation added on top of that.
+    * Standards & Code Style: Browser, Python, transpiler, bundler, etc. warnings. Code is poorly organized God files/classes/functions. Have to search or grep code to find the code responsible for something.
+* Attempt
+    * **Addressing Feedback**: Some of TA's suggestions were implemented, TA approves of some of the changes made to address feedback.
+    * User Stories UI: Less than half of the user stories are usable using the UI or major deviations from the user stories.
+    * User Stories API: Less than half of the user stories are usable using the API or major deviations from the specification.
+    * Test Cases: Less than half of the user stories are usable using the API or major deviations from the specification, or test cases are present but do not actually test what they say they are testing.
+    * UI Design: Some pieces of the HTML & CSS exist, but some pieces of the HTML & CSS are missing that would be needed to do some of the user stories.
+    * Tool use: Very limited of tool use. Git is disorganized. Git exists but it has built artifacts in it. Git has commits that do not contribute anything, but have large diffs, such as changing whitespace of every line in a file.<!-- @LT-IGNORE:ENGLISH_WORD_REPEAT_BEGINNING_RULE@ -->
+    * TA Walkthrough: Showstopper bugs. Major missing pieces.
+    * Web Service API Documentation: Major pieces of documentation are missing or only has autogenerated documentation. 
+    * Standards & Code Style: HTML errors, browser errors, CSS errors, JS errors, Python errors. Code is disorganized. Code is hard to find. Code is missing. <!-- @LT-IGNORE:ENGLISH_WORD_REPEAT_BEGINNING_RULE@ -->
+* No attempt
+    * **Addressing Feedback**: None of TA's suggestions were implemented, TA approves of none of the changes made to address feedback.
+    * User Stories UI: No user stories are usable using the UI.
+    * User Stories API: No user stories are usable using the API.
+    * Test Cases: No test cases are present.
+    * UI Design: No HTML/CSS exists.
+    * Tool use: Used file sharing, email attachments, sending files/code through discord, chat, messengers, or similar tools to work together. Git exists but it not being used, or it is being misused.
+    * TA Walkthrough: No walkthrough. Unable to demo. 
+    * Web Service API Documentation: Documentation is missing or unable to find documentation. 
+    * Standards & Code Style: Project doesn't run/load.
 
 ## Project Part 3: Distribution
 
 ### Requirements
 
-* Everyone on the team must be able to deploy their own *node* (using the same project code) to their own Heroku app with their own Heroku Postgres database.
+* Everyone on the team must be able to deploy their own *node* (using the same project code) to their own Heroku "app" with their own Heroku Postgres database.
     * 1 codebase, 1 repo deployed to 6 nodes each on 6 different Heroku servers using 6 different databases, 6 different web servers, at 6 different addresses for 6 different team members.
 * All nodes must be able coordinating. All user stories involving multiple authors must work in both situations:
     * All authors on the same node
@@ -1718,7 +1722,7 @@ https://github.com/uofa-cmput404/f24-project-example-team/tree/part1
 
 ### Submission
 
-Due 4PM Monday.
+Due 4PM Monday. <!-- @LT-IGNORE:CONFUSION_DUE_DO@ -->
 
 eClass has a limitation where it only shows the due date for the last lab section of the week, but for Monday labs it is due Monday. For Wednesday labs it is due Wednesday.
 
@@ -1732,66 +1736,92 @@ https://github.com/uofa-cmput404/w24-project-example-team/tree/part2
 
 ### Marking
 
-* 7 Marks
-* Total Project
-    * Excellent 7: Excellent effort. Relatively consistent. All of the project implemented. Clean code. Nodes coordinates and connect fine. API follows spec & examples listed in this document.
-    * Good 6: Good quality. Some inconsistency. All of the project implemented except several user stories. Node-to-node connection is fixable and functional.
-    * Satisfactory 5: Codebase in places. Passes some tests. Most parts run. Some things coordinate and connect between nodes.
-    * Unsatisfactory 3: Effort exists, it's missing lots of components but at least ½ is there.
-    * Failure 0: Missing. No attempted. Not complete enough to evaluate.
-* Web Service Coordination
-    * Excellent: Web service coordinates with another node successfully. Most interoperation requirements met.
-    * Good: Web service coordinates with another node successfully. Most interoperation requirements met. Some snags.
-    * Satisfactory: The basics of coordination with another node are covered. Probably many snags.
-    * Unsatisfactory 0: Coordination with another node barely works.
-    * Failure: Failure to coordinate and connect with another node.
-* Code Base 
-    * Excellent : Excellent effort. Relatively consistent. All of the project implemented. Clean code.
-    * Good : Good quality. Some inconsistency. All of the project implemented except several user stories.
-    * Satisfactory : At least half of codebase in place. Passes some tests. Some parts run.
-    * Unsatisfactory : Does not meet Satisfactory level.
-* Test Cases 
-    * Excellent: System is well tested.
-    * Good: System has some blind spots for testing.
-    * Satisfactory: Effort was placed on testing but it is inconsistent.
-    * Unsatisfactory: test cases are inappropriate but exist.
-    * Failure: Missing test cases.
-* UI
-    * Excellent: UI Exists and is coherent. Shows evidence of planning.
-    * Good: UI Exists. Some issues.
-    * Satisfactory: UI Exists, it's not good. It has issues.
-    * Unsatisfactory: A UI was attempted, a UI exists.
-    * Failure: No UI, or what was attempted is not substantial.
-* Tool Use
-    * Excellent: Use of at least Git is Evidence and Obvious
-    * Good: Frequent but inconsistent use of Git, etc.
-    * Satisfactory: Uses Git, etc.
-    * Unsatisfactory: Limited of tool use
-    * Failure: Used filesharing and email attachments instead of git
-* TA Walkthrough
-    * Excellent: Coherent demo, shows off features. Limited snags.
-    * Good: Coherent demo, shows off features. Some snags.
-    * Satisfactory: Lots of snags. Can demo it.
-    * Unsatifactory: Unfinished, hard to demo.
-    * Failure: no demo or unable to demo.
-* Web Service API & Documentation
-    * Excellent: Documented, adheres to the specification & examples listed above.  Open API specification exists, has clear descriptions, and has example requests and responses from your API. 
-    * Good: Documented, exists, tries to adhere to requirements. Open API specification exists, and has some descriptions and a few example requests and responses.
-    * Satisfactory: Some of the webservice exists. Open API specification exists, but no descriptions or example requests and responses.
-    * Unsatisfactory: Well you tried right? Open API specification does not exist.
-    * Failure: Ok you didn't try. 
-* Design
-    * Excellent: Adheres to standards, well designed.
-    * Good: Adheres to standards somewhat, some awkward parts.
-    * Satisfactory: Some good parts, some nasty parts.
-    * Unsatisfactory: Little effort went into documenting and designing the project.
-    * Failure: Failure to learn from the class and apply concepts even remedially.
+* **Everything / all user stories / almost all user stories, 3/4 user stories, etc. includes the ⧟ new user stories for project part 3 & part 4!**
+* Excellent
+    * **Web Service Coordination:** Each team member's node coordinates with the other team member's nodes successfully. All interoperation requirements met. No snags. All user stories that could involve two nodes work node-to-node.
+    * Addressing Feedback: TA's suggestions were implemented, TA approves of implementation set.
+    * User Stories UI: All the user stories are usable using the UI. 
+    * User Stories API: All the user stories with a relevant API are usable using the API. Adheres to the specification.
+    * Test Cases: All the of the user stories have tests written and pass those tests. 
+    * UI Design: Looks impressive! It's obvious how to do any of the user stories.
+    * Tool use: Use of Git, GitHub issues, etc. is Evidence and Obvious. Commits/merges/PRs are small and frequent. Commit messages are helpful information for teammates. All the teammates are working at the same time, and using GitHub **and git** to help communicate and improve teamwork. You laugh in the face of merge conflicts! Well organized repository and branches. 
+    * TA Walkthrough: Able to walk through every user story with UI and API. No snags, bugs, last second workarounds, or missing pieces. Code is easily located. Documentation is easily located.
+    * Web Service API Documentation: Well documented. Highly detailed. Clear descriptions, has useful example requests and responses from your API for every use of the API for every user story. If using automated documentation generation, there is extra documentation added on top of that.
+    * Standards & Code Style: Adheres to standards, code is well organized and clean. Code is easy to read. Comments add to code readablility when necessary. Code meets Python, JS, HTML and CS style guides. Excellent indentation, naming. Code units only do one thing. It's easy to find the code responsible for handling any of the user stories.
+* Good
+    * **Web Service Coordination:** Each team member's node coordinates with the other team member's nodes successfully. Almost all interoperation requirements met. Only some minor snags. Almost all user stories that could involve two nodes work node-to-node.
+    * Addressing Feedback: Almost all TA's suggestions were implemented, TA approves of implementation set.
+    * User Stories UI: Almost all user stories are usable using the UI.
+    * User Stories API: Almost all user stories with a relevant API are usable using the API. Adheres to the specification.
+    * Test Cases: Almost all user stories have tests written, most pass tests.
+    * UI Design: Looks good. It's not obvious how you would use the UI to do some of the user stories.
+    * Tool use: Frequent but inconsistent use of Git, etc. Commits/merges/PRs are medium and with inconsistent frequency. All the teammates are working at the same time. Using GitHub to help communicate. Well organized repository and branches.
+    * TA Walkthrough: A couple of snags, bugs, last second workarounds.
+    * Web Service API Documentation: Well documented, medium detail. A few things are unclear. Has example requests and responses from your API for every use of the API and almost all the user stories. If using automated documentation generation, there is extra documentation added on top of that.
+    * Standards & Code Style: Adheres to standards, code is well organized and clean. Missing comments. Some minor issues with code style. Code units only do one thing. It takes a little digging sometimes to find the code responsible for a user story.
+* Satisfactory
+    * **Web Service Coordination:** Each team member's node coordinates with the other team member's nodes successfully. Most interoperation requirements met. Few snags. 3/4ths of user stories that could involve two nodes work node-to-node.
+    * Addressing Feedback: 3/4ths of TA's suggestions were implemented, TA approves of most of the changes made to address feedback.
+    * User Stories UI: At least 3/4ths of the user stories are usable using the UI.
+    * User Stories API: At least 3/4ths of the user stories with a relevant API are usable using the API. Very close to adhering to the specification.
+    * Unsatisfactory: At least 3/4ths of the API with relevant user stories are usable using the API. Some parts deviate from the specification.
+    * Test Cases: At least 3/4ths of the user have tests written, most pass tests.
+    * UI Design: HTML & CSS exists, it does not look good. Mostly easy to understand. It has issues. There is some way to do all user stories, even if it's not obvious.
+    * Tool use: Uses Git, etc. Has some oversized merges. Commits/merges/PRs are large and far apart. All the teammates are working at the same time. Well organized repository and branches.
+    * TA Walkthrough: Some snags bugs, last second workarounds, or tiny missing pieces.
+    * Web Service API Documentation: Well documented, but missing details. Every endpoint is documented.  Some things are unclear. Example requests and responses have a few issues. Almost all user stories have examples. If using automated documentation generation, there is extra documentation added on top of that.
+    * Standards & Code Style: Adheres to standards, there is an attempt at organization. Commented out code, unreachable code, or code with no clear purpose. Code units only do one thing. Occasional spots of poor style. It's not clear where the code for a user story will be.
+* Unsatisfactory
+    * **Web Service Coordination:** The basics of coordination with another node are covered. Probably many snags. Most user stories that could involve two nodes work node-to-node.
+    * Addressing Feedback: Most of TAs suggestions were implemented, TA approves of most of the changes made to address feedback.
+    * User Stories UI: At least half of the user stories are usable using the UI.
+    * User Stories API: At least half of the user stories with a relevant API are usable using the API. Very close to adhering to the specification.
+    * Test Cases: At least half of the user have tests written, most pass tests.
+    * UI Design: HTML & CSS exists. Major UI issues. Hard to navigate. Hard to understand. There is some way to do almost all user stories.
+    * Tool use: Limited of tool use. Only one teammate seems to be working at a time. Git is disorganized.
+    * TA Walkthrough: Many snags, bugs, last second workarounds, small missing pieces.
+    * Web Service API Documentation: Low on details. Many things are unclear. Every endpoint is documented. Missing some example requests and responses. If using automated documentation generation, there is extra documentation added on top of that.
+    * Standards & Code Style: Browser, Python, transpiler, bundler, etc. warnings. Code is poorly organized God files/classes/functions. Have to search or grep code to find the code responsible for something.
+* Attempt
+    * **Web Service Coordination:** Coordination with another node barely works. Less than half interoperation requirements met. Showstopper problems. Some user stories work node-to-node.
+    * Addressing Feedback: Some of TA's suggestions were implemented, TA approves of some of the changes made to address feedback.
+    * User Stories UI: Less than half of the user stories are usable using the UI or major deviations from the user stories.
+    * User Stories API: Less than half of the user stories are usable using the API or major deviations from the specification.
+    * Test Cases: Less than half of the user stories are usable using the API or major deviations from the specification, or test cases are present but do not actually test what they say they are testing.
+    * UI Design: Some pieces of the HTML & CSS exist, but some pieces of the HTML & CSS are missing that would be needed to do some of the user stories.
+    * Tool use: Very limited of tool use. Git is disorganized. Git exists but it has built artifacts in it. Git has commits that do not contribute anything, but have large diffs, such as changing whitespace of every line in a file.<!-- @LT-IGNORE:ENGLISH_WORD_REPEAT_BEGINNING_RULE@ -->
+    * TA Walkthrough: Showstopper bugs. Major missing pieces.
+    * Web Service API Documentation: Major pieces of documentation are missing or only has autogenerated documentation. 
+    * Standards & Code Style: HTML errors, browser errors, CSS errors, JS errors, Python errors. Code is disorganized. Code is hard to find. Code is missing. <!-- @LT-IGNORE:ENGLISH_WORD_REPEAT_BEGINNING_RULE@ -->
+* No attempt
+    * Web Service Coordination: No user stories are working between two nodes.
+    * Addressing Feedback: None of TA's suggestions were implemented, TA approves of none of the changes made to address feedback.
+    * User Stories UI: No user stories are usable using the UI.
+    * User Stories API: No user stories are usable using the API.
+    * Test Cases: No test cases are present.
+    * UI Design: No HTML/CSS exists.
+    * Tool use: Used file sharing, email attachments, sending files/code through discord, chat, messengers, or similar tools to work together. Git exists but it not being used, or it is being misused.
+    * TA Walkthrough: No walkthrough. Unable to demo. 
+    * Web Service API Documentation: Documentation is missing or unable to find documentation. 
+    * Standards & Code Style: Project doesn't run/load.
 
-## Project Part 3: Federation
+## Project Part 4: Federation
+
+### Requirements
+
+* Node is at least partially working with nodes from 4 other teams.
+* Node must be fully communicating and working with nodes from 2 other teams.
+    * These count toward the 4.
+* All nodes must be able coordinating. All user stories involving multiple authors must work in both situations:
+    * All authors on the same node
+    * Authors on different nodes
+* For example if the user story is "As an author, I want to be able to approve or deny other authors following me, so that I don't get followed by people I don't like."
+    * This needs to work when the author following is on a different node from the author they are following.
+    * It also needs to work if they're on the same node.
 
 ### Submission
 
-Due 4PM Monday.
+Due 4PM Monday. <!-- @LT-IGNORE:CONFUSION_DUE_DO@ -->
 
 eClass has a limitation where it only shows the due date for the last lab section of the week, but for Monday labs it is due Monday. For Wednesday labs it is due Wednesday.
 
@@ -1805,37 +1835,86 @@ https://github.com/uofa-cmput404/w24-project-example-team/tree/part3
 
 ### Marking
 
-* 5 Marks
-* Total Project
-    * Excellent 5: Excellent effort. Team is working with 4 other teams to coordinate and connect. Coordinates and connects fine with 2 or more teams and another node from a team member. API follows spec & examples listed in this document.
-    * Good 4: Some issues, not quite excellent but definitely fixable and functional with 1 or more teams and another node from a team member. API follows spec & examples listed in this document.
-    * Satisfactory 3: There are issues, it does run, it does coordinate with 1 or more teams.
-    * Unsatisfactory 2: Not connected to other groups, still connects to another node of a team member.
-    * Failure 0: Missing. No attempted. Not complete enough to evaluate.
-* Web Service API & Documentation
-    * Excellent: Documented, adheres to requirements to augments them with compatibility. Open API specification exists, has clear descriptions, and has example requests and responses from your API.
-    * Good: Documented, exists, tries to adhere to requirements. Open API specification exists, and has some descriptions and a few example requests and responses.
-    * Satisfactory: Some of the webservice exists. Open API specification exists, but no descriptions or example requests and responses.
-    * Unsatisfactory: Webservice exists, barely. Open API specification does not exist.
-    * Failure: it is not usable.
-* Web Service Coordination
-    * Excellent: Web service coordinates with 2+ other group projects and itself successfully. Most interoperation requirements met.
-    * Good: Web service coordinates with 1+ other group projects and itself successfully. Most interoperation requirements met. Some snags.
-    * Satisfactory: The basics of coordination are covered. Probably many snags.
-    * Unsatisfactory 0: Coordination barely works.
-    * Failure: failure to coordinate
-* Design
-    * Excellent: Adheres to standards, well designed.
-    * Good: Adheres to standards somewhat, some awkward parts.
-    * Satisfactory: Some good parts, some nasty parts.
-    * Unsatisfactory: Little effort went into documenting and designing the project.
-    * Failure: failure to apply what was learned in class.
+* Everything / all user stories / almost all user stories, 3/4 user stories, etc. includes **all user stories that could involve two nodes, working with at least two other team's nodes!**
+* Excellent
+    * **Web Service Coordination:** Team's node coordinates with **two** other team's nodes successfully. All user stories that could involve two nodes work node-to-node with **two** other teams nodes.
+    * **Inter-Team Coordination:** Significant progress in getting node coordinating with **four** other teams nodes. (Four includes the two teams above.)
+    * Addressing Feedback: TA's suggestions were implemented, TA approves of implementation set.
+    * User Stories UI: All the user stories are usable using the UI. 
+    * User Stories API: All the user stories with a relevant API are usable using the API. Adheres to the specification.
+    * Test Cases: All the of the user stories have tests written and pass those tests. 
+    * UI Design: Looks impressive! It's obvious how to do any of the user stories.
+    * Tool use: Use of Git, GitHub issues, etc. is Evidence and Obvious. Commits/merges/PRs are small and frequent. Commit messages are helpful information for teammates. All the teammates are working at the same time, and using GitHub **and git** to help communicate and improve teamwork. You laugh in the face of merge conflicts! Well organized repository and branches. 
+    * TA Walkthrough: Able to walk through every user story with UI and API. No snags, bugs, last second workarounds, or missing pieces. Code is easily located. Documentation is easily located.
+    * Web Service API Documentation: Well documented. Highly detailed. Clear descriptions, has useful example requests and responses from your API for every use of the API for every user story. If using automated documentation generation, there is extra documentation added on top of that.
+    * Standards & Code Style: Adheres to standards, code is well organized and clean. Code is easy to read. Comments add to code readablility when necessary. Code meets Python, JS, HTML and CS style guides. Excellent indentation, naming. Code units only do one thing. It's easy to find the code responsible for handling any of the user stories.
+* Good
+    * **Web Service Coordination:** Team's node coordinates with **two** other team's nodes successfully. Almost all interoperation requirements met. Only some minor snags. Almost all user stories that could involve two nodes work node-to-node between this team and two other team's nodes.
+    * **Inter-Team Coordination:** Evidence of progress working with **four** other teams nodes. (Four includes the two teams above.)
+    * Addressing Feedback: Almost all TA's suggestions were implemented, TA approves of implementation set.
+    * User Stories UI: Almost all user stories are usable using the UI.
+    * User Stories API: Almost all user stories with a relevant API are usable using the API. Adheres to the specification.
+    * Test Cases: Almost all user stories have tests written, most pass tests.
+    * UI Design: Looks good. It's not obvious how you would use the UI to do some of the user stories.
+    * Tool use: Frequent but inconsistent use of Git, etc. Commits/merges/PRs are medium and with inconsistent frequency. All the teammates are working at the same time. Using GitHub to help communicate. Well organized repository and branches.
+    * TA Walkthrough: A couple of snags, bugs, last second workarounds.
+    * Web Service API Documentation: Well documented, medium detail. A few things are unclear. Has example requests and responses from your API for every use of the API and almost all the user stories. If using automated documentation generation, there is extra documentation added on top of that.
+    * Standards & Code Style: Adheres to standards, code is well organized and clean. Missing comments. Some minor issues with code style. Code units only do one thing. It takes a little digging sometimes to find the code responsible for a user story.
+* Satisfactory
+    * **Web Service Coordination:** Team's node coordinates with **two** other team's nodes successfully.  Most interoperation requirements met. Few snags. 3/4ths of user stories that could involve two nodes work node-to-node with **two** other teams.
+    * **Inter-Team Coordination:** Evidence of progress working with **three** other teams nodes. (Three includes the two teams above.)
+    * Addressing Feedback: 3/4ths of TA's suggestions were implemented, TA approves of most of the changes made to address feedback.
+    * User Stories UI: At least 3/4ths of the user stories are usable using the UI.
+    * User Stories API: At least 3/4ths of the user stories with a relevant API are usable using the API. Very close to adhering to the specification.
+    * Unsatisfactory: At least 3/4ths of the API with relevant user stories are usable using the API. Some parts deviate from the specification.
+    * Test Cases: At least 3/4ths of the user have tests written, most pass tests.
+    * UI Design: HTML & CSS exists, it does not look good. Mostly easy to understand. It has issues. There is some way to do all user stories, even if it's not obvious.
+    * Tool use: Uses Git, etc. Has some oversized merges. Commits/merges/PRs are large and far apart. All the teammates are working at the same time. Well organized repository and branches.
+    * TA Walkthrough: Some snags bugs, last second workarounds, or tiny missing pieces.
+    * Web Service API Documentation: Well documented, but missing details. Every endpoint is documented.  Some things are unclear. Example requests and responses have a few issues. Almost all user stories have examples. If using automated documentation generation, there is extra documentation added on top of that.
+    * Standards & Code Style: Adheres to standards, there is an attempt at organization. Commented out code, unreachable code, or code with no clear purpose. Code units only do one thing. Occasional spots of poor style. It's not clear where the code for a user story will be.
+* Unsatisfactory
+    * **Web Service Coordination:** The basics of coordination with **one** other team's node is covered. Probably many snags. Most user stories that could involve two nodes work node-to-node with **one** other team.
+    * **Inter-Team Coordination:** Evidence of progress working with **three** other teams nodes. (Three includes the one team above.)
+    * Addressing Feedback: Most of TAs suggestions were implemented, TA approves of most of the changes made to address feedback.
+    * User Stories UI: At least half of the user stories are usable using the UI.
+    * User Stories API: At least half of the user stories with a relevant API are usable using the API. Very close to adhering to the specification.
+    * Test Cases: At least half of the user have tests written, most pass tests.
+    * UI Design: HTML & CSS exists. Major UI issues. Hard to navigate. Hard to understand. There is some way to do almost all user stories.
+    * Tool use: Limited of tool use. Only one teammate seems to be working at a time. Git is disorganized.
+    * TA Walkthrough: Many snags, bugs, last second workarounds, small missing pieces.
+    * Web Service API Documentation: Low on details. Many things are unclear. Every endpoint is documented. Missing some example requests and responses. If using automated documentation generation, there is extra documentation added on top of that.
+    * Standards & Code Style: Browser, Python, transpiler, bundler, etc. warnings. Code is poorly organized God files/classes/functions. Have to search or grep code to find the code responsible for something.
+* Attempt
+    * **Web Service Coordination:** Coordination with another team's node barely works. Less than half interoperation requirements met. Showstopper problems. Some user stories work node-to-node.
+    * **Inter-Team Coordination:** Evidence of progress working with **two** other teams nodes. (Three includes the one team above.)
+    * Addressing Feedback: Some of TA's suggestions were implemented, TA approves of some of the changes made to address feedback.
+    * User Stories UI: Less than half of the user stories are usable using the UI or major deviations from the user stories.
+    * User Stories API: Less than half of the user stories are usable using the API or major deviations from the specification.
+    * Test Cases: Less than half of the user stories are usable using the API or major deviations from the specification, or test cases are present but do not actually test what they say they are testing.
+    * UI Design: Some pieces of the HTML & CSS exist, but some pieces of the HTML & CSS are missing that would be needed to do some of the user stories.
+    * Tool use: Very limited of tool use. Git is disorganized. Git exists but it has built artifacts in it. Git has commits that do not contribute anything, but have large diffs, such as changing whitespace of every line in a file.<!-- @LT-IGNORE:ENGLISH_WORD_REPEAT_BEGINNING_RULE@ -->
+    * TA Walkthrough: Showstopper bugs. Major missing pieces.
+    * Web Service API Documentation: Major pieces of documentation are missing or only has autogenerated documentation. 
+    * Standards & Code Style: HTML errors, browser errors, CSS errors, JS errors, Python errors. Code is disorganized. Code is hard to find. Code is missing. <!-- @LT-IGNORE:ENGLISH_WORD_REPEAT_BEGINNING_RULE@ -->
+* No attempt
+    * Web Service Coordination: No user stories are coordinating with another team's node.
+    * Addressing Feedback: None of TA's suggestions were implemented, TA approves of none of the changes made to address feedback.
+    * Inter-Team Coordination: No attempt to work with another team.
+    * User Stories UI: No user stories are usable using the UI.
+    * User Stories API: No user stories are usable using the API.
+    * Test Cases: No test cases are present.
+    * UI Design: No HTML/CSS exists.
+    * Tool use: Used file sharing, email attachments, sending files/code through discord, chat, messengers, or similar tools to work together. Git exists but it not being used, or it is being misused.
+    * TA Walkthrough: No walkthrough. Unable to demo. 
+    * Web Service API Documentation: Documentation is missing or unable to find documentation. 
+    * Standards & Code Style: Project doesn't run/load.
 
-## Project Part 4: Polish
+## Project Part 5: Polish
 
 ### Submission
 
-Due 4PM Monday.
+Due 4PM Monday. <!-- @LT-IGNORE:CONFUSION_DUE_DO@ -->
 
 eClass has a limitation where it only shows the due date for the last lab section of the week, but for Monday labs it is due Monday. For Wednesday labs it is due Wednesday.
 
@@ -1859,7 +1938,7 @@ Your presentation should focus on:
     * This is what makes your project different from the other teams, so be sure to show it off!
     * We don't really need to see the Django admin panel.
 * Federation
-    * Walkthroughnstrate your working connection with other team(s).
+    * Walk through your working connection with other team(s).
 
 Guide for a good presentation:
 
@@ -1884,83 +1963,91 @@ During the other team's presentations:
 
 ### Marking
 
-* 10 Marks
-* Total Project
-    * Excellent 10: Excellent effort. Coordinates and connects fine. Good demo. Clear application of what was learned in class. 3 or more groups connected. Posts with embedded images are visible. Image posts are visible. API follows spec & examples listed in this document.
-    * Good 8: Some issues, not quite excellent but definitely operational and functional. 2 or more groups connected. Posts with embedded images are visible. Image posts are visible. API follows spec & examples listed in this document.
-    * Satisfactory 6: There are issues, it does run, it does coordinate. Meets satisfactory aspects of rubric. 2 or more group connected. Image posts are visible. API follows spec & examples listed in this document.
-    * Unsatisfactory 4: Well you tried, but it's hardly working. Meets unsatisfactory aspects of rubric. 1 or more group connected.
-    * Failure 0: Missing. No attempted. Not complete enough to evaluate. Often hits failure aspects of rubric.
-* Note: these are ordered by importance, but you need to meet all these parts and we care about the final quality.
-* Code Base
-    * Excellent: Excellent effort. Relatively consistent. At least 90% of requirements implemented. Clean code
-    * Good: Good quality. Some inconsistency. About 90% of requirements implemented.
-    * Satisfactory: Codebase in places. Passes some tests. Some parts run.
-    * Unsatisfactory: Does not meet Satisfactory level
-* UI 3
-    * Excellent: UI Exists and works well. Shows evidence of planning. Looks great.
-    * Good: UI Exists.  Looks good
-    * Satisfactory: UI exists. Looks poor.
-    * Unsatisfactory: UI exists. Doesn't work well. Worse than poor.
-    * Failure: Missing or unusable.
-* Web Service Coordination
-    * Excellent: Web service coordinates with 2+ other group projects successfully. Most interoperation requirements met.
-    * Good: Web service coordinates with 2+ other group projects successfully. Most interoperation requirements met. Some snags.
-    * Satisfactory: The basics of coordination are covered. Probably many snags.
-    * Unsatisfactory: Coordination doesn't work or barely works.
-* Web Service API & Documentation
-    * Excellent: Documented, adheres to requirements to augments them with compatibility.  Open API specification exists, has clear descriptions, and has example requests and responses from your API. 
-    * Good: Documented, exists, tries to adhere to requirements.  Open API specification exists, and has some descriptions and a few example requests and responses.
-    * Satisfactory: Some of the webservice exists. Open API specification exists, and has a few example requests and responses.
-    * Unsatisfactory: Effort taken but incomplete. Open API specification exists, but no descriptions or example requests and responses.
-    * Failure: API or Documentation Missing. Open API specification does not exist.
-* Test Cases
-    * Excellent: System is well tested
-    * Good: System has some tests
-    * Unsatisfactory: test cases are inappropriate
-    * Failure: Missing test cases
-* Tool Use
-    * Excellent: Use of at least Git is Evidence and Obvious
-    * Good: Frequent but inconsistent use of Git, etc.
-    * Satisfactory: Infrequent use of Git, etc.
-    * Unsatisfactory: Limited tool use
-    * Failure: lack of tool use
-* Design
-    * Excellent: Adheres to standards, well designed
-    * Good: Adheres to standards somewhat, some awkward parts
-    * Satisfactory: Some good parts, some nasty parts
-    * Unsatisfactory: Little effort went into documenting and designing the project
-    * Failure: clear lack of design
-* Adhering to Standards
-    * Excellent: Excellent attempt at making a standards compliant website. Most things are compliant.
-    * Good: An attempt at making a standards compliant website. Some not compliant.
-    * Satisfactory: Inconsistent.
-    * Unsatisfactory: poor attempt to meet standards.
-    * Failure: failed to apply what was learned in class
-* Addressing Feedback:
-    * Excellent: TAs suggestions were implemented, TA approves of implementation set.
-    * Good: The good TA suggestions were implemented ;)
-    * Satisfactory: Feedback ignored mostly, but some followed.
-    * Unsatisfactory: Majority of Feedback ignored.
-    * Failure: Feedback ignored.
-* Presentation:
-    * Excellent: Presentation within time, shows teamwork, promotes the application, uses the live application to show functionality.
-    * Good: Presentation nearly within time, some team works, reasonable presentation.
-    * Satisfactory: Presentation exists but has problems.
-    * Unsatisfactory: Missing or terrible presentation (lack of practice, lack of preparation, irrelevant) OR presentation includes the video demo.
-    * Failure: no presentation
-* Video Walkthrough:
-    * Excellent: Video is well presented and not boring, less than 2 minutes. Posted to the discussion forum thread to share it with everyone in the class.
-    * Good: Video presents the functionality and is less than 2 minutes.
-    * Satisfactory: Video is longer than 2 minutes, or doesn't accurately present the project.
-    * Unsatisfactory: A video exists and it is a demo.
-    * Failure: lack of video, failure to make a video.
-* AJAX
-    * Excellent: Uses AJAX appropriately and well (documented)
-    * Good: Uses some AJAX (documented)
-    * Satisfactory: AJAX not really used
-    * Unsatisfactory: An attempt was made.
-    * Failure: No AJAX
+* Excellent
+    * **Presentation:** Presentation within time, shows excellent teamwork, promotes the application, uses the live application to show functionality.
+    * **Video**: Video is well presented and not boring, less than 2 minutes. It is fun promotes your project. Makes people want to try your app out. Posted to the discussion forum thread to share it with everyone in the class.
+    * Web Service Coordination: Team's node coordinates with **three** other team's nodes successfully. All user stories that could involve two nodes work node-to-node with **three** other teams nodes.
+    * Inter-Team Coordination: Significant progress in getting node coordinating with **four** other teams nodes. (Four includes the two teams above.)
+    * Addressing Feedback: TA's suggestions were implemented, TA approves of implementation set.
+    * User Stories UI: All the user stories are usable using the UI. 
+    * User Stories API: All the user stories with a relevant API are usable using the API. Adheres to the specification.
+    * Test Cases: All the of the user stories have tests written and pass those tests. 
+    * UI Design: Looks impressive! It's obvious how to do any of the user stories.
+    * Tool use: Use of Git, GitHub issues, etc. is Evidence and Obvious. Commits/merges/PRs are small and frequent. Commit messages are helpful information for teammates. All the teammates are working at the same time, and using GitHub **and git** to help communicate and improve teamwork. You laugh in the face of merge conflicts! Well organized repository and branches. 
+    * TA Walkthrough: Able to walk through every user story with UI and API. No snags, bugs, last second workarounds, or missing pieces. Code is easily located. Documentation is easily located.
+    * Web Service API Documentation: Well documented. Highly detailed. Clear descriptions, has useful example requests and responses from your API for every use of the API for every user story. If using automated documentation generation, there is extra documentation added on top of that.
+    * Standards & Code Style: Adheres to standards, code is well organized and clean. Code is easy to read. Comments add to code readablility when necessary. Code meets Python, JS, HTML and CS style guides. Excellent indentation, naming. Code units only do one thing. It's easy to find the code responsible for handling any of the user stories.
+* Good
+    * **Presentation:** Presentation within time, some teamwork, promotes the application, uses the live application to show functionality, a couple rough spots.
+    * **Video**: Video is well presented and not boring, less than 2 minutes. Contains details author would not care about. Posted to the discussion forum thread to share it with everyone in the class.
+    * Web Service Coordination: Team's node coordinates with **three** other team's nodes successfully. Almost all interoperation requirements met. Only some minor snags. Almost all user stories that could involve two nodes work node-to-node between this team and two other team's nodes.
+    * Inter-Team Coordination: Evidence of progress working with **four** other teams nodes. (Four includes the two teams above.)
+    * Addressing Feedback: Almost all TA's suggestions were implemented, TA approves of implementation set.
+    * User Stories UI: Almost all user stories are usable using the UI.
+    * User Stories API: Almost all user stories with a relevant API are usable using the API. Adheres to the specification.
+    * Test Cases: Almost all user stories have tests written, most pass tests.
+    * UI Design: Looks good. It's not obvious how you would use the UI to do some of the user stories.
+    * Tool use: Frequent but inconsistent use of Git, etc. Commits/merges/PRs are medium and with inconsistent frequency. All the teammates are working at the same time. Using GitHub to help communicate. Well organized repository and branches.
+    * TA Walkthrough: A couple of snags, bugs, last second workarounds.
+    * Web Service API Documentation: Well documented, medium detail. A few things are unclear. Has example requests and responses from your API for every use of the API and almost all the user stories. If using automated documentation generation, there is extra documentation added on top of that.
+    * Standards & Code Style: Adheres to standards, code is well organized and clean. Missing comments. Some minor issues with code style. Code units only do one thing. It takes a little digging sometimes to find the code responsible for a user story.
+* Satisfactory
+    * **Presentation**: Presentation nearly within time, some teamwork, reasonable presentation. Uses the live application to show functionality, a few snags.
+    * **Video**: Video less than 2 minutes. Video shows the functionality of the app.
+    * Web Service Coordination: Team's node coordinates with **two** other team's nodes successfully.  Most interoperation requirements met. Few snags. 3/4ths of user stories that could involve two nodes work node-to-node with **two** other teams.
+    * Inter-Team Coordination: Evidence of progress working with **three** other teams nodes. (Three includes the two teams above.)
+    * Addressing Feedback: 3/4ths of TA's suggestions were implemented, TA approves of most of the changes made to address feedback.
+    * User Stories UI: At least 3/4ths of the user stories are usable using the UI.
+    * User Stories API: At least 3/4ths of the user stories with a relevant API are usable using the API. Very close to adhering to the specification.
+    * Unsatisfactory: At least 3/4ths of the API with relevant user stories are usable using the API. Some parts deviate from the specification.
+    * Test Cases: At least 3/4ths of the user have tests written, most pass tests.
+    * UI Design: HTML & CSS exists, it does not look good. Mostly easy to understand. It has issues. There is some way to do all user stories, even if it's not obvious.
+    * Tool use: Uses Git, etc. Has some oversized merges. Commits/merges/PRs are large and far apart. All the teammates are working at the same time. Well organized repository and branches.
+    * TA Walkthrough: Some snags bugs, last second workarounds, or tiny missing pieces.
+    * Web Service API Documentation: Well documented, but missing details. Every endpoint is documented.  Some things are unclear. Example requests and responses have a few issues. Almost all user stories have examples. If using automated documentation generation, there is extra documentation added on top of that.
+    * Standards & Code Style: Adheres to standards, there is an attempt at organization. Commented out code, unreachable code, or code with no clear purpose. Code units only do one thing. Occasional spots of poor style. It's not clear where the code for a user story will be.
+* Unsatisfactory
+    * **Presentation:** A presentation was prepared but has problems. Low teamwork. Uses slides. Major snags.
+    * **Video**: Video longer than 2 minutes. Video misrepresents the functionality of the app.
+    * Web Service Coordination: The basics of coordination with **one** other team's node is covered. Probably many snags. Most user stories that could involve two nodes work node-to-node with **one** other team.
+    * Inter-Team Coordination: Evidence of progress working with **three** other teams nodes. (Three includes the one team above.)
+    * Addressing Feedback: Most of TAs suggestions were implemented, TA approves of most of the changes made to address feedback.
+    * User Stories UI: At least half of the user stories are usable using the UI.
+    * User Stories API: At least half of the user stories with a relevant API are usable using the API. Very close to adhering to the specification.
+    * Test Cases: At least half of the user have tests written, most pass tests.
+    * UI Design: HTML & CSS exists. Major UI issues. Hard to navigate. Hard to understand. There is some way to do almost all user stories.
+    * Tool use: Limited of tool use. Only one teammate seems to be working at a time. Git is disorganized.
+    * TA Walkthrough: Many snags, bugs, last second workarounds, small missing pieces.
+    * Web Service API Documentation: Low on details. Many things are unclear. Every endpoint is documented. Missing some example requests and responses. If using automated documentation generation, there is extra documentation added on top of that.
+    * Standards & Code Style: Browser, Python, transpiler, bundler, etc. warnings. Code is poorly organized God files/classes/functions. Have to search or grep code to find the code responsible for something.
+* Attempt
+    * **Presentation**: Lack of practice, lack of preparation, irrelevant, many snags, includes video.
+    * **Video**: A video of the app exists.
+    * Web Service Coordination: Coordination with another team's node barely works. Less than half interoperation requirements met. Showstopper problems. Some user stories work node-to-node.
+    * Inter-Team Coordination: Evidence of progress working with **two** other teams nodes. (Three includes the one team above.)
+    * Addressing Feedback: Some of TA's suggestions were implemented, TA approves of some of the changes made to address feedback.
+    * User Stories UI: Less than half of the user stories are usable using the UI or major deviations from the user stories.
+    * User Stories API: Less than half of the user stories are usable using the API or major deviations from the specification.
+    * Test Cases: Less than half of the user stories are usable using the API or major deviations from the specification, or test cases are present but do not actually test what they say they are testing.
+    * UI Design: Some pieces of the HTML & CSS exist, but some pieces of the HTML & CSS are missing that would be needed to do some of the user stories.
+    * Tool use: Very limited of tool use. Git is disorganized. Git exists but it has built artifacts in it. Git has commits that do not contribute anything, but have large diffs, such as changing whitespace of every line in a file.<!-- @LT-IGNORE:ENGLISH_WORD_REPEAT_BEGINNING_RULE@ -->
+    * TA Walkthrough: Showstopper bugs. Major missing pieces.
+    * Web Service API Documentation: Major pieces of documentation are missing or only has autogenerated documentation. 
+    * Standards & Code Style: HTML errors, browser errors, CSS errors, JS errors, Python errors. Code is disorganized. Code is hard to find. Code is missing. <!-- @LT-IGNORE:ENGLISH_WORD_REPEAT_BEGINNING_RULE@ -->
+* No attempt
+    * **Presentation**: No presentation.
+    * **Video**: No video of the app exists.
+    * Web Service Coordination: No user stories are coordinating with another team's node.
+    * Addressing Feedback: None of TA's suggestions were implemented, TA approves of none of the changes made to address feedback.
+    * Inter-Team Coordination: No attempt to work with another team.
+    * User Stories UI: No user stories are usable using the UI.
+    * User Stories API: No user stories are usable using the API.
+    * Test Cases: No test cases are present.
+    * UI Design: No HTML/CSS exists.
+    * Tool use: Used file sharing, email attachments, sending files/code through discord, chat, messengers, or similar tools to work together. Git exists but it not being used, or it is being misused.
+    * TA Walkthrough: No walkthrough. Unable to demo. 
+    * Web Service API Documentation: Documentation is missing or unable to find documentation. 
+    * Standards & Code Style: Project doesn't run/load.
 
 # License
 

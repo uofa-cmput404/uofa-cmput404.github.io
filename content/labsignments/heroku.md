@@ -1126,9 +1126,9 @@ You can verify the backend in use by login into the dashboard of the Heroku app:
 If you try to create the Heroku app through the Heroku webpage, you can follow the below instructions to enable Postgres.
 [https://www.geeksforgeeks.org/deploying-django-app-on-heroku-with-postgres-as-backend/](https://www.geeksforgeeks.org/deploying-django-app-on-heroku-with-postgres-as-backend/)
 
-### Checking your heroku app
+### Checking your Heroku app
 
-You can use the `heroku open --app APPNAME` command to open your heroku app in a web browser. 
+You can use the `heroku open --app APPNAME` command to open your Heroku app in a web browser. 
 
 * <div class="warning">You **must** do this to help us mark your work:</div> Add your apps hostname, cname, and ip address to the README.md file in your git repo. 
     * First get your heroku apps hostname, it will look something like `example-app-1234567890ab.herokuapp.com`.
@@ -1147,12 +1147,12 @@ You can use the `heroku open --app APPNAME` command to open your heroku app in a
         * `Address: 34.201.81.34`
         * In this case, write "none" for the cname.
     * Write your app's hostname, cname, and ip address to the README.md in your git repo.
-* Make sure you can use the admin panel on heroku from your web browser.
-    * Hint: shut down your localhost server if its running to make sure you're not connecting to the one on your computer by accident!
+* Make sure you can use the admin panel on Heroku from your web browser.
+    * Hint: shut down your localhost server if it's running to make sure you're not connecting to the one on your computer by accident!
     * Use the admin panel to add a poll.
-* Make sure you can use the polls app on heroku from your web browser.
-* Make sure your heroku app remembers the results of your polls and your superuser login!
-    * If your heroku is not configured properly to use postgres it will forget them randomly! (somewhere between 0 and 24 hours.)
+* Make sure you can use the polls app on Heroku from your web browser.
+* Make sure your Heroku app remembers the results of your polls and your superuser login!
+    * If your Heroku is not configured properly to use PostgreSQL it will forget them randomly! (somewhere between 0 and 24 hours.)
 
 ## Phase Three: More Features
 
@@ -1162,7 +1162,7 @@ Congratulations on getting your app deployed to Heroku! Let's add some new featu
 
 At this point in the lab, we should have a working poll application deployed on Heroku. However, we need a way to programmatically create questions without using the admin panel! 
 
-**Your task** is to add a new api route at `polls/api/question/add/` that will add a new multiple choice question when a POST request is received! It should return a 405 when any other method is received. The post payload will contain a JSON object with the properties `question` and `answers`. 
+**Your task** is to add a new API route at `polls/api/question/add/` that will add a new multiple choice question when a POST request is received! It should return a 405 when any other method is received. The post payload will contain a JSON object with the properties `question` and `answers`. 
 
 `question` is a string that MUST be AT LEAST 1 character long and AT MOST 200 characters long. `answers` is a array of answers that MUST have at least 1 answer. Each answer MUST be AT LEAST 1 character long and AT MOST 200 characters long. 
 
@@ -1392,6 +1392,8 @@ Violation of the restrictions will result in a mark of zero.
 Make sure you push to github classroom **BEFORE 4PM on Monday!** You will not be able to push after that!
 
 Submit a link to your repo in the form `https://github.com/uofa-cmput404/w24-h0x-labsignment-heroku-yourgithubname` on eClass. **Do not** submit a link to a branch, a file, or the clone url. If you do not do this we will not know which github submission is yours.
+
+<p class="warning">If you do not submit a link to your repo on eClass on time using the correct format above, you will get a zero.</p>
 
 After you receive your grade, you can delete your Heroku app to save credits/money.
 
