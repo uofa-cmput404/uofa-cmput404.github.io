@@ -73,18 +73,33 @@
 <li><a href="#who-talks-to-who">Who talks to Who</a></li>
 <li><a href="#overview">Overview</a></li>
 <li><a href="#example-node-to-node-api-view">Example (node-to-node API View)</a></li>
+<li><a href="#ids">IDs</a></li>
+</ul>
+</li>
+<li><a href="#api-objects">API Objects</a><ul>
+<li><a href="#example-author-objects">Example Author Objects</a></li>
+<li><a href="#example-follow-request-object">Example Follow Request Object</a></li>
+<li><a href="#example-post-object">Example Post Object</a></li>
+<li><a href="#example-comment-object">Example Comment Object</a></li>
+<li><a href="#example-comments-object">Example Comments Object</a></li>
+<li><a href="#example-like-object">Example Like Object</a></li>
+<li><a href="#example-likes-object">Example Likes Object</a></li>
 </ul>
 </li>
 <li><a href="#api-endpoints">API Endpoints</a><ul>
-<li><a href="#authors">Authors</a></li>
-<li><a href="#single-author">Single Author</a></li>
-<li><a href="#followers">Followers</a></li>
-<li><a href="#follow-request">Follow Request</a></li>
-<li><a href="#post">Post</a></li>
+<li><a href="#authors-api">Authors API</a></li>
+<li><a href="#single-author-api">Single Author API</a></li>
+<li><a href="#followers-api">Followers API</a></li>
+<li><a href="#follow-request-api">Follow Request API</a></li>
+<li><a href="#posts-api">Posts API</a><ul>
 <li><a href="#image-posts">Image Posts</a></li>
-<li><a href="#comments">Comments</a></li>
-<li><a href="#likes">Likes</a></li>
-<li><a href="#liked">Liked</a></li>
+</ul>
+</li>
+<li><a href="#comments-api">Comments API</a></li>
+<li><a href="#commented-api">Commented API</a></li>
+<li><a href="#likes-api">Likes API</a></li>
+<li><a href="#liked-api">Liked API</a></li>
+<li><a href="#other-local-apis">Other Local APIs</a></li>
 <li><a href="#inbox">Inbox</a></li>
 </ul>
 </li>
@@ -101,7 +116,7 @@
 <li><a href="#things-that-are-allowed">Things that are allowed</a></li>
 </ul>
 </li>
-<li><a href="#groupwork-tips">Groupwork Tips</a></li>
+<li><a href="#teamwork-tips">Teamwork Tips</a></li>
 <li><a href="#submission-instructions">Submission Instructions</a></li>
 <li><a href="#warning">Warning!!!!</a></li>
 <li><a href="#marking">Marking</a><ul>
@@ -113,29 +128,29 @@
 <li><a href="#project-part-1-halfway-prototype">Project Part 1: Halfway Prototype</a><ul>
 <li><a href="#requirements_1">Requirements</a></li>
 <li><a href="#submission">Submission</a></li>
-<li><a href="#markingwh">Markingwh</a></li>
+<li><a href="#marking_1">Marking</a></li>
 </ul>
 </li>
 <li><a href="#project-part-2-centralized-prototype">Project Part 2: Centralized Prototype</a><ul>
 <li><a href="#submission_1">Submission</a></li>
-<li><a href="#marking_1">Marking</a></li>
+<li><a href="#marking_2">Marking</a></li>
 </ul>
 </li>
 <li><a href="#project-part-3-distribution">Project Part 3: Distribution</a><ul>
 <li><a href="#requirements_2">Requirements</a></li>
 <li><a href="#submission_2">Submission</a></li>
-<li><a href="#marking_2">Marking</a></li>
+<li><a href="#marking_3">Marking</a></li>
 </ul>
 </li>
 <li><a href="#project-part-3-federation">Project Part 3: Federation</a><ul>
 <li><a href="#submission_3">Submission</a></li>
-<li><a href="#marking_3">Marking</a></li>
+<li><a href="#marking_4">Marking</a></li>
 </ul>
 </li>
 <li><a href="#project-part-4-polish">Project Part 4: Polish</a><ul>
 <li><a href="#submission_4">Submission</a></li>
 <li><a href="#presentation">Presentation</a></li>
-<li><a href="#marking_4">Marking</a></li>
+<li><a href="#marking_5">Marking</a></li>
 </ul>
 </li>
 </ul>
@@ -201,12 +216,12 @@ She should also see that I've liked and commented her post.</p>
 <p>Posts, likes, comments, posts, are all sent to the inboxes of the authors that should be able to see them.</p>
 <h4 id="project-parts">Project Parts</h4>
 <ul>
-<li>Part 0 - sign up a repo</li>
-<li>Part 1 - 1/2 way implementation</li>
-<li>Part 2 - Lonely implementation</li>
-<li>Part 3 - Connected implementation</li>
-<li>Part 4 - Connect with Groups</li>
-<li>Part 5 - Finish it off!</li>
+<li>Part 0: sign up a repo</li>
+<li>Part 1: 1/2 way implementation</li>
+<li>Part 2: Centralized implementation</li>
+<li>Part 3: Connected implementation</li>
+<li>Part 4: Connect with Groups</li>
+<li>Part 5: Finish it off!</li>
 </ul>
 <h3 id="collaboration">Collaboration</h3>
 <ul>
@@ -323,6 +338,7 @@ She should also see that I've liked and commented her post.</p>
 <li>As a node admin, I don't want to have seperate frontend and backend web servers, so I don't have to manage two web servers/services.</li>
 <li>As a node admin, I want deleted posts stay in the database and only be removed from the UI and API, so I can see what was deleted.</li>
 <li>As a node admin, I want my node's UI to only communicate with my nodes web server, so I can prevent XSS.</li>
+<li>As a node admin, I want the API objects (authors, posts, etc.) to be <a href="#ids">identified by their full URL</a>, to prevent collisions with other node's numbering schemes. <em>⧟ Part 3-5 only.</em></li>
 </ul>
 </li>
 </ul>
@@ -470,7 +486,7 @@ She should also see that I've liked and commented her post.</p>
 <li>Inbox<ul>
 <li><strong>An inbox is not something the user ever actually sees. It is an API endpoint <em>only</em>.</strong></li>
 <li>This is what a READER or USER of the social network has. They follow authors, and the authors they follow send objects to their inbox.</li>
-<li>This is something that only exists in the API. There is no special inbox in the User Interface, posts sent to a user's inbox are integrated into a their stream.</li>
+<li>This is something that only exists in the API. There is no special inbox in the User Interface, posts sent to a user's inbox are integrated into their stream.</li>
 <li>This forms the backbone of the timeline of the social media user.</li>
 <li>This receives likes and comments.</li>
 </ul>
@@ -484,7 +500,7 @@ She should also see that I've liked and commented her post.</p>
 </ul>
 </li>
 <li>Local<ul>
-<li>A local user accessing the REST API. Likely will use their cookie-auth, basic auth, or token auth. Local usually implies you check whether or not the user should have access. For node local API access to the inbox should be limited to only that authenticated authors---don't snoop!</li>
+<li>A local user accessing the REST API. Likely will use their cookie-auth, basic auth, or token auth. Local usually implies you check if the user should have access. For node local API access to the inbox should be limited to only that authenticated authors --- don't snoop!</li>
 </ul>
 </li>
 <li>Profile Page<ul>
@@ -507,7 +523,7 @@ She should also see that I've liked and commented her post.</p>
 <th>Admin</th>
 <th>Friend</th>
 <th>Follower</th>
-<th>Everyone</th>
+<th>Everyone <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ --></th>
 </tr>
 </thead>
 <tbody>
@@ -516,14 +532,14 @@ She should also see that I've liked and commented her post.</p>
 <td>control panel</td>
 <td>link + stream</td>
 <td>link + stream</td>
-<td>link + stream</td>
+<td>link + stream <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ --></td>
 </tr>
 <tr>
 <td>Unlisted</td>
 <td>control panel</td>
 <td>link + stream</td>
 <td>link + stream</td>
-<td>link</td>
+<td>link <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ --></td>
 </tr>
 <tr>
 <td>Friends Only</td>
@@ -537,7 +553,7 @@ She should also see that I've liked and commented her post.</p>
 <td>control panel</td>
 <td></td>
 <td></td>
-<td></td>
+<td><!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ --></td>
 </tr>
 </tbody>
 </table>
@@ -550,7 +566,7 @@ She should also see that I've liked and commented her post.</p>
 <th>Author</th>
 <th>Friend</th>
 <th>Follower</th>
-<th>Anyone</th>
+<th>Anyone <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ --></th>
 </tr>
 </thead>
 <tbody>
@@ -560,7 +576,7 @@ She should also see that I've liked and commented her post.</p>
 <td>from</td>
 <td>to <code>inbox</code></td>
 <td>to <code>inbox</code></td>
-<td></td>
+<td><!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ --></td>
 </tr>
 <tr>
 <td>New Unlisted</td>
@@ -568,7 +584,7 @@ She should also see that I've liked and commented her post.</p>
 <td></td>
 <td>to <code>inbox</code></td>
 <td>to <code>inbox</code></td>
-<td></td>
+<td><!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ --></td>
 </tr>
 <tr>
 <td>New Friends Only</td>
@@ -576,7 +592,7 @@ She should also see that I've liked and commented her post.</p>
 <td></td>
 <td>to <code>inbox</code></td>
 <td></td>
-<td></td>
+<td><!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ --></td>
 </tr>
 <tr>
 <td>Deleted Public</td>
@@ -584,7 +600,7 @@ She should also see that I've liked and commented her post.</p>
 <td></td>
 <td>to <code>inbox</code></td>
 <td>to <code>inbox</code></td>
-<td>to inboxes post was sent to before</td>
+<td>to inboxes post was sent to before <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ --></td>
 </tr>
 <tr>
 <td>Deleted Unlisted</td>
@@ -592,7 +608,7 @@ She should also see that I've liked and commented her post.</p>
 <td></td>
 <td>to <code>inbox</code></td>
 <td>to <code>inbox</code></td>
-<td>to inboxes post was sent to before</td>
+<td>to inboxes post was sent to before <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ --></td>
 </tr>
 <tr>
 <td>Deleted Friends Only</td>
@@ -600,7 +616,7 @@ She should also see that I've liked and commented her post.</p>
 <td></td>
 <td>to <code>inbox</code></td>
 <td></td>
-<td>to inboxes post was sent to before</td>
+<td>to inboxes post was sent to before <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ --></td>
 </tr>
 <tr>
 <td>Edited Public</td>
@@ -608,7 +624,7 @@ She should also see that I've liked and commented her post.</p>
 <td></td>
 <td>to <code>inbox</code></td>
 <td>to <code>inbox</code></td>
-<td>to inboxes post was sent to before</td>
+<td>to inboxes post was sent to before <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ --></td>
 </tr>
 <tr>
 <td>Edited Unlisted</td>
@@ -616,7 +632,7 @@ She should also see that I've liked and commented her post.</p>
 <td>from</td>
 <td>to <code>inbox</code></td>
 <td>to <code>inbox</code></td>
-<td>to inboxes post was sent to before</td>
+<td>to inboxes post was sent to before <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ --></td>
 </tr>
 <tr>
 <td>Edited Friends Only</td>
@@ -624,7 +640,7 @@ She should also see that I've liked and commented her post.</p>
 <td>from</td>
 <td>to <code>inbox</code></td>
 <td></td>
-<td>to inboxes post was sent to before</td>
+<td>to inboxes post was sent to before <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ --></td>
 </tr>
 <tr>
 <td>Commented Public</td>
@@ -632,7 +648,7 @@ She should also see that I've liked and commented her post.</p>
 <td>to <code>inbox</code></td>
 <td>from</td>
 <td>from</td>
-<td>from</td>
+<td>from <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ --></td>
 </tr>
 <tr>
 <td>Commented Unlisted</td>
@@ -640,7 +656,7 @@ She should also see that I've liked and commented her post.</p>
 <td>to <code>inbox</code></td>
 <td>from</td>
 <td>from</td>
-<td>from</td>
+<td>from <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ --></td>
 </tr>
 <tr>
 <td>Commented Friends Only</td>
@@ -648,7 +664,7 @@ She should also see that I've liked and commented her post.</p>
 <td>to <code>inbox</code></td>
 <td>from</td>
 <td></td>
-<td></td>
+<td><!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ --></td>
 </tr>
 <tr>
 <td>Liked Public</td>
@@ -656,7 +672,7 @@ She should also see that I've liked and commented her post.</p>
 <td>to <code>inbox</code></td>
 <td>from</td>
 <td>from</td>
-<td>from</td>
+<td>from <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ --></td>
 </tr>
 <tr>
 <td>Liked Unlisted</td>
@@ -664,7 +680,7 @@ She should also see that I've liked and commented her post.</p>
 <td>to <code>inbox</code></td>
 <td>from</td>
 <td>from</td>
-<td>from</td>
+<td>from <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ --></td>
 </tr>
 <tr>
 <td>Liked Friends Only</td>
@@ -672,7 +688,7 @@ She should also see that I've liked and commented her post.</p>
 <td>to <code>inbox</code></td>
 <td>from</td>
 <td></td>
-<td></td>
+<td><!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ --></td>
 </tr>
 <tr>
 <td>Follow</td>
@@ -680,7 +696,7 @@ She should also see that I've liked and commented her post.</p>
 <td>to <code>inbox</code></td>
 <td></td>
 <td></td>
-<td>from</td>
+<td>from <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ --></td>
 </tr>
 <tr>
 <td>Follow-back (friend)</td>
@@ -688,7 +704,7 @@ She should also see that I've liked and commented her post.</p>
 <td>from</td>
 <td></td>
 <td>to <code>inbox</code></td>
-<td></td>
+<td><!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ --></td>
 </tr>
 <tr>
 <td>Unfollow</td>
@@ -696,7 +712,7 @@ She should also see that I've liked and commented her post.</p>
 <td></td>
 <td><em>not yet implemented</em></td>
 <td><em>not yet implemented</em></td>
-<td></td>
+<td><!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ --></td>
 </tr>
 <tr>
 <td>View Public</td>
@@ -704,7 +720,7 @@ She should also see that I've liked and commented her post.</p>
 <td>to <code>post</code></td>
 <td>optional from</td>
 <td>optional from</td>
-<td>optional from</td>
+<td>optional from <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ --></td>
 </tr>
 <tr>
 <td>View Unlisted</td>
@@ -712,7 +728,7 @@ She should also see that I've liked and commented her post.</p>
 <td>to <code>post</code></td>
 <td>optional from</td>
 <td>optional from</td>
-<td>optional from</td>
+<td>optional from <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ --></td>
 </tr>
 <tr>
 <td>View Friends-Only</td>
@@ -720,7 +736,7 @@ She should also see that I've liked and commented her post.</p>
 <td></td>
 <td><em>not yet implemented</em></td>
 <td></td>
-<td></td>
+<td><!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ --></td>
 </tr>
 <tr>
 <td>View Deleted</td>
@@ -728,7 +744,7 @@ She should also see that I've liked and commented her post.</p>
 <td></td>
 <td></td>
 <td></td>
-<td></td>
+<td><!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ --></td>
 </tr>
 <tr>
 <td>View Following</td>
@@ -736,16 +752,16 @@ She should also see that I've liked and commented her post.</p>
 <td>to <code>followers</code></td>
 <td>optional from</td>
 <td>optional from</td>
-<td></td>
+<td><!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ --></td>
 </tr>
 </tbody>
 </table>
 <p>Notes on the above tables:
-    * This can work entirely on push from the author's server to another author's inbox.
-    * Yes, this means that only the local node (node where the post came from) will have a complete list of comments/likes. Mastodon/Diaspora also have this problem.
-    * "Unfollow" the API is missing this functionality.
-    * Yes, a node may have an out of date list of followers if a remote follower unfollows.
-    * "View Friends-Only" the API is missing this functionality. </p>
+* This can work entirely on push from the author's server to another author's inbox.
+* Yes, this means that only the local node (node where the post came from) will have a complete list of comments/likes. Mastodon/Diaspora also have this problem.
+* "Unfollow" the API is missing this functionality.
+* Yes, a node may have an out of date list of followers if a remote follower unfollows.
+* "View Friends-Only" the API is missing this functionality. </p>
 <h4 id="authentication">Authentication</h4>
 <ul>
 <li>Remote node authentication is global between nodes. It requires an admin to allow node to node access.</li>
@@ -757,7 +773,7 @@ She should also see that I've liked and commented her post.</p>
 </ul>
 </li>
 <li>Local refers the RESTful API for authors on that node.<ul>
-<li>This is useful for frameworks like react, vue, or angular to get access to data, and enable a more client heavy UI.</li>
+<li>This is useful for frameworks like React, Vue, or Angular to get access to data, and enable a more client heavy UI.</li>
 <li>Even if your frontend does not use them, endpoints marked [local] should be usable by a future Android/iOS client to achieve the same functionality as frontend.</li>
 </ul>
 </li>
@@ -788,7 +804,7 @@ She should also see that I've liked and commented her post.</p>
 </ul>
 <h4 id="overview">Overview</h4>
 <p>Almost all node-to-node communication proceeds by the node where something (post/like/comment/follow request) was created POSTing that thing that was created to the relevant authors inbox on a remote node.</p>
-<p>node-to-node (marked as "[remote]") request other than "POST to inbox" are rarely needed, but you should support them in case the remote node needs to check something.</p>
+<p>Node-to-node (marked as "[remote]") request other than "POST to inbox" are rarely needed, but you should support them in case the remote node needs to check something.</p>
 <h4 id="example-node-to-node-api-view">Example (node-to-node API View)</h4>
 <p>The Frontend-to-Backend (also known as [local]) communication for this scenario is up to your team, this only describes the Backend-to-Backend communication between two different nodes.</p>
 <ol>
@@ -804,208 +820,82 @@ She should also see that I've liked and commented her post.</p>
 <li>I eventually see Steph's new post, and click like on it.</li>
 <li>My node sends the like to Steph's inbox with POST http://node2/api/authors/777777777/inbox</li>
 </ol>
-<h3 id="api-endpoints">API Endpoints</h3>
-<h4 id="authors">Authors</h4>
-<ul>
-<li>URL: ://service/authors/<ul>
-<li>GET [local, remote]: retrieve all profiles on the node (paginated)<ul>
-<li>page: how many pages</li>
-<li>size: how big is a page</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Example query: GET ://service/authors?page=10&amp;size=5 <ul>
-<li>Gets the 5 authors, authors 45 to 49.</li>
-</ul>
-</li>
-<li>Example: GET ://service/authors/</li>
-</ul>
+<h4 id="ids">IDs</h4>
+<p>Posts may be generated a UUID, or ID#, or whatever for internal database/model use. However, on the API the post or author should always have a fully qualified URL as its ID, and you must always identify remote objects (authors, posts, likes, comments, ...) as their full URL, including the URL of the node they came from. This means you will need to look up authors and posts in your database by their full URL ID, even if they are local.</p>
+<p>Consider the following scenario: if two nodes both have an author with primary key 2, your node should never be able to be confused about which node's author the database is referring to, because all posts/likes/comments/follows from that author contain the author's full URL.</p>
+<p>Consider the following scenario #2: <code>http://node1/api/authors/0192019f-b832-74b2-b2c4-f7aadc972cb2</code> is Jane, and <code>http://node2/api/authors/0192019f-b832-74b2-b2c4-f7aadc972cb2</code> is John. Jane and John still need to be able to like/comment/follow/post with each other. That means, your database should not connect models using the field containing <code>0192019f-b832-74b2-b2c4-f7aadc972cb2</code>, but instead, the field containing <code>http://node1/api/authors/0192019f-b832-74b2-b2c4-f7aadc972cb2</code>.</p>
+<p>Hint: In Django, set <code>unique=True</code> on the field. Then use <code>models.ForeignKey</code> with source and destination field names to relate the two models (join the two tables).</p>
+<h3 id="api-objects">API Objects</h3>
+<h4 id="example-author-objects">Example Author Objects</h4>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;authors&quot;</span><span class="p">,</span><span class="w">      </span>
-<span class="w">    </span><span class="s2">&quot;authors&quot;</span><span class="o">:</span><span class="p">[</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;author&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/1d698d25ff008f7538453c120f581471&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;url&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/1d698d25ff008f7538453c120f581471&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;host&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;displayName&quot;</span><span class="o">:</span><span class="s2">&quot;Greg Johnson&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;github&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://github.com/gjohnson&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;profileImage&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://i.imgur.com/k7XVwpB.jpeg&quot;</span>
-<span class="w">        </span><span class="p">},</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;author&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;host&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;displayName&quot;</span><span class="o">:</span><span class="s2">&quot;Lara Croft&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;url&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;github&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://github.com/laracroft&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;profileImage&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://i.imgur.com/k7XVwpB.jpeg&quot;</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">]</span>
+<span class="w">    </span><span class="c1">// Author object must always have type author</span>
+<span class="w">    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;author&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// The full API URL for the author</span>
+<span class="w">    </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://nodeaaaa/api/authors/111&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// The full API URL for the author&#39;s node</span>
+<span class="w">    </span><span class="s2">&quot;host&quot;</span><span class="o">:</span><span class="s2">&quot;http://nodeaaaa/api/&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// How the user would like the name to be displayed</span>
+<span class="w">    </span><span class="s2">&quot;displayName&quot;</span><span class="o">:</span><span class="s2">&quot;Greg Johnson&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// URL of the user&#39;s github</span>
+<span class="w">    </span><span class="s2">&quot;github&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://github.com/gjohnson&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// URL of the user&#39;s profile image (external image in this example)</span>
+<span class="w">    </span><span class="s2">&quot;profileImage&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://i.imgur.com/k7XVwpB.jpeg&quot;</span>
+<span class="w">    </span><span class="c1">// URL of the user&#39;s HTML profile page</span>
+<span class="w">    </span><span class="c1">// It could include an id number/uuid or not</span>
+<span class="w">    </span><span class="s2">&quot;page&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://nodeaaaa/authors/greg&quot;</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<h4 id="single-author">Single Author</h4>
-<ul>
-<li>URL: ://service/authors/{AUTHOR_ID}/<ul>
-<li>GET [local, remote]: retrieve AUTHOR_ID's profile</li>
-<li>PUT [local]: update AUTHOR_ID's profile</li>
-</ul>
-</li>
-<li>Example Format:</li>
-</ul>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;author&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="c1">// ID of the Author</span>
-<span class="w">    </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="c1">// the home host of the author</span>
-<span class="w">    </span><span class="s2">&quot;host&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="c1">// the display name of the author</span>
+<span class="w">    </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://nodebbbb/api/authors/222&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;host&quot;</span><span class="o">:</span><span class="s2">&quot;http://nodebbb/api/&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="s2">&quot;displayName&quot;</span><span class="o">:</span><span class="s2">&quot;Lara Croft&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="c1">// url to the authors profile</span>
-<span class="w">    </span><span class="s2">&quot;url&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="c1">// HATEOS url for Github API</span>
 <span class="w">    </span><span class="s2">&quot;github&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://github.com/laracroft&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="c1">// Image from a public domain</span>
-<span class="w">    </span><span class="s2">&quot;profileImage&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://i.imgur.com/k7XVwpB.jpeg&quot;</span>
+<span class="w">    </span><span class="c1">// This author used an image they posted</span>
+<span class="w">    </span><span class="s2">&quot;profileImage&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://nodebbb/api/authors/222/posts/217/image&quot;</span>
+<span class="w">    </span><span class="c1">// URL of the user&#39;s HTML profile page</span>
+<span class="w">    </span><span class="c1">// It could include an id number/uuid or not</span>
+<span class="w">    </span><span class="s2">&quot;page&quot;</span><span class="o">:</span><span class="s2">&quot;http://nodebbb/authors/222&quot;</span><span class="p">,</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<h4 id="followers">Followers</h4>
-<ul>
-<li>URL: ://service/authors/{AUTHOR_ID}/followers<ul>
-<li>GET [local, remote]: get a list of authors who are AUTHOR_ID's followers</li>
-</ul>
-</li>
-<li>URL: ://service/authors/{AUTHOR_ID}/followers/{FOREIGN_AUTHOR_ID}<ul>
-<li>Note: foreign author ID should be a percent encoded URL of the foreign author. An example URL would be:<ul>
-<li><code>http://example-node-1/authors/178aba49-ca39-4741-b227-f40d072b1222/followers/http%3A%2F%2Fexample-node-2%2Fauthors%2F5f57808f-0bc9-4b3d-bdd1-bb07c976d12d</code></li>
-</ul>
-</li>
-<li>DELETE [local]: remove FOREIGN_AUTHOR_ID as a follower of AUTHOR_ID</li>
-<li>PUT [local]: Add FOREIGN_AUTHOR_ID as a follower of AUTHOR_ID (must be authenticated)</li>
-<li>GET [local, remote] check if FOREIGN_AUTHOR_ID is a follower of AUTHOR_ID<ul>
-<li>Should return 404 if they're not</li>
-<li>Should return similar format to Follow Request below if they are.</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Example: GET ://service/authors/{AUTHOR_ID}/followers</li>
-</ul>
+<h4 id="example-follow-request-object">Example Follow Request Object</h4>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;followers&quot;</span><span class="p">,</span><span class="w">      </span>
-<span class="w">    </span><span class="s2">&quot;followers&quot;</span><span class="o">:</span><span class="p">[</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;author&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/1d698d25ff008f7538453c120f581471&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;url&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/1d698d25ff008f7538453c120f581471&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;host&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;displayName&quot;</span><span class="o">:</span><span class="s2">&quot;Greg Johnson&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;github&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://github.com/gjohnson&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;profileImage&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://i.imgur.com/k7XVwpB.jpeg&quot;</span>
-<span class="w">        </span><span class="p">},</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;author&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;host&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;displayName&quot;</span><span class="o">:</span><span class="s2">&quot;Lara Croft&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;url&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;github&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://github.com/laracroft&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;profileImage&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://i.imgur.com/k7XVwpB.jpeg&quot;</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">]</span>
-<span class="p">}</span>
-</code></pre></div>
-
-<h4 id="follow-request">Follow Request</h4>
-<ul>
-<li>When author 1 tries to follow author 2, author 1's node send the follow request to author 2's node.</li>
-<li>If the author 2 accepts the Follow Request then author 1 is following author 2.<ul>
-<li>If author 2 is also already following author 1, then they are now friends.</li>
-</ul>
-</li>
-<li>Sent to inbox of "object" </li>
-<li>Example format:</li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Follow&quot;</span><span class="p">,</span><span class="w">      </span>
+<span class="w">    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;follow&quot;</span><span class="p">,</span><span class="w">      </span>
 <span class="w">    </span><span class="s2">&quot;summary&quot;</span><span class="o">:</span><span class="s2">&quot;Greg wants to follow Lara&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="s2">&quot;actor&quot;</span><span class="o">:</span><span class="p">{</span>
 <span class="w">        </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;author&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/1d698d25ff008f7538453c120f581471&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">&quot;url&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/1d698d25ff008f7538453c120f581471&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">&quot;host&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://nodeaaaa/api/authors/111&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;host&quot;</span><span class="o">:</span><span class="s2">&quot;http://nodeaaaa/api/&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="s2">&quot;displayName&quot;</span><span class="o">:</span><span class="s2">&quot;Greg Johnson&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="s2">&quot;github&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://github.com/gjohnson&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">&quot;profileImage&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://i.imgur.com/k7XVwpB.jpeg&quot;</span>
+<span class="w">        </span><span class="s2">&quot;profileImage&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://i.imgur.com/k7XVwpB.jpeg&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;page&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://nodeaaaa/authors/greg&quot;</span>
 <span class="w">    </span><span class="p">},</span>
 <span class="w">    </span><span class="s2">&quot;object&quot;</span><span class="o">:</span><span class="p">{</span>
 <span class="w">        </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;author&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="c1">// ID of the Author</span>
-<span class="w">        </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="c1">// the home host of the author</span>
-<span class="w">        </span><span class="s2">&quot;host&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="c1">// the display name of the author</span>
+<span class="w">        </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://nodebbbb/api/authors/222&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;host&quot;</span><span class="o">:</span><span class="s2">&quot;http://nodebbbb/api/&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="s2">&quot;displayName&quot;</span><span class="o">:</span><span class="s2">&quot;Lara Croft&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="c1">// url to the authors profile</span>
-<span class="w">        </span><span class="s2">&quot;url&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="c1">// HATEOS url for Github API</span>
+<span class="w">        </span><span class="s2">&quot;page&quot;</span><span class="o">:</span><span class="s2">&quot;http://nodebbbb/authors/222&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="s2">&quot;github&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://github.com/laracroft&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="c1">// Image from a public domain</span>
-<span class="w">        </span><span class="s2">&quot;profileImage&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://i.imgur.com/k7XVwpB.jpeg&quot;</span>
+<span class="w">        </span><span class="s2">&quot;profileImage&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://nodebbbb/api/authors/222/posts/217/image&quot;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<h4 id="post">Post</h4>
+<h4 id="example-post-object">Example Post Object</h4>
 <ul>
-<li>URL: ://service/authors/{AUTHOR_ID}/posts/{POST_ID}<ul>
-<li>GET [local, remote] get the public post whose id is POST_ID<ul>
-<li>friends-only posts: must be authenticated</li>
-</ul>
-</li>
-<li>DELETE [local] remove the post whose id is POST_ID<ul>
-<li>local posts: must be authenticated locally as the author</li>
-</ul>
-</li>
-<li>PUT [local] update a post where its id is POST_ID<ul>
-<li>local posts: must be authenticated locally as the author</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Creation URL ://service/authors/{AUTHOR_ID}/posts/<ul>
-<li>GET [local, remote] get the recent posts from author AUTHOR_ID (paginated)<ul>
-<li>Not authenticated: only public posts.</li>
-<li>Authenticated locally as author: all posts.</li>
-<li>Authenticated locally as friend of author: public + friends-only posts.</li>
-<li>Authenticated as remote node: This probably should not happen. Remember, the way remote node becomes aware of local posts is by local node pushing those posts to inbox, not by remote node pulling.</li>
-</ul>
-</li>
-<li>POST [local] create a new post but generate a new id<ul>
-<li>Authenticated locally as author</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Be aware that Posts can be images that need base64 decoding.<ul>
-<li>posts can also hyperlink to images that are public</li>
-</ul>
-</li>
-<li>Example Format:</li>
+<li>Public post</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;post&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="c1">// title of a post</span>
 <span class="w">    </span><span class="s2">&quot;title&quot;</span><span class="o">:</span><span class="s2">&quot;A post title about a post about web dev&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="c1">// id of the post</span>
-<span class="w">    </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/764efa883dda1e11db47671c4a3bbd9e&quot;</span>
-<span class="w">    </span><span class="c1">// where did you get this post from?</span>
-<span class="w">    </span><span class="s2">&quot;source&quot;</span><span class="o">:</span><span class="s2">&quot;http://lastplaceigotthisfrom.com/authors/xxxxxx/posts/yyyyyy&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="c1">// where is it actually from</span>
-<span class="w">    </span><span class="s2">&quot;origin&quot;</span><span class="o">:</span><span class="s2">&quot;http://whereitcamefrom.com/authors/wwwwww/posts/zzzzzz&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// must be the original URL on the node the post came from</span>
+<span class="w">    </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://nodebbbb/api/authors/222/posts/249&quot;</span>
 <span class="w">    </span><span class="c1">// a brief description of the post</span>
 <span class="w">    </span><span class="s2">&quot;description&quot;</span><span class="o">:</span><span class="s2">&quot;This post discusses stuff -- brief&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="c1">// The content type of the post</span>
@@ -1022,59 +912,118 @@ She should also see that I've liked and commented her post.</p>
 <span class="w">    </span><span class="s2">&quot;author&quot;</span><span class="o">:</span><span class="p">{</span>
 <span class="w">        </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;author&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="c1">// ID of the Author</span>
-<span class="w">        </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://nodebbbb/api/authors/222&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="c1">// the home host of the author</span>
-<span class="w">        </span><span class="s2">&quot;host&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;host&quot;</span><span class="o">:</span><span class="s2">&quot;http://nodebbbb/api/&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="c1">// the display name of the author</span>
 <span class="w">        </span><span class="s2">&quot;displayName&quot;</span><span class="o">:</span><span class="s2">&quot;Lara Croft&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="c1">// url to the authors profile</span>
-<span class="w">        </span><span class="s2">&quot;url&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;page&quot;</span><span class="o">:</span><span class="s2">&quot;http://nodebbbb/authors/222&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="c1">// HATEOS url for Github API</span>
 <span class="w">        </span><span class="s2">&quot;github&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://github.com/laracroft&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="c1">// Image from a public domain (optional, can be missing)</span>
-<span class="w">        </span><span class="s2">&quot;profileImage&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://i.imgur.com/k7XVwpB.jpeg&quot;</span>
+<span class="w">        </span><span class="s2">&quot;profileImage&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://nodebbbb/api/authors/222/posts/217/image&quot;</span>
 <span class="w">    </span><span class="p">},</span>
 <span class="w">    </span><span class="c1">// comments about the post</span>
-<span class="w">    </span><span class="c1">// return a maximum number of comments</span>
-<span class="w">    </span><span class="c1">// total number of comments for this post</span>
-<span class="w">    </span><span class="s2">&quot;count&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1023</span><span class="p">,</span>
-<span class="w">    </span><span class="c1">// the first page of comments</span>
-<span class="w">    </span><span class="s2">&quot;comments&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/de305d54-75b4-431b-adb2-eb6b9e546013/comments&quot;</span>
-<span class="w">    </span><span class="c1">// commentsSrc is OPTIONAL and can be missing</span>
-<span class="w">    </span><span class="c1">// You should return ~ 5 comments per post.</span>
-<span class="w">    </span><span class="c1">// should be sorted newest(first) to oldest(last)</span>
-<span class="w">    </span><span class="c1">// this is to reduce API call counts</span>
-<span class="w">    </span><span class="s2">&quot;commentsSrc&quot;</span><span class="o">:</span><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;comments&quot;</span><span class="o">:</span><span class="p">{</span>
 <span class="w">        </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;comments&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="c1">// this may or may not be the same as page for the post,</span>
+<span class="w">        </span><span class="c1">// depending if there&#39;s a seperate URL to just see the comments</span>
+<span class="w">        </span><span class="s2">&quot;page&quot;</span><span class="o">:</span><span class="s2">&quot;http://nodebbbb/authors/222/posts/249&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://nodebbbb/api/authors/222/posts/249/comments&quot;</span>
+<span class="w">        </span><span class="c1">// comments.page, comments.size, comments.count,</span>
+<span class="w">        </span><span class="c1">// comments.src are only sent if:</span>
+<span class="w">        </span><span class="c1">// * public</span>
+<span class="w">        </span><span class="c1">// * unlisted</span>
+<span class="w">        </span><span class="c1">// * friends-only and sending it to a friend</span>
+<span class="w">        </span><span class="c1">// You should return ~ 5 comments per post.</span>
+<span class="w">        </span><span class="c1">// should be sorted newest(first) to oldest(last)</span>
+<span class="w">        </span><span class="c1">// this is to reduce API call counts</span>
+<span class="w">        </span><span class="c1">// number of the first page of comments</span>
 <span class="w">        </span><span class="s2">&quot;page&quot;</span><span class="o">:</span><span class="mf">1</span><span class="p">,</span>
+<span class="w">        </span><span class="c1">// size of comment pages</span>
 <span class="w">        </span><span class="s2">&quot;size&quot;</span><span class="o">:</span><span class="mf">5</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">&quot;post&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/de305d54-75b4-431b-adb2-eb6b9e546013&quot;</span>
-<span class="w">        </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/de305d54-75b4-431b-adb2-eb6b9e546013/comments&quot;</span>
-<span class="w">        </span><span class="s2">&quot;comments&quot;</span><span class="o">:</span><span class="p">[</span>
+<span class="w">        </span><span class="c1">// total number of comments for this post</span>
+<span class="w">        </span><span class="s2">&quot;count&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1023</span><span class="p">,</span>
+<span class="w">        </span><span class="c1">// the first page of comments</span>
+<span class="w">        </span><span class="s2">&quot;src&quot;</span><span class="o">:</span><span class="p">[</span>
 <span class="w">            </span><span class="p">{</span>
 <span class="w">                </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;comment&quot;</span><span class="p">,</span>
 <span class="w">                </span><span class="s2">&quot;author&quot;</span><span class="o">:</span><span class="p">{</span>
 <span class="w">                    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;author&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="c1">// ID of the Author (UUID)</span>
-<span class="w">                    </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/1d698d25ff008f7538453c120f581471&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="c1">// url to the authors information</span>
-<span class="w">                    </span><span class="s2">&quot;url&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/1d698d25ff008f7538453c120f581471&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="s2">&quot;host&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://nodeaaaa/api/authors/111&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;page&quot;</span><span class="o">:</span><span class="s2">&quot;http://nodeaaaa/authors/greg&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;host&quot;</span><span class="o">:</span><span class="s2">&quot;http://nodeaaaa/api/&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="s2">&quot;displayName&quot;</span><span class="o">:</span><span class="s2">&quot;Greg Johnson&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="c1">// HATEOS url for Github API</span>
 <span class="w">                    </span><span class="s2">&quot;github&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://github.com/gjohnson&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="c1">// Image from a public domain</span>
 <span class="w">                    </span><span class="s2">&quot;profileImage&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://i.imgur.com/k7XVwpB.jpeg&quot;</span>
 <span class="w">                </span><span class="p">},</span>
 <span class="w">                </span><span class="s2">&quot;comment&quot;</span><span class="o">:</span><span class="s2">&quot;Sick Olde English&quot;</span><span class="p">,</span>
 <span class="w">                </span><span class="s2">&quot;contentType&quot;</span><span class="o">:</span><span class="s2">&quot;text/markdown&quot;</span><span class="p">,</span>
 <span class="w">                </span><span class="c1">// ISO 8601 TIMESTAMP</span>
 <span class="w">                </span><span class="s2">&quot;published&quot;</span><span class="o">:</span><span class="s2">&quot;2015-03-09T13:07:04+00:00&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="c1">// ID of the Comment (UUID)</span>
-<span class="w">                </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/de305d54-75b4-431b-adb2-eb6b9e546013/comments/f6255bb01c648fe967714d52a89e8e9c&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="c1">// ID of the Comment</span>
+<span class="w">                </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://nodeaaaa/api/authors/111/commented/130&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;post&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://nodebbbb/api/authors/222/posts/249&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="c1">// this may or may not be the same as page for the post,</span>
+<span class="w">                </span><span class="c1">// depending if there&#39;s a seperate URL to just see the one comment in html</span>
+<span class="w">                </span><span class="s2">&quot;page&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://nodebbbb/authors/222/posts/249&quot;</span>
+<span class="w">                </span><span class="c1">// it could also be something like</span>
+<span class="w">                </span><span class="c1">// &quot;page&quot;:&quot;http://nodeaaaa/api/authors/greg/comments/130&quot;</span>
+<span class="w">                </span><span class="c1">// likes on the comment, not to be confused with likes on the post</span>
+<span class="w">                </span><span class="s2">&quot;likes&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;likes&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://nodeaaaa/api/authors/111/commented/130/likes&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="c1">// in this example nodebbbb has a html page just for the likes</span>
+<span class="w">                    </span><span class="s2">&quot;page&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://nodeaaaa/authors/greg/comments/130/likes&quot;</span>
+<span class="w">                    </span><span class="s2">&quot;page&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;size&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">50</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;count&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;src&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">                </span><span class="p">},</span>
 <span class="w">            </span><span class="p">}</span>
 <span class="w">        </span><span class="p">]</span>
-<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="c1">// likes on the post</span>
+<span class="w">    </span><span class="s2">&quot;likes&quot;</span><span class="o">:</span><span class="p">{</span>
+<span class="w">        </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;likes&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="c1">// this may or may not be the same as page for the post,</span>
+<span class="w">        </span><span class="c1">// depending if there&#39;s a seperate URL to just see the comments</span>
+<span class="w">        </span><span class="s2">&quot;page&quot;</span><span class="o">:</span><span class="s2">&quot;http://nodeaaaa/authors/222/posts/249&quot;</span>
+<span class="w">        </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://nodeaaaa/api/authors/222/posts/249/likes&quot;</span>
+<span class="w">        </span><span class="c1">// likes.page, likes.size, likes.count,</span>
+<span class="w">        </span><span class="c1">// likes.src should be sent for public and unlisted posts</span>
+<span class="w">        </span><span class="c1">// in order to reduce API calls</span>
+<span class="w">        </span><span class="c1">// You should return ~ 5 likes per post.</span>
+<span class="w">        </span><span class="c1">// should be sorted newest(first) to oldest(last)</span>
+<span class="w">        </span><span class="c1">// this is to reduce API call counts</span>
+<span class="w">        </span><span class="c1">// number of the first page of likes</span>
+<span class="w">        </span><span class="s2">&quot;page&quot;</span><span class="o">:</span><span class="mf">1</span><span class="p">,</span>
+<span class="w">        </span><span class="c1">// size of a page of likes</span>
+<span class="w">        </span><span class="s2">&quot;size&quot;</span><span class="o">:</span><span class="mf">50</span><span class="p">,</span>
+<span class="w">        </span><span class="c1">// total number of likes</span>
+<span class="w">        </span><span class="s2">&quot;count&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">9001</span><span class="p">,</span>
+<span class="w">        </span><span class="c1">// the first page of likes</span>
+<span class="w">        </span><span class="s2">&quot;src&quot;</span><span class="o">:</span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;like&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;author&quot;</span><span class="o">:</span><span class="p">{</span>
+<span class="w">                    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;author&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://nodeaaaa/api/authors/111&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;page&quot;</span><span class="o">:</span><span class="s2">&quot;http://nodeaaaa/authors/greg&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;host&quot;</span><span class="o">:</span><span class="s2">&quot;http://nodeaaaa/api/&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;displayName&quot;</span><span class="o">:</span><span class="s2">&quot;Greg Johnson&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;github&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://github.com/gjohnson&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;profileImage&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://i.imgur.com/k7XVwpB.jpeg&quot;</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="c1">// ISO 8601 TIMESTAMP</span>
+<span class="w">                </span><span class="s2">&quot;published&quot;</span><span class="o">:</span><span class="s2">&quot;2015-03-09T13:07:04+00:00&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="c1">// ID of the Comment (UUID)</span>
+<span class="w">                </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://nodeaaaa/api/authors/111/liked/166&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="c1">// this should be the object they liked</span>
+<span class="w">                </span><span class="s2">&quot;object&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://nodebbbb/authors/222/posts/249&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
 <span class="w">    </span><span class="c1">// ISO 8601 TIMESTAMP</span>
 <span class="w">    </span><span class="s2">&quot;published&quot;</span><span class="o">:</span><span class="s2">&quot;2015-03-09T13:07:04+00:00&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="c1">// visibility [&quot;PUBLIC&quot;,&quot;FRIENDS&quot;,&quot;UNLISTED&quot;,&quot;DELETED&quot;]</span>
@@ -1086,7 +1035,478 @@ She should also see that I've liked and commented her post.</p>
 <span class="p">}</span>
 </code></pre></div>
 
-<h4 id="image-posts">Image Posts</h4>
+<ul>
+<li>Example, Friends-Only post:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;post&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;title&quot;</span><span class="o">:</span><span class="s2">&quot;DID YOU READ MY POST YET?&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://nodebbbb/api/authors/222/posts/293&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;page&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://nodebbbb/authors/222/posts/293&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;description&quot;</span><span class="o">:</span><span class="s2">&quot;Whatever&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;contentType&quot;</span><span class="o">:</span><span class="s2">&quot;text/plain&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;content&quot;</span><span class="o">:</span><span class="s2">&quot;Are you even reading my posts Arjun?&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;author&quot;</span><span class="o">:</span><span class="p">{</span>
+<span class="w">        </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;author&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://nodebbbb/api/authors/222&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;host&quot;</span><span class="o">:</span><span class="s2">&quot;http://nodebbbb/api/&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;displayName&quot;</span><span class="o">:</span><span class="s2">&quot;Lara Croft&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;page&quot;</span><span class="o">:</span><span class="s2">&quot;http://nodebbbb/authors/222&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;github&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://github.com/laracroft&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;profileImage&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://i.imgur.com/k7XVwpB.jpeg&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="s2">&quot;comments&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;comments&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://nodebbbb/api/authors/222/posts/293/comments&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="c1">// in this example nodebbbb has a html page just for the comments</span>
+<span class="w">        </span><span class="s2">&quot;page&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://nodebbbb/authors/222/posts/293/comments&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;page&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;size&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;count&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;src&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="s2">&quot;likes&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;likes&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://127.0.0.1:5454/api/authors/222/posts/293/likes&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="c1">// in this example nodebbbb has a html page just for the likes</span>
+<span class="w">        </span><span class="s2">&quot;page&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://nodebbbb/authors/222/posts/293/likes&quot;</span>
+<span class="w">        </span><span class="s2">&quot;page&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;size&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">50</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;count&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;src&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="s2">&quot;published&quot;</span><span class="o">:</span><span class="s2">&quot;2015-03-09T13:07:04+00:00&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;visibility&quot;</span><span class="o">:</span><span class="s2">&quot;FRIENDS&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h4 id="example-comment-object">Example Comment Object</h4>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;comment&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;author&quot;</span><span class="o">:</span><span class="p">{</span>
+<span class="w">        </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;author&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://nodeaaaa/api/authors/111&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;page&quot;</span><span class="o">:</span><span class="s2">&quot;http://nodeaaaa/authors/greg&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;host&quot;</span><span class="o">:</span><span class="s2">&quot;http://nodeaaaa/api/&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;displayName&quot;</span><span class="o">:</span><span class="s2">&quot;Greg Johnson&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;github&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://github.com/gjohnson&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;profileImage&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://i.imgur.com/k7XVwpB.jpeg&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="s2">&quot;comment&quot;</span><span class="o">:</span><span class="s2">&quot;Sick Olde English&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;contentType&quot;</span><span class="o">:</span><span class="s2">&quot;text/markdown&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// ISO 8601 TIMESTAMP</span>
+<span class="w">    </span><span class="s2">&quot;published&quot;</span><span class="o">:</span><span class="s2">&quot;2015-03-09T13:07:04+00:00&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// ID of the Comment</span>
+<span class="w">    </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://nodeaaaa/api/authors/111/commented/130&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;post&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://nodebbbb/api/authors/222/posts/249&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// likes on the comment</span>
+<span class="w">    </span><span class="s2">&quot;likes&quot;</span><span class="o">:</span><span class="p">{</span>
+<span class="w">        </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;likes&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="c1">// this may or may not be the same as page for the post</span>
+<span class="w">        </span><span class="c1">// this may or may not be the same as page for the comment</span>
+<span class="w">        </span><span class="c1">// depending if there&#39;s a seperate URL to just see the comments</span>
+<span class="w">        </span><span class="s2">&quot;page&quot;</span><span class="o">:</span><span class="s2">&quot;http://nodeaaaa/authors/222/posts/249&quot;</span>
+<span class="w">        </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://nodeaaaa/api/authors/111/commented/130/likes&quot;</span>
+<span class="w">        </span><span class="c1">// likes.page, likes.size, likes.count,</span>
+<span class="w">        </span><span class="c1">// likes.src should be sent for comments on public and unlisted posts</span>
+<span class="w">        </span><span class="c1">// in order to reduce API calls</span>
+<span class="w">        </span><span class="c1">// You should return ~ 5 likes per post.</span>
+<span class="w">        </span><span class="c1">// should be sorted newest(first) to oldest(last)</span>
+<span class="w">        </span><span class="c1">// this is to reduce API call counts</span>
+<span class="w">        </span><span class="c1">// number of the first page of likes</span>
+<span class="w">        </span><span class="s2">&quot;page&quot;</span><span class="o">:</span><span class="mf">1</span><span class="p">,</span>
+<span class="w">        </span><span class="c1">// size of a page of likes</span>
+<span class="w">        </span><span class="s2">&quot;size&quot;</span><span class="o">:</span><span class="mf">50</span><span class="p">,</span>
+<span class="w">        </span><span class="c1">// total number of likes</span>
+<span class="w">        </span><span class="s2">&quot;count&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">9001</span><span class="p">,</span>
+<span class="w">        </span><span class="c1">// the first page of likes</span>
+<span class="w">        </span><span class="s2">&quot;src&quot;</span><span class="o">:</span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;like&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;author&quot;</span><span class="o">:</span><span class="p">{</span>
+<span class="w">                    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;author&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://nodebbbb/api/authors/222&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;host&quot;</span><span class="o">:</span><span class="s2">&quot;http://nodebbbb/api/&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;displayName&quot;</span><span class="o">:</span><span class="s2">&quot;Lara Croft&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;page&quot;</span><span class="o">:</span><span class="s2">&quot;http://nodebbbb/authors/222&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;github&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://github.com/laracroft&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;profileImage&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://nodebbbb/api/authors/222/posts/217/image&quot;</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="c1">// ISO 8601 TIMESTAMP</span>
+<span class="w">                </span><span class="s2">&quot;published&quot;</span><span class="o">:</span><span class="s2">&quot;2015-03-09T13:07:04+00:00&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="c1">// ID of the Comment (UUID)</span>
+<span class="w">                </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://nodeaaaa/api/authors/222/liked/255&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;object&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://nodeaaaa/api/authors/111/commented/130&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h4 id="example-comments-object">Example Comments Object</h4>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;comments&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// this may or may not be the same as page for the post,</span>
+<span class="w">    </span><span class="c1">// depending if there&#39;s a seperate URL to just see the comments</span>
+<span class="w">    </span><span class="s2">&quot;page&quot;</span><span class="o">:</span><span class="s2">&quot;http://nodebbbb/authors/222/posts/249&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://nodebbbb/api/authors/222/posts/249/comments&quot;</span>
+<span class="w">    </span><span class="c1">// comments.page, comments.size, comments.count,</span>
+<span class="w">    </span><span class="c1">// comments.src are only sent if:</span>
+<span class="w">    </span><span class="c1">// * public</span>
+<span class="w">    </span><span class="c1">// * unlisted</span>
+<span class="w">    </span><span class="c1">// * friends-only and sending it to a friend</span>
+<span class="w">    </span><span class="c1">// You should return ~ 5 comments per post.</span>
+<span class="w">    </span><span class="c1">// should be sorted newest(first) to oldest(last)</span>
+<span class="w">    </span><span class="c1">// this is to reduce API call counts</span>
+<span class="w">    </span><span class="c1">// number of the first page of comments</span>
+<span class="w">    </span><span class="s2">&quot;page&quot;</span><span class="o">:</span><span class="mf">1</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// size of comment pages</span>
+<span class="w">    </span><span class="s2">&quot;size&quot;</span><span class="o">:</span><span class="mf">5</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// total number of comments for this post</span>
+<span class="w">    </span><span class="s2">&quot;count&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1023</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// the first page of comments</span>
+<span class="w">    </span><span class="s2">&quot;src&quot;</span><span class="o">:</span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;comment&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;author&quot;</span><span class="o">:</span><span class="p">{</span>
+<span class="w">                </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;author&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://nodeaaaa/api/authors/111&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;page&quot;</span><span class="o">:</span><span class="s2">&quot;http://nodeaaaa/authors/greg&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;host&quot;</span><span class="o">:</span><span class="s2">&quot;http://nodeaaaa/api/&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;displayName&quot;</span><span class="o">:</span><span class="s2">&quot;Greg Johnson&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;github&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://github.com/gjohnson&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;profileImage&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://i.imgur.com/k7XVwpB.jpeg&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="s2">&quot;comment&quot;</span><span class="o">:</span><span class="s2">&quot;Sick Olde English&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;contentType&quot;</span><span class="o">:</span><span class="s2">&quot;text/markdown&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="c1">// ISO 8601 TIMESTAMP</span>
+<span class="w">            </span><span class="s2">&quot;published&quot;</span><span class="o">:</span><span class="s2">&quot;2015-03-09T13:07:04+00:00&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="c1">// ID of the Comment</span>
+<span class="w">            </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://nodeaaaa/api/authors/111/commented/130&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;post&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://nodebbbb/api/authors/222/posts/249&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="c1">// this may or may not be the same as page for the post,</span>
+<span class="w">            </span><span class="c1">// depending if there&#39;s a seperate URL to just see the one comment in html</span>
+<span class="w">            </span><span class="s2">&quot;page&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://nodebbbb/authors/222/posts/249&quot;</span>
+<span class="w">            </span><span class="c1">// it could also be something like</span>
+<span class="w">            </span><span class="c1">// &quot;page&quot;:&quot;http://nodeaaaa/api/authors/greg/comments/130&quot;</span>
+<span class="w">            </span><span class="c1">// likes on the comment, not to be confused with likes on the post</span>
+<span class="w">            </span><span class="s2">&quot;likes&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;likes&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://nodeaaaa/api/authors/111/commented/130/likes&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="c1">// in this example nodebbbb has a html page just for the likes</span>
+<span class="w">                </span><span class="s2">&quot;page&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://nodeaaaa/authors/greg/comments/130/likes&quot;</span>
+<span class="w">                </span><span class="s2">&quot;page&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;size&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">50</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;count&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;src&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h4 id="example-like-object">Example Like Object</h4>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;like&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;author&quot;</span><span class="o">:</span><span class="p">{</span>
+<span class="w">        </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;author&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://nodeaaaa/api/authors/111&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;page&quot;</span><span class="o">:</span><span class="s2">&quot;http://nodeaaaa/authors/greg&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;host&quot;</span><span class="o">:</span><span class="s2">&quot;http://nodeaaaa/api/&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;displayName&quot;</span><span class="o">:</span><span class="s2">&quot;Greg Johnson&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;github&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://github.com/gjohnson&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;profileImage&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://i.imgur.com/k7XVwpB.jpeg&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="c1">// ISO 8601 TIMESTAMP</span>
+<span class="w">    </span><span class="s2">&quot;published&quot;</span><span class="o">:</span><span class="s2">&quot;2015-03-09T13:07:04+00:00&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// ID of the Comment (UUID)</span>
+<span class="w">    </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://nodeaaaa/api/authors/111/liked/166&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;object&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://nodebbbb/authors/222/posts/249&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;like&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;author&quot;</span><span class="o">:</span><span class="p">{</span>
+<span class="w">        </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;author&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://nodebbbb/api/authors/222&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;host&quot;</span><span class="o">:</span><span class="s2">&quot;http://nodebbbb/api/&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;displayName&quot;</span><span class="o">:</span><span class="s2">&quot;Lara Croft&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;page&quot;</span><span class="o">:</span><span class="s2">&quot;http://nodebbbb/authors/222&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;github&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://github.com/laracroft&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;profileImage&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://nodebbbb/api/authors/222/posts/217/image&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="c1">// ISO 8601 TIMESTAMP</span>
+<span class="w">    </span><span class="s2">&quot;published&quot;</span><span class="o">:</span><span class="s2">&quot;2015-03-09T13:07:04+00:00&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// ID of the Comment (UUID)</span>
+<span class="w">    </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://nodeaaaa/api/authors/222/liked/255&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;object&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://nodeaaaa/api/authors/111/commented/130&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h4 id="example-likes-object">Example Likes Object</h4>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;likes&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// this may or may not be the same as page for the post,</span>
+<span class="w">    </span><span class="c1">// depending if there&#39;s a seperate URL to just see the comments</span>
+<span class="w">    </span><span class="s2">&quot;page&quot;</span><span class="o">:</span><span class="s2">&quot;http://nodeaaaa/authors/222/posts/249&quot;</span>
+<span class="w">    </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://nodeaaaa/api/authors/222/posts/249/likes&quot;</span>
+<span class="w">    </span><span class="c1">// likes.page, likes.size, likes.count,</span>
+<span class="w">    </span><span class="c1">// likes.src should be sent for public and unlisted posts</span>
+<span class="w">    </span><span class="c1">// in order to reduce API calls</span>
+<span class="w">    </span><span class="c1">// You should return ~ 5 likes per post.</span>
+<span class="w">    </span><span class="c1">// should be sorted newest(first) to oldest(last)</span>
+<span class="w">    </span><span class="c1">// this is to reduce API call counts</span>
+<span class="w">    </span><span class="c1">// number of the first page of likes</span>
+<span class="w">    </span><span class="s2">&quot;page&quot;</span><span class="o">:</span><span class="mf">1</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// size of a page of likes</span>
+<span class="w">    </span><span class="s2">&quot;size&quot;</span><span class="o">:</span><span class="mf">50</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// total number of likes</span>
+<span class="w">    </span><span class="s2">&quot;count&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">9001</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// the first page of likes</span>
+<span class="w">    </span><span class="s2">&quot;src&quot;</span><span class="o">:</span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;like&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;author&quot;</span><span class="o">:</span><span class="p">{</span>
+<span class="w">                </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;author&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://nodeaaaa/api/authors/111&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;page&quot;</span><span class="o">:</span><span class="s2">&quot;http://nodeaaaa/authors/greg&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;host&quot;</span><span class="o">:</span><span class="s2">&quot;http://nodeaaaa/api/&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;displayName&quot;</span><span class="o">:</span><span class="s2">&quot;Greg Johnson&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;github&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://github.com/gjohnson&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;profileImage&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://i.imgur.com/k7XVwpB.jpeg&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="c1">// ISO 8601 TIMESTAMP</span>
+<span class="w">            </span><span class="s2">&quot;published&quot;</span><span class="o">:</span><span class="s2">&quot;2015-03-09T13:07:04+00:00&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="c1">// ID of the Comment (UUID)</span>
+<span class="w">            </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://nodeaaaa/api/authors/111/liked/166&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="c1">// this should be the object they liked</span>
+<span class="w">            </span><span class="s2">&quot;object&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://nodebbbb/authors/222/posts/249&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">},</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;likes&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://nodeaaaa/api/authors/111/commented/130/likes&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// in this example nodebbbb has a html page just for the likes</span>
+<span class="w">    </span><span class="s2">&quot;page&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://nodeaaaa/authors/greg/comments/130/likes&quot;</span>
+<span class="w">    </span><span class="s2">&quot;page&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;size&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">50</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;count&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;src&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h3 id="api-endpoints">API Endpoints</h3>
+<h4 id="authors-api">Authors API</h4>
+<ul>
+<li>URL: <code>://service/api/authors/</code><ul>
+<li>GET [local, remote]: retrieve all profiles on the node (paginated)<ul>
+<li>page: how many pages</li>
+<li>size: how big is a page</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Example query: GET <code>://service/api/authors?page=10&amp;size=5</code></p>
+<ul>
+<li>Gets the 5 authors, authors 45 to 49.</li>
+</ul>
+</li>
+<li>
+<p>Example: GET <code>http://nodeaaaa/api/authors/</code></p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;authors&quot;</span><span class="p">,</span><span class="w">      </span>
+<span class="w">    </span><span class="s2">&quot;authors&quot;</span><span class="o">:</span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;author&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://nodeaaaa/api/authors/111&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;host&quot;</span><span class="o">:</span><span class="s2">&quot;http://nodeaaaa/api/&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;displayName&quot;</span><span class="o">:</span><span class="s2">&quot;Greg Johnson&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;github&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://github.com/gjohnson&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;profileImage&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://i.imgur.com/k7XVwpB.jpeg&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;page&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://nodeaaaa/authors/greg&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// A second author object...</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// A third author object...</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h4 id="single-author-api">Single Author API</h4>
+<ul>
+<li>
+<p>URL: <code>://service/api/authors/{AUTHOR_ID}/</code></p>
+<ul>
+<li>GET [local, remote]: retrieve <code>AUTHOR_ID</code>'s profile</li>
+<li>PUT [local]: update <code>AUTHOR_ID</code>'s profile</li>
+</ul>
+</li>
+<li>
+<p>Example GET <code>http://nodeaaaa/api/authors/111</code>:</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="c1">// must be type author</span>
+<span class="w">    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;author&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// should match the URL for get</span>
+<span class="w">    </span><span class="c1">// must match the logged in author for PUT</span>
+<span class="w">    </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://nodeaaaa/api/authors/111&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// should match the host we&#39;re making the request to</span>
+<span class="w">    </span><span class="s2">&quot;host&quot;</span><span class="o">:</span><span class="s2">&quot;http://nodeaaaa/api/&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// get/update the display name of the author</span>
+<span class="w">    </span><span class="s2">&quot;displayName&quot;</span><span class="o">:</span><span class="s2">&quot;Lara Croft&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// get/update the github of the author</span>
+<span class="w">    </span><span class="s2">&quot;github&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://github.com/gjohnson&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// get/update the profile picture of the author</span>
+<span class="w">    </span><span class="s2">&quot;profileImage&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://i.imgur.com/k7XVwpB.jpeg&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// get the HTML profile page</span>
+<span class="w">    </span><span class="s2">&quot;page&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://nodeaaaa/authors/greg&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h4 id="followers-api">Followers API</h4>
+<ul>
+<li>URL: <code>://service/authors/api/{AUTHOR_ID}/followers</code><ul>
+<li>GET [local, remote]: get a list of authors who are <code>AUTHOR_ID</code>'s followers</li>
+</ul>
+</li>
+<li>
+<p>URL: <code>://service/authors/api/{AUTHOR_ID}/followers/{FOREIGN_AUTHOR_ID}</code></p>
+<ul>
+<li>Note: foreign author ID should be a percent encoded URL of the foreign author. An example URL would be:<ul>
+<li><code>http://example-node-1/api/authors/178aba49-ca39-4741-b227-f40d072b1222/followers/http%3A%2F%2Fexample-node-2%2Fauthors%2F5f57808f-0bc9-4b3d-bdd1-bb07c976d12d</code></li>
+</ul>
+</li>
+<li>DELETE [local]: remove <code>FOREIGN_AUTHOR_ID</code> as a follower of <code>AUTHOR_ID</code> (must be authenticated)</li>
+<li>PUT [local]: Add <code>FOREIGN_AUTHOR_ID</code> as a follower of <code>AUTHOR_ID</code> (must be authenticated)</li>
+<li>GET [local, remote] check if <code>FOREIGN_AUTHOR_ID</code> is a follower of <code>AUTHOR_ID</code><ul>
+<li>Should return 404 if they're not</li>
+<li>This is how you can check if follow request is accepted</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Example: GET <code>http://nodeaaa/api/authors/111/followers</code></p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;followers&quot;</span><span class="p">,</span><span class="w">      </span>
+<span class="w">    </span><span class="s2">&quot;followers&quot;</span><span class="o">:</span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;author&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://nodebbbb/api/authors/222&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;host&quot;</span><span class="o">:</span><span class="s2">&quot;http://nodebbbb/api/&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;displayName&quot;</span><span class="o">:</span><span class="s2">&quot;Lara Croft&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;page&quot;</span><span class="o">:</span><span class="s2">&quot;http://nodebbbb/authors/222&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;github&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://github.com/laracroft&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;profileImage&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://nodebbbb/api/authors/222/posts/217/image&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// Second follower author object</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// Third follower author object</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<ul>
+<li>Example: GET <code>http://nodeaaa/api/authors/111/followers/http%3A%2F%2Fnodebbbb%2Fapi%2Fauthors%2F222</code></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1">// if laura follows greg, otherwise 404</span>
+<span class="p">{</span>
+<span class="w">        </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;author&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://nodebbbb/api/authors/222&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;host&quot;</span><span class="o">:</span><span class="s2">&quot;http://nodebbbb/api/&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;displayName&quot;</span><span class="o">:</span><span class="s2">&quot;Lara Croft&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;page&quot;</span><span class="o">:</span><span class="s2">&quot;http://nodebbbb/authors/222&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;github&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://github.com/laracroft&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;profileImage&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://nodebbbb/api/authors/222/posts/217/image&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h4 id="follow-request-api">Follow Request API</h4>
+<ul>
+<li>URL: <code>://service/api/authors/{AUTHOR_ID}/inbox</code><ul>
+<li><code>POST</code> [remote]: send a follow request to <code>AUTHOR_ID</code><ul>
+<li><code>AUTHOR_ID</code> will be the <code>object</code> below</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>When author 1 tries to follow author 2, author 1's node send the follow request to author 2's node.</li>
+<li>If the author 2 accepts the Follow Request then author 1 is following author 2.<ul>
+<li>If author 2 is also already following author 1, then they are now friends.</li>
+</ul>
+</li>
+<li>Sent to inbox of "object" </li>
+<li>See the <a href="#example-follow-request-object">follow request object</a></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;follow&quot;</span><span class="p">,</span><span class="w">      </span>
+<span class="w">    </span><span class="s2">&quot;summary&quot;</span><span class="o">:</span><span class="s2">&quot;actor wants to follow object&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;actor&quot;</span><span class="o">:</span><span class="p">{</span>
+<span class="w">        </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;author&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="c1">// The rest of the author object for the author who wants to follow</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="s2">&quot;object&quot;</span><span class="o">:</span><span class="p">{</span>
+<span class="w">        </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;author&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="c1">// The rest of the author object for the author they want to follow</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h4 id="posts-api">Posts API</h4>
+<ul>
+<li>URL: <code>://service/authors/{AUTHOR_ID}/posts/{POST_ID}</code><ul>
+<li>GET [local, remote] get the public post whose <code>ID</code> is <code>POST_ID</code><ul>
+<li>friends-only posts: must be authenticated</li>
+</ul>
+</li>
+<li>DELETE [local] remove the post whose <code>ID</code> is <code>POST_ID</code><ul>
+<li>local posts: must be authenticated locally as the author</li>
+</ul>
+</li>
+<li>PUT [local] update a post where its <code>ID</code> is <code>POST_ID</code><ul>
+<li>local posts: must be authenticated locally as the author</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Creation URL ://service/authors/{AUTHOR_ID}/posts/<ul>
+<li>GET [local, remote] get the recent posts from author <code>AUTHOR_ID</code> (paginated)<ul>
+<li>Not authenticated: only public posts.</li>
+<li>Authenticated locally as author: all posts.</li>
+<li>Authenticated locally as friend of author: public + friends-only posts.</li>
+<li>Authenticated as remote node: This probably should not happen. Remember, the way remote node becomes aware of local posts is by local node pushing those posts to inbox, not by remote node pulling.</li>
+</ul>
+</li>
+<li>POST [local] create a new post but generate a new <code>ID</code><ul>
+<li>Authenticated locally as author</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Be aware that Posts can be images that need base64 decoding.<ul>
+<li>posts can also hyperlink to images that are public</li>
+</ul>
+</li>
+<li>Uses the same format as the <a href="#example-post-object">post object</a></li>
+<li>For [local] service, fields included may differ. For example, when first creating the post, there's no reason to have likes, comments, etc. because it doesn't exist yet. Be sure to document this!</li>
+</ul>
+<h5 id="image-posts">Image Posts</h5>
 <p>Image Posts are just posts that are images. But they are encoded as base64 data.
 You can inline an image post using a data URL, or you can use this 
 shortcut to get the image if authenticated to see it.</p>
@@ -1099,211 +1519,176 @@ shortcut to get the image if authenticated to see it.</p>
 <li>This end point decodes image posts as images. This allows the use of image tags in Markdown.</li>
 <li>You can use this to proxy or cache images.</li>
 </ul>
-<h4 id="comments">Comments</h4>
+<h4 id="comments-api">Comments API</h4>
 <ul>
-<li>URL: ://service/authors/{AUTHOR_ID}/posts/{POST_ID}/comments<ul>
-<li>GET [local, remote] get the list of comments of the post whose id is POST_ID (paginated)</li>
-<li>POST [local] if you post an object of "type":"comment", it will add your comment to the post whose id is POST_ID</li>
+<li>URL: <code>://service/authors/{AUTHOR_ID}/inbox</code><ul>
+<li><code>POST</code> [remote]: comment on a post by <code>AUTHOR_ID</code></li>
+<li>Body is a <a href="#example-comment">comment object</a></li>
 </ul>
 </li>
-<li>example comment from ://service/authors/{AUTHOR_ID}/posts/{POST_ID}/comments</li>
+<li>URL: <code>://service/authors/{AUTHOR_ID}/posts/{POST_ID}/comments</code><ul>
+<li><code>GET</code> [local, remote]: the comments on the post</li>
+<li>Body is a <a href="#example-comments">comments object</a></li>
+</ul>
+</li>
+<li>URL: <code>://service/authors/{AUTHOR_ID}/post/{POST_ID}/comment/{REMOTE_COMMENT_ID}</code><ul>
+<li>GET [local, remote] get the comment</li>
+</ul>
+</li>
+<li>Example: GET <code>http://nodebbbb/api/authors/222/posts/249/comments/http%3A%2F%2Fnodeaaaa%2Fapi%2Fauthors%2F111%2Fcommented%2F130</code>:</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;comment&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="s2">&quot;author&quot;</span><span class="o">:</span><span class="p">{</span>
 <span class="w">        </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;author&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="c1">// ID of the Author (UUID)</span>
-<span class="w">        </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/1d698d25ff008f7538453c120f581471&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="c1">// url to the authors information</span>
-<span class="w">        </span><span class="s2">&quot;url&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/1d698d25ff008f7538453c120f581471&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">&quot;host&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://nodeaaaa/api/authors/111&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;page&quot;</span><span class="o">:</span><span class="s2">&quot;http://nodeaaaa/authors/greg&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;host&quot;</span><span class="o">:</span><span class="s2">&quot;http://nodeaaaa/api/&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="s2">&quot;displayName&quot;</span><span class="o">:</span><span class="s2">&quot;Greg Johnson&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="c1">// HATEOS url for Github API</span>
 <span class="w">        </span><span class="s2">&quot;github&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://github.com/gjohnson&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="c1">// Image from a public domain</span>
 <span class="w">        </span><span class="s2">&quot;profileImage&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://i.imgur.com/k7XVwpB.jpeg&quot;</span>
-<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
 <span class="w">    </span><span class="s2">&quot;comment&quot;</span><span class="o">:</span><span class="s2">&quot;Sick Olde English&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="s2">&quot;contentType&quot;</span><span class="o">:</span><span class="s2">&quot;text/markdown&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="c1">// ISO 8601 TIMESTAMP</span>
 <span class="w">    </span><span class="s2">&quot;published&quot;</span><span class="o">:</span><span class="s2">&quot;2015-03-09T13:07:04+00:00&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="c1">// ID of the Comment (UUID)</span>
-<span class="w">    </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/de305d54-75b4-431b-adb2-eb6b9e546013/comments/f6255bb01c648fe967714d52a89e8e9c&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// ID of the Comment</span>
+<span class="w">    </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://nodeaaaa/api/authors/111/commented/130&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;post&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://nodebbbb/api/authors/222/posts/249&quot;</span><span class="p">,</span>
 <span class="p">}</span>
 </code></pre></div>
 
+<h4 id="commented-api">Commented API</h4>
 <ul>
-<li>example comments from a post:</li>
+<li>URL: <code>://service/authors/{AUTHOR_ID}/commented</code><ul>
+<li>GET [local, remote] get the list of comments <code>AUTHOR_ID</code> has made on:<ul>
+<li>[local] any post</li>
+<li>[remote] public and unlisted posts</li>
+<li>paginated</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;comments&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;page&quot;</span><span class="o">:</span><span class="mf">1</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;size&quot;</span><span class="o">:</span><span class="mf">5</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;post&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/de305d54-75b4-431b-adb2-eb6b9e546013&quot;</span>
-<span class="w">    </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/de305d54-75b4-431b-adb2-eb6b9e546013/comments&quot;</span>
-<span class="w">    </span><span class="s2">&quot;comments&quot;</span><span class="o">:</span><span class="p">[</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;comment&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;author&quot;</span><span class="o">:</span><span class="p">{</span>
-<span class="w">                </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;author&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="c1">// ID of the Author (UUID)</span>
-<span class="w">                </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/1d698d25ff008f7538453c120f581471&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="c1">// url to the authors information</span>
-<span class="w">                </span><span class="s2">&quot;url&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/1d698d25ff008f7538453c120f581471&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="s2">&quot;host&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="s2">&quot;displayName&quot;</span><span class="o">:</span><span class="s2">&quot;Greg Johnson&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="c1">// HATEOS url for Github API</span>
-<span class="w">                </span><span class="s2">&quot;github&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://github.com/gjohnson&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="c1">// Image from a public domain</span>
-<span class="w">                </span><span class="s2">&quot;profileImage&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://i.imgur.com/k7XVwpB.jpeg&quot;</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="s2">&quot;comment&quot;</span><span class="o">:</span><span class="s2">&quot;Sick Olde English&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;contentType&quot;</span><span class="o">:</span><span class="s2">&quot;text/markdown&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="c1">// ISO 8601 TIMESTAMP</span>
-<span class="w">            </span><span class="s2">&quot;published&quot;</span><span class="o">:</span><span class="s2">&quot;2015-03-09T13:07:04+00:00&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="c1">// ID of the Comment (UUID)</span>
-<span class="w">            </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/de305d54-75b4-431b-adb2-eb6b9e546013/comments/f6255bb01c648fe967714d52a89e8e9c&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">]</span>
-<span class="p">}</span>
+</li>
+<li>POST [local] if you post an object of "type":"comment", it will add your comment to the post whose <code>ID</code> is in the <code>post</code> field<ul>
+<li>Then the node you posted it to is responsible for forwarding it to the correct inbox</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>URL: <code>://service/authors/{AUTHOR_ID}/commented/{COMMENT_ID}</code><ul>
+<li>GET [local, remote] get this comment</li>
+</ul>
+</li>
+<li>Example: GET <code>http://nodeaaaa/api/authors/111/comments</code>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;comment&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;author&quot;</span><span class="o">:</span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;author&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://nodeaaaa/api/authors/111&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;page&quot;</span><span class="o">:</span><span class="s2">&quot;http://nodeaaaa/authors/greg&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;host&quot;</span><span class="o">:</span><span class="s2">&quot;http://nodeaaaa/api/&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;displayName&quot;</span><span class="o">:</span><span class="s2">&quot;Greg Johnson&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;github&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://github.com/gjohnson&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;profileImage&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://i.imgur.com/k7XVwpB.jpeg&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="s2">&quot;comment&quot;</span><span class="o">:</span><span class="s2">&quot;Sick Olde English&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;contentType&quot;</span><span class="o">:</span><span class="s2">&quot;text/markdown&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="c1">// ISO 8601 TIMESTAMP</span>
+<span class="w">        </span><span class="s2">&quot;published&quot;</span><span class="o">:</span><span class="s2">&quot;2015-03-09T13:07:04+00:00&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="c1">// ID of the Comment</span>
+<span class="w">        </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://nodeaaaa/api/authors/111/commented/130&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;post&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://nodebbbb/api/authors/222/posts/249&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="c1">// this may or may not be the same as page for the post,</span>
+<span class="w">        </span><span class="c1">// depending if there&#39;s a seperate URL to just see the one comment in html</span>
+<span class="w">        </span><span class="s2">&quot;page&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://nodebbbb/authors/222/posts/249&quot;</span>
+<span class="w">        </span><span class="c1">// it could also be something like</span>
+<span class="w">        </span><span class="c1">// &quot;page&quot;:&quot;http://nodeaaaa/api/authors/greg/comments/130&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">]</span>
 </code></pre></div>
 
-<h4 id="likes">Likes</h4>
 <ul>
-<li>You can like posts and comments</li>
-<li>Send them to the inbox of the author of the post or comment</li>
-<li>URL: ://service/authors/{AUTHOR_ID}/inbox<ul>
-<li>POST [local, remote]: send a like object to AUTHOR_ID</li>
-</ul>
-</li>
-<li>URL: ://service/authors/{AUTHOR_ID}/posts/{POST_ID}/likes<ul>
-<li>GET [local, remote] a list of likes from other authors on AUTHOR_ID's post POST_ID</li>
-</ul>
-</li>
-<li>URL: ://service/authors/{AUTHOR_ID}/posts/{POST_ID}/comments/{COMMENT_ID}/likes<ul>
-<li>GET [local, remote] a list of likes from other authors on AUTHOR_ID's post POST_ID comment COMMENT_ID</li>
-</ul>
-</li>
-<li>Example like object:</li>
+<li>Example: GET <code>http://nodeaaaa/api/authors/111/commented/130</code>:</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="s2">&quot;summary&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Lara Croft Likes your post&quot;</span><span class="p">,</span><span class="w">         </span>
-<span class="w">    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Like&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;comment&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="s2">&quot;author&quot;</span><span class="o">:</span><span class="p">{</span>
 <span class="w">        </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;author&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">&quot;host&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">&quot;displayName&quot;</span><span class="o">:</span><span class="s2">&quot;Lara Croft&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">&quot;url&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">&quot;github&quot;</span><span class="o">:</span><span class="s2">&quot;http://github.com/laracroft&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://nodeaaaa/api/authors/111&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;page&quot;</span><span class="o">:</span><span class="s2">&quot;http://nodeaaaa/authors/greg&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;host&quot;</span><span class="o">:</span><span class="s2">&quot;http://nodeaaaa/api/&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;displayName&quot;</span><span class="o">:</span><span class="s2">&quot;Greg Johnson&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;github&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://github.com/gjohnson&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="s2">&quot;profileImage&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://i.imgur.com/k7XVwpB.jpeg&quot;</span>
 <span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="s2">&quot;object&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/764efa883dda1e11db47671c4a3bbd9e&quot;</span>
+<span class="w">    </span><span class="s2">&quot;comment&quot;</span><span class="o">:</span><span class="s2">&quot;Sick Olde English&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;contentType&quot;</span><span class="o">:</span><span class="s2">&quot;text/markdown&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// ISO 8601 TIMESTAMP</span>
+<span class="w">    </span><span class="s2">&quot;published&quot;</span><span class="o">:</span><span class="s2">&quot;2015-03-09T13:07:04+00:00&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// ID of the Comment</span>
+<span class="w">    </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://nodeaaaa/api/authors/111/commented/130&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;post&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://nodebbbb/api/authors/222/posts/249&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// this may or may not be the same as page for the post,</span>
+<span class="w">    </span><span class="c1">// depending if there&#39;s a seperate URL to just see the one comment in html</span>
+<span class="w">    </span><span class="s2">&quot;page&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://nodebbbb/authors/222/posts/249&quot;</span>
+<span class="w">    </span><span class="c1">// it could also be something like</span>
+<span class="w">    </span><span class="c1">// &quot;page&quot;:&quot;http://nodeaaaa/api/authors/greg/comments/130&quot;</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<h4 id="liked">Liked</h4>
+<h4 id="likes-api">Likes API</h4>
 <ul>
-<li>URL: ://service/authors/{AUTHOR_ID}/liked<ul>
-<li>GET [local, remote] list what public things AUTHOR_ID liked.</li>
-<li>It's a list of of likes originating from this author</li>
-<li>Note: be careful here private information could be disclosed.</li>
+<li>URL: <code>://service/authors/{AUTHOR_ID}/inbox</code><ul>
+<li><code>POST</code> [remote]: send a like object to <code>AUTHOR_ID</code></li>
+<li>Body is <a href="#example-like-object">like object</a></li>
 </ul>
 </li>
-<li>Example Format:</li>
+<li>URL: <code>://service/authors/{AUTHOR_ID}/posts/{POST_ID}/likes</code><ul>
+<li>"Who Liked This Post"</li>
+<li><code>GET</code> [local, remote] a list of likes from other authors on <code>AUTHOR_ID</code>'s post <code>POST_ID</code></li>
+<li>Body is <a href="#example-likes-object">likes object</a></li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;liked&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;likes&quot;</span><span class="o">:</span><span class="p">[</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="s2">&quot;summary&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Lara Croft Likes your post&quot;</span><span class="p">,</span><span class="w">         </span>
-<span class="w">            </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Like&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;author&quot;</span><span class="o">:</span><span class="p">{</span>
-<span class="w">                </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;author&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="s2">&quot;host&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="s2">&quot;displayName&quot;</span><span class="o">:</span><span class="s2">&quot;Lara Croft&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="s2">&quot;url&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="s2">&quot;github&quot;</span><span class="o">:</span><span class="s2">&quot;http://github.com/laracroft&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="s2">&quot;profileImage&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://i.imgur.com/k7XVwpB.jpeg&quot;</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="s2">&quot;object&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/764efa883dda1e11db47671c4a3bbd9e&quot;</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">]</span>
-<span class="p">}</span>
-</code></pre></div>
-
+</li>
+<li>URL: <code>://service/authors/{AUTHOR_ID}/posts/{POST_ID}/comments/{COMMENT_ID}/likes</code><ul>
+<li>"Who Liked This Comment"</li>
+<li><code>GET</code> [local, remote] a list of likes from other authors on AUTHOR_ID's post <code>POST_ID</code> comment <code>COMMENT_ID</code></li>
+<li>Body is <a href="#example-likes-object">likes object</a></li>
+</ul>
+</li>
+</ul>
+<h4 id="liked-api">Liked API</h4>
+<ul>
+<li>URL: <code>://service/authors/{AUTHOR_ID}/liked</code><ul>
+<li>"Things Liked By Author"</li>
+<li><code>GET</code> [local, remote] a list of likes by AUTHOR_ID</li>
+<li>Body is <a href="#example-likes-object">likes object</a></li>
+</ul>
+</li>
+<li>URL: <code>://service/authors/{AUTHOR_ID}/liked/{LIKE_ID}</code><ul>
+<li><code>GET</code> [local, remote] a single like</li>
+<li>Body is <a href="#example-like-object">like object</a></li>
+</ul>
+</li>
+</ul>
+<h4 id="other-local-apis">Other Local APIs</h4>
+<p>Local APIs, such as "stream", that aren't specified here, are up to your design. However, you must document and test them.</p>
 <h4 id="inbox">Inbox</h4>
 <ul>
-<li>The inbox is all the new posts from who you follow, as well as follow requests, likes, and comments you should be aware of</li>
-<li>The inbox is the API equivalent of the stream in the UI</li>
+<li>The inbox receives all the new posts from who you follow, as well as "follow requests," likes, and comments you should be aware of. </li>
+<li>Remember: the inbox is not something on the UI or the API for local clients! The inbox is the way that a node becomes aware of posts, likes, comments, follow requests, that it should be aware of from other nodes.</li>
 <li>URL: ://service/authors/{AUTHOR_ID}/inbox<ul>
-<li>GET [local]: if authenticated get a list of posts sent to AUTHOR_ID (paginated)<ul>
-<li>Should be sorted most recent first</li>
-</ul>
-</li>
-<li>POST [local, remote]: send a post to the author</li>
+<li>POST [remote]: send a post to the author</li>
 <li>if the type is "post" then add that post to AUTHOR_ID's inbox</li>
 <li>if the type is "follow" then add that follow is added to AUTHOR_ID's inbox to approve later</li>
 <li>if the type is "Like" then add that like to AUTHOR_ID's inbox</li>
 <li>if the type is "comment" then add that comment to AUTHOR_ID's inbox</li>
-<li>DELETE [local]: clear the inbox</li>
 </ul>
 </li>
-<li>Example, retrieving an inbox:</li>
+<li>When sending/updating posts, body is a <a href="#example-post-object">post object</a></li>
+<li>When sending/updating comments, body is a <a href="#example-comment-object">comment object</a></li>
+<li>When sending/updating likes, body is a <a href="#example-like-object">like object</a></li>
+<li>When sending/updating follow requests, body is a <a href="#example-follow-request-object">follow object</a></li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;inbox&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;author&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/c1e3db8ccea4541a0f3d7e5c75feb3fb&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;items&quot;</span><span class="o">:</span><span class="p">[</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;post&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;title&quot;</span><span class="o">:</span><span class="s2">&quot;A Friendly post title about a post about web dev&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/764efa883dda1e11db47671c4a3bbd9e&quot;</span>
-<span class="w">            </span><span class="s2">&quot;source&quot;</span><span class="o">:</span><span class="s2">&quot;http://lastplaceigotthisfrom.com/authors/xxxxxx/posts/yyyyyy&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;origin&quot;</span><span class="o">:</span><span class="s2">&quot;http://whereitcamefrom.com/authors/wwwwww/posts/zzzzzz&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;description&quot;</span><span class="o">:</span><span class="s2">&quot;This post discusses stuff -- brief&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;contentType&quot;</span><span class="o">:</span><span class="s2">&quot;text/plain&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;content&quot;</span><span class="o">:</span><span class="s2">&quot;Þā wæs on burgum Bēowulf Scyldinga, lēof lēod-cyning, longe þrāge folcum gefrǣge (fæder ellor hwearf, aldor of earde), oð þæt him eft onwōc hēah Healfdene; hēold þenden lifde, gamol and gūð-rēow, glæde Scyldingas. Þǣm fēower bearn forð-gerīmed in worold wōcun, weoroda rǣswan, Heorogār and Hrōðgār and Hālga til; hȳrde ic, þat Elan cwēn Ongenþēowes wæs Heaðoscilfinges heals-gebedde. Þā wæs Hrōðgāre here-spēd gyfen, wīges weorð-mynd, þæt him his wine-māgas georne hȳrdon, oð þæt sēo geogoð gewēox, mago-driht micel. Him on mōd bearn, þæt heal-reced hātan wolde, medo-ærn micel men gewyrcean, þone yldo bearn ǣfre gefrūnon, and þǣr on innan eall gedǣlan geongum and ealdum, swylc him god sealde, būton folc-scare and feorum gumena. Þā ic wīde gefrægn weorc gebannan manigre mǣgðe geond þisne middan-geard, folc-stede frætwan. Him on fyrste gelomp ǣdre mid yldum, þæt hit wearð eal gearo, heal-ærna mǣst; scōp him Heort naman, sē þe his wordes geweald wīde hæfde. Hē bēot ne ālēh, bēagas dǣlde, sinc æt symle. Sele hlīfade hēah and horn-gēap: heaðo-wylma bād, lāðan līges; ne wæs hit lenge þā gēn þæt se ecg-hete āðum-swerian 85 æfter wæl-nīðe wæcnan scolde. Þā se ellen-gǣst earfoðlīce þrāge geþolode, sē þe in þȳstrum bād, þæt hē dōgora gehwām drēam gehȳrde hlūdne in healle; þǣr wæs hearpan swēg, swutol sang scopes. Sægde sē þe cūðe frum-sceaft fīra feorran reccan&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;author&quot;</span><span class="o">:</span><span class="p">{</span>
-<span class="w">                </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;author&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="s2">&quot;host&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="s2">&quot;displayName&quot;</span><span class="o">:</span><span class="s2">&quot;Lara Croft&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="s2">&quot;url&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="s2">&quot;github&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://github.com/laracroft&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="s2">&quot;profileImage&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://i.imgur.com/k7XVwpB.jpeg&quot;</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="s2">&quot;comments&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/de305d54-75b4-431b-adb2-eb6b9e546013/comments&quot;</span>
-<span class="w">            </span><span class="s2">&quot;published&quot;</span><span class="o">:</span><span class="s2">&quot;2015-03-09T13:07:04+00:00&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;visibility&quot;</span><span class="o">:</span><span class="s2">&quot;FRIENDS&quot;</span>
-<span class="w">        </span><span class="p">},</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;post&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;title&quot;</span><span class="o">:</span><span class="s2">&quot;DID YOU READ MY POST YET?&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/999999983dda1e11db47671c4a3bbd9e&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;source&quot;</span><span class="o">:</span><span class="s2">&quot;http://lastplaceigotthisfrom.com/authors/xxxxxx/posts/yyyyyy&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;origin&quot;</span><span class="o">:</span><span class="s2">&quot;http://whereitcamefrom.com/authors/wwwwww/posts/zzzzzz&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;description&quot;</span><span class="o">:</span><span class="s2">&quot;Whatever&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;contentType&quot;</span><span class="o">:</span><span class="s2">&quot;text/plain&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;content&quot;</span><span class="o">:</span><span class="s2">&quot;Are you even reading my posts Arjun?&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;author&quot;</span><span class="o">:</span><span class="p">{</span>
-<span class="w">                </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;author&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="s2">&quot;host&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="s2">&quot;displayName&quot;</span><span class="o">:</span><span class="s2">&quot;Lara Croft&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="s2">&quot;url&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="s2">&quot;github&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://github.com/laracroft&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="s2">&quot;profileImage&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://i.imgur.com/k7XVwpB.jpeg&quot;</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="s2">&quot;comments&quot;</span><span class="o">:</span><span class="s2">&quot;http://127.0.0.1:5454/authors/9de17f29c12e8f97bcbbd34cc908f1baba40658e/posts/de305d54-75b4-431b-adb2-eb6b9e546013/comments&quot;</span>
-<span class="w">            </span><span class="s2">&quot;published&quot;</span><span class="o">:</span><span class="s2">&quot;2015-03-09T13:07:04+00:00&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;visibility&quot;</span><span class="o">:</span><span class="s2">&quot;FRIENDS&quot;</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">]</span>
-<span class="p">}</span>
-</code></pre></div>
-
 <h3 id="requirements">Requirements</h3>
 <ul>
 <li>Implement the webservice as described in the user stories</li>
@@ -1351,7 +1736,12 @@ shortcut to get the image if authenticated to see it.</p>
 <p>Frontend (Selenium, etc.) tests are not required. Code coverage (line coverage, statement coverage, branch coverage, MC/DC, etc.) is not required. Unit testing is not required.</p>
 <h4 id="documentation-requirements">Documentation Requirements</h4>
 <ul>
-<li>Every API endpoint is documented.</li>
+<li>Every API endpoint is documented.<ul>
+<li>When the API endpoint should be used</li>
+<li>How the API endpoint should be used</li>
+<li>Why the API endpoint should or should not be used</li>
+</ul>
+</li>
 <li>Every API endpoint has multiple examples.</li>
 <li>Every JSON field in both request and response<ul>
 <li>Has a type </li>
@@ -1368,6 +1758,7 @@ shortcut to get the image if authenticated to see it.</p>
 </li>
 </ul>
 </li>
+<li>If you are using some automated documentation generation, you must augment that documentation with examples, types, explanations, when, what, how, why, why not...</li>
 </ul>
 <h4 id="code-requirements">Code Requirements</h4>
 <ul>
@@ -1472,7 +1863,7 @@ shortcut to get the image if authenticated to see it.</p>
 <li><input type="checkbox"> No built Python artifacts: <code>.pyc</code> files, <code>__pycache__</code> directories, etc.</li>
 <li><input type="checkbox"> No downloaded JS packages: <code>node_modules</code> etc.</li>
 <li><input type="checkbox"> No HTML/CSS/JS output produced by compiler/transpiler/bundler</li>
-<li><input type="checkbox"> No esbuild, vite, rollup, webpack, etc. output.</li>
+<li><input type="checkbox"> No <code>esbuild</code>, <code>vite</code>, <code>rollup</code>, <code>webpack</code>, etc. output is included in the GitHub repository.</li>
 <li>Failure to meet the above restrictions may result in a mark of zero.</li>
 </ul>
 </li>
@@ -1562,11 +1953,11 @@ shortcut to get the image if authenticated to see it.</p>
 <ul>
 <li>You may use React if you choose, but generally this is more difficult and takes more work so it is not recommended.<ul>
 <li>Django templates or lighter-weight frameworks like Vue are generally easier and take less work.</li>
-<li>If you use React, you must still serve everything (including React js and html) through the same Django/Flask server that is serving the API backend.</li>
+<li>If you use React, you must still serve everything (including React JS and HTML) through the same Django/Flask server that is serving the API backend.</li>
 </ul>
 </li>
 </ul>
-<h3 id="groupwork-tips">Groupwork Tips</h3>
+<h3 id="teamwork-tips">Teamwork Tips</h3>
 <ul>
 <li>These optional. They are just advice. They usually lead to less conflict and a better end result.</li>
 </ul>
@@ -1576,7 +1967,7 @@ shortcut to get the image if authenticated to see it.</p>
 <li>Pull requests are great in general, but they tend to cause problems because the project is very small and groups are also small.</li>
 </ul>
 </li>
-<li>Use very very few branches (e.g. production and staging).<ul>
+<li>Use very, very few branches (e.g. production and staging).<ul>
 <li>Do not use author branches (or branches where a single author is the only one touching them).</li>
 </ul>
 </li>
@@ -1619,8 +2010,8 @@ shortcut to get the image if authenticated to see it.</p>
 <li>Excellent 8 (A+): Clean code. Meets the requirements and ads extra polish. Everything is tested properly. Passes all tests. The API is documented in detail. The API is implemented as specified, and adds extra for compatibility. The UI meets all requirements, and has extra polish.</li>
 <li>Good 7 (B+): Code is mostly clean but has some rough spots. At most a couple of minor bugs. Almost all the requirements are met. Everything is tested. Passes almost all tests. Almost everything is documented. Almost all the API is implemented according to spec.</li>
 <li>Satisfactory 6 (C+): Code is low quality but working. Some bugs. Inconsistency. ¾ of the requirements are met. Almost everything is tested. Passes most tests. Most things are documented. API is implemented but doesn't meet spec.</li>
-<li>Unsatisfactory 4-5 (D-D+): There are significant bugs and issues. ½ of the requirements are met. ½ the tests exist and pass. At least ½ of the documentation is present. At least ½ of the API exists and works. At least ½ of the UI exists and works. At least ½ of the API exists and works.</li>
-<li>Partial Attempt 1-4 (F): Poor quality. Large pieces of code missing, some pieces exist. Some requirements are met. Some of the UI exists. Some of the API exists.</li>
+<li>Unsatisfactory 4 (D): There are significant bugs and issues. ½ of the requirements are met. ½ the tests exist and pass. At least ½ of the documentation is present. At least ½ of the API exists and works. At least ½ of the UI exists and works. At least ½ of the API exists and works. <!-- @LT-IGNORE:ENGLISH_WORD_REPEAT_BEGINNING_RULE@ --></li>
+<li>Partial Attempt 1 (F): Poor quality. Large pieces of code missing, some pieces exist. Some requirements are met. Some of the UI exists. Some of the API exists. <!-- @LT-IGNORE:ENGLISH_WORD_REPEAT_BEGINNING_RULE@ --></li>
 <li>Failure 0 (F): Missing. Not attempted. Not complete enough to make an evaluation. Violated a restriction. </li>
 </ul>
 <p>UI amount complete is marked by your TA testing user stories manually.</p>
@@ -1635,8 +2026,8 @@ shortcut to get the image if authenticated to see it.</p>
 <li>EVERY teammate should submit a link to your teams GitHub repo on eClass.</li>
 </ul>
 </li>
-<li>Add a license and a README. The README should contain the names of the teammates.</li>
-<li>Use the format https://github.com/uofa-cmput404/f24-project-team-name</li>
+<li>Add a license and a README. The README should contain the names of the teammates. (You don't have to use your real name if you don't want Microsoft/GitHub to know who you are.)</li>
+<li>Use the format <code>https://github.com/uofa-cmput404/f24-project-team-name</code> where <code>team-name</code> is your css color.</li>
 </ul>
 <p>Do not submit a clone link or a link to a branch or file.</p>
 <ul>
@@ -1669,7 +2060,7 @@ shortcut to get the image if authenticated to see it.</p>
 <li>Teammates are using Git and GitHub often and effectively according to the <a href="#tool-use-requirements">tool use requirements</a></li>
 </ul>
 <h5 id="submission">Submission</h5>
-<p>Due 4PM on Monday.</p>
+<p>Due 4PM on Monday.<!-- @LT-IGNORE:CONFUSION_DUE_DO@ --></p>
 <p>Create a git tag "part1" in your production branch before 4PM and submit only the link to your tag.</p>
 <ul>
 <li>A tag is just a name for a commit, so do not create the tag until you have your final commit for part 1!</li>
@@ -1682,73 +2073,82 @@ shortcut to get the image if authenticated to see it.</p>
 <li>If you don't submit the link to eClass you will get a zero for the project part regardless of what your team gets.</li>
 <li>Submitted frontend framework form if using a frontend framework. (Link coming soon...)</li>
 </ul>
-<h5 id="markingwh">Markingwh</h5>
+<h5 id="marking_1">Marking</h5>
 <ul>
-<li>User Stories: UI<ul>
-<li>Excellent: At least ½ of the user stories are usable using the UI.</li>
-<li>Good: Almost ½ of the user stories are usable using the UI.</li>
-<li>Satisfactory: At least 3/8ths of the user stories are usable using the UI.</li>
-<li>Unsatisfactory: At least ¼ of the user stories are usable using the UI.</li>
-</ul>
-</li>
-<li>User Stories: API<ul>
-<li>Excellent: At least ½ of the user stories with a relevant API are usable using the API. Adheres to the specification.</li>
-<li>Good: Almost ½ of the user stories with a relevant API are usable using the API. Adheres to the specification</li>
-<li>Satisfactory: At least 3/8ths of the user stories with a relevant API are usable using the API. Very close to adhering to the specification.</li>
-<li>Unsatisfactory: At least ¼ of the user with a relevant API stories are usable using the API. Some parts deviate from the specification.</li>
-<li>Attempt: Missing API or major deviations from the specification.</li>
-</ul>
-</li>
-<li>Test Cases<ul>
 <li><em>User stories that have an API must be tested through the API. Other user stories can be tested by directly calling Django code.</em></li>
 <li><em>Tests do not count unless they are accurately testing the functionality.</em></li>
-<li>Excellent: At least ½ of the user stories have tests written and pass those tests. </li>
-<li>Good: At least ½ of the user have tests written, most pass tests.</li>
-<li>Satisfactory: At least 3/8ths of the user have tests written, most pass tests.</li>
-<li>Unsatisfactory: At least ¼ of the user have tests written, most pass tests.</li>
-</ul>
-</li>
-<li>UI Design (HTML &amp; CSS)<ul>
-<li>Excellent: Looks impressive! It's obvious how to do any of the ½ of the user stories.</li>
-<li>Good: Looks good. It's not obvious how you would use the UI to do some of ½ of the user stories.</li>
-<li>Satisfactory: HTML &amp; CSS exists, it does not look good. Mostly easy to understand. It has issues. There is some way to do ½ of the user stories, even if it's not obvious.</li>
-<li>Unsatisfactory: HTML &amp; CSS exists. Major UI issues. Hard to navigate. Hard to understand. There is some way to do almost all the ½ of the user stories.</li>
-<li>Attempt: Some pieces of the HTML &amp; CSS exist, but some pieces of the HTML &amp; CSS are missing that would be needed to do ½ of the user stories.</li>
-<li>No attempt: Very little HTML &amp; CSS.</li>
-</ul>
-</li>
-<li>Tool Use<ul>
-<li>Excellent: Use of Git, GitHub issues, etc. is Evidence and Obvious. Commits/merges/PRs are small and frequent. Commit messages are helpful information for teammates. All the teammates are working at the same time, and using GitHub <strong>and git</strong> to help communicate and improve teamwork. You laugh in the face of merge conflicts! Well organized repository and branches. <em>PRs are not required.</em></li>
-<li>Good: Frequent but inconsistent use of Git, etc. Commits/merges/PRs are medium and with inconsistent frequency. All the teammates are working at the same time. Using GitHub to help communicate. Well organized repository and branches.</li>
-<li>Satisfactory: Uses Git, etc. Has some oversized merges. Commits/merges/PRs are large and far apart. All the teammates are working at the same time. Well organized repository and branches.</li>
-<li>Unsatisfactory: Limited of tool use. Only one teammate seems to be working at a time. Git exists but it has built artifacts in it. Git is disorganized.</li>
-<li>Failure: Used file sharing, email attachments, sending files/code through discord, chat, messengers, or similar tools to work together. Git exists but it not being used, or it is being misused.</li>
 <li><em>Failure to commit and tag on time, failure to submit a link to the tag, etc. will result in an overall mark of zero for this project part: not just a zero for Tool Use.</em></li>
 <li><em>Force push, rebase, or other operations that destroy git history, along with forging git history, authorship, messages, dates, etc. will also result in an overall mark of zero for this project part, and you will be reported to the Faculty under the Student Academic Integrity Policy.</em></li>
+<li>
+<p><em>1/2 of the user stories does </em><em>not</em><em> include those marked for ⧟ later project parts.</em></p>
+</li>
+<li>
+<p>Excellent</p>
+<ul>
+<li>User Stories UI: At least ½ of the user stories are usable using the UI.</li>
+<li>User Stories API: At least ½ of the user stories with a relevant API are usable using the API. Adheres to the specification.</li>
+<li>Test Cases: At least ½ of the user stories have tests written and pass those tests. </li>
+<li>UI Design: Looks impressive! It's obvious how to do any of the ½ of the user stories.</li>
+<li>Tool use: Use of Git, GitHub issues, etc. is Evidence and Obvious. Commits/merges/PRs are small and frequent. Commit messages are helpful information for teammates. All the teammates are working at the same time, and using GitHub <strong>and git</strong> to help communicate and improve teamwork. You laugh in the face of merge conflicts! Well organized repository and branches. </li>
+<li>TA Walkthrough: Able to walk through ½ user stories with UI and API. No snags, bugs, last second workarounds, or missing pieces. Code is easily located. Documentation is easily located.</li>
+<li>Web Service API Documentation: Well documented. Highly detailed. Clear descriptions, has useful example requests and responses from your API for every use of the API and ½ of user stories. If using automated documentation generation, there is extra documentation added on top of that.</li>
+<li>Standards &amp; Code Style: Adheres to standards, code is well organized and clean. Code is easy to read. Comments add to code readablility when necessary. Code meets Python, JS, HTML and CS style guides. Excellent indentation, naming. Code units only do one thing. It's easy to find the code responsible for handling any of the ½ user stories.</li>
 </ul>
 </li>
-<li>TA Walkthrough<ul>
-<li>Excellent: Able to walk through ½ user stories with UI and API. No snags, bugs, last second workarounds, or missing pieces. Code is easily located. Documentation is easily located.</li>
-<li>Good: A couple of snags, bugs, last second workarounds.</li>
-<li>Satisfactory: Some snags bugs, last second workarounds, or tiny missing pieces.</li>
-<li>Unsatisfactory: Many snags, bugs, last second workarounds, small missing pieces.</li>
-<li>Attempt: No walkthrough. Unable to demo. Showstopper bugs. Major missing pieces.</li>
+<li>Good<ul>
+<li>User Stories UI: Almost ½ of the user stories are usable using the UI.</li>
+<li>User Stories API: Almost ½ of the user stories with a relevant API are usable using the API. Adheres to the specification.</li>
+<li>Test Cases: At least ½ of the user have tests written, most pass tests.</li>
+<li>UI Design: Looks good. It's not obvious how you would use the UI to do some of ½ of the user stories.</li>
+<li>Tool use: Frequent but inconsistent use of Git, etc. Commits/merges/PRs are medium and with inconsistent frequency. All the teammates are working at the same time. Using GitHub to help communicate. Well organized repository and branches.</li>
+<li>TA Walkthrough: A couple of snags, bugs, last second workarounds.</li>
+<li>Web Service API Documentation: Well documented, medium detail. A few things are unclear. Has example requests and responses from your API for every use of the API and ½ of user stories. If using automated documentation generation, there is extra documentation added on top of that.</li>
+<li>Standards &amp; Code Style: Adheres to standards, code is well organized and clean. Missing comments. Some minor issues with code style. Code units only do one thing. It takes a little digging sometimes to find the code responsible for a user story.</li>
 </ul>
 </li>
-<li>Web Service API Documentation<ul>
-<li>Excellent: Well documented. Highly detailed. Clear descriptions, has useful example requests and responses from your API for every use of the API and ½ of user stories. </li>
-<li>Good: Well documented, medium detail. A few things are unclear. Has example requests and responses from your API for every use of the API and ½ of user stories. </li>
-<li>Satisfactory: Well documented, but missing details. Every endpoint is documented.  Some things are unclear. Example requests and responses have a few issues. Slightly less than ½ of user stories have examples.</li>
-<li>Unsatisfactory: Low on details. Many things are unclear. Every endpoint is documented. Missing some example requests and responses.</li>
-<li>Attempt: Major pieces of documentation are missing. </li>
+<li>Satisfactory<ul>
+<li>User Stories UI: At least 3/8ths of the user stories are usable using the UI.</li>
+<li>User Stories API: At least 3/8ths of the user stories with a relevant API are usable using the API. Very close to adhering to the specification.</li>
+<li>Unsatisfactory: At least ¼ of the user with a relevant API stories are usable using the API. Some parts deviate from the specification.</li>
+<li>Test Cases: At least 3/8ths of the user have tests written, most pass tests.</li>
+<li>UI Design: HTML &amp; CSS exists, it does not look good. Mostly easy to understand. It has issues. There is some way to do ½ of the user stories, even if it's not obvious.</li>
+<li>Tool use: Uses Git, etc. Has some oversized merges. Commits/merges/PRs are large and far apart. All the teammates are working at the same time. Well organized repository and branches.</li>
+<li>TA Walkthrough: Some snags bugs, last second workarounds, or tiny missing pieces.</li>
+<li>Web Service API Documentation: Well documented, but missing details. Every endpoint is documented.  Some things are unclear. Example requests and responses have a few issues. Slightly less than ½ of user stories have examples. If using automated documentation generation, there is extra documentation added on top of that.</li>
+<li>Standards &amp; Code Style: Adheres to standards, there is an attempt at organization. Commented out code, unreachable code, or code with no clear purpose. Code units only do one thing. Occasional spots of poor style. It's not clear where the code for a user story will be.</li>
 </ul>
 </li>
-<li>Standards &amp; Code Style<ul>
-<li>Excellent: Adheres to standards, code is well organized and clean. Code is easy to read. Comments add to code readablility when necessary. Code meets Python, JS, HTML and CS style guides. Excellent indentation, naming. Code units only do one thing. It's easy to find the code responsible for handling any of the ½ user stories.</li>
-<li>Good: Adheres to standards, code is well organized and clean. Missing comments. Some minor issues with code style. Code units only do one thing. It takes a little digging sometimes to find the code responsible for a user story.</li>
-<li>Satisfactory: Adheres to standards, there is an attempt at organization. Commented out code, unreachable code, or code with no clear purpose. Code units only do one thing. Occasional spots of poor style. It's not clear where the code for a user story will be.</li>
-<li>Unsatisfactory: Browser, Python, transpiler, bundler, etc. warnings. Code is poorly organized God files/classes/functions. Have to search or grep code to find the code responsible for something.</li>
-<li>Attempt: HTML errors, browser errors, CSS errors, JS errors, Python errors. Code is disorganized. Code is hard to find. Code is missing.</li>
+<li>Unsatisfactory<ul>
+<li>User Stories UI: At least ¼ of the user stories are usable using the UI.</li>
+<li>User Stories API: At least 1/4ths of the user stories with a relevant API are usable using the API. Very close to adhering to the specification.</li>
+<li>Test Cases: At least ¼ of the user have tests written, most pass tests.</li>
+<li>UI Design: HTML &amp; CSS exists. Major UI issues. Hard to navigate. Hard to understand. There is some way to do almost all the ½ of the user stories.</li>
+<li>Tool use: Limited of tool use. Only one teammate seems to be working at a time. Git is disorganized.</li>
+<li>TA Walkthrough: Many snags, bugs, last second workarounds, small missing pieces.</li>
+<li>Web Service API Documentation: Low on details. Many things are unclear. Every endpoint is documented. Missing some example requests and responses. If using automated documentation generation, there is extra documentation added on top of that.</li>
+<li>Standards &amp; Code Style: Browser, Python, transpiler, bundler, etc. warnings. Code is poorly organized God files/classes/functions. Have to search or grep code to find the code responsible for something.</li>
+</ul>
+</li>
+<li>Attempt<ul>
+<li>User Stories UI: Less than ¼ of the user stories are usable using the UI or major deviations from the user stories.</li>
+<li>User Stories API: Less than ¼ of the user stories are usable using the API or major deviations from the specification.</li>
+<li>Test Cases: Less than ¼ of the user stories are usable using the API or major deviations from the specification, or test cases are present but do not actually test what they say they are testing.</li>
+<li>UI Design: Some pieces of the HTML &amp; CSS exist, but some pieces of the HTML &amp; CSS are missing that would be needed to do ½ of the user stories.</li>
+<li>Tool use: Very limited of tool use. Git is disorganized. Git exists but it has built artifacts in it. Git has commits that do not contribute anything, but have large diffs, such as changing whitespace of every line in a file.<!-- @LT-IGNORE:ENGLISH_WORD_REPEAT_BEGINNING_RULE@ --></li>
+<li>TA Walkthrough: Showstopper bugs. Major missing pieces.</li>
+<li>Web Service API Documentation: Major pieces of documentation are missing or only has autogenerated documentation. </li>
+<li>Standards &amp; Code Style: HTML errors, browser errors, CSS errors, JS errors, Python errors. Code is disorganized. Code is hard to find. Code is missing.</li>
+</ul>
+</li>
+<li>No attempt<ul>
+<li>User Stories UI: No user stories are usable using the UI.</li>
+<li>User Stories API: No user stories are usable using the API.</li>
+<li>Test Cases: No test cases are present.</li>
+<li>UI Design: No HTML/CSS exists.</li>
+<li>Tool use: Used file sharing, email attachments, sending files/code through discord, chat, messengers, or similar tools to work together. Git exists but it not being used, or it is being misused.</li>
+<li>TA Walkthrough: No walkthrough. Unable to demo. </li>
+<li>Web Service API Documentation: Documentation is missing or unable to find documentation. </li>
+<li>Standards &amp; Code Style: Project doesn't run/load.</li>
 </ul>
 </li>
 </ul>
@@ -1765,7 +2165,7 @@ shortcut to get the image if authenticated to see it.</p>
 <ul>
 <li>Every team member must submit the link to eclass.</li>
 </ul>
-<h5 id="marking_1">Marking</h5>
+<h5 id="marking_2">Marking</h5>
 <ul>
 <li>7 Marks</li>
 <li>Total Project<ul>
@@ -1865,7 +2265,7 @@ designing the project</li>
 <p>Don't forget to push the tag to GitHub.</p>
 <p>Submit only the link to the tag in the following format:</p>
 <p>https://github.com/uofa-cmput404/w24-project-example-team/tree/part2</p>
-<h5 id="marking_2">Marking</h5>
+<h5 id="marking_3">Marking</h5>
 <ul>
 <li>7 Marks</li>
 <li>Total Project<ul>
@@ -1948,7 +2348,7 @@ designing the project</li>
 <p>Don't forget to push the tag to GitHub.</p>
 <p>Submit only the link to the tag in the following format:</p>
 <p>https://github.com/uofa-cmput404/w24-project-example-team/tree/part3</p>
-<h5 id="marking_3">Marking</h5>
+<h5 id="marking_4">Marking</h5>
 <ul>
 <li>5 Marks</li>
 <li>Total Project<ul>
@@ -2037,7 +2437,7 @@ off your app.</li>
 <li>You may ask thoughtful questions after each presentation.</li>
 <li>Wait until after questions to applaud. Otherwise, everyone ends up awkwardly applauding each team twice.</li>
 </ul>
-<h5 id="marking_4">Marking</h5>
+<h5 id="marking_5">Marking</h5>
 <ul>
 <li>10 Marks</li>
 <li>Total Project<ul>
@@ -2145,6 +2545,7 @@ off your app.</li>
 </ul>
 <h3 id="license">License</h3>
 <div class="highlight"><pre><span></span><code> <span class="k">*</span> Parts of this document are derived from the W3C Documentation for Activity Pub
+ <span class="k">*</span> Additional Authors: Karim Baaba, Ali Sajedi, Kyle Richelhoff, Chris Pavlicek, Derek Dowling, Olexiy Berjanskii, Erin Torbiak, Abram Hindle, Braedy Kuzma, Nhan Nguyen, Hazel Victoria Campbell
  <span class="k">*</span> Copyright © 2018 W3C® (MIT, ERCIM, Keio, Beihang). W3C liability, trademark and permissive document license rules apply. 
  <span class="k">*</span> https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
 </code></pre></div>

@@ -17,7 +17,8 @@
     <meta name="tags" content="curl" />
     <meta name="tags" content="http" />
     <meta name="tags" content="socket" />
-    <meta name="tags" content="socketserver <!-- @LT-IGNORE:MORFOLOGIK_RULE_EN_CA(http)@ -->" />
+    <meta name="tags" content="socketserver" />
+    <meta name="tags" content="labs <!-- @LT-IGNORE:MORFOLOGIK_RULE_EN_CA(http)@ -->" />
 
 </head>
 
@@ -57,9 +58,8 @@
 <li><a href="#task-1-implement-the-http-client">Task 1: Implement the HTTP Client</a><ul>
 <li><a href="#client-requirements">Client Requirements</a></li>
 <li><a href="#import-the-python-socket-module">Import the python socket module</a></li>
-<li><a href="#create-a-context-manager">Create a context manager</a></li>
-<li><a href="#correctly-parse-url">Correctly parse URL</a></li>
 <li><a href="#connect-to-a-remote-socket-at-specified-address">Connect to a remote socket at specified address</a></li>
+<li><a href="#correctly-parse-url">Correctly parse URL</a></li>
 <li><a href="#prepare-your-request">Prepare your request</a></li>
 <li><a href="#pass-your-request-byte-as-a-parameter-to-socketsendall-function">Pass your request byte as a parameter to socket.sendall function</a></li>
 <li><a href="#process-and-receive-response">Process and receive response</a></li>
@@ -185,13 +185,18 @@
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">socket</span>
 </code></pre></div>
 
-<h4 id="create-a-context-manager">Create a context manager</h4>
-<p>Create a context manager to ensure you close the socket once the block of code is executed.
-Utilize the context manager on the socket module to create a new socket object. This object has an overloaded constructor. The two arguments to the constructor are the address family and the socket type. (i.e. socket.AF_INET and socket.SOCK_STREAM)</p>
+<h4 id="connect-to-a-remote-socket-at-specified-address">Connect to a remote socket at specified address</h4>
+<p>Use  the socket module to create a new socket object. This object has an overloaded constructor. The two arguments to the constructor are the address family and the socket type. (i.e. socket.AF_INET and socket.SOCK_STREAM)</p>
 <ol>
 <li>socket.AF_INET : represents the address type (for IPv4, IPv6, and DNS names)</li>
-<li>socket.SOCK_STREAM : represents the socket type (TCP socket)</li>
+<li>socket.SOCK_STREAM : represents the socket type (TCP socket)
+Connect to a remote socket at specified address. This uses the socket.connect(address) method to connect with the host address. The address is a tuple that holds the host or IP address and the port number of the server</li>
 </ol>
+<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span><span class="n">socket</span><span class="o">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span> <span class="k">as</span> <span class="n">sock</span><span class="p">:</span>
+   <span class="n">sock</span><span class="o">.</span><span class="n">connect</span><span class="p">((</span><span class="n">HOST</span><span class="p">,</span><span class="n">PORT</span><span class="p">))</span>
+   <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;connected to server at host </span><span class="si">{</span><span class="n">HOST</span><span class="si">}</span><span class="s2"> and port </span><span class="si">{</span><span class="n">PORT</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
 <h4 id="correctly-parse-url">Correctly parse URL</h4>
 <ol>
 <li>Make sure it starts with <code>http://</code> or stop with an error.<ul>
@@ -209,13 +214,6 @@ Utilize the context manager on the socket module to create a new socket object. 
 </li>
 <li>The path and query params must be correctly percent encoded.</li>
 </ol>
-<h4 id="connect-to-a-remote-socket-at-specified-address">Connect to a remote socket at specified address</h4>
-<p>Connect to a remote socket at specified address. This uses the socket.connect(address) method to connect with the host address. The address is a tuple that holds the host or IP address and the port number of the server</p>
-<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span><span class="n">socket</span><span class="o">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span> <span class="k">as</span> <span class="n">sock</span><span class="p">:</span>
-   <span class="n">sock</span><span class="o">.</span><span class="n">connect</span><span class="p">((</span><span class="n">HOST</span><span class="p">,</span><span class="n">PORT</span><span class="p">))</span>
-   <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;connected to server at host </span><span class="si">{</span><span class="n">HOST</span><span class="si">}</span><span class="s2"> and port </span><span class="si">{</span><span class="n">PORT</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</code></pre></div>
-
 <h4 id="prepare-your-request">Prepare your request</h4>
 <p>This would be correctly formatted to include the HTTP method, protocol, Host address, Content-Type and Content length and finally the data.</p>
 <ul>
@@ -375,9 +373,12 @@ Postman should receive the correct content, with appropriate status codes and he
 <li>If a client sends a GET request to http://localhost:8000/index.html, the server should send them the contents of www/index.html in the HTTP response body.</li>
 <li>If a client sends a GET request to http://localhost:8000/base.css, the server should send them the contents of www/base.css in the HTTP response body.</li>
 <li>If a client sends a GET request to http://localhost:8000/deep/index.html, the server should send them the contents of www/deep/index.html in the HTTP response body.</li>
-<li>If a client sends a GET request to http://localhost:8000/deep/, the server should send them the contents of www/deep/index.html in the HTTP response body. (the url ends with a / and deep is a directory, therefore the specifications say to return the index.html file in the deep directory), you would also need to additionally send the correct redirect related headers and status code that would go to the index.html equivalent of the directory it's requesting.</li>
+<li>If a client sends a GET request to http://localhost:8000/deep/, the server should send them the contents of www/deep/index.html in the HTTP response body. (and deep is a directory therefore the specifications say to return the index.html file in the deep directory), you would also need to additionally send the correct redirect related headers and status code if the path does not end in a / but is a directory.</li>
 <li>The names of the directories/files aren't restricted to the files autogenerated. If I put a file in the www folder at www/test/test2/test3.css, then it should be accessible at http://localhost:8000/test/test2/test3.css</li>
 <li>To get an overview of HTTP requests and response you can visit-  https://developer.mozilla.org/en-US/docs/Web/HTTP </li>
+<li>Check for both ISO-8859-1 and UTF-8 as some servers give a response in ISO-8859-1</li>
+<li>For this lab you do not need to construct an IPv6 header. You only need to construct an HTTP header.</li>
+<li>The client only needs to percent encode. The server needs to percent decode.</li>
 </ul>
 <h3 id="restrictions">Restrictions</h3>
 <p>Violation of the restrictions will result in a mark of zero.</p>
@@ -393,8 +394,10 @@ Postman should receive the correct content, with appropriate status codes and he
 <li>Your code must not modify the code out of its scope (must not do dependency injection), must not run anything at the top level (outside of functions/classes/defining constants), and must not try to work around or modify the test suite.</li>
 </ul>
 <h3 id="submission-instructions">Submission Instructions</h3>
-<p>Make sure you push to GitHub classroom <strong>BEFORE 4PM on the day of your lab section!</strong> You will not be able to push after that!</p>
-<p>Submit a link to your repo in the form <code>https://github.com/uofa-cmput404/w24-h0x-labsignment-http-yourgithubname</code> on eClass. <strong>Do not</strong> submit a link to a branch, a file, or the clone URL. If you do not do this we will not know which GitHub submission is yours.</p>
+<p>Make sure you push to GitHub classroom <strong>BEFORE the deadline!</strong> You will not be able to push after that!</p>
+<p>Submit a link to your repo in the form <code>https://github.com/uofa-cmput404/w24-h0x-labsignment-http-yourgithubname</code> on eClass. <strong>Do not</strong> submit a link to a branch, a file, or the clone URL. </p>
+<p class="warning">If you do not submit a link to your repo on eClass using the correct format above, you will get a zero.</p>
+
 <h3 id="tips">Tips</h3>
 <h4 id="ubuntu-on-windows">Ubuntu on Windows</h4>
 <p>Install Ubuntu on Windows using WSL2. </p>
@@ -577,7 +580,8 @@ Go to Start and enter cmd in the search bar. Click Command Prompt</p>
             <a href="../tag/curl.html">curl</a>
             <a href="../tag/http.html">http</a>
             <a href="../tag/socket.html">socket</a>
-            <a href="../tag/socketserver.html">socketserver <!-- @LT-IGNORE:MORFOLOGIK_RULE_EN_CA(http)@ --></a>
+            <a href="../tag/socketserver.html">socketserver</a>
+            <a href="../tag/labs.html">labs <!-- @LT-IGNORE:MORFOLOGIK_RULE_EN_CA(http)@ --></a>
     </p>
   </footer>
   </article>

@@ -45,14 +45,6 @@
  
   </header>
   <hr>
-<style>
-    html body main {
-        background-image: url("/theme/draft.png");
-        background-repeat: repeat;
-        background-size: 100%;
-    }
-</style>
-
 <div class="toc">
 <ul>
 <li><a href="#description">Description</a><ul>
@@ -77,13 +69,16 @@
 <li><a href="#creating-a-django-project">Creating a Django Project</a></li>
 <li><a href="#creating-a-django-app">Creating a Django App</a></li>
 <li><a href="#working-with-models">Working with Models</a></li>
-<li><a href="#using-django-admin">Using Django Admin</a></li>
+<li><a href="#using-django-admin">Using Django Admin</a><ul>
+<li><a href="#task-create-example-multiple-choice-questions">TASK - Create Example Multiple Choice Questions</a></li>
+</ul>
+</li>
 <li><a href="#working-with-views">Working with Views</a></li>
-<li><a href="#making-views-render-model-data">Making views render model data</a></li>
-<li><a href="#namespacing-url-names">Namespacing URL names</a></li>
-<li><a href="#writing-a-simple-form">Writing a simple form</a></li>
+<li><a href="#making-views-render-model-data">Making Views Render Model Data</a></li>
+<li><a href="#namespacing-url-names">Namespacing URL Names</a></li>
+<li><a href="#writing-a-simple-form">Writing a Simple Form</a></li>
 <li><a href="#refactoring-generic-views">Refactoring: Generic Views</a></li>
-<li><a href="#serializing-and-deserializing-queries-optional-but-highly-recommended-to-do">Serializing and Deserializing Queries (Optional, but highly recommended to do)</a></li>
+<li><a href="#serializing-and-deserializing-queries">Serializing and Deserializing Queries</a></li>
 <li><a href="#creating-a-serializer-class">Creating a Serializer Class</a></li>
 <li><a href="#update-our-views-using-our-serializer">Update our views using our Serializer</a></li>
 <li><a href="#updating-the-our-urls-for-the-new-views">Updating the our URLs for the new views</a></li>
@@ -101,6 +96,14 @@
 <li><a href="#checking-your-heroku-app">Checking your heroku app</a></li>
 </ul>
 </li>
+<li><a href="#phase-three-more-features">Phase Three: More Features</a><ul>
+<li><a href="#task-question-creation-route">TASK - Question Creation Route</a></li>
+<li><a href="#task-comment-section">TASK - Comment Section</a></li>
+<li><a href="#task-markdown-comments">TASK - Markdown Comments</a></li>
+<li><a href="#task-add-some-multiple-choice-questions-on-heroku">TASK - Add Some Multiple Choice Questions on Heroku</a></li>
+<li><a href="#deploy-again">Deploy Again</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#restrictions">Restrictions</a></li>
@@ -111,38 +114,42 @@
 </ul>
 </div>
 <h3 id="description">Description</h3>
-<p>Big lab! This lab contains two phases. In Phase One, you will build a simple Django website. Understand the fundamentals of Django's MVC architecture using the built in models and views.
-In Phase Two, you will deploy the Django application to <a href="https://www.heroku.com/">Heroku</a>. Understand the reasoning behind Platform as a Service (PaaS) businesses like Heroku. You may follow the official documentation.</p>
+<p>This lab contains three phases. In Phase one, you will build a simple Django website. Understand the fundamentals of Django's MVC architecture using the built-in models and views.</p>
+<p>In Phase two, you will deploy the Django application to <a href="https://www.heroku.com/">Heroku</a>. Understand the reasoning behind Platform as a Service (PaaS) businesses like Heroku. You may follow the official documentation.</p>
+<p>In Phase three, you will apply the lab material to add a new API route and a comment section to your polls application!</p>
 <h4 id="learning-goals">Learning Goals</h4>
 <ul>
 <li>Using esbuild to bundle and create static files with NPM packages for Django to server using whitenoise from Heroku.</li>
 <li>Django config (Level 2)</li>
 <li>Django routes (Level 2)</li>
-<li>Django models</li>
+<li>Django models (Level 2)</li>
 <li>Using Django with Postgres backend on Heroku</li>
 <li>Using Django with Sqlite backend for local testing</li>
 </ul>
 <h4 id="warning">Warning!</h4>
-<p>The University's firewall (UWS) blocks new domains for 24 hours to prevent scam domains.</p>
-<p>This <em>might</em> affect your Heroku domain.The University's firewall is also inconsistent so it doesn't <em>always</em> seem to do this.
-We have complained about this every semester since forever, but IST simply does not care.</p>
-<p>Double check that your Heroku is not blocked before your walkthrough. We will <strong>not</strong> give you an extension if you Heroku is blocked.</p>
+<p class="longWarning">
+There will be no walkthrough for this lab. <strong>PLEASE MAKE SURE YOUR CODE IS WELL COMMENTED!</strong> This will help the TAs to be able to understand your code when they are marking your lab.
+</p>
+
+<!-- They aren't walking us through this lab bc of holidays. -->
+
+<p>This <em>might</em> affect your Heroku domain. The University's firewall is also inconsistent so it doesn't <em>always</em> seem to do this.
+IST is looking into it, but, I don't know how long that will take. IST claims that this firewall
+triggers after "a proprietary amount of activity." So, please expect that <strong>your Heroku could become blocked by UWS at any time.</strong> We will <strong>not</strong> give you an extension if your Heroku is blocked.</p>
+<!-- Double check that your Heroku is not blocked before your walkthrough. -->
+
 <p>You have several options to make sure this doesn't happen:</p>
 <ul>
-<li>Connect to your Heroku with your web browser on UWS at least 2 days before your walkthrough.<ul>
-<li>It doesn't have to be fully working, the firewall just needs to see that the domain does in fact exist.</li>
-</ul>
-</li>
-<li>Bypass the Unversity's DNS server by adding the hostname and IP address of your heroku site to your hosts file.<ul>
-<li>Follow the steps of the "Checking your heroku app" below.</li>
+<li>Bypass the University's DNS server by adding the hostname and IP address of your Heroku site to your hosts file.<ul>
+<li>Follow the steps of the "Checking your Heroku app" below.</li>
 <li>Then add it your hosts file:<ul>
 <li>It uses the format <code>ip-address host-name host-name</code> on each line.<ul>
 <li>Example (has CNAME): <code>46.137.15.86 ie02.ingress.herokuapp.com example-app-1234567890ab.herokuapp.com</code></li>
 <li>Example (no CNAME): <code>34.201.81.34 lab3test-fbb81150e720.herokuapp.com</code></li>
 </ul>
 </li>
-<li>Linux: edit /etc/hosts as superuser. and add it in the format .</li>
-<li>MacOS: <a href="https://kinsta.com/knowledgebase/edit-mac-hosts-file/">https://kinsta.com/knowledgebase/edit-mac-hosts-file/</a></li>
+<li>Linux: edit /etc/hosts as superuser.</li>
+<li>macOS: <a href="https://kinsta.com/knowledgebase/edit-mac-hosts-file/">https://kinsta.com/knowledgebase/edit-mac-hosts-file/</a></li>
 <li>Windows 10/11: <a href="https://allthings.how/how-to-edit-hosts-file-in-windows-11/">https://allthings.how/how-to-edit-hosts-file-in-windows-11/</a></li>
 </ul>
 </li>
@@ -151,11 +158,18 @@ We have complained about this every semester since forever, but IST simply does 
 </li>
 <li>Use a VPN service or proxy.</li>
 <li>Walkthrough us your lab over using another internet not provided by the University while in the lab.</li>
+<li>Windows: <a href="https://learn.microsoft.com/en-us/windows-server/networking/dns/doh-client-support">enable DoH</a>.</li>
+<li>Firefox: <a href="https://support.mozilla.org/en-US/kb/firefox-dns-over-https">enable DoH</a>.</li>
+<li>Chrome: <a href="https://simpledns.plus/kb/195-how-to-enable-dns-over-https-doh-in-chrome">enable DoH</a><ul>
+<li>Edge: Should be similar to chrome.</li>
+<li>Other chrome-based browsers: should be similar to chrome.</li>
+</ul>
+</li>
 </ul>
 <h3 id="getting-started">Getting Started</h3>
 <h4 id="prepare-your-repo">Prepare your Repo</h4>
 <ol>
-<li>Get the github classroom link from eClass, create your assignment, and clone it.</li>
+<li>Get the GitHub classroom link from eClass, create your assignment, and clone it.</li>
 <li>Create an appropriate <code>.gitignore</code> file, to prevent unwanted files being commited to your repository.</li>
 </ol>
 <p>Place this gitignore within the root of your project. You can combine <a href="https://github.com/github/gitignore/blob/main/Python.gitignore">this one</a> and <a href="https://github.com/github/gitignore/blob/main/Node.gitignore">this one</a> and <a href="https://github.com/django/django/blob/main/.gitignore">this one</a> for your django+node project. Double check you're not staging any unwanted files before you commit. The <code>git status</code> command can help with that.</p>
@@ -186,21 +200,34 @@ We have complained about this every semester since forever, but IST simply does 
 <p>The first command will create a directory named <code>venv</code>. Contained in the directory is your project dependency installations and the <code>activate</code> script to enter the virtual environment. When you want to exit the environment, run <code>deactivate</code>.</p>
 <h3 id="lab-instructions">Lab Instructions</h3>
 <h4 id="phase-one-django-polls-app">Phase One: Django Polls App</h4>
+<p><strong>For phase one of this lab,</strong> you will be creating a polls application that allows end users to be able to create and be able to answer multiple choice polls.</p>
 <h5 id="creating-a-django-project">Creating a Django Project</h5>
 <ul>
-<li>Official Docs <a href="https://docs.djangoproject.com/en/5.0/intro/overview/">Overview</a>, <a href="https://docs.djangoproject.com/en/5.0/intro/install/">Installation</a></li>
+<li>Based on Official Docs <a href="https://docs.djangoproject.com/en/5.0/intro/overview/">Overview</a>, <a href="https://docs.djangoproject.com/en/5.0/intro/install/">Installation</a></li>
 </ul>
-<p>Make sure to use a <strong>virtual environment</strong> for this lab!</p>
+<p>Make sure to use a <strong>virtual environment</strong> for this lab and that it is activated as shown above!</p>
+<div class="highlight"><pre><span></span><code>echo &quot;Django&gt;=5.0.1&quot; &gt; requirements.txt
+python3.11 -m pip install -r requirements.txt
+</code></pre></div>
+
+<p><strong>If you are encountering an issue with this command in regards to a library called <code>html5lib</code> you will need to update your pip version first.</strong></p>
+<div class="highlight"><pre><span></span><code>wget https://bootstrap.pypa.io/get-pip.py -O ./get-pip.py
+python3.11 ./get-pip.py
+</code></pre></div>
+
 <p>If you're doing this on <strong>Windows</strong> please make sure to follow the Windows
 instructions for Lab 1 before starting this lab!</p>
-<p>Follow Labsignments 2 to create a virtual environment and install Django. You can tell Django is installed and which version by running the following command in a shell prompt:</p>
+<p>You can tell Django is installed and which version by running the following command in a shell prompt:</p>
 <div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>django<span class="w"> </span>--version
 </code></pre></div>
 
 <p>Initialize a new Django project in your repo.</p>
 <aside class="option1">
 <p>Recommended option: Django project in root of repo.</p>
-<div class="highlight"><pre><span></span><code>django-admin<span class="w"> </span>startproject<span class="w"> </span>lab3<span class="w"> </span>.
+<div class="highlight"><pre><span></span><code><span class="c1"># We are creating a project named &quot;lab3&quot; in the relative directory &quot;.&quot; (our current directory)</span>
+django-admin<span class="w"> </span>startproject<span class="w"> </span>lab3<span class="w"> </span>.
+
+<span class="c1"># The manage.py file is a script included in all Django projects that lets you run various tasks (e.g. starting the server)</span>
 python<span class="w"> </span>manage.py<span class="w"> </span>runserver
 </code></pre></div>
 
@@ -237,35 +264,40 @@ need to use the noted alternate instructions. Your repo would look like this, wi
 <hr>
 <h5 id="creating-a-django-app">Creating a Django App</h5>
 <ul>
-<li>Official Docs <a href="https://docs.djangoproject.com/en/5.0/intro/tutorial01/">Part 1</a></li>
+<li>Based on Official Docs <a href="https://docs.djangoproject.com/en/5.0/intro/tutorial01/">Part 1</a> (Naming may vary)</li>
 </ul>
 <p>Create a new application within your django project called <strong>polls</strong>.</p>
 <div class="highlight"><pre><span></span><code>python<span class="w"> </span>manage.py<span class="w"> </span>startapp<span class="w"> </span>polls
 </code></pre></div>
 
-<p>Modify the <em>polls/views.py</em> file to look like the following.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponse</span>
-
-<span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="s2">&quot;Hello, world. You&#39;re at the polls index.&quot;</span><span class="p">)</span>
-</code></pre></div>
-
-<p>Create a file at <em>polls/urls.py</em> with the following code.</p>
+<p>Create a file at <em>polls/urls.py</em> with the following code. This will handle incoming traffic to the <code>polls/</code> route that we will be creating in this phase of this lab.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">path</span>
 <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">views</span>
 
+<span class="c1"># urlpatterns contains all of the routes that this application supports routing for.</span>
+<span class="c1"># this routes traffic from polls/ to the index function that we defined earlier in the views file.</span>
 <span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
     <span class="n">path</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;index&quot;</span><span class="p">),</span>
 <span class="p">]</span>
 </code></pre></div>
 
-<p>Within <code>lab3/urls.py</code> replace it with the following code.</p>
+<p>We will need also need to add a index view for our polls application when it receives traffic at <code>polls/</code>. Modify the <em>polls/views.py</em> file to look like the following.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponse</span>
+
+<span class="c1"># Later on, the index function will be used to handle incoming requests to polls/ and it will return the hello world string shown below.</span>
+<span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="s2">&quot;Hello, world. You&#39;re at the polls index.&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Within <code>lab3/urls.py</code>, we need to modify it to route traffic to our newly added <code>polls/views.py</code>. replace it with the following code.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">django.contrib</span> <span class="kn">import</span> <span class="n">admin</span>
 <span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">include</span><span class="p">,</span> <span class="n">path</span>
 
+<span class="c1"># this urlpatterns is different from the polls urlpatterns because lab3 is a project rather than an app. </span>
+<span class="c1"># This urls.py is the base and forwards requests to the urls.py of the applications</span>
 <span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="n">path</span><span class="p">(</span><span class="s2">&quot;polls/&quot;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="s2">&quot;polls.urls&quot;</span><span class="p">)),</span>
-    <span class="n">path</span><span class="p">(</span><span class="s2">&quot;admin/&quot;</span><span class="p">,</span> <span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">urls</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s2">&quot;polls/&quot;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="s2">&quot;polls.urls&quot;</span><span class="p">)),</span>  <span class="c1"># All requests sent to polls/ should be handled by polls/urls.py</span>
+    <span class="n">path</span><span class="p">(</span><span class="s2">&quot;admin/&quot;</span><span class="p">,</span> <span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">urls</span><span class="p">),</span>    <span class="c1"># Django has a built in admin panel we will use later</span>
 <span class="p">]</span>
 </code></pre></div>
 
@@ -278,9 +310,10 @@ need to use the noted alternate instructions. Your repo would look like this, wi
 <hr>
 <h5 id="working-with-models">Working with Models</h5>
 <ul>
-<li>Official Docs <a href="https://docs.djangoproject.com/en/5.0/intro/tutorial02/">Part 2</a></li>
+<li>Based on Official Docs <a href="https://docs.djangoproject.com/en/5.0/intro/tutorial02/">Part 2</a></li>
 </ul>
-<p>Time to create our first models. Open up <em>settings.py</em> and ensure that the default database is set to <code>sqlite3</code>.</p>
+<p>Time to create our first models for our polls application. Open up <em>settings.py</em> and ensure that the default database is set to <code>sqlite3</code>.</p>
+<p>It should look like this:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Database</span>
 <span class="c1"># https://docs.djangoproject.com/en/5.0/ref/settings/#databases</span>
 
@@ -292,22 +325,24 @@ need to use the noted alternate instructions. Your repo would look like this, wi
 <span class="p">}</span>
 </code></pre></div>
 
-<p>Within <em>polls/models.py</em> include the following code. The attributes defined in each class represent the data fields that the model should store.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
+<p>Within <em>polls/models.py</em> include the following code. Django's ORM allows you to define the properties you want stored in the database for a specific object (you can think of this as like an SQL table!) and provides you the ability to store, retrieve, and delete data from your Django database without having to write the database-specific code yourself. The attributes defined in each class represent the data fields that the model should store in the database.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
 
-<span class="k">class</span> <span class="nc">Question</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
-    <span class="n">question_text</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
-    <span class="n">pub_date</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="s2">&quot;date published&quot;</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">MultipleChoiceQuestion</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">question_text</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>    <span class="c1"># Store the question in a char field in the database</span>
+    <span class="n">pub_date</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="s2">&quot;date published&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">)</span>   <span class="c1"># Store the published date in a datetime field in the database</span>
 
-<span class="k">class</span> <span class="nc">Choice</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
-    <span class="n">question</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Question</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">CASCADE</span><span class="p">)</span>
-    <span class="n">choice_text</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
-    <span class="n">votes</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">MultipleChoiceOption</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">question</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">MultipleChoiceQuestion</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">CASCADE</span><span class="p">)</span>  <span class="c1"># All multiple choice options belong to a multiple choice question</span>
+    <span class="n">choice_text</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>  <span class="c1"># Store the text for this option in the database</span>
+    <span class="n">votes</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>          <span class="c1"># Store the amount of votes this choice has received</span>
 </code></pre></div>
 
-<p>To activate our poll application in our project, add it to the installed apps within <code>lab3/settings.py</code>. This file already exists, you do not need to create it.</p>
+<p>With this, we are creating both a <code>MultipleChoiceQuestion</code> and <code>MultipleChoiceOption</code> model. Multiple Choice Questions have options to choose from. Because this is a RDBMS, each <code>MultipleChoiceOption</code> links to a specific <code>MultipleChoiceQuestion</code> instance. Which is why we use <code>models.ForeignKey</code> to specify a foreign reference to the <code>MultipleChoiceQuestion</code> model. For more information, you can check out the official documentation <a href="https://docs.djangoproject.com/en/5.1/topics/db/examples/many_to_one/">here</a>.</p>
+<p>To activate our poll application in our project, we need to add it to the installed apps within <code>lab3/settings.py</code>. </p>
 <div class="highlight"><pre><span></span><code><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s2">&quot;polls.apps.PollsConfig&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;polls&quot;</span><span class="p">,</span>   <span class="c1"># Include this line in your INSTALLED_APPS variable!</span>
     <span class="s2">&quot;django.contrib.admin&quot;</span><span class="p">,</span>
     <span class="s2">&quot;django.contrib.auth&quot;</span><span class="p">,</span>
     <span class="s2">&quot;django.contrib.contenttypes&quot;</span><span class="p">,</span>
@@ -318,7 +353,8 @@ need to use the noted alternate instructions. Your repo would look like this, wi
 </code></pre></div>
 
 <p>Make the database migrations.</p>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>manage.py<span class="w"> </span>makemigrations<span class="w"> </span>polls
+<div class="highlight"><pre><span></span><code><span class="c1"># Database migrations are responsible for applying your model definitions to the actual database! It&#39;s important to note that this does not modify your database yet.</span>
+python<span class="w"> </span>manage.py<span class="w"> </span>makemigrations<span class="w"> </span>polls
 </code></pre></div>
 
 <p>You should see something similar to the following:</p>
@@ -329,12 +365,13 @@ need to use the noted alternate instructions. Your repo would look like this, wi
 </code></pre></div>
 
 <p>Run the migration command to create the tables in your database.</p>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>manage.py<span class="w"> </span>migrate
+<div class="highlight"><pre><span></span><code><span class="c1"># This command takes the migrations we created earlier to modify the database, and applies them to the actual database.</span>
+python<span class="w"> </span>manage.py<span class="w"> </span>migrate
 </code></pre></div>
 
-<p>Make sure your <code>.gitignore</code> contains <code>*.sqlite3</code>, and that you don't have db.sqlite3 in your git repo.</p>
+<p>Each Django project starts out using the default SQLite3 database provider, and that data is stored in the <code>db.sqlite3</code> file. Make sure your <code>.gitignore</code> contains <code>*.sqlite3</code>, and that you commit your change so that your <code>db.sqlite3</code> does not get pushed to your github repo.</p>
 <h5 id="using-django-admin">Using Django Admin</h5>
-<p>Create a user that can log into the admin site.</p>
+<p>Django comes with a builtin admin dashboard that allows us to see and modify the model data that we have created. However, we need credentials in order to login to the admin dashboard. Run this command and to create a admin user that can log into the admin site. </p>
 <div class="highlight"><pre><span></span><code>python<span class="w"> </span>manage.py<span class="w"> </span>createsuperuser
 </code></pre></div>
 
@@ -342,29 +379,37 @@ need to use the noted alternate instructions. Your repo would look like this, wi
 <p>Make the polls app modifiable in the admin by editing the <em>polls/admin.py</em> file to be the following:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">django.contrib</span> <span class="kn">import</span> <span class="n">admin</span>
 
-<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Choice</span><span class="p">,</span> <span class="n">Question</span>
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">MultipleChoiceOption</span><span class="p">,</span> <span class="n">MultipleChoiceQuestion</span>
 
-<span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">Choice</span><span class="p">)</span>
-<span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">Question</span><span class="p">)</span>
+<span class="c1"># These lines register your models with the django admin panel. If you do not include these lines, the data associated with these models will not be visible in your admin panel!</span>
+<span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">MultipleChoiceQuestion</span><span class="p">)</span>
+<span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">MultipleChoiceOption</span><span class="p">)</span>
 </code></pre></div>
 
 <p>Start the development server again and go to <code>/admin</code> on your local domain – e.g., <a href="http://localhost:8000/admin/">http://localhost:8000/admin/</a>. You should see the admin’s login screen and can login with your admin account.</p>
 <div class="highlight"><pre><span></span><code>python<span class="w"> </span>manage.py<span class="w"> </span>runserver
+<span class="c1"># navigate to /admin</span>
 </code></pre></div>
 
+<p>After logging in, you should see both a <code>MultipleChoiceQuestion</code> and <code>MultipleChoiceOption</code> link.</p>
+<h6 id="task-create-example-multiple-choice-questions">TASK - Create Example Multiple Choice Questions</h6>
+<p>The admin panel lets us view our model data in a visual way, however we havent't created any new data! In the admin panel, click "+ Add" next to "Multiple choice questions" and create an example multiple choice question. Similarly, do the same process for "Multiple choice options", except to create options for the "Multiple choice options". </p>
+<p><strong>Your task</strong> is to create some example <code>MultipleChoiceQuestion</code> and <code>MultipleChoiceOption</code> objects in the admin panel. This will be important later on as we create our poll application!</p>
 <h5 id="working-with-views">Working with Views</h5>
 <ul>
-<li>Official Docs <a href="https://docs.djangoproject.com/en/5.0/intro/tutorial03/">Part 3</a></li>
+<li>Based on Official Docs <a href="https://docs.djangoproject.com/en/5.0/intro/tutorial03/">Part 3</a></li>
 </ul>
-<p>Add some additional views to the <em>polls/views.py</em> file. Include the following functions:</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">detail</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">question_id</span><span class="p">):</span>
+<p>Now that we have some multiple choice questions in the database, let's implement some logic to actually see and answer our polls! Add some additional views to the <em>polls/views.py</em> file. Include the following functions:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># You&#39;ll notice that these functions include a question_id parameter in addition to the request parameter. The question_id parameter is user provided and is parsed from the url by the urlpatterns route in the next code snippet. </span>
+
+<span class="k">def</span> <span class="nf">detail</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">question_id</span><span class="p">):</span>   <span class="c1"># http://localhost:8000/wiki/polls/5/</span>
     <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="s2">&quot;You&#39;re looking at question </span><span class="si">%s</span><span class="s2">.&quot;</span> <span class="o">%</span> <span class="n">question_id</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">results</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">question_id</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">results</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">question_id</span><span class="p">):</span>  <span class="c1"># http://localhost:8000/wiki/polls/5/results/</span>
     <span class="n">response</span> <span class="o">=</span> <span class="s2">&quot;You&#39;re looking at the results of question </span><span class="si">%s</span><span class="s2">.&quot;</span>
     <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="n">response</span> <span class="o">%</span> <span class="n">question_id</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">vote</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">question_id</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">vote</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">question_id</span><span class="p">):</span>     <span class="c1"># http://localhost:8000/wiki/polls/5/vote/</span>
     <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="s2">&quot;You&#39;re voting on question </span><span class="si">%s</span><span class="s2">.&quot;</span> <span class="o">%</span> <span class="n">question_id</span><span class="p">)</span>
 </code></pre></div>
 
@@ -374,27 +419,27 @@ need to use the noted alternate instructions. Your repo would look like this, wi
 <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">views</span>
 
 <span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="c1"># ex: /polls/</span>
+    <span class="c1"># ex: http://localhost:8000/polls/</span>
     <span class="n">path</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;index&quot;</span><span class="p">),</span>
-    <span class="c1"># ex: /polls/5/</span>
+    <span class="c1"># ex: http://localhost:8000/polls/5/</span>
     <span class="n">path</span><span class="p">(</span><span class="s2">&quot;&lt;int:question_id&gt;/&quot;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">detail</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;detail&quot;</span><span class="p">),</span>
-    <span class="c1"># ex: /polls/5/results/</span>
+    <span class="c1"># ex: http://localhost:8000/polls/5/results/</span>
     <span class="n">path</span><span class="p">(</span><span class="s2">&quot;&lt;int:question_id&gt;/results/&quot;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">results</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;results&quot;</span><span class="p">),</span>
-    <span class="c1"># ex: /polls/5/vote/</span>
+    <span class="c1"># ex: http://localhost:8000/polls/5/vote/</span>
     <span class="n">path</span><span class="p">(</span><span class="s2">&quot;&lt;int:question_id&gt;/vote/&quot;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">vote</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;vote&quot;</span><span class="p">),</span>
 <span class="p">]</span>
 </code></pre></div>
 
-<p>Take a look in your browser, at <code>/polls/34/</code>. It’ll run the detail() function and display whatever ID you provide in the URL. Try <code>/polls/34/results/</code> and <code>/polls/34/vote/</code> too – these will display the placeholder results and voting pages.</p>
+<p>Take a look in your browser, at <code>http://localhost:8000/polls/34/</code>. It’ll run the detail() function and display whatever ID you provide in the URL. Try <code>http://localhost:8000/polls/34/results/</code> and <code>http://localhost:8000/polls/34/vote/</code> too – these will display the placeholder results and voting pages.</p>
 <hr>
-<h5 id="making-views-render-model-data">Making views render model data</h5>
+<h5 id="making-views-render-model-data">Making Views Render Model Data</h5>
 <p>Update the <em>polls/views.py</em> <code>index</code> method so the questions are returned.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Change the imports to this!</span>
 <span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponse</span>
-<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Question</span>
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">MultipleChoiceQuestion</span>
 
 <span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
-    <span class="n">latest_question_list</span> <span class="o">=</span> <span class="n">Question</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s2">&quot;-pub_date&quot;</span><span class="p">)[:</span><span class="mi">5</span><span class="p">]</span>
+    <span class="n">latest_question_list</span> <span class="o">=</span> <span class="n">MultipleChoiceQuestion</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s2">&quot;-pub_date&quot;</span><span class="p">)[:</span><span class="mi">5</span><span class="p">]</span>
     <span class="n">output</span> <span class="o">=</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">q</span><span class="o">.</span><span class="n">question_text</span> <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">latest_question_list</span><span class="p">])</span>
     <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
 
@@ -406,7 +451,7 @@ need to use the noted alternate instructions. Your repo would look like this, wi
 touch<span class="w"> </span>polls/templates/polls/index.html
 </code></pre></div>
 
-<p>Within the newly created empty <em>polls/templates/polls/index.html</em> file, write the following.</p>
+<p>Within the newly created empty <em>polls/templates/polls/index.html</em> file, write the following. This HTML template will iterate through every single question in the <code>latest_question_list</code> variable we created above, and render an HTML list element with a link to view the question!</p>
 <div class="highlight"><pre><span></span><code>{% if latest_question_list %}
     <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
     {% for question in latest_question_list %}
@@ -422,25 +467,26 @@ touch<span class="w"> </span>polls/templates/polls/index.html
 <div class="highlight"><pre><span></span><code><span class="c1"># Change the imports to this!</span>
 <span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponse</span>
 <span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span>
-<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Question</span>
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">MultipleChoiceQuestion</span>
 
 <span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
-    <span class="n">latest_question_list</span> <span class="o">=</span> <span class="n">Question</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s2">&quot;-pub_date&quot;</span><span class="p">)[:</span><span class="mi">5</span><span class="p">]</span>
+    <span class="n">latest_question_list</span> <span class="o">=</span> <span class="n">MultipleChoiceQuestion</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s2">&quot;-pub_date&quot;</span><span class="p">)[:</span><span class="mi">5</span><span class="p">]</span>
     <span class="n">context</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;latest_question_list&quot;</span><span class="p">:</span> <span class="n">latest_question_list</span><span class="p">}</span>
     <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s2">&quot;polls/index.html&quot;</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
 
 <span class="c1"># Do not modify the rest of the views</span>
 </code></pre></div>
 
+<p>If you goto <code>http://localhost:8000/polls/</code> you should be able to see a list of the questions that you had created in earlier in the lab in the admin panel!</p>
 <p>Add a new template file for the poll details view.</p>
 <div class="highlight"><pre><span></span><code>touch<span class="w"> </span>polls/templates/polls/detail.html
 </code></pre></div>
 
-<p>For the newly created template in <em>polls/templates/polls/detail.html</em>, update the content with the template tag for our question:</p>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>{{ question.question_text }}<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<p>For the newly created template in <em>polls/templates/polls/detail.html</em>, update the content with the HTML code for our question:</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>{{ question.question_text }}<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>   <span class="cm">&lt;!-- Display the question&#39;s text --&gt;</span>
 <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
-{% for choice in question.choice_set.all %}
-    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>{{ choice.choice_text }}<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+{% for choice in question.multiplechoiceoption_set.all %}
+    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>{{ choice.choice_text }}<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>   <span class="cm">&lt;!-- Display each option&#39;s text --&gt;</span>
 {% endfor %}
 <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
 </code></pre></div>
@@ -449,16 +495,16 @@ touch<span class="w"> </span>polls/templates/polls/index.html
 <div class="highlight"><pre><span></span><code><span class="c1"># Change the imports to this!</span>
 <span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponse</span>
 <span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span><span class="p">,</span> <span class="n">get_object_or_404</span>
-<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Question</span>
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">MultipleChoiceQuestion</span>
 
 <span class="c1"># ...</span>
 
 <span class="k">def</span> <span class="nf">detail</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">question_id</span><span class="p">):</span>
-    <span class="n">question</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">Question</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="n">question_id</span><span class="p">)</span>
+    <span class="n">question</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">MultipleChoiceQuestion</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="n">question_id</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s2">&quot;polls/detail.html&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;question&quot;</span><span class="p">:</span> <span class="n">question</span><span class="p">})</span>
 </code></pre></div>
 
-<p>Remove the hardcoded urls that we specified in the <em>polls/templates/polls/index.html</em> file and replace it with at emplate tag referencing our url.</p>
+<p>Remove the hardcoded urls that we specified in the <em>polls/templates/polls/index.html</em> file and replace it with a template tag referencing our url.</p>
 <div class="highlight"><pre><span></span><code><span class="cm">&lt;!-- old --&gt;</span>
 <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;/polls/{{ question.id }}/&quot;</span><span class="p">&gt;</span>{{ question.question_text }}<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
 
@@ -467,13 +513,14 @@ touch<span class="w"> </span>polls/templates/polls/index.html
 </code></pre></div>
 
 <hr>
-<h5 id="namespacing-url-names">Namespacing URL names</h5>
+<h5 id="namespacing-url-names">Namespacing URL Names</h5>
+<p>As a general good practice, you should always namespace your urls so that it is easier to reference specific paths in the case of a conflict between two apps. e.g. imagine if I also had path named <code>index</code> in another app called <code>poll2</code>. For functions that depend on the name of a specific path being passed. (E.g. when redirecting to a specific path <code>redirect("index")</code>) having that namespace allows for the two apps to share the same view name, but still allow functions that depend on specific paths to resolve to their correct app implementation. (e.g. for redirecting, I could specify <code>redirect("polls:index")</code> or <code>redirect("polls2:index")</code> depending on which app's index path I want to redirect to)</p>
 <p>Add an <code>app_name</code> in the <em>polls/urls.py</em> file to set the application namespace.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">path</span>
 
 <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">views</span>
 
-<span class="n">app_name</span> <span class="o">=</span> <span class="s2">&quot;polls&quot;</span>
+<span class="n">app_name</span> <span class="o">=</span> <span class="s2">&quot;polls&quot;</span>  <span class="c1"># Add me!</span>
 <span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
     <span class="n">path</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;index&quot;</span><span class="p">),</span>
     <span class="n">path</span><span class="p">(</span><span class="s2">&quot;&lt;int:question_id&gt;/&quot;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">detail</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;detail&quot;</span><span class="p">),</span>
@@ -491,42 +538,42 @@ touch<span class="w"> </span>polls/templates/polls/index.html
 </code></pre></div>
 
 <hr>
-<h5 id="writing-a-simple-form">Writing a simple form</h5>
+<h5 id="writing-a-simple-form">Writing a Simple Form</h5>
 <ul>
-<li>Official Docs <a href="https://docs.djangoproject.com/en/5.0/intro/tutorial04/">Part 4</a></li>
+<li>Based on Official Docs <a href="https://docs.djangoproject.com/en/5.0/intro/tutorial04/">Part 4</a></li>
 </ul>
-<p>Update the <em>polls/templates/polls/detail.html</em> file to match the following:</p>
+<p>While it's great that we can now see a list of all questions we've created, we still don't have a way of actually submitting one of our questions! Update the <em>polls/templates/polls/detail.html</em> file to match the following:</p>
 <div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">form</span> <span class="na">action</span><span class="o">=</span><span class="s">&quot;{% url &#39;polls:vote&#39; question.id %}&quot;</span> <span class="na">method</span><span class="o">=</span><span class="s">&quot;post&quot;</span><span class="p">&gt;</span>
-{% csrf_token %}
-<span class="p">&lt;</span><span class="nt">fieldset</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">legend</span><span class="p">&gt;&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>{{ question.question_text }}<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;&lt;/</span><span class="nt">legend</span><span class="p">&gt;</span>
-    {% if error_message %}<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>{{ error_message }}<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>{% endif %}
-    {% for choice in question.choice_set.all %}
-        <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;radio&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;choice&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;choice{{ forloop.counter }}&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;{{ choice.id }}&quot;</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&quot;choice{{ forloop.counter }}&quot;</span><span class="p">&gt;</span>{{ choice.choice_text }}<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
-    {% endfor %}
-<span class="p">&lt;/</span><span class="nt">fieldset</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;Vote&quot;</span><span class="p">&gt;</span>
+    {% csrf_token %}
+    <span class="p">&lt;</span><span class="nt">fieldset</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">legend</span><span class="p">&gt;&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>{{ question.question_text }}<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;&lt;/</span><span class="nt">legend</span><span class="p">&gt;</span>
+        {% if error_message %}<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>{{ error_message }}<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>{% endif %}
+        {% for choice in question.multiplechoiceoption_set.all %}
+            <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;radio&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;choice&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;choice{{ forloop.counter }}&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;{{ choice.id }}&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&quot;choice{{ forloop.counter }}&quot;</span><span class="p">&gt;</span>{{ choice.choice_text }}<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+        {% endfor %}
+    <span class="p">&lt;/</span><span class="nt">fieldset</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;Vote&quot;</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
 </code></pre></div>
 
-<p>Remember, in Part 3, we created a url for the polls application in <em>polls/urls.py</em> that includes this line:</p>
+<p>Remember, earlier we created a url for the polls application in <em>polls/urls.py</em> that includes this line:</p>
 <div class="highlight"><pre><span></span><code><span class="n">path</span><span class="p">(</span><span class="s1">&#39;&lt;int:question_id&gt;/vote/&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">vote</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;vote&#39;</span><span class="p">),</span>
 </code></pre></div>
 
-<p>We also created a dummy implementation of the <code>vote()</code> function in <em>polls/views.py</em>. Let’s update the <code>vote</code> view in <em>polls/views.py</em> to handle the new template.</p>
+<p>We also created a dummy implementation of the <code>vote()</code> function in <em>polls/views.py</em>. Let’s update the <code>vote</code> view in <em>polls/views.py</em> to handle the new template and allow us to vote on our questions.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Change the imports to this!</span>
 <span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponse</span><span class="p">,</span> <span class="n">HttpResponseRedirect</span>
 <span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span><span class="p">,</span> <span class="n">get_object_or_404</span>
 <span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">reverse</span>
-<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Question</span><span class="p">,</span> <span class="n">Choice</span>
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">MultipleChoiceQuestion</span><span class="p">,</span> <span class="n">MultipleChoiceOption</span>
 
 <span class="c1"># ...</span>
 <span class="k">def</span> <span class="nf">vote</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">question_id</span><span class="p">):</span>
-    <span class="n">question</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">Question</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="n">question_id</span><span class="p">)</span>
+    <span class="n">question</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">MultipleChoiceQuestion</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="n">question_id</span><span class="p">)</span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="n">selected_choice</span> <span class="o">=</span> <span class="n">question</span><span class="o">.</span><span class="n">choice_set</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s2">&quot;choice&quot;</span><span class="p">])</span>
-    <span class="k">except</span> <span class="p">(</span><span class="ne">KeyError</span><span class="p">,</span> <span class="n">Choice</span><span class="o">.</span><span class="n">DoesNotExist</span><span class="p">):</span>
+        <span class="n">selected_choice</span> <span class="o">=</span> <span class="n">question</span><span class="o">.</span><span class="n">multiplechoiceoption_set</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s2">&quot;choice&quot;</span><span class="p">])</span>
+    <span class="k">except</span> <span class="p">(</span><span class="ne">KeyError</span><span class="p">,</span> <span class="n">MultipleChoiceOption</span><span class="o">.</span><span class="n">DoesNotExist</span><span class="p">):</span>
         <span class="c1"># Redisplay the question voting form.</span>
         <span class="k">return</span> <span class="n">render</span><span class="p">(</span>
             <span class="n">request</span><span class="p">,</span>
@@ -547,7 +594,7 @@ touch<span class="w"> </span>polls/templates/polls/index.html
 
 <p>After voting, the application should redirect to a view displaying the results. Update the <code>results</code> view in <em>polls/views.py</em></p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">results</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">question_id</span><span class="p">):</span>
-    <span class="n">question</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">Question</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="n">question_id</span><span class="p">)</span>
+    <span class="n">question</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">MultipleChoiceQuestion</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="n">question_id</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s2">&quot;polls/results.html&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;question&quot;</span><span class="p">:</span> <span class="n">question</span><span class="p">})</span>
 </code></pre></div>
 
@@ -555,7 +602,7 @@ touch<span class="w"> </span>polls/templates/polls/index.html
 <div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>{{ question.question_text }}<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
 
 <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
-{% for choice in question.choice_set.all %}
+{% for choice in question.multiplechoiceoption_set.all %}
     <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
 {% endfor %}
 <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
@@ -566,7 +613,7 @@ touch<span class="w"> </span>polls/templates/polls/index.html
 <p>Run your application. Use the admin interface to create aquestion, then create multiple choices for your question. Navigate back to <code>polls/</code> and attempt to use your application.</p>
 <hr>
 <h5 id="refactoring-generic-views">Refactoring: Generic Views</h5>
-<p>To convert the <code>poll</code> application to use generic views, we will:</p>
+<p>To convert the <code>poll</code> application to use generic views rather than function views, we will:</p>
 <ol>
 <li>Convert the old url conf.</li>
 <li>Delete some of the old, unnecessary views.</li>
@@ -590,7 +637,7 @@ touch<span class="w"> </span>polls/templates/polls/index.html
 <span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">get_object_or_404</span><span class="p">,</span> <span class="n">render</span>
 <span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">reverse</span>
 <span class="kn">from</span> <span class="nn">django.views</span> <span class="kn">import</span> <span class="n">generic</span>
-<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Choice</span><span class="p">,</span> <span class="n">Question</span>
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">MultipleChoiceQuestion</span><span class="p">,</span> <span class="n">MultipleChoiceOption</span>
 
 <span class="k">class</span> <span class="nc">IndexView</span><span class="p">(</span><span class="n">generic</span><span class="o">.</span><span class="n">ListView</span><span class="p">):</span>
     <span class="n">template_name</span> <span class="o">=</span> <span class="s2">&quot;polls/index.html&quot;</span>
@@ -598,14 +645,16 @@ touch<span class="w"> </span>polls/templates/polls/index.html
 
     <span class="k">def</span> <span class="nf">get_queryset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the last five published questions.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">Question</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s2">&quot;-pub_date&quot;</span><span class="p">)[:</span><span class="mi">5</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">MultipleChoiceQuestion</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s2">&quot;-pub_date&quot;</span><span class="p">)[:</span><span class="mi">5</span><span class="p">]</span>
 
 <span class="k">class</span> <span class="nc">DetailView</span><span class="p">(</span><span class="n">generic</span><span class="o">.</span><span class="n">DetailView</span><span class="p">):</span>
-    <span class="n">model</span> <span class="o">=</span> <span class="n">Question</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">MultipleChoiceQuestion</span>
+    <span class="n">context_object_name</span> <span class="o">=</span> <span class="s2">&quot;question&quot;</span>
     <span class="n">template_name</span> <span class="o">=</span> <span class="s2">&quot;polls/detail.html&quot;</span>
 
 <span class="k">class</span> <span class="nc">ResultsView</span><span class="p">(</span><span class="n">generic</span><span class="o">.</span><span class="n">DetailView</span><span class="p">):</span>
-    <span class="n">model</span> <span class="o">=</span> <span class="n">Question</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">MultipleChoiceQuestion</span>
+    <span class="n">context_object_name</span> <span class="o">=</span> <span class="s2">&quot;question&quot;</span>
     <span class="n">template_name</span> <span class="o">=</span> <span class="s2">&quot;polls/results.html&quot;</span>
 
 <span class="k">def</span> <span class="nf">vote</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">question_id</span><span class="p">):</span>
@@ -613,7 +662,7 @@ touch<span class="w"> </span>polls/templates/polls/index.html
 </code></pre></div>
 
 <hr>
-<h5 id="serializing-and-deserializing-queries-optional-but-highly-recommended-to-do">Serializing and Deserializing Queries (Optional, but highly recommended to do)</h5>
+<h5 id="serializing-and-deserializing-queries">Serializing and Deserializing Queries</h5>
 <p>Based from the DRF (Django Rest Framework) tutorial <a href="https://www.django-rest-framework.org/tutorial/1-serialization/">here</a></p>
 <p>To convert your queries to or from a JSON object you can use Django's serializers to serialize or deserialize Django QuerySets to or from JSON objects.  </p>
 <p>First install the Django Rest Framework library using <code>pip</code> and make sure to update our <code>requirements.txt</code> file</p>
@@ -621,7 +670,7 @@ touch<span class="w"> </span>polls/templates/polls/index.html
 pip<span class="w"> </span>freeze<span class="w"> </span>&gt;<span class="w"> </span>requirements.txt
 </code></pre></div>
 
-<p>Then add the <code>rest_framework</code> app to the <strong>bottom</strong> of our <code>INSTALLED_APPS</code> in our <code>settings.py</code> file</p>
+<p>Then add the <code>rest_framework</code> app to the <strong>BOTTOM</strong> of our <code>INSTALLED_APPS</code> in our <code>settings.py</code> file</p>
 <div class="highlight"><pre><span></span><code><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
     <span class="o">...</span>
     <span class="s1">&#39;rest_framework&#39;</span>
@@ -631,21 +680,21 @@ pip<span class="w"> </span>freeze<span class="w"> </span>&gt;<span class="w"> </
 <h5 id="creating-a-serializer-class">Creating a Serializer Class</h5>
 <p>Create a file in the <code>polls</code> directory named <code>serializers.py</code> and add the following</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">rest_framework</span> <span class="kn">import</span> <span class="n">serializers</span>
-<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Question</span>
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">MultipleChoiceQuestion</span>
 
 <span class="k">class</span> <span class="nc">QuestionSerializer</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">Serializer</span><span class="p">):</span>
-    <span class="n">question_text</span> <span class="o">=</span> <span class="n">serializers</span><span class="o">.</span><span class="n">CharField</span><span class="p">()</span>
-    <span class="n">pub_date</span> <span class="o">=</span> <span class="n">serializers</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">()</span>
+    <span class="n">question_text</span> <span class="o">=</span> <span class="n">serializers</span><span class="o">.</span><span class="n">CharField</span><span class="p">()</span> <span class="c1"># This serializer expects a question_text char field</span>
+    <span class="n">pub_date</span> <span class="o">=</span> <span class="n">serializers</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">()</span>  <span class="c1"># This serializer expects a pub_date date time field</span>
 
     <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">validated_data</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Create and return a new `Question` instance, given the validated data</span>
+<span class="sd">        Create and return a new `MultipleChoiceQuestion` instance, given the validated data</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">Question</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="o">**</span><span class="n">validated_data</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">MultipleChoiceQuestion</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="o">**</span><span class="n">validated_data</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="n">validated_data</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Update and return an existing `Question` instance, given the validated data</span>
+<span class="sd">        Update and return an existing `MultipleChoiceQuestion` instance, given the validated data</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">instance</span><span class="o">.</span><span class="n">question_text</span> <span class="o">=</span> <span class="n">validated_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;question_text&#39;</span><span class="p">,</span> <span class="n">instance</span><span class="o">.</span><span class="n">question_text</span><span class="p">)</span>
         <span class="n">instance</span><span class="o">.</span><span class="n">pub_date</span> <span class="o">=</span> <span class="n">validated_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;pub_date&#39;</span><span class="p">,</span> <span class="n">instance</span><span class="o">.</span><span class="n">pub_date</span><span class="p">)</span>
@@ -663,14 +712,14 @@ pip<span class="w"> </span>freeze<span class="w"> </span>&gt;<span class="w"> </
 
 <span class="c1"># ...</span>
 
-
+<span class="c1"># We are adding a new API route that lists question data in JSON format!</span>
 <span class="nd">@api_view</span><span class="p">([</span><span class="s1">&#39;GET&#39;</span><span class="p">])</span>
 <span class="k">def</span> <span class="nf">get_questions</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Get the list of questions on our website</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">questions</span> <span class="o">=</span> <span class="n">Question</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
-    <span class="n">serializer</span> <span class="o">=</span> <span class="n">QuestionSerializer</span><span class="p">(</span><span class="n">questions</span><span class="p">,</span> <span class="n">many</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">questions</span> <span class="o">=</span> <span class="n">MultipleChoiceQuestion</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+    <span class="n">serializer</span> <span class="o">=</span> <span class="n">QuestionSerializer</span><span class="p">(</span><span class="n">questions</span><span class="p">,</span> <span class="n">many</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>   <span class="c1"># many=True specifies that the input is not just a single question</span>
     <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="n">serializer</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
 </code></pre></div>
 
@@ -693,13 +742,13 @@ pip<span class="w"> </span>freeze<span class="w"> </span>&gt;<span class="w"> </
 <p>You should see a list of question in a json format.</p>
 <h5 id="updating-a-question-using-our-serializer">Updating a Question Using our Serializer</h5>
 <p>We can use the serializer to update the <code>question_text</code> field of our question entries. Add another function to <code>polls/views.py</code></p>
-<div class="highlight"><pre><span></span><code><span class="nd">@api_view</span><span class="p">([</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span><span class="s1">&#39;POST&#39;</span><span class="p">])</span>
+<div class="highlight"><pre><span></span><code><span class="nd">@api_view</span><span class="p">([</span><span class="s1">&#39;POST&#39;</span><span class="p">])</span>
 <span class="k">def</span> <span class="nf">update_question</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">pk</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Get the list of questions on our website</span>
+<span class="sd">    Update a specific question</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">questions</span> <span class="o">=</span> <span class="n">Question</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">pk</span><span class="p">)</span>
-    <span class="n">serializer</span> <span class="o">=</span> <span class="n">QuestionSerializer</span><span class="p">(</span><span class="n">questions</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">partial</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">question</span> <span class="o">=</span> <span class="n">MultipleChoiceQuestion</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">pk</span><span class="p">)</span>
+    <span class="n">serializer</span> <span class="o">=</span> <span class="n">QuestionSerializer</span><span class="p">(</span><span class="n">question</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">partial</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># partial=True means that not all required serializer properties are needed/given to the serializer.</span>
     <span class="k">if</span> <span class="n">serializer</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
         <span class="n">serializer</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="n">serializer</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
@@ -742,9 +791,10 @@ pip<span class="w"> </span>freeze<span class="w"> </span>&gt;<span class="w"> </
 <li><a href="https://docs.djangoproject.com/en/5.0/intro/tutorial07/">Part 7: Customizing the Admin Site</a></li>
 </ul>
 <h4 id="phase-two-heroku">Phase Two: Heroku</h4>
+<p><strong>For phase two of the lab,</strong> we will walk you through the deployment of your Django application onto Heroku.</p>
 <h5 id="setting-up-the-heroku-cli">Setting up the Heroku CLI</h5>
 <p>Sign up for a Heroku account at <a href="https://signup.heroku.com/">https://signup.heroku.com/</a>. Be sure to <strong>enable multi-factor authentication</strong> (two-factor authentication) or Heroku will not allow you to sign in. </p>
-<p>You can apply for free Heroku credits for 12 months at <a href="https://www.heroku.com/github-students">https://www.heroku.com/github-students</a> with an eligible GitHub student account <a href="https://education.github.com/pack">https://education.github.com/pack</a>. <strong>We cannot gaurantee that you will get free Heroku credits. As stated in the Course Outline, you may have to pay a small amount for Heroku.</strong></p>
+<p>You can apply for free Heroku credits for 12 months at <a href="https://www.heroku.com/github-students">https://www.heroku.com/github-students</a> with an eligible GitHub student account <a href="https://education.github.com/pack">https://education.github.com/pack</a>. <strong>We cannot guarantee that you will get free Heroku credits. As stated in the Course Outline, you may have to pay a small amount for Heroku.</strong></p>
 <p>Note: Remember to clean up all Heroku resources after this course to avoid unexpected charges after exceeding the credit limit or the offer expires.</p>
 <p>Download and install the <a href="https://devcenter.heroku.com/articles/heroku-cli#download-and-install">Heroku CLI tools</a>.</p>
 <ul>
@@ -843,6 +893,10 @@ If you do have a project subfolder it should look like this:
 
 <p>Pip install <a href="https://gunicorn.org/">gunicorn</a>, <a href="https://github.com/evansd/whitenoise">whitenoise</a>, <a href="https://github.com/jazzband/dj-database-url/">dj-database-url</a>, and <a href="https://github.com/psycopg/psycopg2">psycopg2-binary</a>.</p>
 <div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>gunicorn<span class="w"> </span>whitenoise<span class="w"> </span>dj-database-url<span class="w"> </span>psycopg2-binary
+<span class="c1"># gunicorn is a production level HTTP Server library</span>
+<span class="c1"># whitenoise is a static file hosting middleware library</span>
+<span class="c1"># dj-database-url is a library used to format the database url provided by HEROKU to be formatted for Django</span>
+<span class="c1"># psycopg2-binary is a database adapter library</span>
 </code></pre></div>
 
 <p>Save the new python requirements into the <em>requirements.txt</em> file.</p>
@@ -887,13 +941,13 @@ If you used <code>heroku create</code>, please see <a href="https://stackoverflo
 <p>You should have a heroku app. You should see it if you run the <code>heroku list</code> command. <strong>In the following, <code>APPNAME</code> refers to this heroku app's name.</strong></p>
 <h5 id="using-a-postgres-database-on-heroku">Using a Postgres Database on Heroku</h5>
 <p>Heroku provides additional services in addition to project hosting. In this case, we will need to add a postgresql database to our app.</p>
-<div class="highlight"><pre><span></span><code>heroku addons:create heroku-postgresql:essential-0 --app APPNAME
+<div class="highlight"><pre><span></span><code>heroku<span class="w"> </span>addons:create<span class="w"> </span>heroku-postgresql:essential-0<span class="w"> </span>--app<span class="w"> </span>APPNAME
 </code></pre></div>
 
 <p>You can manage your essentials-0 postgres on your heroku dashboard under the resources section &gt; add-ons.
 <br><img id="access-panel" alt="access panel" src="../labsignments/postgres-add-on.png" style="width: 100%;"></p>
 <p>Check that heroku is configuring the database: (You may need to wait a bit for the add-on to be installed)</p>
-<div class="highlight"><pre><span></span><code>heroku run &quot;env&quot; --app APPNAME
+<div class="highlight"><pre><span></span><code>heroku<span class="w"> </span>run<span class="w"> </span><span class="s2">&quot;env&quot;</span><span class="w"> </span>--app<span class="w"> </span>APPNAME
 </code></pre></div>
 
 <p>You should get an output like that contains a line that starts with <code>DATABASE_URL=postgres://</code> followed by a username and a password.</p>
@@ -1009,14 +1063,173 @@ heroku<span class="w"> </span>run<span class="w"> </span><span class="s2">&quot;
 </ul>
 </li>
 </ul>
+<h4 id="phase-three-more-features">Phase Three: More Features</h4>
+<p>Congratulations on getting your app deployed to Heroku! Let's add some new features to your application for you to deploy as well!</p>
+<h5 id="task-question-creation-route">TASK - Question Creation Route</h5>
+<p>At this point in the lab, we should have a working poll application deployed on Heroku. However, we need a way to programmatically create questions without using the admin panel! </p>
+<p><strong>Your task</strong> is to add a new api route at <code>polls/api/question/add/</code> that will add a new multiple choice question when a POST request is received! It should return a 405 when any other method is received. The post payload will contain a JSON object with the properties <code>question</code> and <code>answers</code>. </p>
+<p><code>question</code> is a string that MUST be AT LEAST 1 character long and AT MOST 200 characters long. <code>answers</code> is a array of answers that MUST have at least 1 answer. Each answer MUST be AT LEAST 1 character long and AT MOST 200 characters long. </p>
+<p>For example...</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;question&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Should pineapple be on pizza?&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;answers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">&quot;yes&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;no&quot;</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>This should create 1 <code>MultipleChoiceQuestion</code> and 2 <code>MultipleChoiceOption</code>s. </p>
+<p>If a question or answer is not valid, (or if a <code>question</code> or <code>answers</code> is not provided) it should not create any <code>MultipleChoiceQuestion</code> or <code>MultipleChoiceOption</code> and return an appropriately erroring http status response.</p>
+<p>You can return any response so long as the HTTP status code returned is 201.</p>
+<p>An example CURL request you can use to test your API is:</p>
+<div class="highlight"><pre><span></span><code>curl -X POST http://localhost:8000/polls/api/question/add/ \
+    -H &quot;Content-Type: application/json&quot; \
+    -d &#39;{&quot;question&quot;:&quot;Should pineapple be on pizza?&quot;, &quot;answers&quot;:[&quot;yes&quot;, &quot;no&quot;]}&#39;
+</code></pre></div>
+
+<p><strong>Task Requirements</strong></p>
+<ul>
+<li>MUST have a route available at <code>polls/api/question/add/</code> (e.g. localhost:8000/polls/api/question/add/)<ul>
+<li>MUST only handle POST and return a 405 when any other method is received.</li>
+</ul>
+</li>
+<li>MUST verify the payload is correct<ul>
+<li>MUST check that <code>question</code> and <code>answers</code> were provided</li>
+<li>MUST check that <code>question</code> is between 1-200 characters long</li>
+<li>MUST check that each answer is between 1-200 characters long</li>
+<li>MUST check that there is AT LEAST one answer in <code>answers</code></li>
+<li>MUST check that each answer is at least 1 character long</li>
+<li>MUST not create any models if any validation step fails</li>
+<li>MUST return an appropriately erroring http status code if validation fails</li>
+</ul>
+</li>
+<li>MUST create a <code>MultipleChoiceQuestion</code> and multiple <code>MultipleChoiceOption</code> when the payload is valid<ul>
+<li>MUST respond with a status code of 201 after it was created</li>
+</ul>
+</li>
+</ul>
+<p><strong>Hint</strong>: You may find <code>rest_framework</code>'s serializers useful for doing the majority of the validation work for you! We also went through it earlier in the lab! (<a href="https://www.django-rest-framework.org/api-guide/serializers/">Documentation</a>)</p>
+<h5 id="task-comment-section">TASK - Comment Section</h5>
+<p>It feels a bit empty if we just have a poll page. So let's go ahead and add a comment section to each poll!</p>
+<p>Add a new route in <code>polls/urls.py</code> to handle the form submission when a user submits the comment form to add a new comment.</p>
+<div class="highlight"><pre><span></span><code><span class="n">path</span><span class="p">(</span><span class="s1">&#39;&lt;int:question_id&gt;/add_comment/&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">add_comment</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;add_comment&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Update <code>polls/views.py</code> to have a new <code>add_comment</code> function that will handle the processing of the comment form.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">add_comment</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">question_id</span><span class="p">):</span>
+    <span class="c1"># TODO: Your implementation here!</span>
+    <span class="k">pass</span>
+</code></pre></div>
+
+<p>Next we need to update our <code>results.html</code> template to support rendering/adding comments. Replace the contents of <code>polls/results.html</code> file with be the following:</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>{{ question.question_text }}<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+{% for choice in question.multiplechoiceoption_set.all %}
+    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+{% endfor %}
+<span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;{% url &#39;polls:detail&#39; question.id %}&quot;</span><span class="p">&gt;</span>Vote again?<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;border: 1px solid #000; margin: 20px 0 0 0; padding: 0 0 10px 10px;&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>Add Comment<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">form</span> <span class="na">method</span><span class="o">=</span><span class="s">&quot;POST&quot;</span> <span class="na">action</span><span class="o">=</span><span class="s">&quot;{% url &#39;polls:add_comment&#39; question.id %}&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">label</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;font-weight: bold;&quot;</span><span class="p">&gt;</span>Username<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">input</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;username&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">maxlength</span><span class="o">=</span><span class="s">&quot;32&quot;</span> <span class="p">/&gt;</span>
+        <span class="p">&lt;</span><span class="nt">br</span> <span class="p">/&gt;&lt;</span><span class="nt">br</span> <span class="p">/&gt;</span>
+        <span class="p">&lt;</span><span class="nt">label</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;font-weight: bold;&quot;</span><span class="p">&gt;</span>Message<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">textarea</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;content&quot;</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;min-width: 400px; max-width: 400px;&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">textarea</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span> <span class="p">/&gt;</span>
+        {% csrf_token %}
+    <span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Comments<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;display: flex; flex-direction: column; gap: 10px;&quot;</span><span class="p">&gt;</span>
+    {% for comment in question.comment_set.all %}
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;border: 1px solid #000; padding: 0 0 20px 10px;&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>{{ comment.username }} - {{ comment.created_at|date:&#39;Y/m/d H:i&#39; }}<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">hr</span> <span class="p">/&gt;</span>
+            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;content&quot;</span><span class="p">&gt;</span>{{ comment.content }}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    {% endfor %}
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<p><strong>Your task</strong> is to create a new <code>Comment</code> model with a <code>username</code> char field, a <code>created_at</code> date time field, and a <code>content</code> text field. It should also have a foreign key reference field to a <code>MultipleChoiceQuestion</code> that can be named anything you'd like. <strong>It is important that you do not change the model name or field names/types or else the template will likely not render your comments.</strong> The max length of the <code>username</code> field will be 32 characters.</p>
+<p><strong>Secondly,</strong> you must handle the backend for validating and creating a new comment object when a <code>POST</code> request is sent and received at your <code>add_comment</code> endpoint that we created earlier in this task section. The post payload will contain a <code>username</code> and <code>content</code> that correspond to the two fields you see when you goto the results page of a poll. After creating the comment, the client should be redirected back to the poll result page so that they can see their new comment. <strong>If either property is blank or invalid,</strong> you should not create a new instance of the <code>Comment</code> model and instead just redirect back to the poll result page.</p>
+<p><strong>Task Requirements</strong></p>
+<ul>
+<li>MUST create a <code>Comment</code> model with a...<ul>
+<li><code>username</code> char field</li>
+<li><code>created_at</code> date time field</li>
+<li><code>content</code> text field</li>
+<li>foreign key reference to the <code>MultipleChoiceQuestion</code> the comment belongs to</li>
+</ul>
+</li>
+<li>MUST have a route available at <code>polls/question/&lt;id&gt;/add_comment/</code><ul>
+<li>MUST create a new <code>Comment</code> if the <code>username</code> and <code>content</code> form fields passed to the request are valid<ul>
+<li>If the fields are not provided/empty, it must not create a new <code>Comment</code></li>
+</ul>
+</li>
+<li>MUST ensure the username field is at most 32 characters</li>
+<li>MUST redirect back to the poll result page after processing the request</li>
+</ul>
+</li>
+<li>MUST have comments be shown on results page after adding a new comment</li>
+<li>MUST 404 if the question id provided is invalid</li>
+</ul>
+<h5 id="task-markdown-comments">TASK - Markdown Comments</h5>
+<p>At this point in the lab, you should have a working comment section. Let's add markdown rendering to your comments! Similarly to the last lab, we will need to transpile a javascript file! </p>
+<p>We will need to install <code>marked</code> and <code>esbuild</code> in our root repository directory again.</p>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>--save-dev<span class="w"> </span>marked
+npm<span class="w"> </span>install<span class="w"> </span>--save-dev<span class="w"> </span>esbuild
+</code></pre></div>
+
+<p>Create a new folder in the root repository directory called <code>webapp</code>, add a new file called <code>markdown-renderer.js</code>, and paste the following javascript code in it:</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">marked</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;marked&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// Import the markdown converter</span>
+
+<span class="c1">// Handle rendering</span>
+<span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;load&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">contentDivs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByClassName</span><span class="p">(</span><span class="s1">&#39;content&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">const</span><span class="w"> </span><span class="nx">contentDiv</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">contentDivs</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">markdownText</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">contentDiv</span><span class="p">.</span><span class="nx">innerHTML</span><span class="p">;</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">htmlOutput</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">marked</span><span class="p">(</span><span class="nx">markdownText</span><span class="p">);</span>
+<span class="w">        </span><span class="nx">contentDiv</span><span class="p">.</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">htmlOutput</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+
+<p><strong>Your task</strong> is to run the transpilation command in the root repository directory so that we can make this JavaScript code ready for use in our browser!</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># If you ran django-admin startproject lab3 .</span>
+npx<span class="w"> </span>esbuild<span class="w"> </span>./webapp/markdown-renderer.js<span class="w"> </span>--bundle<span class="w"> </span>--minify<span class="w"> </span>--sourcemap<span class="w"> </span>--outfile<span class="o">=</span>./polls/static/markdown-renderer.min.js
+
+<span class="c1"># If you ran django-admin startproject lab3</span>
+npx<span class="w"> </span>esbuild<span class="w"> </span>./webapp/markdown-renderer.js<span class="w"> </span>--bundle<span class="w"> </span>--minify<span class="w"> </span>--sourcemap<span class="w"> </span>--outfile<span class="o">=</span>./lab3/polls/static/markdown-renderer.min.js
+</code></pre></div>
+
+<p>Next, we need to include this javascript file into our HTML! Edit <code>templates/polls/results.html</code> and add at the top of the file</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="o">%</span><span class="w"> </span><span class="nb">load</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="o">%</span><span class="p">}</span>
+</code></pre></div>
+
+<p>and at the bottom of the file</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;{% static &#39;markdown-renderer.min.js&#39; %}&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span> <span class="cm">&lt;!-- Load bundled JS --&gt;</span>
+</code></pre></div>
+
+<p>Congratulations! Your comment section should now have markdown support! You can test this by typing in a comment to any poll with the content <code>**this text should be bold!**</code> to see if your markdown renderer is working!</p>
+<h5 id="task-add-some-multiple-choice-questions-on-heroku">TASK - Add Some Multiple Choice Questions on Heroku</h5>
+<p><strong>Your task</strong> is to make sure that your Heroku instance has 2+ example multiple choice questions of your own choosing.</p>
+<h5 id="deploy-again">Deploy Again</h5>
+<p>After completing every task please make sure to commit your files and deploy the application using the heroku command line tool. See the <strong>Deploying our Django Application to Heroku</strong> section above for more information.</p>
 <h3 id="restrictions">Restrictions</h3>
 <p>Violation of the restrictions will result in a mark of zero.</p>
 <ul>
 <li>Must use Python3</li>
 <li>Must run on Ubuntu (Use the undergrad lab machines, for example the ones in CSC 2-29 or install an Ubuntu VM to check this)</li>
 <li>Must run on your machine (whatever machine you use to show us)</li>
-<li>Must be running on heroku, with some polls that you created for the TA to look at when they mark it.</li>
-<li>Git repo must not contain </li>
+<li>Must be running on heroku, with some polls that you created for the TA to look at when they mark it. </li>
 </ul>
 <h3 id="requirements">Requirements</h3>
 <ul>
@@ -1030,9 +1243,31 @@ heroku<span class="w"> </span>run<span class="w"> </span><span class="s2">&quot;
 <li>you can check what database is being used by the <code>heroku run "python3 manage.py diffsettings"</code> command above.</li>
 </ul>
 </li>
+<li>with a polls homepage that displays all polls created at <code>/polls/</code><ul>
+<li>must have at least 2+ multiple choice questions of your choosing</li>
 </ul>
 </li>
-<li>A git repository that does not contain built (compiled, transpiled, bundled) or downloaded artifacts, including but not limited to:<ul>
+<li>with a poll vote page at <code>/polls/&lt;id&gt;/</code></li>
+<li>with a poll results page at <code>/polls/&lt;id&gt;/results/</code><ul>
+<li>must have a working comment section</li>
+<li>must display comments in Markdown</li>
+</ul>
+</li>
+<li>with a poll vote route at <code>/polls/&lt;id&gt;/vote/</code> that processes poll votes</li>
+<li>with a poll comment route at <code>/polls/&lt;id&gt;/add_comment/</code> that adds and validates comments to a question<ul>
+<li>must abide by all task requirements mentioned in <strong>TASK - Comment Section</strong> section</li>
+</ul>
+</li>
+<li>with a api route available at <code>/polls/api/questions/</code> that displays the 5 most recently published questions</li>
+<li>with a api route available at <code>/polls/api/question/&lt;id&gt;</code> that updates and validates new multiple choice question information</li>
+<li>with a api route available at <code>/polls/api/question/add/</code> that creates and validates multiple choice questions<ul>
+<li>must abide by all task requirements mentioned in <strong>TASK - Question Creation Route</strong> section</li>
+</ul>
+</li>
+<li>using Django's ORM system to store database data</li>
+</ul>
+</li>
+<li>A git repository that does not contain built (compiled, bundled) or downloaded artifacts, including but not limited to:<ul>
 <li><code>virtualenv</code> <code>venv</code> etc.</li>
 <li><code>.pyc</code> files, <code>__pycache__</code> directories.</li>
 <li><code>node_modules</code></li>
@@ -1052,11 +1287,12 @@ heroku<span class="w"> </span>run<span class="w"> </span><span class="s2">&quot;
 </li>
 </ul>
 </li>
+<li>Your transpiled <code>*.min.js</code>, and <code>*.min.js.map</code> files.</li>
 </ul>
 </li>
 </ul>
 <h3 id="submission-instructions">Submission Instructions</h3>
-<p>Make sure you push to github classroom <strong>BEFORE 4PM on the day of your lab section!</strong> You will not be able to push after that!</p>
+<p>Make sure you push to github classroom <strong>BEFORE 4PM on Monday!</strong> You will not be able to push after that!</p>
 <p>Submit a link to your repo in the form <code>https://github.com/uofa-cmput404/w24-h0x-labsignment-heroku-yourgithubname</code> on eClass. <strong>Do not</strong> submit a link to a branch, a file, or the clone url. If you do not do this we will not know which github submission is yours.</p>
 <p>After you receive your grade, you can delete your Heroku app to save credits/money.</p>
 <h3 id="collaboration">Collaboration</h3>
