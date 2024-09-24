@@ -40,13 +40,6 @@ Double check that your Heroku is not blocked before your walkthrough. We will **
 
 You have several options to make sure this doesn't happen:
 
-* ~~Connect to your Heroku with your web browser on UWS at least 2 days before your walkthrough.~~
-    * ~~It doesn't have to be fully working, the firewall just needs to see that the domain does in fact exist.~~
-    * On further information from IST this will not work.
-
----
-
-* **Here are the things that will work:**
 * Bypass the University's DNS server by adding the hostname and IP address of your Heroku site to your hosts file.
     * Follow the steps of the "Checking your Heroku app" below.
     * Then add it your hosts file:
