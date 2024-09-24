@@ -1130,7 +1130,7 @@ If you try to create the Heroku app through the Heroku webpage, you can follow t
 
 You can use the `heroku open --app APPNAME` command to open your heroku app in a web browser. 
 
-* Add your apps hostname, cname, and ip address to the README.md file in your git repo. You **must** do this to help us mark your work. 
+* <div class="warning">You **must** do this to help us mark your work:</div> Add your apps hostname, cname, and ip address to the README.md file in your git repo. 
     * First get your heroku apps hostname, it will look something like `example-app-1234567890ab.herokuapp.com`.
     * Then get an IP address for it using the `nslookup` command and a public dns server not controlled by the University.
         * This will look something like `nslookup example-app-1234567890ab.herokuapp.com 1.1.1.1`.
