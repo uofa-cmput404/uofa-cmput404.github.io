@@ -796,6 +796,7 @@ First install the Django Rest Framework library using `pip` and make sure to upd
 ```bash
 pip install djangorestframework
 pip freeze > requirements.txt
+# Note: If it errors that you cannot overwrite an existing file, you may have to delete requirements.txt first.
 ```
 
 Then add the `rest_framework` app to the **BOTTOM** of our `INSTALLED_APPS` in our `settings.py` file
@@ -1068,6 +1069,7 @@ pip install gunicorn whitenoise dj-database-url psycopg2-binary
 Save the new python requirements into the *requirements.txt* file.
 
 ```bash
+# Note: If it errors that you cannot overwrite an existing file, you may have to delete requirements.txt first.
 pip freeze > requirements.txt
 ```
 
