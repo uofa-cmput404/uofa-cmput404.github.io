@@ -101,7 +101,20 @@ all_embeddings = np.vstack(_embeddings)
 
 ```
 
-A good comment for a loop provides context into why the loop logic is required. If you are iterating over a collection of things, describe the purpose of the operations beind applied. If you are manipulating the objects in the list, why are those manipulations required?
+```python
+urlpatterns = [
+    path("admin/", admin.site.urls), # Binds admin routes to 'admin/' path
+    path("wiki/", include("wiki.urls")), # Binds wiki module routes to 'wiki/' path
+]
+```
+
+```python
+    page = get_object_or_404(Page, id=id) # Retrieve the page object from the database and handle case where page does not exist (404 error). 
+```
+
+
+
+A good comment for a loop provides context into why the loop logic is required. If you are iterating over a collection of things, describe the purpose of the operations being applied. If you are manipulating the objects in the list, why are those manipulations required?
 
 ```python
 
@@ -112,9 +125,37 @@ The html template will highlight elements in super_likes. While elements in user
 for like_object in user_likes: 
     super_likes.append(SuperLike(like_object))    
 
+```
 
+```python
+likes = Like.objects.filter(page_id=id) # Identify the likes corresponding with this page by comparing Like.page_id to Page.id fields. Without this filter pages would display incorrect like counts.
+```
+
+If applying logic to objects as they're processed through python list comprehension, explaining that logic is extra helpful.
+
+```python
+
+posts = some_code_that_gets_posts()
+
+'''
+Run all retrieved posts through validation logic, only keeping posts which pass is_valid() check.
+Prevents incorrectly formatted posts from causing errors in the template. 
+'''
+posts = [post for post in posts if is_valid(post)]
 
 ```
+
+```python
+post_ids = function_that_returns_a_list_of_interesting_post_ids() # eg. [1, 2, 23, 41, 20]
+
+'''
+Creates a list of the post objects corresponding with the post ids in post_ids.
+Post.objects.get() is called on each id through a lambda function whose result is the post object. 
+'''
+posts = [(lambda id: Post.objects.get(pk=id))(id) for id in post_ids]
+
+```
+
 
 
 </p>
