@@ -1290,9 +1290,31 @@ dango-5698ce021340.herokuapp.com has address 34.201.81.34
 dango-5698ce021340.herokuapp.com has address 54.208.186.182
 ```
 
-* In the example above, I can list all 4 addresses: `54.224.34.30`, `54.224.34.30`, `34.201.81.34`, and `54.208.186.182`.
+* In the example above, I can list all 4 addresses: `54.224.34.30`, `54.224.34.30`, `34.201.81.34`, and `54.208.186.182` in my `README.md`.
 
+Then, if I'm on the UWS firewall, I could also add all four addresses to my `hosts` file, to defeat the annoying UWS firewall:
 
+```hosts
+127.0.0.1       localhost
+127.0.1.1       Roxanne.        Roxanne
+
+# The following lines are desirable for IPv6 capable hosts
+::1     ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+
+# All the stuff above was already in my hosts file ^^^^
+# Don't remove the stuff that was already there!
+# ----------------
+# I added the stuff below vvvv
+
+54.243.129.215 dango-5698ce021340.herokuapp.com
+54.224.34.30 dango-5698ce021340.herokuapp.com
+34.201.81.34 dango-5698ce021340.herokuapp.com
+54.208.186.182 dango-5698ce021340.herokuapp.com
+```
 
 ## Phase Three: More Features
 
