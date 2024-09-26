@@ -162,6 +162,10 @@ You have several options to make sure this doesn't happen:
 
 # Getting Started
 
+## Get an Environment with a Recent Python Version
+
+[Make sure you have a working development environment with these instructions!]({filename}/general/environment.md)
+
 ## Prepare your Repo
 
 1. Get the GitHub classroom link from eClass, create your assignment, and clone it.
@@ -217,12 +221,12 @@ The first command will create a directory named `venv`. Contained in the directo
 
 ### Creating a Django Project
 
-* Based on Official Docs [Overview](https://docs.djangoproject.com/en/5.0/intro/overview/), [Installation](https://docs.djangoproject.com/en/5.0/intro/install/)
+* Based on Official Docs [Overview](https://docs.djangoproject.com/en/5.1/intro/overview/), [Installation](https://docs.djangoproject.com/en/5.1/intro/install/)
 
 Make sure to use a **virtual environment** for this lab and that it is activated as shown above!
 
 ```
-echo "Django>=5.0.1" > requirements.txt
+echo "Django>=5.1.1" > requirements.txt
 python3.11 -m pip install -r requirements.txt
 ```
 
@@ -975,9 +979,7 @@ To avoid re-running this command every time you can append `export PATH="$PATH:$
 
 The bash scripts in the `.bashrc` file are executed automatically when you create a new session with the lab machine, thus, you would no longer have to do that yourself.
 
-
-
-Ensure the heroku tool works, login to your account.
+Ensure the `heroku` tool works, login to your account.
 
 ```bash
 heroku --version
@@ -986,7 +988,6 @@ heroku login
 ```
 
 **NOTE:** If you are running on a lab machine you are going to need to access the virtual desktop of the lab machine to successfully complete `heroku login`. Follow these [instructions](https://www.ualberta.ca/en/computing-science/resources/technical-support/computing-resources/x2go-quick-guide.html) and run the commands through a terminal through the virtual desktop. This will allow you to open a browser *on the lab machine* and complete the authentication process.
-
 
 ### Preparing our Django Application for Heroku
 
