@@ -985,6 +985,9 @@ heroku --version
 heroku login
 ```
 
+**NOTE:** If you are running on a lab machine you are going to need to access the virtual desktop of the lab machine to successfully complete `heroku login`. Follow these [instructions](https://www.ualberta.ca/en/computing-science/resources/technical-support/computing-resources/x2go-quick-guide.html) and run the commands through a terminal through the virtual desktop. This will allow you to open a browser *on the lab machine* and complete the authentication process.
+
+
 ### Preparing our Django Application for Heroku
 
 Ensure the Django application created in Phase One is working locally.
