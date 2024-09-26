@@ -969,6 +969,14 @@ tar -xvf heroku-linux-x64.tar.gz
 export PATH="$PATH:$HOME/heroku/bin"
 ```
 
+**NOTE:** If you are using a lab machine, the state of environment variables like `PATH` is tied to your current session. When you reconnect to the lab machine in the future, you will have to re-run `export PATH="$PATH:$HOME/heroku/bin"` to have `heroku` commands work. 
+
+To avoid re-running this command every time you can append `export PATH="$PATH:$HOME/heroku/bin"` on a new line at the end of your `.bashrc` file. The `.bashrc` file is located by default in your home directory at: `~/.bashrc`. If you don't have a `.bashrc` file you can create one using `touch .bashrc`. 
+
+The bash scripts in the `.bashrc` file are executed automatically when you create a new session with the lab machine, thus, you would no longer have to do that yourself.
+
+
+
 Ensure the heroku tool works, login to your account.
 
 ```bash
