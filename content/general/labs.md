@@ -9,6 +9,8 @@ summary: Lab Procedure, Lab Assignments, Lab Marking
 
 [TOC]
 
+* [Development Environment]({filename}environment.md)
+
 # Lab Procedure
 
 * [H01 Monday Signup Sheet](https://docs.google.com/spreadsheets/d/1TgVe_SXOEQHiH2ZrGsdccL6wndSUhZhIVqDX4HA7wvk/edit)
@@ -103,6 +105,8 @@ Note that simply reading the code to the TA does **not** count as understanding.
     * You can explain your code to the TA with no problem
     * But, you plagiarized, misrepresented your work, or other academic misconduct (cheating)
     * Grade: 100, and you get interviewed by the instructor, and you get interviewed by the Dean's office, and you probably get sanctioned by the Dean's office, and you probably receive letter of reprimand, and the Dean's officer can set your grade to 0 anyway. Or the Dean's officer might fail you for the entire course, or whatever they decide, they have their own rules.
+
+# Development Environment
 
 # GitHub Classroom
 

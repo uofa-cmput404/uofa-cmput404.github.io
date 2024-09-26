@@ -24,6 +24,11 @@ At the end of this lab, you will have built a fully functioning web app with the
 
 # Getting Started
 
+# Get an Environment with a Recent Python Version
+
+[Make sure you have a working development environment with these instructions!]({filename}/general/environment.md)
+
+
 ### Introduction to HTML and JavaScript
 
 Before diving into Django and NPM, let’s go over some basics of HTML and JavaScript.
