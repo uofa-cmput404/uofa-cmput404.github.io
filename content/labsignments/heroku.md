@@ -795,7 +795,7 @@ First install the Django Rest Framework library using `pip` and make sure to upd
 
 ```bash
 pip install djangorestframework
-pip freeze > requirements.txt
+pip freeze >| requirements.txt
 ```
 
 Then add the `rest_framework` app to the **BOTTOM** of our `INSTALLED_APPS` in our `settings.py` file
@@ -969,6 +969,14 @@ tar -xvf heroku-linux-x64.tar.gz
 export PATH="$PATH:$HOME/heroku/bin"
 ```
 
+**NOTE:** If you are using a lab machine, the state of environment variables like `PATH` is tied to your current session. When you reconnect to the lab machine in the future, you will have to re-run `export PATH="$PATH:$HOME/heroku/bin"` to have `heroku` commands work. 
+
+To avoid re-running this command every time you can append `export PATH="$PATH:$HOME/heroku/bin"` on a new line at the end of your `.bashrc` file. The `.bashrc` file is located by default in your home directory at: `~/.bashrc`. If you don't have a `.bashrc` file you can create one using `touch .bashrc`. 
+
+The bash scripts in the `.bashrc` file are executed automatically when you create a new session with the lab machine, thus, you would no longer have to do that yourself.
+
+
+
 Ensure the heroku tool works, login to your account.
 
 ```bash
@@ -976,6 +984,9 @@ heroku --version
 # heroku/8.7.1 linux-x64 node-v16.19.0
 heroku login
 ```
+
+**NOTE:** If you are running on a lab machine you are going to need to access the virtual desktop of the lab machine to successfully complete `heroku login`. Follow these [instructions](https://www.ualberta.ca/en/computing-science/resources/technical-support/computing-resources/x2go-quick-guide.html) and run the commands through a terminal through the virtual desktop. This will allow you to open a browser *on the lab machine* and complete the authentication process.
+
 
 ### Preparing our Django Application for Heroku
 
@@ -1068,7 +1079,7 @@ pip install gunicorn whitenoise dj-database-url psycopg2-binary
 Save the new python requirements into the *requirements.txt* file.
 
 ```bash
-pip freeze > requirements.txt
+pip freeze >| requirements.txt
 ```
 
 `requirements.txt` must be in the root of your repo for Heroku to detect your project as a Python/Django project!
