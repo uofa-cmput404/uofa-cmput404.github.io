@@ -43,7 +43,7 @@ Activity Pub is great, but too complex for a class project.
 We also won't be adding much in the way of encryption or security
 to this platform. We're keeping it simple and restful.
 
-Choose at least 3 other groups to work with!
+Choose at least 4 other groups to work with!
 
 ## Scenario 
 
@@ -303,6 +303,7 @@ Posts, likes, comments, posts, are all sent to the inboxes of the authors that s
     * This receives likes and comments.
 * Stream
     * The user interface showing date-sorted (most recent first) local, public posts combined with posts from everyone that user follows.
+    * This is similar to "timeline" in old social media apps, "following" page, or "friends" page, or "newsfeed" in old Facebook.
 * Remote
     * A node to node connection. Requests from another node. HTTP Basic Auth authenticated.
 * Local

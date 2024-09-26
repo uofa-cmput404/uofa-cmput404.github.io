@@ -1259,12 +1259,40 @@ You can use the `heroku open --app APPNAME` command to open your Heroku app in a
         * `Address: 34.201.81.34`
         * In this case, write "none" for the cname.
     * Write your app's hostname, cname, and ip address to the README.md in your git repo.
+    * If it reports multiple addresses, you can list them all.
 * Make sure you can use the admin panel on Heroku from your web browser.
     * Hint: shut down your localhost server if it's running to make sure you're not connecting to the one on your computer by accident!
     * Use the admin panel to add a poll.
 * Make sure you can use the polls app on Heroku from your web browser.
 * Make sure your Heroku app remembers the results of your polls and your superuser login!
     * If your Heroku is not configured properly to use PostgreSQL it will forget them randomly! (somewhere between 0 and 24 hours.)
+
+For example: 
+
+```txt
+PS C:\Users\hazel> nslookup dango-5698ce021340.herokuapp.com
+Server:  node-1w7jra22rv3jbpxebh1362sqp.ipv6.telus.net
+Address:  2001:56a:f38b:500::1
+
+Non-authoritative answer:
+Name:    dango-5698ce021340.herokuapp.com
+Addresses:  54.224.34.30
+          54.243.129.215
+          34.201.81.34
+          54.208.186.182
+```
+or
+```txt
+(venv) hazelcam@Roxanne:~$ host dango-5698ce021340.herokuapp.com
+dango-5698ce021340.herokuapp.com has address 54.243.129.215
+dango-5698ce021340.herokuapp.com has address 54.224.34.30
+dango-5698ce021340.herokuapp.com has address 34.201.81.34
+dango-5698ce021340.herokuapp.com has address 54.208.186.182
+```
+
+* In the example above, I can list all 4 addresses: `54.224.34.30`, `54.224.34.30`, `34.201.81.34`, and `54.208.186.182`.
+
+
 
 ## Phase Three: More Features
 
