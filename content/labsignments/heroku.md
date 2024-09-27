@@ -1521,7 +1521,7 @@ Violation of the restrictions will result in a mark of zero.
     * that is deployed on Heroku
     * using a heroku postgres database
         * you can check what database is being used by the `heroku run "python3 manage.py diffsettings"` command above.
-    * with a polls homepage that displays all polls created at `/polls/`
+    * with a polls homepage that displays (at least) the 5 most recently created polls at `/polls/`
         * must have at least 2+ multiple choice questions of your choosing
     * with a poll vote page at `/polls/<id>/`
     * with a poll results page at `/polls/<id>/results/`
