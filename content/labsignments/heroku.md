@@ -1438,7 +1438,7 @@ Next we need to update our `results.html` template to support rendering/adding c
     - `created_at` date time field
     - `content` text field
     - foreign key reference to the `MultipleChoiceQuestion` the comment belongs to
-- MUST have a route available at `polls/<id>/add_comment/`
+- MUST have a route available at `polls/<question_id>/add_comment/`
     - MUST create a new `Comment` if the `username` and `content` form fields passed to the request are valid
         - If the fields are not provided/empty, it must not create a new `Comment`
     - MUST ensure the username field is at most 32 characters
@@ -1523,15 +1523,15 @@ Violation of the restrictions will result in a mark of zero.
         * you can check what database is being used by the `heroku run "python3 manage.py diffsettings"` command above.
     * with a polls homepage that displays (at least) the 5 most recently created polls at `/polls/`
         * must have at least 2+ multiple choice questions of your choosing
-    * with a poll vote page at `/polls/<id>/`
-    * with a poll results page at `/polls/<id>/results/`
+    * with a poll vote page at `/polls/<question_id>/`
+    * with a poll results page at `/polls/<question_id>/results/`
         * must have a working comment section
         * must display comments in Markdown
-    * with a poll vote route at `/polls/<id>/vote/` that processes poll votes
-    * with a poll comment route at `/polls/<id>/add_comment/` that adds and validates comments to a question
+    * with a poll vote route at `/polls/<question_id>/vote/` that processes poll votes
+    * with a poll comment route at `/polls/<question_id>/add_comment/` that adds and validates comments to a question
         * must abide by all task requirements mentioned in **TASK - Comment Section** section
     * with a api route available at `/polls/api/questions/` that displays the 5 most recently published questions
-    * with a api route available at `/polls/api/question/<id>` that updates and validates new multiple choice question information
+    * with a api route available at `/polls/api/question/<question_id>` that updates and validates new multiple choice question information
     * with a api route available at `/polls/api/question/add/` that creates and validates multiple choice questions
         * must abide by all task requirements mentioned in **TASK - Question Creation Route** section
     * using Django's ORM system to store database data
