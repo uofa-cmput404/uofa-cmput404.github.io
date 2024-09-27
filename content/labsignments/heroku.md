@@ -1438,7 +1438,7 @@ Next we need to update our `results.html` template to support rendering/adding c
     - `created_at` date time field
     - `content` text field
     - foreign key reference to the `MultipleChoiceQuestion` the comment belongs to
-- MUST have a route available at `polls/question/<id>/add_comment/`
+- MUST have a route available at `polls/<id>/add_comment/`
     - MUST create a new `Comment` if the `username` and `content` form fields passed to the request are valid
         - If the fields are not provided/empty, it must not create a new `Comment`
     - MUST ensure the username field is at most 32 characters
