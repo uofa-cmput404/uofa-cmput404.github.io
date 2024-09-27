@@ -394,6 +394,8 @@ class MultipleChoiceOption(models.Model):
 
 With this, we are creating both a `MultipleChoiceQuestion` and `MultipleChoiceOption` model. Multiple Choice Questions have options to choose from. Because this is a RDBMS, each `MultipleChoiceOption` links to a specific `MultipleChoiceQuestion` instance. Which is why we use `models.ForeignKey` to specify a foreign reference to the `MultipleChoiceQuestion` model. For more information, you can check out the official documentation [here](https://docs.djangoproject.com/en/5.1/topics/db/examples/many_to_one/).
 
+**Note**: If you're having problems with your comments not rendering, make sure your foreign key does not have a `related_name` property as this will break the template.
+
 To activate our poll application in our project, we need to add it to the installed apps within `lab3/settings.py`. 
 
 ```python
@@ -1547,7 +1549,7 @@ Violation of the restrictions will result in a mark of zero.
     * `README.md`
         * Has heroku app's hostname, cname, and IP address.
             * cname can be "none" if nslookup doesn't give a cname.
-    * Your transpiled `*.min.js`, and `*.min.js.map` files.
+    * Your transpiled `*.min.js`, and `*.min.js.map` files. (This meaning that you need to have your static folder for this lab!)
 
 # Submission Instructions
 
