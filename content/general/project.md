@@ -374,8 +374,8 @@ Notes on the above tables:
 
 If something is paginated it has query options:
 
-* page - how many pages of objects have been delivered
-* size - how big is a page
+* `page_number` - how many pages of objects have been delivered
+* `size` - how big is a page
 * Page 4 of objects http://service/author/{author_id}/posts/{post_id}/comments?page=4
 * Page 4 of objects but 40 per page http://service/author/{author_id}/posts/{post_id}/comments?page=4&size=40
 * 1 based indexing. First page is 1.
@@ -537,7 +537,7 @@ Hint: In Django, set `unique=True` on the field. Then use `models.ForeignKey` wi
         // depending if there's a seperate URL to just see the comments
         "page":"http://nodebbbb/authors/222/posts/249",
         "id":"http://nodebbbb/api/authors/222/posts/249/comments"
-        // comments.page, comments.size, comments.count,
+        // comments.page_number, comments.size, comments.count,
         // comments.src are only sent if:
         // * public
         // * unlisted
@@ -546,7 +546,7 @@ Hint: In Django, set `unique=True` on the field. Then use `models.ForeignKey` wi
         // should be sorted newest(first) to oldest(last)
         // this is to reduce API call counts
         // number of the first page of comments
-        "page":1,
+        "page_number":1,
         // size of comment pages
         "size":5,
         // total number of comments for this post
@@ -582,7 +582,7 @@ Hint: In Django, set `unique=True` on the field. Then use `models.ForeignKey` wi
                     "id": "http://nodeaaaa/api/authors/111/commented/130/likes",
                     // in this example nodebbbb has a html page just for the likes
                     "page": "http://nodeaaaa/authors/greg/comments/130/likes"
-                    "page": 1,
+                    "page_number": 1,
                     "size": 50,
                     "count": 0,
                     "src": [],
@@ -604,7 +604,7 @@ Hint: In Django, set `unique=True` on the field. Then use `models.ForeignKey` wi
         // should be sorted newest(first) to oldest(last)
         // this is to reduce API call counts
         // number of the first page of likes
-        "page":1,
+        "page_number":1,
         // size of a page of likes
         "size":50,
         // total number of likes
@@ -666,7 +666,7 @@ Hint: In Django, set `unique=True` on the field. Then use `models.ForeignKey` wi
         "id": "http://nodebbbb/api/authors/222/posts/293/comments",
         // in this example nodebbbb has a html page just for the comments
         "page": "http://nodebbbb/authors/222/posts/293/comments",
-        "page": 1,
+        "page_number": 1,
         "size": 5,
         "count": 0,
         "src": [],
@@ -676,7 +676,7 @@ Hint: In Django, set `unique=True` on the field. Then use `models.ForeignKey` wi
         "id": "http://127.0.0.1:5454/api/authors/222/posts/293/likes",
         // in this example nodebbbb has a html page just for the likes
         "page": "http://nodebbbb/authors/222/posts/293/likes"
-        "page": 1,
+        "page_number": 1,
         "size": 50,
         "count": 0,
         "src": [],
@@ -722,7 +722,7 @@ Hint: In Django, set `unique=True` on the field. Then use `models.ForeignKey` wi
         // should be sorted newest(first) to oldest(last)
         // this is to reduce API call counts
         // number of the first page of likes
-        "page":1,
+        "page_number":1,
         // size of a page of likes
         "size":50,
         // total number of likes
@@ -769,7 +769,7 @@ Hint: In Django, set `unique=True` on the field. Then use `models.ForeignKey` wi
     // should be sorted newest(first) to oldest(last)
     // this is to reduce API call counts
     // number of the first page of comments
-    "page":1,
+    "page_number":1,
     // size of comment pages
     "size":5,
     // total number of comments for this post
@@ -805,7 +805,7 @@ Hint: In Django, set `unique=True` on the field. Then use `models.ForeignKey` wi
                 "id": "http://nodeaaaa/api/authors/111/commented/130/likes",
                 // in this example nodebbbb has a html page just for the likes
                 "page": "http://nodeaaaa/authors/greg/comments/130/likes"
-                "page": 1,
+                "page_number": 1,
                 "size": 50,
                 "count": 0,
                 "src": [],
@@ -873,7 +873,7 @@ Hint: In Django, set `unique=True` on the field. Then use `models.ForeignKey` wi
     // should be sorted newest(first) to oldest(last)
     // this is to reduce API call counts
     // number of the first page of likes
-    "page":1,
+    "page_number":1,
     // size of a page of likes
     "size":50,
     // total number of likes
@@ -908,7 +908,7 @@ Hint: In Django, set `unique=True` on the field. Then use `models.ForeignKey` wi
     "id": "http://nodeaaaa/api/authors/111/commented/130/likes",
     // in this example nodebbbb has a html page just for the likes
     "page": "http://nodeaaaa/authors/greg/comments/130/likes"
-    "page": 1,
+    "page_number": 1,
     "size": 50,
     "count": 0,
     "src": [],
