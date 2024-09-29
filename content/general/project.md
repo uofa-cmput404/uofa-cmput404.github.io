@@ -320,7 +320,7 @@ Frontend/API Visibility | Admin             | Friend        | Follower       | E
 ------------------------|-------------------|---------------|----------------|----------------
 Public                  | control panel     | link + stream |  link + stream |  link + stream <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
 Unlisted                | control panel     | link + stream |  link + stream |  link <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
-Friends Only            | control panel     |               |                |
+Friends Only            | control panel     | authenticated |                |
 Deleted                 | control panel     |               |                | <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
 
 ----
