@@ -1532,7 +1532,7 @@ Violation of the restrictions will result in a mark of zero.
     * with a poll vote route at `/polls/<question_id>/vote/` that processes poll votes
     * with a poll comment route at `/polls/<question_id>/add_comment/` that adds and validates comments to a question
         * must abide by all task requirements mentioned in **TASK - Comment Section** section
-    * with a api route available at `/polls/api/questions/` that displays the 5 most recently published questions
+    * with a api route available at `/polls/api/questions/` that displays at least the 5 most recently created polls
     * with a api route available at `/polls/api/question/<question_id>` that updates and validates new multiple choice question information
     * with a api route available at `/polls/api/question/add/` that creates and validates multiple choice questions
         * must abide by all task requirements mentioned in **TASK - Question Creation Route** section
