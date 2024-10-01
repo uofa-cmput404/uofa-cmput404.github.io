@@ -1,7 +1,7 @@
 Title: Pelican Lab
 date: 2024-02-01
 tags: labs
-authors: Sadia Zahin Prodhan, Hazel Campbell
+authors: Sadia Zahin Prodhan, Hazel Campbell, Alexandru Ianta 
 status: Published
 summary: Lab Procedure, Lab Assignments, Lab Marking
 ----
@@ -41,7 +41,7 @@ This script will help you create a new Pelican-based website.
 Please answer the following questions so this script can generate the files
 needed by Pelican.
 
-    
+        
 > Where do you want to create your new web site? [.] 
 > What will be the title of this web site? My Cool Site
 > Who will be the author of this web site? Danger Doggo
@@ -105,7 +105,7 @@ Add the following content to the file `templates/mytheme/templates/base.html`.
 
 {% block head %}
 {{ super() }}
-  <link id="_stylesheet" rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/fancy.css" />
+    <link id="_stylesheet" rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/fancy.css" />
 {% endblock %}
 ```
 
@@ -113,11 +113,11 @@ Modify the content of the `templates/mytheme/static/fancy.css` file to your pref
 
 ```css
 html, body {
-  margin: 0;
-  border: 0;
-  font-size: 100%;
-  background-color: #000000;
-  color: #ffffff;
+    margin: 0;
+    border: 0;
+    font-size: 100%;
+    background-color: #000000;
+    color: #ffffff;
 }
 ```
 
@@ -229,24 +229,24 @@ For example, if you chose Moby Dick you could make your `content/moby-dick.html`
 
 ```html
 <html>
-    <head>
-        <title>Moby Dick</title>
-        <meta name="tags" content="novel" />
-        <meta name="date" content="2024-02-04" />
-        <meta name="modified" content="2024-02-04" />
-        <meta name="category" content="books" />
-        <meta name="authors" content="Herman Melville" />
-        <meta name="summary" content="The Project Gutenberg eBook of Moby Dick; Or, The Whale" />
-    </head>
-    <body>
-      <p class="source">This is a copy of <a href="https://www.gutenberg.org/cache/epub/2701/pg2701-images.html">Moby Dick from the Project Gutenberg Website</a>, as of 2024-02-04. This ebook is for the use of anyone anywhere in the United States and most other parts of the world at no cost and with almost no restrictions whatsoever. You may copy it, give it away or re-use it under the terms of the Project Gutenberg License included with this ebook or online at www.gutenberg.org. If you are not located in the United States, you will have to check the laws of the country where you are located before using this eBook.
-      </p>
-      <h1>
-          MOBY-DICK;<br>
-          or, THE WHALE.<br>
-      </h1>
-      ... a lot more HTML ...
-    </body>
+        <head>
+                <title>Moby Dick</title>
+                <meta name="tags" content="novel" />
+                <meta name="date" content="2024-02-04" />
+                <meta name="modified" content="2024-02-04" />
+                <meta name="category" content="books" />
+                <meta name="authors" content="Herman Melville" />
+                <meta name="summary" content="The Project Gutenberg eBook of Moby Dick; Or, The Whale" />
+        </head>
+        <body>
+            <p class="source">This is a copy of <a href="https://www.gutenberg.org/cache/epub/2701/pg2701-images.html">Moby Dick from the Project Gutenberg Website</a>, as of 2024-02-04. This ebook is for the use of anyone anywhere in the United States and most other parts of the world at no cost and with almost no restrictions whatsoever. You may copy it, give it away or re-use it under the terms of the Project Gutenberg License included with this ebook or online at www.gutenberg.org. If you are not located in the United States, you will have to check the laws of the country where you are located before using this eBook.
+            </p>
+            <h1>
+                    MOBY-DICK;<br>
+                    or, THE WHALE.<br>
+            </h1>
+            ... a lot more HTML ...
+        </body>
 </html>
 ```
 
@@ -262,11 +262,11 @@ the HTML you put in your `<body>`.
 Write CSS to enable your site to have fancy mode, 90s mode, minimal mode, and responsiveness in both desktop and mobile views.  
 
 * Fancy Mode: You can take inspiration from modern websites such as Amazon, Facebook, Google, GitHub, or Microsoft, but **do not copy their code.**
-  * These websites have thousands of lines copyrighted CSS that you do not need and do not have permission from Amazon/Facebook/Google to copy. However, you can use your browser's Dev Tools to see how they accomplish certain things and take inspiration from that.
-  * Try to make your light mode look like a standard, modern website. Try to make it look like a website that you would want to use.
+    * These websites have thousands of lines copyrighted CSS that you do not need and do not have permission from Amazon/Facebook/Google to copy. However, you can use your browser's Dev Tools to see how they accomplish certain things and take inspiration from that.
+    * Try to make your light mode look like a standard, modern website. Try to make it look like a website that you would want to use.
 * 90s Mode: You can take inspiration from the [oatmeal comic](https://theoatmeal.com/comics/design_hell?fbclid=IwAR32De0TRFISnARpWunp3jvoCF1k1iXdotYZbvenRJOvqUCeaJwABk91JFw) or [space jam](https://www.spacejam.com/1996/). Try to make it like those 90s websites.
 * Minimal Mode: Try to make the page look good and clean for printing. Use a minimalism-style design. Minimalism is about removing any unnecessary elements of the design such as lines, colours, shapes, and backgrounds.
-  * Try to make your print mode look good for printing. Check what it looks like by printing it to a PDF file (you don't need to print it to physical paper).
+    * Try to make your print mode look good for printing. Check what it looks like by printing it to a PDF file (you don't need to print it to physical paper).
 * Every part of the page should be very different between the 3 modes.
 * You should include CSS that styles every visible HTML element on the pages.
 * You should NOT include CSS that styles elements which your page does not have.
@@ -275,18 +275,18 @@ Write CSS to enable your site to have fancy mode, 90s mode, minimal mode, and re
 You should use 3 JavaScript buttons to switch between these. For example, inside your `/templates/mytheme/templates/base.html` you can add the following to a block of your choice.
 
 ```html
-    <button onclick="changeStylesheet('fancy.css')">fancy mode</button>
-    <button onclick="changeStylesheet('minimal.css')">minimal mode</button>
-    <button onclick="changeStylesheet('90s.css')">90s mode</button>
-    
-    <script>
-    const stylesheetRegex = /[^/]*\.css$/
+        <button onclick="changeStylesheet('fancy.css')">fancy mode</button>
+        <button onclick="changeStylesheet('minimal.css')">minimal mode</button>
+        <button onclick="changeStylesheet('90s.css')">90s mode</button>
+        
+        <script>
+        const stylesheetRegex = /[^/]*\.css$/
 
-    function changeStylesheet(style){
-        let element = document.getElementById("_stylesheet")
-        element.setAttribute("href", element.getAttribute("href").replace(stylesheetRegex, style))
-    }
-    </script>
+        function changeStylesheet(style){
+                let element = document.getElementById("_stylesheet")
+                element.setAttribute("href", element.getAttribute("href").replace(stylesheetRegex, style))
+        }
+        </script>
 ```
 Then create the corresponding CSS files:
 
@@ -302,13 +302,13 @@ Then create the corresponding CSS files:
 Each of the three styles should have differences in the following ways. The differences should be large, obvious, and visible. It should be difficult to tell that they're the same HTML at all!
 
 * 3 different layouts
-  * For example, if the navigation menu is at the top of the page, it should NOT be at the top in the other two versions!
+    * For example, if the navigation menu is at the top of the page, it should NOT be at the top in the other two versions!
 * 3 different sets of fonts
 * 3 different ways of styling the text
-  * 3 different ways of making headings stand out from the rest of the text
-  * 3 different ways of making links stand out from the rest of the text
-  * 3 different ways of separating paragraphs
-  * ...
+    * 3 different ways of making headings stand out from the rest of the text
+    * 3 different ways of making links stand out from the rest of the text
+    * 3 different ways of separating paragraphs
+    * ...
 * 3 different ways of organizing navigation links
 * 3 different colour schemes
 * 3 different sets of images
@@ -327,27 +327,27 @@ Each of the three styles should have differences in the following ways. The diff
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
-  /* Add styling here */
+    /* Add styling here */
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
-   /* Add styling here */
+     /* Add styling here */
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
-   /* Add styling here */
+     /* Add styling here */
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
-   /* Add styling here */
+     /* Add styling here */
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
-   /* Add styling here */
+     /* Add styling here */
 }
 ```
 
@@ -370,13 +370,13 @@ Violation of the restrictions will result in a mark of zero.
 
 * Must use Python3
 * Using of any frontend frameworks, CSS libraries, JS libraries or frameworks is forbidden. 
-  * You must write plain CSS and HTML. 
-  * You must not have any JS.
-  * You may not use CSS libraries or frameworks. For example: Tailwind, Bootstrap, Materialize, Bulma, Foundation, UIkit. However, just because it's not on this list does not mean it is allowed: there are 100s of examples.
-  * You may not use CSS preprocessors or transpilers. For example: Sass, Stylus, Less, PostCSS, ...
-  * You must not use frontend frameworks, HTML frameworks, HTML libraries, etc. such as React, Vue, Angular, jQuery, lodash, handlebars... 
-    * The only allowed HTML processor is Jinja: see the next point. 
-  * You *may* customize the Pelican [Theme's Jinja templates](https://docs.getpelican.com/en/stable/themes.html) if you want to change the HTML produced by Pelican, but Pelican must produce plain HTML. In this situation, the Jinja templates are your "framework," which *is allowed.*
+    * You must write plain CSS and HTML. 
+    * You must not have any JS.
+    * You may not use CSS libraries or frameworks. For example: Tailwind, Bootstrap, Materialize, Bulma, Foundation, UIkit. However, just because it's not on this list does not mean it is allowed: there are 100s of examples.
+    * You may not use CSS preprocessors or transpilers. For example: Sass, Stylus, Less, PostCSS, ...
+    * You must not use frontend frameworks, HTML frameworks, HTML libraries, etc. such as React, Vue, Angular, jQuery, lodash, handlebars... 
+        * The only allowed HTML processor is Jinja: see the next point. 
+    * You *may* customize the Pelican [Theme's Jinja templates](https://docs.getpelican.com/en/stable/themes.html) if you want to change the HTML produced by Pelican, but Pelican must produce plain HTML. In this situation, the Jinja templates are your "framework," which *is allowed.*
 * If you borrow CSS from examples online, always cite the author, give the source URL, and the date you downloaded it.
 
 # Recommendation
@@ -387,18 +387,18 @@ Violation of the restrictions will result in a mark of zero.
 # Requirements
 
 * A functioning Pelican site 
-  * featuring four articles
-  * with completely and totally different styling in fancy mode, minimal mode, and 90s mode
-    * See the [CSS Requirements](#css-requirements) above!
-  * responsive in both mobile and desktop views
-  * deployed on GitHub Pages.
+    * featuring four articles
+    * with completely and totally different styling in fancy mode, minimal mode, and 90s mode
+        * See the [CSS Requirements](#css-requirements) above!
+    * responsive in both mobile and desktop views
+    * deployed on GitHub Pages.
 * A git repository with a `main` or `src` branch that does not contain built (compiled, transpiled, bundled) or downloaded artifacts, including but not limited to:
     * `virtualenv` `venv` etc.
     * `.pyc` files, `__pycache__` directories.
     * `node_modules`
-    * `output` folder or any other output HTML produced by Pelican.
+    * Folders like `output` or any other output HTML produced by Pelican.
 * A git repository with a `pages` branch that is the source of the GitHub pages website.
-  * This contains the output HTML produced by Pelican.
+    * This contains the output HTML produced by Pelican.
 * Your site should look the same on GitHub pages as it does on your local dev server.
 
 # Submission Instructions
