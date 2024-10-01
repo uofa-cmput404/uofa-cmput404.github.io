@@ -305,12 +305,16 @@ Each of the three styles should have differences in the following ways. The diff
   * For example, if the navigation menu is at the top of the page, it should NOT be at the top in the other two versions!
 * 3 different sets of fonts
 * 3 different ways of styling the text
+  * 3 different ways of making headings stand out from the rest of the text
+  * 3 different ways of making links stand out from the rest of the text
+  * 3 different ways of separating paragraphs
+  * ...
+* 3 different ways of organizing navigation links
 * 3 different colour schemes
 * 3 different sets of images
 * 3 different kinds of borders
 * 3 different backgrounds
 * 3 different sets of margins & paddings & sizes
-* 3 different ways of making links stand out from the rest of the text
 * 3 different ways of using vertical & horizontal alignments
 * 3 different sets of effects (gradients, opacity/transparencies, floating elements, absolute elements...)
 * 3 different ways of including some changes that make your site uniquely yours. For example: your favourite colour, your favourite fonts, etc.
