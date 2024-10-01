@@ -31,13 +31,13 @@ virtualenv venv --python=python3
 source venv/bin/activate
 ```
 
-Install Pelican, Markdown and ghp-import.
+Install `pelican`, `markdown` and `ghp-import`.
 
 ```bash
 pip install pelican markdown ghp-import
 ```
 
-Run the pelican quickstart. Make sure you answer `Y` when it asks you about Github Pages!
+Run the pelican quick-start. Make sure you answer `Y` when it asks you about GitHub Pages!
 
 ```bash
 pelican-quickstart
@@ -269,7 +269,7 @@ the HTML you put in your `<body>`.
 
 Write CSS to enable your site to have fancy mode, 90s mode, minimal mode, and responsiveness in both desktop and mobile views.  
 
-* Fancy Mode: You can take inspiration from modern websites such as Amazon, Facebook, Google, Github, or Microsoft, but **do not copy their code.**
+* Fancy Mode: You can take inspiration from modern websites such as Amazon, Facebook, Google, GitHub, or Microsoft, but **do not copy their code.**
   * These websites have thousands of lines copyrighted CSS that you do not need and do not have permission from Amazon/Facebook/Google to copy. However, you can use your browser's Dev Tools to see how they accomplish certain things and take inspiration from that.
   * Try to make your light mode look like a standard, modern website. Try to make it look like a website that you would want to use.
 * 90s Mode: You can take inspiration from the [oatmeal comic](https://theoatmeal.com/comics/design_hell?fbclid=IwAR32De0TRFISnARpWunp3jvoCF1k1iXdotYZbvenRJOvqUCeaJwABk91JFw) or [space jam](https://www.spacejam.com/1996/). Try to make it like those 90s websites.
@@ -278,9 +278,9 @@ Write CSS to enable your site to have fancy mode, 90s mode, minimal mode, and re
 * Every part of the page should be very different between the 3 modes.
 * You should include CSS that styles every visible HTML element on the pages.
 * You should NOT include CSS that styles elements which your page does not have.
-* Include some changes that make your site uniquely yours. For exmaple: your favorite color, your favorite fonts, etc.
+* Include some changes that make your site uniquely yours. For example: your favourite colour, your favourite fonts, etc.
 
-You should use 3 javascript buttons to switch between these. For example, inside your `/templates/mytheme/templates/base.html` you can add the following to a block of your choice.
+You should use 3 JavaScript buttons to switch between these. For example, inside your `/templates/mytheme/templates/base.html` you can add the following to a block of your choice.
 
 ```html
     <button onclick="changeStylesheet('fancy.css')">fancy mode</button>
@@ -301,12 +301,31 @@ Then create the corresponding CSS files:
 - `templates/mytheme/static/minimal.css`
 - `templates/mytheme/static/90s.css`
 
-`templates/mytheme/static/fancy.css` should already exist from earlier. Clicking on one of the buttons will replace the stylesheet with the one corresponding with each mode. 
+`templates/mytheme/static/fancy.css` Should already exist from earlier. Clicking on one of the buttons will replace the stylesheet with the one corresponding with each mode. 
 
-**NOTE:** The 3 css files aren't allowed to share any code. To be on the safe side, you can create each style from scratch to produce 3 unique sets of styling rules for your site.
+### CSS Requirements
 
+<p class="warning">The 3 css files aren't allowed to share any code. To be on the safe side, you can create each style from scratch to produce 3 unique sets of styling rules for your site.</p>
 
-Additionally, use media queries to apply different styling for different screen sizes. Here is an example:
+Each of the three styles should have differences in the following ways. The differences should be large, obvious, and visible. It should be difficult to tell that they're the same HTML at all!
+
+* 3 different layouts
+  * For example, if the navigation menu is at the top of the page, it should NOT be at the top in the other two versions!
+* 3 different sets of fonts
+* 3 different ways of styling the text
+* 3 different colour schemes
+* 3 different sets of images
+* 3 different kinds of borders
+* 3 different backgrounds
+* 3 different sets of margins & paddings & sizes
+* 3 different ways of making links stand out from the rest of the text
+* 3 different ways of using vertical & horizontal alignments
+* 3 different sets of effects (gradients, opacity/transparencies, floating elements, absolute elements...)
+* 3 different ways of including some changes that make your site uniquely yours. For exmaple: your favorite color, your favorite fonts, etc.
+* 1 layout should use `flexbox`
+* Every visible HTML element should be customized by your CSS in some way
+* Do not include CSS for elements that your page does not have!
+* Additionally, use media queries to apply different styling for different screen sizes. Here is an example:
 
 ```
 
@@ -340,6 +359,8 @@ You can read more about CSS and Media Queries [here](https://developer.mozilla.o
 
 ### Testing it on the Browser
 
+Firefox is the standard for marking in this class, so it's a good idea to test your site using Firefox.
+
 Click on the different buttons to test out each mode. 
 
 You should also try simulating various devices with different displays to make sure your website is "responsive." Both browsers have a button
@@ -355,7 +376,7 @@ Violation of the restrictions will result in a mark of zero.
 * Using of any frontend frameworks, CSS libraries, JS libraries or frameworks is forbidden. 
   * You must write plain CSS and HTML. 
   * You must not have any JS.
-  * You may not use CSS libraries or framworks. For example: Tailwind, Bootstrap, Materialize, Bulma, Foundation, UIkit. However, just because it's not on this list does not mean it is allowed: there are 100s of examples.
+  * You may not use CSS libraries or frameworks. For example: Tailwind, Bootstrap, Materialize, Bulma, Foundation, UIkit. However, just because it's not on this list does not mean it is allowed: there are 100s of examples.
   * You may not use CSS preprocessors or transpilers. For example: Sass, Stylus, Less, PostCSS, ...
   * You must not use frontend frameworks, HTML frameworks, HTML libraries, etc. such as React, Vue, Angular, jQuery, lodash, handlebars... 
     * The only allowed HTML processor is Jinja: see the next point. 
@@ -372,6 +393,7 @@ Violation of the restrictions will result in a mark of zero.
 * A functioning Pelican site 
   * featuring four articles
   * with different stylings in fancy mode, minimal mode, and 90s mode
+    * See the [CSS Requirements](#css-requirements) above!
   * responsive in both mobile and desktop views
   * deployed on GitHub Pages.
 * A git repository with a `main` or `src` branch that does not contain built (compiled, transpiled, bundled) or downloaded artifacts, including but not limited to:

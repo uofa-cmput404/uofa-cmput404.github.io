@@ -32,8 +32,8 @@ The TAs will do their best to keep strictly to the schedule on the walkthrough s
 1. [HTTP]({filename}/labsignments/http.md)
 2. [Django]({filename}/labsignments/django.md)
 3. [Heroku]({filename}/labsignments/heroku.md)
-4. [JS]({filename}/labsignments/js.md)
-5. [Pelican]({filename}/labsignments/pelican.md)
+4. [Pelican]({filename}/labsignments/pelican.md)
+5. [JS]({filename}/labsignments/js.md)
 6. [Flask]({filename}/labsignments/flask.md)
 
 
