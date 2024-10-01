@@ -307,6 +307,7 @@ Each of the three styles should have differences in the following ways. The diff
 * 3 different ways of styling the text
     * 3 different ways of making headings stand out from the rest of the text
     * 3 different ways of making links stand out from the rest of the text
+        * Links for different purposes (e.g. menu links vs links in the content) should be styled differently
     * 3 different ways of separating paragraphs
     * ...
 * 3 different ways of organizing navigation links
