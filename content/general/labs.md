@@ -121,7 +121,7 @@ Also:
 
 * We have no way of tracking things like excused absences (weight transfer if someone is sick) on GitHub. (Even if we did it would violate University policy for us to do so.)
 * We have no way of tracking accessibility accommodations on GitHub. (Even if we did it would violate University policy for us to do so.)
-* We have no way of tracking grades on GitHub. (Even if we did it would violate University policy for us to do so.
+* We have no way of tracking grades on GitHub. (Even if we did it would violate University policy for us to do so.)
 * The GitHub due date thing does not always work correctly.
 * By University policy, GitHub (like Mentimeter) is not an approved platform. eClass/Canvas/Google Apps are the only approved platforms. So, instructors and TAs are not allowed to tell GitHub who you are, we have to allow you to be pseudonymous. For example, we are not allowed to tell GitHub/Mentimeter your name, your student ID#, your CCID, etc. This is also why Menti uses codenames.
 * Because of this policy we also cannot give grades or feedback on GitHub.

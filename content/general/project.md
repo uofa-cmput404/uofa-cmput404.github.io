@@ -120,7 +120,7 @@ Posts, likes, comments, posts, are all sent to the inboxes of the authors that s
     * As an author, I want a public page with my profile information, so that I can link people to it.
     * As an author, I want to my (new, public) GitHub activity to be automatically turned into public posts, so everyone can see my GitHub activity too.
     * As an author, I want my profile page to show my public posts (most recent first), so they can decide if they want to follow me.
-    * As an author, I want to be able to use my webbrowser to manage my profile, so I don't have to use a clunky API.
+    * As an author, I want to be able to use my web browser to manage my profile, so I don't have to use a clunky API.
 * Posting
     * As an author, I want to make posts, so I can share my thoughts and pictures with other local authors.
     * As an author, I want my node to send my posts to my remote followers and friends, so that remote authors following me can see them. *⧟ Part 3-5 only*

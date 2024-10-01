@@ -158,18 +158,18 @@ Your site should now be available at [http://localhost:8000](http://localhost:80
 
 #### For Ubuntu on Windows (WSL):
 
-Get your Ubuntu VM's IP address using the `ip addr show dev eth0` command in Ubuntu. It will be something similar to `172.19.46.249`.
-Use `make devserver-global` in Ubuntu. Then you can point your browser at `http://yourubuntuvmsipaddress:8000`, for example `http://172.19.46.249:8000`.
+Get your Ubuntu VM's IP address using the `ip addr show dev eth0` command on Ubuntu. It will be something similar to `172.19.46.249`.
+Use `make devserver-global` on Ubuntu. Then you can point your browser at `http://yourubuntuvmsipaddress:8000`, for example `http://172.19.46.249:8000`.
 
-### Prepare your Pelican Site for Github Pages
+### Prepare your Pelican Site for GitHub Pages
 
-Update *publishconf.py* and set `SITEURL` to your github given url.
+Update *publishconf.py* and set `SITEURL` to your GitHub given URL.
 ```bash
 SITEURL = 'https://uofa-cmput404.github.io/${repository-name}'
 
 ```
 
-You need to disable Github's built-in static site generator, Jekyll.
+You need to disable GitHub's built-in static site generator, Jekyll.
 Jekyll is a static site generator like Pelican, except that it's written in Ruby.
 However, sometimes it can conflict with Pelican. In order to disable it, you need to have Pelican produce a file called `.nojekyll`.
 You can do that by creating a page with Pelican in the `content/pages` folder (create it if it doesn't exist). You could call it something like `content/pages/nojekyll.md`.
@@ -184,19 +184,19 @@ save_as: .nojekyll
 This file just disables Jekyll
 ```
 
-Run `make html` (MacOS or Ubuntu) or `pelican content -o output -s pelicanconf.py` (Windows or if you don't have make).
+Run `make html` (macOS or Ubuntu) or `pelican content -o output -s pelicanconf.py` (Windows or if you don't have make).
 Check the `output` directory: it should contain a file called `.nojekyll`.
 
-Make sure to not commit the `output` directory to your github: add it to your `.gitignore`. `ghp-import` will commit it later as a separate branch.
+Make sure to not commit the `output` directory to your GitHub: add it to your `.gitignore`. `ghp-import` will commit it later as a separate branch.
 
-### Enable Github Pages on Github
+### Enable GitHub Pages on GitHub
 
-Create a branch in your github repo called `pages`.
+Create a branch in your GitHub repo called `pages`.
 
-Enable Github Pages for your repo. It is in the repo settings under pages, then select "Deploy from a branch". Select your "pages" branch. For more information, see [Github's Documentation](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#publishing-from-a-branch).
+Enable GitHub Pages for your repo. It is in the repo settings under pages, then select "Deploy from a branch". Select your "pages" branch. For more information, see [GitHub's Documentation](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#publishing-from-a-branch).
 
 
-#### Deploy from MacOS or Ubuntu
+#### Deploy from macOS or Ubuntu
 
 * Set your pages branch name in `Makefile`: set `GITHUB_PAGES_BRANCH=pages` so that ghp-import doesn't overwrite your `main` branch.
 * Deploy using `make github`.
