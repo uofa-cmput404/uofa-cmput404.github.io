@@ -212,17 +212,17 @@ ghp-import output -b pages
 git push origin pages
 ```
 
-**When building for github:** you should use `publishconf.py` not `pelicanconf.py`. That is what it is there for: so you can have different settings for local development and for publishing to anywhere (including GitHub Pages).
+**When building for GitHub:** you should use `publishconf.py` not `pelicanconf.py`. That is what it is there for: so you can have different settings for local development and for publishing to anywhere (including GitHub Pages).
 
-### Check your Github Pages site
+### Check your GitHub Pages site
 
-Your Github Pages site should be at a URL like `https://uofa-cmput404.github.io/GITHUB REPO NAME/` a couple of minutes after pushing.
+Your GitHub Pages site should be at a URL like `https://uofa-cmput404.github.io/GITHUB REPO NAME/` a couple of minutes after pushing.
 For example: `https://uofa-cmput404.github.io/w24-h01-labsignment-pelican-hazelybell/`.
 
 ## Phase Two: Add content to your site
 
 Create 3 more articles for your site from 3 project [Gutenberg](http://www.gutenberg.org/browse/scores/top) books of your choosing.
-You can directly download the html file from the website.
+You can directly download the HTML file from the website.
 
 The Project Gutenberg HTML files contain HTML for a full webpage.
 Your Pelican articles should only include the necessary HTML format the contents of your books correctly.
@@ -260,7 +260,7 @@ For example, if you chose Moby Dick you could make your `content/moby-dick.html`
 
 Notice that I removed the original webpages `<head>` in the example above and replaced it with one suitable for Pelican. For more information about how to write Pelican articles, see [their documentation](https://docs.getpelican.com/en/stable/content.html).
 
-Commit and push your books to Github: check that they are working correctly.
+Commit and push your books to GitHub: check that they are working correctly.
 
 Compare the output HTML from Pelican with that of the HTML you wrote for your books. Pelican should have added a lot more HTML around
 the HTML you put in your `<body>`.
@@ -273,7 +273,7 @@ Write CSS to enable your site to have fancy mode, 90s mode, minimal mode, and re
   * These websites have thousands of lines copyrighted CSS that you do not need and do not have permission from Amazon/Facebook/Google to copy. However, you can use your browser's Dev Tools to see how they accomplish certain things and take inspiration from that.
   * Try to make your light mode look like a standard, modern website. Try to make it look like a website that you would want to use.
 * 90s Mode: You can take inspiration from the [oatmeal comic](https://theoatmeal.com/comics/design_hell?fbclid=IwAR32De0TRFISnARpWunp3jvoCF1k1iXdotYZbvenRJOvqUCeaJwABk91JFw) or [space jam](https://www.spacejam.com/1996/). Try to make it like those 90s websites.
-* Minimal Mode: Try to make the page look good and clean for printing. Use a minimalism-style design. Minimalism is about removing any unnecessary elements of the design such as lines, colors, shapes, and backgrounds.
+* Minimal Mode: Try to make the page look good and clean for printing. Use a minimalism-style design. Minimalism is about removing any unnecessary elements of the design such as lines, colours, shapes, and backgrounds.
   * Try to make your print mode look good for printing. Check what it looks like by printing it to a PDF file (you don't need to print it to physical paper).
 * Every part of the page should be very different between the 3 modes.
 * You should include CSS that styles every visible HTML element on the pages.
@@ -321,7 +321,7 @@ Each of the three styles should have differences in the following ways. The diff
 * 3 different ways of making links stand out from the rest of the text
 * 3 different ways of using vertical & horizontal alignments
 * 3 different sets of effects (gradients, opacity/transparencies, floating elements, absolute elements...)
-* 3 different ways of including some changes that make your site uniquely yours. For exmaple: your favorite color, your favorite fonts, etc.
+* 3 different ways of including some changes that make your site uniquely yours. For example: your favourite colour, your favourite fonts, etc.
 * 1 layout should use `flexbox`
 * Every visible HTML element should be customized by your CSS in some way
 * Do not include CSS for elements that your page does not have!
@@ -392,7 +392,7 @@ Violation of the restrictions will result in a mark of zero.
 
 * A functioning Pelican site 
   * featuring four articles
-  * with different stylings in fancy mode, minimal mode, and 90s mode
+  * with completely and totally different styling in fancy mode, minimal mode, and 90s mode
     * See the [CSS Requirements](#css-requirements) above!
   * responsive in both mobile and desktop views
   * deployed on GitHub Pages.
@@ -401,15 +401,15 @@ Violation of the restrictions will result in a mark of zero.
     * `.pyc` files, `__pycache__` directories.
     * `node_modules`
     * `output` folder or any other output HTML produced by Pelican.
-* A git repository with a `pages` branch that is the source of the github pages website.
+* A git repository with a `pages` branch that is the source of the GitHub pages website.
   * This contains the output HTML produced by Pelican.
-* Your site should look the same on github pages as it does on your local dev server.
+* Your site should look the same on GitHub pages as it does on your local dev server.
 
 # Submission Instructions
 
-Make sure you push to github classroom **BEFORE 4PM on the day of your lab section!** You will not be able to push after that!
+Make sure you push to GitHub classroom **BEFORE 4PM on the day of your lab section!** You will not be able to push after that!
 
-Submit a link to your repo in the form `https://github.com/uofa-cmput404/w24-h0x-labsignment-pelican-yourgithubname` and your Github Pages URL in the form `https://uofa-cmput404.github.io/your-repo-name/` on eClass. **Do not** submit a link to a branch, a file, or the clone url. If you do not do this we will not know which github submission is yours.
+Submit a link to your repo in the form `https://github.com/uofa-cmput404/w24-h0x-labsignment-pelican-yourgithubname` and your GitHub Pages URL in the form `https://uofa-cmput404.github.io/your-repo-name/` on eClass. **Do not** submit a link to a branch, a file, or the clone URL. If you do not do this we will not know which GitHub submission is yours.
 
 <p class="warning">If you do not submit a link to your repo on eClass on time using the correct format above, you will get a zero.</p>
 
