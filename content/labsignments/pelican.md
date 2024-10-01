@@ -320,6 +320,7 @@ Each of the three styles should have differences in the following ways. The diff
 * 3 different ways of including some changes that make your site uniquely yours. For example: your favourite colour, your favourite fonts, etc.
 * 1 layout should use `flexbox`
 * Every visible HTML element should be customized by your CSS in some way
+    * Every element class should be styled. For example: the `source` class in the HTML above.
 * Do not include CSS for elements that your page does not have!
 * Additionally, use media queries to apply different styling for different screen sizes. Here is an example:
 
