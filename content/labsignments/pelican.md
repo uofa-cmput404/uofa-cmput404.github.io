@@ -257,6 +257,8 @@ Commit and push your books to GitHub: check that they are working correctly.
 Compare the output HTML from Pelican with that of the HTML you wrote for your books. Pelican should have added a lot more HTML around
 the HTML you put in your `<body>`.
 
+You can add images using attach, as described in the pelican documentation: <https://docs.getpelican.com/en/latest/content.html#attaching-static-files>
+
 ## Phase Three: Playing around with CSS
 
 Write CSS to enable your site to have fancy mode, 90s mode, minimal mode, and responsiveness in both desktop and mobile views.  

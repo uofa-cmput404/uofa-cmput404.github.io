@@ -22,11 +22,11 @@ summary: Resources, Reference Materials, Notes, Videos, Slides
 
 ## Web Video
 
-    * [Web Video](http://softwareprocess.es/b/CMPUT404-Web-Video)
-    * [Web Video Git Repo](https://github.com/abramhindle/CMPUT404-Web-Video)
-    * [Web Audio Git Repo](https://github.com/abramhindle/CMPUT404-Web-Audio)
-    * [Web Audio Template](http://webdocs.cs.ualberta.ca/~hindle1/2014/CMPUT404-Web-Audio/template.html)
-    * [Web Audio Delay Drawer](https://webdocs.cs.ualberta.ca/~hindle1/2014/CMPUT404-Web-Audio/draw.html)
+* [Web Video](http://softwareprocess.es/b/CMPUT404-Web-Video)
+* [Web Video Git Repo](https://github.com/abramhindle/CMPUT404-Web-Video)
+* [Web Audio Git Repo](https://github.com/abramhindle/CMPUT404-Web-Audio)
+* [Web Audio Template](http://webdocs.cs.ualberta.ca/~hindle1/2014/CMPUT404-Web-Audio/template.html)
+* [Web Audio Delay Drawer](https://webdocs.cs.ualberta.ca/~hindle1/2014/CMPUT404-Web-Audio/draw.html)
 
 # Reference Materials
 
@@ -34,12 +34,12 @@ Some reference materials taken from https://github.com/vhf/free-programming-book
 
 ## HTTP/2
 
-    * [HTTP/2 Book & Slides](https://github.com/bagder/http2-explained)
-    * [HTTP/2 - Brad Fitzpatrick - London Go Gathering 2015 video](https://www.youtube.com/watch?v=gukAZO1fqZQ)
+* [HTTP/2 Book & Slides](https://github.com/bagder/http2-explained)
+* [HTTP/2 - Brad Fitzpatrick - London Go Gathering 2015 video](https://www.youtube.com/watch?v=gukAZO1fqZQ)
 
 ## WASM
 
-    * [Introduction to Impractical WASM](https://abramhindle.github.io/impractical-wasm/)
+* [Introduction to Impractical WASM](https://abramhindle.github.io/impractical-wasm/)
 
 ## Networking
 
