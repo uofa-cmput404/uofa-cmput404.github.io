@@ -301,7 +301,8 @@ Then create the corresponding CSS files:
 
 <p class="warning">The 3 css files aren't allowed to share any code. To be on the safe side, you can create each style from scratch to produce 3 unique sets of styling rules for your site.</p>
 
-Each of the three styles should have differences in the following ways. The differences should be large, obvious, and visible. It should be difficult to tell that they're the same HTML at all!
+Each of the three styles should have differences in the following ways. The differences should be large, **obvious**, and visible. It should be difficult to tell that they're the same HTML at all!
+You should not need to explain how your three CSS styles are different, because it should be obvious by looking at the results in a browser.
 
 * 3 different layouts
     * For example, if the navigation menu is at the top of the page, it should NOT be at the top in the other two versions!
@@ -315,13 +316,17 @@ Each of the three styles should have differences in the following ways. The diff
 * 3 different ways of organizing navigation links
 * 3 different colour schemes
 * 3 different sets of images
+    * These could be logos, decorations, backgrounds, borders, horizontal rules, icons, emojis...
+    * Not including the images that came from Gutenberg (although these should be styled with CSS)
 * 3 different kinds of borders
 * 3 different backgrounds
+    * Make them as different as possible. Three different colours is not different enough. Try different kinds of images, gradients, animations...
 * 3 different sets of margins & paddings & sizes
 * 3 different ways of using vertical & horizontal alignments
 * 3 different sets of effects (gradients, opacity/transparencies, floating elements, absolute elements...)
 * 3 different ways of including some changes that make your site uniquely yours. For example: your favourite colour, your favourite fonts, etc.
-* 1 layout should use `flexbox`
+* 1 layout should use `flexbox` to change the layout
+    * See the MDN guide on [how to use flexbox](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox)
 * Every visible HTML element should be customized by your CSS in some way
     * Every element class should be styled. For example: the `source` class in the HTML above.
 * Do not include CSS for elements that your page does not have!

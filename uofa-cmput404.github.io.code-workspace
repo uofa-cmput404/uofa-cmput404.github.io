@@ -7,6 +7,7 @@
 	"settings": {
 		"languageToolLinter.languageTool.ignoredWordsInWorkspace": [
 			"dyno",
+			"htmlwebpackplugin",
 			"socialdistribution"
 		],
 		"makefile.configureOnOpen": false
