@@ -280,7 +280,7 @@ Write CSS to enable your site to have fancy mode, 90s mode, minimal mode, and re
 * You should NOT include CSS that styles elements which your page does not have.
 * Include some changes that make your site uniquely yours. For example: your favourite colour, your favourite fonts, etc.
 
-You should use 3 JavaScript buttons to switch between these. For example, inside your `/templates/mytheme/templates/base.html` you can add the following to a block of your choice.
+You should use 3 JavaScript buttons to switch between these. For example, inside your `/templates/mytheme/templates/base.html` you can add the following inside `{% block head %}`. 
 
 ```html
         <button onclick="changeStylesheet('fancy.css')">fancy mode</button>
