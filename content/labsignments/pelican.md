@@ -160,7 +160,9 @@ Update *publishconf.py* and set `SITEURL` to your GitHub given URL.
 ```py
 SITEURL = 'https://uofa-cmput404.github.io/your-repository-name'
 ```
-So if your github repo was `f24-d01-d02-labsignment-pelican-hazelcam `, you'd put:
+
+So if your GitHub repo was `f24-d01-d02-labsignment-pelican-hazelcam `, you'd put:
+
 ```py
 SITEURL = 'https://uofa-cmput404.github.io/f24-d01-d02-labsignment-pelican-hazelcam'
 ```
