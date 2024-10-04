@@ -156,9 +156,13 @@ Use `make devserver-global` on Ubuntu. Then you can point your browser at `http:
 ### Prepare your Pelican Site for GitHub Pages
 
 Update *publishconf.py* and set `SITEURL` to your GitHub given URL.
-```bash
-SITEURL = 'https://uofa-cmput404.github.io/${repository-name}'
 
+```py
+SITEURL = 'https://uofa-cmput404.github.io/your-repository-name'
+```
+So if your github repo was `f24-d01-d02-labsignment-pelican-hazelcam `, you'd put:
+```py
+SITEURL = 'https://uofa-cmput404.github.io/f24-d01-d02-labsignment-pelican-hazelcam'
 ```
 
 You need to disable GitHub's built-in static site generator, Jekyll.
@@ -326,7 +330,7 @@ You should not need to explain how your three CSS styles are different, because 
 * 3 different sets of effects (gradients, opacity/transparencies, floating elements, absolute elements...)
 * 3 different ways of including some changes that make your site uniquely yours. For example: your favourite colour, your favourite fonts, etc.
 * 1 layout should use `flexbox` to change the layout
-    * See the MDN guide on [how to use flexbox](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox)
+    * See the MDN guide on [how to use Flexbox](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox)
 * Every visible HTML element should be customized by your CSS in some way
     * Every element class should be styled. For example: the `source` class in the HTML above.
 * Do not include CSS for elements that your page does not have!
