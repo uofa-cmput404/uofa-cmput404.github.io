@@ -386,7 +386,8 @@ Violation of the restrictions will result in a mark of zero.
 * Must use Python3
 * Using of any frontend frameworks, CSS libraries, JS libraries or frameworks is forbidden. 
     * You must write plain CSS and HTML. 
-    * You must not have any JS.
+    * The **only** allowed use of JS is to switch between your three stylesheets.
+        * You must **not** use JS for fonts, decorations, transitions, animations, images, colors, layout, sizing, margins, padding, alignmens, borders, backgrounds, effects, gradients, transparencies, positions, ...
     * You may not use CSS libraries or frameworks. For example: Tailwind, Bootstrap, Materialize, Bulma, Foundation, UIkit. However, just because it's not on this list does not mean it is allowed: there are 100s of examples.
     * You may not use CSS preprocessors or transpilers. For example: Sass, Stylus, Less, PostCSS, ...
     * You must not use frontend frameworks, HTML frameworks, HTML libraries, etc. such as React, Vue, Angular, jQuery, lodash, handlebars... 
