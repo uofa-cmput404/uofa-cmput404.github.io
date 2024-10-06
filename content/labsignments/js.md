@@ -18,7 +18,7 @@ summary: Lab Procedure, Lab Assignments, Lab Marking
 
 In this lab you will make a JS Clock/Timer/Stopwatch/Countdown "single-page" app.
 The app won't require any network traffic except loading a single HTML file.
-You will use DHTML, promises, and async/await to connect your code and make sure each piece of code runs at the same time, and that the Clock, Timer, Alarm, and Stopwatch functions all work at the same time, independently.
+You will use DHTML, promises, and async/await to connect your code and make sure each piece of code runs at the same time, and that the Clock, Timer, Stopwatch, and Countdown functions all work at the same time, independently.
 
 ## Learning Goals
 
