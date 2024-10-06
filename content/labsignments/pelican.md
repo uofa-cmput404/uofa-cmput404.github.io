@@ -280,7 +280,12 @@ Write CSS to enable your site to have fancy mode, 90s mode, minimal mode, and re
 * You should NOT include CSS that styles elements which your page does not have.
 * Include some changes that make your site uniquely yours. For example: your favourite colour, your favourite fonts, etc.
 
-You should use 3 JavaScript buttons to switch between these. For example, inside your `/templates/mytheme/templates/base.html` you can add the following to a block of your choice.
+You should use 3 JavaScript buttons to switch between these. For example, inside your `/templates/mytheme/templates/base.html` you can add the following inside `{% block head %}`. 
+
+This doesn't necessarily have to go inisde `{% block head %}`, you could for example put it outside `{% block head %}` to have it always show up, or inside a different block. But for the snippet to make it into the rendered page, you have to make sure that child (more specific templates like `article.html`,`index.html`, etc.) don't overwrite the block. 
+
+See template inheritance documentation for more details: 
+https://jinja.palletsprojects.com/en/3.0.x/templates/#template-inheritance
 
 ```html
         <button onclick="changeStylesheet('fancy.css')">fancy mode</button>
