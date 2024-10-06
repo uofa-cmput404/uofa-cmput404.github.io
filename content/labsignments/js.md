@@ -149,6 +149,13 @@ Every time `Ticker` notifies the `Clock`, use JS to update the element in the DO
         * Your Ticker should update the page approximately once per second.
     * Your JS contain `Clock`, `Timer`, `Stopwatch`, and `Countdown` classes. These classes are entirely reponsible for managing their part of the application.
         * These four classes get called by `Ticker` approximately once per second to update the DOM.
+* Your CSS should make your app aesthetically appealing.
+    * It should look nice.
+    * Every element should be readable.
+    * It should be clear what every element does.
+    * It should be **obvious** to anyone how to use all of the functions of the app.
+    * Each part of the app should be separated, visually distinct, and titled.
+    * Your CSS must make sure the element with the message about the countdown being over is hidden until the countdown is over.
 
 # Restrictions
 
@@ -172,9 +179,4 @@ Violation of the restrictions will result a mark of zero.
 
 # Submission Instructions
 
-Make sure you push to GitHub classroom **BEFORE 4PM on the day of your lab section!** You will not be able to push after that!
-
-Submit a link to your repo in the form `https://github.com/uofa-cmput404/w24-h0x-labsignment-js-yourgithubname`. **Do not** submit a link to a branch, a file, or the clone URL. If you do not do this we will not know which GitHub submission is yours.
-
-<p class="warning">If you do not submit a link to your repo on eClass on time using the correct format above, you will get a zero.</p>
-
+Upload your entire app as a single HTML file directly to eClass.
