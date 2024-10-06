@@ -16,124 +16,159 @@ summary: Lab Procedure, Lab Assignments, Lab Marking
 
 # Description
 
-In this lab you will make a JS Clock/Timer/Alarm/Stopwatch "single-page" app.
+In this lab you will make a JS Clock/Timer/Stopwatch/Countdown "single-page" app.
 The app won't require any network traffic except loading a single HTML file.
 You will use DHTML, promises, and async/await to connect your code and make sure each piece of code runs at the same time, and that the Clock, Timer, Alarm, and Stopwatch functions all work at the same time, independently.
 
 ## Learning Goals
 
 * Basic DOM manipulation
-* A thorough understanding of promises, async, await.
+* A thorough understanding of JS functions, methods, classes, and objects.
 * Combining JS, HTML, and CSS into a single file.
 
 # Getting Started
 
 1. Get the GitHub classroom link from eClass, create your assignment, and clone it.
 2. Create an appropriate `.gitignore` file, to prevent unwanted files being committed to your repository. (See Django/Heroku labs for tips.)
+3. Creat an HTML page: `clock.html`. This must contain all of your HTML, CSS and JS.
 
-<!-- 
-# Install Webpack
+# App
 
-Webpack is a bundler/transpiler like esbuild.
+## HTML
 
-```sh
-npm install --save-dev webpack webpack-cli @webpack-cli/generators webpack-html-plugin mini-css-extract-plugin
-```
+* Make sure your `<head>` has a title and specifies UTF-8 encoding.
+* Create an element in `<head>` for all of your CSS code.
+* Create an element in `<head>` for all of your JS code.
+* Create a body with **semantic** HTML for four parts of the app: clock, timer, stopwatch, and countdown.
 
-## Start a Webpack project
+## JS
 
-```sh
-npx webpack init
-```
+You should put your JS in head in a single element. You can either have it specify a ES module, or you can start your JS with `'use strict';`.
 
-Webpack will ask you a bunch of questions. Since we're using plain JS, HTML and CSS, we can answer it like this:
-
-```txt
-? Which of the following JS solutions do you want to use? ES6
-? Do you want to use webpack-dev-server? No
-? Do you want to simplify the creation of HTML files for your bundle? Yes
-? Do you want to add PWA support? No
-? Which of the following CSS solutions do you want to use? CSS only
-? Will you be using PostCSS in your project? No
-? Do you want to extract CSS for every file? No
-? Do you like to install prettier to format generated configuration? Yes
-? Pick a package manager: npm
-[webpack-cli] ℹ INFO  Initialising project...
- conflict package.json
-? Overwrite package.json? overwrite
-```
-
-Webpack will create a README, index.html, src/index.js for you. You will have to create your own CSS file.
-
-
-## Configure Webpack
-
-Add some options the style loader (it loads the CSS):
+Make sure your JS doesn't try to do much before the page (and DOM) is finished loading! For example, you could create a `main` function and then have the browser call it when everything is loaded like this:
 
 ```js
-const stylesHandler = {
-    loader: 'style-loader',
-    options: {
-        insert: 'head',
-        injectType: 'singletonStyleTag'
-    }
-};
+window.addEventListener('load', main);
 ```
+Keep in mind in the above example, `main` is a reference (pointer) to a
+function or a method. **You should never pass JS code as a string!**
 
-Set the output file explicitly in `webpack.config.js`:
+You should avoid using HTML attributes like `onload` or `onclick` to run JS code. Instead, use `addEventListener` like in the example above.
 
-```js
-    output: {
-        path: path.resolve(__dirname, 'dist'),
-        filename: 'main.js',
-    },
-```
+### Ticker Class
 
-Set `inject` to `false` for the options of `HtmlWebpackPlugin` in `webpack.config.js`,
-and make sure to load the `MiniCssExtractPlugin`:
+Using the *observer design pattern*, and the *singleton design pattern*, create a JS model class that allows other classes to register to be notified once a second.
 
-```js
-    plugins: [
-        new HtmlWebpackPlugin({
-            template: 'index.html',
-            filename: 'output.html',
-            inject: false,
-        }),
-        new MiniCssExtractPlugin(),
-    ],
-```
+You can do this using a `setTimeout` in order to update the page once a second. For the purposes of this exercise you are not allowed to use `setInterval`. In addition, you should only use `setTimeout` once, and you must make sure that only one timeout is running at a time!
 
-Setting `inject` to `false` prevents the `HtmlWebpackPlugin` from trying to load the transpiled JS output of webpack as a separate file. Instead, we'll insert it directly into our `<head>`:
+The ticker class needs to run approximately once per second to update the page. Do not update the page faster than twice per second, or slower than once every two seconds.
 
-```html
-    <script defer="defer">
-        <%= compilation.assets[webpackConfig.output.filename].source() %>
-    </script>
-    <style type="text/css">
-        <%= compilation.assets['main.css'].source() %>
-    </style>
-```
+Your Ticker class should contain:
 
-We also need to have MiniCssExtractPlugin load our styles:
+* Code to make sure it is a singleton.
+* `addObserver` and `notify` methods following the observer design pattern for observables.
+* Exactly one call to `setTimeout`.
+* Code to make sure the previous timeout is finished before starting the next Timeout.
 
-```js
-            {
-                test: /\.css$/i,
-                use: [MiniCssExtractPlugin.loader,'css-loader'],
-            },
-```
+Hints:
 
-## Use Webpack
+* Do not put the `setTimeout` in a loop.
+* Remember the late-binding nature of JS.
 
-We can run webpack with one of the commands defined in the `package.json` that webpack built for us,
-such as `npm run build`. When this runs you should get an output `index.html` file in the `dist` directory. Make sure to add the `dist` directory to your `.gitignore`!
+## The Page
 
-Check the `index.html` that webpack built in your `dist` directory to make sure it includes the JavaScript from your `index.js` file. If you haven't changed your input `index.js` (the one in the `src` directory), it should contain a `console.log` right in the output `index.html`.
--->
+The page should have a title and four distinct areas. One area for the clock, one for the timer, one for the stopwatch, and one for the countdown.
+
+Use CSS to make each area separate.
+
+Hints:
+
+* Semantic HTML elements like `<section>` and `<h2>` are approprate for for each part of page!
+
+## Clock
+
+In the clock part of the page, there should be an appropriate element to show the current time. 
+
+Create a `Clock` class, to put all your JS code for managing the `Clock`. Make sure it has an `update` method and adds itself an as observer to the `Ticker` class.
+
+Every time `Ticker` notifies the `Clock`, use JS to update the element in the DOM to show the current time.
+
+## Timer
+
+* The timer should have two number inputs. One for minutes, and one for seconds. 
+* There should also be a checkbox, that when checked, causes the timer to run, and when not checked, stops the timer.
+* The timer should also be able to show "Timer stopped" when the timer is stopped.
+* The timer should show "Time's Up!" when the timer is reaches 0 and hasn't been stopped yet.
+* When the timer is running, you should disable the minutes and seconds inputs.
+* Create a `Timer` class similar to the clock class, to hold all of your code for the timer, including manipulating the DOM.
+
+## Stopwatch
+
+* The stopwatch should have three buttons: Start, Stop, and Reset.
+* When the stopwatch start button is clicked, the stopwatch should start.
+* When the stopwatch is running, the start button should be disabled.
+* When the stop button is clicked, the stop watch should **pause**.
+* When the stop watch is **not** running, the stop button should be disabled.
+* When the reset button is pressed, the stopwatch should start over from zero.
+* The stopwatch should display the elapsed time in h:mm:ss.sss seconds, with hours, minutes, seconds, and .miliseconds.
+    * If there's less than 10 minutes or seconds it should show the leading zero.
+    * If there's less than 100 ms, it should also show the leading zeroes.
+
+## Countdown
+
+* The countdown timer should have a `datetime-local` input or a separate `date` input and `time` input to allow the user to pick the date and time they want to count down to.
+* The countdown timer should show the years, months, days, hours, minutes, and seconds remaining until the date and time the user selected.
+    * Example: "0 years 0 months 9 days 21 hours 24 minutes 32 seconds remaining"
+* If the countdown time has already passed, the countdown timer should show the time since the date and time the user selected.
+    * Example: "0 years 0 months 9 days 21 hours 24 minutes 32 seconds ago"
+* A hidden element should appear when the countdown is over.
+    * Make the element appear by changing the CSS styling of the element using JavaScript.
 
 # Requirements
 
-* All JS and CSS are included in the single HTML file.
+* Your CSS and HTML must pass validation: <https://validator.w3.org/nu/>
+* Your JS, CSS, and HTML must not create any warnings or errors in Firefox Developer Edition.
+* Your HTML should use the most appropriate semantic elements.
+    * Your countdown should use a `datetime-local` input, or seperate `date` and `time` inputs.
+    * Your timer should use checkbox or radio buttons to allow pausing and unpausing.
+    * Inputs should be appropriately labelled with label elements. [More info]()
+    * It should be **obvious** what each input does.
+    * The page should have a title and four distinct sections.
+    * All CSS should be in a single element in head.
+    * All JS should be in a single element in head.
+        * Your HTML should **not** contain `style=` or `onload=` or similar attributes.
+* Your JS should demonstrate an understanding JavaScript functions, anonymous functions, classes, binding, looping, and basic DOM manipulation.
+    * You should use `setTimeout` **only once**.
+    * Your JS should modify CSS styles to hide and unhide elements.
+    * Your JS should modify the text inside elements.
+    * Your JS should disable/enable elements.
+    * You should never pass a string to an event handler, `setTimeout`, or other function that can take both a code string and a function reference.
+    * Your JS contains a `Ticker` class that follows the singleton design pattern and the observer design pattern.
+        * `Ticker` class should contain `addObserver` and `notify` methods, so it can be observable.
+        * Attempting to instantiate multiple `Ticker` objects should fail with an error.
+        * Your Ticker should update the page approximately once per second.
+    * Your JS contain `Clock`, `Timer`, `Stopwatch`, and `Countdown` classes. These classes are entirely reponsible for managing their part of the application.
+        * These four classes get called by `Ticker` approximately once per second to update the DOM.
+
+# Restrictions
+
+Violation of the restrictions will result a mark of zero.
+
+* You **must not** use `setInterval` or `requestAnimationFrame`.
+    * You may use `setTimeout` only once at a time.
+        * You can call `setTimeout` multiple times.
+        * However, you must wait until the previous timeout finishes, before calling it again.
+        * You must **not** have multiple timeouts running at once.
+        * It must be **obvious** in your code that multiple timeouts are never running at once.
+* All JS and CSS are included in the single HTML file, `clock.html`
+* Using of any frontend frameworks, CSS libraries, JS libraries or frameworks is forbidden. 
+  * You must write plain JS, CSS and HTML. 
+  * You must not use JS libraries, frameworks, preprocessors, or transpilers.
+  * You must not use CSS libraries, frameworks, preprocessors or transpilers.
+  * You must not use frontend frameworks, HTML frameworks, preprocessors or transpilers. 
+* JS must `'use strict';` at the top, or it must be an ES Module.
+* Nothing may be loaded by JS/HTML/CSS. (Network pane should only have one "GET clock.html" in it.)
+* Must not contain any `<div>` or `<span>` elements.
 
 # Submission Instructions
 
@@ -142,4 +177,4 @@ Make sure you push to GitHub classroom **BEFORE 4PM on the day of your lab secti
 Submit a link to your repo in the form `https://github.com/uofa-cmput404/w24-h0x-labsignment-js-yourgithubname`. **Do not** submit a link to a branch, a file, or the clone URL. If you do not do this we will not know which GitHub submission is yours.
 
 <p class="warning">If you do not submit a link to your repo on eClass on time using the correct format above, you will get a zero.</p>
-]
+
