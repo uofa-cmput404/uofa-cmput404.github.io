@@ -28,9 +28,7 @@ You will use DHTML, promises, and async/await to connect your code and make sure
 
 # Getting Started
 
-1. Get the GitHub classroom link from eClass, create your assignment, and clone it.
-2. Create an appropriate `.gitignore` file, to prevent unwanted files being committed to your repository. (See Django/Heroku labs for tips.)
-3. Creat an HTML page: `clock.html`. This must contain all of your HTML, CSS and JS.
+1. Create an HTML page: `clock.html`. This must contain all of your HTML, CSS and JS.
 
 # App
 
