@@ -389,7 +389,8 @@ You can change to Desktop and mobile view by click on this button.
 
 The following 4 screenshots all show the same layout. A student submitting the modes below would recieve points for only 1 layout.
 
-![bad-layout-1]({attach}images/bad-1.png)
+<img src="{attach}images/bad-1.png" alt="bad-layout-1" width="200"/>
+
 ![bad-layout-2]({filename}/images/bad-1.png)
 ![bad-layout-3]({filename}/images/bad-3.png)
 ![bad-layout-4]({filename}/images/bad-4.png)
