@@ -271,7 +271,7 @@ Write CSS to enable your site to have fancy mode, 90s mode, minimal mode, and re
 
 * Fancy Mode: You can take inspiration from modern websites such as Amazon, Facebook, Google, GitHub, or Microsoft, but **do not copy their code.**
     * These websites have thousands of lines copyrighted CSS that you do not need and do not have permission from Amazon/Facebook/Google to copy. However, you can use your browser's Dev Tools to see how they accomplish certain things and take inspiration from that.
-    * Try to make your light mode look like a standard, modern website. Try to make it look like a website that you would want to use.
+    * Try to make your fancy mode look like a standard, modern website. Try to make it look like a website that you would want to use.
 * 90s Mode: You can take inspiration from the [oatmeal comic](https://theoatmeal.com/comics/design_hell?fbclid=IwAR32De0TRFISnARpWunp3jvoCF1k1iXdotYZbvenRJOvqUCeaJwABk91JFw) or [space jam](https://www.spacejam.com/1996/). Try to make it like those 90s websites.
 * Minimal Mode: Try to make the page look good and clean for printing. Use a minimalism-style design. Minimalism is about removing any unnecessary elements of the design such as lines, colours, shapes, and backgrounds.
     * Try to make your print mode look good for printing. Check what it looks like by printing it to a PDF file (you don't need to print it to physical paper).
@@ -282,7 +282,7 @@ Write CSS to enable your site to have fancy mode, 90s mode, minimal mode, and re
 
 You should use 3 JavaScript buttons to switch between these. For example, inside your `/templates/mytheme/templates/base.html` you can add the following inside `{% block head %}`. 
 
-This doesn't necessarily have to go inisde `{% block head %}`, you could for example put it outside `{% block head %}` to have it always show up, or inside a different block. But for the snippet to make it into the rendered page, you have to make sure that child (more specific templates like `article.html`,`index.html`, etc.) don't overwrite the block. 
+This doesn't necessarily have to go inside `{% block head %}`, you could for example put it outside `{% block head %}` to have it always show up, or inside a different block. But for the snippet to make it into the rendered page, you have to make sure that child (more specific templates like `article.html`,`index.html`, etc.) don't overwrite the block. 
 
 See template inheritance documentation for more details: 
 https://jinja.palletsprojects.com/en/3.0.x/templates/#template-inheritance
