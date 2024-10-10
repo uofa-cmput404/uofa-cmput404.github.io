@@ -267,6 +267,7 @@ You can add images using attach, as described in the pelican documentation: <htt
 
 ## Phase Three: Playing around with CSS
 
+
 Write CSS to enable your site to have fancy mode, 90s mode, minimal mode, and responsiveness in both desktop and mobile views.  
 
 * Fancy Mode: You can take inspiration from modern websites such as Amazon, Facebook, Google, GitHub, or Microsoft, but **do not copy their code.**
@@ -383,6 +384,20 @@ You should also try simulating various devices with different displays to make s
 to enable device simulation mode. Firefox's button looks like a phone in front of a tablet.
 You can change to Desktop and mobile view by click on this button.
 <br><img id="mobile-view" alt="mobile-view" src="{attach}Desktop-Mobile-view.png" style="width: 50%;"> 
+
+# Examples of similar layouts
+
+The following 4 screenshots all show the same layout. A student submitting the modes below would recieve points for only 1 layout.
+
+![Pelican](./images/bad-1.png)
+![Pelican](./images/bad-1.png)
+![Pelican](./images/bad-3.png)
+![Pelican](./images/bad-4.png)
+
+Similarily, these following screenshots also contain only a single layout.
+
+![Pelican](./images/bad-1-article.png)
+![Pelican](./images/bad-2-article.png)
 
 # Restrictions
 
