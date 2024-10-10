@@ -399,6 +399,7 @@ Similarily, these following screenshots also contain only a single layout.
 <img src="{attach}images/bad-1-article.png" alt="bad-layout-5" width="600"/>
 <img src="{attach}images/bad-2-article.png" alt="bad-layout-6" width="600"/>
 
+All this is to say, small adjustments that satisfy the CSS restrictions are not a good way to get all possible marks for this assignment.
 
 # Restrictions
 
