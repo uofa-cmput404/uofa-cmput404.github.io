@@ -389,16 +389,16 @@ You can change to Desktop and mobile view by click on this button.
 
 The following 4 screenshots all show the same layout. A student submitting the modes below would recieve points for only 1 layout.
 
-<img src="{attach}images/bad-1.png" alt="bad-layout-1" width="200"/>
-
-![bad-layout-2]({filename}/images/bad-1.png)
-![bad-layout-3]({filename}/images/bad-3.png)
-![bad-layout-4]({filename}/images/bad-4.png)
+<img src="{attach}images/bad-1.png" alt="bad-layout-1" width="600"/>
+<img src="{attach}images/bad-2.png" alt="bad-layout-2" width="600"/>
+<img src="{attach}images/bad-3.png" alt="bad-layout-3" width="600"/>
+<img src="{attach}images/bad-4.png" alt="bad-layout-4" width="600"/>
 
 Similarily, these following screenshots also contain only a single layout.
 
-![bad-layout-5]({filename}/images/bad-1-article.png)
-![bad-layout-6]({filename}/images/bad-2-article.png)
+<img src="{attach}images/bad-1-article.png" alt="bad-layout-5" width="600"/>
+<img src="{attach}images/bad-2-article.png" alt="bad-layout-6" width="600"/>
+
 
 # Restrictions
 
