@@ -385,7 +385,83 @@ to enable device simulation mode. Firefox's button looks like a phone in front o
 You can change to Desktop and mobile view by click on this button.
 <br><img id="mobile-view" alt="mobile-view" src="{attach}Desktop-Mobile-view.png" style="width: 50%;"> 
 
-# Examples of similar layouts
+# Tips & Tricks
+
+In this assignment you will be evaluated on how well you followed the 'spirit' of the assignment as well as the technical implementation. 
+
+To be specific, the spirit of the assignment is to have you express yourself in a creative way across the 3 themes/modes. We want to see your vision for a modern/fancy website, a minimalist website, and a throwback to retro 90s websites.
+
+You should be proud of each mode, and leverage CSS *in combination* with your creativity to make each shine. Each should be a unique experience (more on this later). 
+
+You **can** break the CSS requirements listed above in order deliver on your ideas. Conversly, you can follow the CSS requirements perfectly and fail to recieve full marks if it seems like you tried to make as few changes between modes as possible. 
+
+## Different layouts arise from different user experiences
+
+So how can you be sure you'll get full marks for having 3 different layouts/styles if following the CSS requirements isn't enough? 
+
+The answer is to construct different user experiences. Once you have the Gutenberg content displaying with no CSS on your website, stop. The temptation for your first mode will be to 'make it look fancy/minimal/90s', this is a trap.
+
+>The temptation for your first mode will be to 'make it look fancy/minimal/90s', this is a trap.
+
+Instead take some time and think about the content. They are books. Maybe you picked the books according to some theme. How might a user want to interact with this content?
+
+## Fancy Mode
+
+In a fancy mode for example, inspire yourself from modern ebook websites [like this one](https://www.ebooks.com/en-ca/free) or [this one](https://manybooks.net/). Think about your own experiences visiting libraries or book shops. 
+
+Now think about how you can translate elements of those experiences to your fancy mode. In book shops for example, book covers are displayed prominently, this could translate into a grid view with the book cover images from project guttenbern displayed. The grid can then be styled to look like a shelf. When you hover over one of the books maybe the book expands and drops a shadow to feel like you're picking it up off the shelf.
+
+When you've clicked on a specific book, you are now looking to build a reading experience. 
+
+What does it feels like to sit and read your favourite book indoors on a rainy day? 
+
+Maybe you could style the background image to be raindrops against a window. The content of the book itself could be styled to look as if it is paper.  
+
+What kind of features would you want while you're reading? Perhaps it would be useful if the table of contents was always displayed as a sidebar that stuck with you as your scrolled down the page, allowing you easy access to different chapters. 
+
+## Modify the HTML
+
+> You will likely struggle to realize your ideas if you do not make modifications to the HTML as well as the CSS.
+
+Consider the shelf idea from the [fancy mode](#fancy-mode) section. The way articles are displayed by default won't allow you to place the book covers on your index page. To change this you'll have to modify the `index.html` template.
+
+Take a look at how other pelican theme developers did this, [here is a huge collection of pelican themes](https://github.com/getpelican/pelican-themes) to learn from. 
+
+Let's see how the `simple-bootstrap` theme modifies its index.html: 
+
+```html
+{% extends "base.html" %}
+
+{% block navclass %}active{%endblock%}
+
+{% block content %}
+<section id="content" class="content">
+    {% block content_title %}
+
+    {% endblock %}
+
+    {% for article in articles_page.object_list %}
+            <article class="hentry">
+                    <header> <h2 class="entry-title"><a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="Permalink to {{ article.title|striptags }}">{{ article.title }}</a></h2> </header>
+                    <div class="entry-content"> {{ article.summary }} </div><!-- entry-content -->
+            </article>
+    {% endfor %}
+
+    {% include 'pagination.html' %}
+</section><!-- content -->
+
+{% endblock content %}
+```
+
+Notice how they've made a custom definition for the how the articles are diplayed on the index page. It is there where you're going to want to insert the book cover image if you were to attempt implementing the fancy mode idea. You could add a metadata field to the article that contains the path to the cover image, and then use an `<img>` tag to display it. 
+
+## Avoid Variations
+
+As mentioned before:
+
+>The temptation for your first mode will be to 'make it look fancy/minimal/90s', this is a trap.
+
+It is a trap because after you do it, you're going to be tempted to take the one mode you've made, and just 'tweak' it to create the other 2. 
 
 The following 4 screenshots all show the same layout. A student submitting the modes below would recieve points for only 1 layout.
 
@@ -399,7 +475,7 @@ Similarily, these following screenshots also contain only a single layout.
 <img src="{attach}images/bad-1-article.png" alt="bad-layout-5" width="600"/>
 <img src="{attach}images/bad-2-article.png" alt="bad-layout-6" width="600"/>
 
-All this is to say, small adjustments that satisfy the CSS restrictions are not a good way to get all possible marks for this assignment.
+All this is to say, small adjustments, even if they satisfy the CSS restrictions are not a good way to get all possible marks for this assignment. If you find yourself arguing that technically X makes it a different layout, you're unlikely to get credit for making a different layout. 
 
 # Restrictions
 
