@@ -456,7 +456,7 @@ Let's see how the `simple-bootstrap` theme modifies its index.html:
 {% endblock content %}
 ```
 
-Notice how they've made a custom definition for the how the articles are diplayed on the index page. It is there where you're going to want to insert the book cover image if you were to attempt implementing the fancy mode idea. You could add a metadata field to the article that contains the path to the cover image, and then use an `<img>` tag to display it. 
+Notice how they've made a custom definition for the how the articles are diplayed on the index page. It is there where you're going to want to insert the book cover image if you were to attempt implementing the fancy mode idea. You could add a metadata field to the article that contains the path to the cover image, and then use an `<img>` tag to display it in the `index.html` template. 
 
 ## Avoid Variations
 
