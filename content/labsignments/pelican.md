@@ -442,8 +442,11 @@ Let's see how the `simple-bootstrap` theme modifies its index.html:
 
     {% for article in articles_page.object_list %}
             <article class="hentry">
-                    <header> <h2 class="entry-title"><a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="Permalink to {{ article.title|striptags }}">{{ article.title }}</a></h2> </header>
-                    <div class="entry-content"> {{ article.summary }} </div><!-- entry-content -->
+                    <header> 
+                        <h2 class="entry-title"><a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="Permalink to {{ article.title|striptags }}">{{ article.title }}</a></h2> 
+                    </header>
+                    <div class="entry-content"> {{ article.summary }} </div>
+                    <!-- entry-content -->
             </article>
     {% endfor %}
 
