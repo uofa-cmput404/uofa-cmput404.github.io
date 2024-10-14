@@ -176,3 +176,22 @@ Violation of the restrictions will result a mark of zero.
 # Submission Instructions
 
 Upload your entire app as a single HTML file directly to eClass.
+
+# Hints
+
+For the countdown timer you can use an algorithm like this:
+
+Imagine you have two datetimes a, and b. and a is less than b. Then we want to compute c = b - a
+
+1. c's seconds = b's seconds - a's seconds
+2. if c's seconds < 0, then borrow one minute from b, and increase c's seconds += 60
+3. c's minutes = b's minutes - a's minutes
+4. if c's minutes < 0, then borrow one hour from b, and increase c's minutes += 60
+5. and so on...
+
+The tricky one is the days, where you need to calculate how many days you borrowed:
+
+1. c's days = b's days - a's days
+2. if c's days < 0, then borrow one month from b and increase c's days += X where X = the # of days between the original value of b and the value of b after you borrowed a month
+
+
