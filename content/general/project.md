@@ -314,6 +314,15 @@ Posts, likes, comments, posts, are all sent to the inboxes of the authors that s
     * When the node that has the information sends it other relevant nodes, without being requested.
 * Pull
     * When the node that needs the information requests from the node that has it.
+* FQID - Fully Qualified ID
+    * The full URL of that object
+    * It is completely unique
+* Serial
+    * Any string that that can be combined with other parts of a URL to form a FQID
+    * Not in any particular format (though it needs to be compatible with URLs)
+    * Is **not** unique
+        * Two different authors on two different nodes could be both serial #123
+        * Two different posts from two different authors could be both serial c4f71e54-7b41-448e-a4fb-031f1a20007b
 
 
 Frontend/API Visibility | Admin             | Friend        | Follower       | Everyone <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
@@ -376,8 +385,8 @@ If something is paginated it has query options:
 
 * `page_number` - how many pages of objects have been delivered
 * `size` - how big is a page
-* Page 4 of objects http://service/author/{author_id}/posts/{post_id}/comments?page=4
-* Page 4 of objects but 40 per page http://service/author/{author_id}/posts/{post_id}/comments?page=4&size=40
+* Page 4 of objects http://service/api/author/{AUTHOR_SERIAL}/posts/{POST_SERIAL}/comments?page=4
+* Page 4 of objects but 40 per page http://service/api/author/{AUTHOR_SERIAL}/posts/{POST_SERIAL}/comments?page=4&size=40
 * 1 based indexing. First page is 1.
 
 # Communication
@@ -953,9 +962,12 @@ Hint: In Django, set `unique=True` on the field. Then use `models.ForeignKey` wi
 
 ## Single Author API
 
-* URL: `://service/api/authors/{AUTHOR_ID}/`
-    * GET [local, remote]: retrieve `AUTHOR_ID`'s profile
-    * PUT [local]: update `AUTHOR_ID`'s profile
+* URL: `://service/api/authors/{AUTHOR_SERIAL}/`
+    * GET [local, remote]: retrieve `AUTHOR_SERIAL`'s profile
+    * PUT [local]: update `AUTHOR_SERIAL`'s profile
+* URL: `://service/api/authors/{AUTHOR_FQID}/`
+    * GET [local, remote]: retrieve `AUTHOR_FQID`'s profile
+    * PUT [local]: update `AUTHOR_FQID`'s profile
 
 * Example GET `http://nodeaaaa/api/authors/111`:
 ```js
@@ -980,14 +992,14 @@ Hint: In Django, set `unique=True` on the field. Then use `models.ForeignKey` wi
 
 ## Followers API
 
-* URL: `://service/authors/api/{AUTHOR_ID}/followers`
-    * GET [local, remote]: get a list of authors who are `AUTHOR_ID`'s followers
-* URL: `://service/authors/api/{AUTHOR_ID}/followers/{FOREIGN_AUTHOR_ID}`
+* URL: `://service/authors/api/{AUTHOR_SERIAL}/followers`
+    * GET [local, remote]: get a list of authors who are `AUTHOR_SERIAL`'s followers
+* URL: `://service/authors/api/{AUTHOR_SERIAL}/followers/{FOREIGN_AUTHOR_FQID}`
     * Note: foreign author ID should be a percent encoded URL of the foreign author. An example URL would be:
         * `http://example-node-1/api/authors/178aba49-ca39-4741-b227-f40d072b1222/followers/http%3A%2F%2Fexample-node-2%2Fauthors%2F5f57808f-0bc9-4b3d-bdd1-bb07c976d12d`
-    * DELETE [local]: remove `FOREIGN_AUTHOR_ID` as a follower of `AUTHOR_ID` (must be authenticated)
-    * PUT [local]: Add `FOREIGN_AUTHOR_ID` as a follower of `AUTHOR_ID` (must be authenticated)
-    * GET [local, remote] check if `FOREIGN_AUTHOR_ID` is a follower of `AUTHOR_ID`
+    * DELETE [local]: remove `FOREIGN_AUTHOR_FQID` as a follower of `AUTHOR_SERIAL` (must be authenticated)
+    * PUT [local]: Add `FOREIGN_AUTHOR_FQID` as a follower of `AUTHOR_SERIAL` (must be authenticated)
+    * GET [local, remote] check if `FOREIGN_AUTHOR_FQID` is a follower of `AUTHOR_SERIAL`
         * Should return 404 if they're not
         * This is how you can check if follow request is accepted
         
@@ -1033,9 +1045,9 @@ Hint: In Django, set `unique=True` on the field. Then use `models.ForeignKey` wi
    
 ## Follow Request API
 
-* URL: `://service/api/authors/{AUTHOR_ID}/inbox`
-    * `POST` [remote]: send a follow request to `AUTHOR_ID`
-        * `AUTHOR_ID` will be the `object` below
+* URL: `://service/api/authors/{AUTHOR_SERIAL}/inbox`
+    * `POST` [remote]: send a follow request to `AUTHOR_SERIAL`
+        * `AUTHOR_SERIAL` will be the `object` below
 * When author 1 tries to follow author 2, author 1's node send the follow request to author 2's node.
 * If the author 2 accepts the Follow Request then author 1 is following author 2.
     * If author 2 is also already following author 1, then they are now friends.
@@ -1059,15 +1071,15 @@ Hint: In Django, set `unique=True` on the field. Then use `models.ForeignKey` wi
 
 ## Posts API
 
-* URL: `://service/authors/{AUTHOR_ID}/posts/{POST_ID}`
-    * GET [local, remote] get the public post whose `ID` is `POST_ID`
+* URL: `://service/api/authors/{AUTHOR_SERIAL}/posts/{POST_SERIAL}`
+    * GET [local, remote] get the public post whose serial is `POST_SERIAL`
         * friends-only posts: must be authenticated
-    * DELETE [local] remove the post whose `ID` is `POST_ID`
+    * DELETE [local] remove a
         * local posts: must be authenticated locally as the author
-    * PUT [local] update a post where its `ID` is `POST_ID`
+    * PUT [local] update a post 
         * local posts: must be authenticated locally as the author
-* Creation URL ://service/authors/{AUTHOR_ID}/posts/
-    * GET [local, remote] get the recent posts from author `AUTHOR_ID` (paginated)
+* Creation URL ://service/api/authors/{AUTHOR_SERIAL}/posts/
+    * GET [local, remote] get the recent posts from author `AUTHOR_SERIAL` (paginated)
         * Not authenticated: only public posts.
         * Authenticated locally as author: all posts.
         * Authenticated locally as friend of author: public + friends-only posts.
@@ -1085,7 +1097,7 @@ Image Posts are just posts that are images. But they are encoded as base64 data.
 You can inline an image post using a data URL, or you can use this 
 shortcut to get the image if authenticated to see it.
 
-* URL: ://service/authors/{AUTHOR_ID}/posts/{POST_ID}/image
+* URL: `://service/api/authors/{AUTHOR_SERIAL}/posts/{POST_SERIAL}/image`
     * GET [local, remote] get the public post converted to binary as an image
       * return 404 if not an image
 * This end point decodes image posts as images. This allows the use of image tags in Markdown.
@@ -1093,13 +1105,13 @@ shortcut to get the image if authenticated to see it.
 
 ## Comments API
 
-* URL: `://service/authors/{AUTHOR_ID}/inbox`
-    * `POST` [remote]: comment on a post by `AUTHOR_ID`
+* URL: `://service/api/authors/{AUTHOR_SERIAL}/inbox`
+    * `POST` [remote]: comment on a post by `AUTHOR_SERIAL`
     * Body is a [comment object](#example-comment)
-* URL: `://service/authors/{AUTHOR_ID}/posts/{POST_ID}/comments`
+* URL: `://service/api/authors/{AUTHOR_SERIAL}/posts/{POST_SERIAL}/comments`
     * `GET` [local, remote]: the comments on the post
     * Body is a ["comments" object](#example-comments)
-* URL: `://service/authors/{AUTHOR_ID}/post/{POST_ID}/comment/{REMOTE_COMMENT_ID}`
+* URL: `://service/api/authors/{AUTHOR_SERIAL}/post/{POST_SERIAL}/comment/{REMOTE_COMMENT_FQID}`
     * GET [local, remote] get the comment
 * Example: GET `http://nodebbbb/api/authors/222/posts/249/comments/http%3A%2F%2Fnodeaaaa%2Fapi%2Fauthors%2F111%2Fcommented%2F130`:
 
@@ -1128,14 +1140,14 @@ shortcut to get the image if authenticated to see it.
 
 ## Commented API
 
-* URL: `://service/authors/{AUTHOR_ID}/commented`
-    * GET [local, remote] get the list of comments `AUTHOR_ID` has made on:
+* URL: `://service/api/authors/{AUTHOR_SERIAL}/commented`
+    * GET [local, remote] get the list of comments `AUTHOR_SERIAL` has made on:
         * [local] any post
         * [remote] public and unlisted posts
         * paginated
     * POST [local] if you post an object of "type":"comment", it will add your comment to the post whose `ID` is in the `post` field
         * Then the node you posted it to is responsible for forwarding it to the correct inbox
-* URL: `://service/authors/{AUTHOR_ID}/commented/{COMMENT_ID}`
+* URL: `://service/api/authors/{AUTHOR_SERIAL}/commented/{COMMENT_SERIAL}`
     * GET [local, remote] get this comment
 * Example: GET `http://nodeaaaa/api/authors/111/comments`:
 
@@ -1198,25 +1210,25 @@ shortcut to get the image if authenticated to see it.
 
 ## Likes API
 
-* URL: `://service/authors/{AUTHOR_ID}/inbox`
-    * `POST` [remote]: send a like object to `AUTHOR_ID`
+* URL: `://service/api/authors/{AUTHOR_SERIAL}/inbox`
+    * `POST` [remote]: send a like object to `AUTHOR_SERIAL`
     * Body is [like object](#example-like-object)
-* URL: `://service/authors/{AUTHOR_ID}/posts/{POST_ID}/likes`
+* URL: `://service/api/authors/{AUTHOR_SERIAL}/posts/{POST_SERIAL}/likes`
     * "Who Liked This Post"
-    * `GET` [local, remote] a list of likes from other authors on `AUTHOR_ID`'s post `POST_ID`
+    * `GET` [local, remote] a list of likes from other authors on `AUTHOR_SERIAL`'s post `POST_SERIAL`
     * Body is [likes object](#example-likes-object)
-* URL: `://service/authors/{AUTHOR_ID}/posts/{POST_ID}/comments/{COMMENT_ID}/likes`
+* URL: `://service/api/authors/{AUTHOR_SERIAL}/posts/{POST_SERIAL}/comments/{COMMENT_SERIAL}/likes`
     * "Who Liked This Comment"
-    * `GET` [local, remote] a list of likes from other authors on AUTHOR_ID's post `POST_ID` comment `COMMENT_ID`
+    * `GET` [local, remote] a list of likes from other authors on `AUTHOR_SERIAL`'s post `POST_SERIAL` comment `COMMENT_SERIAL`
     * Body is [likes object](#example-likes-object)
 
 ## Liked API
 
-* URL: `://service/authors/{AUTHOR_ID}/liked`
+* URL: `://service/api/authors/{AUTHOR_SERIAL}/liked`
     * "Things Liked By Author"
-    * `GET` [local, remote] a list of likes by AUTHOR_ID
+    * `GET` [local, remote] a list of likes by AUTHOR_SERIAL
     * Body is [likes object](#example-likes-object)
-* URL: `://service/authors/{AUTHOR_ID}/liked/{LIKE_ID}`
+* URL: `://service/api/authors/{AUTHOR_SERIAL}/liked/{LIKE_SERIAL}`
     * `GET` [local, remote] a single like
     * Body is [like object](#example-like-object)
 
@@ -1228,12 +1240,12 @@ Local APIs, such as "stream", that aren't specified here, are up to your design.
 
 * The inbox receives all the new posts from who you follow, as well as "follow requests," likes, and comments you should be aware of. 
 * Remember: the inbox is not something on the UI or the API for local clients! The inbox is the way that a node becomes aware of posts, likes, comments, follow requests, that it should be aware of from other nodes.
-* URL: ://service/authors/{AUTHOR_ID}/inbox
+* URL: ://service/api/authors/{AUTHOR_SERIAL}/inbox
     * POST [remote]: send a post to the author
-      * if the type is "post" then add that post to AUTHOR_ID's inbox
-      * if the type is "follow" then add that follow is added to AUTHOR_ID's inbox to approve later
-      * if the type is "Like" then add that like to AUTHOR_ID's inbox
-      * if the type is "comment" then add that comment to AUTHOR_ID's inbox
+      * if the type is "post" then add that post to AUTHOR_SERIAL's inbox
+      * if the type is "follow" then add that follow is added to AUTHOR_SERIAL's inbox to approve later
+      * if the type is "Like" then add that like to AUTHOR_SERIAL's inbox
+      * if the type is "comment" then add that comment to AUTHOR_SERIAL's inbox
 * When sending/updating posts, body is a [post object](#example-post-object)
 * When sending/updating comments, body is a [comment object](#example-comment-object)
 * When sending/updating likes, body is a [like object](#example-like-object)
@@ -1261,7 +1273,7 @@ Local APIs, such as "stream", that aren't specified here, are up to your design.
    
 When building your API, try to adhere to these rules for easy compatibility with other groups:
    
-* REST API calls may be prefixed like: `http://service_address/api/authors/{AUTHOR_ID}/posts/`
+* REST API calls may be prefixed like: `http://service_address/api/authors/{AUTHOR_SERIAL}/posts/`
 * Document your service address, port, hostname, prefix (if used), and the username/password for HTTP Basic Auth in your README so that HTTP clients can connect to your API.
 * You **must** be compatible with the API specification and examples listed above in this document. 
     * You **may** need to add some additional things for compatibility with other groups due to varying interpretations.
