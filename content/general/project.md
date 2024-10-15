@@ -319,6 +319,7 @@ Posts, likes, comments, posts, are all sent to the inboxes of the authors that s
     * It is completely unique
 * Serial
     * Any string that that can be combined with other parts of a URL to form a FQID
+    * Must **not** start with `http` or contain `:`
     * Not in any particular format (though it needs to be compatible with URLs)
     * Is **not** unique
         * Two different authors on two different nodes could be both serial #123
@@ -926,6 +927,8 @@ Hint: In Django, set `unique=True` on the field. Then use `models.ForeignKey` wi
 
 # API Endpoints
 
+***Please see the definitions for FQID and serial above!***
+
 ## Authors API
 
 * URL: `://service/api/authors/`
@@ -966,8 +969,7 @@ Hint: In Django, set `unique=True` on the field. Then use `models.ForeignKey` wi
     * GET [local, remote]: retrieve `AUTHOR_SERIAL`'s profile
     * PUT [local]: update `AUTHOR_SERIAL`'s profile
 * URL: `://service/api/authors/{AUTHOR_FQID}/`
-    * GET [local, remote]: retrieve `AUTHOR_FQID`'s profile
-    * PUT [local]: update `AUTHOR_FQID`'s profile
+    * GET [local]: retrieve `AUTHOR_FQID`'s profile
 
 * Example GET `http://nodeaaaa/api/authors/111`:
 ```js
@@ -992,9 +994,9 @@ Hint: In Django, set `unique=True` on the field. Then use `models.ForeignKey` wi
 
 ## Followers API
 
-* URL: `://service/authors/api/{AUTHOR_SERIAL}/followers`
+* URL: `://service/api/authors/{AUTHOR_SERIAL}/followers`
     * GET [local, remote]: get a list of authors who are `AUTHOR_SERIAL`'s followers
-* URL: `://service/authors/api/{AUTHOR_SERIAL}/followers/{FOREIGN_AUTHOR_FQID}`
+* URL: `://service/api/authors/{AUTHOR_SERIAL}/followers/{FOREIGN_AUTHOR_FQID}`
     * Note: foreign author ID should be a percent encoded URL of the foreign author. An example URL would be:
         * `http://example-node-1/api/authors/178aba49-ca39-4741-b227-f40d072b1222/followers/http%3A%2F%2Fexample-node-2%2Fauthors%2F5f57808f-0bc9-4b3d-bdd1-bb07c976d12d`
     * DELETE [local]: remove `FOREIGN_AUTHOR_FQID` as a follower of `AUTHOR_SERIAL` (must be authenticated)
@@ -1078,6 +1080,9 @@ Hint: In Django, set `unique=True` on the field. Then use `models.ForeignKey` wi
         * local posts: must be authenticated locally as the author
     * PUT [local] update a post 
         * local posts: must be authenticated locally as the author
+* URL: `://service/api/posts/{POST_FQID}`
+    * GET [local] get the public post whose URL is `POST_FQID`
+        * friends-only posts: must be authenticated
 * Creation URL ://service/api/authors/{AUTHOR_SERIAL}/posts/
     * GET [local, remote] get the recent posts from author `AUTHOR_SERIAL` (paginated)
         * Not authenticated: only public posts.
@@ -1111,8 +1116,13 @@ shortcut to get the image if authenticated to see it.
 * URL: `://service/api/authors/{AUTHOR_SERIAL}/posts/{POST_SERIAL}/comments`
     * `GET` [local, remote]: the comments on the post
     * Body is a ["comments" object](#example-comments)
+* URL: `://service/api/posts/{POST_FQID}/comments`
+    * `GET` [local, remote]: the comments on the post (that our server knows about)
+    * Body is a ["comments" object](#example-comments)
 * URL: `://service/api/authors/{AUTHOR_SERIAL}/post/{POST_SERIAL}/comment/{REMOTE_COMMENT_FQID}`
     * GET [local, remote] get the comment
+* URL: `://service/api/comment/{COMMENT_FQID}`
+    * GET [local] get the comment
 * Example: GET `http://nodebbbb/api/authors/222/posts/249/comments/http%3A%2F%2Fnodeaaaa%2Fapi%2Fauthors%2F111%2Fcommented%2F130`:
 
 ```js
@@ -1141,14 +1151,18 @@ shortcut to get the image if authenticated to see it.
 ## Commented API
 
 * URL: `://service/api/authors/{AUTHOR_SERIAL}/commented`
-    * GET [local, remote] get the list of comments `AUTHOR_SERIAL` has made on:
+    * GET [local, remote] get the list of comments author has made on:
         * [local] any post
         * [remote] public and unlisted posts
         * paginated
     * POST [local] if you post an object of "type":"comment", it will add your comment to the post whose `ID` is in the `post` field
         * Then the node you posted it to is responsible for forwarding it to the correct inbox
+* URL: `://service/api/authors/{AUTHOR_FQID}/commented`
+    * GET [local] get the list of comments author has made on any post (that local node knows about)
 * URL: `://service/api/authors/{AUTHOR_SERIAL}/commented/{COMMENT_SERIAL}`
     * GET [local, remote] get this comment
+* URL: `://service/api/commented/{COMMENT_FQID}`
+    * GET [local] get this comment
 * Example: GET `http://nodeaaaa/api/authors/111/comments`:
 
 ```js
@@ -1217,10 +1231,17 @@ shortcut to get the image if authenticated to see it.
     * "Who Liked This Post"
     * `GET` [local, remote] a list of likes from other authors on `AUTHOR_SERIAL`'s post `POST_SERIAL`
     * Body is [likes object](#example-likes-object)
+* URL: `://service/api/posts/{POST_FQID}/likes`
+    * "Who Liked This Post"
+    * `GET` [local] a list of likes from other authors on `AUTHOR_SERIAL`'s post `POST_SERIAL`
+    * Body is [likes object](#example-likes-object)
 * URL: `://service/api/authors/{AUTHOR_SERIAL}/posts/{POST_SERIAL}/comments/{COMMENT_SERIAL}/likes`
     * "Who Liked This Comment"
     * `GET` [local, remote] a list of likes from other authors on `AUTHOR_SERIAL`'s post `POST_SERIAL` comment `COMMENT_SERIAL`
     * Body is [likes object](#example-likes-object)
+* URL: `://service/api/liked/{LIKE_FQID}`
+    * `GET` [local, remote] a single like
+    * Body is [like object](#example-like-object)
 
 ## Liked API
 
@@ -1230,6 +1251,13 @@ shortcut to get the image if authenticated to see it.
     * Body is [likes object](#example-likes-object)
 * URL: `://service/api/authors/{AUTHOR_SERIAL}/liked/{LIKE_SERIAL}`
     * `GET` [local, remote] a single like
+    * Body is [like object](#example-like-object)
+* URL: `://service/api/authors/{AUTHOR_FQID}/liked`
+    * "Things Liked By Author"
+    * `GET` [local] a list of likes by AUTHOR_FQID
+    * Body is [likes object](#example-likes-object)
+* URL: `://service/api/liked/{LIKE_FQID}`
+    * `GET` [local] a single like
     * Body is [like object](#example-like-object)
 
 ## Other Local APIs
