@@ -1,6 +1,6 @@
 Title: JS Lab
 date: 2024-07-17
-tags: curl, http, socket, socketserver <!-- @LT-IGNORE:MORFOLOGIK_RULE_EN_CA(http)@ -->
+tags: javascript, webapp <!-- @LT-IGNORE:MORFOLOGIK_RULE_EN_CA@ -->
 authors: Hazel Victoria Campbell
 status: Published
 summary: Lab Procedure, Lab Assignments, Lab Marking

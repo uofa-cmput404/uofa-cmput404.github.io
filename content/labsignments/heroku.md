@@ -152,6 +152,7 @@ You have several options to make sure this doesn't happen:
         * macOS: <https://kinsta.com/knowledgebase/edit-mac-hosts-file/>
         * Windows 10/11: <https://allthings.how/how-to-edit-hosts-file-in-windows-11/>
     * If it stops working check again with nslookup and update it.
+* New: use CIRA Canadian Shield as your DNS server: <https://www.cira.ca/en/canadian-shield/>
 * Use a VPN service or proxy.
 * Walkthrough us your lab over using another internet not provided by the University while in the lab.
 * Windows: [enable DoH](https://learn.microsoft.com/en-us/windows-server/networking/dns/doh-client-support).
