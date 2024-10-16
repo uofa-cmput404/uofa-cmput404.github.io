@@ -482,6 +482,17 @@ Similarily, these following screenshots also contain only a single layout.
 
 All this is to say, small adjustments, even if they satisfy the CSS restrictions are not a good way to get all possible marks for this assignment. If you find yourself arguing that technically X makes it a different layout, you're unlikely to get credit for making a different layout. 
 
+## Examples from past Cmput404 students
+
+A collection of examples from students who got high grades on this labsignment.
+
+<img src="{attach}images/sample_fancy_2.gif" alt="fancy-example" width="600">
+
+<img src="{attach}images/sample-90s-mode.png" alt="90s-mode-example" width="600">
+
+<img src="{attach}images/sample-fancy-mode.png" alt="fancy-example" width="600">
+
+
 # Restrictions
 
 Violation of the restrictions will result in a mark of zero.
