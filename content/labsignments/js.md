@@ -57,7 +57,7 @@ Using the *observer design pattern*, and the *singleton design pattern*, create 
 
 You can do this using a `setTimeout` in order to update the page once a second. For the purposes of this exercise you are not allowed to use `setInterval`. In addition, you should only use `setTimeout` once, and you must make sure that only one timeout is running at a time!
 
-The ticker class needs to run approximately once per second to update the page. Do not update the page faster than twice per second, or slower than once every two seconds.
+The ticker class needs to run approximately once per second to update the page. **Do not update the page faster than twice per second, or slower than once every two seconds.**
 
 Your Ticker class should contain:
 

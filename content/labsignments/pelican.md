@@ -409,7 +409,7 @@ Instead take some time and think about the content. They are books. Maybe you pi
 
 In a fancy mode for example, inspire yourself from modern ebook websites [like this one](https://www.ebooks.com/en-ca/free) or [this one](https://manybooks.net/). Think about your own experiences visiting libraries or book shops. 
 
-Now think about how you can translate elements of those experiences to your fancy mode. In book shops for example, book covers are displayed prominently, this could translate into a grid view with the book cover images from project guttenbern displayed. The grid can then be styled to look like a shelf. When you hover over one of the books maybe the book expands and drops a shadow to feel like you're picking it up off the shelf.
+Now think about how you can translate elements of those experiences to your fancy mode. In book shops for example, book covers are displayed prominently, this could translate into a grid view with the book cover images from project Gutenberg displayed. The grid can then be styled to look like a shelf. When you hover over one of the books maybe the book expands and drops a shadow to feel like you're picking it up off the shelf.
 
 When you've clicked on a specific book, you are now looking to build a reading experience. 
 

@@ -1105,6 +1105,9 @@ shortcut to get the image if authenticated to see it.
 * URL: `://service/api/authors/{AUTHOR_SERIAL}/posts/{POST_SERIAL}/image`
     * GET [local, remote] get the public post converted to binary as an image
       * return 404 if not an image
+* URL: `://service/api/posts/{POST_FQID}/image`
+    * GET [local, remote] get the public post converted to binary as an image
+      * return 404 if not an image
 * This end point decodes image posts as images. This allows the use of image tags in Markdown.
 * You can use this to proxy or cache images.
 
