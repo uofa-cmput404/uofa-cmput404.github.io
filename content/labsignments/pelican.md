@@ -545,11 +545,11 @@ A collection of examples from students who got high grades on this labsignment. 
     }
 
     //Bind rotateImg function to click event for each sample.
-    document.getElementById("sample-1").addEventListener("click", rotateImg('sample-1', sample1Src))
+    document.getElementById("sample-1").addEventListener("click", ()=>rotateImg('sample-1', sample1Src))
 
-    document.getElementById("sample-2").addEventListener("click", rotateImg('sample-2', sample2Src))
+    document.getElementById("sample-2").addEventListener("click", ()=>rotateImg('sample-2', sample2Src))
 
-    document.getElementById("sample-3").addEventListener("click", rotateImg('sample-3', sample3Src))
+    document.getElementById("sample-3").addEventListener("click", ()=>rotateImg('sample-3', sample3Src))
 
 </script>
 
