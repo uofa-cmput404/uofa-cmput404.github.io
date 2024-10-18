@@ -486,6 +486,12 @@ All this is to say, small adjustments, even if they satisfy the CSS restrictions
 
 A collection of examples from students who got high grades on this labsignment. Click on each sample to switch between fancy, minimal and 90s mode.
 
+<img id="sample-1" src="{attach}images/sample-fancy-mode-1.png" alt="sample-2" width="600">
+
+<img id="sample-2" src="{attach}images/sample-minimal-mode-2.png" alt="sample-1" width="600">
+
+<img id="sample-3" src="{attach}images/sample-90s-mode-3.png" alt="sample-3" width="600">
+
 <script>
 
     /**
@@ -524,13 +530,6 @@ A collection of examples from students who got high grades on this labsignment. 
     document.getElementById("sample-3").addEventListener("click", rotateImg('sample-3', sample3Src))
 
 </script>
-
-<img id="sample-1" src="{attach}images/sample-fancy-mode-1.png" alt="sample-2" width="600">
-
-<img id="sample-2" src="{attach}images/sample-minimal-mode-2.png" alt="sample-1" width="600">
-
-<img id="sample-3" src="{attach}images/sample-90s-mode-3.png" alt="sample-3" width="600">
-
 
 # Restrictions
 
