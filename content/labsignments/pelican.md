@@ -486,7 +486,7 @@ All this is to say, small adjustments, even if they satisfy the CSS restrictions
 
 A collection of examples from students who got high grades on this labsignment. Click on each sample to switch between fancy, minimal and 90s mode.
 
-
+<!-- Need to include/load all images so pelican makes them available. Without this, the image links will break -->
 <img src="{attach}images/sample-90s-mode-1.png"  style="display:none">
 
 <img src="{attach}images/sample-90s-mode-2.png"  style="display:none">
@@ -504,6 +504,8 @@ A collection of examples from students who got high grades on this labsignment. 
 <img src="{attach}images/sample-fancy-mode-2.gif" style="display:none">
 
 <img src="{attach}images/sample-fancy-mode-3.png"  style="display:none">
+
+<!-- These are the actual sample 'windows'/displays which rotate when clicked. -->
 
 <img id="sample-1" src="{attach}images/sample-fancy-mode-1.png" alt="sample-1" width="600" height="300">
 
