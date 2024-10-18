@@ -505,11 +505,11 @@ A collection of examples from students who got high grades on this labsignment. 
 
 <img src="{attach}images/sample-fancy-mode-3.png"  style="display:none">
 
-<img id="sample-1" src="{attach}images/sample-fancy-mode-1.png" alt="sample-1" width="600">
+<img id="sample-1" src="{attach}images/sample-fancy-mode-1.png" alt="sample-1" width="600" height="300">
 
-<img id="sample-2" src="{attach}images/sample-minimal-mode-2.png" alt="sample-2" width="600">
+<img id="sample-2" src="{attach}images/sample-minimal-mode-2.png" alt="sample-2" width="600" height="300">
 
-<img id="sample-3" src="{attach}images/sample-90s-mode-3.png" alt="sample-3" width="600">
+<img id="sample-3" src="{attach}images/sample-90s-mode-3.png" alt="sample-3" width="600" height="300">
 
 
 
