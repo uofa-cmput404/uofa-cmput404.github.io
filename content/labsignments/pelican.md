@@ -486,23 +486,33 @@ All this is to say, small adjustments, even if they satisfy the CSS restrictions
 
 A collection of examples from students who got high grades on this labsignment. Click on each sample to switch between fancy, minimal and 90s mode.
 
+
+<img src="{attach}images/sample-90s-mode-1.png"  style="display:none">
+
+<img src="{attach}images/sample-90s-mode-2.png"  style="display:none">
+
+<img src="{attach}images/sample-90s-mode-3.png" style="display:none">
+
+<img src="{attach}images/sample-minimal-mode-1.png" style="display:none">
+
+<img src="{attach}images/sample-minimal-mode-2.png" style="display:none">
+
+<img src="{attach}images/sample-minimal-mode-3.png" style="display:none">
+
+<img  src="{attach}images/sample-fancy-mode-1.png" style="display:none">
+
+<img src="{attach}images/sample-fancy-mode-2.gif" style="display:none">
+
+<img src="{attach}images/sample-fancy-mode-3.png"  style="display:none">
+
 <img id="sample-1" src="{attach}images/sample-fancy-mode-1.png" alt="sample-1" width="600">
 
 <img id="sample-2" src="{attach}images/sample-minimal-mode-2.png" alt="sample-2" width="600">
 
 <img id="sample-3" src="{attach}images/sample-90s-mode-3.png" alt="sample-3" width="600">
 
-<img src="{attach}images/sample-minimal-mode-1.png" alt="sample-1" width="600" style="display:none">
 
-<img src="{attach}images/sample-90s-mode-1.png" alt="sample-2" width="600" style="display:none">
 
-<img src="{attach}images/sample-fancy-mode-3.png" alt="sample-3" width="600" style="display:none">
-
-<img src="{attach}images/sample-fancy-mode-2.gif" alt="sample-1" width="600" style="display:none">
-
-<img src="{attach}images/sample-90s-mode-2.png" alt="sample-2" width="600" style="display:none">
-
-<img src="{attach}images/sample-minimal-mode-3.png" alt="sample-3" width="600" style="display:none">
 
 <script>
 
