@@ -484,13 +484,52 @@ All this is to say, small adjustments, even if they satisfy the CSS restrictions
 
 ## Examples from past Cmput404 students
 
-A collection of examples from students who got high grades on this labsignment.
+A collection of examples from students who got high grades on this labsignment. Click on each sample to switch between fancy, minimal and 90s mode.
 
-<img src="{attach}images/sample_fancy_2.gif" alt="fancy-example" width="600">
+<script>
 
-<img src="{attach}images/sample-90s-mode.png" alt="90s-mode-example" width="600">
+    /**
+     * Set up lists of image names for each sample, iterating through these 
+     * will be how we 'rotate'. 
+     */
+    const sample1Src = ["sample-fancy-mode-1.png", "sample-minimal-mode-1.png",  "sample-90s-mode-1.png"]
 
-<img src="{attach}images/sample-fancy-mode.png" alt="fancy-example" width="600">
+    const sample2Src = ["sample-fancy-mode-2.gif", "sample-minimal-mode-2.png", "sample-90s-mode-2.png"]
+
+    const sample3Src = ["sample-fancy-mode-3.png", "sample-minimal-mode-3.png", "sample-90s-mode-3.png"]
+
+    function rotateImg(id, srcs){
+        const imgElement = document.getElementById(id)
+        let srcAttribute = imgElement.getAttribute("src")
+        let srcPath = srcAttribute.split("/")
+
+        //After splitting by '/', the last element will be the image file name
+        let currentImage = srcPath[srcPath.length-1] 
+
+        //Lookup the index of the current image in the srcs array, and get the next image. Reset back the index 0 by taking the mod length of the srcs array.
+        let nextIndex = (srcs.indexOf(currentImage) + 1) % srcs.length
+
+        //Update the srcPath array so the last element will be the next image to display.
+        srcPath[srcPath.length-1] = srcs[nextIndex]
+
+        //Compute the updated src attribute value by undoing the split('/') with join('/')
+        imgElement.setAttribute("src", srcPath.join('/'))
+    }
+
+    //Bind rotateImg function to click event for each sample.
+    document.getElementById("sample-1").addEventListener("click", rotateImg('sample-1', sample1Src))
+
+    document.getElementById("sample-2").addEventListener("click", rotateImg('sample-2', sample2Src))
+
+    document.getElementById("sample-3").addEventListener("click", rotateImg('sample-3', sample3Src))
+
+</script>
+
+<img id="sample-1" src="{attach}images/sample-fancy-mode-1.png" alt="sample-2" width="600">
+
+<img id="sample-2" src="{attach}images/sample-minimal-mode-2.png" alt="sample-1" width="600">
+
+<img id="sample-3" src="{attach}images/sample-90s-mode-3.png" alt="sample-3" width="600">
 
 
 # Restrictions
