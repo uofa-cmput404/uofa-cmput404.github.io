@@ -35,6 +35,7 @@ In order to connect to your flask server inside WSL or another VM from outside W
 * As a user, I want to add items to any existing item in the outline, so I can grow my outline.
 * As a user, I want to edit items in the outline, so I can update my outline.
 * As a user, I want to delete items from the outline, becuase I don't want them anymore.
+* As a user, I want to be able to delete a parent node, and all its children shall be deleted with it.
 * As a user, I want the outline to remember the order of outline items, because the order is important to me.
 * As a user, I want my friend to be able to edit the same outline that I am editing, so that we can collaborate.
 * As a user, I want to see what my friends are typing in my outline while they type it, so I can be up to date.
@@ -73,7 +74,7 @@ It does not need to save this to a database or file, it's fine to just keep it i
 
 ## Create API for Model
 
-Each item in the outline and each author needs a URL in the Flask backend that is accessible by the JS frontend.
+Each item in the outline and each user needs a URL in the Flask backend that is accessible by the JS frontend.
 
 * `GET /outline/` should get a JSON respresentation of the root item.
 * `GET /outline/1/2/3/` should get a JSON representation of the 4th item in the 3rd item in 2nd item in the root item.
