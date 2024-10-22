@@ -9,7 +9,7 @@ summary: Lecture, Labs, Contact Information, Lecturer, Teaching Assistants, Cour
 
 <h2>University of Alberta <br> CMPUT 404 - Web Applications and Architecture <br> LEC-A1 <br> Fall 2024</h2>
 
-* **eClass Page**: <https://eclass.srv.ualberta.ca/course/view.php?id=95227>
+* **eClass Page**: <https://eclass.srv.ualberta.ca/course/view.php?id=99611>
 * **Home Page**: <https://uofa-cmput404.github.io/>
 * [Old outlines](/tag/outline.html)
 
