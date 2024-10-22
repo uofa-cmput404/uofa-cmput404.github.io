@@ -125,6 +125,7 @@ Posts, likes, comments, posts, are all sent to the inboxes of the authors that s
     * As an author, I want to make posts, so I can share my thoughts and pictures with other local authors.
     * As an author, I want my node to send my posts to my remote followers and friends, so that remote authors following me can see them. *⧟ Part 3-5 only*
     * As an author, I want to edit my posts locally, so that I'm not stuck with a typo on a popular post.
+        * That is, authors should not have to delete and re-create a post to change the content.
     * As an author, I want my node to re-send posts I've edited to everywhere they were already sent, so that people don't keep seeing the old version. *⧟ Part 3-5 only*
     * As an author, posts I make can be in CommonMark, so I can give my posts some basic formatting.
     * As an author, posts I make can be in simple plain text, because I don't always want all the formatting features of CommonMark.
@@ -133,6 +134,7 @@ Posts, likes, comments, posts, are all sent to the inboxes of the authors that s
     * As an author, I want to delete my own posts locally, so I can remove posts that are out of date or made by mistake.
     * As an author, I want my node to re-send posts I've deleted to everyone they were already sent, so I know remote users don't keep seeing my deleted posts forever. *⧟ Part 3-5 only*
     * As an author, I want to be able to use my web-browser to manage/author my posts, so I don't have to use a clunky API.
+        * We don't want authors to have to use some interface like django-rest-framework or Swagger. 
     * As an author, other authors cannot modify my posts, so that I don't get impersonated.
 * Reading
     * As an author, I want a "stream" which shows all the posts I should know about, so I don't have to switch between different pages.
@@ -520,8 +522,8 @@ Hint: In Django, set `unique=True` on the field. Then use `models.ForeignKey` wi
     // text/markdown -- common mark
     // text/plain -- UTF-8
     // application/base64 # this an image that is neither a jpeg or png
-    // image/png;base64 # this is an embedded png -- images are POSTS. So you might have a user make 2 posts if a post includes an image!
-    // image/jpeg;base64 # this is an embedded jpeg
+    // image/png;base64 # this is an png -- images are POSTS. So you might have a user make 2 posts if a post includes an image!
+    // image/jpeg;base64 # this is an jpeg
     // for HTML you will want to strip tags before displaying
     "contentType":"text/plain",
     "content":"Þā wæs on burgum Bēowulf Scyldinga, lēof lēod-cyning, longe þrāge folcum gefrǣge (fæder ellor hwearf, aldor of earde), oð þæt him eft onwōc hēah Healfdene; hēold þenden lifde, gamol and gūð-rēow, glæde Scyldingas. Þǣm fēower bearn forð-gerīmed in worold wōcun, weoroda rǣswan, Heorogār and Hrōðgār and Hālga til; hȳrde ic, þat Elan cwēn Ongenþēowes wæs Heaðoscilfinges heals-gebedde. Þā wæs Hrōðgāre here-spēd gyfen, wīges weorð-mynd, þæt him his wine-māgas georne hȳrdon, oð þæt sēo geogoð gewēox, mago-driht micel. Him on mōd bearn, þæt heal-reced hātan wolde, medo-ærn micel men gewyrcean, þone yldo bearn ǣfre gefrūnon, and þǣr on innan eall gedǣlan geongum and ealdum, swylc him god sealde, būton folc-scare and feorum gumena. Þā ic wīde gefrægn weorc gebannan manigre mǣgðe geond þisne middan-geard, folc-stede frætwan. Him on fyrste gelomp ǣdre mid yldum, þæt hit wearð eal gearo, heal-ærna mǣst; scōp him Heort naman, sē þe his wordes geweald wīde hæfde. Hē bēot ne ālēh, bēagas dǣlde, sinc æt symle. Sele hlīfade hēah and horn-gēap: heaðo-wylma bād, lāðan līges; ne wæs hit lenge þā gēn þæt se ecg-hete āðum-swerian 85 æfter wæl-nīðe wæcnan scolde. Þā se ellen-gǣst earfoðlīce þrāge geþolode, sē þe in þȳstrum bād, þæt hē dōgora gehwām drēam gehȳrde hlūdne in healle; þǣr wæs hearpan swēg, swutol sang scopes. Sægde sē þe cūðe frum-sceaft fīra feorran reccan",
@@ -693,6 +695,33 @@ Hint: In Django, set `unique=True` on the field. Then use `models.ForeignKey` wi
     },
     "published":"2015-03-09T13:07:04+00:00",
     "visibility":"FRIENDS"
+}
+```
+
+## Example Posts Object
+
+```js
+{
+    "type":"posts",
+    // page number we're on (counting from 1)
+    "page_number":23,
+    // size of a page of posts
+    "size":10,
+    // total number of posts
+    "count": 9001,
+    // the first page of posts
+    "src":[
+        { "type":"post", /* ... the rest of the post object */ },
+        { "type":"post", /* ... the rest of the post object */ },
+        { "type":"post", /* ... the rest of the post object */ },
+        { "type":"post", /* ... the rest of the post object */ },
+        { "type":"post", /* ... the rest of the post object */ },
+        { "type":"post", /* ... the rest of the post object */ },
+        { "type":"post", /* ... the rest of the post object */ },
+        { "type":"post", /* ... the rest of the post object */ },
+        { "type":"post", /* ... the rest of the post object */ },
+        { "type":"post", /* ... the rest of the post object */ },
+    ]
 }
 ```
 
@@ -909,7 +938,7 @@ Hint: In Django, set `unique=True` on the field. Then use `models.ForeignKey` wi
             "object": "http://nodebbbb/authors/222/posts/249"
         }
     ]
-},
+}
 ```
 
 ```js
