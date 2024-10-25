@@ -67,7 +67,7 @@ It does not need to save this to a database or file, it's fine to just keep it i
 
 ## Create API for Model
 
-Each item in the outline and each user needs a URL in the Flask backend that is accessible by the JS frontend.
+Each item in the outline needs a URL in the Flask backend that is accessible by the JS frontend.
 
 * `GET /outline/` should get a JSON respresentation of the root item.
 * `GET /outline/1/2/3/` should get a JSON representation of the 4th item in the 3rd item in 2nd item in the root item.
