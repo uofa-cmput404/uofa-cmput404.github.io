@@ -75,7 +75,7 @@ Each item in the outline and each user needs a URL in the Flask backend that is 
     * It should return the appropriate HTTP status code, along with the JSON representation of the new item.
 * `PUT /outline/5/6/` should modify the text of the 7th item inside of the 6th item inside of the outline.
     * It should return the appropriate HTTP status code.
-    * It should return the new JSON representation of the 6th item inside of the 5th item inside of the outline.
+    * It should return the new JSON representation of the 7th item inside of the 6th item inside of the outline.
 * `DELETE /outline/7/` should delete the 8th item inside of the root item.\
     * It should return the appropriate HTTP status code.
 
