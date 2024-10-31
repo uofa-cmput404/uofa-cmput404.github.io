@@ -427,6 +427,14 @@ The Frontend-to-Backend (also known as [local]) communication for this scenario 
 10. I eventually see Steph's new post, and click like on it.
 11. My node sends the like to Steph's inbox with POST http://node2/api/authors/777777777/inbox
 
+**Note:** When sending a follow request to a foreign author, you (as the sending author/node) do not need to await any form of confirmation from the receiving author.
+
+For example, suppose author A sends a follow request to author B. Once the follow request is sent from A to B's inbox, A's node can assume that A is following B, even before author B accepts or denies the request.
+
+If B later denies author A's request, then B's posts will never be sent to A's inbox. But from the perspective of A's node the acceptance or rejection of a follow request is immaterial.
+
+
+
 ## Example (How sharing public posts propagates them to new nodes.)
 Let's say we have author 1 on server A, author 2 on server B, and author 3 on server C. 
 
