@@ -427,6 +427,13 @@ The Frontend-to-Backend (also known as [local]) communication for this scenario 
 10. I eventually see Steph's new post, and click like on it.
 11. My node sends the like to Steph's inbox with POST http://node2/api/authors/777777777/inbox
 
+## Example (How sharing public posts propagates them to new nodes.)
+Let's say we have author 1 on server A, author 2 on server B, and author 3 on server C. 
+
+If 2 follows 1 but no one on C follows 1, then C won't be aware of the public posts made by 1.
+
+But if 3 follows 2, and 2 shares it, then the post will be sent to 3's inbox and C will become aware of it.
+
 ## IDs
 
 Posts may be generated a UUID, or ID#, or whatever for internal database/model use. However, on the API the post or author should always have a fully qualified URL as its ID, and you must always identify remote objects (authors, posts, likes, comments, ...) as their full URL, including the URL of the node they came from. This means you will need to look up authors and posts in your database by their full URL ID, even if they are local.
