@@ -180,7 +180,7 @@ Posts, likes, comments, posts, are all sent to the inboxes of the authors that s
     * As a node admin, images can be hosted on my node, so that my users can use them in their CommonMark posts.
     * As a node admin, I want to be able to add, modify, and delete authors, to fix problems or remove unwanted users.
     * As a node admin, I want to OPTIONALLY be able to allow users to sign up but require my OK to finally be on my node, so that I can prevent unwanted users spambots.
-    * As a node admin, I want to be able to connect to remote nodes by entering only the URL of the remote node, a username, and a password, so that I don't have to edit code.
+    * As a node admin, I want to be able to connect to remote nodes by entering only the URL of the remote node, a username, and a password, so that I don't have to edit code. *⧟ Part 3-5 only.*
     * As a node admin, I want a RESTful interface for most operations, so that I can connect to other nodes and allow my users to use alternate clients other than the web frontend.
     * As a node admin, I want to be able to add nodes to share with. *⧟ Part 3-5 only.*
     * As a node admin, I want to be able to remove nodes and stop sharing with them. *⧟ Part 3-5 only.*
@@ -426,6 +426,21 @@ The Frontend-to-Backend (also known as [local]) communication for this scenario 
 9. Steph's node (node2) sends Steph's new post to my inbox with POST http://node1/api/authors/555555555/inbox.
 10. I eventually see Steph's new post, and click like on it.
 11. My node sends the like to Steph's inbox with POST http://node2/api/authors/777777777/inbox
+
+**Note:** When sending a follow request to a foreign author, you (as the sending author/node) do not need to await any form of confirmation from the receiving author.
+
+For example, suppose author A sends a follow request to author B. Once the follow request is sent from A to B's inbox, A's node can assume that A is following B, even before author B accepts or denies the request.
+
+If B later denies author A's request, then B's posts will never be sent to A's inbox. But from the perspective of A's node the acceptance or rejection of a follow request is immaterial.
+
+
+
+## Example (How sharing public posts propagates them to new nodes.)
+Let's say we have author 1 on server A, author 2 on server B, and author 3 on server C. 
+
+If 2 follows 1 but no one on C follows 1, then C won't be aware of the public posts made by 1.
+
+But if 3 follows 2, and 2 shares it, then the post will be sent to 3's inbox and C will become aware of it.
 
 ## IDs
 
