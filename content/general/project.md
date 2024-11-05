@@ -1820,7 +1820,7 @@ Due 4PM Monday. <!-- @LT-IGNORE:CONFUSION_DUE_DO@ -->
 
 eClass has a limitation where it only shows the due date for the last lab section of the week, but for Monday labs it is due Monday. For Wednesday labs it is due Wednesday.
 
-Create a git tag "part2" before 4PM and submit only the link to your tag.
+Create a git tag "part3" before 4PM and submit only the link to your tag.
 
 Don't forget to push the tag to GitHub.
 
@@ -1919,7 +1919,7 @@ Due 4PM Monday. <!-- @LT-IGNORE:CONFUSION_DUE_DO@ -->
 
 eClass has a limitation where it only shows the due date for the last lab section of the week, but for Monday labs it is due Monday. For Wednesday labs it is due Wednesday.
 
-Create a git tag "part3" before 4PM and submit only the link to your tag.
+Create a git tag "part4" before 4PM and submit only the link to your tag.
 
 Don't forget to push the tag to GitHub.
 
@@ -2012,7 +2012,7 @@ Due 4PM Monday. <!-- @LT-IGNORE:CONFUSION_DUE_DO@ -->
 
 eClass has a limitation where it only shows the due date for the last lab section of the week, but for Monday labs it is due Monday. For Wednesday labs it is due Wednesday.
 
-Create a git tag "part4" before 4PM and submit only the link to your tag.
+Create a git tag "part5" before 4PM and submit only the link to your tag.
 
 Don't forget to push the tag to GitHub.
 
