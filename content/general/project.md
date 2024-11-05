@@ -154,14 +154,19 @@ Posts, likes, comments, posts, are all sent to the inboxes of the authors that s
     * As an author, I don't anyone who isn't a friend to be able to see my friends-only posts and images, so I can feel safe about posting.
     * As an author, I don't want anyone except the node admin to see my deleted posts.
     * As an author, posts I create should always be visible to me until they are deleted, so I can find them to edit them or review them or get the link or whatever I want to do with them.
+
+
 * Sharing
-    * As an author, I can share other author's public posts, so I can make things go viral! (repost, boost, retweet, etc)
-    * As an author, posts that I share will show up on the timeline of anyone who is following me. 
+    * <del>As an author, I can share other author's public posts, so I can make things go viral! (repost, boost, retweet, etc) </del>
+    * <del>As an author, posts that I share will show up on the timeline of anyone who is following me. </del>
+    * As a reader, I can get a link to a public or unlisted post so I can send it to my friends over email, discord, slack, etc. 
     * As a node admin, I want to share public images with users on other nodes, so that they are visible by users of other nodes. *⧟ Part 3-5 only.*
     * As an author, I want my friends-only/unlisted images and posts to not be shareable, so I know that if someone wants to share it they'll at least have to take a screenshot.
         * Note: public posts (including public image posts) are re-shareable.
     * As an author, I should be able to browse the public posts of everyone, so that I can see what's going on beyond authors I follow.
         * Note: this should include all local public posts and all public posts received in any inbox.
+
+
 * Following/Friends
     * As an author, I want to follow local authors, so that I can see their public posts.
     * As an author, I want to follow remote authors, so that I can see their public posts. *⧟ Part 3-5 only.*
@@ -434,13 +439,14 @@ For example, suppose author A sends a follow request to author B. Once the follo
 If B later denies author A's request, then B's posts will never be sent to A's inbox. But from the perspective of A's node the acceptance or rejection of a follow request is immaterial.
 
 
-
+<del>
 ## Example (How sharing public posts propagates them to new nodes.)
 Let's say we have author 1 on server A, author 2 on server B, and author 3 on server C. 
 
 If 2 follows 1 but no one on C follows 1, then C won't be aware of the public posts made by 1.
 
 But if 3 follows 2, and 2 shares it, then the post will be sent to 3's inbox and C will become aware of it.
+</del>
 
 ## IDs
 
