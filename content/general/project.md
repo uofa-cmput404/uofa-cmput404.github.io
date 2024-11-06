@@ -1217,11 +1217,7 @@ shortcut to get the image if authenticated to see it.
         * Then the node you posted it to is responsible for forwarding it to the correct inbox
 * URL: `://service/api/authors/{AUTHOR_FQID}/commented`
     * GET [local] get the list of comments author has made on any post (that local node knows about)
-* URL: `://service/api/authors/{AUTHOR_SERIAL}/commented/{COMMENT_SERIAL}`
-    * GET [local, remote] get this comment
-* URL: `://service/api/commented/{COMMENT_FQID}`
-    * GET [local] get this comment
-* Example: GET `http://nodeaaaa/api/authors/111/comments`:
+* Example: GET `http://nodeaaaa/api/authors/111/commented`:
 
 ```js
 [
