@@ -510,6 +510,7 @@ Hint: In Django, set `unique=True` on the field. Then use `models.ForeignKey` wi
         "displayName":"Greg Johnson",
         "github": "http://github.com/gjohnson",
         "profileImage": "https://i.imgur.com/k7XVwpB.jpeg",
+        // URL of the user's HTML profile page
         "page": "http://nodeaaaa/authors/greg"
     },
     "object":{
@@ -517,6 +518,7 @@ Hint: In Django, set `unique=True` on the field. Then use `models.ForeignKey` wi
         "id":"http://nodebbbb/api/authors/222",
         "host":"http://nodebbbb/api/",
         "displayName":"Lara Croft",
+        // URL of the user's HTML profile page
         "page":"http://nodebbbb/authors/222",
         "github": "http://github.com/laracroft",
         "profileImage": "http://nodebbbb/api/authors/222/posts/217/image"
@@ -536,7 +538,7 @@ Hint: In Django, set `unique=True` on the field. Then use `models.ForeignKey` wi
     // id of the post
     // must be the original URL on the node the post came from
     "id":"http://nodebbbb/api/authors/222/posts/249",
-    // The frontend URL of this post object
+    // URL of the user's HTML profile page
     "page": "http://nodebbbb/authors/222/posts/293",
     // a brief description of the post
     "description":"This post discusses stuff -- brief",
@@ -559,7 +561,7 @@ Hint: In Django, set `unique=True` on the field. Then use `models.ForeignKey` wi
         "host":"http://nodebbbb/api/",
         // the display name of the author
         "displayName":"Lara Croft",
-        // url to the authors profile
+        // URL of the user's HTML profile page
         "page":"http://nodebbbb/authors/222",
         // HATEOS url for Github API
         "github": "http://github.com/laracroft",
@@ -1245,7 +1247,7 @@ shortcut to get the image if authenticated to see it.
         // depending if there's a seperate URL to just see the one comment in html
         "page": "http://nodebbbb/authors/222/posts/249"
         // it could also be something like
-        // "page":"http://nodeaaaa/api/authors/greg/comments/130"
+        // "page":"http://nodeaaaa/authors/greg/comments/130"
     }
 ]
 ```
@@ -1274,7 +1276,7 @@ shortcut to get the image if authenticated to see it.
     // depending if there's a seperate URL to just see the one comment in html
     "page": "http://nodebbbb/authors/222/posts/249"
     // it could also be something like
-    // "page":"http://nodeaaaa/api/authors/greg/comments/130"
+    // "page":"http://nodeaaaa/authors/greg/comments/130"
 }
 ```
 
