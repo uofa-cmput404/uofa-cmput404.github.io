@@ -535,7 +535,9 @@ Hint: In Django, set `unique=True` on the field. Then use `models.ForeignKey` wi
     "title":"A post title about a post about web dev",
     // id of the post
     // must be the original URL on the node the post came from
-    "id":"http://nodebbbb/api/authors/222/posts/249"
+    "id":"http://nodebbbb/api/authors/222/posts/249",
+    // The frontend URL of this post object
+    "page": "http://nodebbbb/authors/222/posts/293",
     // a brief description of the post
     "description":"This post discusses stuff -- brief",
     // The content type of the post
@@ -681,6 +683,7 @@ Hint: In Django, set `unique=True` on the field. Then use `models.ForeignKey` wi
     "type":"post",
     "title":"DID YOU READ MY POST YET?",
     "id": "http://nodebbbb/api/authors/222/posts/293",
+    // The frontend URL of this post
     "page": "http://nodebbbb/authors/222/posts/293",
     "description":"Whatever",
     "contentType":"text/plain",
@@ -893,7 +896,7 @@ Hint: In Django, set `unique=True` on the field. Then use `models.ForeignKey` wi
     "published":"2015-03-09T13:07:04+00:00",
     // ID of the Comment (UUID)
     "id":"http://nodeaaaa/api/authors/111/liked/166",
-    "object": "http://nodebbbb/authors/222/posts/249"
+    "object": "http://nodebbbb/api/authors/222/posts/249"
 }
 ```
 
@@ -1292,9 +1295,6 @@ shortcut to get the image if authenticated to see it.
     * "Who Liked This Comment"
     * `GET` [local, remote] a list of likes from other authors on `AUTHOR_SERIAL`'s post `POST_SERIAL` comment `COMMENT_SERIAL`
     * Body is [likes object](#example-likes-object)
-* URL: `://service/api/liked/{LIKE_FQID}`
-    * `GET` [local, remote] a single like
-    * Body is [like object](#example-like-object)
 
 ## Liked API
 
