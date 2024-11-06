@@ -1179,8 +1179,6 @@ shortcut to get the image if authenticated to see it.
     * Body is a ["comments" object](#example-comments)
 * URL: `://service/api/authors/{AUTHOR_SERIAL}/post/{POST_SERIAL}/comment/{REMOTE_COMMENT_FQID}`
     * GET [local, remote] get the comment
-* URL: `://service/api/comment/{COMMENT_FQID}`
-    * GET [local] get the comment
 * Example: GET `http://nodebbbb/api/authors/222/posts/249/comments/http%3A%2F%2Fnodeaaaa%2Fapi%2Fauthors%2F111%2Fcommented%2F130`:
 
 ```js
