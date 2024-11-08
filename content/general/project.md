@@ -1291,9 +1291,9 @@ shortcut to get the image if authenticated to see it.
     * "Who Liked This Post"
     * `GET` [local] a list of likes from other authors on `AUTHOR_SERIAL`'s post `POST_SERIAL`
     * Body is [likes object](#example-likes-object)
-* URL: `://service/api/authors/{AUTHOR_SERIAL}/posts/{POST_SERIAL}/comments/{COMMENT_SERIAL}/likes`
+* URL: `://service/api/authors/{AUTHOR_SERIAL}/posts/{POST_SERIAL}/comments/{COMMENT_FQID}/likes`
     * "Who Liked This Comment"
-    * `GET` [local, remote] a list of likes from other authors on `AUTHOR_SERIAL`'s post `POST_SERIAL` comment `COMMENT_SERIAL`
+    * `GET` [local, remote] a list of likes from other authors on `AUTHOR_SERIAL`'s post `POST_SERIAL` comment `COMMENT_FQID`
     * Body is [likes object](#example-likes-object)
 
 ## Liked API
