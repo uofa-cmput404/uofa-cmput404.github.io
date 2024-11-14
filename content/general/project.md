@@ -1142,7 +1142,8 @@ Hint: In Django, set `unique=True` on the field. Then use `models.ForeignKey` wi
     * GET [local, remote] get the recent posts from author `AUTHOR_SERIAL` (paginated)
         * Not authenticated: only public posts.
         * Authenticated locally as author: all posts.
-        * Authenticated locally as friend of author: public + friends-only posts.
+        * Authenticated locally as follower of author: public + unlisted posts.
+        * Authenticated locally as friend of author: all posts.
         * Authenticated as remote node: This probably should not happen. Remember, the way remote node becomes aware of local posts is by local node pushing those posts to inbox, not by remote node pulling.
     * POST [local] create a new post but generate a new `ID`
         * Authenticated locally as author
