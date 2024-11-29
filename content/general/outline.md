@@ -481,6 +481,9 @@ Violation of the above will be considered a breach of the [Student Academic Inte
 
 Midterm and Final Exams are also *Confidential* in addition to *Solo Effort* as listed above.
 
+* Practice Questions: Menti questions and their answers will be made available on eClass to assist students in their preparation for the final exam.
+* Final Exam: The final exam will be closed book. The most effective way to prepare is by practicing old final exams.
+* Notes Policy: Students are allowed to bring one double-sided page of notes to the final exam. This sheet must be handwritten by the student in pen or pencil. Printed, photocopied, or shared notes are not permitted.
 * Students **may not** discuss the contents of the exam, except with instructors.
     * Students are not always able to take the exam at the same time, so do not discuss the contents of the exam even if you have already taken it!
 * No human, computer, electronic assistance is allowed of any sort, including AI chatbots, calculators, tutors, etc.
