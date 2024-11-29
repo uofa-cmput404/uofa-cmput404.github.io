@@ -173,7 +173,7 @@ Posts, likes, comments, posts, are all sent to the inboxes of the authors that s
     * As an author, I want to be able to approve or deny other authors following me, so that I don't get followed by people I don't like.
     * As an author, I want to know if I have "follow requests," so I can approve them.
     * As an author, I want to unfollow authors I am following, so that I don't have to see their posts anymore.
-    * As an author, if I am following another author, and they are following me, I want us to be considered friends, so that they can see my friends-only posts.
+    * As an author, if I am following another author, and they are following me (only after both follow requests are approved), I want us to be considered friends, so that they can see my friends-only posts.
     * As an author, I want to unfriend other authors by unfollowing them, so that they can no longer see my friends-only posts.
     * As an author, my node will know about my followers, who I am following, and my friends, so that I don't have to keep track of it myself.
 * Comments/Likes
@@ -896,8 +896,8 @@ Hint: In Django, set `unique=True` on the field. Then use `models.ForeignKey` wi
     },
     // ISO 8601 TIMESTAMP
     "published":"2015-03-09T13:07:04+00:00",
-    // ID of the Comment (UUID)
     "id":"http://nodeaaaa/api/authors/111/liked/166",
+    // ID of the Comment (UUID)
     "object": "http://nodebbbb/api/authors/222/posts/249"
 }
 ```
