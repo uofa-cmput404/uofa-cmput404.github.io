@@ -1926,7 +1926,7 @@ Don't forget to push the tag to GitHub.
 
 Submit only the link to the tag in the following format:
 
-https://github.com/uofa-cmput404/w24-project-example-team/tree/part3
+https://github.com/uofa-cmput404/w24-project-example-team/tree/part4
 
 ### Marking
 
@@ -2019,7 +2019,7 @@ Don't forget to push the tag to GitHub.
 
 Submit only the link to the tag in the following format:
 
-https://github.com/uofa-cmput404/w24-project-example-team/tree/part4
+https://github.com/uofa-cmput404/w24-project-example-team/tree/part5
 
 ### Presentation
 
