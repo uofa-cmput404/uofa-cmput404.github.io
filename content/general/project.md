@@ -510,6 +510,7 @@ Hint: In Django, set `unique=True` on the field. Then use `models.ForeignKey` wi
         "displayName":"Greg Johnson",
         "github": "http://github.com/gjohnson",
         "profileImage": "https://i.imgur.com/k7XVwpB.jpeg",
+        // URL of the user's HTML profile page
         "page": "http://nodeaaaa/authors/greg"
     },
     "object":{
@@ -517,6 +518,7 @@ Hint: In Django, set `unique=True` on the field. Then use `models.ForeignKey` wi
         "id":"http://nodebbbb/api/authors/222",
         "host":"http://nodebbbb/api/",
         "displayName":"Lara Croft",
+        // URL of the user's HTML profile page
         "page":"http://nodebbbb/authors/222",
         "github": "http://github.com/laracroft",
         "profileImage": "http://nodebbbb/api/authors/222/posts/217/image"
@@ -535,7 +537,9 @@ Hint: In Django, set `unique=True` on the field. Then use `models.ForeignKey` wi
     "title":"A post title about a post about web dev",
     // id of the post
     // must be the original URL on the node the post came from
-    "id":"http://nodebbbb/api/authors/222/posts/249"
+    "id":"http://nodebbbb/api/authors/222/posts/249",
+    // URL of the user's HTML profile page
+    "page": "http://nodebbbb/authors/222/posts/293",
     // a brief description of the post
     "description":"This post discusses stuff -- brief",
     // The content type of the post
@@ -557,7 +561,7 @@ Hint: In Django, set `unique=True` on the field. Then use `models.ForeignKey` wi
         "host":"http://nodebbbb/api/",
         // the display name of the author
         "displayName":"Lara Croft",
-        // url to the authors profile
+        // URL of the user's HTML profile page
         "page":"http://nodebbbb/authors/222",
         // HATEOS url for Github API
         "github": "http://github.com/laracroft",
@@ -681,6 +685,7 @@ Hint: In Django, set `unique=True` on the field. Then use `models.ForeignKey` wi
     "type":"post",
     "title":"DID YOU READ MY POST YET?",
     "id": "http://nodebbbb/api/authors/222/posts/293",
+    // The frontend URL of this post
     "page": "http://nodebbbb/authors/222/posts/293",
     "description":"Whatever",
     "contentType":"text/plain",
@@ -893,7 +898,7 @@ Hint: In Django, set `unique=True` on the field. Then use `models.ForeignKey` wi
     "published":"2015-03-09T13:07:04+00:00",
     // ID of the Comment (UUID)
     "id":"http://nodeaaaa/api/authors/111/liked/166",
-    "object": "http://nodebbbb/authors/222/posts/249"
+    "object": "http://nodebbbb/api/authors/222/posts/249"
 }
 ```
 
@@ -1137,7 +1142,8 @@ Hint: In Django, set `unique=True` on the field. Then use `models.ForeignKey` wi
     * GET [local, remote] get the recent posts from author `AUTHOR_SERIAL` (paginated)
         * Not authenticated: only public posts.
         * Authenticated locally as author: all posts.
-        * Authenticated locally as friend of author: public + friends-only posts.
+        * Authenticated locally as follower of author: public + unlisted posts.
+        * Authenticated locally as friend of author: all posts.
         * Authenticated as remote node: This probably should not happen. Remember, the way remote node becomes aware of local posts is by local node pushing those posts to inbox, not by remote node pulling.
     * POST [local] create a new post but generate a new `ID`
         * Authenticated locally as author
@@ -1174,8 +1180,6 @@ shortcut to get the image if authenticated to see it.
     * Body is a ["comments" object](#example-comments)
 * URL: `://service/api/authors/{AUTHOR_SERIAL}/post/{POST_SERIAL}/comment/{REMOTE_COMMENT_FQID}`
     * GET [local, remote] get the comment
-* URL: `://service/api/comment/{COMMENT_FQID}`
-    * GET [local] get the comment
 * Example: GET `http://nodebbbb/api/authors/222/posts/249/comments/http%3A%2F%2Fnodeaaaa%2Fapi%2Fauthors%2F111%2Fcommented%2F130`:
 
 ```js
@@ -1242,7 +1246,7 @@ shortcut to get the image if authenticated to see it.
         // depending if there's a seperate URL to just see the one comment in html
         "page": "http://nodebbbb/authors/222/posts/249"
         // it could also be something like
-        // "page":"http://nodeaaaa/api/authors/greg/comments/130"
+        // "page":"http://nodeaaaa/authors/greg/comments/130"
     }
 ]
 ```
@@ -1271,7 +1275,7 @@ shortcut to get the image if authenticated to see it.
     // depending if there's a seperate URL to just see the one comment in html
     "page": "http://nodebbbb/authors/222/posts/249"
     // it could also be something like
-    // "page":"http://nodeaaaa/api/authors/greg/comments/130"
+    // "page":"http://nodeaaaa/authors/greg/comments/130"
 }
 ```
 
@@ -1288,13 +1292,10 @@ shortcut to get the image if authenticated to see it.
     * "Who Liked This Post"
     * `GET` [local] a list of likes from other authors on `AUTHOR_SERIAL`'s post `POST_SERIAL`
     * Body is [likes object](#example-likes-object)
-* URL: `://service/api/authors/{AUTHOR_SERIAL}/posts/{POST_SERIAL}/comments/{COMMENT_SERIAL}/likes`
+* URL: `://service/api/authors/{AUTHOR_SERIAL}/posts/{POST_SERIAL}/comments/{COMMENT_FQID}/likes`
     * "Who Liked This Comment"
-    * `GET` [local, remote] a list of likes from other authors on `AUTHOR_SERIAL`'s post `POST_SERIAL` comment `COMMENT_SERIAL`
+    * `GET` [local, remote] a list of likes from other authors on `AUTHOR_SERIAL`'s post `POST_SERIAL` comment `COMMENT_FQID`
     * Body is [likes object](#example-likes-object)
-* URL: `://service/api/liked/{LIKE_FQID}`
-    * `GET` [local, remote] a single like
-    * Body is [like object](#example-like-object)
 
 ## Liked API
 
