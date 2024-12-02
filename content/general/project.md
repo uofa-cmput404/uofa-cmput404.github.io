@@ -1818,8 +1818,6 @@ https://github.com/uofa-cmput404/f24-project-example-team/tree/part1
 
 Due 4PM Monday. <!-- @LT-IGNORE:CONFUSION_DUE_DO@ -->
 
-eClass has a limitation where it only shows the due date for the last lab section of the week, but for Monday labs it is due Monday. For Wednesday labs it is due Wednesday.
-
 Create a git tag "part3" before 4PM and submit only the link to your tag.
 
 Don't forget to push the tag to GitHub.
@@ -1917,8 +1915,6 @@ https://github.com/uofa-cmput404/w24-project-example-team/tree/part2
 
 Due 4PM Monday. <!-- @LT-IGNORE:CONFUSION_DUE_DO@ -->
 
-eClass has a limitation where it only shows the due date for the last lab section of the week, but for Monday labs it is due Monday. For Wednesday labs it is due Wednesday.
-
 Create a git tag "part4" before 4PM and submit only the link to your tag.
 
 Don't forget to push the tag to GitHub.
@@ -2009,8 +2005,6 @@ https://github.com/uofa-cmput404/w24-project-example-team/tree/part3
 ### Submission
 
 Due 4PM Monday. <!-- @LT-IGNORE:CONFUSION_DUE_DO@ -->
-
-eClass has a limitation where it only shows the due date for the last lab section of the week, but for Monday labs it is due Monday. For Wednesday labs it is due Wednesday.
 
 Create a git tag "part5" before 4PM and submit only the link to your tag.
 
