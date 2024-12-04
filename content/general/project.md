@@ -1902,6 +1902,8 @@ https://github.com/uofa-cmput404/w24-project-example-team/tree/part2
 
 ### Requirements
 
+NOTE: For part 4, select **one** node from part 3 to act as your team's main node. That is, your team should have one single node deployed on heroku which meets the following requirements. 
+
 * Node is at least partially working with nodes from 4 other teams.
 * Node must be fully communicating and working with nodes from 2 other teams.
     * These count toward the 4.
