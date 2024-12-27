@@ -179,6 +179,7 @@ Posts, likes, comments, posts, are all sent to the inboxes of the authors that s
 * Comments/Likes
     * As an author, I want to comment on posts that I can access, so I can make a witty reply.
     * As an author, I want to like posts that I can access, so I can show my appreciation.
+    * As an author, I want to like comments that I can access, so I can show my appreciation.
     * As an author, when someone sends me a public post I want to see the likes, so I can tell if it's good or not.
     * As an author, comments on my friends-only posts are visible only to my friends and the comment's author.
 * node Management
