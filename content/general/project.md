@@ -1808,6 +1808,7 @@ https://github.com/uofa-cmput404/f24-project-example-team/tree/part1
 
 * Everyone on the team must be able to deploy their own *node* (using the same project code) to their own Heroku "app" with their own Heroku Postgres database.
     * 1 codebase, 1 repo deployed to 6 nodes each on 6 different Heroku servers using 6 different databases, 6 different web servers, at 6 different addresses for 6 different team members.
+    * **Please make sure each team member has deployed their node instance prior to your lab demo.**
 * All nodes must be able coordinating. All user stories involving multiple authors must work in both situations:
     * All authors on the same node
     * Authors on different nodes
