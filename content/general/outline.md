@@ -32,7 +32,7 @@ summary: Lecture, Labs, Contact Information, Lecturer, Teaching Assistants, Cour
     * [CSC B-10](http://www.campusmap.ualberta.ca/?b=csc)
 * D02
     * Wednesday, 5:00PM to 7:50PM
-    * [CSC B-02](http://www.campusmap.ualberta.ca/?b=csc)
+    * [CSC B-10](http://www.campusmap.ualberta.ca/?b=csc)
 * [Lab Information]({filename}/general/labs.md)
 
 # Contact Information
