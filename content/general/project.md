@@ -207,8 +207,6 @@ Posts, likes, comments, posts, are all sent to the inboxes of the authors that s
 
 **Tests only to be performed by instructor or TAs. Students from different groups are not to disrupt other groups with such tests**
 
-* Tests are informed and beforehand so students can implement defenses to such attacks in their final project submissions
-* P-Final
    * As a **malicious_user**, I want to send a huge amount of request to a node in order to disrupt it
    * As a **malicious_user**, I want to send non-standard input as a post
    * As a **malicious_user**, I want to send images that are out of the specifications 
