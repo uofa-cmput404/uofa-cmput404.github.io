@@ -130,7 +130,7 @@ Posts, likes, comments, posts, are all sent to the inboxes of the authors that s
     * As an author, posts I make can be in CommonMark, so I can give my posts some basic formatting.
     * As an author, posts I make can be in simple plain text, because I don't always want all the formatting features of CommonMark.
     * As an author, posts I create can be images, so that I can share pictures and drawings.
-    * As an author, I can create posts that contain videos of up to 4 seconds. *bonus*
+    * As an author, I can create posts that contain videos of up to 4 seconds. *⧟ Bonus*
     * As an author, posts I create that are in CommonMark can link to images, so that I can illustrate my posts.
     * As an author, I want to delete my own posts locally, so I can remove posts that are out of date or made by mistake.
     * As an author, I want my node to re-send posts I've deleted to everyone they were already sent, so I know remote users don't keep seeing my deleted posts forever. *⧟ Part 3-5 only*
