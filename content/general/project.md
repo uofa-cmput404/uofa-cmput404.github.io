@@ -130,6 +130,7 @@ Posts, likes, comments, posts, are all sent to the inboxes of the authors that s
     * As an author, posts I make can be in CommonMark, so I can give my posts some basic formatting.
     * As an author, posts I make can be in simple plain text, because I don't always want all the formatting features of CommonMark.
     * As an author, posts I create can be images, so that I can share pictures and drawings.
+    * As an author, I can create posts that contain videos of up to 4 seconds. *bonus*
     * As an author, posts I create that are in CommonMark can link to images, so that I can illustrate my posts.
     * As an author, I want to delete my own posts locally, so I can remove posts that are out of date or made by mistake.
     * As an author, I want my node to re-send posts I've deleted to everyone they were already sent, so I know remote users don't keep seeing my deleted posts forever. *⧟ Part 3-5 only*
@@ -201,6 +202,17 @@ Posts, likes, comments, posts, are all sent to the inboxes of the authors that s
     * As a node admin, I want deleted posts stay in the database and only be removed from the UI and API, so I can see what was deleted.
     * As a node admin, I want my node's UI to only communicate with my nodes web server, so I can prevent XSS.
     * As a node admin, I want the API objects (authors, posts, etc.) to be [identified by their full URL](#ids), to prevent collisions with other node's numbering schemes. *⧟ Part 3-5 only.*
+
+### malicious_user
+
+**Tests only to be performed by instructor or TAs. Students from different groups are not to disrupt other groups with such tests**
+- Tests are informed and beforehand so students can implement defenses to such attacks in their final project submissions
+- P-Final
+    - As a **malicious_user**, I want to send a huge amount of request to a node in order to disrupt it
+    - As a **malicious_user**, I want to send non-standard input as a post
+    - As a **malicious_user**, I want to send images that are out of the specifications 
+    - As a **malicious_user**, I want to overload the system with requests
+    - As a **malicious_user**, I want to send code payloads and see whether they execute
 
 # Main Concepts
 
@@ -1502,7 +1514,10 @@ Frontend (Selenium, etc.) tests are not required. Code coverage (line coverage, 
 - <input type="checkbox"> Your project must be compatible with Firefox browser.
     * Firefox will be used as the standard for marking. We will not check your code in multiple browsers to try to get it working.
 - <input type="checkbox"> Your project must be hosted on an approved hosting solution.
-    * Heroku
+    * Cybera (recommended)
+        * Whenever you see heroku on the dependencies or requirements, you are allowed to use cybera and or docker to deploy your applications.
+    * Heroku (paid, has free credits but may run out quickly)
+        * Will still be allowed but expect limited support
         * An entire node of your project must only require: 
             * <input type="checkbox"> A single web "dyno"
             * <input type="checkbox"> with a single PostgreSQL add-on
