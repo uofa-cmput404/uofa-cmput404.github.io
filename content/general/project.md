@@ -1033,10 +1033,10 @@ Hint: In Django, set `unique=True` on the field. Then use `models.ForeignKey` wi
 ## Single Author API
 
 * URL: `://service/api/authors/{AUTHOR_SERIAL}/`
-    * GET [local, remote]: retrieve `AUTHOR_SERIAL`'s profile
+    * GET [local]: retrieve `AUTHOR_SERIAL`'s profile
     * PUT [local]: update `AUTHOR_SERIAL`'s profile
 * URL: `://service/api/authors/{AUTHOR_FQID}/`
-    * GET [local]: retrieve `AUTHOR_FQID`'s profile
+    * GET [remote]: retrieve `AUTHOR_FQID`'s profile
 
 * Example GET `http://nodeaaaa/api/authors/111`:
 ```js
