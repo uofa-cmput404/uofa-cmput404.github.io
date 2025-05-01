@@ -1,5 +1,5 @@
-Title: Course Outline Winter 2024
-date: 2024-09-01
+Title: Course Outline Spring-Summer 2025
+date: 2025-05-01
 tags: outline, policy, grading, contact
 authors: Hazel Victoria Campbell
 status: published
@@ -7,7 +7,15 @@ summary: Lecture, Labs, Contact Information, Lecturer, Teaching Assistants, Cour
 
 ----
 
-<h2>University of Alberta <br> CMPUT 404 - Web Applications and Architecture <br> LEC-A1 <br> Fall 2024</h2>
+<h2>University of Alberta <br> CMPUT 404 - Web Applications and Architecture <br> CMPUT 404A Spring 2025 LEC-C1 LAB-C2 <br> CMPUT 404B Summer 2025 LEC-C1 LAB-C2 </h2>
+
+<style>
+    html body main {
+        background-image: url("/theme/draft.png");
+        background-repeat: repeat;
+        background-size: 100%;
+    }
+</style>
 
 * **eClass Page**: <https://eclass.srv.ualberta.ca/course/view.php?id=99611>
 * **Home Page**: <https://uofa-cmput404.github.io/>
@@ -132,15 +140,15 @@ The [Faculty of Science Student Services](https://www.ualberta.ca/science/studen
 | What                    | Weight | Collaboration | Due Date <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
 |-------------------------|--------|---------------|-----------
 | Participation           | 10%    | [Solo Effort](#solo-effort) | Most Lectures <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
-| Lab Assignments(5 or 6) | 30%    | [Consultation](#consultation) | Mondays 4PM <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
-| Project Part 0          | 1%     | [Teamwork](#teamwork) | Tuesday, September 17, 4PM <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
-| Project Part 1          | 5%     | [Teamwork](#teamwork) | Monday, October 21, 4PM <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
-| Project Part 2          | 5%     | [Teamwork](#teamwork) | Monday, November 4, 4PM <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
-| Project Part 3          | 5%     | [Teamwork](#teamwork) | Monday, November 18, 4PM <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
-| Project Part 4          | 5%     | [Teamwork](#teamwork) | Monday, November 25, 4PM <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
-| Project Part 5          | 9%     | [Teamwork](#teamwork) | Monday, December 2, 4PM <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
+| Lab Assignments(5 or 6) | 30%    | [Consultation](#consultation) | Before Lab 4PM <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
+| Project Part 0          | 1%     | [Teamwork](#teamwork) | 4PM <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
+| Project Part 1          | 5%     | [Teamwork](#teamwork) | 4PM <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
+| Project Part 2          | 5%     | [Teamwork](#teamwork) | 4PM <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
+| Project Part 3          | 5%     | [Teamwork](#teamwork) | 4PM <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
+| Project Part 4          | 5%     | [Teamwork](#teamwork) | 4PM <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
+| Project Part 5          | 9%     | [Teamwork](#teamwork) | 4PM <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
 | Final Exam              | 30%    | [Solo Effort](#solo-effort) | See BearTracks <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
-| Extra Credit            | +1%    | [Solo Effort](#solo-effort) | Friday, November 29, 4PM <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
+| Extra Credit            | +1%    | [Solo Effort](#solo-effort) | 4PM <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
 
 * Please see the [live schedule]({filename}/pages/home.md#schedule) for exact due dates.
 * Students must verify the exam date on BearTracks when the Final Exam Schedule is posted.
@@ -642,11 +650,7 @@ Policy about course outlines can be found in [Course Requirements, Evaluations P
 
 ## Update History
 
-* 2024-09-02: Initial version.
-* 2024-09-02: Clarify formatting of contract cheating: cs courses section.
-* 2024-09-08: Fix Hybrid Synchronous Delivery section: remove on request only.
-* 2024-09-16: Clarify 5 or 6 lab assignments.
-* 2024-10-10: Fix some broken links that had extra `\` characters in them for some reason.
+* 2025-05-01: Fork from previous version.
 
 ## Copyright
 
