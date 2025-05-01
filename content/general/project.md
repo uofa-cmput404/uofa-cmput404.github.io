@@ -130,6 +130,7 @@ Posts, likes, comments, posts, are all sent to the inboxes of the authors that s
     * As an author, posts I make can be in CommonMark, so I can give my posts some basic formatting.
     * As an author, posts I make can be in simple plain text, because I don't always want all the formatting features of CommonMark.
     * As an author, posts I create can be images, so that I can share pictures and drawings.
+    * As an author, I can create posts that contain videos of up to 4 seconds. *⧟ Bonus*
     * As an author, posts I create that are in CommonMark can link to images, so that I can illustrate my posts.
     * As an author, I want to delete my own posts locally, so I can remove posts that are out of date or made by mistake.
     * As an author, I want my node to re-send posts I've deleted to everyone they were already sent, so I know remote users don't keep seeing my deleted posts forever. *⧟ Part 3-5 only*
@@ -179,6 +180,7 @@ Posts, likes, comments, posts, are all sent to the inboxes of the authors that s
 * Comments/Likes
     * As an author, I want to comment on posts that I can access, so I can make a witty reply.
     * As an author, I want to like posts that I can access, so I can show my appreciation.
+    * As an author, I want to like comments that I can access, so I can show my appreciation.
     * As an author, when someone sends me a public post I want to see the likes, so I can tell if it's good or not.
     * As an author, comments on my friends-only posts are visible only to my friends and the comment's author.
 * node Management
@@ -200,6 +202,16 @@ Posts, likes, comments, posts, are all sent to the inboxes of the authors that s
     * As a node admin, I want deleted posts stay in the database and only be removed from the UI and API, so I can see what was deleted.
     * As a node admin, I want my node's UI to only communicate with my nodes web server, so I can prevent XSS.
     * As a node admin, I want the API objects (authors, posts, etc.) to be [identified by their full URL](#ids), to prevent collisions with other node's numbering schemes. *⧟ Part 3-5 only.*
+
+### malicious_user
+
+**Tests only to be performed by instructor or TAs. Students from different groups are not to disrupt other groups with such tests**
+
+   * As a **malicious_user**, I want to send a huge amount of request to a node in order to disrupt it
+   * As a **malicious_user**, I want to send non-standard input as a post
+   * As a **malicious_user**, I want to send images that are out of the specifications 
+   * As a **malicious_user**, I want to overload the system with requests
+   * As a **malicious_user**, I want to send code payloads and see whether they execute
 
 # Main Concepts
 
@@ -1021,10 +1033,10 @@ Hint: In Django, set `unique=True` on the field. Then use `models.ForeignKey` wi
 ## Single Author API
 
 * URL: `://service/api/authors/{AUTHOR_SERIAL}/`
-    * GET [local, remote]: retrieve `AUTHOR_SERIAL`'s profile
+    * GET [local]: retrieve `AUTHOR_SERIAL`'s profile
     * PUT [local]: update `AUTHOR_SERIAL`'s profile
 * URL: `://service/api/authors/{AUTHOR_FQID}/`
-    * GET [local]: retrieve `AUTHOR_FQID`'s profile
+    * GET [remote]: retrieve `AUTHOR_FQID`'s profile
 
 * Example GET `http://nodeaaaa/api/authors/111`:
 ```js
@@ -1501,7 +1513,10 @@ Frontend (Selenium, etc.) tests are not required. Code coverage (line coverage, 
 - <input type="checkbox"> Your project must be compatible with Firefox browser.
     * Firefox will be used as the standard for marking. We will not check your code in multiple browsers to try to get it working.
 - <input type="checkbox"> Your project must be hosted on an approved hosting solution.
-    * Heroku
+    * Cybera (recommended)
+        * Whenever you see heroku on the dependencies or requirements, you are allowed to use cybera and or docker to deploy your applications.
+    * Heroku (paid, has free credits but may run out quickly)
+        * Will still be allowed but expect limited support
         * An entire node of your project must only require: 
             * <input type="checkbox"> A single web "dyno"
             * <input type="checkbox"> with a single PostgreSQL add-on
@@ -1808,6 +1823,7 @@ https://github.com/uofa-cmput404/f24-project-example-team/tree/part1
 
 * Everyone on the team must be able to deploy their own *node* (using the same project code) to their own Heroku "app" with their own Heroku Postgres database.
     * 1 codebase, 1 repo deployed to 6 nodes each on 6 different Heroku servers using 6 different databases, 6 different web servers, at 6 different addresses for 6 different team members.
+    * **Please make sure each team member has deployed their node instance prior to your lab demo.**
 * All nodes must be able coordinating. All user stories involving multiple authors must work in both situations:
     * All authors on the same node
     * Authors on different nodes
@@ -1902,6 +1918,8 @@ https://github.com/uofa-cmput404/w24-project-example-team/tree/part2
 
 ### Requirements
 
+NOTE: For part 4, select **one** node from part 3 to act as your team's main node. That is, your team should have one single node deployed on heroku which meets the following requirements. 
+
 * Node is at least partially working with nodes from 4 other teams.
 * Node must be fully communicating and working with nodes from 2 other teams.
     * These count toward the 4.
@@ -1922,7 +1940,7 @@ Don't forget to push the tag to GitHub.
 
 Submit only the link to the tag in the following format:
 
-https://github.com/uofa-cmput404/w24-project-example-team/tree/part3
+https://github.com/uofa-cmput404/w24-project-example-team/tree/part4
 
 ### Marking
 
@@ -2013,7 +2031,7 @@ Don't forget to push the tag to GitHub.
 
 Submit only the link to the tag in the following format:
 
-https://github.com/uofa-cmput404/w24-project-example-team/tree/part4
+https://github.com/uofa-cmput404/w24-project-example-team/tree/part5
 
 ### Presentation
 
