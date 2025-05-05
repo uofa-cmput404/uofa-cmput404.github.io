@@ -79,7 +79,7 @@ Unless your question is personal (E.g., you are feeling unwell and require an EA
 * Be polite, this is not a complaint forum.
 * Follow the [online etiquette guidelines]({attach}online_etiquette_guidelines.pdf).
 
-[The discussion forum is on the eClass.](https://eclass.srv.ualberta.ca/mod/forum/view.php?id=8120391)
+[The discussion forum is on the eClass.](https://canvas.ualberta.ca/courses/22272/discussion_topics/110936)
 
 # Labs Office Hours
 
@@ -108,7 +108,7 @@ TAs are not allowed to change your marks. If you disagree with your marks, [cont
 * Please be polite and courteous.
 * TAs will not re-grade your work or deal with extensions, excuses, illness, etc.
 
-TA office hours are on the eClass.
+TA office hours coming soon. <!--TODO-->
 
 # Contact Instructor
 
@@ -169,8 +169,7 @@ Building a strong social network can greatly benefit your mental health.
 The only official communications are:
 
 * University of Alberta Google Apps (forms / gmail / etc.) (you must be signed in with your CCID)
-* eClass
-* Canvas University of Alberta (future)
+* Canvas University of Alberta
 
 Additionally, you can submit assignments/projects/labs/participation on GitHub Classroom and Mentimeter, but do not use them to ask questions.
 

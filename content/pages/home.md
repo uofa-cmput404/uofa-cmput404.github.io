@@ -33,13 +33,13 @@ save_as: index.html
 
 ## News & Notices
 
-[The latest news and notices for students.](https://eclass.srv.ualberta.ca/mod/forum/view.php?id=8120390) Check this regularly!
+[The latest news and notices for students.](https://canvas.ualberta.ca/courses/22272/announcements) Check this regularly!
 
 ## Lecture Zoom
 
 * You MUST be logged into your University of Alberta account to view the Zoom! 
 * [How to use Zoom for Students](https://support.eclass.ualberta.ca/index.php?/Knowledgebase/Article/View/422/23/using-zoom-for-students)
-* [The lecture zoom is connected through eClass.](https://eclass.srv.ualberta.ca/mod/lti/view.php?id=8120392)
+* [The lecture zoom is connected through Canvas.](https://canvas.ualberta.ca/courses/22272/external_tools/282)
 * [Direct Link](https://ualberta-ca.zoom.us/s/98051504452)
 
 # More Stuff
