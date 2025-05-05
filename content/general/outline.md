@@ -41,9 +41,8 @@ summary: Lecture, Labs, Contact Information, Lecturer, Teaching Assistants, Cour
 * **Office:** [ATH 4-05](http://www.campusmap.ualberta.ca/?b=ath)
     * I will be moving to a different office in May/June!
 * **Office hours (ATH 4-05):** Monday, Wednesday, Friday 6:10-6:50PM (in-person only)
-* **Office hours (Zoom):** By appointment.
+* **Office hours (Zoom):** By appointment. Email me and we can set up a time.
     * [You must be logged into Zoom with your UAlberta GMail](https://support.eclass.ualberta.ca/index.php?/Knowledgebase/Article/View/422/23/using-zoom-for-students).
-    * [Zoom link to join once you're logged-in](https://ualberta-ca.zoom.us/j/99296332583)
 * **Email:** Students must use the [contact form]({filename}/general/help.md#contact-instructor). <!--It may take several days to respond due the large number of students.-->
 
 ## Teaching Assistants
@@ -101,7 +100,7 @@ There is no required textbook for this course. Each module will cite online reso
 
 ## Course Fees
 
-Students will be required to purchase online hosting through [Heroku](https://www.heroku.com/) in order to complete the coursework and course project. The expected fees are less than $30 USD, or approximately $40 CAD. If you are unable to pay these fees, you must contact your TA and instructor immediately. Failure to pay for Heroku in time to complete coursework will result in a mark of zero on the affected coursework.
+Students will be required to purchase online hosting through [Heroku](https://www.heroku.com/) in order to complete the coursework and course project. The expected fees are less than $40 USD, or approximately $60 CAD. If you are unable to pay these fees, you must contact your TA and instructor immediately. Failure to pay for Heroku in time to complete coursework will result in a mark of zero on the affected coursework.
 
 Discounts may be available through the GitHub student pack, though we can't guarantee it. Students are responsible for paying the fees either way.
 
@@ -130,7 +129,7 @@ The [Faculty of Science Student Services](https://www.ualberta.ca/science/studen
 | What                    | Weight | Collaboration | Due Date <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
 |-------------------------|--------|---------------|-----------
 | Participation           | 8%    | [Solo Effort](#solo-effort) | Most Lectures <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
-| Language Assignment     | 2%     | [Solo Effort](#solo-effort) | Friday, May 16, 4PM <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
+| Language Assignment     | 2%     | [Solo Effort](#solo-effort) | Wednesday, May 14, 4PM <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
 | Lab Assignments (6)     | 30% (5%x6) | [Consultation](#consultation) | Before Lab 4PM <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
 | Project Part 0          | 1%     | [Teamwork](#teamwork) | 4PM <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
 | Project Part 1          | 5%     | [Teamwork](#teamwork) | 4PM <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
@@ -657,6 +656,6 @@ Policy about course outlines can be found in [Course Requirements, Evaluations P
 
 ## Copyright
 
-Dr. Hazel Campbell, Department of Computing Science, Faculty of Science, University of Alberta (2023, 2024).
+Dr. Hazel Campbell, Department of Computing Science, Faculty of Science, University of Alberta (2023, 2024, 2025).
 Dr. Abram Hindle, Department of Computing Science, Faculty of Science, University of Alberta (2023).
 

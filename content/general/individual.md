@@ -10,8 +10,6 @@ summary: Individual Assignments, Participation
 
 # Participation
 
-
-
 <!--Most participation marks will be in class during class. You can participate over Zoom or in-person. To participate in-person please bring a working cellphone, tablet, or laptop. There may be other participation marks from time to time. See *Missed Term Work: Participation* below.-->
 
 * CMPUT 404: Participation marks will be marked out of 8 points.
@@ -37,3 +35,7 @@ You can earn lecture participation credit by attending lecture on time. Instruct
     * See the [outline section on contract cheating]({filename}/general/outline.md#contract-cheating-cs-courses) for more information.
 
 -->
+
+# Language Assignment
+
+Coming soon.
