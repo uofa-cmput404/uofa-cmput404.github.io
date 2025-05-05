@@ -20,7 +20,7 @@ save_as: index.html
 
 # Schedule 
 
-**You need to be logged in as your University of Alberta CCID/email account to view it.** The course schedule is updated in this [Google Sheet](https://docs.google.com/spreadsheets/d/150t0Mz6nnEQNQuSD2BNHxk6y7fI_HLFOSM-R-KdWn0A/edit?usp=sharing). Please remember that this is only a plan, and sometimes plans change.
+**You need to be logged in as your University of Alberta CCID/email account to view it.** The course schedule is updated in this [Google Sheet](https://docs.google.com/spreadsheets/d/1XEisEzQFf44S8bIOuceulka1w4y3ZN1HVs1z0UF3UU4/edit?gid=0#gid=0). Please remember that this is only a plan, and sometimes plans change.
 
 # eClass
 
@@ -41,7 +41,7 @@ We are in the process of moving things off of eClass, because eventually Univers
 * You MUST be logged into your University of Alberta account to view the Zoom! 
 * [How to use Zoom for Students](https://support.eclass.ualberta.ca/index.php?/Knowledgebase/Article/View/422/23/using-zoom-for-students)
 * [The lecture zoom is connected through eClass.](https://eclass.srv.ualberta.ca/mod/lti/view.php?id=8120392)
-* [Direct Link](https://ualberta-ca.zoom.us/j/91653021250)
+* [Direct Link](https://ualberta-ca.zoom.us/s/98051504452)
 
 # More Stuff
 

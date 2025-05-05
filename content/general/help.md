@@ -25,7 +25,7 @@ We will not tolerate harassment, bullying, threats, intimidation, insults, lying
     * Missed final exam:
         * Request a deferred exam from your faculty (Faculty of Science, Faculty of Arts, Faculty of Business, etc.)
     * Missed assignment/lab/project/quiz/lecture... everything except final exam:
-        * Fill in the [absence declaration form](https://docs.google.com/forms/d/e/1FAIpQLScNZlbqEAMqkI1AkyabgdpPF2xMfAyZLloXHZnCFgE9-ujYGg/viewform?usp=sf_link) within 2 days of absence.
+        * Fill in the [absence declaration form](https://docs.google.com/forms/d/e/1FAIpQLScZoPBqUyxFxoUOzlKpyZm25uAdJVw-9mVEY6cfAjPx2CaHlw/viewform?usp=sharing) within 2 days of absence.
 * Extensions
     * No individual extensions are ever granted for any reason.
 
@@ -112,9 +112,12 @@ TA office hours are on the eClass.
 
 # Contact Instructor
 
-Do not email the instructor. Use [the contact instructor form](https://docs.google.com/forms/d/e/1FAIpQLSd2oPKU-nurHZpriEXRthhlljJ-4V_DQH88q0KtI1bCAddQCA/viewform?usp=sf_link). 
+Do not email the instructor. Use [the contact instructor form](https://docs.google.com/forms/d/e/1FAIpQLScZoPBqUyxFxoUOzlKpyZm25uAdJVw-9mVEY6cfAjPx2CaHlw/viewform?usp=sharing). 
 
-Replies may take several days because there are hundreds of students. Currently, there are more than 600 students. If you are asking about something that isn't due yet (before due date) please ask a TA instead, or use the discussion forum. You might not get a response before the due date. You will not get an extension, even if the instructor does not reply before the due date.
+<!--Replies may take several days because there are hundreds of students. Currently, there are more than 600 students.-->
+Using the contact form helps us make sure no one is missed or forgotten about!
+If you are asking about something that isn't due yet (before due date) please ask a TA instead, or use the discussion forum.
+You might not get a response before the due date. You will not get an extension, even if the instructor does not reply before the due date.
 
 # Wellness Supports
 

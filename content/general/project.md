@@ -1485,7 +1485,7 @@ Frontend (Selenium, etc.) tests are not required. Code coverage (line coverage, 
 </ul>
 <p>If you want to use React or a similar frontend framework such as Angular, Vue, Solid, Svelte... (there are dozens of these), despite these warnings, then all team members must fill out the frontend framework form. We offer this option only becuase some students want the experience for their resumé. However, it involves extra work. If <strong style="color: darkred;">all team members</strong> do not fill out the frontend framework form agreeing to use a front end framework despite the extra work required and the above warnings then you are not allowed to use a frontend frameworks, and using them will result in a mark of zero.</p>
 
-<a href="https://docs.google.com/forms/d/e/1FAIpQLSeLNdEsy3jyMHjZxNCfkl9pjdl_UyUhE6ZtHmUk5EP08KGhgg/viewform?usp=sf_link" style="font-size:200%">Frontend Framework Consent Form</a>
+<a href="#TODO" style="font-size:200%">Frontend Framework Consent Form</a>
 
 <ul>
     <li>Backend frameworks are limited to Django and Flask only. We suggest Django. Flask requires extra work.</li>

@@ -139,8 +139,9 @@ The [Faculty of Science Student Services](https://www.ualberta.ca/science/studen
 
 | What                    | Weight | Collaboration | Due Date <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
 |-------------------------|--------|---------------|-----------
-| Participation           | 10%    | [Solo Effort](#solo-effort) | Most Lectures <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
-| Lab Assignments(5 or 6) | 30%    | [Consultation](#consultation) | Before Lab 4PM <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
+| Participation           | 8%    | [Solo Effort](#solo-effort) | Most Lectures <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
+| LLM Assignment          | 2%     | [Solo Effort](#solo-effort) | Friday, May 16, 4PM <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
+| Lab Assignments (6)     | 30% (5%x6) | [Consultation](#consultation) | Before Lab 4PM <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
 | Project Part 0          | 1%     | [Teamwork](#teamwork) | 4PM <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
 | Project Part 1          | 5%     | [Teamwork](#teamwork) | 4PM <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
 | Project Part 2          | 5%     | [Teamwork](#teamwork) | 4PM <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
@@ -183,18 +184,28 @@ The [Faculty of Science Student Services](https://www.ualberta.ca/science/studen
 
 ## Statement of Expectations for AI Use
 
-**You MUST not submit work by LLMs as your own, that is plagiarism.** This also applies to other "AI" and Generative Models: ChatGPT, Lex, Page, DALL-E2, Google BARD/Gemini, Microsoft Bing/Copilot, and others. If you use LLMs you must cite it. This includes the corporation that made the AI, the AI, Subject, and Date. For example:
+**You MUST not submit work by LLMs as your own, that is plagiarism.** This also applies to other "AI" and Generative Models: ChatGPT, Lex, Page, DALL-E, Google BARD/Gemini, Microsoft Bing/Copilot, DeepSeek, Qwen, Llama, and others. If you use LLMs you must cite it. This includes the corporation that made the AI, the AI, Subject, and Date. For example:
 
 ```.js
 // The following function from Microsoft, Copilot, "How do I write a merge sort in JavaScript?", 2023-08-31
 function mergeSort(array) {
 ```
+If you use LLMs **you must cite it.**
 
-If you use LLMs **you must cite it**, but it's probably better to Google what it tells you and find a real citation because:
+If you use an integrated development environment with an LLM for completion (such as Copilot in VS Code), **you must cite it.**
+
+```.js
+// The following written with completion assistance from Microsoft, Copilot, 2023-08-31
+function mergeSort(array) {
+```
+
+**You are expected to review, customize, fix, and understand all code produced by LLM.** Your marks will be reduced (potentially to zero) if you cannot explain the code you submitted. **You will be graded on your ability to understand your code.**
+
+**LLMs often produce the same answer.** This will make it look like you copied (plagiarized) another student's answer! It is your responsibility to ensure the code you submit represents your individual work. If you submit the same code as another student, it will be considered plagiarism, even if the reason is you both used the same LLM.
 
 **LLMs like ChatGPT are wrong a lot.** It does not understand computer science. It understands how to form sentences and paragraphs well enough to be convincing, but it doesn't actually understand what anything it is saying **means.** When it has the choice between two answers, with opposite meanings, it will pick the answer that looks more like things it has seen before, **not** the answer that is more **correct.** This means you need to double-check that what it tells you is actually correct.
 
-**StackOverflow is always a better resource than Large Language Models such as ChatGPT, Copilot, Bard/Gemini, etc.**, but of course if you use code from StackOverflow or any other website, **you must cite it.** This is because other human programmers will usually check and downvote, remove, or fix bad information on StackOverflow. No one is checking the output of LLMs: if an LLM lies to you, no one will ever know.
+**StackOverflow is always a better resource than Large Language Models such as ChatGPT**, but of course if you use code from StackOverflow or any other website, **you must cite it.** This is because other human programmers will usually check and downvote, remove, or fix bad information on StackOverflow. No one is checking the output of LLMs: if an LLM lies to you, no one will ever know.
 
 ChatGPT and similar services are recording everything you tell it, and tracking you.
 Using ChatGPT/Bing/Bard etc. they are recording everything you say and how the LLM responds
@@ -207,6 +218,8 @@ to you. There is no privacy.
         1. b is not shorthand for beq: RARS replaces it with jal -- the actual replacement depends on the assembler used and the situation it is used in.
         2. This also makes ChatGPT's conclusion about relative limited range jumps and absolute jumps wrong. All jumps and branches in RISC-V are relative, short range jumps except jalr. RARS also (at least in every case I've seen) translates j to jal, not jalr, and jal is also a short-range, relative jump.
         3. If b gets translated to beq x0, Y, label then what guarantees that the other register isn't also zero? The comparison with beq x0, Y cannot always be false, despite what ChatGPT claimed. This really doesn't make any sense. It would make more sense for it to be translated to bne x0, x0, label ... but that's the opposite instruction of what ChatGPT claimed.
+
+**Relying on an LLM will lead to poor marks on the final exam.** This is because you simply will not have access to a computer during the final exam.
 
 ## Re-Evaluation of Term Work
 

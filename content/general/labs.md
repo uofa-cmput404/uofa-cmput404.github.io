@@ -13,8 +13,8 @@ summary: Lab Procedure, Lab Assignments, Lab Marking
 
 # Lab Procedure
 
-* [H01 Monday Signup Sheet](https://docs.google.com/spreadsheets/d/1TgVe_SXOEQHiH2ZrGsdccL6wndSUhZhIVqDX4HA7wvk/edit)
-* [H02 Wednesday Signup Sheet](https://docs.google.com/spreadsheets/d/1EBqOV0GJHfQvzm4jrQYani2ghWrfVuQMHtoesph4kMc/edit)
+* [H01 Monday Signup Sheet]()
+* [H02 Wednesday Signup Sheet]()
 
 * You **must walk through your individual lab work to a TA** during the lab to receive marks.
     * If you submit on eClass but don't walk through your code with a TA you will get a zero.
