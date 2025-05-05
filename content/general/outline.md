@@ -243,8 +243,15 @@ Although you may program in python at home or outside the lab, your implementati
 
 ## Participation
 
-Most participation marks will be in class during class. You can participate over Zoom or in-person. To participate in-person please bring a working cellphone, tablet, or laptop. There may be other participation marks from time to time. See *Missed Term Work: Participation* below.
+<!--Most participation marks will be in class during class. You can participate over Zoom or in-person. To participate in-person please bring a working cellphone, tablet, or laptop. There may be other participation marks from time to time. See *Missed Term Work: Participation* below.-->
 
+* CMPUT 404: Participation marks will be marked out of 8 points.
+* At most one point can be earned per lecture.
+* A point can be earned by answering an instructor's question during class.
+* A point can be earned by asking a thoughtful question about the course material during class.
+* Points can be earned either in-person or by participating over Zoom.
+* Specifically no points will be awarded for asking/answering questions about the course itself, such as grades, submission requirements, due dates, etc.
+* Additional opportunities may be added.
 
 # Policies for Late and Missed Work
 
@@ -267,12 +274,12 @@ Failure to complete an assignment or contribute to a project part without an exc
 
 ## Missed Term Work: Participation
 
-Participation exercises will be available most lectures.
+Participation opportunities will be available most lectures. There will be over 20 opportunities for participation. Because the number of opportunities for participation is more than twice the number of lectures, no late participation will be accepted. No excuses for participation will be accepted.
 
-The 6 lowest marks for lecture participation will be dropped when calculating the course mark. 
+<!--The 6 lowest marks for lecture participation will be dropped when calculating the course mark. 
 No late participation will be accepted.
 Failure to complete a participation exercise on time for any reason will result in a mark of zero.
-Please note that you can miss 6 lectures without penalty.
+Please note that you can miss 6 lectures without penalty.-->
 
 Submitting a participation exercise or Mentimeter without attending the lecture will be considered a breach of the [Student Academic Integrity Policy](https://policiesonline.ualberta.ca/PoliciesProcedures/Pages/DispPol.aspx?PID=193&s=https://policiesonline.ualberta.ca/PoliciesProcedures/Pages/Academic.aspx).
 
