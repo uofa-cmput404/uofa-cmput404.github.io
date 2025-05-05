@@ -1,5 +1,5 @@
 Title: Labs
-date: 2024-01-06
+date: 2025-05-05
 tags: labs, policy, grading
 authors: Hazel Victoria Campbell
 status: published
@@ -134,7 +134,3 @@ Note that simply reading the code to the TA does **not** count as understanding.
     * You can explain your code to the TA with no problem
     * But, you plagiarized, misrepresented your work, or other academic misconduct (cheating)
     * Grade: 100, and you get interviewed by the instructor, and you get interviewed by the Dean's office, and you probably get sanctioned by the Dean's office, and you probably receive letter of reprimand, and the Dean's officer can set your grade to 0 anyway. Or the Dean's officer might fail you for the entire course, or whatever they decide, they have their own rules.
-
-# Development Environment
-
-Ubuntu VM or lab machines.
