@@ -17,7 +17,7 @@ summary: Lecture, Labs, Contact Information, Lecturer, Teaching Assistants, Cour
     }
 </style>
 
-* **eClass Page**: <https://eclass.srv.ualberta.ca/course/view.php?id=99611>
+* **Canvas Page**: <https://canvas.ualberta.ca/courses/22272>
 * **Home Page**: <https://uofa-cmput404.github.io/>
 * [Old outlines](/tag/outline.html)
 
@@ -29,18 +29,15 @@ summary: Lecture, Labs, Contact Information, Lecturer, Teaching Assistants, Cour
     * You must attend live.
     * You will be required to attend in person for some lectures, all labs, and all exams.
     * You must be in Edmonton to take this course.
-* A1
-    * Monday Wednesday Friday, 1:00PM to 1:50PM
-    * [HC L1-L1](http://www.campusmap.ualberta.ca/?b=hc)
+* C1
+    * Monday Wednesday Friday, 5:00PM to 5:50PM
+    * [CSC B-02](http://www.campusmap.ualberta.ca/?b=csc)
 
 # Labs
 
-* D01
-    * Monday, 5:00PM to 7:50PM
-    * [CSC B-10](http://www.campusmap.ualberta.ca/?b=csc)
-* D02
-    * Wednesday, 5:00PM to 7:50PM
-    * [CSC B-10](http://www.campusmap.ualberta.ca/?b=csc)
+* C2
+    * Thursday, 5:00PM to 7:50PM
+    * [CSC B-02](http://www.campusmap.ualberta.ca/?b=csc)
 * [Lab Information]({filename}/general/labs.md)
 
 # Contact Information
@@ -50,15 +47,16 @@ summary: Lecture, Labs, Contact Information, Lecturer, Teaching Assistants, Cour
 ## Lecturer
 
 * **Office:** [ATH 4-05](http://www.campusmap.ualberta.ca/?b=ath)
-* **Office hours (ATH 4-05):** Monday, Wednesday, Friday 2:10-2:50PM (in-person only)
-* **Office hours (Zoom):** Tuesday, Thursday 2:10-2:50PM (zoom only)
+    * I will be moving to a different office in May/June!
+* **Office hours (ATH 4-05):** Monday, Wednesday, Friday 6:10-6:50PM (in-person only)
+* **Office hours (Zoom):** By appointment.
     * [You must be logged into Zoom with your UAlberta GMail](https://support.eclass.ualberta.ca/index.php?/Knowledgebase/Article/View/422/23/using-zoom-for-students).
     * [Zoom link to join once you're logged-in](https://ualberta-ca.zoom.us/j/99296332583)
-* **Email:** Students must use the [contact form]({filename}/general/help.md#contact-instructor). It may take several days to respond due the large number of students. 
+* **Email:** Students must use the [contact form]({filename}/general/help.md#contact-instructor). <!--It may take several days to respond due the large number of students.-->
 
 ## Teaching Assistants
 
-TA office hours will be added on eClass.
+TAs are not finalized yet.
 
 # Course Content
 
@@ -140,7 +138,7 @@ The [Faculty of Science Student Services](https://www.ualberta.ca/science/studen
 | What                    | Weight | Collaboration | Due Date <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
 |-------------------------|--------|---------------|-----------
 | Participation           | 8%    | [Solo Effort](#solo-effort) | Most Lectures <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
-| LLM Assignment          | 2%     | [Solo Effort](#solo-effort) | Friday, May 16, 4PM <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
+| Language Assignment     | 2%     | [Solo Effort](#solo-effort) | Friday, May 16, 4PM <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
 | Lab Assignments (6)     | 30% (5%x6) | [Consultation](#consultation) | Before Lab 4PM <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
 | Project Part 0          | 1%     | [Teamwork](#teamwork) | 4PM <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
 | Project Part 1          | 5%     | [Teamwork](#teamwork) | 4PM <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
@@ -664,6 +662,7 @@ Policy about course outlines can be found in [Course Requirements, Evaluations P
 ## Update History
 
 * 2025-05-01: Fork from previous version.
+* 2025-05-05: Updates for spring/summer.
 
 ## Copyright
 
