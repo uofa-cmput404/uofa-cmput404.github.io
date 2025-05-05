@@ -1,5 +1,5 @@
 Title: Course Outline Spring-Summer 2025
-date: 2025-05-01
+date: 2025-05-05
 tags: outline, policy, grading, contact
 authors: Hazel Victoria Campbell
 status: published
@@ -8,14 +8,6 @@ summary: Lecture, Labs, Contact Information, Lecturer, Teaching Assistants, Cour
 ----
 
 <h2>University of Alberta <br> CMPUT 404 - Web Applications and Architecture <br> CMPUT 404A Spring 2025 LEC-C1 LAB-C2 <br> CMPUT 404B Summer 2025 LEC-C1 LAB-C2 </h2>
-
-<style>
-    html body main {
-        background-image: url("/theme/draft.png");
-        background-repeat: repeat;
-        background-size: 100%;
-    }
-</style>
 
 * **Canvas Page**: <https://canvas.ualberta.ca/courses/22272>
 * **Home Page**: <https://uofa-cmput404.github.io/>
