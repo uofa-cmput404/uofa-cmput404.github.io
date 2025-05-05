@@ -13,19 +13,48 @@ summary: Lab Procedure, Lab Assignments, Lab Marking
 
 # Lab Procedure
 
-* [H01 Monday Signup Sheet]()
-* [H02 Wednesday Signup Sheet]()
+* [C2 Thursday Signup Sheet](#TODO)
 
 * You **must walk through your individual lab work to a TA** during the lab to receive marks.
-    * If you submit on eClass but don't walk through your code with a TA you will get a zero.
+    * If you submit on Canvas but don't walk through your code with a TA you will get a zero.
     * You MUST walk through your lab in person.
-    * Walkthroughs are during the second half of your registered lab section on BearTracks (6:00 PM-7:50)
 * Labs are due on eClass and GitHub at 4PM on Monday.
     * If you walk through your code with a TA but don't submit you will get a zero.
     * If you don't submit a link to your GitHub on eClass you will get a zero.
     * If you submit but don't walk through your code with a TA you will get a zero.
 
 The TAs will do their best to keep strictly to the schedule on the walkthrough signup sheet.
+
+# Submission
+
+**You must submit GitHub commit links on Canvas.**
+
+You must submit links that look like this:
+
+```.txt
+https://github.com/user-or-organization/repo-name/commit/95df41a777e5a5b5cda1e5d6c38953d26549f702
+```
+
+<aside class="longWarning">
+    <p>Note the big hex number! Without it, you will get a zero.</p>
+</aside>
+
+If you do not submit to Canvas on time:
+
+* We have no way of knowing which GitHub repo is yours.
+* We have no way of knowing if you intend to submit the lab/project.
+* We have no way of tracking which lab/project have been graded and which assignments still need to be graded.
+* We have no way of knowing if we missed someone's lab/project.
+
+Also:
+
+* We have no way of tracking things like excused absences (weight transfer if someone is sick) on GitHub. (Even if we did it would violate University policy for us to do so.)
+* We have no way of tracking accessibility accommodations on GitHub. (Even if we did it would violate University policy for us to do so.)
+* We have no way of tracking grades on GitHub. (Even if we did it would violate University policy for us to do so.)
+* The GitHub due date thing does not always work correctly.
+* By University policy, GitHub (like Mentimeter) is not an approved platform. eClass/Canvas/Google Apps are the only approved platforms. So, instructors and TAs are not allowed to tell GitHub who you are, we have to allow you to be pseudonymous. For example, we are not allowed to tell GitHub/Mentimeter your name, your student ID#, your CCID, etc. This is also why Menti uses codenames.
+* Because of this policy we also cannot give grades or feedback on GitHub.
+* GitHub classroom is broken and does not handle due dates correctly.
 
 # Labsignments (Lab Assignments)
 
@@ -108,20 +137,4 @@ Note that simply reading the code to the TA does **not** count as understanding.
 
 # Development Environment
 
-# GitHub Classroom
-
-If you do not submit to eClass on time:
-
-* We have no way of knowing which GitHub repo is yours.
-* We have no way of knowing if you intend to submit the lab/project.
-* We have no way of tracking which lab/project have been graded and which assignments still need to be graded.
-* We have no way of knowing if we missed someone's lab/project.
-
-Also:
-
-* We have no way of tracking things like excused absences (weight transfer if someone is sick) on GitHub. (Even if we did it would violate University policy for us to do so.)
-* We have no way of tracking accessibility accommodations on GitHub. (Even if we did it would violate University policy for us to do so.)
-* We have no way of tracking grades on GitHub. (Even if we did it would violate University policy for us to do so.)
-* The GitHub due date thing does not always work correctly.
-* By University policy, GitHub (like Mentimeter) is not an approved platform. eClass/Canvas/Google Apps are the only approved platforms. So, instructors and TAs are not allowed to tell GitHub who you are, we have to allow you to be pseudonymous. For example, we are not allowed to tell GitHub/Mentimeter your name, your student ID#, your CCID, etc. This is also why Menti uses codenames.
-* Because of this policy we also cannot give grades or feedback on GitHub.
+Ubuntu VM or lab machines.
