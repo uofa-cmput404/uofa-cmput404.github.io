@@ -22,15 +22,14 @@ save_as: index.html
 
 **You need to be logged in as your University of Alberta CCID/email account to view it.** The course schedule is updated in this [Google Sheet](https://docs.google.com/spreadsheets/d/1XEisEzQFf44S8bIOuceulka1w4y3ZN1HVs1z0UF3UU4/edit?gid=0#gid=0). Please remember that this is only a plan, and sometimes plans change.
 
-# eClass
+# Canvas
 
-[The current eClass page is here.](https://eclass.srv.ualberta.ca/course/view.php?id=99611)
+[The current Canvas page is here.](https://canvas.ualberta.ca/courses/22272)
 
 * Grades
 * Submissions
 * [Discussion Forum]({filename}/general/help.md#discussion-forum)
 
-We are in the process of moving things off of eClass, because eventually University of Alberta will get rid of eClass.
 
 ## News & Notices
 

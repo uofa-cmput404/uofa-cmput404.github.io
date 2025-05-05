@@ -69,7 +69,7 @@ INDEX_SAVE_AS="all.html"
 
 MENUITEMS=[
     ("Outline", "/general/outline.html"),
-    ("eClass & Grades", "/#eclass"),
+    ("Canvas & Grades", "/#canvas"),
     ("Schedule", "/#schedule"),
     ("Labs", "/general/labs.html"),
     ("Project", "/general/project.html"),
