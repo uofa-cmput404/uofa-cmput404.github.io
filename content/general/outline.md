@@ -129,7 +129,7 @@ The [Faculty of Science Student Services](https://www.ualberta.ca/science/studen
 | What                    | Weight | Collaboration | Due Date <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
 |-------------------------|--------|---------------|-----------
 | Participation           | 8%    | [Solo Effort](#solo-effort) | Most Lectures <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
-| Language Assignment     | 2%     | [Solo Effort](#solo-effort) | Wednesday, May 14, 4PM <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
+| Language Assignment     | 2%     | [Solo Effort](#solo-effort) | Wednesday, May 21, 4PM <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
 | Lab Assignments (6)     | 30% (5%x6) | [Consultation](#consultation) | Before Lab 4PM <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
 | Project Part 0          | 1%     | [Teamwork](#teamwork) | 4PM <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
 | Project Part 1          | 5%     | [Teamwork](#teamwork) | 4PM <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
@@ -653,6 +653,7 @@ Policy about course outlines can be found in [Course Requirements, Evaluations P
 
 * 2025-05-01: Fork from previous version.
 * 2025-05-05: Updates for spring/summer.
+* 2025-05-07: Fix due date of language assignment.
 
 ## Copyright
 
