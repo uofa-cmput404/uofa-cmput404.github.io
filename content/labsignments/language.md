@@ -24,7 +24,7 @@ This is a short assignment to help you become familiar with course policies and 
 
 ## Question 1A
 
-Where are the course expectations around plagiarism documented?
+Where are the course expectations around plagiarism, citation, and LLM use documented?
 
 ## Question 1B
 
