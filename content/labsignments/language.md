@@ -150,7 +150,7 @@ iii. Does the LLM's response agree with the explanation of good comments written
 
 iv. Did the LLM's response "follow" your instructions?
 
-* If you don't want to use it yourself, sample ChatGPT prompts and responses are provided at the end of the assignment.
+* If you don't want to use it yourself, sample ChatGPT & Gemini prompts and responses are provided at the end of the assignment. You may copy and paste them into your assignment.
 
 ## Question 2B
 
@@ -241,6 +241,8 @@ ii. Provide the LLM's response with the commented code. (Correctly cite it!)
 
 iii. Choose a completely different LLM from a different company, and provide the second LLM's response with the commented code. (Correctly cite it!)
 
+* Make sure you use different LLMs from different companies. If you are using Copilot, you can change the LLM being used with the drop-down menu.
+
 iv. Which LLM's comments made the purpose of the code the most clear?
 
 v. Which LLM's comments explained the most about programming language features like async, await, and closures?
@@ -249,7 +251,6 @@ vi. Which LLM do you think provided better comments, and why?
 
 vii. Which LLM provided longer/more comments? Did longer comments help or hinder your ability to understand the code?
 
-* If you don't want to use it yourself, sample ChatGPT & Gemini prompts and responses are provided at the end of the assignment.
 
 # Question 3 - Refactoring & Testing
 
@@ -375,13 +376,23 @@ vii. Which LLM provided better refactored code? Why do you think that?
 
 viii. Compare the two LLM generated test codes with the Question 3 test code. What is different? Can you identify anything that the LLMs missed?
 
+# Submission
+
+* Double-check that it is clear what is your work and what is LLM output in your assignment before submitting.
+
+TBD. Probably a PDF submitted to Canvas.
+
+# Marking
+
+Your assignment will be marked out of 8, where 8 is flawless and 4 is half-way.
+
 # Appendix (sample ChatGPT questions and answers)
 
 ## Bad Good Example
 
 Dr. Campbell: Generate some advanced Python code with three examples of comments: 1. bad comments. 2. mediocre comments. and 3. good comments. use at most one comment per line of code for each example. All of the comments should be about the same length.
 
-ChatGPT, OpenAI, 2025-05-12, https://ChatGPT.com/share/6822455c-ccf4-8012-88fc-9ff2a15b52c2
+ChatGPT 4o, OpenAI, 2025-05-12, https://ChatGPT.com/share/6822455c-ccf4-8012-88fc-9ff2a15b52c2
 
 Here's a Python code snippet with three versions of comments—**bad**, **mediocre**, and **good**—demonstrating how comment quality can impact code clarity. All comments are about the same length and are placed one per line.
 
@@ -465,7 +476,7 @@ Would you like a version that highlights these differences visually, like in a t
 
 Dr. Campbell: add comments to the following code:
 
-ChatGPT, OpenAI, 2025-05-12, https://ChatGPT.com/share/6822455c-ccf4-8012-88fc-9ff2a15b52c2
+ChatGPT 4o, OpenAI, 2025-05-12, https://ChatGPT.com/share/6822455c-ccf4-8012-88fc-9ff2a15b52c2
 
 Here is the code with comments added to explain each part clearly:
 
@@ -834,7 +845,7 @@ if __name__ == "__main__":
 
 Dr. Campbell: write tests for the following code:
 
-ChatGPT, OpenAI, 2025-05-12, https://ChatGPT.com/share/68224e86-6e94-8012-8605-47f1f08dc2dd
+ChatGPT 4o, OpenAI, 2025-05-12, https://ChatGPT.com/share/68224e86-6e94-8012-8605-47f1f08dc2dd
 
 Here's a comprehensive test suite for the provided `Hostnames` class. The tests use `pytest` and `pytest-asyncio` to validate both synchronous and asynchronous behavior, including caching, timing, concurrent task handling, and fallback behavior on errors.
 
