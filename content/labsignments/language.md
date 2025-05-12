@@ -6,6 +6,14 @@ status: draft
 summary: Assignment about course policies, large language models, and comments.
 ----
 
+<style>
+    html body main {
+        background-image: url("/theme/draft.png");
+        background-repeat: repeat;
+        background-size: 100%;
+    }
+</style>
+
 [TOC]
 
 # Description
@@ -143,8 +151,11 @@ Consider the following code:
 Ask an LLM to generate example code with good, mediocre, and bad comments.  Did the LLM follow your instructions?
 
 i. Write your prompt.
+
 ii. Write the LLM's response (Remember to correctly cite it!)
+
 iii. Does the LLM's response agree with the explanation of good comments written by 404 TAs above?
+
 iv. Did the LLM's response "follow" your instructions?
 
 * If you don't want to use it yourself, sample ChatGPT prompts and responses are provided at the end of the assignment.
@@ -233,11 +244,17 @@ if __name__ == "__main__":
 ```
 
 i. Write a prompt to ask an LLM to add comments to the code above.
+
 ii. Provide the LLM's response with the commented code. (Correctly cite it!)
+
 iii. Choose a completely different LLM from a different company, and provide the second LLM's response with the commented code. (Correctly cite it!)
+
 iv. Which LLM's comments made the purpose of the code the most clear?
+
 v. Which LLM's comments explained the most about programming language features like async, await, and closures?
+
 vi. Which LLM do you think provided better comments, and why?
+
 vii. Which LLM provided longer/more comments? Did longer comments help or hinder your ability to understand the code?
 
 * If you don't want to use it yourself, sample ChatGPT & Gemini prompts and responses are provided at the end of the assignment.
@@ -337,21 +354,33 @@ if __name__ == "__main__":
 ## Question 3A
 
 i. Write a prompt to get an LLM to refactor the code from Question 2 without breaking the tests in Question 3.
+
 ii. Provide the LLM's response with the refactored code. (Correctly cite it!)
+
 iii. Choose a completely different LLM from a different company, and provide the second LLM's response with the refactored code. (Correctly cite it!)
+
 iv. Was either LLM's refactored code correct? Did either LLM's refactored code pass the tests?
+
 v. Did either LLM's refactored code significantly improve the code? Why or why not?
+
 vi. What are the problems with the refactored code?
+
 vii. Which LLM provided better refactored code? Why do you think that?
 
 ## Question 3B
 
 i. Write a prompt to get an LLM to write tests for the code from Question 2. Do **not** provide the tests already written.
+
 ii. Provide the LLM's response with the test code. (Correctly cite it!)
+
 iii. Choose a completely different LLM from a different company, and provide the second LLM's response with the test code. (Correctly cite it!)
+
 iv. Was either LLM's test code correct? Did either LLM's test code actually work with the code from Question 2?
+
 vi. What are the problems with the test code in the LLM responses?
+
 vii. Which LLM provided better refactored code? Why do you think that?
+
 viii. Compare the two LLM generated test codes with the Question 3 test code. What is different? Can you identify anything that the LLMs missed?
 
 # Appendix (sample ChatGPT questions and answers)
