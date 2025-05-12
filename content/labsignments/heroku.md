@@ -26,14 +26,6 @@ In Phase three, you will apply the lab material to add a new API route and a com
 * Using Django with Postgres backend on Heroku
 * Using Django with Sqlite backend for local testing
 
-## Warning!
-
-<p class="longWarning">
-There will be no walkthrough for this lab. <strong>PLEASE MAKE SURE YOUR CODE IS WELL COMMENTED!</strong> This will help the TAs to be able to understand your code when they are marking your lab.
-
-Be sure to write high-quality comments that give **context** to the code instead of just describing the code. Since we can't do a walkthrough we will be relying on these comments. See examples below!
-</p>
-
 ### Good Comments
 
 Good comments describe 'what' the code is doing only if that isn't clear from the way the code is written. However, focus is on 'why' something is being done. 

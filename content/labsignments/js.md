@@ -6,6 +6,8 @@ status: Published
 summary: Lab Procedure, Lab Assignments, Lab Marking
 ----
 
+[TOC]
+
 # Description
 
 In this lab you will make a JS Clock/Timer/Stopwatch/Countdown "single-page" app.
