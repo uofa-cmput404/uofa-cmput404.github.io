@@ -138,14 +138,6 @@ In general, a bad comment doesn't tell someone who knows the programming languag
         responded = {question: None for question, _ in self.question_response_count.items()} # make a dictionary of the questions
 ```
 
-
-Consider the following code:
-
-```.py
-    def generate_random_hostname():
-        return ''.join(random.choices('abcdefghijklmnopqrstuvwxyz', k=4)) + ".com"
-```
-
 ## Question 2A
 
 Ask an LLM to generate example code with good, mediocre, and bad comments.  Did the LLM follow your instructions?
