@@ -22,7 +22,7 @@ This is an assignment:
 
 1. Become familiar with course policies and expectations. 
 2. Practice using LLMs while avoiding plagiarism.
-3. Explore the usage and limitations of LLMs when applied to CMPUT 404.
+3. Explore the usage and limitations of LLMs when applied to coding techniques & technologies commonly used in web applications.
 
 # Question 1 - Plagiarism & Citation
 
@@ -32,9 +32,9 @@ Where are the course expectations around plagiarism, citation, and LLM use docum
 
 ## Question 1B
 
-Answer the following questions. Copy and paste the course policies around plagiarism into your answer. Cite each copy and pasted section according to the course policy on citations. Then answer the question in your own words.
+Answer the following questions.
 
-i. What are the four different types of collaboration policies used by this course?
+i. What are the four different types of collaboration policies used by this course? Copy and paste the course policies around plagiarism into your answer. Cite each copy and pasted section according to the course policy on citations.
 
 ii. Which collaboration policy applies to each grade item?
 
