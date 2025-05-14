@@ -503,7 +503,9 @@ How to consult with other students without plagiarizing:
 
 * Study the Course, Computing Science Department, CNAS, and University [policies listed above](#appropriate-collaboration) regarding Academic Integrity.
 * All sources used must be cited.
-    * If you use code snippets (copy and paste) you must cite them, please see the examples above.
+    * If you use code snippets you must cite them, please see the examples above.
+        * This includes code snippets that are exact copies (copy and paste),
+        * as well as code snippets that are adapted from an online or LLM source.
     * All sources of information used, e.g., books, websites, students you talked to etc., must be cited in your submitted file or repo `README` for each assignment.
     * If student A cites student B, then B should also cite A as consulted.
 * Individually develop your own solution for assignments and exercises. **Submit only your own work for evaluation.**
