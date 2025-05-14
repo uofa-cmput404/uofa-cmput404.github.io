@@ -40,7 +40,7 @@ summary: Lecture, Labs, Contact Information, Lecturer, Teaching Assistants, Cour
 
 * **Office:** [ATH 4-05](http://www.campusmap.ualberta.ca/?b=ath)
     * I will be moving to a different office in May/June!
-* **Office hours (ATH 4-05):** Monday, Wednesday, Friday 6:10-6:50PM (in-person only)
+* **Office hours (CSC B-02):** Monday, Wednesday, Friday 6:10-6:50PM (in-person only)
 * **Office hours (Zoom):** By appointment. Email me and we can set up a time.
     * [You must be logged into Zoom with your UAlberta GMail](https://support.eclass.ualberta.ca/index.php?/Knowledgebase/Article/View/422/23/using-zoom-for-students).
 * **Email:** Students must use the [contact form]({filename}/general/help.md#contact-instructor). <!--It may take several days to respond due the large number of students.-->
@@ -659,7 +659,7 @@ Policy about course outlines can be found in [Course Requirements, Evaluations P
 * 2025-05-01: Fork from previous version.
 * 2025-05-05: Updates for spring/summer.
 * 2025-05-07: Fix due date of language assignment.
-* 2025-05-14: Clarify that teamwork collaboration policy is an extension of consultation collaboration policy. Other minor clarifications.
+* 2025-05-14: Clarify that teamwork collaboration policy is an extension of consultation collaboration policy. Other minor clarifications. Update office hour location.
 
 ## Copyright
 
