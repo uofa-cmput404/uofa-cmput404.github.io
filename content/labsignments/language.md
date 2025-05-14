@@ -40,6 +40,12 @@ iv. When is sharing answers with people who aren't students allowed in this cour
 
 v. What are some potential disadvantages to using ChatGPT in this course?
 
+## Question 1C
+
+Sign your name.
+
+I, <span style="font-size: 72pt">__________</span> have read and understand these policies.
+
 # Question 2 - Comments
 
 ## Good Comments
