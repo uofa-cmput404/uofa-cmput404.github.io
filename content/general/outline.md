@@ -129,7 +129,7 @@ The [Faculty of Science Student Services](https://www.ualberta.ca/science/studen
 | What                    | Weight | Collaboration | Due Date <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
 |-------------------------|--------|---------------|-----------
 | Participation           | 8%    | [Solo Effort](#solo-effort) | Most Lectures <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
-| Language Assignment     | 2%     | [Solo Effort](#solo-effort) | Wednesday, May 21, 4PM <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
+| Language Assignment     | 2%     | [Consultation](#consultation) | Wednesday, May 21, 4PM <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
 | Lab Assignments (6)     | 30% (5%x6) | [Consultation](#consultation) | Before Lab 4PM <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
 | Project Part 0          | 1%     | [Teamwork](#teamwork) | 4PM <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
 | Project Part 1          | 5%     | [Teamwork](#teamwork) | 4PM <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
@@ -502,7 +502,7 @@ How to consult with other students without plagiarizing:
 
 * Study the Course, Computing Science Department, CNAS, and University [policies listed above](#appropriate-collaboration) regarding Academic Integrity.
 * All sources used must be cited.
-    *  If you use code snippets you must cite them, please see the examples above.
+    * If you use code snippets (copy and paste) you must cite them, please see the examples above.
     * All sources of information used, e.g., books, websites, students you talked to etc., must be cited in your submitted file or repo `README` for each assignment.
     * If student A cites student B, then B should also cite A as consulted.
 * Individually develop your own solution for assignments and exercises. **Submit only your own work for evaluation.**
@@ -545,6 +545,8 @@ Examples of consultation:
     * Student A submits the code
 
 ### <a id="teamwork" href="#teamwork">Teamwork</a>: Group Projects
+
+Within the team, code may be freely shared and worked on. Between two teams or two students in different teams, teamwork follows the collaboration model above: discussion but no sharing of solutions.
 
 * As long as you are a part of a group, you are responsible for everything in the group project, whether you participated in every component or not.
 * A group may only submit work authored by group members or appropriately cited and credited code that does not violate the author's license.
