@@ -2,7 +2,7 @@ Title: Language Assignment
 date: 2025-05-14
 tags: labs
 authors: Hazel Campbell, William Qi
-status: draft
+status: published
 summary: Assignment about course policies, large language models, and comments.
 ----
 
@@ -46,20 +46,7 @@ Project?
 
 Participation?
 
-
-iii. For what grade items are LLMs (such as ChatGPT) allowed in this course?
-
-Exam?
-
-Assignment?
-
-Lab?
-
-Project?
-
-Participation?
-
-iv. For what grade items is the use of online Q & A websites (such as Stack Overflow) allowed in this course?
+iii. For what grade items is the use of online Q & A websites (such as Stack Overflow) allowed in this course?
 
 Exam?
 
@@ -71,7 +58,21 @@ Project?
 
 Participation?
 
-v. For what grade items is the is sharing answers with other students allowed in this course?
+iv. For what grade items is the is sharing answers with other students allowed in this course?
+
+Exam?
+
+Assignment?
+
+Lab?
+
+Project?
+
+Participation?
+
+v. What are the expectations on LLM use in this course? Is it allowed? If it's allowed, does it come with any requirements?
+
+vi. For what grade items are LLMs (such as ChatGPT) allowed in this course?
 
 Exam?
 
@@ -300,9 +301,10 @@ iii. Choose a completely different LLM from a different company, and provide the
 
 iv. In your opinion, which LLM's comments made the purpose of the code the most clear? Why?
 
-* For opinion questions like this one, you do not need to write more than two sentences or around 30 words. Your opinion does not need to match my opinion or the TAs but it must make sense and be clear, and match the output given by the LLM.
+* For opinion questions like this one, you should aim for two sentences or around 30 words. 
+* Your opinion does not need to agree with the instructor or TA's opinion, but it must make sense and be clear, and match the output given by the LLM. 
 
-v. In your opinion, which LLM's comments explained the most about programming language features like async, await, and closures? Why?
+v. In your opinion, which LLM's comments explained the most about programming language features like async/await, and closures? Did you learn anything about async/await and closures from the LLM's comments? Why or why not?
 
 vi. In your opinion, which LLM do you think provided better comments? Why?
 
