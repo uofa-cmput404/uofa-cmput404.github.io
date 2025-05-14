@@ -1,18 +1,10 @@
 Title: Language Assignment
-date: 2025-05-12
+date: 2025-05-14
 tags: labs
 authors: Hazel Campbell, William Qi
 status: draft
 summary: Assignment about course policies, large language models, and comments.
 ----
-
-<style>
-    html body main {
-        background-image: url("/theme/draft.png");
-        background-repeat: repeat;
-        background-size: 100%;
-    }
-</style>
 
 [TOC]
 
@@ -308,7 +300,7 @@ iii. Choose a completely different LLM from a different company, and provide the
 
 iv. In your opinion, which LLM's comments made the purpose of the code the most clear? Why?
 
-* For opinion questions like this one, you do not need to write more than two sentences or around 30 words.
+* For opinion questions like this one, you do not need to write more than two sentences or around 30 words. Your opinion does not need to match my opinion or the TAs but it must make sense and be clear, and match the output given by the LLM.
 
 v. In your opinion, which LLM's comments explained the most about programming language features like async, await, and closures? Why?
 
