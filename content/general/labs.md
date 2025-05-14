@@ -58,8 +58,8 @@ Also:
 
 # Labsignments (Lab Assignments)
 
-1. [HTTP]({filename}/labsignments/http.md)
-2. [Django]({filename}/labsignments/django.md)
+1. [Django]({filename}/labsignments/django.md)
+2. [HTTP]({filename}/labsignments/http.md)
 3. [Heroku]({filename}/labsignments/heroku.md)
 4. [Pelican]({filename}/labsignments/pelican.md)
 5. [JS]({filename}/labsignments/js.md)

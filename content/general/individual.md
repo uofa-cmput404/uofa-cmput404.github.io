@@ -46,5 +46,7 @@ You can earn lecture participation credit by attending lecture on time. Instruct
 
 # Exams
 
-* [Exam]({filename}/general/outline.md#exam-conduct)
+* [Exam Conduct]({filename}/general/outline.md#exam-conduct)
+* [If you miss an exam]({filename}/general/outline.md#deferred-final-examination)
+* Exam date and time is on BearTracks when the registrar posts it. The registrar doesn't usually post exam dates and times until a few weeks before the end of the semester.
 
