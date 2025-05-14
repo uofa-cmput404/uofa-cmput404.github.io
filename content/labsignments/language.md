@@ -25,7 +25,8 @@ This is an assignment:
 3. Explore what makes good code comments.
 4. Explore the usage and limitations of LLMs when applied to coding techniques & technologies commonly used in web applications.
 5. Explore the usage and limitations of LLMs when applied to:
-    1. Helping you understand code
+    1. Helping to understand code with unfamiliar concepts
+    2. Helping to understand code that is poorly structured
     2. Refactoring code
     3. Writing tests
 
@@ -214,7 +215,9 @@ iv. Did the LLM's response "follow" your instructions?
 
 ## Question 2B
 
-Consider the following code:
+Consider the following code. It is poorly structured, and it makes use of closures and async/await, two concepts which you might not be familiar with.
+It is okay if you're not familiar with these concepts yet: the goal is to investigate how much LLMs can help with understanding code that you're not already familiar with.
+You'll do this by asking the LLM to create good comments.
 
 ```.py
 import asyncio
