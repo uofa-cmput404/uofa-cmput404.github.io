@@ -87,7 +87,7 @@ JavaScript is used to add interactivity to a web page. You can manipulate the **
 
 ## Prepare your Repo
 
-1. Get the GitHub classroom link from eClass, create your assignment, and clone it.
+1. Get the [GitHub classroom link from Canvas](https://canvas.ualberta.ca/courses/22272/assignments/531391), create your assignment, and clone it.
 2. Create an appropriate `.gitignore` file to prevent unwanted files from being committed to your repository. 
 
 Place this `.gitignore` file in the root of your project. You can combine [this one](https://github.com/github/gitignore/blob/main/Python.gitignore), [this one](https://github.com/github/gitignore/blob/main/Node.gitignore), and [this one](https://github.com/django/django/blob/main/.gitignore) for your Django + Node project. Use `git status` to ensure you're not staging any unwanted files before committing.
@@ -771,9 +771,11 @@ Ensure your repository contains only the necessary files, and your `.gitignore` 
 
 Make sure you push to GitHub classroom **BEFORE the deadline!** You will not be able to push after that!
 
-Submit a link to your repo in the form `https://github.com/uofa-cmput404/w24-h0x-labsignment-django-yourgithubname` on eClass. **Do not** submit a link to a branch, a file, or the clone URL. 
+Submit a link to your repo in the form `https://github.com/uofa-cmput404/s25-labsignment-django-yourgithubname/commit/bunch-of-numbers` on eClass. **Do not** submit a link to a branch, a file, or the clone URL.
 
-<p class="warning">If you do not submit a link to your repo on eClass on time using the correct format above, you will get a zero.</p>
+<p class="warning">If you do not submit a link to your COMMIT on Canvas on time using the correct format above, you will get a zero.</p>
+
+You can submit and then resubmit as many times as you want before the deadline, so submit early and often.
 
 ---
 
