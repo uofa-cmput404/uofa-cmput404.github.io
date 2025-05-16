@@ -88,7 +88,7 @@ Introduction to modern web architecture, from user-facing applications to machin
 
 ## Course Schedule 
 
-The weekly topic schedule is likely to be updated during the term; please see [the live version]({filename}/pages/home.md#schedule).
+The weekly topic schedule is likely to be updated during the term; please see [the live version](https://docs.google.com/spreadsheets/d/1XEisEzQFf44S8bIOuceulka1w4y3ZN1HVs1z0UF3UU4/edit?usp=sharing).
 
 ## Required Textbook and/or Other Major Course Materials
 
