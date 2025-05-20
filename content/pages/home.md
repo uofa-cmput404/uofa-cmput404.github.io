@@ -18,6 +18,7 @@ save_as: index.html
 * [Individual Assignments]({filename}/general/individual.md#non-lab-assignments)
 * [Contact Info]({filename}/general/help.md#contact-instructor)
     * Students: see [How to get Help]({filename}/general/help.md)
+    * [TAs]({filename}/general/help.md#TAs)
 
 # Schedule 
 

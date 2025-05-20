@@ -47,7 +47,7 @@ summary: Lecture, Labs, Contact Information, Lecturer, Teaching Assistants, Cour
 
 ## Teaching Assistants
 
-TAs are not finalized yet.
+Information about TAs and office hours is on [the help page]({filename}/general/help.md#TAs).
 
 # Course Content
 
