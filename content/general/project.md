@@ -1616,7 +1616,7 @@ UI amount complete is marked by your TA testing user stories manually.
 
 You must form a group with only students from your same lab section. You can have different lecture sections, but your lab section must be the same. Furthermore, everyone must attend their registered lab section.
 
-* There can be maximum 6 students per team.
+* There can be maximum 6 students per team and a minimum of 5 students.
 * All team members must be registered for and attending the same lab section.
 * Your team name must be from the list of [CSS colour names](https://developer.mozilla.org/en-US/docs/Web/CSS/named-color).
 * Use the [GitHub Classroom Link on eClass](https://eclass.srv.ualberta.ca/mod/assign/view.php?id=8120400&forceview=1)
