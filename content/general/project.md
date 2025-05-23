@@ -28,13 +28,13 @@ we want to build something like diaspora but far, far simpler.
 
 This blogging/social network platform will allow the importing of
 other sources of information (GitHub) as well allow the
-distribution and sharing of posts and content.
+distribution and sharing of entries and content.
 
 An author sitting on one node can aggregate
-the posts of authors they follow on other nodes.   
+the entries of authors they follow on other nodes.   
 
-We are going to go with an inbox model where you share posts to
-your followers by sending them your posts. This is similar to
+We are going to go with an inbox model where you push entries to
+your followers by sending them your entries. This is similar to
 activity pub: https://www.w3.org/TR/activitypub/ ActivityPub
 is the protocol that powers most distributed social media such
 as Mastodon.
@@ -48,49 +48,49 @@ Choose at least 4 other groups to work with!
 ## Scenario 
 
 I log into SocialDistribution. I see my stream which is filled with
-posts that have arrived in my inbox combined with public posts that my node knows about.
+entries that have arrived in my inbox combined with public entries that my node knows about.
 I browse them and I click like on anything by my friend Steph who is on another node.
 
 When I click like, my node sends a like object to Steph's inbox
-that references her post.
+that references her entry.
 
-I then comment on Steph's post. This sends a comment object to
-Steph's inbox that references her post.
+I then comment on Steph's entry. This sends a comment object to
+Steph's inbox that references her entry.
 
 Steph's node will process events at her inbox and record the
 comments and likes appropriately.
 
-Then I write a public post, a public service announcement (PSA)
+Then I write a public entry, a public service announcement (PSA)
 about how public service announcements are pretentious preformative
 social media, and you shouldn't make them. The irony is lost on me.
-I make an unlisted image post that contains an image for the PSA
-and reference it from my PSA post. Nonetheless, my node records my
-post and makes a URL for both posts and then proceeds to send my
-public posts to the inboxes of everyone who follows me. My node
-knows who follows me and thus can just send the public post to each
+I make an unlisted image entry that contains an image for the PSA
+and reference it from my PSA entry. Nonetheless, my node records my
+entry and makes a URL for both entries and then proceeds to send my
+public entries to the inboxes of everyone who follows me. My node
+knows who follows me and thus can just send the public entry to each
 of those inboxes. Perhaps there will be a scaling problem in the
 future.
 
-Later I write a friends-only post about how much I hate the movie The Room (2003).
-Tommy Wiseau can't see it because I'm not friends with Tommy Wiseau, but this post is sent to Steph's inbox, and she can see it because she's my friend.
+Later I write a friends-only entry about how much I hate the movie The Room (2003).
+Tommy Wiseau can't see it because I'm not friends with Tommy Wiseau, but this entry is sent to Steph's inbox, and she can see it because she's my friend.
 
 When Steph logs into her node she'll see her stream and my public
-post and my friends-only post will be on her stream.
-She should also see that I've liked and commented her post.
+entry and my friends-only entry will be on her stream.
+She should also see that I've liked and commented her entry.
 
 ## Scenario Summary
 
 All actions from authors are routed through the inbox of the receiving authors by the node itself.
 
-Nodes will store copies of posts because they receive them in the inbox.
+Nodes will store copies of entries because they receive them in the inbox.
 
-Likes and comments on posts are all sent to the inbox of the author.
+Likes and comments on entries are all sent to the inbox of the author.
 
-Public posts are sent to the inboxes of all followers of the author.
+Public entries are sent to the inboxes of all followers of the author.
 
-Friends-only posts are sent to the inboxes of all friends of the author.
+Friends-only entries are sent to the inboxes of all friends of the author.
 
-Posts, likes, comments, posts, are all sent to the inboxes of the authors that should be able to see them.
+Entries, likes, comments, follows are all sent to the inboxes of the authors that should be able to see them.
 
 ## Project Parts 
 
@@ -113,78 +113,72 @@ Posts, likes, comments, posts, are all sent to the inboxes of the authors that s
 # User Stories
 
 * Identity
-    * As an author, I want a consistent identity per node, so that URLs to me/my posts are predictable and don't stop working.
+    * As an author, I want a consistent identity per node, so that URLs to me/my entries are predictable and don't stop working.
         * Note: This includes API links and web frontend links.
-        * Note: This doesn't include authors/posts that are deleted.
+        * Note: This doesn't include authors/entries that are deleted.
     * As a node admin, I want to host multiple authors on my node, so I can have a friendly online community.
     * As an author, I want a public page with my profile information, so that I can link people to it.
-    * As an author, I want to my (new, public) GitHub activity to be automatically turned into public posts, so everyone can see my GitHub activity too.
-    * As an author, I want my profile page to show my public posts (most recent first), so they can decide if they want to follow me.
+    * As an author, I want to my (new, public) GitHub activity to be automatically turned into public entries, so everyone can see my GitHub activity too.
+    * As an author, I want my profile page to show my public entries (most recent first), so they can decide if they want to follow me.
     * As an author, I want to be able to use my web browser to manage my profile, so I don't have to use a clunky API.
 * Posting
-    * As an author, I want to make posts, so I can share my thoughts and pictures with other local authors.
-    * As an author, I want my node to send my posts to my remote followers and friends, so that remote authors following me can see them. *⧟ Part 3-5 only*
-    * As an author, I want to edit my posts locally, so that I'm not stuck with a typo on a popular post.
-        * That is, authors should not have to delete and re-create a post to change the content.
-    * As an author, I want my node to re-send posts I've edited to everywhere they were already sent, so that people don't keep seeing the old version. *⧟ Part 3-5 only*
-    * As an author, posts I make can be in CommonMark, so I can give my posts some basic formatting.
-    * As an author, posts I make can be in simple plain text, because I don't always want all the formatting features of CommonMark.
-    * As an author, posts I create can be images, so that I can share pictures and drawings.
-    * As an author, I can create posts that contain videos of up to 4 seconds. *⧟ Bonus*
-    * As an author, posts I create that are in CommonMark can link to images, so that I can illustrate my posts.
-    * As an author, I want to delete my own posts locally, so I can remove posts that are out of date or made by mistake.
-    * As an author, I want my node to re-send posts I've deleted to everyone they were already sent, so I know remote users don't keep seeing my deleted posts forever. *⧟ Part 3-5 only*
-    * As an author, I want to be able to use my web-browser to manage/author my posts, so I don't have to use a clunky API.
+    * As an author, I want to make entries, so I can share my thoughts and pictures with other local authors.
+    * As an author, I want my node to send my entries to my remote followers and friends, so that remote authors following me can see them. *⧟ Part 3-5 only*
+    * As an author, I want to edit my entries locally, so that I'm not stuck with a typo on a popular entry.
+        * That is, authors should not have to delete and re-create an entry to change the content.
+    * As an author, I want my node to re-send entries I've edited to everywhere they were already sent, so that people don't keep seeing the old version. *⧟ Part 3-5 only*
+    * As an author, entries I make can be in CommonMark, so I can give my entries some basic formatting.
+    * As an author, entries I make can be in simple plain text, because I don't always want all the formatting features of CommonMark.
+    * As an author, entries I create can be images, so that I can share pictures and drawings.
+    * As an author, entries I create that are in CommonMark can link to images, so that I can illustrate my entries.
+    * As an author, I want to delete my own entries locally, so I can remove entries that are out of date or made by mistake.
+    * As an author, I want my node to re-send entries I've deleted to everyone they were already sent, so I know remote users don't keep seeing my deleted entries forever. *⧟ Part 3-5 only*
+    * As an author, I want to be able to use my web-browser to manage/author my entries, so I don't have to use a clunky API.
         * We don't want authors to have to use some interface like django-rest-framework or Swagger. 
-    * As an author, other authors cannot modify my posts, so that I don't get impersonated.
+    * As an author, other authors cannot modify my entries, so that I don't get impersonated.
 * Reading
-    * As an author, I want a "stream" which shows all the posts I should know about, so I don't have to switch between different pages.
-        * As an author, I want my stream page to show me all the public posts my node knows about, so I can find new people to follow.
-        * As an author, I want my stream page to show me all the unlisted and friends-only posts of all the authors I follow.
-        * As an author, I want my stream page to show me the most recent version of a post if it has been edited.
-        * As an author, I want my stream page to **not** show me posts that have been deleted.
-    * As an author, I want my "stream" page to be sorted with the most recent posts first. 
+    * As an author, I want a "stream" which shows all the entries I should know about, so I don't have to switch between different pages.
+        * As an author, I want my stream page to show me all the public entries my node knows about, so I can find new people to follow.
+        * As an author, I want my stream page to show me all the unlisted and friends-only entries of all the authors I follow.
+        * As an author, I want my stream page to show me the most recent version of an entry if it has been edited.
+        * As an author, I want my stream page to **not** show me entries that have been deleted.
+    * As an author, I want my "stream" page to be sorted with the most recent entries first. 
 * Visibility
-    * As an author, I want to be able to make my posts "public", so that everyone can see them.
-    * As an author, I want to be able to make my posts "unlisted," so that my followers see them, and anyone with the link can also see them.
-    * As an author, I want to be able to make my posts "friends-only," so that I don't have to worry about people I don't know seeing them.
-    * As an author, I want my friends to see my friends-only, unlisted, and public posts in their stream.
-    * As an author, I want anyone following me to see my unlisted and public posts in their stream.
-    * As an author, I want everyone to see my public posts in their stream.
-    * As an author, I want everyone to be able to see my public and unlisted posts, if they have a link to it.
-    * As an author, I don't anyone who isn't a friend to be able to see my friends-only posts and images, so I can feel safe about posting.
-    * As an author, I don't want anyone except the node admin to see my deleted posts.
-    * As an author, posts I create should always be visible to me until they are deleted, so I can find them to edit them or review them or get the link or whatever I want to do with them.
+    * As an author, I want to be able to make my entries "public", so that everyone can see them.
+    * As an author, I want to be able to make my entries "unlisted," so that my followers see them, and anyone with the link can also see them.
+    * As an author, I want to be able to make my entries "friends-only," so that I don't have to worry about people I don't know seeing them.
+    * As an author, I want my friends to see my friends-only, unlisted, and public entries in their stream.
+    * As an author, I want anyone following me to see my unlisted and public entries in their stream.
+    * As an author, I want everyone to see my public entries in their stream.
+    * As an author, I want everyone to be able to see my public and unlisted entries, if they have a link to it.
+    * As an author, I don't anyone who isn't a friend to be able to see my friends-only entries and images, so I can feel safe about writing.
+    * As an author, I don't want anyone except the node admin to see my deleted entries.
+    * As an author, entries I create should always be visible to me until they are deleted, so I can find them to edit them or review them or get the link or whatever I want to do with them.
 
 
 * Sharing
-    * <del>As an author, I can share other author's public posts, so I can make things go viral! (repost, boost, retweet, etc) </del>
-    * <del>As an author, posts that I share will show up on the timeline of anyone who is following me. </del>
-    * As a reader, I can get a link to a public or unlisted post so I can send it to my friends over email, discord, slack, etc. 
-    * As a node admin, I want to share public images with users on other nodes, so that they are visible by users of other nodes. *⧟ Part 3-5 only.*
-    * As an author, I want my friends-only/unlisted images and posts to not be shareable, so I know that if someone wants to share it they'll at least have to take a screenshot.
-        * Note: public posts (including public image posts) are re-shareable.
-    * As an author, I should be able to browse the public posts of everyone, so that I can see what's going on beyond authors I follow.
-        * Note: this should include all local public posts and all public posts received in any inbox.
-
+    * As a reader, I can get a link to a public or unlisted entry, so I can send it to my friends over email, discord, slack, etc. 
+    * As a node admin, I want to push images to users on other nodes, so that they are visible by users of other nodes. *⧟ Part 3-5 only.*
+    * As an author, I should be able to browse the public entries of everyone, so that I can see what's going on beyond authors I follow.
+        * Note: this should include all local public entries and all public entries received in any inbox.
 
 * Following/Friends
-    * As an author, I want to follow local authors, so that I can see their public posts.
-    * As an author, I want to follow remote authors, so that I can see their public posts. *⧟ Part 3-5 only.*
+    * As an author, I want to follow local authors, so that I can see their public entries.
+    * As an author, I want to follow remote authors, so that I can see their public entries. *⧟ Part 3-5 only.*
     * As an author, I want to be able to approve or deny other authors following me, so that I don't get followed by people I don't like.
     * As an author, I want to know if I have "follow requests," so I can approve them.
-    * As an author, I want to unfollow authors I am following, so that I don't have to see their posts anymore.
-    * As an author, if I am following another author, and they are following me (only after both follow requests are approved), I want us to be considered friends, so that they can see my friends-only posts.
-    * As an author, I want to unfriend other authors by unfollowing them, so that they can no longer see my friends-only posts.
+    * As an author, I want to unfollow authors I am following, so that I don't have to see their entries anymore.
+    * As an author, if I am following another author, and they are following me (only after both follow requests are approved), I want us to be considered friends, so that they can see my friends-only entries.
+    * As an author, I want to unfriend other authors by unfollowing them, so that they can no longer see my friends-only entries.
     * As an author, my node will know about my followers, who I am following, and my friends, so that I don't have to keep track of it myself.
 * Comments/Likes
-    * As an author, I want to comment on posts that I can access, so I can make a witty reply.
-    * As an author, I want to like posts that I can access, so I can show my appreciation.
+    * As an author, I want to comment on entries that I can access, so I can make a witty reply.
+    * As an author, I want to like entries that I can access, so I can show my appreciation.
     * As an author, I want to like comments that I can access, so I can show my appreciation.
-    * As an author, when someone sends me a public post I want to see the likes, so I can tell if it's good or not.
-    * As an author, comments on my friends-only posts are visible only to my friends and the comment's author.
+    * As an author, when someone sends me a public entry I want to see the likes, so I can tell if it's good or not.
+    * As an author, comments on my friends-only entries are visible only to my friends and the comment's author.
 * node Management
-    * As a node admin, images can be hosted on my node, so that my users can use them in their CommonMark posts.
+    * As a node admin, images can be hosted on my node, so that my users can use them in their CommonMark entries.
     * As a node admin, I want to be able to add, modify, and delete authors, to fix problems or remove unwanted users.
     * As a node admin, I want to OPTIONALLY be able to allow users to sign up but require my OK to finally be on my node, so that I can prevent unwanted users spambots.
     * As a node admin, I want to be able to connect to remote nodes by entering only the URL of the remote node, a username, and a password, so that I don't have to edit code. *⧟ Part 3-5 only.*
@@ -199,9 +193,9 @@ Posts, likes, comments, posts, are all sent to the inboxes of the authors that s
         * Other DBaaS (e.g. Firebase) is forbidden.
     * As a node admin, I don't want arrays to be stored in database fields, so that my node won't get slower over time.
     * As a node admin, I don't want to have seperate frontend and backend web servers, so I don't have to manage two web servers/services.
-    * As a node admin, I want deleted posts stay in the database and only be removed from the UI and API, so I can see what was deleted.
+    * As a node admin, I want deleted entries stay in the database and only be removed from the UI and API, so I can see what was deleted.
     * As a node admin, I want my node's UI to only communicate with my nodes web server, so I can prevent XSS.
-    * As a node admin, I want the API objects (authors, posts, etc.) to be [identified by their full URL](#ids), to prevent collisions with other node's numbering schemes. *⧟ Part 3-5 only.*
+    * As a node admin, I want the API objects (authors, entries, etc.) to be [identified by their full URL](#ids), to prevent collisions with other node's numbering schemes. *⧟ Part 3-5 only.*
 
 ### malicious_user
 
@@ -219,20 +213,20 @@ Posts, likes, comments, posts, are all sent to the inboxes of the authors that s
     * A single webserver plus a single database
     * Serves and stores everything needed for the entire app
     * Doesn't rely on additional web servers
-    * Can connect to other nodes to exchange posts, likes, comments, follow requests...
-    * Keeps track of the identities, posts, likes, comments, etc. of its authors
+    * Can connect to other nodes to exchange entries, likes, comments, follow requests...
+    * Keeps track of the identities, entries, likes, comments, etc. of its authors
 * Author
-    * Makes posts
+    * Makes entries
     * Following other authors
     * Can have followers
     * Makes friends
-    * Likes posts
-    * Comments on posts
+    * Likes entries
+    * Comments on entries
     * A generally nice person
     * Can register with the admins approval
     * Can find other authors by using the public timeline
 * Local Node
-    * The node that an author is signed up for and uses to manage their posts, likes, comments, and profile.
+    * The node that an author is signed up for and uses to manage their entries, likes, comments, and profile.
 * Remote Node
     * Any node that isn't the author's local node.
 * Local Author
@@ -247,11 +241,11 @@ Posts, likes, comments, posts, are all sent to the inboxes of the authors that s
 * Follower
     * An author
     * Someone who follows you (you are an author)
-    * Your node will send posts to the follower's inbox
+    * Your node will send entries to the follower's inbox
 * Following
     * An author
     * Someone you are following
-    * Their node will send posts to your inbox
+    * Their node will send entries to your inbox
 * Friend
     * You follow them, and they follow you
 * Restful service
@@ -265,7 +259,8 @@ Posts, likes, comments, posts, are all sent to the inboxes of the authors that s
     * Runs in the browser
     * Served from the web server of the node
     * Must only communicate with the node it was served from
-* Post
+* Entry
+    * Like a Facebook post, tweet, etc.
     * It has a unique URL
     * The URL stays the same
     * The node keeps track of what inboxes have been notified
@@ -283,52 +278,52 @@ Posts, likes, comments, posts, are all sent to the inboxes of the authors that s
     * It can be liked
     * It can be commented on
     * Likes and comments are sent back to the author's inbox.
-* Public Post
-    * This is a post that will be sent to all of my follower's inboxes, to make sure their nodes know about it.
-    * This is a post that will show up in all the streams of all the authors on all the nodes where I have at least one follower.
-    * This is a post that will show up on my public profile page.
+* Public Entry
+    * This is an entry that will be sent to all of my follower's inboxes, to make sure their nodes know about it.
+    * This is an entry that will show up in all the streams of all the authors on all the nodes where I have at least one follower.
+    * This is an entry that will show up on my public profile page.
     * Anyone can see it.
     * Anyone can access it by URL.
-    * Public posts can be liked by anyone.
-    * Public posts can have comments from anyone.
-* Unlisted Post
-    * This post will **not** show up in the "stream" of authors that don't follow me.
-    * This is a post that will be sent to all my follower's inboxes.
+    * Public entries can be liked by anyone.
+    * Public entries can have comments from anyone.
+* Unlisted Entry
+    * This entry will **not** show up in the "stream" of authors that don't follow me.
+    * This is an entry that will be sent to all my follower's inboxes.
     * Anyone can access it by URL.
-    * Anyone can see the unlisted post, if they already know about it.
-    * Unlisted posts can be liked by anyone.
-    * Unlisted posts can have comments from anyone.
-* Friends-Only Post
-    * This is a post that will be sent to all my friend's inboxes.
-    * This is a post that will show up in all my friend's streams.
-    * This post won't show up in anyone's stream unless they're my friend.
-    * The URL can only be used by the author of the post and admins.
-    * Friends-Only posts can be liked by the author's friends.
-    * Friends-Only posts can have comments from the author's friends.
-    * This post can be deleted.
-* Deleted Post
-    * When Public/Unlisted/Friends-Only post is deleted by the author, the node converts it to a Deleted Post.
-    * This is a post that will be sent to all inboxes it was previously sent to.
-    * This post will not show up in anyone's stream.
-    * This post will not show up on any profile page.
-    * This post cannot be accessed at all except by the local node administrator.
-    * This post cannot be liked.
-    * This post cannot be commented on.
+    * Anyone can see the unlisted entry, if they already know about it.
+    * Unlisted entries can be liked by anyone.
+    * Unlisted entries can have comments from anyone.
+* Friends-Only Entry
+    * This is an entry that will be sent to all my friend's inboxes.
+    * This is an entry that will show up in all my friend's streams.
+    * This entry won't show up in anyone's stream unless they're my friend.
+    * The URL can only be used by the author of the entry and admins.
+    * Friends-Only entries can be liked by the author's friends.
+    * Friends-Only entries can have comments from the author's friends.
+    * This entry can be deleted.
+* Deleted Entry
+    * When Public/Unlisted/Friends-Only entry is deleted by the author, the node converts it to a Deleted Entry.
+    * This is an entry that will be sent to all inboxes it was previously sent to.
+    * This entry will not show up in anyone's stream.
+    * This entry will not show up on any profile page.
+    * This entry cannot be accessed at all except by the local node administrator.
+    * This entry cannot be liked.
+    * This entry cannot be commented on.
 * Inbox
     * **An inbox is not something the user ever actually sees. It is an API endpoint *only*.**
     * This is what a READER or USER of the social network has. They follow authors, and the authors they follow send objects to their inbox.
-    * This is something that only exists in the API. There is no special inbox in the User Interface, posts sent to a user's inbox are integrated into their stream.
+    * This is something that only exists in the API. There is no special inbox in the User Interface, entries sent to a user's inbox are integrated into their stream.
     * This forms the backbone of the timeline of the social media user.
     * This receives likes and comments.
 * Stream
-    * The user interface showing date-sorted (most recent first) local, public posts combined with posts from everyone that user follows.
+    * The user interface showing date-sorted (most recent first) local, public entries combined with entries from everyone that user follows.
     * This is similar to "timeline" in old social media apps, "following" page, or "friends" page, or "newsfeed" in old Facebook.
 * Remote
     * A node to node connection. Requests from another node. HTTP Basic Auth authenticated.
 * Local
     * A local user accessing the REST API. Likely will use their cookie-auth, basic auth, or token auth. Local usually implies you check if the user should have access. For node local API access to the inbox should be limited to only that authenticated authors --- don't snoop!
 * Profile Page
-    * A page that shows information about me as well as my public posts.
+    * A page that shows information about me as well as my public entries.
 * Push
     * When the node that has the information sends it other relevant nodes, without being requested.
 * Pull
@@ -342,7 +337,7 @@ Posts, likes, comments, posts, are all sent to the inboxes of the authors that s
     * Not in any particular format (though it needs to be compatible with URLs)
     * Is **not** unique
         * Two different authors on two different nodes could be both serial #123
-        * Two different posts from two different authors could be both serial c4f71e54-7b41-448e-a4fb-031f1a20007b
+        * Two different entries from two different authors could be both serial c4f71e54-7b41-448e-a4fb-031f1a20007b
 
 
 Frontend/API Visibility | Admin             | Friend        | Follower       | Everyone <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
@@ -359,12 +354,12 @@ Database/Node2Node     | Type | Author         | Friend                  | Foll
 New Public             | push | from           | to `inbox`              | to `inbox`                 | <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
 New Unlisted           | push |                | to `inbox`              | to `inbox`                 | <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
 New Friends Only       | push |                | to `inbox`              |                            | <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
-Deleted Public         | push |                | to `inbox`              | to `inbox`                 | to inboxes post was sent to before <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
-Deleted Unlisted       | push |                | to `inbox`              | to `inbox`                 | to inboxes post was sent to before <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
-Deleted Friends Only   | push |                | to `inbox`              |                            | to inboxes post was sent to before <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
-Edited Public          | push |                | to `inbox`              | to `inbox`                 | to inboxes post was sent to before <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
-Edited Unlisted        | push | from           | to `inbox`              | to `inbox`                 | to inboxes post was sent to before <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
-Edited Friends Only    | push | from           | to `inbox`              |                            | to inboxes post was sent to before <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
+Deleted Public         | push |                | to `inbox`              | to `inbox`                 | to inboxes entry was sent to before <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
+Deleted Unlisted       | push |                | to `inbox`              | to `inbox`                 | to inboxes entry was sent to before <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
+Deleted Friends Only   | push |                | to `inbox`              |                            | to inboxes entry was sent to before <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
+Edited Public          | push |                | to `inbox`              | to `inbox`                 | to inboxes entry was sent to before <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
+Edited Unlisted        | push | from           | to `inbox`              | to `inbox`                 | to inboxes entry was sent to before <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
+Edited Friends Only    | push | from           | to `inbox`              |                            | to inboxes entry was sent to before <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
 Commented Public       | push | to `inbox`     | from                    | from                       | from <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
 Commented Unlisted     | push | to `inbox`     | from                    | from                       | from <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
 Commented Friends Only | push | to `inbox`     | from                    |                            | <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
@@ -374,15 +369,15 @@ Liked Friends Only     | push | to `inbox`     | from                    |      
 Follow                 | push | to `inbox`     |                         |                            | from <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
 Follow-back (friend)   | push | from           |                         | to `inbox`                 | <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
 Unfollow               | push |                | *not yet implemented*   | *not yet implemented*      | <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
-View Public            | pull | to `post`      | optional from           | optional from              | optional from <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
-View Unlisted          | pull | to `post`      | optional from           | optional from              | optional from <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
+View Public            | pull | to `entry`      | optional from           | optional from              | optional from <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
+View Unlisted          | pull | to `entry`      | optional from           | optional from              | optional from <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
 View Friends-Only      | pull |                | *not yet implemented*   |                            | <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
 View Deleted           | pull |                |                         |                            | <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
 View Following         | pull | to `followers` | optional from           | optional from              | <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
 
 Notes on the above tables:
 * This can work entirely on push from the author's server to another author's inbox.
-* Yes, this means that only the local node (node where the post came from) will have a complete list of comments/likes. Mastodon/Diaspora also have this problem.
+* Yes, this means that only the local node (node where the entry came from) will have a complete list of comments/likes. Mastodon/Diaspora also have this problem.
 * "Unfollow" the API is missing this functionality.
 * Yes, a node may have an out of date list of followers if a remote follower unfollows.
 * "View Friends-Only" the API is missing this functionality. 
@@ -405,8 +400,8 @@ If something is paginated it has query options:
 
 * `page_number` - how many pages of objects have been delivered
 * `size` - how big is a page
-* Page 4 of objects http://service/api/author/{AUTHOR_SERIAL}/posts/{POST_SERIAL}/comments?page=4
-* Page 4 of objects but 40 per page http://service/api/author/{AUTHOR_SERIAL}/posts/{POST_SERIAL}/comments?page=4&size=40
+* Page 4 of objects http://service/api/author/{AUTHOR_SERIAL}/entries/{ENTRY_SERIAL}/comments?page=4
+* Page 4 of objects but 40 per page http://service/api/author/{AUTHOR_SERIAL}/entries/{ENTRY_SERIAL}/comments?page=4&size=40
 * 1 based indexing. First page is 1.
 
 # Communication
@@ -424,7 +419,7 @@ If something is paginated it has query options:
  
 ## Overview
 
-Almost all node-to-node communication proceeds by the node where something (post/like/comment/follow request) was created POSTing that thing that was created to the relevant authors inbox on a remote node.
+Almost all node-to-node communication proceeds by the node where something (entry/like/comment/follow request) was created POSTing that thing that was created to the relevant authors inbox on a remote node.
 
 Node-to-node (marked as "[remote]") request other than "POST to inbox" are rarely needed, but you should support them in case the remote node needs to check something.
 
@@ -439,34 +434,27 @@ The Frontend-to-Backend (also known as [local]) communication for this scenario 
 5. My node POSTs the follow request to Steph's inbox at http://node2/api/authors/777777777/inbox
 6. When Steph logs in, she sees my follow request and approves it.
 7. Now Steph's node (node2) knows that I am following her.
-8. Steph makes a public post.
-9. Steph's node (node2) sends Steph's new post to my inbox with POST http://node1/api/authors/555555555/inbox.
-10. I eventually see Steph's new post, and click like on it.
+8. Steph makes a public entry.
+9. Steph's node (node2) sends Steph's new entry to my inbox with POST http://node1/api/authors/555555555/inbox.
+10. I eventually see Steph's new entry, and click like on it.
 11. My node sends the like to Steph's inbox with POST http://node2/api/authors/777777777/inbox
 
 **Note:** When sending a follow request to a foreign author, you (as the sending author/node) do not need to await any form of confirmation from the receiving author.
 
 For example, suppose author A sends a follow request to author B. Once the follow request is sent from A to B's inbox, A's node can assume that A is following B, even before author B accepts or denies the request.
 
-If B later denies author A's request, then B's posts will never be sent to A's inbox. But from the perspective of A's node the acceptance or rejection of a follow request is immaterial.
+If B later denies author A's request, then B's entries will never be sent to A's inbox. But from the perspective of A's node the acceptance or rejection of a follow request does not matter. 
 
+Just show them as followed!
 
-<del>
-## Example (How sharing public posts propagates them to new nodes.)
-Let's say we have author 1 on server A, author 2 on server B, and author 3 on server C. 
-
-If 2 follows 1 but no one on C follows 1, then C won't be aware of the public posts made by 1.
-
-But if 3 follows 2, and 2 shares it, then the post will be sent to 3's inbox and C will become aware of it.
-</del>
 
 ## IDs
 
-Posts may be generated a UUID, or ID#, or whatever for internal database/model use. However, on the API the post or author should always have a fully qualified URL as its ID, and you must always identify remote objects (authors, posts, likes, comments, ...) as their full URL, including the URL of the node they came from. This means you will need to look up authors and posts in your database by their full URL ID, even if they are local.
+Entries may be generated a UUID, or ID#, or whatever for internal database/model use. However, on the API the entry or author should always have a fully qualified URL as its ID, and you must always identify remote objects (authors, entries, likes, comments, ...) as their full URL, including the URL of the node they came from. This means you will need to look up authors and entries in your database by their full URL ID, even if they are local.
 
-Consider the following scenario: if two nodes both have an author with primary key 2, your node should never be able to be confused about which node's author the database is referring to, because all posts/likes/comments/follows from that author contain the author's full URL.
+Consider the following scenario: if two nodes both have an author with primary key 2, your node should never be able to be confused about which node's author the database is referring to, because all entries/likes/comments/follows from that author contain the author's full URL.
 
-Consider the following scenario #2: `http://node1/api/authors/0192019f-b832-74b2-b2c4-f7aadc972cb2` is Jane, and `http://node2/api/authors/0192019f-b832-74b2-b2c4-f7aadc972cb2` is John. Jane and John still need to be able to like/comment/follow/post with each other. That means, your database should not connect models using the field containing `0192019f-b832-74b2-b2c4-f7aadc972cb2`, but instead, the field containing `http://node1/api/authors/0192019f-b832-74b2-b2c4-f7aadc972cb2`.
+Consider the following scenario #2: `http://node1/api/authors/0192019f-b832-74b2-b2c4-f7aadc972cb2` is Jane, and `http://node2/api/authors/0192019f-b832-74b2-b2c4-f7aadc972cb2` is John. Jane and John still need to be able to like/comment/follow with each other. That means, your database should not connect models using the field containing `0192019f-b832-74b2-b2c4-f7aadc972cb2`, but instead, the field containing `http://node1/api/authors/0192019f-b832-74b2-b2c4-f7aadc972cb2`.
 
 Hint: In Django, set `unique=True` on the field. Then use `models.ForeignKey` with source and destination field names to relate the two models (join the two tables).
 
@@ -490,7 +478,7 @@ Hint: In Django, set `unique=True` on the field. Then use `models.ForeignKey` wi
     "profileImage": "https://i.imgur.com/k7XVwpB.jpeg"
     // URL of the user's HTML profile page
     // It could include an id number/uuid or not
-    "page": "http://nodeaaaa/authors/greg"
+    "web": "http://nodeaaaa/authors/greg"
 }
 ```
 
@@ -501,11 +489,11 @@ Hint: In Django, set `unique=True` on the field. Then use `models.ForeignKey` wi
     "host":"http://nodebbb/api/",
     "displayName":"Lara Croft",
     "github": "http://github.com/laracroft",
-    // This author used an image they posted
-    "profileImage": "http://nodebbb/api/authors/222/posts/217/image"
+    // This author used an image from one of their entries
+    "profileImage": "http://nodebbb/api/authors/222/entries/217/image"
     // URL of the user's HTML profile page
     // It could include an id number/uuid or not
-    "page":"http://nodebbb/authors/222",
+    "web":"http://nodebbb/authors/222",
 }
 ```
 
@@ -515,6 +503,7 @@ Hint: In Django, set `unique=True` on the field. Then use `models.ForeignKey` wi
 {
     "type": "follow",      
     "summary":"Greg wants to follow Lara",
+    // state should be requesting, accepted or rejected
     "actor":{
         "type":"author",
         "id":"http://nodeaaaa/api/authors/111",
@@ -523,7 +512,7 @@ Hint: In Django, set `unique=True` on the field. Then use `models.ForeignKey` wi
         "github": "http://github.com/gjohnson",
         "profileImage": "https://i.imgur.com/k7XVwpB.jpeg",
         // URL of the user's HTML profile page
-        "page": "http://nodeaaaa/authors/greg"
+        "web": "http://nodeaaaa/authors/greg"
     },
     "object":{
         "type":"author",
@@ -531,35 +520,35 @@ Hint: In Django, set `unique=True` on the field. Then use `models.ForeignKey` wi
         "host":"http://nodebbbb/api/",
         "displayName":"Lara Croft",
         // URL of the user's HTML profile page
-        "page":"http://nodebbbb/authors/222",
+        "web":"http://nodebbbb/authors/222",
         "github": "http://github.com/laracroft",
-        "profileImage": "http://nodebbbb/api/authors/222/posts/217/image"
+        "profileImage": "http://nodebbbb/api/authors/222/entries/217/image"
     }
 }
 ```
 
-## Example Post Object
+## Example Entry Object
 
-* Public post
+* Public entry
 
 ```js
 {
-    "type":"post",
-    // title of a post
-    "title":"A post title about a post about web dev",
-    // id of the post
-    // must be the original URL on the node the post came from
-    "id":"http://nodebbbb/api/authors/222/posts/249",
+    "type":"entry",
+    // title of an entry
+    "title":"An entry title about an entry about web dev",
+    // id of the entry
+    // must be the original URL on the node the entry came from
+    "id":"http://nodebbbb/api/authors/222/entries/249",
     // URL of the user's HTML profile page
-    "page": "http://nodebbbb/authors/222/posts/293",
-    // a brief description of the post
-    "description":"This post discusses stuff -- brief",
-    // The content type of the post
+    "web": "http://nodebbbb/authors/222/entries/293",
+    // a brief description of the entry
+    "description":"This entry discusses stuff -- brief",
+    // The content type of the entry
     // assume either
     // text/markdown -- common mark
     // text/plain -- UTF-8
     // application/base64 # this an image that is neither a jpeg or png
-    // image/png;base64 # this is an png -- images are POSTS. So you might have a user make 2 posts if a post includes an image!
+    // image/png;base64 # this is an png -- images are ENTRIES. So you might have a user make 2 entries: an image entry then a text entry that uses the image entry!
     // image/jpeg;base64 # this is an jpeg
     // for HTML you will want to strip tags before displaying
     "contentType":"text/plain",
@@ -574,31 +563,31 @@ Hint: In Django, set `unique=True` on the field. Then use `models.ForeignKey` wi
         // the display name of the author
         "displayName":"Lara Croft",
         // URL of the user's HTML profile page
-        "page":"http://nodebbbb/authors/222",
+        "web":"http://nodebbbb/authors/222",
         // HATEOS url for Github API
         "github": "http://github.com/laracroft",
-        "profileImage": "http://nodebbbb/api/authors/222/posts/217/image"
+        "profileImage": "http://nodebbbb/api/authors/222/entries/217/image"
     },
-    // comments about the post
+    // comments about the entry
     "comments":{
         "type":"comments",
-        // this may or may not be the same as page for the post,
+        // this may or may not be the same as page for the entry,
         // depending if there's a seperate URL to just see the comments
-        "page":"http://nodebbbb/authors/222/posts/249",
-        "id":"http://nodebbbb/api/authors/222/posts/249/comments"
+        "web":"http://nodebbbb/authors/222/entries/249",
+        "id":"http://nodebbbb/api/authors/222/entries/249/comments"
         // comments.page_number, comments.size, comments.count,
         // comments.src are only sent if:
         // * public
         // * unlisted
         // * friends-only and sending it to a friend
-        // You should return ~ 5 comments per post.
+        // You should return ~ 5 comments per request.
         // should be sorted newest(first) to oldest(last)
         // this is to reduce API call counts
         // number of the first page of comments
         "page_number":1,
         // size of comment pages
         "size":5,
-        // total number of comments for this post
+        // total number of comments for this entry
         "count": 1023,
         // the first page of comments
         "src":[
@@ -607,7 +596,7 @@ Hint: In Django, set `unique=True` on the field. Then use `models.ForeignKey` wi
                 "author":{
                     "type":"author",
                     "id":"http://nodeaaaa/api/authors/111",
-                    "page":"http://nodeaaaa/authors/greg",
+                    "web":"http://nodeaaaa/authors/greg",
                     "host":"http://nodeaaaa/api/",
                     "displayName":"Greg Johnson",
                     "github": "http://github.com/gjohnson",
@@ -619,18 +608,18 @@ Hint: In Django, set `unique=True` on the field. Then use `models.ForeignKey` wi
                 "published":"2015-03-09T13:07:04+00:00",
                 // ID of the Comment
                 "id":"http://nodeaaaa/api/authors/111/commented/130",
-                "post": "http://nodebbbb/api/authors/222/posts/249",
-                // this may or may not be the same as page for the post,
+                "entry": "http://nodebbbb/api/authors/222/entries/249",
+                // this may or may not be the same as page for the entry,
                 // depending if there's a seperate URL to just see the one comment in html
-                "page": "http://nodebbbb/authors/222/posts/249"
+                "web": "http://nodebbbb/authors/222/entries/249"
                 // it could also be something like
-                // "page":"http://nodeaaaa/api/authors/greg/comments/130"
-                // likes on the comment, not to be confused with likes on the post
+                // "web":"http://nodeaaaa/api/authors/greg/comments/130"
+                // likes on the comment, not to be confused with likes on the entry
                 "likes": {
                     "type": "likes",
                     "id": "http://nodeaaaa/api/authors/111/commented/130/likes",
                     // in this example nodebbbb has a html page just for the likes
-                    "page": "http://nodeaaaa/authors/greg/comments/130/likes"
+                    "web": "http://nodeaaaa/authors/greg/comments/130/likes"
                     "page_number": 1,
                     "size": 50,
                     "count": 0,
@@ -639,17 +628,17 @@ Hint: In Django, set `unique=True` on the field. Then use `models.ForeignKey` wi
             }
         ]
     },
-    // likes on the post
+    // likes on the entry
     "likes":{
         "type":"likes",
-        // this may or may not be the same as page for the post,
+        // this may or may not be the same as page for the entry,
         // depending if there's a seperate URL to just see the comments
-        "page":"http://nodeaaaa/authors/222/posts/249"
-        "id":"http://nodeaaaa/api/authors/222/posts/249/likes"
+        "web":"http://nodeaaaa/authors/222/entries/249"
+        "id":"http://nodeaaaa/api/authors/222/entries/249/likes"
         // likes.page, likes.size, likes.count,
-        // likes.src should be sent for public and unlisted posts
+        // likes.src should be sent for public and unlisted entries
         // in order to reduce API calls
-        // You should return ~ 5 likes per post.
+        // You should return ~ 5 likes per request.
         // should be sorted newest(first) to oldest(last)
         // this is to reduce API call counts
         // number of the first page of likes
@@ -665,7 +654,7 @@ Hint: In Django, set `unique=True` on the field. Then use `models.ForeignKey` wi
                 "author":{
                     "type":"author",
                     "id":"http://nodeaaaa/api/authors/111",
-                    "page":"http://nodeaaaa/authors/greg",
+                    "web":"http://nodeaaaa/authors/greg",
                     "host":"http://nodeaaaa/api/",
                     "displayName":"Greg Johnson",
                     "github": "http://github.com/gjohnson",
@@ -676,7 +665,7 @@ Hint: In Django, set `unique=True` on the field. Then use `models.ForeignKey` wi
                 // ID of the Comment (UUID)
                 "id":"http://nodeaaaa/api/authors/111/liked/166",
                 // this should be the object they liked
-                "object": "http://nodebbbb/authors/222/posts/249"
+                "object": "http://nodebbbb/authors/222/entries/249"
             }
         ]
     },
@@ -685,37 +674,37 @@ Hint: In Django, set `unique=True` on the field. Then use `models.ForeignKey` wi
     // visibility ["PUBLIC","FRIENDS","UNLISTED","DELETED"]
     "visibility":"PUBLIC"
     // for visibility PUBLIC means it is open to the wild web
-    // FRIENDS means if we're friends I can see the post
-    // FRIENDS should've already been sent the post so they don't need thi
+    // FRIENDS means if we're friends I can see the entry
+    // FRIENDS should've already been sent the entry so they don't need thi
     // "DELETED" should never show up in the restful API or frontend, but will need to be marked in the database
 }
 ```
 
-* Example, Friends-Only post:
+* Example, Friends-Only entry:
 ```js
 {
-    "type":"post",
-    "title":"DID YOU READ MY POST YET?",
-    "id": "http://nodebbbb/api/authors/222/posts/293",
-    // The frontend URL of this post
-    "page": "http://nodebbbb/authors/222/posts/293",
+    "type":"entry",
+    "title":"DID YOU READ MY ENTRY YET?",
+    "id": "http://nodebbbb/api/authors/222/entries/293",
+    // The frontend URL of this entry
+    "web": "http://nodebbbb/authors/222/entries/293",
     "description":"Whatever",
     "contentType":"text/plain",
-    "content":"Are you even reading my posts Arjun?",
+    "content":"Are you even reading my entries Arjun?",
     "author":{
         "type":"author",
         "id":"http://nodebbbb/api/authors/222",
         "host":"http://nodebbbb/api/",
         "displayName":"Lara Croft",
-        "page":"http://nodebbbb/authors/222",
+        "web":"http://nodebbbb/authors/222",
         "github": "http://github.com/laracroft",
         "profileImage": "https://i.imgur.com/k7XVwpB.jpeg"
     },
     "comments": {
         "type": "comments",
-        "id": "http://nodebbbb/api/authors/222/posts/293/comments",
+        "id": "http://nodebbbb/api/authors/222/entries/293/comments",
         // in this example nodebbbb has a html page just for the comments
-        "page": "http://nodebbbb/authors/222/posts/293/comments",
+        "web": "http://nodebbbb/authors/222/entries/293/comments",
         "page_number": 1,
         "size": 5,
         "count": 0,
@@ -723,9 +712,9 @@ Hint: In Django, set `unique=True` on the field. Then use `models.ForeignKey` wi
     },
     "likes": {
         "type": "likes",
-        "id": "http://127.0.0.1:5454/api/authors/222/posts/293/likes",
+        "id": "http://127.0.0.1:5454/api/authors/222/entries/293/likes",
         // in this example nodebbbb has a html page just for the likes
-        "page": "http://nodebbbb/authors/222/posts/293/likes"
+        "web": "http://nodebbbb/authors/222/entries/293/likes"
         "page_number": 1,
         "size": 50,
         "count": 0,
@@ -736,29 +725,29 @@ Hint: In Django, set `unique=True` on the field. Then use `models.ForeignKey` wi
 }
 ```
 
-## Example Posts Object
+## Example Entries Object
 
 ```js
 {
-    "type":"posts",
+    "type":"entries",
     // page number we're on (counting from 1)
     "page_number":23,
-    // size of a page of posts
+    // size of a page of entries
     "size":10,
-    // total number of posts
+    // total number of entries
     "count": 9001,
-    // the first page of posts
+    // the first page of entries
     "src":[
-        { "type":"post", /* ... the rest of the post object */ },
-        { "type":"post", /* ... the rest of the post object */ },
-        { "type":"post", /* ... the rest of the post object */ },
-        { "type":"post", /* ... the rest of the post object */ },
-        { "type":"post", /* ... the rest of the post object */ },
-        { "type":"post", /* ... the rest of the post object */ },
-        { "type":"post", /* ... the rest of the post object */ },
-        { "type":"post", /* ... the rest of the post object */ },
-        { "type":"post", /* ... the rest of the post object */ },
-        { "type":"post", /* ... the rest of the post object */ },
+        { "type":"entry", /* ... the rest of the entry object */ },
+        { "type":"entry", /* ... the rest of the entry object */ },
+        { "type":"entry", /* ... the rest of the entry object */ },
+        { "type":"entry", /* ... the rest of the entry object */ },
+        { "type":"entry", /* ... the rest of the entry object */ },
+        { "type":"entry", /* ... the rest of the entry object */ },
+        { "type":"entry", /* ... the rest of the entry object */ },
+        { "type":"entry", /* ... the rest of the entry object */ },
+        { "type":"entry", /* ... the rest of the entry object */ },
+        { "type":"entry", /* ... the rest of the entry object */ },
     ]
 }
 ```
@@ -771,7 +760,7 @@ Hint: In Django, set `unique=True` on the field. Then use `models.ForeignKey` wi
     "author":{
         "type":"author",
         "id":"http://nodeaaaa/api/authors/111",
-        "page":"http://nodeaaaa/authors/greg",
+        "web":"http://nodeaaaa/authors/greg",
         "host":"http://nodeaaaa/api/",
         "displayName":"Greg Johnson",
         "github": "http://github.com/gjohnson",
@@ -783,19 +772,19 @@ Hint: In Django, set `unique=True` on the field. Then use `models.ForeignKey` wi
     "published":"2015-03-09T13:07:04+00:00",
     // ID of the Comment
     "id": "http://nodeaaaa/api/authors/111/commented/130",
-    "post": "http://nodebbbb/api/authors/222/posts/249",
+    "entry": "http://nodebbbb/api/authors/222/entries/249",
     // likes on the comment
     "likes":{
         "type":"likes",
-        // this may or may not be the same as page for the post
+        // this may or may not be the same as page for the entry
         // this may or may not be the same as page for the comment
         // depending if there's a seperate URL to just see the comments
-        "page":"http://nodeaaaa/authors/222/posts/249"
+        "web":"http://nodeaaaa/authors/222/entries/249"
         "id":"http://nodeaaaa/api/authors/111/commented/130/likes"
         // likes.page, likes.size, likes.count,
-        // likes.src should be sent for comments on public and unlisted posts
+        // likes.src should be sent for comments on public and unlisted entries
         // in order to reduce API calls
-        // You should return ~ 5 likes per post.
+        // You should return ~ 5 likes per request.
         // should be sorted newest(first) to oldest(last)
         // this is to reduce API call counts
         // number of the first page of likes
@@ -813,9 +802,9 @@ Hint: In Django, set `unique=True` on the field. Then use `models.ForeignKey` wi
                     "id":"http://nodebbbb/api/authors/222",
                     "host":"http://nodebbbb/api/",
                     "displayName":"Lara Croft",
-                    "page":"http://nodebbbb/authors/222",
+                    "web":"http://nodebbbb/authors/222",
                     "github": "http://github.com/laracroft",
-                    "profileImage": "http://nodebbbb/api/authors/222/posts/217/image"
+                    "profileImage": "http://nodebbbb/api/authors/222/entries/217/image"
                 },
                 // ISO 8601 TIMESTAMP
                 "published":"2015-03-09T13:07:04+00:00",
@@ -833,23 +822,23 @@ Hint: In Django, set `unique=True` on the field. Then use `models.ForeignKey` wi
 ```js
 {
     "type":"comments",
-    // this may or may not be the same as page for the post,
+    // this may or may not be the same as page for the entry,
     // depending if there's a seperate URL to just see the comments
-    "page":"http://nodebbbb/authors/222/posts/249",
-    "id":"http://nodebbbb/api/authors/222/posts/249/comments"
+    "web":"http://nodebbbb/authors/222/entries/249",
+    "id":"http://nodebbbb/api/authors/222/entries/249/comments"
     // comments.page, comments.size, comments.count,
     // comments.src are only sent if:
     // * public
     // * unlisted
     // * friends-only and sending it to a friend
-    // You should return ~ 5 comments per post.
+    // You should return ~ 5 comments per entry.
     // should be sorted newest(first) to oldest(last)
     // this is to reduce API call counts
     // number of the first page of comments
     "page_number":1,
     // size of comment pages
     "size":5,
-    // total number of comments for this post
+    // total number of comments for this entry
     "count": 1023,
     // the first page of comments
     "src":[
@@ -858,7 +847,7 @@ Hint: In Django, set `unique=True` on the field. Then use `models.ForeignKey` wi
             "author":{
                 "type":"author",
                 "id":"http://nodeaaaa/api/authors/111",
-                "page":"http://nodeaaaa/authors/greg",
+                "web":"http://nodeaaaa/authors/greg",
                 "host":"http://nodeaaaa/api/",
                 "displayName":"Greg Johnson",
                 "github": "http://github.com/gjohnson",
@@ -870,18 +859,18 @@ Hint: In Django, set `unique=True` on the field. Then use `models.ForeignKey` wi
             "published":"2015-03-09T13:07:04+00:00",
             // ID of the Comment
             "id":"http://nodeaaaa/api/authors/111/commented/130",
-            "post": "http://nodebbbb/api/authors/222/posts/249",
-            // this may or may not be the same as page for the post,
+            "entry": "http://nodebbbb/api/authors/222/entries/249",
+            // this may or may not be the same as page for the entry,
             // depending if there's a seperate URL to just see the one comment in html
-            "page": "http://nodebbbb/authors/222/posts/249"
+            "web": "http://nodebbbb/authors/222/entries/249"
             // it could also be something like
-            // "page":"http://nodeaaaa/api/authors/greg/comments/130"
-            // likes on the comment, not to be confused with likes on the post
+            // "web":"http://nodeaaaa/api/authors/greg/comments/130"
+            // likes on the comment, not to be confused with likes on the entry
             "likes": {
                 "type": "likes",
                 "id": "http://nodeaaaa/api/authors/111/commented/130/likes",
                 // in this example nodebbbb has a html page just for the likes
-                "page": "http://nodeaaaa/authors/greg/comments/130/likes"
+                "web": "http://nodeaaaa/authors/greg/comments/130/likes"
                 "page_number": 1,
                 "size": 50,
                 "count": 0,
@@ -900,7 +889,7 @@ Hint: In Django, set `unique=True` on the field. Then use `models.ForeignKey` wi
     "author":{
         "type":"author",
         "id":"http://nodeaaaa/api/authors/111",
-        "page":"http://nodeaaaa/authors/greg",
+        "web":"http://nodeaaaa/authors/greg",
         "host":"http://nodeaaaa/api/",
         "displayName":"Greg Johnson",
         "github": "http://github.com/gjohnson",
@@ -910,7 +899,7 @@ Hint: In Django, set `unique=True` on the field. Then use `models.ForeignKey` wi
     "published":"2015-03-09T13:07:04+00:00",
     "id":"http://nodeaaaa/api/authors/111/liked/166",
     // ID of the Comment (UUID)
-    "object": "http://nodebbbb/api/authors/222/posts/249"
+    "object": "http://nodebbbb/api/authors/222/entries/249"
 }
 ```
 
@@ -922,9 +911,9 @@ Hint: In Django, set `unique=True` on the field. Then use `models.ForeignKey` wi
         "id":"http://nodebbbb/api/authors/222",
         "host":"http://nodebbbb/api/",
         "displayName":"Lara Croft",
-        "page":"http://nodebbbb/authors/222",
+        "web":"http://nodebbbb/authors/222",
         "github": "http://github.com/laracroft",
-        "profileImage": "http://nodebbbb/api/authors/222/posts/217/image"
+        "profileImage": "http://nodebbbb/api/authors/222/entries/217/image"
     },
     // ISO 8601 TIMESTAMP
     "published":"2015-03-09T13:07:04+00:00",
@@ -939,14 +928,14 @@ Hint: In Django, set `unique=True` on the field. Then use `models.ForeignKey` wi
 ```js
 {
     "type":"likes",
-    // this may or may not be the same as page for the post,
+    // this may or may not be the same as page for the entry,
     // depending if there's a seperate URL to just see the comments
-    "page":"http://nodeaaaa/authors/222/posts/249"
-    "id":"http://nodeaaaa/api/authors/222/posts/249/likes"
+    "web":"http://nodeaaaa/authors/222/entries/249"
+    "id":"http://nodeaaaa/api/authors/222/entries/249/likes"
     // likes.page, likes.size, likes.count,
-    // likes.src should be sent for public and unlisted posts
+    // likes.src should be sent for public and unlisted entries
     // in order to reduce API calls
-    // You should return ~ 5 likes per post.
+    // You should return ~ 5 likes per entry.
     // should be sorted newest(first) to oldest(last)
     // this is to reduce API call counts
     // number of the first page of likes
@@ -962,7 +951,7 @@ Hint: In Django, set `unique=True` on the field. Then use `models.ForeignKey` wi
             "author":{
                 "type":"author",
                 "id":"http://nodeaaaa/api/authors/111",
-                "page":"http://nodeaaaa/authors/greg",
+                "web":"http://nodeaaaa/authors/greg",
                 "host":"http://nodeaaaa/api/",
                 "displayName":"Greg Johnson",
                 "github": "http://github.com/gjohnson",
@@ -973,7 +962,7 @@ Hint: In Django, set `unique=True` on the field. Then use `models.ForeignKey` wi
             // ID of the Comment (UUID)
             "id":"http://nodeaaaa/api/authors/111/liked/166",
             // this should be the object they liked
-            "object": "http://nodebbbb/authors/222/posts/249"
+            "object": "http://nodebbbb/authors/222/entries/249"
         }
     ]
 }
@@ -984,7 +973,7 @@ Hint: In Django, set `unique=True` on the field. Then use `models.ForeignKey` wi
     "type": "likes",
     "id": "http://nodeaaaa/api/authors/111/commented/130/likes",
     // in this example nodebbbb has a html page just for the likes
-    "page": "http://nodeaaaa/authors/greg/comments/130/likes"
+    "web": "http://nodeaaaa/authors/greg/comments/130/likes"
     "page_number": 1,
     "size": 50,
     "count": 0,
@@ -995,6 +984,11 @@ Hint: In Django, set `unique=True` on the field. Then use `models.ForeignKey` wi
 # API Endpoints
 
 ***Please see the definitions for FQID and serial above!***
+
+## Authentication
+
+* All "remote" endpoints need HTTP Basic authentication!
+* Local endpoints need some type of authentication!  (Your choice.)
 
 ## Authors API
 
@@ -1018,7 +1012,7 @@ Hint: In Django, set `unique=True` on the field. Then use `models.ForeignKey` wi
             "displayName":"Greg Johnson",
             "github": "http://github.com/gjohnson",
             "profileImage": "https://i.imgur.com/k7XVwpB.jpeg",
-            "page": "http://nodeaaaa/authors/greg"
+            "web": "http://nodeaaaa/authors/greg"
         },
         {
             // A second author object...
@@ -1055,7 +1049,7 @@ Hint: In Django, set `unique=True` on the field. Then use `models.ForeignKey` wi
     // get/update the profile picture of the author
     "profileImage": "https://i.imgur.com/k7XVwpB.jpeg",
     // get the HTML profile page
-    "page": "http://nodeaaaa/authors/greg"
+    "web": "http://nodeaaaa/authors/greg"
 }
 ```
 
@@ -1083,9 +1077,9 @@ Hint: In Django, set `unique=True` on the field. Then use `models.ForeignKey` wi
             "id":"http://nodebbbb/api/authors/222",
             "host":"http://nodebbbb/api/",
             "displayName":"Lara Croft",
-            "page":"http://nodebbbb/authors/222",
+            "web":"http://nodebbbb/authors/222",
             "github": "http://github.com/laracroft",
-            "profileImage": "http://nodebbbb/api/authors/222/posts/217/image"
+            "profileImage": "http://nodebbbb/api/authors/222/entries/217/image"
         },
         {
             // Second follower author object
@@ -1106,9 +1100,9 @@ Hint: In Django, set `unique=True` on the field. Then use `models.ForeignKey` wi
         "id":"http://nodebbbb/api/authors/222",
         "host":"http://nodebbbb/api/",
         "displayName":"Lara Croft",
-        "page":"http://nodebbbb/authors/222",
+        "web":"http://nodebbbb/authors/222",
         "github": "http://github.com/laracroft",
-        "profileImage": "http://nodebbbb/api/authors/222/posts/217/image"
+        "profileImage": "http://nodebbbb/api/authors/222/entries/217/image"
 }
 ```
    
@@ -1120,6 +1114,7 @@ Hint: In Django, set `unique=True` on the field. Then use `models.ForeignKey` wi
 * When author 1 tries to follow author 2, author 1's node send the follow request to author 2's node.
 * If the author 2 accepts the Follow Request then author 1 is following author 2.
     * If author 2 is also already following author 1, then they are now friends.
+* Author2's node does not need to tell Author1's node if follow was accepted or rejected.
 * Sent to inbox of "object" 
 * See the [follow request object](#example-follow-request-object)
 
@@ -1138,61 +1133,61 @@ Hint: In Django, set `unique=True` on the field. Then use `models.ForeignKey` wi
 }
 ```
 
-## Posts API
+## Entries API
 
-* URL: `://service/api/authors/{AUTHOR_SERIAL}/posts/{POST_SERIAL}`
-    * GET [local, remote] get the public post whose serial is `POST_SERIAL`
-        * friends-only posts: must be authenticated
+* URL: `://service/api/authors/{AUTHOR_SERIAL}/entries/{ENTRY_SERIAL}`
+    * GET [local, remote] get the public entry whose serial is `ENTRY_SERIAL`
+        * friends-only entries: must be authenticated
     * DELETE [local] remove a
-        * local posts: must be authenticated locally as the author
-    * PUT [local] update a post 
-        * local posts: must be authenticated locally as the author
-* URL: `://service/api/posts/{POST_FQID}`
-    * GET [local] get the public post whose URL is `POST_FQID`
-        * friends-only posts: must be authenticated
-* Creation URL ://service/api/authors/{AUTHOR_SERIAL}/posts/
-    * GET [local, remote] get the recent posts from author `AUTHOR_SERIAL` (paginated)
-        * Not authenticated: only public posts.
-        * Authenticated locally as author: all posts.
-        * Authenticated locally as follower of author: public + unlisted posts.
-        * Authenticated locally as friend of author: all posts.
-        * Authenticated as remote node: This probably should not happen. Remember, the way remote node becomes aware of local posts is by local node pushing those posts to inbox, not by remote node pulling.
-    * POST [local] create a new post but generate a new `ID`
+        * local entries: must be authenticated locally as the author
+    * PUT [local] update an entry 
+        * local entries: must be authenticated locally as the author
+* URL: `://service/api/entries/{ENTRY_FQID}`
+    * GET [local] get the public entry whose URL is `ENTRY_FQID`
+        * friends-only entries: must be authenticated
+* Creation URL ://service/api/authors/{AUTHOR_SERIAL}/entries/
+    * GET [local, remote] get the recent entries from author `AUTHOR_SERIAL` (paginated)
+        * Not authenticated: only public entries.
+        * Authenticated locally as author: all entries.
+        * Authenticated locally as follower of author: public + unlisted entries.
+        * Authenticated locally as friend of author: all entries.
+        * Authenticated as remote node: This probably should not happen. Remember, the way remote node becomes aware of local entries is by local node pushing those entries to inbox, not by remote node pulling.
+    * POST [local] create a new entry but generate a new `ID`
         * Authenticated locally as author
-* Be aware that Posts can be images that need base64 decoding.
-    * posts can also hyperlink to images that are public
-* Uses the same format as the [post object](#example-post-object)
-* For [local] service, fields included may differ. For example, when first creating the post, there's no reason to have likes, comments, etc. because it doesn't exist yet. Be sure to document this!
+* Be aware that Entries can be images that need base64 decoding.
+    * entries can also hyperlink to images that are public
+* Uses the same format as the [entry object](#example-entry-object)
+* For [local] service, fields included may differ. For example, when first creating the entry, there's no reason to have likes, comments, etc. because it doesn't exist yet. Be sure to document this!
 
-### Image Posts
+### Image Entries
 
-Image Posts are just posts that are images. But they are encoded as base64 data.
-You can inline an image post using a data URL, or you can use this 
+Image Entries are just entries that are images. But they are encoded as base64 data.
+You can inline an image entry using a data URL, or you can use this 
 shortcut to get the image if authenticated to see it.
 
-* URL: `://service/api/authors/{AUTHOR_SERIAL}/posts/{POST_SERIAL}/image`
-    * GET [local, remote] get the public post converted to binary as an image
+* URL: `://service/api/authors/{AUTHOR_SERIAL}/entries/{ENTRY_SERIAL}/image`
+    * GET [local, remote] get the public entry converted to binary as an image
       * return 404 if not an image
-* URL: `://service/api/posts/{POST_FQID}/image`
-    * GET [local, remote] get the public post converted to binary as an image
+* URL: `://service/api/entries/{ENTRY_FQID}/image`
+    * GET [local, remote] get the public entry converted to binary as an image
       * return 404 if not an image
-* This end point decodes image posts as images. This allows the use of image tags in Markdown.
+* This end point decodes image entries as images. This allows the use of image tags in Markdown.
 * You can use this to proxy or cache images.
 
 ## Comments API
 
 * URL: `://service/api/authors/{AUTHOR_SERIAL}/inbox`
-    * `POST` [remote]: comment on a post by `AUTHOR_SERIAL`
+    * `POST` [remote]: comment on an entry by `AUTHOR_SERIAL`
     * Body is a [comment object](#example-comment)
-* URL: `://service/api/authors/{AUTHOR_SERIAL}/posts/{POST_SERIAL}/comments`
-    * `GET` [local, remote]: the comments on the post
+* URL: `://service/api/authors/{AUTHOR_SERIAL}/entries/{ENTRY_SERIAL}/comments`
+    * `GET` [local, remote]: the comments on the entry
     * Body is a ["comments" object](#example-comments)
-* URL: `://service/api/posts/{POST_FQID}/comments`
-    * `GET` [local, remote]: the comments on the post (that our server knows about)
+* URL: `://service/api/entries/{ENTRY_FQID}/comments`
+    * `GET` [local, remote]: the comments on the entry (that our server knows about)
     * Body is a ["comments" object](#example-comments)
-* URL: `://service/api/authors/{AUTHOR_SERIAL}/post/{POST_SERIAL}/comment/{REMOTE_COMMENT_FQID}`
+* URL: `://service/api/authors/{AUTHOR_SERIAL}/entries/{ENTRY_SERIAL}/comment/{REMOTE_COMMENT_FQID}`
     * GET [local, remote] get the comment
-* Example: GET `http://nodebbbb/api/authors/222/posts/249/comments/http%3A%2F%2Fnodeaaaa%2Fapi%2Fauthors%2F111%2Fcommented%2F130`:
+* Example: GET `http://nodebbbb/api/authors/222/entries/249/comments/http%3A%2F%2Fnodeaaaa%2Fapi%2Fauthors%2F111%2Fcommented%2F130`:
 
 ```js
 {
@@ -1200,7 +1195,7 @@ shortcut to get the image if authenticated to see it.
     "author":{
         "type":"author",
         "id":"http://nodeaaaa/api/authors/111",
-        "page":"http://nodeaaaa/authors/greg",
+        "web":"http://nodeaaaa/authors/greg",
         "host":"http://nodeaaaa/api/",
         "displayName":"Greg Johnson",
         "github": "http://github.com/gjohnson",
@@ -1212,7 +1207,7 @@ shortcut to get the image if authenticated to see it.
     "published":"2015-03-09T13:07:04+00:00",
     // ID of the Comment
     "id": "http://nodeaaaa/api/authors/111/commented/130",
-    "post": "http://nodebbbb/api/authors/222/posts/249",
+    "entry": "http://nodebbbb/api/authors/222/entries/249",
 }
 ```
 
@@ -1221,13 +1216,13 @@ shortcut to get the image if authenticated to see it.
 
 * URL: `://service/api/authors/{AUTHOR_SERIAL}/commented`
     * GET [local, remote] get the list of comments author has made on:
-        * [local] any post
-        * [remote] public and unlisted posts
+        * [local] any entry
+        * [remote] public and unlisted entries
         * paginated
-    * POST [local] if you post an object of "type":"comment", it will add your comment to the post whose `ID` is in the `post` field
+    * POST [local] if you post an object of "type":"comment", it will add your comment to the entry whose `ID` is in the `entry ` field
         * Then the node you posted it to is responsible for forwarding it to the correct inbox
 * URL: `://service/api/authors/{AUTHOR_FQID}/commented`
-    * GET [local] get the list of comments author has made on any post (that local node knows about)
+    * GET [local] get the list of comments author has made on any entry (that local node knows about)
 * URL: `://service/api/authors/{AUTHOR_SERIAL}/commented/{COMMENT_SERIAL}`
     * GET [local, remote] get this comment
 * URL: `://service/api/commented/{COMMENT_FQID}`
@@ -1241,7 +1236,7 @@ shortcut to get the image if authenticated to see it.
         "author":{
             "type":"author",
             "id":"http://nodeaaaa/api/authors/111",
-            "page":"http://nodeaaaa/authors/greg",
+            "web":"http://nodeaaaa/authors/greg",
             "host":"http://nodeaaaa/api/",
             "displayName":"Greg Johnson",
             "github": "http://github.com/gjohnson",
@@ -1253,12 +1248,12 @@ shortcut to get the image if authenticated to see it.
         "published":"2015-03-09T13:07:04+00:00",
         // ID of the Comment
         "id":"http://nodeaaaa/api/authors/111/commented/130",
-        "post": "http://nodebbbb/api/authors/222/posts/249",
-        // this may or may not be the same as page for the post,
+        "entry": "http://nodebbbb/api/authors/222/entries/249",
+        // this may or may not be the same as page for the entry,
         // depending if there's a seperate URL to just see the one comment in html
-        "page": "http://nodebbbb/authors/222/posts/249"
+        "web": "http://nodebbbb/authors/222/entries/249"
         // it could also be something like
-        // "page":"http://nodeaaaa/authors/greg/comments/130"
+        // "web":"http://nodeaaaa/authors/greg/comments/130"
     }
 ]
 ```
@@ -1270,7 +1265,7 @@ shortcut to get the image if authenticated to see it.
     "author":{
         "type":"author",
         "id":"http://nodeaaaa/api/authors/111",
-        "page":"http://nodeaaaa/authors/greg",
+        "web":"http://nodeaaaa/authors/greg",
         "host":"http://nodeaaaa/api/",
         "displayName":"Greg Johnson",
         "github": "http://github.com/gjohnson",
@@ -1282,12 +1277,12 @@ shortcut to get the image if authenticated to see it.
     "published":"2015-03-09T13:07:04+00:00",
     // ID of the Comment
     "id":"http://nodeaaaa/api/authors/111/commented/130",
-    "post": "http://nodebbbb/api/authors/222/posts/249",
-    // this may or may not be the same as page for the post,
+    "entry": "http://nodebbbb/api/authors/222/entries/249",
+    // this may or may not be the same as page for the entry,
     // depending if there's a seperate URL to just see the one comment in html
-    "page": "http://nodebbbb/authors/222/posts/249"
+    "web": "http://nodebbbb/authors/222/entries/249"
     // it could also be something like
-    // "page":"http://nodeaaaa/authors/greg/comments/130"
+    // "web":"http://nodeaaaa/authors/greg/comments/130"
 }
 ```
 
@@ -1296,17 +1291,17 @@ shortcut to get the image if authenticated to see it.
 * URL: `://service/api/authors/{AUTHOR_SERIAL}/inbox`
     * `POST` [remote]: send a like object to `AUTHOR_SERIAL`
     * Body is [like object](#example-like-object)
-* URL: `://service/api/authors/{AUTHOR_SERIAL}/posts/{POST_SERIAL}/likes`
-    * "Who Liked This Post"
-    * `GET` [local, remote] a list of likes from other authors on `AUTHOR_SERIAL`'s post `POST_SERIAL`
+* URL: `://service/api/authors/{AUTHOR_SERIAL}/entries/{ENTRY_SERIAL}/likes`
+    * "Who Liked This Entry"
+    * `GET` [local, remote] a list of likes from other authors on `AUTHOR_SERIAL`'s entry `ENTRY_SERIAL`
     * Body is [likes object](#example-likes-object)
-* URL: `://service/api/posts/{POST_FQID}/likes`
-    * "Who Liked This Post"
-    * `GET` [local] a list of likes from other authors on `AUTHOR_SERIAL`'s post `POST_SERIAL`
+* URL: `://service/api/entries/{ENTRY_FQID}/likes`
+    * "Who Liked This Entry"
+    * `GET` [local] a list of likes from other authors on `AUTHOR_SERIAL`'s entry `ENTRY_SERIAL`
     * Body is [likes object](#example-likes-object)
-* URL: `://service/api/authors/{AUTHOR_SERIAL}/posts/{POST_SERIAL}/comments/{COMMENT_FQID}/likes`
+* URL: `://service/api/authors/{AUTHOR_SERIAL}/entries/{ENTRY_SERIAL}/comments/{COMMENT_FQID}/likes`
     * "Who Liked This Comment"
-    * `GET` [local, remote] a list of likes from other authors on `AUTHOR_SERIAL`'s post `POST_SERIAL` comment `COMMENT_FQID`
+    * `GET` [local, remote] a list of likes from other authors on `AUTHOR_SERIAL`'s entry `ENTRY_SERIAL` comment `COMMENT_FQID`
     * Body is [likes object](#example-likes-object)
 
 ## Liked API
@@ -1330,17 +1325,17 @@ shortcut to get the image if authenticated to see it.
 
 Local APIs, such as "stream", that aren't specified here, are up to your design. However, you must document and test them.
 
-## Inbox
+## Inbox API
 
-* The inbox receives all the new posts from who you follow, as well as "follow requests," likes, and comments you should be aware of. 
-* Remember: the inbox is not something on the UI or the API for local clients! The inbox is the way that a node becomes aware of posts, likes, comments, follow requests, that it should be aware of from other nodes.
+* The inbox receives all the new entries from who you follow, as well as "follow requests," likes, and comments you should be aware of. 
+* Remember: the inbox is not something on the UI or the API for local clients! The inbox is the way that a node becomes aware of entries, likes, comments, follow requests, that it should be aware of from other nodes.
 * URL: ://service/api/authors/{AUTHOR_SERIAL}/inbox
-    * POST [remote]: send a post to the author
-      * if the type is "post" then add that post to AUTHOR_SERIAL's inbox
+    * POST [remote]: send an entry to the author
+      * if the type is "entry" then add that entry to AUTHOR_SERIAL's inbox
       * if the type is "follow" then add that follow is added to AUTHOR_SERIAL's inbox to approve later
       * if the type is "Like" then add that like to AUTHOR_SERIAL's inbox
       * if the type is "comment" then add that comment to AUTHOR_SERIAL's inbox
-* When sending/updating posts, body is a [post object](#example-post-object)
+* When sending/updating entries, body is an [entry object](#example-entry-object)
 * When sending/updating comments, body is a [comment object](#example-comment-object)
 * When sending/updating likes, body is a [like object](#example-like-object)
 * When sending/updating follow requests, body is a [follow object](#example-follow-request-object)
@@ -1359,7 +1354,7 @@ Local APIs, such as "stream", that aren't specified here, are up to your design.
 * Make a presentation about your blog 
 * Follow the guidelines in the [project spec]({filename}/general/project.md) for URLs and services
 * Allow users to accept or reject follow requests
-* Images get the same protection that posts get as they are POSTS
+* Images get the same protection that entries get as they are POSTS
 * Follow the [API requirements](#api-requirements) in the following section
 * Follow the [Infrastructure and Software Requirements](#infrastructure-and-software-requirements) in the following section
 
@@ -1367,7 +1362,7 @@ Local APIs, such as "stream", that aren't specified here, are up to your design.
    
 When building your API, try to adhere to these rules for easy compatibility with other groups:
    
-* REST API calls may be prefixed like: `http://service_address/api/authors/{AUTHOR_SERIAL}/posts/`
+* REST API calls may be prefixed like: `http://service_address/api/authors/{AUTHOR_SERIAL}/entries/`
 * Document your service address, port, hostname, prefix (if used), and the username/password for HTTP Basic Auth in your README so that HTTP clients can connect to your API.
 * You **must** be compatible with the API specification and examples listed above in this document. 
     * You **may** need to add some additional things for compatibility with other groups due to varying interpretations.
@@ -1514,7 +1509,7 @@ Frontend (Selenium, etc.) tests are not required. Code coverage (line coverage, 
     * Firefox will be used as the standard for marking. We will not check your code in multiple browsers to try to get it working.
 - <input type="checkbox"> Your project must be hosted on an approved hosting solution.
     * Cybera (recommended)
-        * Whenever you see heroku on the dependencies or requirements, you are allowed to use cybera and or docker to deploy your applications.
+        * Whenever you see Heroku on the dependencies or requirements, you are allowed to use cybera and or docker to deploy your applications.
     * Heroku (paid, has free credits but may run out quickly)
         * Will still be allowed but expect limited support
         * An entire node of your project must only require: 
@@ -1583,7 +1578,7 @@ The most successful teams:
 
 # Submission Instructions
 
-* Submission will be by GitHub Classroom. Please follow the link on eClass. Make sure you also submit a link on eClass on time!
+* Submission will be by GitHub Classroom. Please follow the link on Canvas. Make sure you also submit a link on Canvas on time!
 
 # Marking
 
@@ -1619,15 +1614,15 @@ You must form a group with only students from your same lab section. You can hav
 * There can be maximum 6 students per team and a minimum of 5 students.
 * All team members must be registered for and attending the same lab section.
 * Your team name must be from the list of [CSS colour names](https://developer.mozilla.org/en-US/docs/Web/CSS/named-color).
-* Use the [GitHub Classroom Link on eClass](https://eclass.srv.ualberta.ca/mod/assign/view.php?id=8120400&forceview=1)
-    * EVERY teammate should submit a link to your teams GitHub repo on eClass.
+* Use the GitHub Classroom Link on Canvas
+    * EVERY teammate should submit a link to your teams GitHub repo on Canvas.
 * Add a license and a README. The README should contain the names of the teammates. (You don't have to use your real name if you don't want Microsoft/GitHub to know who you are.)
 * Use the format `https://github.com/uofa-cmput404/f24-project-team-name` where `team-name` is your CSS colour.
 
 Do not submit a clone link or a link to a branch or file.
 
 * 1 mark
-* Submitted on eClass by all members
+* Submitted on Canvas by all members
 * 1 GitHub repo with a README and LICENSE
 * Team name is a CSS colour name
 
@@ -1664,8 +1659,8 @@ Submit only the link to the tag in the following format:
 
 https://github.com/uofa-cmput404/f24-project-example-team/tree/part1
 
-* Every team member must submit the link to eClass.
-* If you don't submit the link to eClass you will get a zero for the project part regardless of what your team gets.
+* Every team member must submit the link to Canvas.
+* If you don't submit the link to Canvas you will get a zero for the project part regardless of what your team gets.
 * Submitted frontend framework form if using a frontend framework. (Link coming soon...)
 
 ### Marking
@@ -1748,7 +1743,7 @@ Submit only the link to the tag in the following format:
 
 https://github.com/uofa-cmput404/f24-project-example-team/tree/part1
 
-* Every team member must submit the link to eclass.
+* Every team member must submit the link to Canvas.
 
 ### Marking
 
@@ -1918,7 +1913,7 @@ https://github.com/uofa-cmput404/w24-project-example-team/tree/part2
 
 ### Requirements
 
-NOTE: For part 4, select **one** node from part 3 to act as your team's main node. That is, your team should have one single node deployed on heroku which meets the following requirements. 
+NOTE: For part 4, select **one** node from part 3 to act as your team's main node. That is, your team should have one single node deployed on Heroku which meets the following requirements. 
 
 * Node is at least partially working with nodes from 4 other teams.
 * Node must be fully communicating and working with nodes from 2 other teams.
