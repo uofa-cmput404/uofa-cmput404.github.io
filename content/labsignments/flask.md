@@ -208,14 +208,17 @@ Violation of the restrictions will result in a mark of zero.
 
 Make sure you push to GitHub classroom **BEFORE 4PM on the due date!** You will not be able to push after that!
 
-Submit a link to your repo in the form `https://github.com/uofa-cmput404/w24-h0x-labsignment-flask-yourgithubname`. **Do not** submit a link to a branch, a file, or the clone URL. If you do not do this we will not know which GitHub submission is yours.
+Submit a link to your repo in the form `https://github.com/uofa-cmput404/s25-labsignment-django-yourgithubname/commit/bunch-of-numbers` on eClass. **Do not** submit a link to a branch, a file, or the clone URL.
 
-<p class="warning">If you do not submit a link to your repo on eClass on time using the correct format above, you will get a zero.</p>
+<p class="warning">If you do not submit a link to your COMMIT on Canvas on time using the correct format above, you will get a zero.</p>
+
+You can submit and then resubmit as many times as you want before the deadline, so submit early and often.
 
 # Collaboration
 
 * You may consult with others (exchange high-level ideas) but the submission should be your own source code.
 * Collaboration must be documented in your source code.
-* Any source code you got from anywhere else must be cited in the source code.
+* Any source code you got from anywhere else must be cited in the source code. This includes code from LLMs.
 * You can only use source code that **you understand**: see the [lab marking info]({filename}/general/labs.md#lab-marking)
+* For more information see the collaboration section in the outline: [{filename}/general/outline.md#consultation-assignments-labs]
 

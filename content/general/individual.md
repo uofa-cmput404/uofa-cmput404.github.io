@@ -8,6 +8,14 @@ summary: Individual Assignments, Participation
 
 [TOC]
 
+# Lab Assignments
+
+* [Labs]({filename}/general/labs.md)
+
+# Non-Lab Assignments
+
+* [Language assignment]({filename}/labsignments/language.md)
+
 # Participation
 
 <!--Most participation marks will be in class during class. You can participate over Zoom or in-person. To participate in-person please bring a working cellphone, tablet, or laptop. There may be other participation marks from time to time. See *Missed Term Work: Participation* below.-->
@@ -36,6 +44,9 @@ You can earn lecture participation credit by attending lecture on time. Instruct
 
 -->
 
-# Language Assignment
+# Exams
 
-Coming soon.
+* [Exam Conduct]({filename}/general/outline.md#exam-conduct)
+* [If you miss an exam]({filename}/general/outline.md#deferred-final-examination)
+* Exam date and time is on BearTracks when the registrar posts it. The registrar doesn't usually post exam dates and times until a few weeks before the end of the semester.
+

@@ -13,15 +13,16 @@ summary: Lab Procedure, Lab Assignments, Lab Marking
 
 # Lab Procedure
 
-* [C2 Thursday Signup Sheet](#TODO)
+* [C2 Thursday Signup Sheets](https://drive.google.com/drive/folders/18ZrTrM7RheTBpXqPu-mK_2I2zeU9-nE3?usp=sharing)
 
 * You **must walk through your individual lab work to a TA** during the lab to receive marks.
     * If you submit on Canvas but don't walk through your code with a TA you will get a zero.
     * You MUST walk through your lab in person.
-* Labs are due on eClass and GitHub at 4PM on Monday.
+* Labs are due on Canvas and GitHub at 4PM on Thursday.
     * If you walk through your code with a TA but don't submit you will get a zero.
-    * If you don't submit a link to your GitHub on eClass you will get a zero.
+    * If you don't submit a link to your GitHub on Canvas you will get a zero.
     * If you submit but don't walk through your code with a TA you will get a zero.
+    * If your link doesn't have a git commit like the format below, you will get a zero.
 
 The TAs will do their best to keep strictly to the schedule on the walkthrough signup sheet.
 
@@ -46,7 +47,9 @@ If you do not submit to Canvas on time:
 * We have no way of tracking which lab/project have been graded and which assignments still need to be graded.
 * We have no way of knowing if we missed someone's lab/project.
 
-Also:
+Also, we use GitHub "Classroom" to make sure we can keep student's assignments for one year. Keeping things for one year is university policy. We may need to reference back to it if grades go missing, or if there's a grade dispute, or if something happens to a TA, or if there's a plagiarism concern.
+
+However, you still need to turn things in on Canvas:
 
 * We have no way of tracking things like excused absences (weight transfer if someone is sick) on GitHub. (Even if we did it would violate University policy for us to do so.)
 * We have no way of tracking accessibility accommodations on GitHub. (Even if we did it would violate University policy for us to do so.)
@@ -58,8 +61,8 @@ Also:
 
 # Labsignments (Lab Assignments)
 
-1. [HTTP]({filename}/labsignments/http.md)
-2. [Django]({filename}/labsignments/django.md)
+1. [Django]({filename}/labsignments/django.md)
+2. [HTTP]({filename}/labsignments/http.md)
 3. [Heroku]({filename}/labsignments/heroku.md)
 4. [Pelican]({filename}/labsignments/pelican.md)
 5. [JS]({filename}/labsignments/js.md)

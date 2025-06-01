@@ -73,7 +73,7 @@ MENUITEMS=[
     ("Schedule", "/#schedule"),
     ("Labs", "/general/labs.html"),
     ("Project", "/general/project.html"),
-    ("Participation", "/general/individual.html"),
+    ("Assignments", "/general/individual.html"),
     ("Resources", "/general/resources.html"),
     ("Discussion Forum", "/general/help.html#discussion-forum"),
     ("News & Notices", "/#news-notices"),

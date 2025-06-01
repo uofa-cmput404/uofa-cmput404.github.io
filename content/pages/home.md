@@ -15,8 +15,10 @@ save_as: index.html
 * [Lab Information & Demo Signup]({filename}/general/labs.md)
 * [Project: SocialDistribution]({filename}/general/project.md)
 * [Participation]({filename}/general/individual.md#participation)
+* [Individual Assignments]({filename}/general/individual.md#non-lab-assignments)
 * [Contact Info]({filename}/general/help.md#contact-instructor)
     * Students: see [How to get Help]({filename}/general/help.md)
+    * [TAs]({filename}/general/help.md#TAs)
 
 # Schedule 
 
