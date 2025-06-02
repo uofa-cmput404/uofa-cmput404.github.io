@@ -945,280 +945,371 @@ It is in your best interest to Work through the rest of Django's First Steps Tut
 * [Part 6: Static Files](https://docs.djangoproject.com/en/5.0/intro/tutorial06/)
 * [Part 7: Customizing the Admin Site](https://docs.djangoproject.com/en/5.0/intro/tutorial07/)
 
-## Phase Two: Docker and Gunicorn
+## Phase Two: Heroku
 
-### Install Packages
-With your venv activated, install the following packages:
+**For phase two of the lab,** we will walk you through the deployment of your Django application onto Heroku.
+
+### Setting up the Heroku CLI
+
+Sign up for a Heroku account at [https://signup.heroku.com/](https://signup.heroku.com/). Be sure to **enable multi-factor authentication** (two-factor authentication) or Heroku will not allow you to sign in. 
+
+You can apply for free Heroku credits for 12 months at [https://www.heroku.com/github-students](https://www.heroku.com/github-students) with an eligible GitHub student account [https://education.github.com/pack](https://education.github.com/pack). **We cannot guarantee that you will get free Heroku credits. As stated in the Course Outline, you may have to pay a small amount for Heroku.**
+
+Note: Remember to clean up all Heroku resources after this course to avoid unexpected charges after exceeding the credit limit or the offer expires.
+
+Download and install the [Heroku CLI tools](https://devcenter.heroku.com/articles/heroku-cli#download-and-install).
+
+* Use the default installation instructions if you are on a VM or your own device.
+* If using a lab machine, download and extract the tarball and add the binary to your path.
 
 ```bash
-pip install gunicorn whitenoise psycopg2-binary
+wget https://cli-assets.heroku.com/channels/stable/heroku-linux-x64.tar.gz
+tar -xvf heroku-linux-x64.tar.gz
+export PATH="$PATH:$HOME/heroku/bin"
 ```
 
-then create a requirements.txt file with the following command:
+**NOTE:** If you are using a lab machine, the state of environment variables like `PATH` is tied to your current session. When you reconnect to the lab machine in the future, you will have to re-run `export PATH="$PATH:$HOME/heroku/bin"` to have `heroku` commands work. 
+
+To avoid re-running this command every time you can append `export PATH="$PATH:$HOME/heroku/bin"` on a new line at the end of your `.bashrc` file. The `.bashrc` file is located by default in your home directory at: `~/.bashrc`. If you don't have a `.bashrc` file you can create one using `touch .bashrc`. 
+
+The bash scripts in the `.bashrc` file are executed automatically when you create a new session with the lab machine, thus, you would no longer have to do that yourself.
+
+Ensure the `heroku` tool works, login to your account.
 
 ```bash
-pip freeze > requirements.txt
+heroku --version
+# heroku/8.7.1 linux-x64 node-v16.19.0
+heroku login
 ```
 
-### Setup whitenoise middleware
+**NOTE:** If you are running on a lab machine you are going to need to access the virtual desktop of the lab machine to successfully complete `heroku login`. Follow these [instructions](https://www.ualberta.ca/en/computing-science/resources/technical-support/computing-resources/x2go-quick-guide.html) and run the commands through a terminal through the virtual desktop. This will allow you to open a browser *on the lab machine* and complete the authentication process.
 
-In `settings.py` add `'whitenoise.middleware.WhiteNoiseMiddleware',` to the `MIDDLEWARE` list.
+### Preparing our Django Application for Heroku
+
+Ensure the Django application created in Phase One is working locally.
+
+Activate the virtualenv for the Django application.
+
+<aside class="option1">
+Ensure that the git repo structure is similar to the following if you're not using a project folder:
+
+```text
+$ tree 
+.
+├── Procfile    <- you will create this in the next step
+├── README.md
+├── lab3
+│   ├── __init__.py
+│   ├── asgi.py
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+├── manage.py
+├── polls
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── migrations
+│   │   ├── 0001_initial.py
+│   │   └── __init__.py
+│   ├── models.py
+│   ├── serializers.py
+│   ├── templates
+│   │   └── polls
+│   │       ├── detail.html
+│   │       ├── index.html
+│   │       └── results.html
+│   ├── tests.py
+│   ├── urls.py
+│   └── views.py
+└── requirements.txt
+```
+</aside>
+
+<aside class="option2">
+If you do have a project subfolder it should look like this:
+
+```text
+.
+├── Procfile    <- you will create this in the next step
+├── README.md
+├── lab3
+│   ├── lab3
+│   │   ├── __init__.py
+│   │   ├── asgi.py
+│   │   ├── settings.py
+│   │   ├── urls.py
+│   │   └── wsgi.py
+│   ├── manage.py
+│   └── polls
+│       ├── __init__.py
+│       ├── admin.py
+│       ├── apps.py
+│       ├── migrations
+│       │   ├── 0001_initial.py
+│       │   └── __init__.py
+│       ├── models.py
+│       ├── serializers.py
+│       ├── templates
+│       │   └── polls
+│       │       ├── detail.html
+│       │       ├── index.html
+│       │       └── results.html
+│       ├── tests.py
+│       ├── urls.py
+│       └── views.py
+└── requirements.txt
+```
+</aside>
+
+Pip install [gunicorn](https://gunicorn.org/), [whitenoise](https://github.com/evansd/whitenoise), [dj-database-url](https://github.com/jazzband/dj-database-url/), and [psycopg2-binary](https://github.com/psycopg/psycopg2).
+
+```bash
+pip install gunicorn whitenoise dj-database-url psycopg2-binary
+# gunicorn is a production level HTTP Server library
+# whitenoise is a static file hosting middleware library
+# dj-database-url is a library used to format the database url provided by HEROKU to be formatted for Django
+# psycopg2-binary is a database adapter library
+```
+
+Save the new python requirements into the *requirements.txt* file.
+
+```bash
+pip freeze >| requirements.txt
+```
+
+`requirements.txt` must be in the root of your repo for Heroku to detect your project as a Python/Django project!
+
+<aside markdown="block" class="option1">
+Create a new file named *Procfile* for Heroku applications. The file shall have following contents:
+
+```text
+web: gunicorn lab3.wsgi
+```
+</aside>
+
+<aside markdown="block" class="option2">
+If your Django PROJECT (not app) is in a subfolder like `lab3`, then you will need to write something like:
+
+```text
+web: gunicorn lab3.wsgi --chdir lab3
+```
+</aside>
+
+Within *settings.py*, add/edit the following statements:
+
+```python
+# Update this variable
+ALLOWED_HOSTS = ["*"]
+
+# Add at the bottom of the file
+STATIC_ROOT = BASE_DIR / "staticfiles" 
+STATIC_URL = "/static/"
+```
+
+and then edit the `MIDDLEWARE` list to have `whitenoise.middleware.WhiteNoiseMiddleware` right after `django.middleware.security.SecurityMiddleware`:
 
 ```python
 MIDDLEWARE = [
+    # ...
     "django.middleware.security.SecurityMiddleware",
-    "django.contrib.sessions.middleware.SessionMiddleware",
-    ...
+    "whitenoise.middleware.WhiteNoiseMiddleware",
+    # ...
 ]
 ```
 
-### Docker
+### Deploying our Django Application to Heroku
 
-Docker is a platform for developers and sysadmins to develop, deploy, and run applications with containers. The use of Linux containers to deploy applications is called containerization. Containers are not new, but their use for easily deploying applications is.
+First, [create an app](https://dashboard.heroku.com/new-app) on your Heroku dashboard. Keep in mind that a Heroku app is different from a Django app.
 
-The first thing you need to do is to structure your project such that the django app is located inside of a folder called `app`. This is because we will be copying the contents of the `app` folder into the docker container.
+Commit your files and deploy the application using a the heroku command line tool. See [their article on how to do this](https://devcenter.heroku.com/articles/git). Follow the instructions for an existing app, not a new app. Use `heroku git:remote`, **NOT** `heroku create`.
+If you used `heroku create`, please see [this stackoverflow question](https://stackoverflow.com/questions/50421071/git-i-made-a-repository-inside-a-repository-and-now-i-just-want-the-one-big-rep) about how to return to a single repository.
 
-Your folder structure should look like this:
+You should have a heroku app. You should see it if you run the `heroku list` command. **In the following, `APPNAME` refers to this heroku app's name.**
 
-```bash
-root-folder
-├── app
-│   ├── manage.py
-│   ├── lab4
-│   │   ├── __init__.py
-│   │   ├── asgi.py
-│   │   ├── settings.py
-│   │   ├── urls.py
-│   │   └── wsgi.py
-│   ├── polls(folder)
-│   ├── manage.py
-│   └── requirements.txt
-```
+### Using a Postgres Database on Heroku
 
-We will define our own container using a `Dockerfile`. The `Dockerfile` is a text document that contains commands to assemble an image. 
-
-Create a file called `Dockerfile` in the `./root-folder/app/` folder of your project. Add the following content to the file:
-
-```Dockerfile
-# Use an official Python runtime as a base image
-FROM python:3.12-alpine
-
-# Sets the current working directory to be `/app`
-WORKDIR /app
-
-# Prevents Python from writing pyc and pycache files to disc
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONUNBUFFERED 1
-
-# install dependencies
-RUN pip install --upgrade pip
-COPY ./requirements.txt .
-RUN pip install -r requirements.txt
-
-COPY . .
-```
-
-To control and use the image generated by the `Dockerfile`, we will use a `compose.yml` file. This file will define the services that make up your app. Lets start by defining a basic django service.
-
-Create a file called `compose.yml` in the `./root-folder/` folder of your project. Add the following content to the file:
-
-```yml
----
-services:
-  pollsapp:
-    image: pollsapp:latest
-    build: ./app
-    command: python manage.py runserver 0.0.0.0:8000
-    ports:
-      - "8000:8000"
-```
-
-The `compose.yml` file defines a service called `pollsapp`. The `image` key specifies the name of the image to use. The `build` key specifies the location of the `Dockerfile` to use. The `command` key specifies the command to run when the container starts. The `ports` key specifies the ports to expose.
-
-To build the image, run the following command from the root directory
+Heroku provides additional services in addition to project hosting. In this case, we will need to add a postgresql database to our app.
 
 ```bash
-docker compose build
+heroku addons:create heroku-postgresql:essential-0 --app APPNAME
 ```
 
-To run the container, run the following command from the root directory
+You can manage your essentials-0 postgres on your heroku dashboard under the resources section > add-ons.
+<br><img id="access-panel" alt="access panel" src="{attach}postgres-add-on.png" style="width: 100%;">
+
+Check that heroku is configuring the database: (You may need to wait a bit for the add-on to be installed)
 
 ```bash
-docker compose up
+heroku run "env" --app APPNAME
 ```
 
-You should get an error since the database is not set up. To fix this, we will add a `postgres` service to the `compose.yml` file.
+You should get an output like that contains a line that starts with `DATABASE_URL=postgres://` followed by a username and a password.
 
-### Adding the Postgres Database Service
-
-Modify the `compose.yml` file to include the `postgres` service:
-
-```yml
----
-services:
-  pollsapp:
-    image: pollsapp:latest
-    build: ./app
-    command: python manage.py runserver 0.0.0.0:8000
-    ports:
-      - "8000:8000"
-    environment:
-      - DB_HOST=postgres
-      - DB_NAME=hello_django
-      - DB_USER=hello_django
-      - DB_PASS=hello_django
-      - DB_PORT=5432
-      - DB_ENGINE=django.db.backends.postgresql
-    depends_on:
-      - postgres
-
-  postgres:
-    image: postgres:15
-    volumes:
-      - postgres_data:/var/lib/postgresql/data/
-    environment:
-      - POSTGRES_USER=hello_django
-      - POSTGRES_PASSWORD=hello_django
-      - POSTGRES_DB=hello_django
-
-volumes:
-  postgres_data:
-```
-
-We have added a number of environment variables to the `pollsapp` service. These environment variables are used to setup the database connection.
-
-The `db` service specifies the `postgres:15` image to use. The `volumes` key specifies the location of the database data. The `environment` key specifies the environment variables to set. By creating a `postgres_data` volume, we are able to persist the data even if the container is destroyed. The `depends_on` key specifies that the `pollsapp` service depends on the `db` service.
-
-Update the `DATABASES` dictionary in the `./root-folder/app/lab4/settings.py` file to use the environment variables:
+We now need to update our code to support saving data on Heroku using this environment variable. Edit `settings.py`:
 
 ```python
+# at the very top of the file
 import os
+import dj_database_url
 
-DATABASES = {
-    "default": {
-        "ENGINE": os.environ.get("DB_ENGINE", "django.db.backends.sqlite3"),
-        "NAME": os.environ.get("DB_DATABASE", BASE_DIR / "db.sqlite3"),
-        "USER": os.environ.get("DB_USER", "user"),
-        "PASSWORD": os.environ.get("DB_PASSWORD", "password"),
-        "HOST": os.environ.get("DB_HOST", "postgres"),
-        "PORT": os.environ.get("DB_PORT", "5432"),
+# ...
+
+# Replace the old DATABASES variable declaration with this if statement
+
+if os.environ.get("DATABASE_URL") != None:
+    # Running on Heroku
+    DATABASES = {
+        "default": dj_database_url.config(
+            conn_max_age=600,
+            conn_health_checks=True,
+            ssl_require=True
+        )
     }
-}
+else:
+    # Running locally.
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "db.sqlite3",
+        }
+    }
 ```
 
-Re-build the images using the `docker compose build` command and run the containers using the `docker compose up` command. There should be no errors on the terminal. If so, open a new terminal and connect to your development envirnoment. In this new terminal we will run the migrations using the following command:
+Commit your files and deploy the application again using the heroku command line tool.
+
+Once it is deployed, check that django is now using your heroku postgres database:
+
+<aside markdown="block" class="option1">
+```bash
+# If your django project is your git repo root
+heroku run "python3 manage.py diffsettings" --app APPNAME
+```
+</aside>
+<aside markdown="block" class="option2">
+```bash
+# If your django project is in a folder
+heroku run "python3 lab3/manage.py diffsettings" --app APPNAME
+```
+</aside>
+
+
+The output should contain a line like this that says `'default'` and has `'ENGINE': 'django.db.backends.postgresql'`.
+
+```
+DATABASES = {'default': {'NAME': 'random letters', 'USER': 'random letters', 'PASSWORD': 'big hex number', 'HOST': 'something.amazonaws.com', 'PORT': 5432, 'CONN_MAX_AGE': 600, 'CONN_HEALTH_CHECKS': False, 'ENGINE': 'django.db.backends.postgresql', 'OPTIONS': {'sslmode': 'require'}, 'ATOMIC_REQUESTS': False, 'AUTOCOMMIT': True, 'TIME_ZONE': None, 'TEST': {'CHARSET': None, 'COLLATION': None, 'MIGRATE': True, 'MIRROR': None, 'NAME': None}}}
+```
+
+If it contains `sqlite3`, something is wrong. Please check that you followed the steps correctly.
+
+Run your migrations, create a Superuser, and ensure your application functionality works.
+
+<aside markdown="block" class="option1">
 
 ```bash
-docker compose exec pollsapp python manage.py migrate --noinput
+heroku run "python manage.py migrate" --app APPNAME
+heroku run "python manage.py createsuperuser" --app APPNAME
 ```
 
-You should see a number of Migrations, all with """OK""" at the end. If you see any errors, please check the previous steps.
+</aside>
 
-You can also add a superuser to the database using the following command:
+<aside markdown="block" class="option2">
+If your Django project is in a folder in your repo like `lab3`, you will need something like:
 
 ```bash
-docker compose exec pollsapp python manage.py createsuperuser
+heroku run "python lab3/manage.py migrate" --app APPNAME
+heroku run "python lab3/manage.py createsuperuser" --app APPNAME
+```
+</aside>
+
+After this if you select your postgres database in the [Heroku dataclips interface](https://data.heroku.com/dataclips/create), you should see your polls_question and poll_choice tables.
+
+Go to `/polls` on your Heroku deployed site, you should be able to use the Polls app from Heroku. 
+
+Note: Please make sure that the Heroku app uses Postgres as the backend database. If you created the Heroku app through Git integration, this should be a default setting.
+
+You can verify the backend in use by login into the dashboard of the Heroku app: [https://dashboard.heroku.com/apps/APP_NAME](https://dashboard.heroku.com/apps/APP_NAME), then click the `Resources` tab, you should see `Heroku Postgres` under the `Add-ons` Section.
+
+If you try to create the Heroku app through the Heroku webpage, you can follow the below instructions to enable Postgres.
+[https://www.geeksforgeeks.org/deploying-django-app-on-heroku-with-postgres-as-backend/](https://www.geeksforgeeks.org/deploying-django-app-on-heroku-with-postgres-as-backend/)
+
+### Checking your Heroku app
+
+You can use the `heroku open --app APPNAME` command to open your Heroku app in a web browser. 
+
+* <div class="warning">You **must** do this to help us mark your work:</div> Add your apps hostname, cname, and ip address to the README.md file in your git repo. 
+    * First get your heroku apps hostname, it will look something like `example-app-1234567890ab.herokuapp.com`.
+    * Then get an IP address for it using the `nslookup` command and a public dns server not controlled by the University.
+        * This will look something like `nslookup example-app-1234567890ab.herokuapp.com 1.1.1.1`.
+            * The second argument is the DNS server's IP address. You could also use:
+                * `nslookup example-app-1234567890ab.herokuapp.com 8.8.8.8`
+                * `nslookup example-app-1234567890ab.herokuapp.com 9.9.9.9`
+                    * Or any other [public DNS server](https://duckduckgo.com/?t=ffab&q=public+dns+servers&ia=answer&iax=answer). `1.1.1.1` `8.8.8.8` and `9.9.9.9` are just easy to remember!
+    * Read the output of nslookup, it will say something like:
+        * `example-app-1234567890ab.herokuapp.com  canonical name = ie02.ingress.herokuapp.com.`
+        * `ie02.ingress.herokuapp.com`
+        * `Address: 46.137.15.86`
+    * Sometimes it doesn't have CNAME, this is fine:
+        * `Name:   lab3test-fbb81150e720.herokuapp.com`
+        * `Address: 34.201.81.34`
+        * In this case, write "none" for the cname.
+    * Write your app's hostname, cname, and ip address to the README.md in your git repo.
+    * If it reports multiple addresses, you can list them all.
+* Make sure you can use the admin panel on Heroku from your web browser.
+    * Hint: shut down your localhost server if it's running to make sure you're not connecting to the one on your computer by accident!
+    * Use the admin panel to add a poll.
+* Make sure you can use the polls app on Heroku from your web browser.
+* Make sure your Heroku app remembers the results of your polls and your superuser login!
+    * If your Heroku is not configured properly to use PostgreSQL it will forget them randomly! (somewhere between 0 and 24 hours.)
+
+For example: 
+
+```txt
+PS C:\Users\hazel> nslookup dango-5698ce021340.herokuapp.com
+Server:  node-1w7jra22rv3jbpxebh1362sqp.ipv6.telus.net
+Address:  2001:56a:f38b:500::1
+
+Non-authoritative answer:
+Name:    dango-5698ce021340.herokuapp.com
+Addresses:  54.224.34.30
+          54.243.129.215
+          34.201.81.34
+          54.208.186.182
+```
+or
+```txt
+(venv) hazelcam@Roxanne:~$ host dango-5698ce021340.herokuapp.com
+dango-5698ce021340.herokuapp.com has address 54.243.129.215
+dango-5698ce021340.herokuapp.com has address 54.224.34.30
+dango-5698ce021340.herokuapp.com has address 34.201.81.34
+dango-5698ce021340.herokuapp.com has address 54.208.186.182
 ```
 
-Allowing you to insert questions into the database and test your application.
+* In the example above, I can list all 4 addresses: `54.224.34.30`, `54.224.34.30`, `34.201.81.34`, and `54.208.186.182` in my `README.md`.
 
-### Adding Gunicorn
+Then, if I'm on the UWS firewall, I could also add all four addresses to my `hosts` file, to defeat the annoying UWS firewall:
 
-To use gunicorn instead of the development server provided by django, we need to change the command in the `compose.yml` file. 
+```hosts
+127.0.0.1       localhost
+127.0.1.1       Roxanne.        Roxanne
 
-Update the line: `command: python manage.py runserver 0.0.0.0:8000` to say `command: gunicorn lab4.wsgi:application --bind 0.0.0.0:8000`
+# The following lines are desirable for IPv6 capable hosts
+::1     ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
 
-After updating rebuild the images using the `docker compose build` command and run the containers using the `docker compose up` command. You should see a message saying that the server is running on `[2025-01-30 17:10:14 +0000] [1] [INFO] Starting gunicorn 23.0.0`
+# All the stuff above was already in my hosts file ^^^^
+# Don't remove the stuff that was already there!
+# ----------------
+# I added the stuff below vvvv
 
-### Reading environment variables from a file
-
-Using environment variables in the `compose.yml` or hardcoding them into python files, like `settings.py` can be unsafe. To make it easier, we can use a `.env` file to store the environment variables.
-
-in the `./root-folder` create a file called `.env` and add the following content:
-
-```env
-DB_HOST=postgres
-DB_DATABASE=hello_django
-DB_USER=hello_django
-DB_PASSWORD=hello_django
-DB_PORT=5432
-DB_ENGINE=django.db.backends.postgresql
-SECRET_KEY=some_secret_key
-DEBUG=1
-DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1]
+54.243.129.215 dango-5698ce021340.herokuapp.com
+54.224.34.30 dango-5698ce021340.herokuapp.com
+34.201.81.34 dango-5698ce021340.herokuapp.com
+54.208.186.182 dango-5698ce021340.herokuapp.com
 ```
-And update the `compose.yml` file to read the environment variables from the `.env` file by replacing the `environment` key with the `env_file` key:
-
-```yml
-  pollsapp:
-    ...
-    env_file:
-      - .env
-```
-
-In the `settings.py` file, update the variables to read from the system environment.
-
-```python
-SECRET_KEY = os.environ.get("SECRET_KEY")
-
-DEBUG = bool(os.environ.get("DEBUG", default=False))
-
-# 'DJANGO_ALLOWED_HOSTS' should be a single string of hosts with a space between each.
-# For example: 'DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1]'
-ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")
-```
-
-Similarly, create a `.env.db` file to store the database environment variables:
-
-```env
-POSTGRES_USER=hello_django
-POSTGRES_PASSWORD=hello_django
-POSTGRES_DB=hello_django
-```
-
-Replace the `environment` key in the `compose.yml` under the `postgres` service with the `env_file` key:
-
-```yml
-  postgres:
-    ...
-    env_file:
-      - .env.db
-```
-
-### Adding a Reverse Proxy Service
-
-To add a reverse proxy service, we will use the `caddy` image. Create a new service in the `compose.yml` file:
-
-```yml
-  caddy:
-    image: caddy:latest
-    container_name: caddy
-    ports:
-      - "80:80"
-      - "443:443"
-    depends_on:
-      - pollsapp
-    volumes:
-      - ./app/Caddyfile:/etc/caddy/Caddyfile
-```
-
-Create a file called `Caddyfile` in the `./root-folder/app` folder of your project. Add the following content to the file:
-
-```Caddyfile
-:80, :443 {
-    reverse_proxy pollsapp:8000
-}
-```
-
-If you would like to test the reverse proxy outside of the `localhost`, you must change the values of the `DJANGO_ALLOWED_HOSTS` in the `.env` file to include the IP address of the machine you are using or "*".
-
-```env
-DJANGO_ALLOWED_HOSTS=localhost *
-```
-
-Open your deployment in the browser and test normally.
-
-
 
 ## Phase Three: More Features
 
