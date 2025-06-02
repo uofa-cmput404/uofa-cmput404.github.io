@@ -197,16 +197,6 @@ Entries, likes, comments, follows are all sent to the inboxes of the authors tha
     * As a node admin, I want my node's UI to only communicate with my nodes web server, so I can prevent XSS.
     * As a node admin, I want the API objects (authors, entries, etc.) to be [identified by their full URL](#ids), to prevent collisions with other node's numbering schemes. *⧟ Part 3-5 only.*
 
-### malicious_user
-
-**Tests only to be performed by instructor or TAs. Students from different groups are not to disrupt other groups with such tests**
-
-   * As a **malicious_user**, I want to send a huge amount of request to a node in order to disrupt it
-   * As a **malicious_user**, I want to send non-standard input as a post
-   * As a **malicious_user**, I want to send images that are out of the specifications 
-   * As a **malicious_user**, I want to overload the system with requests
-   * As a **malicious_user**, I want to send code payloads and see whether they execute
-
 # Main Concepts
 
 * Node
@@ -1508,10 +1498,7 @@ Frontend (Selenium, etc.) tests are not required. Code coverage (line coverage, 
 - <input type="checkbox"> Your project must be compatible with Firefox browser.
     * Firefox will be used as the standard for marking. We will not check your code in multiple browsers to try to get it working.
 - <input type="checkbox"> Your project must be hosted on an approved hosting solution.
-    * Cybera (recommended)
-        * Whenever you see Heroku on the dependencies or requirements, you are allowed to use cybera and or docker to deploy your applications.
-    * Heroku (paid, has free credits but may run out quickly)
-        * Will still be allowed but expect limited support
+    * Heroku
         * An entire node of your project must only require: 
             * <input type="checkbox"> A single web "dyno"
             * <input type="checkbox"> with a single PostgreSQL add-on
