@@ -204,7 +204,7 @@ python3.12 --version # If you just installed 3.12 this should work
 
 ## Ubuntu Lab Computers
 
-You can use the lab machines if you don't want to install linux on your own computer.
+We do not recommend using the lab computers because they make the walkthroughs harder, and Wi-Fi can make them super laggy if you're not sitting at them. However, it can be a backup option if your laptop is broken or something like that!
 
 Connect to one of the lab machines at the University if needed. They are rooms CSC105, CSC121, CSC125, CSC129, CSC153, CSC159, CSC219.
 
