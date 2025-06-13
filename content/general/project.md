@@ -120,6 +120,7 @@ Entries, likes, comments, follows are all sent to the inboxes of the authors tha
     * As an author, I want a public page with my profile information, so that I can link people to it.
     * As an author, I want to my (new, public) GitHub activity to be automatically turned into public entries, so everyone can see my GitHub activity too.
     * As an author, I want my profile page to show my public entries (most recent first), so they can decide if they want to follow me.
+    * As an author, I want to be able to edit my profile: name, description, picture, and github.
     * As an author, I want to be able to use my web browser to manage my profile, so I don't have to use a clunky API.
 * Posting
     * As an author, I want to make entries, so I can share my thoughts and pictures with other local authors.
@@ -1634,17 +1635,11 @@ For this part you need:
 
 ### Submission
 
-Due 4PM on Monday. <!-- @LT-IGNORE:CONFUSION_DUE_DO@ -->
+Due 4PM. <!-- @LT-IGNORE:CONFUSION_DUE_DO@ -->
 
-Create a git tag "part1" in your production branch before 4PM and submit only the link to your tag.
+Submit only the link to the commit in the following format:
 
-* A tag is just a name for a commit, so do not create the tag until you have your final commit for part 1!
-
-Don't forget to push the tag to GitHub.
-
-Submit only the link to the tag in the following format:
-
-https://github.com/uofa-cmput404/f24-project-example-team/tree/part1
+https://github.com/uofa-cmput404/f24-project-orange/commit/8e2cac3a0c0fdd01f039ebe5269e1ee5952d9cad
 
 * Every team member must submit the link to Canvas.
 * If you don't submit the link to Canvas you will get a zero for the project part regardless of what your team gets.
@@ -1718,17 +1713,11 @@ https://github.com/uofa-cmput404/f24-project-example-team/tree/part1
 
 ### Submission
 
-Due 4PM on Monday. <!-- @LT-IGNORE:CONFUSION_DUE_DO@ -->
+Due 4PM. <!-- @LT-IGNORE:CONFUSION_DUE_DO@ -->
 
-Create a git tag "part2" in your production branch before 4PM and submit only the link to your tag.
+Submit only the link to the commit in the following format:
 
-* A tag is just a name for a commit, so do not create the tag until you have your final commit for part 2!
-
-Don't forget to push the tag to GitHub.
-
-Submit only the link to the tag in the following format:
-
-https://github.com/uofa-cmput404/f24-project-example-team/tree/part1
+https://github.com/uofa-cmput404/f24-project-orange/commit/8e2cac3a0c0fdd01f039ebe5269e1ee5952d9cad
 
 * Every team member must submit the link to Canvas.
 
@@ -1815,15 +1804,13 @@ https://github.com/uofa-cmput404/f24-project-example-team/tree/part1
 
 ### Submission
 
-Due 4PM Monday. <!-- @LT-IGNORE:CONFUSION_DUE_DO@ -->
+Due 4PM. <!-- @LT-IGNORE:CONFUSION_DUE_DO@ -->
 
-Create a git tag "part3" before 4PM and submit only the link to your tag.
+Submit only the link to the commit in the following format:
 
-Don't forget to push the tag to GitHub.
+https://github.com/uofa-cmput404/f24-project-orange/commit/8e2cac3a0c0fdd01f039ebe5269e1ee5952d9cad
 
-Submit only the link to the tag in the following format:
-
-https://github.com/uofa-cmput404/w24-project-example-team/tree/part2
+* Every team member must submit the link to Canvas.
 
 ### Marking
 
@@ -1914,15 +1901,13 @@ NOTE: For part 4, select **one** node from part 3 to act as your team's main nod
 
 ### Submission
 
-Due 4PM Monday. <!-- @LT-IGNORE:CONFUSION_DUE_DO@ -->
+Due 4PM. <!-- @LT-IGNORE:CONFUSION_DUE_DO@ -->
 
-Create a git tag "part4" before 4PM and submit only the link to your tag.
+Submit only the link to the commit in the following format:
 
-Don't forget to push the tag to GitHub.
+https://github.com/uofa-cmput404/f24-project-orange/commit/8e2cac3a0c0fdd01f039ebe5269e1ee5952d9cad
 
-Submit only the link to the tag in the following format:
-
-https://github.com/uofa-cmput404/w24-project-example-team/tree/part4
+* Every team member must submit the link to Canvas.
 
 ### Marking
 
@@ -2005,15 +1990,13 @@ https://github.com/uofa-cmput404/w24-project-example-team/tree/part4
 
 ### Submission
 
-Due 4PM Monday. <!-- @LT-IGNORE:CONFUSION_DUE_DO@ -->
+Due 4PM. <!-- @LT-IGNORE:CONFUSION_DUE_DO@ -->
 
-Create a git tag "part5" before 4PM and submit only the link to your tag.
+Submit only the link to the commit in the following format:
 
-Don't forget to push the tag to GitHub.
+https://github.com/uofa-cmput404/f24-project-orange/commit/8e2cac3a0c0fdd01f039ebe5269e1ee5952d9cad
 
-Submit only the link to the tag in the following format:
-
-https://github.com/uofa-cmput404/w24-project-example-team/tree/part5
+* Every team member must submit the link to Canvas.
 
 ### Presentation
 
