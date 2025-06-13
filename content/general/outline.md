@@ -661,7 +661,7 @@ Policy about course outlines can be found in [Course Requirements, Evaluations P
 * 2025-05-07: Fix due date of language assignment.
 * 2025-05-14: Clarify that teamwork collaboration policy is an extension of consultation collaboration policy. Other minor clarifications. Update office hour location.
 * 2025-05-21: Add link to TA office hours.
-* 2025-06-13: Update office loaction after CS department moved.
+* 2025-06-13: Update office location after CS department moved.
 
 ## Copyright
 
