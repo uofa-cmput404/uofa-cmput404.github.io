@@ -181,7 +181,7 @@ Entries, likes, comments, follows are all sent to the inboxes of the authors tha
 * node Management
     * As a node admin, images can be hosted on my node, so that my users can use them in their CommonMark entries.
     * As a node admin, I want to be able to add, modify, and delete authors, to fix problems or remove unwanted users.
-    * As a node admin, I want to OPTIONALLY be able to allow users to sign up but require my OK to finally be on my node, so that I can prevent unwanted users spambots.
+    * As a node admin, I want to be able to allow users to sign-up but require my approval to complete sign-up and use my node, so that I can prevent unwanted users and spambots.
     * As a node admin, I want to be able to connect to remote nodes by entering only the URL of the remote node, a username, and a password, so that I don't have to edit code. *⧟ Part 3-5 only.*
     * As a node admin, I want a RESTful interface for most operations, so that I can connect to other nodes and allow my users to use alternate clients other than the web frontend.
     * As a node admin, I want to be able to add nodes to share with. *⧟ Part 3-5 only.*
