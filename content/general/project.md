@@ -164,8 +164,8 @@ Entries, likes, comments, follows are all sent to the inboxes of the authors tha
         * Note: this should include all local public entries and all public entries received in any inbox.
 
 * Following/Friends
-    * As an author, I want to follow local authors, so that I can see their public entries.
-    * As an author, I want to follow remote authors, so that I can see their public entries. *⧟ Part 3-5 only.*
+    * As an author, I want to follow local authors, so that I can see their entries.
+    * As an author, I want to follow remote authors, so that I can see their entries. *⧟ Part 3-5 only.*
     * As an author, I want to be able to approve or deny other authors following me, so that I don't get followed by people I don't like.
     * As an author, I want to know if I have "follow requests," so I can approve them.
     * As an author, I want to unfollow authors I am following, so that I don't have to see their entries anymore.
