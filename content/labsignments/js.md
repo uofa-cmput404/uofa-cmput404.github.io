@@ -81,7 +81,7 @@ Use CSS to make each area separate.
 
 Hints:
 
-* Semantic HTML elements like `<section>` and `<h2>` are approprate for for each part of page!
+* Semantic HTML elements like `<section>` and `<h2>` are appropriate for for each part of page!
 
 ## Clock
 
