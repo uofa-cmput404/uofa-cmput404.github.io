@@ -1889,9 +1889,9 @@ https://github.com/uofa-cmput404/f24-project-orange/commit/8e2cac3a0c0fdd01f039e
 
 NOTE: For part 4, select **one** node from part 3 to act as your team's main node. That is, your team should have one single node deployed on Heroku which meets the following requirements. 
 
-* Node is at least partially working with nodes from 4 other teams.
-* Node must be fully communicating and working with nodes from 2 other teams.
-    * These count toward the 4.
+* Node is fully coordinating (all user stories) with nodes from **two** other teams.
+* Node is partially (but still demonstrably some user stories) coordinating with nodes from **one** other team.
+* Node is coordinating with least **three** other teams. 2+1=3
 * All nodes must be able coordinating. All user stories involving multiple authors must work in both situations:
     * All authors on the same node
     * Authors on different nodes
@@ -1913,8 +1913,8 @@ https://github.com/uofa-cmput404/f24-project-orange/commit/8e2cac3a0c0fdd01f039e
 
 * Everything / all user stories / almost all user stories, 3/4 user stories, etc. includes **all user stories that could involve two nodes, working with at least two other team's nodes!**
 * Excellent
-    * **Web Service Coordination:** Team's node coordinates with **two** other team's nodes successfully. All user stories that could involve two nodes work node-to-node with **two** other teams nodes.
-    * **Inter-Team Coordination:** Significant progress in getting node coordinating with **four** other teams nodes. (Four includes the two teams above.)
+    * **Web Service Coordination:** Team's node **fully** coordinates with **two** other team's nodes successfully. All user stories that could involve two nodes work node-to-node with **two** other teams nodes.
+    * **Inter-Team Coordination:** Demonstrable progress in getting node coordinating with **three** other teams nodes. (Includes the two teams above.)
     * Addressing Feedback: TA's suggestions were implemented, TA approves of implementation set.
     * User Stories UI: All the user stories are usable using the UI. 
     * User Stories API: All the user stories with a relevant API are usable using the API. Adheres to the specification.
@@ -1926,7 +1926,7 @@ https://github.com/uofa-cmput404/f24-project-orange/commit/8e2cac3a0c0fdd01f039e
     * Standards & Code Style: Adheres to standards, code is well organized and clean. Code is easy to read. Comments add to code readablility when necessary. Code meets Python, JS, HTML and CS style guides. Excellent indentation, naming. Code units only do one thing. It's easy to find the code responsible for handling any of the user stories.
 * Good
     * **Web Service Coordination:** Team's node coordinates with **two** other team's nodes successfully. Almost all interoperation requirements met. Only some minor snags. Almost all user stories that could involve two nodes work node-to-node between this team and two other team's nodes.
-    * **Inter-Team Coordination:** Evidence of progress working with **four** other teams nodes. (Four includes the two teams above.)
+    * **Inter-Team Coordination:** Evidence of progress working with **three** other teams nodes. (Three includes the two teams above.)
     * Addressing Feedback: Almost all TA's suggestions were implemented, TA approves of implementation set.
     * User Stories UI: Almost all user stories are usable using the UI.
     * User Stories API: Almost all user stories with a relevant API are usable using the API. Adheres to the specification.
@@ -1937,7 +1937,7 @@ https://github.com/uofa-cmput404/f24-project-orange/commit/8e2cac3a0c0fdd01f039e
     * Web Service API Documentation: Well documented, medium detail. A few things are unclear. Has example requests and responses from your API for every use of the API and almost all the user stories. If using automated documentation generation, there is extra documentation added on top of that.
     * Standards & Code Style: Adheres to standards, code is well organized and clean. Missing comments. Some minor issues with code style. Code units only do one thing. It takes a little digging sometimes to find the code responsible for a user story.
 * Satisfactory
-    * **Web Service Coordination:** Team's node coordinates with **two** other team's nodes successfully.  Most interoperation requirements met. Few snags. 3/4ths of user stories that could involve two nodes work node-to-node with **two** other teams.
+    * **Web Service Coordination:** Team's node coordinates with **one** other team's nodes successfully.  Most interoperation requirements met. Few snags. 3/4ths of user stories that could involve two nodes work node-to-node with **one** other teams.
     * **Inter-Team Coordination:** Evidence of progress working with **three** other teams nodes. (Three includes the two teams above.)
     * Addressing Feedback: 3/4ths of TA's suggestions were implemented, TA approves of most of the changes made to address feedback.
     * User Stories UI: At least 3/4ths of the user stories are usable using the UI.
@@ -2038,8 +2038,8 @@ During the other team's presentations:
 * Excellent
     * **Presentation:** Presentation within time, shows excellent teamwork, promotes the application, uses the live application to show functionality.
     * **Video**: Video is well presented and not boring, less than 2 minutes. It is fun promotes your project. Makes people want to try your app out. Posted to the discussion forum thread to share it with everyone in the class.
-    * Web Service Coordination: Team's node coordinates with **three** other team's nodes successfully. All user stories that could involve two nodes work node-to-node with **three** other teams nodes.
-    * Inter-Team Coordination: Significant progress in getting node coordinating with **four** other teams nodes. (Four includes the two teams above.)
+    * Web Service Coordination: Team's node coordinates with **two** other team's nodes successfully. All user stories that could involve two nodes work node-to-node with **two** other teams nodes.
+    * Inter-Team Coordination: Significant progress in getting node coordinating with **three** other teams nodes. (Four includes the two teams above.)
     * Addressing Feedback: TA's suggestions were implemented, TA approves of implementation set.
     * User Stories UI: All the user stories are usable using the UI. 
     * User Stories API: All the user stories with a relevant API are usable using the API. Adheres to the specification.
@@ -2052,8 +2052,8 @@ During the other team's presentations:
 * Good
     * **Presentation:** Presentation within time, some teamwork, promotes the application, uses the live application to show functionality, a couple rough spots.
     * **Video**: Video is well presented and not boring, less than 2 minutes. Contains details author would not care about. Posted to the discussion forum thread to share it with everyone in the class.
-    * Web Service Coordination: Team's node coordinates with **three** other team's nodes successfully. Almost all interoperation requirements met. Only some minor snags. Almost all user stories that could involve two nodes work node-to-node between this team and two other team's nodes.
-    * Inter-Team Coordination: Evidence of progress working with **four** other teams nodes. (Four includes the two teams above.)
+    * Web Service Coordination: Team's node coordinates with **two** other team's nodes successfully. Almost all interoperation requirements met. Only some minor snags. Almost all user stories that could involve two nodes work node-to-node between this team and two other team's nodes.
+    * Inter-Team Coordination: Evidence of progress working with **three** other teams nodes. (Includes the two teams above.)
     * Addressing Feedback: Almost all TA's suggestions were implemented, TA approves of implementation set.
     * User Stories UI: Almost all user stories are usable using the UI.
     * User Stories API: Almost all user stories with a relevant API are usable using the API. Adheres to the specification.
@@ -2066,7 +2066,7 @@ During the other team's presentations:
 * Satisfactory
     * **Presentation**: Presentation nearly within time, some teamwork, reasonable presentation. Uses the live application to show functionality, a few snags.
     * **Video**: Video less than 2 minutes. Video shows the functionality of the app.
-    * Web Service Coordination: Team's node coordinates with **two** other team's nodes successfully.  Most interoperation requirements met. Few snags. 3/4ths of user stories that could involve two nodes work node-to-node with **two** other teams.
+    * Web Service Coordination: Team's node coordinates with **one** other team's nodes successfully.  Most interoperation requirements met. Few snags. 3/4ths of user stories that could involve two nodes work node-to-node with **one** other teams.
     * Inter-Team Coordination: Evidence of progress working with **three** other teams nodes. (Three includes the two teams above.)
     * Addressing Feedback: 3/4ths of TA's suggestions were implemented, TA approves of most of the changes made to address feedback.
     * User Stories UI: At least 3/4ths of the user stories are usable using the UI.
