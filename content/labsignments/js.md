@@ -127,7 +127,7 @@ Every time `Ticker` notifies the `Clock`, use JS to update the element in the DO
 * Your CSS and HTML must pass validation: <https://validator.w3.org/nu/>
 * Your JS, CSS, and HTML must not create any warnings or errors in Firefox Developer Edition.
 * Your HTML should use the most appropriate semantic elements.
-    * Your countdown should use a `datetime-local` input, or seperate `date` and `time` inputs.
+    * Your countdown should use a `datetime-local` input, or separate `date` and `time` inputs.
     * Your timer should use checkbox or radio buttons to allow pausing and unpausing.
     * Inputs should be appropriately labelled with label elements. [More info]()
     * It should be **obvious** what each input does.
