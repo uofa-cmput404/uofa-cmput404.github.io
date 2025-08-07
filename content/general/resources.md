@@ -9,6 +9,10 @@ summary: Resources, Reference Materials, Notes, Videos, Slides
 
 [TOC]
 
+# Practice Exams & Review Materials
+
+* Practice Exams and Review Materials are available on Canvas. Do not share or upload these.
+
 # Jihoon's Unofficial Class Notes D&D Style
 
 * [Unofficial Class Notes D&D Style](https://github.com/jihoonog/School-Notes-Public/tree/master/CMPUT-404)
