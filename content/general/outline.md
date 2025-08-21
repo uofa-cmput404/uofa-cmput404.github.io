@@ -1,5 +1,5 @@
-Title: Course Outline Spring-Summer 2025
-date: 2025-05-05
+Title: Course Outline Fall 2025
+date: 2025-09-01
 tags: outline, policy, grading, contact
 authors: Hazel Victoria Campbell
 status: published
