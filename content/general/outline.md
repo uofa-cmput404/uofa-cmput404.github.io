@@ -75,7 +75,7 @@ summary: Lecture, Labs, Contact Information, Lecturer, Teaching Assistants, Cour
 
 Course outlines (Syllabus) have moved to centralized UA syllabus repository. 
 
-<h4 id="fall2025">CMPUT 404 Fall 2025 <a href="https://ualberta.simplesyllabusca.com/doc/1v8nqck3q/Fall-2025-CMPUT-404-A1-%2854143%29-WEB-APPLICATIONS-AND-ARCHITECT?mode=view">UAlberta Syllabus Page </a> 
+<h4 id="fall2025">CMPUT 404 Fall 2025 <a href="https://ualberta.simplesyllabusca.com/doc/1v8nqck3q/Fall-2025-CMPUT-404-A1-%2854143%29-WEB-APPLICATIONS-AND-ARCHITECT?mode=view">UAlberta Syllabus Page </a>&#32;
 <a href="https://ualberta.simplesyllabusca.com/api2/doc-pdf/1v8nqck3q/Fall-2025-CMPUT-404-A1-%2854143%29-WEB-APPLICATIONS-AND-ARCHITECT.pdf?locale=en-US">PDF</a></h4>
 
 * [Old outlines](/tag/outline.html)
