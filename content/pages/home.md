@@ -22,28 +22,36 @@ save_as: index.html
 
 # Schedule 
 
-**You need to be logged in as your University of Alberta CCID/email account to view it.** The course schedule is updated in this [Google Sheet](https://docs.google.com/spreadsheets/d/1XEisEzQFf44S8bIOuceulka1w4y3ZN1HVs1z0UF3UU4/edit?gid=0#gid=0). Please remember that this is only a plan, and sometimes plans change.
+**You need to be logged in as your University of Alberta CCID/email account to view it.** The course schedule is updated in this [Google Sheet](https://docs.google.com/spreadsheets/d/1qjSNAwIlmFmAaogb9uTVkmxUSA09-rbSvjK8eeu5gn8/edit?usp=sharing). Please remember that this is only a plan, and sometimes plans change.
 
 # Canvas
 
-[The current Canvas page is here.](https://canvas.ualberta.ca/courses/22272)
+[The current Canvas page is here.](https://canvas.ualberta.ca/courses/28542)
 
 * Grades
 * Submissions
+* TA Hours
 * [Discussion Forum]({filename}/general/help.md#discussion-forum)
-
+* Final Review Materials
 
 ## News & Notices
 
-[The latest news and notices for students.](https://canvas.ualberta.ca/courses/22272/announcements) Check this regularly!
+[The latest news and notices for students.](https://canvas.ualberta.ca/courses/28542/announcements) Check this regularly!
 
 ## Lecture Zoom
 
-* You MUST be logged into your University of Alberta account to view the Zoom! 
+* You MUST be logged into your University of Alberta account to view the Zoom!
+* Zoom is provided as a convenience only. You are required to be in Edmonton and attend lectures lives.
+* You will be required to attend in person for some lectures, all labs, all presentations, and all exams.
+* You will be required to attend in person, on short notice, in the case of any technical difficulties with Zoom.
+* You must be in Edmonton to take this course.
+* You must attend Zoom with your real name (as displayed in Canvas).
 * [How to use Zoom for Students](https://support.eclass.ualberta.ca/index.php?/Knowledgebase/Article/View/422/23/using-zoom-for-students)
-* [The lecture zoom is connected through Canvas.](https://canvas.ualberta.ca/courses/22272/external_tools/282)
-* [Direct Link](https://ualberta-ca.zoom.us/s/98051504452)
+* [The lecture zoom is connected through Canvas.](https://canvas.ualberta.ca/courses/28542/external_tools/282)
+* [Direct Link](https://ualberta-ca.zoom.us/j/94338035500)
 
 # More Stuff
+
+
 
 [All pages]({index})

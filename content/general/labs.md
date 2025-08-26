@@ -13,7 +13,7 @@ summary: Lab Procedure, Lab Assignments, Lab Marking
 
 # Lab Procedure
 
-* [C2 Thursday Signup Sheets](https://drive.google.com/drive/folders/18ZrTrM7RheTBpXqPu-mK_2I2zeU9-nE3?usp=sharing)
+* [Walkthrough Signup Sheets](https://drive.google.com/drive/folders/1FCUEkUw6iT2nE_DYFTshQFrylq8fZwck?usp=drive_link)
 
 * You **must walk through your individual lab work to a TA** during the lab to receive marks.
     * If you submit on Canvas but don't walk through your code with a TA you will get a zero.
