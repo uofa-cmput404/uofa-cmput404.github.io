@@ -108,7 +108,7 @@ TAs are not allowed to change your marks. If you disagree with your marks, [cont
 * Please be polite and courteous.
 * TAs will not re-grade your work or deal with extensions, excuses, illness, etc.
 
-TA office hours are [on Canvas](https://canvas.ualberta.ca/courses/22272/pages/tas-and-office-hours).
+TA office hours are [on Canvas](https://canvas.ualberta.ca/courses/28542/pages/tas-and-office-hours).
 
 # Contact Instructor
 
