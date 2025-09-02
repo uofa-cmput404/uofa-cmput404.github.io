@@ -15,7 +15,7 @@ Ask questions well before Assignment due dates. Although you have nothing to los
 
 Please be polite, courteous, and professional. Follow the [online etiquette guidelines]({attach}online_etiquette_guidelines.pdf).
 
-We will not tolerate harassment, bullying, threats, intimidation, insults, lying, or creating any kind of environment that might discourage participation. Any such behaviour is a violation of the [Student Conduct Policy](https://policiesonline.ualberta.ca/PoliciesProcedures/Pages/DispPol.aspx?PID=190&s=https://policiesonline.ualberta.ca/PoliciesProcedures/Pages/Academic.aspx) and subject to sanctions. Plagiarism, cheating, and lying are also violations of the [Student Academic Integrity Policy](https://policiesonline.ualberta.ca/PoliciesProcedures/Pages/DispPol.aspx?PID=193&s=https://policiesonline.ualberta.ca/PoliciesProcedures/Pages/Academic.aspx), and will be subject to sanctions.
+We will not tolerate harassment, bullying, threats, intimidation, insults, lying, or creating any kind of environment that might discourage participation. Any such behaviour is a violation of the [Student Conduct Policy](https://www.ualberta.ca/en/alfresco/uappol/academic/student-conduct/policy/student-conduct-policy.pdf) and subject to sanctions. Plagiarism, cheating, and lying are also violations of the [Student Academic Integrity Policy](https://www.ualberta.ca/en/alfresco/uappol/academic/student-academic-integrity/policy/student-academic-integrity-policy.pdf), and will be subject to sanctions.
 
 # Where to get help?
 

@@ -13,7 +13,7 @@ summary: Grading System, Percentages and Letters, Breakpoint Calculation
 
 # Grading System: Percentages and Letters
 
-We do not use pre-defined percentages of your final mark to compute your final grade, but instead use our judgement of how your final percentage indicates the level of mastery in the table below for an A, B, C, D+. This is done after the final exam. 
+We do not use pre-defined percentages of your final mark to compute your final grade, but instead use our judgment of how your final percentage indicates the level of mastery in the table below for an A, B, C, D+. This is done after the final exam. 
 
 This is the standard system in use by most Computing Science courses at the University of Alberta. However, it may not be what you are used to from other institutions.
 The department of Computing Science believes this produces a fair evaluation and our extensive experience supports this.

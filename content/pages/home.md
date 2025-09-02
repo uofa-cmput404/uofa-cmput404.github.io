@@ -50,8 +50,3 @@ save_as: index.html
 * [The lecture zoom is connected through Canvas.](https://canvas.ualberta.ca/courses/28542/external_tools/282)
 * [Direct Link](https://ualberta-ca.zoom.us/j/94338035500)
 
-# More Stuff
-
-
-
-[All pages]({index})
