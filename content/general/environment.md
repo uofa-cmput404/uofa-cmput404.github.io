@@ -206,15 +206,51 @@ python3.12 --version # If you just installed 3.12 this should work
 
 We do not recommend using the lab computers because they make the walkthroughs harder, and Wi-Fi can make them super laggy if you're not sitting at them. However, it can be a backup option if your laptop is broken or something like that!
 
-Connect to one of the lab machines at the University if needed. They are rooms CSC105, CSC121, CSC125, CSC129, CSC153, CSC159, CSC219.
+Connect to one of the lab machines at the University if needed. 
 
-They are named like `ub01.cs.ualberta.ca`, `uc02.cs.ualberta.ca`, all the way up to `ui22.cs.ualberta.ca` and `ohaton.cs.ualberta.ca`. There is a full list of them here: <https://www.ualberta.ca/en/computing-science/resources/technical-support/computing-resources/x2go-quick-guide.html#cs-undergrad-lab-hosts>
+UCommons 2030 : `ucomm-2030-w01` - `ucomm-2030-w04`
+UCommons 2070 : `ucomm-2070-w00` - `ucomm-2070-w24`
+UCommons 2086 : `ucomm-2086-w00` - `ucomm-2086-w33`
+UCommons 2130 : `ucomm-2130-w00` - `ucomm-2130-w25`
+UCommons 2140 : `ucomm-2140-w00` - `ucomm-2140-w25`
+UCommons 3130 : `ucomm-3130-w00` - `ucomm-3130-w23`
+UCommons 3140 : `ucomm-3140-w00` - `ucomm-3140-w21`
+
+You may need to connect to the University VPN first, or connect through `ohaton.cs.ualberta.ca`. There is a full list of them here: <https://www.ualberta.ca/en/computing-science/resources/technical-support/computing-resources/x2go-quick-guide.html#cs-undergrad-lab-hosts>
 
 `ssh yourccid@ohaton.cs.ualberta.ca`
 
 For example:
+```
+~$ ssh hazelcam@ohaton.cs.ualberta.ca
+The authenticity of host 'ohaton.cs.ualberta.ca (129.128.243.70)' can't be established.
+ED25519 key fingerprint is SHA256:SeHT9JqaLhpEpec6WXLYs9P1L3P75AWNav4e7b8GmpU.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added 'ohaton.cs.ualberta.ca' (ED25519) to the list of known hosts.
+hazelcam@ohaton.cs.ualberta.ca's password:
+Welcome to Ubuntu 20.04.6 LTS (GNU/Linux 5.15.0-139-generic x86_64)
 
-`ssh hazelcam@ug15.cs.ualberta.ca`
+Department of Computing Science
+University of Alberta
+
+Unauthorized use is prohibited.
+
+Problem reports can be made using mail to ist@ualberta.ca
+or https://www.ualberta.ca/computing-science/links-and-resources/technical-support
+hazelcam@ohaton:~>ssh ucomm-2130-w03
+hazelcam@ucomm-2130-w03's password:
+Welcome to Ubuntu 20.04.6 LTS (GNU/Linux 5.15.0-139-generic x86_64)
+
+Department of Computing Science
+University of Alberta
+
+Unauthorized use is prohibited.
+
+Problem reports can be made using mail to ist@ualberta.ca
+or https://www.ualberta.ca/computing-science/links-and-resources/technical-support
+hazelcam@ucomm-2130-w03:~>
+```
 
 To quit the ssh connection to the lab machine, use the exit command or press control-D on a blank prompt. If that does not work you can force close the connection by pressing enter, then ~, then .
 

@@ -86,13 +86,11 @@ Participation?
 
 ## Question 1C
 
-Print and sign your name.
+Print and sign your name on paper and scan it, or on a tablet with a stylus if you have one. Include the scan in your submission. **If your name or your signature are missing, you will receive a zero on this assignment.**
 
 I, <span style="padding-top: 72pt;">______________________________</span> have read and understand these policies.
 
 Signature: <span style="padding-top: 72pt;">______________________________</span>
-
-If your name or your signature are missing, you will receive a zero on this assignment.
 
 # Question 2 - Comments
 
