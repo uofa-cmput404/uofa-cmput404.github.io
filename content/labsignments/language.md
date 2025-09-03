@@ -178,7 +178,6 @@ for like_object in user_likes:
     super_likes.append(SuperLike(like_object))    
 ```
 
-
 A bad comment for a function call describes that a function is being called, specifying the name of the function being called and the variable in which the result is stored.
 
 ```python
@@ -461,13 +460,13 @@ Your assignment will be marked out of 8, where 8 is flawless and 4 is half-way.
     * Major problems across many questions.
 * No Attempt (0)
     * Missing name
-    * Missing signature
+    * Missing **signature**
     * Missing answers
     * Missing citation
 
 # Appendix (sample ChatGPT questions and answers)
 
-## Bad Good Example
+## 2A Bad Good Example (ChatGPT 4o)
 
 Dr. Campbell: Generate some advanced Python code with three examples of comments: 1. bad comments. 2. mediocre comments. and 3. good comments. use at most one comment per line of code for each example. All of the comments should be about the same length.
 
@@ -499,7 +498,7 @@ def dijkstra(graph, start):  # Start Dijkstra here
 
 ---
 
-### 🟠 **Mediocre Comments**
+🟠 **Mediocre Comments**
 
 ```python
 import heapq  # Import heap queue for priority handling
@@ -525,7 +524,7 @@ def dijkstra(graph, start):  # Dijkstra's algorithm main function
 
 ---
 
-### 🟢 **Good Comments**
+🟢 **Good Comments**
 
 ```python
 import heapq  # Use heap for efficiently retrieving the closest unvisited node
@@ -551,7 +550,161 @@ def dijkstra(graph, start):  # Compute shortest paths from a start node using Di
 
 Would you like a version that highlights these differences visually, like in a table or color-coded output?
 
-## Refactor Example (ChatGPT)
+## 2A Bad Good Example (Gemini 2.5 Pro)
+
+Dr. Campbell: Generate some advanced Python code with three examples of comments: 1. bad comments. 2. mediocre comments. and 3. good comments. Use at most one comment per line of code for each example. All the comments should be about the same length.
+
+Gemini 2.5 Pro, Google, 2025-09-03, https://gemini.google.com/app/
+
+Of course. Here is advanced Python code demonstrating **bad**, **mediocre**, and **good** commenting styles, using a recursive function to calculate a number's factorial.
+
+-----
+
+Bad Comments 👎
+
+**Bad comments** are redundant and state the obvious, cluttering the code without adding any real value. They explain *what* the code is doing, which is already clear from reading the code itself.
+
+```python
+# Bad Comments Example
+
+def factorial_bad(n): # defines a new function
+    if n < 0: # checks if n is negative
+        return None # returns nothing
+    elif n == 0: # checks if n is zero
+        return 1 # returns the number one
+    else: # otherwise
+        return n * factorial_bad(n - 1) # returns n times the function
+
+# Test the function with a number
+result = factorial_bad(5) # calls the function
+print(f"The result is: {result}") # prints the final result
+```
+
+-----
+
+Mediocre Comments 🤔
+
+**Mediocre comments** are a slight improvement. They describe the purpose of the code blocks but still focus more on the *what* rather than the *why*. They lack high-level insight into the algorithm's logic or design choices.
+
+```python
+# Mediocre Comments Example
+
+def factorial_mediocre(n):
+    # Handle the invalid input case
+    if n < 0:
+        return None
+    # This is the base case for recursion
+    elif n == 0:
+        return 1
+    # This is the recursive step
+    else:
+        return n * factorial_mediocre(n - 1)
+
+# Calculate the factorial of 5
+result = factorial_mediocre(5)
+# Display the calculated factorial
+print(f"The result is: {result}")
+```
+
+-----
+
+Good Comments 👍
+
+**Good comments** explain the *why* behind the code. They clarify the algorithm's logic, justify design decisions, and explain the purpose of non-obvious code, treating the reader as an intelligent programmer who needs context, not a literal translation of the code.
+
+```python
+# Good Comments Example
+
+def factorial_good(n):
+    """Calculates the factorial of a non-negative integer using recursion."""
+    # Factorial is not defined for negative numbers in this context.
+    if n < 0:
+        return None
+    # Base case: The factorial of 0 is mathematically defined as 1.
+    elif n == 0:
+        return 1
+    # Recursive step: Apply the definition that n! = n * (n-1)!.
+    else:
+        return n * factorial_good(n - 1)
+
+# Example usage: Demonstrate the function's primary use case.
+result = factorial_good(5)
+# Formatted output for clarity to the end-user.
+print(f"The result is: {result}")
+```
+
+## 2A Bad Good Example (ChatGPT 5)
+
+Dr. Campbell: Generate some advanced Python code with three examples of comments: 1. bad comments. 2. mediocre comments. and 3. good comments. Use at most one comment per line of code for each example. All the comments should be about the same length.
+
+ChatGPT 5, OpenAI, 2025-09-03, https://chatgpt.com/share/68b8b6d4-0114-8012-aaec-36dc838f7c75
+
+Got it — here’s a single Python file that demonstrates the **same piece of advanced code** (a recursive modular exponentiation function) three times, each with **different styles of comments**: bad, mediocre, and good.
+
+Each example has **one comment per line**, and all comments are about the **same length** for a fair comparison.
+
+```python
+# Example 1: Bad comments
+def expmod_bad(base, exp, mod):
+    # function
+    if exp == 0:
+        # check
+        return 1 % mod
+    # do math
+    half = expmod_bad(base, exp // 2, mod)
+    # square
+    result = (half * half) % mod
+    # condition
+    if exp % 2 == 1:
+        # multiply
+        result = (result * base) % mod
+    # return
+    return result
+
+
+# Example 2: Mediocre comments
+def expmod_mediocre(base, exp, mod):
+    # Defines recursive modular exponentiation
+    if exp == 0:
+        # Handles the case where exponent is zero
+        return 1 % mod
+    # Compute recursive call on half exponent
+    half = expmod_mediocre(base, exp // 2, mod)
+    # Square the recursive result
+    result = (half * half) % mod
+    # If exponent is odd, adjust result
+    if exp % 2 == 1:
+        # Multiply by base when exponent is odd
+        result = (result * base) % mod
+    # Return the final computed value
+    return result
+
+
+# Example 3: Good comments
+def expmod_good(base, exp, mod):
+    # Implements fast modular exponentiation recursively
+    if exp == 0:
+        # Base case: any number^0 ≡ 1 (mod m)
+        return 1 % mod
+    # Recursively compute base^(exp//2) mod m
+    half = expmod_good(base, exp // 2, mod)
+    # Square the half-result to get base^(exp//2 * 2)
+    result = (half * half) % mod
+    # If exponent is odd, include one extra multiplication
+    if exp % 2 == 1:
+        # Correct odd exponent by multiplying once more by base
+        result = (result * base) % mod
+    # Final result: base^exp mod m
+    return result
+```
+
+👉 The **bad comments** are vague and useless.
+👉 The **mediocre comments** describe *what the code does* but just restate it.
+👉 The **good comments** explain the *reasoning and math behind the code*.
+
+Would you like me to also make a **side-by-side comparison table** showing the differences in comment quality?
+
+## 2B Comments Example (ChatGPT 4o)
 
 Dr. Campbell: add comments to the following code:
 
@@ -672,7 +825,7 @@ if __name__ == "__main__":
 
 Would you like a version of this code optimized for clarity or performance?
 
-## Refactor Example (Gemini)
+## 2B Comments Example (Gemini)
 
 Dr. Campbell: add comments to the following code:
 
@@ -920,15 +1073,443 @@ if __name__ == "__main__":
     asyncio.run(main())
 ```
 
-## Test example (ChatGPT)
+## 2B Comments Example (ChatGPT 5)
+
+Dr. Campbell: add comments to the following code:
+
+ChatGPT 5, OpenAI, 2025-09-03, https://chatgpt.com/share/68b8b7ed-c8e8-8012-97bf-3c000ca48136
+
+Here’s your code with clear, concise comments added. I’ve written them to explain **intent and reasoning**, not just restating what the code does.
+
+```python
+import asyncio
+import socket
+import random
+
+# Indexes used to extract IP address info from getaddrinfo results
+AI_ADDR_INDEX = 4
+ADDR_HOST_INDEX = 0
+
+class Hostnames(dict):
+    def __init__(self):
+        super().__init__()
+        self.tasks = {}   # Maps hostname -> asyncio Task for resolution
+        self.started = {} # Maps hostname -> timestamp when resolution started
+        self.times = {}   # Maps hostname -> time taken to resolve
+
+    async def get_hostname(self, hostname):
+        loop = asyncio.get_running_loop()
+
+        async def resolve():
+            # Record start time for measuring resolution duration
+            self.started[hostname] = loop.time()
+            try:
+                # Try resolving hostname to an IPv4 address
+                addrinfos = await loop.getaddrinfo(hostname, None, family=socket.AF_INET)
+            except (socket.gaierror, asyncio.TimeoutError):
+                ip = None  # Could not resolve
+            else:
+                # Extract the first resolved IP address
+                ip = addrinfos[0][AI_ADDR_INDEX][ADDR_HOST_INDEX]
+            # Store resolution time
+            self.times[hostname] = loop.time() - self.started[hostname]
+            return ip
+
+        # If we already have a cached result, return it immediately
+        if hostname in self:
+            return self[hostname]
+        else:
+            # Reuse existing task if resolution already started
+            if hostname in self.tasks:
+                task = self.tasks[hostname]
+            else:
+                # Otherwise start a new async resolution
+                task = loop.create_task(resolve())
+                self.tasks[hostname] = task
+
+            # Sanity checks: ensure mapping is correct and task is valid
+            assert self.tasks[hostname] is task, f"Task for {hostname} not found"
+            assert isinstance(task, asyncio.Task), f"Expected Task, got {type(task)} for {hostname}"
+
+            try:
+                # Await the result of the hostname resolution
+                ip = await task
+            except asyncio.CancelledError:
+                # Cleanup if the task was cancelled
+                if hostname in self.tasks:
+                    del self.tasks[hostname]
+                return None
+            else:
+                # Ensure result is either a string (IP) or None
+                assert isinstance(ip, str) or ip is None, f"Expected IP address, got {ip} for {hostname}"
+                # Cache the resolved IP for future lookups
+                self[hostname] = ip
+                return ip
+
+    def start_get_hostname(self, hostname):
+        # Start resolving a hostname in the background without awaiting it
+        loop = asyncio.get_running_loop()
+        return loop.create_task(self.get_hostname(hostname))
+
+    def __getitem__(self, key):
+        # If hostname is already resolved, return it
+        if super().__contains__(key):
+            return super().__getitem__(key)
+        else:
+            # Otherwise, start resolving it asynchronously and return None for now
+            self.start_get_hostname(key)
+            return None
+
+async def main():
+    hostnames = Hostnames()
+
+    # Helper: generate random fake hostnames like "abcd.com"
+    def generate_random_hostname():
+        return ''.join(random.choices('abcdefghijklmnopqrstuvwxyz', k=4)) + ".com"
+
+    # Generate 10 random hostnames and trigger resolution
+    names = [generate_random_hostname() for _ in range(10)]
+    for name in names:
+        hostnames[name]  # Access triggers background resolution
+
+    # Ensure lookup is non-blocking: "example.com" should not be resolved yet
+    assert hostnames["example.com"] is None, "Should not have resolved yet"
+
+    # Allow some time for background resolution tasks to complete
+    await asyncio.sleep(0.2)
+
+    # Print resolved IP addresses and resolution times
+    for name in names:
+        ip = hostnames[name]
+        time = hostnames.times.get(name, float('inf'))
+        print(f"{name} -> {ip}, time: {time:.3f}s")
+
+if __name__ == "__main__":
+    asyncio.run(main())
+```
+
+Would you like me to also add **docstrings** (at the class and method level) so the code is self-explanatory in an IDE, or do you prefer just inline comments?
+
+## 3A Refactoring Example (Gemini 2.5 Pro)
+
+Refactor the following code:
+
+```
+code from 2 here
+```
+
+Without Breaking these tests:
+
+```
+code from 3 here
+```
+
+Gemini 2.5 Pro, Google, 2025-09-03, https://gemini.google.com/app/
+
+Of course. Here is the refactored code.
+
+The new version improves on the original by separating concerns, simplifying state management, and increasing readability, all while passing the provided unit tests.
+
+```python
+import asyncio
+import socket
+import random
+from typing import Optional, Dict
+
+# Using named constants for clarity instead of magic numbers for indexing
+_AI_ADDR_INDEX = 4
+_ADDR_HOST_INDEX = 0
+
+class Hostnames(dict):
+    """
+    An asynchronous hostname resolver that caches results.
+
+    This class acts like a dictionary. When you access a hostname for the first
+    time using square brackets (e.g., `hostnames['example.com']`), it starts a
+    non-blocking DNS resolution in the background and returns `None`. Once the
+    resolution is complete, future lookups for that hostname will return the
+    cached IP address.
+    """
+    def __init__(self):
+        super().__init__()
+        # Stores the asyncio.Task for each in-flight or completed resolution
+        self.tasks: Dict[str, asyncio.Task] = {}
+        # Stores the timestamp when a resolution began (for testing)
+        self.started: Dict[str, float] = {}
+        # Stores the duration of each DNS lookup
+        self.times: Dict[str, float] = {}
+
+    async def _resolve_and_cache(self, hostname: str) -> Optional[str]:
+        """
+        Performs the DNS lookup, records timing, and caches the result.
+        This private method contains the core I/O-bound operation.
+        """
+        loop = asyncio.get_running_loop()
+        self.started[hostname] = loop.time()
+        ip: Optional[str] = None
+        try:
+            addrinfos = await loop.getaddrinfo(
+                hostname, None, family=socket.AF_INET
+            )
+            # Extract the IP address from the address info tuple
+            ip = addrinfos[0][_AI_ADDR_INDEX][_ADDR_HOST_INDEX]
+        except (socket.gaierror, asyncio.TimeoutError):
+            # If resolution fails, the IP remains None
+            pass
+        finally:
+            self.times[hostname] = loop.time() - self.started.get(hostname, 0)
+            # Cache the result (IP address or None if it failed)
+            self[hostname] = ip
+            return ip
+
+    async def get_hostname(self, hostname: str) -> Optional[str]:
+        """
+        Retrieves the IP for a hostname, initiating resolution if needed.
+
+        This method ensures DNS resolution for a given hostname only happens once.
+        If a resolution is already in progress, it waits for it to complete. If
+        the result is cached, it returns it immediately.
+
+        Returns:
+            The resolved IP address as a string, or None if resolution fails.
+        """
+        # Return immediately if the result is already cached.
+        if hostname in self:
+            return self[hostname]
+
+        # If no task exists for this hostname, create one.
+        if hostname not in self.tasks:
+            self.tasks[hostname] = asyncio.create_task(
+                self._resolve_and_cache(hostname)
+            )
+
+        try:
+            # Await the task to get the result. This handles both new and
+            # in-flight tasks correctly.
+            return await self.tasks[hostname]
+        except asyncio.CancelledError:
+            # If the task is cancelled, clean up and return None.
+            self.tasks.pop(hostname, None)
+            return None
+
+    def start_get_hostname(self, hostname: str) -> asyncio.Task:
+        """
+        Schedules a hostname resolution to run as a background task.
+
+        This is a "fire-and-forget" method that returns the Task object
+        immediately without waiting for the resolution to finish.
+
+        Returns:
+            The asyncio.Task handling the resolution.
+        """
+        return asyncio.create_task(self.get_hostname(hostname))
+
+    def __getitem__(self, hostname: str) -> Optional[str]:
+        """
+        Gets a cached IP or triggers a background resolution.
+
+        If the IP is cached, it's returned. Otherwise, this method triggers
+        a background resolution and returns `None`. The user should poll
+        or check again later for the resolved IP.
+        """
+        if hostname in self:
+            return super().__getitem__(hostname)
+        else:
+            # Trigger the resolution but don't wait for the result.
+            self.start_get_hostname(hostname)
+            return None
+
+# --- Demonstration ---
+async def main():
+    hostnames = Hostnames()
+    def generate_random_hostname():
+        return "".join(random.choices("abcdefghijklmnopqrstuvwxyz", k=4)) + ".com"
+
+    # Use a mix of random (likely failing) and known (working) hostnames
+    names = [generate_random_hostname() for _ in range(9)] + ["google.com"]
+
+    print("🚀 Triggering resolutions...")
+    for name in names:
+        # This calls __getitem__, which starts the background tasks
+        hostnames[name]
+
+    # The initial access returns None because the task hasn't completed
+    assert hostnames["google.com"] is None, "Should not have resolved yet"
+
+    print("⏳ Waiting for resolutions to complete...")
+    # Give the DNS lookups time to finish.
+    await asyncio.sleep(1.0)
+
+    print("\n✅ Resolution results:")
+    for name in names:
+        # Access via __getitem__ again; this time it should hit the cache
+        ip = hostnames[name]
+        time = hostnames.times.get(name, float("inf"))
+        print(f"{name:<15} -> {str(ip):<15}, time: {time:.3f}s")
+
+if __name__ == "__main__":
+    asyncio.run(main())
+```
+
+-----
+
+Key Improvements
+
+  * **Separation of Concerns**: The core DNS lookup logic is now in a dedicated private method, `_resolve_and_cache`. This makes the `get_hostname` method cleaner, as its only job is to manage `asyncio.Task` objects (creating them or waiting on existing ones).
+  * **Simplified Logic**: The flow in `get_hostname` is now more straightforward: check the cache, check for an existing task, create a task if needed, and finally `await` the result. This removes the nested function and redundant assignments from the original.
+  * **Improved Readability**: The code now includes docstrings, type hints, and named constants (`_AI_ADDR_INDEX`), making it easier to understand and maintain.
+  * **Modern `asyncio` Usage**: It uses `asyncio.create_task()` directly, which is the recommended practice for creating tasks since Python 3.7.
+
+## 3A Refactoring Example (ChatGPT 5)
+
+Refactor the following code:
+
+```
+code from 2 here
+```
+
+Without Breaking these tests:
+
+```
+code from 3 here
+```
+
+ChatGPT 5, OpenAI, 2025-09-03, https://chatgpt.com/share/68b8bc4c-f144-8012-9145-c0017727e9ea
+
+Got it ✅ — you want a **refactor** of your `Hostnames` class that’s cleaner and more maintainable, but it **must not break the tests** you already have.
+
+Here’s a refactored version of your code with improvements:
+
+* Extracted `_resolve` into its own method (instead of defining inside `get_hostname`).
+* Reduced nesting by handling early returns clearly.
+* Simplified `__getitem__` to avoid repeating logic.
+* Cleaned up task creation and dictionary access patterns.
+* Added a small helper `_record_timing`.
+
+Here’s the refactored code:
+
+```python
+import asyncio
+import socket
+import random
+
+AI_ADDR_INDEX = 4
+ADDR_HOST_INDEX = 0
+
+
+class Hostnames(dict):
+    def __init__(self):
+        super().__init__()
+        self.tasks: dict[str, asyncio.Task] = {}
+        self.started: dict[str, float] = {}
+        self.times: dict[str, float] = {}
+
+    async def _resolve(self, hostname: str) -> str | None:
+        """Internal coroutine that resolves a hostname to an IP address."""
+        loop = asyncio.get_running_loop()
+        self.started[hostname] = loop.time()
+
+        try:
+            addrinfos = await loop.getaddrinfo(hostname, None, family=socket.AF_INET)
+            ip = addrinfos[0][AI_ADDR_INDEX][ADDR_HOST_INDEX]
+        except (socket.gaierror, asyncio.TimeoutError):
+            ip = None
+
+        self._record_timing(hostname, loop.time())
+        return ip
+
+    def _record_timing(self, hostname: str, end_time: float) -> None:
+        """Record how long a hostname resolution took."""
+        self.times[hostname] = end_time - self.started[hostname]
+
+    async def get_hostname(self, hostname: str) -> str | None:
+        """Get or resolve a hostname to an IP address asynchronously."""
+        if hostname in self:
+            return self[hostname]
+
+        loop = asyncio.get_running_loop()
+
+        if hostname not in self.tasks:
+            self.tasks[hostname] = loop.create_task(self._resolve(hostname))
+
+        task = self.tasks[hostname]
+        assert isinstance(task, asyncio.Task), f"Expected Task, got {type(task)} for {hostname}"
+
+        try:
+            ip = await task
+        except asyncio.CancelledError:
+            self.tasks.pop(hostname, None)
+            return None
+
+        assert isinstance(ip, str) or ip is None, f"Expected IP address, got {ip} for {hostname}"
+        self[hostname] = ip
+        return ip
+
+    def start_get_hostname(self, hostname: str) -> asyncio.Task:
+        """Start hostname resolution and return its task."""
+        loop = asyncio.get_running_loop()
+        return loop.create_task(self.get_hostname(hostname))
+
+    def __getitem__(self, key: str) -> str | None:
+        """Return IP if resolved, otherwise trigger resolution and return None."""
+        if super().__contains__(key):
+            return super().__getitem__(key)
+
+        self.start_get_hostname(key)
+        return None
+
+
+async def main():
+    hostnames = Hostnames()
+
+    def generate_random_hostname():
+        return ''.join(random.choices('abcdefghijklmnopqrstuvwxyz', k=4)) + ".com"
+
+    names = [generate_random_hostname() for _ in range(10)]
+
+    # Trigger lookups
+    for name in names:
+        hostnames[name]
+
+    assert hostnames["example.com"] is None, "Should not have resolved yet"
+
+    await asyncio.sleep(0.2)
+
+    for name in names:
+        ip = hostnames[name]
+        duration = hostnames.times.get(name, float('inf'))
+        print(f"{name} -> {ip}, time: {duration:.3f}s")
+
+
+if __name__ == "__main__":
+    asyncio.run(main())
+```
+
+This version is functionally equivalent to your original and will still pass all your tests ✅, but it’s clearer:
+
+* No inner function clutter inside `get_hostname`.
+* Task lifecycle is easier to follow.
+* Timings are recorded consistently with a helper.
+
+---
+
+Do you want me to also **add type hints and docstrings everywhere** for maximum clarity, or keep it closer to your original style?
+
+
+
+## 3B Test example (ChatGPT 4o)
 
 Dr. Campbell: write tests for the following code:
+
+```
+code from 2 here
+```
 
 ChatGPT 4o, OpenAI, 2025-05-12, https://ChatGPT.com/share/68224e86-6e94-8012-8605-47f1f08dc2dd
 
 Here's a comprehensive test suite for the provided `Hostnames` class. The tests use `pytest` and `pytest-asyncio` to validate both synchronous and asynchronous behavior, including caching, timing, concurrent task handling, and fallback behavior on errors.
 
-### ✅ Features Covered
+✅ Features Covered
 
 * Correct resolution and caching of hostnames
 * Task reuse for concurrent resolutions
@@ -938,7 +1519,7 @@ Here's a comprehensive test suite for the provided `Hostnames` class. The tests 
 
 ---
 
-### 🧪 Test Code
+🧪 Test Code
 
 ```python
 import asyncio
@@ -1048,7 +1629,7 @@ async def test_getitem_triggers_resolution():
 
 ---
 
-### 🛠 Requirements
+🛠 Requirements
 
 Install test dependencies if you haven't:
 
@@ -1061,9 +1642,13 @@ pip install pytest pytest-asyncio
 Would you like these tests organized into a `test_hostnames.py` file or run with coverage reporting?
 
 
-## Test Example (Gemini)
+## 3B Test Example (Gemini)
 
 Dr. Campbell: write tests for the following code:
+
+```
+code from 2 here
+```
 
 Gemini 2.5 Pro, Google, 2025-05-12, https://gemini.google.com/app/
 
@@ -1565,4 +2150,98 @@ if __name__ == '__main__':
 
 This suite provides a good starting point for testing your `Hostnames` class. You can expand it with more specific scenarios or edge cases as needed.
 
+## 3B Tests Example (ChatGPT 5)
 
+Dr. Campbell: write tests for the following code:
+
+```
+code from 2 here
+```
+
+
+ChatGPT 5, OpenAI, 2025-09-03, https://chatgpt.com/share/68b8b945-c1f0-8012-a224-8fcbecedbec1
+
+Got it ✅ You’ve got an async-heavy class (`Hostnames`) that resolves hostnames to IPs and caches results. To test this properly, we’ll need to cover:
+
+* **Basic resolution** (valid hostnames resolve to IPs).
+* **Error handling** (invalid hostnames return `None`).
+* **Task caching** (multiple requests for the same hostname share the same task).
+* **`__getitem__` lazy resolution** (returns `None` initially and later updates).
+* **Timing dictionary** (`times` gets filled).
+* **Cancelled tasks** (they get cleaned up).
+
+Here’s a `pytest`-style test suite using `pytest-asyncio`:
+
+```python
+import asyncio
+import socket
+import pytest
+
+from your_module import Hostnames  # replace with actual filename
+
+
+@pytest.mark.asyncio
+async def test_valid_hostname_resolves():
+    hostnames = Hostnames()
+    ip = await hostnames.get_hostname("example.com")
+    assert isinstance(ip, str) and "." in ip
+    assert hostnames["example.com"] == ip
+    assert "example.com" in hostnames.times
+
+
+@pytest.mark.asyncio
+async def test_invalid_hostname_returns_none():
+    hostnames = Hostnames()
+    ip = await hostnames.get_hostname("doesnotexist.localdomain")
+    assert ip is None
+    assert "doesnotexist.localdomain" in hostnames
+    assert hostnames["doesnotexist.localdomain"] is None
+
+
+@pytest.mark.asyncio
+async def test_task_caching_for_same_hostname():
+    hostnames = Hostnames()
+    task1 = asyncio.create_task(hostnames.get_hostname("example.com"))
+    task2 = asyncio.create_task(hostnames.get_hostname("example.com"))
+    ip1, ip2 = await asyncio.gather(task1, task2)
+    assert ip1 == ip2
+    assert "example.com" in hostnames.tasks
+    assert isinstance(hostnames.tasks["example.com"], asyncio.Task)
+
+
+@pytest.mark.asyncio
+async def test_getitem_triggers_lazy_resolution():
+    hostnames = Hostnames()
+    assert hostnames["example.com"] is None  # starts resolution
+    await asyncio.sleep(0.1)
+    ip = hostnames["example.com"]
+    assert isinstance(ip, str) or ip is None
+
+
+@pytest.mark.asyncio
+async def test_times_dict_is_updated():
+    hostnames = Hostnames()
+    await hostnames.get_hostname("example.com")
+    assert "example.com" in hostnames.times
+    assert isinstance(hostnames.times["example.com"], float)
+    assert hostnames.times["example.com"] >= 0
+
+
+@pytest.mark.asyncio
+async def test_cancelled_task_removes_from_tasks():
+    hostnames = Hostnames()
+    task = hostnames.start_get_hostname("example.com")
+    task.cancel()
+    try:
+        await task
+    except asyncio.CancelledError:
+        pass
+    assert "example.com" not in hostnames.tasks
+```
+
+---
+
+👉 Notes:
+
+* I used `pytest-asyncio` so you can run tests with `pytest -q`.
+* For deterministic testing, you could **mock `loop.getaddrinfo`** to avoid hitting the network. Would you like me to rewrite the tests with **`unittest.mock`** so they don’t depend on real DNS lookups?
