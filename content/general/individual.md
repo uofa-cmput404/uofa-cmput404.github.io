@@ -18,8 +18,7 @@ summary: Individual Assignments, Participation
 
 # Participation
 
-<!--Most participation marks will be in class during class. You can participate over Zoom or in-person. To participate in-person please bring a working cellphone, tablet, or laptop. There may be other participation marks from time to time. See *Missed Term Work: Participation* below.-->
-
+<!--
 * CMPUT 404: Participation marks will be marked out of 8 points.
 * At most one point can be earned per lecture.
 * A point can be earned by answering an instructor's question during class.
@@ -27,8 +26,9 @@ summary: Individual Assignments, Participation
 * Points can be earned either in-person or by participating over Zoom.
 * Specifically no points will be awarded for asking/answering questions about the course itself, such as grades, submission requirements, due dates, etc.
 * Additional opportunities may be added.
+-->
 
-<!--
+Most participation marks will be in class during class. You can participate over Zoom or in-person. To participate in-person please bring a working cellphone, tablet, or laptop. There may be other participation marks from time to time. See *Missed Term Work: Participation* below.
 
 You can earn lecture participation credit by attending lecture on time. Instructions will be given during lecture.
 
@@ -41,8 +41,6 @@ You can earn lecture participation credit by attending lecture on time. Instruct
     * Entering answers for someone else will be considered a violation of the SAIP.
     * Sharing the Menti link with other students will be considered a violation of the SAIP.
     * See the [outline section on contract cheating]({filename}/general/outline.md#contract-cheating-cs-courses) for more information.
-
--->
 
 # Exams
 
