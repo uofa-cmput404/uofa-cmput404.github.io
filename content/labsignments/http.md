@@ -9,7 +9,15 @@ summary: Lab Procedure, Lab Assignments, Lab Marking
 
 [TOC]
 
----
+<style>
+    html body main {
+        background-image: url("/theme/draft.png");
+        background-repeat: repeat;
+        background-size: 100%;
+    }
+</style>
+
+**This is currently a draft. It will be finalized by Sept 15.**
 
 # Description
 

@@ -422,7 +422,7 @@ v. In your opinion, which LLM provided better refactored code? <span style="font
 
 ## Question 3B
 
-i. Write a prompt to get an LLM to write tests for the code from Question 2. Do **not** provide the tests already written.  *Answer this without AI.*
+i. Write a prompt to get an LLM to write tests for the code from Question 2. Do **not** provide the tests already written. Start a new chat with the AI to make sure it can't see the tests. *Answer this without AI.*
 
 ii. Provide the LLM's response with the test code. *Answer this with AI or with the responses from the appendix. Correctly cite it!*
 
