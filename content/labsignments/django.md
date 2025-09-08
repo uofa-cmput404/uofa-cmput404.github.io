@@ -87,7 +87,7 @@ JavaScript is used to add interactivity to a web page. You can manipulate the **
 
 ## Prepare your Repo
 
-1. Get the [GitHub classroom link from Canvas](https://canvas.ualberta.ca/courses/22272/assignments/531391), create your assignment, and clone it.
+1. Get the GitHub classroom link from Canvas, create your assignment, and clone it.
 2. Create an appropriate `.gitignore` file to prevent unwanted files from being committed to your repository. 
 
 Place this `.gitignore` file in the root of your project. You can combine [this one](https://github.com/github/gitignore/blob/main/Python.gitignore), [this one](https://github.com/github/gitignore/blob/main/Node.gitignore), and [this one](https://github.com/django/django/blob/main/.gitignore) for your Django + Node project. Use `git status` to ensure you're not staging any unwanted files before committing.
