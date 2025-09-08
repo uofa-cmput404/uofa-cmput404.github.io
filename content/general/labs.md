@@ -18,7 +18,7 @@ summary: Lab Procedure, Lab Assignments, Lab Marking
 * You **must walk through your individual lab work to a TA** during the lab to receive marks.
     * If you submit on Canvas but don't walk through your code with a TA you will get a zero.
     * You MUST walk through your lab in person.
-* Labs are due on Canvas and GitHub at 4PM on Thursday.
+* Labs are due on Canvas and GitHub at 4PM.
     * If you walk through your code with a TA but don't submit you will get a zero.
     * If you don't submit a link to your GitHub on Canvas you will get a zero.
     * If you submit but don't walk through your code with a TA you will get a zero.
