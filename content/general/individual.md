@@ -32,14 +32,14 @@ Most participation marks will be in class during class. You can participate over
 
 You can earn lecture participation credit by attending lecture on time. Instructions will be given during lecture.
 
-<p class="warning">Do <em>not</em> enter your real name, CCID, or student ID into Mentimeter.</p>
+As of Fall 2025, [Wooclap](https://www.wooclap.com/) is used for lecture participation.
 
-* You must enter your codename to get credit. Failure to enter your codename will not earn credit. **Your codename can be found under feedback at the top of your grades in eClass.**
-    * You will not get credit for your real name, CCID, or student ID!
+* You must login with your ualberta email address to get credit.
+    * You will not get credit for your using any other account.
 * For lecture participation, some of the lowest marks are dropped. No extensions, excused absences, or weight transfers are possible. See the [outline]({filename}/general/outline.md#missed-term-work-participation) for more information.
-* Entering answers in Mentimeter without attending the course, either in-person or on Zoom will be considered a violation of the Student Academic Integrity Policy.
+* Entering answers in Wooclap without attending the course, either in-person or on Zoom will be considered a violation of the Student Academic Integrity Policy.
     * Entering answers for someone else will be considered a violation of the SAIP.
-    * Sharing the Menti link with other students will be considered a violation of the SAIP.
+    * Sharing the Wooclap event code with other students will be considered a violation of the SAIP.
     * See the [outline section on contract cheating]({filename}/general/outline.md#contract-cheating-cs-courses) for more information.
 
 # Exams
