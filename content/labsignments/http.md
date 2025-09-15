@@ -9,7 +9,7 @@ summary: Lab Procedure, Lab Assignments, Lab Marking
 
 [TOC]
 
-<style>
+<!-- <style>
     html body main {
         background-image: url("/theme/draft.png");
         background-repeat: repeat;
@@ -18,7 +18,8 @@ summary: Lab Procedure, Lab Assignments, Lab Marking
 </style>
 
 **This is currently a draft. It will be finalized by Sept 15.**
-
+ -->
+ 
 # Description
 
 Your task is to build an HTTP/1.1 compliant webserver and a basic HTTP client. This lab is designed to give you a hands-on, ground-up understanding of the basics of HTTP by implementing both the client and server sides.
