@@ -727,6 +727,21 @@ When rendering the `likes.html` template, you will need to pass in to the contex
 }
 ```
 
+## Making sure your `.gitignore` is good and your repo is clean
+
+Generally there are two kinds of files:
+
+* Files which are rebuilt/generate/download with the standard build/deploy steps should NOT be in the repo and SHOULD be in `.gitignore`.
+* Files which are modified by developer or only generated once at project initialization SHOULD be in the repo and should NOT be in `.gitignore`.
+
+The standard build/deploy steps for a C project would be something like `configure`, `make`, `make install`. For Java in CMPUT 301 that would be rebuilding from the IDE. For Django+NPM we have commands like `virtualenv venv`, `pip install -r requirements.txt`, `npm install` (with no arguments), `django-admin migrate` and `manage.py collectstatic`. 
+
+Generally commands like `npm install --save-dev somedependency` modifies the `package.json` and `package.lock` files, so their results need to be committed, and they're only run once (not every time we build/deploy). The same thing applies to `django-admin makemigrations`, which generates the migrations files that are needed to migrate an old database schema. They would not be necessary if you plan on deleting the entire database and its contents (all users, all posts...) every time you update your app, which is not usually the case.
+
+It's not immediately clear whether the static files for the admin site should be committed or not, and it's not immediately clear to me either. However, the test remains the same: will a standard build/deploy command like `collectstatic` recreate them? If so, we should add them to `.gitignore` and remove them from our repository. So, if my `STATIC_ROOT` is set to `staticfiles` then `collectstatic` will create files such as `./staticfiles/admin/img/icon-no.svg`.
+
+And, if I delete it, and run `collectstatic` again, it reappears. So I should ignore `./staticfiles/admin/img/icon-no.svg` and remove it from my repository.
+
 ## Requirements
 
 * Must use Python3
