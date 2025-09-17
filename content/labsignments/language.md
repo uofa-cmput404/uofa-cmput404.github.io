@@ -63,7 +63,7 @@ Project?
 
 Participation?
 
-iv. For what grade items is the is sharing answers with other students allowed in this course?  *Answer this without AI.*
+iv. For what grade items is sharing answers with other students allowed in this course?  *Answer this without AI.*
 
 Exam?
 
