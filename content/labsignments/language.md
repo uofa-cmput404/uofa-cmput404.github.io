@@ -63,7 +63,7 @@ Project?
 
 Participation?
 
-iv. For what grade items is the is sharing answers with other students allowed in this course?  *Answer this without AI.*
+iv. For what grade items is sharing answers with other students allowed in this course?  *Answer this without AI.*
 
 Exam?
 
@@ -316,7 +316,7 @@ vii. In your opinion, which LLM provided longer/more comments? Did longer commen
 
 # Question 3 - Refactoring & Testing
 
-Here is are some tests for the code in question 3:
+Here are some tests for the code in question 3:
 
 ```.py
 import unittest
