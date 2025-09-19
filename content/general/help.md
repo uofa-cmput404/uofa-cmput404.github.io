@@ -150,6 +150,10 @@ It's normal for us to have different mental health experiences throughout the ye
 
 If you or someone you know is in need of immediate assistance, please reach out to a friend, professor, or staff member. Find a list of immediate support services **[here](https://www.ualberta.ca/current-students/need-help-now.html)**.
 
+## Advising
+
+- **Undergraduate Advisor:**  [UAlberta Undergraduate Advisor](https://www.ualberta.ca/en/campus-life/academic-success/academic-faculty-resources.html?). It is never too early or too late to start these discussions and learn about how the faculty can support students throughout their undergraduate careers. 
+
 ## Student Self-Care Guide
 
 This [Self-Care Guide](https://drive.google.com/file/d/1t5fqgXCG369tt5hDxrzQuvlTdy2W46RB/view?usp=sharing), originally designed by the Faculty of Native Studies, has broader application for use during students’ learning. It provides some ideas and strategies to consider that can help navigate emotionally challenging or triggering material.
@@ -160,7 +164,11 @@ Building a strong social network can greatly benefit your mental health.
 
 -   **Students Groups: [BearsDen](https://alberta.campuslabs.ca/engage/)** is a one-stop online spot for all student groups on campus. Students can search for events or groups that suit their interests.
 
--   **Campus Events:** Campus events are posted by a variety of groups. Commonly, students can find events on **[uab.ca/events](https://www.ualberta.ca/en/events/index.html#sort=relevancy), [uasuevents.ca,](https://www.su.ualberta.ca/events/)** or go to their respective **[faculty association's web page](https://www2.su.ualberta.ca/governance/cofa/)** for upcoming events.
+-   **Campus Events:** Campus events are posted by a variety of groups. Commonly, students can find events on **[uab.ca/events](https://www.ualberta.ca/en/events/index.html#sort=relevancy), [uasuevents.ca,](https://www.su.ualberta.ca/events/)**, [the Digest](https://apps.ualberta.ca/ezpost/archive) or go to their respective **[faculty association's web page](https://www2.su.ualberta.ca/governance/cofa/)** for upcoming events.
+
+- **Unitea:** Connection starts with a conversation, and what better way to connect 
+than over a cup of tea or coffee? You can book either a 1-on-1, or a 
+group tea time led by Unitea hosts. [Click here to learn more about Unitea](https://www.ualberta.ca/en/current-students/wellness-supports/community-engagement/unitea/index.html).
 
 # Where to NOT get help
 
