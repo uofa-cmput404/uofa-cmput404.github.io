@@ -30,15 +30,85 @@ html {
   color: black;
 }
 
+body,
+body a,
+body abbr,
+body address,
+body article,
+body aside,
+body b,
+body blockquote,
+body cite,
+body dd,
+body dfn,
+body dl,
+body dt,
+body em,
+body figcaption,
+body footer,
+body h1,
+body h2,
+body h3,
+body h4,
+body h5,
+body h6,
+body header,
+body hgroup,
+body i,
+body li,
+body mark,
+body menu,
+body nav,
+body ol,
+body p,
+body q,
+body s,
+body section,
+body small,
+body strong,
+body sub,
+body sup,
+body td,
+body th,
+body time,
+body u,
+body ul
+{
+    font-family: Andika, sans-serif;
+    overflow-wrap: normal;
+    text-wrap: balance;
+    text-wrap-mode: wrap;
+    text-wrap-style: balance;
+    letter-spacing: 0.05ch;
+    word-spacing: 0.2ch;
+    line-break: strict;
+    word-break: normal;
+    line-height: 1.3;
+}
+
+body kbd,
+body samp,
+body var
+{
+    /* font-family: var(--r-code-font); */
+    font-style: normal;
+    font-size: 80%;
+    overflow-wrap: normal;
+    text-wrap: balance;
+    text-wrap-mode: wrap;
+    text-wrap-style: balance;
+    line-break: strict;
+    word-break: normal;
+    line-height: 1.0;
+
+}
+
 body {
   max-width: 80ch;
   margin-left: auto;
   margin-right: auto;
   font-family: Andika, sans-serif;
-  letter-spacing: 0.033rem;
-  word-spacing: 0.28em;
   font-feature-settings: "cv10" 1, "cv39" 1;
-  line-height: 1.3;
 }
 
 h6 {
