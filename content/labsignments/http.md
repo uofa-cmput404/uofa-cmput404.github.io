@@ -206,7 +206,7 @@ import pathlib
 Create a custom server class and make it inherit from the socketserver.TCPServer class. This is the first step in setting up a server, There are four basic servers available within the socketserver module namely TCPServer, UDPServer,UnixStreamServer and UnixDatagramServer
 
 ```python
-class LabHttpTcpServer(socketserver.TCPServer):
+class LabServer(socketserver.TCPServer):
    allow_reuse_address = True
 ```
 ## Create the custom HttpHandler class
@@ -214,7 +214,7 @@ class LabHttpTcpServer(socketserver.TCPServer):
 Create the custom HttpHandler class by inheriting the socketserver.StreamRequestHandler to handle incoming requests. We utilized the socketserver.StreamRequestHandler class, a subclass of socketserver.BaseRequestHandler  because it provides implementation for rfile and wfile.
 
 ```python
-class LabHttpTCPHandler(socketserver.StreamRequestHandler)
+class LabServerTCPHandler(socketserver.StreamRequestHandler)
 ```
 
 ## Implement the handle method
@@ -272,7 +272,7 @@ Start the server by calling the serve_forever method and pass the HOST, PORT
 
 ```python
 def main():
-   with LabHttpTcpServer((HOST,PORT),LabHttpTCPHandler) as server:
+   with LabServer((HOST,PORT),LabServerTCPHandler) as server:
        print("server is starting")
        print("running")
        server.serve_forever() 
