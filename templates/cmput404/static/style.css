@@ -22,59 +22,281 @@
 	font-style: italic;
 	src: url(andika/web/Andika-BoldItalic.woff2);
 }
+@font-face {
+  font-family: "Atkinson Hyperlegible Next";
+  font-weight: bold;
+  font-style: normal;
+  src: url(hyperlegible/AtkinsonHyperlegibleNext-Bold.woff2);
+}
+@font-face {
+  font-family: "Atkinson Hyperlegible Next";
+  font-weight: bold;
+  font-style: italic;
+  src: url(hyperlegible/AtkinsonHyperlegibleNext-BoldItalic.woff2);
+}
+@font-face {
+  font-family: "Atkinson Hyperlegible Next";
+  font-weight: 800;
+  font-style: normal;
+  src: url(hyperlegible/AtkinsonHyperlegibleNext-ExtraBold.woff2);
+}
+@font-face {
+  font-family: "Atkinson Hyperlegible Next";
+  font-weight: 800;
+  font-style: italic;
+  src: url(hyperlegible/AtkinsonHyperlegibleNext-ExtraBoldItalic.woff2);
+}
+@font-face {
+  font-family: "Atkinson Hyperlegible Next";
+  font-weight: 200;
+  font-style: normal;
+  src: url(hyperlegible/AtkinsonHyperlegibleNext-ExtraLight.woff2);
+}
+@font-face {
+  font-family: "Atkinson Hyperlegible Next";
+  font-weight: 200;
+  font-style: italic;
+  src: url(hyperlegible/AtkinsonHyperlegibleNext-ExtraLightItalic.woff2);
+}
+@font-face {
+  font-family: "Atkinson Hyperlegible Next";
+  font-weight: 300;
+  font-style: normal;
+  src: url(hyperlegible/AtkinsonHyperlegibleNext-Light.woff2);
+}
+@font-face {
+  font-family: "Atkinson Hyperlegible Next";
+  font-weight: 300;
+  font-style: italic;
+  src: url(hyperlegible/AtkinsonHyperlegibleNext-LightItalic.woff2);
+}
+@font-face {
+  font-family: "Atkinson Hyperlegible Next";
+  font-weight: 500;
+  font-style: normal;
+  src: url(hyperlegible/AtkinsonHyperlegibleNext-Medium.woff2);
+}
+@font-face {
+  font-family: "Atkinson Hyperlegible Next";
+  font-weight: 500;
+  font-style: italic;
+  src: url(hyperlegible/AtkinsonHyperlegibleNext-MediumItalic.woff2);
+}
+@font-face {
+  font-family: "Atkinson Hyperlegible Next";
+  font-weight: normal;
+  font-style: normal;
+  src: url(hyperlegible/AtkinsonHyperlegibleNext-Regular.woff2);
+}
+@font-face {
+  font-family: "Atkinson Hyperlegible Next";
+  font-weight: normal;
+  font-style: italic;
+  src: url(hyperlegible/AtkinsonHyperlegibleNext-RegularItalic.woff2);
+}
+@font-face {
+  font-family: "Atkinson Hyperlegible Next";
+  font-weight: 600;
+  font-style: normal;
+  src: url(hyperlegible/AtkinsonHyperlegibleNext-SemiBold.woff2);
+}
+@font-face {
+  font-family: "Atkinson Hyperlegible Next";
+  font-weight: 600;
+  font-style: italic;
+  src: url(hyperlegible/AtkinsonHyperlegibleNext-SemiBoldItalic.woff2);
+}
+@font-face {
+  font-family: "Atkinson Hyperlegible Next";
+  font-weight: 600;
+  font-style: normal;
+  src: url(hyperlegible/AtkinsonHyperlegibleNext-SemiBold.woff2);
+}
+@font-face {
+  font-family: "Atkinson Hyperlegible Next";
+  font-weight: 1 1000;
+  font-style: normal;
+  src: url(hyperlegible/AtkinsonHyperlegibleNextVF-Variable.woff2);
+}
+@font-face {
+  font-family: "Atkinson Hyperlegible Mono";
+  font-weight: bold;
+  font-style: normal;
+  src: url(hyperlegible/AtkinsonHyperlegibleMono-Bold.woff2);
+}
+@font-face {
+  font-family: "Atkinson Hyperlegible Mono";
+  font-weight: bold;
+  font-style: italic;
+  src: url(hyperlegible/AtkinsonHyperlegibleMono-BoldItalic.woff2);
+}
+@font-face {
+  font-family: "Atkinson Hyperlegible Mono";
+  font-weight: 800;
+  font-style: normal;
+  src: url(hyperlegible/AtkinsonHyperlegibleMono-ExtraBold.woff2);
+}
+@font-face {
+  font-family: "Atkinson Hyperlegible Mono";
+  font-weight: 800;
+  font-style: italic;
+  src: url(hyperlegible/AtkinsonHyperlegibleMono-ExtraBoldItalic.woff2);
+}
+@font-face {
+  font-family: "Atkinson Hyperlegible Mono";
+  font-weight: 200;
+  font-style: normal;
+  src: url(hyperlegible/AtkinsonHyperlegibleMono-ExtraLight.woff2);
+}
+@font-face {
+  font-family: "Atkinson Hyperlegible Mono";
+  font-weight: 200;
+  font-style: italic;
+  src: url(hyperlegible/AtkinsonHyperlegibleMono-ExtraLightItalic.woff2);
+}
+@font-face {
+  font-family: "Atkinson Hyperlegible Mono";
+  font-weight: 300;
+  font-style: normal;
+  src: url(hyperlegible/AtkinsonHyperlegibleMono-Light.woff2);
+}
+@font-face {
+  font-family: "Atkinson Hyperlegible Mono";
+  font-weight: 300;
+  font-style: italic;
+  src: url(hyperlegible/AtkinsonHyperlegibleMono-LightItalic.woff2);
+}
+@font-face {
+  font-family: "Atkinson Hyperlegible Mono";
+  font-weight: 500;
+  font-style: normal;
+  src: url(hyperlegible/AtkinsonHyperlegibleMono-Medium.woff2);
+}
+@font-face {
+  font-family: "Atkinson Hyperlegible Mono";
+  font-weight: 500;
+  font-style: italic;
+  src: url(hyperlegible/AtkinsonHyperlegibleMono-MediumItalic.woff2);
+}
+@font-face {
+  font-family: "Atkinson Hyperlegible Mono";
+  font-weight: normal;
+  font-style: normal;
+  src: url(hyperlegible/AtkinsonHyperlegibleMono-Regular.woff2);
+}
+@font-face {
+  font-family: "Atkinson Hyperlegible Mono";
+  font-weight: normal;
+  font-style: italic;
+  src: url(hyperlegible/AtkinsonHyperlegibleMono-RegularItalic.woff2);
+}
+@font-face {
+  font-family: "Atkinson Hyperlegible Mono";
+  font-weight: 600;
+  font-style: normal;
+  src: url(hyperlegible/AtkinsonHyperlegibleMono-SemiBold.woff2);
+}
+@font-face {
+  font-family: "Atkinson Hyperlegible Mono";
+  font-weight: 600;
+  font-style: italic;
+  src: url(hyperlegible/AtkinsonHyperlegibleMono-SemiBoldItalic.woff2);
+}
+@font-face {
+  font-family: "Atkinson Hyperlegible Mono";
+  font-weight: 600;
+  font-style: normal;
+  src: url(hyperlegible/AtkinsonHyperlegibleMono-SemiBold.woff2);
+}
+@font-face {
+  font-family: "Atkinson Hyperlegible Mono";
+  font-weight: 1 1000;
+  font-style: normal;
+  src: url(hyperlegible/AtkinsonHyperlegibleMonoVF-Variable.woff2);
+}
+
 
 /** Site wide styles */
 
 html {
+  --variable-font: "Atkinson Hyperlegible Next", "Andika", "Arial", sans-serif;
+  --monospace-font: "Atkinson Hyperlegible Mono", "AnonymousPro", 'Consolas', monospace;
+  --ratio: calc(100vw/80rch);
   background-color: white;
   color: black;
 }
 
+@media screen and (width >= 81ch) {
+  body {
+    max-width: 80ch;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+@media screen and (width < 81ch) {
+  body {
+    width: calc(100% - 0.5rem);
+    margin-left: 0.25rem;
+    margin-right: 0.25rem;
+  }  
+}
+@media print {
+    body {
+      margin: 1em;
+    }
+}
+
 body,
-body a,
-body abbr,
-body address,
-body article,
-body aside,
-body b,
-body blockquote,
-body cite,
-body dd,
-body dfn,
-body dl,
-body dt,
-body em,
-body figcaption,
-body footer,
-body h1,
-body h2,
-body h3,
-body h4,
-body h5,
-body h6,
-body header,
-body hgroup,
-body i,
-body li,
-body mark,
-body menu,
-body nav,
-body ol,
-body p,
-body q,
-body s,
-body section,
-body small,
-body strong,
-body sub,
-body sup,
-body td,
-body th,
-body time,
-body u,
-body ul
+a,
+abbr,
+address,
+article,
+aside,
+b,
+blockquote,
+caption,
+cite,
+dd,
+del,
+dfn,
+dl,
+dt,
+em,
+figcaption,
+footer,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+header,
+hgroup,
+i,
+ins,
+label,
+legend,
+li,
+mark,
+menu,
+nav,
+ol,
+p,
+q,
+s,
+section,
+small,
+strong,
+sub,
+sup,
+td,
+th,
+time,
+u,
+ul
 {
-    font-family: Andika, sans-serif;
+    font-family: var(--variable-font);
+    font-feature-settings: "cv10" 1, "cv39" 1;
     overflow-wrap: normal;
     text-wrap: balance;
     text-wrap-mode: wrap;
@@ -86,30 +308,51 @@ body ul
     line-height: 1.3;
 }
 
-body kbd,
-body samp,
-body var
+code,
+kbd,
+pre,
+samp,
+var
 {
-    /* font-family: var(--r-code-font); */
+    font-family: var(--monospace-font);
     font-style: normal;
-    font-size: 80%;
+}
+
+code:not(pre code),
+kbd, 
+samp,
+var
+{
     overflow-wrap: normal;
     text-wrap: balance;
     text-wrap-mode: wrap;
     text-wrap-style: balance;
     line-break: strict;
     word-break: normal;
-    line-height: 1.0;
-
+    font-size: 87%;
 }
 
-body {
-  max-width: 80ch;
-  margin-left: auto;
-  margin-right: auto;
-  font-family: Andika, sans-serif;
-  font-feature-settings: "cv10" 1, "cv39" 1;
+/* pre code {
+  font-size: unset;
+
+} */
+
+pre
+{
+  overflow-wrap: anywhere;
+  text-wrap: wrap;
+  text-wrap-mode: wrap;
+  text-wrap-style: auto;
+  line-break: loose;
+  word-break: normal;
+  background-color: #eeeeee;
+  padding: 0.1em;
+  margin: 0 0.1em 0 0.1em;
+  white-space: pre-wrap;
+  font-size: 96%;
+  line-height: 1.1;
 }
+
 
 h6 {
   font-size: 120%;
@@ -158,13 +401,6 @@ a:hover {
   text-decoration: none;
 }
 
-code, pre {
-  background-color: #eeeeee;
-  padding: 0.1em;
-  margin: 0 0.1em 0 0.1em;
-  white-space: pre-wrap;
-  word-break: keep-all;
-}
 table {
   border-spacing: 0.2em;
 }
