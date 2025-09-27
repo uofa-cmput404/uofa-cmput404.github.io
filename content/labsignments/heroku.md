@@ -814,25 +814,13 @@ Create a file in the `polls` directory named `serializers.py` and add the follow
 from rest_framework import serializers
 from .models import MultipleChoiceQuestion
 
-class QuestionSerializer(serializers.Serializer):
-    question_text = serializers.CharField() # This serializer expects a question_text char field
-    pub_date = serializers.DateTimeField()  # This serializer expects a pub_date date time field
-
-    def create(self, validated_data):
-        """
-        Create and return a new `MultipleChoiceQuestion` instance, given the validated data
-        """
-        return MultipleChoiceQuestion.objects.create(**validated_data)
-    
-    def update(self, instance, validated_data):
-        """
-        Update and return an existing `MultipleChoiceQuestion` instance, given the validated data
-        """
-        instance.question_text = validated_data.get('question_text', instance.question_text)
-        instance.pub_date = validated_data.get('pub_date', instance.pub_date)
-        instance.save()
-        return instance
+class QuestionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = MultipleChoiceQuestion
+        fields = ['id', 'question_text', 'pub_date']
 ```
+
+This automatically maps the fields from our model, and creates default create() and update() methods for us.
 
 ### Update our views using our Serializer
 
@@ -844,6 +832,7 @@ Edit the `polls/views.py` file, and add the following
 # ADD these three imports!
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from .models import MultipleChoiceQuestion
 from .serializers import QuestionSerializer
 
 # ...
@@ -925,11 +914,69 @@ After clicking the POST button you should see the updated value in the json stru
 
 ### Other cool things to know
 
-- If your serializer is replicating a lot of information that's also contained in the model being (de)serialized then you can use the `ModelSerializer` class to automatically generate the fields and produce a simple default implementations for the `create()` and `update()` methods
-- If you want to support alternative serialization and deserialization styles then you can inherit the `BaseSerializer` class and override these four functions depending on what functionality you want the serializer class to support:
+Use `ModelSerializer` first:
+If your serializer is just mirroring fields from a Django model, ModelSerializer saves you time. It will:
+  - Automatically generate the fields from the model.
+  - Provide default implementations for .create() and .update().
+
+Use `Serializer` when you need more control:
+For example, if your data doesn’t map directly to a model, or if you want to customize validation/representation. You can implement .create() and .update() yourself.
+```python
+from rest_framework import serializers
+from .models import MultipleChoiceQuestion
+
+class QuestionSerializer(serializers.Serializer):
+    id = serializers.IntegerField(read_only=True)
+    question_text = serializers.CharField()
+    pub_date = serializers.DateTimeField()
+    is_recent = serializers.SerializerMethodField()
+
+    # custom create logic
+    def create(self, validated_data):
+        return MultipleChoiceQuestion.objects.create(**validated_data)
+
+    # custom update logic
+    def update(self, instance, validated_data):
+        instance.question_text = validated_data.get("question_text", instance.question_text)
+        instance.pub_date = validated_data.get("pub_date", instance.pub_date)
+        instance.save()
+        return instance
+    
+    def get_is_recent(self, obj):
+        return obj.pub_date >= timezone.now() - timezone.timedelta(days=7)
+```
+Here, you see the manual work that ModelSerializer normally handles automatically. This example also gives you model fields plus extra custom behavior, without touching the database model itself.
+
+Use `BaseSerializer` for complete control
+If you want to support alternative serialization and deserialization styles then you can inherit the `BaseSerializer` class and override these four functions depending on what functionality you want the serializer class to support:
   - `.to_representation()` - Override this to support serialization, for read operations
   - `.to_internal_value()` - Override this to support deserialization, for write operations
   - `.create()` and `.update()` - Override either or both of these to support saving instances.
+```python
+from rest_framework.serializers import BaseSerializer
+from .models import MultipleChoiceQuestion
+
+class QuestionTextSerializer(BaseSerializer):
+    def to_representation(self, obj: MultipleChoiceQuestion):
+        return {"question_text": obj.question_text.upper()}
+
+    def to_internal_value(self, data):
+        return {"question_text": data["text"]}
+
+    def create(self, validated_data):
+        return MultipleChoiceQuestion.objects.create(**validated_data)
+
+    def update(self, instance, validated_data):
+        instance.question_text = validated_data.get("question_text", instance.question_text)
+        instance.save()
+        return instance
+```
+Here:
+  - `.to_representation()` → controls how the model is turned into JSON. We only output `question_text`
+  - `.to_internal_value()` → controls how incoming JSON is turned into Python data.
+  - `.create()` and `.update()` → we still need to define these, just like with a normal `Serializer`
+    - create() makes a new MultipleChoiceQuestion.
+    - update() edits an existing one.
 
 ### More information about DRF
 
@@ -1319,34 +1366,34 @@ Congratulations on getting your app deployed to Heroku! Let's add some new featu
 
 At this point in the lab, we should have a working poll application deployed on Heroku. However, we need a way to programmatically create questions without using the admin panel! 
 
-**Your task** is to add a new API route at `polls/api/question/add/` that will add a new multiple choice question when a POST request is received! It should return a 405 when any other method is received. The post payload will contain a JSON object with the properties `question` and `answers`. 
+**Your task** is to add a new API route at `polls/api/question/add/` that will add a new multiple choice question when a POST request is received! It should return a 405 when any other method is received. The post payload will contain a JSON object with the properties `question_text` and `choice_options`. 
 
-`question` is a string that MUST be AT LEAST 1 character long and AT MOST 200 characters long. `answers` is a array of answers that MUST have at least 1 answer. Each answer MUST be AT LEAST 1 character long and AT MOST 200 characters long. 
+`question_text` is a string that MUST be AT LEAST 1 character long and AT MOST 200 characters long. `choice_options` is an array of choice objects that MUST have at least 1 choice. Each choice object must have a `choice_text` field that MUST be AT LEAST 1 character long and AT MOST 200 characters long. 
 
 For example...
 
 ```json
 {
-    "question": "Should pineapple be on pizza?",
-    "answers": [
-        "yes",
-        "no"
+    "question_text": "Should pineapple be on pizza?",
+    "choice_options": [
+        {"choice_text": "yes"},
+        {"choice_text": "no"}
     ]
 }
 ```
 
 This should create 1 `MultipleChoiceQuestion` and 2 `MultipleChoiceOption`s. 
 
-If a question or answer is not valid, (or if a `question` or `answers` is not provided) it should not create any `MultipleChoiceQuestion` or `MultipleChoiceOption` and return an appropriately erroring http status response.
+If a question or answer is not valid, (or if `question_text` or `choice_options` is not provided) it should not create any `MultipleChoiceQuestion` or `MultipleChoiceOption` and return an appropriately erroring http status response.
 
 You can return any response so long as the HTTP status code returned is 201.
 
 An example CURL request you can use to test your API is:
 
-```
+```bash
 curl -X POST http://localhost:8000/polls/api/question/add/ \
     -H "Content-Type: application/json" \
-    -d '{"question":"Should pineapple be on pizza?", "answers":["yes", "no"]}'
+    -d '{"question_text":"Should pineapple be on pizza?", "choice_options":[{"choice_text":"yes"}, {"choice_text":"no"}]}'
 ```
 
 **Task Requirements**
@@ -1354,17 +1401,16 @@ curl -X POST http://localhost:8000/polls/api/question/add/ \
 - MUST have a route available at `polls/api/question/add/` (e.g. localhost:8000/polls/api/question/add/)
     - MUST only handle POST and return a 405 when any other method is received.
 - MUST verify the payload is correct
-    - MUST check that `question` and `answers` were provided
-    - MUST check that `question` is between 1-200 characters long
-    - MUST check that each answer is between 1-200 characters long
-    - MUST check that there is AT LEAST one answer in `answers`
-    - MUST check that each answer is at least 1 character long
+    - MUST check that `question_text` and `choice_options` were provided
+    - MUST check that `question_text` is between 1-200 characters long
+    - MUST check that each choice's `choice_text` is between 1-200 characters long
+    - MUST check that there is AT LEAST one choice in `choice_options`
     - MUST not create any models if any validation step fails
     - MUST return an appropriately erroring http status code if validation fails
 - MUST create a `MultipleChoiceQuestion` and multiple `MultipleChoiceOption` when the payload is valid
     - MUST respond with a status code of 201 after it was created
 
-**Hint**: You may find `rest_framework`'s serializers useful for doing the majority of the validation work for you! We also went through it earlier in the lab! ([Documentation](https://www.django-rest-framework.org/api-guide/serializers/))
+**Hint**: You'll need to use nested serializers for this task! Look at the "Working with Related Models Using Nested Serializers" section above. You can create a `ChoiceOptionSerializer` for the choice objects and a `QuestionWithChoicesSerializer` that includes the nested choices. The validation will be handled automatically by the serializers based on your model field constraints! ([Documentation](https://www.django-rest-framework.org/api-guide/serializers/))
 
 ### TASK - Comment Section
 
