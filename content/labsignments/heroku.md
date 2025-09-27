@@ -1410,7 +1410,7 @@ curl -X POST http://localhost:8000/polls/api/question/add/ \
 - MUST create a `MultipleChoiceQuestion` and multiple `MultipleChoiceOption` when the payload is valid
     - MUST respond with a status code of 201 after it was created
 
-**Hint**: You'll need to use nested serializers for this task! Look at the "Working with Related Models Using Nested Serializers" section above. You can create a `ChoiceOptionSerializer` for the choice objects and a `QuestionWithChoicesSerializer` that includes the nested choices. The validation will be handled automatically by the serializers based on your model field constraints! ([Documentation](https://www.django-rest-framework.org/api-guide/serializers/))
+**Hint**: You'll need to use nested serializers for this task! You can create a `ChoiceOptionSerializer` for the choice objects and a `QuestionWithChoicesSerializer` that includes the nested choices. The validation will be handled automatically by the serializers based on your model field constraints! ([Documentation](https://www.django-rest-framework.org/api-guide/serializers/))
 
 ### TASK - Comment Section
 
