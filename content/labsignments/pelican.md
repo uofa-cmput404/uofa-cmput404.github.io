@@ -399,9 +399,9 @@ You **can** break the CSS requirements listed above in order deliver on your ide
 
 So how can you be sure you'll get full marks for having 3 different layouts/styles if following the CSS requirements isn't enough? 
 
-The answer is to construct different user experiences. Once you have the Gutenberg content displaying with no CSS on your website, stop. The temptation for your first mode will be to 'make it look fancy/minimal/90s', this is a trap.
+The answer is to construct different user experiences. Once you have the Gutenberg content displaying with no CSS on your website, stop.
 
->The temptation for your first mode will be to 'make it look fancy/minimal/90s', this is a trap.
+The temptation for your first mode will be to 'make it look fancy/minimal/90s', this is a trap.
 
 Instead take some time and think about the content. They are books. Maybe you picked the books according to some theme. How might a user want to interact with this content?
 
