@@ -153,6 +153,46 @@ Every time `Ticker` notifies the `Clock`, use JS to update the element in the DO
     * Each part of the app should be separated, visually distinct, and titled.
     * Your CSS must make sure the element with the message about the countdown being over is hidden until the countdown is over.
 
+# Comments
+
+Your code must include clear, helpful comments that demonstrate your understanding of what you're building and why certain decisions were made. 
+
+## What We Expect
+
+Comments should explain **why** the code exists and **why** it's written the way it is, not **what** the code is doing (which should be clear from reading the code itself).
+
+Good comments provide context about:
+
+* Why a particular approach was chosen
+* Why a conditional check is necessary and what would happen without it
+* Why a function is being called at this point in the code
+* Why certain patterns are implemented
+* How different parts of your code relate to each other
+
+**Every significant piece of JavaScript code must have a comment explaining why it exists. Your lab will be evaluated on both the functionality of your code and the quality of your comments.** 
+
+## Examples
+
+### Good Comments for This Lab
+
+```javascript
+/* 
+The Ticker must be a singleton because multiple tickers would create multiple setTimeout chains, causing the clock/timer/stopwatch/countdown to update at inconsistent intervals and waste resources.
+*/
+if (Ticker.instance) {
+    throw new Error("Ticker already exists");
+}
+```
+
+### Bad Comments for This Lab
+
+```javascript
+// Check if Ticker.instance exists
+if (Ticker.instance) {
+    throw new Error("Ticker already exists");
+}
+```
+
 # Restrictions
 
 Violation of the restrictions will result a mark of zero.
