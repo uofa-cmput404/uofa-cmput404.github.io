@@ -225,7 +225,7 @@ Upload your entire app as a single HTML file directly to Canvas.
 * Collaboration must be documented in your source code.
 * Any source code you got from anywhere else must be cited in the source code. This includes code from LLMs.
 * You can only use source code that **you understand**: see the [lab marking info]({filename}/general/labs.md#lab-marking)
-* For more information see the collaboration section in the outline: [{filename}/general/outline.md#consultation-assignments-labs]
+* For more information see the [collaboration section in the outline]({filename}/general/outline.md#consultation-assignments-labs)
 
 # Hints
 
