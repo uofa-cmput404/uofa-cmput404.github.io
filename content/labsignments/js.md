@@ -171,6 +171,8 @@ Good comments provide context about:
 * Why certain patterns are implemented
 * How different parts of your code relate to each other
 
+**Every significant piece of JavaScript code must have a comment explaining why it exists. Your lab will be evaluated on both the functionality of your code and the quality of your comments.** 
+
 ## Examples
 
 ### Good Comments for This Lab
