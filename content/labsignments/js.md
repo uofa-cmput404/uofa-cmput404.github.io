@@ -15,7 +15,7 @@ The app won't require any network traffic except loading a single HTML file.
 You will use DHTML, promises, and async/await to connect your code and make sure each piece of code runs at the same time, and that the Clock, Timer, Stopwatch, and Countdown functions all work at the same time, independently.
 
 <p class="longWarning">
-Due to the Thanksgiving holiday, there will be no walkthroughs for this lab. You will submit a single HTML file on eClass. Please ensure your code is well-commented so the TAs know that you understand your code. See the Language Assignment for detailed examples of good vs bad comments.
+Due to the Thanksgiving holiday, there will be no walkthroughs for this lab. You will submit a single HTML file on Canvas. Please ensure your code is well-commented so the TAs know that you understand your code. See the Language Assignment and the <a href="#comments">comments section</a> below for detailed examples of good vs bad comments.
 </p>
 
 ## Learning Goals
@@ -169,7 +169,9 @@ Good comments provide context about:
 * Why certain patterns are implemented
 * How different parts of your code relate to each other
 
-**Every significant piece of JavaScript code must have a comment explaining why it exists. Your lab will be evaluated on both the functionality of your code and the quality of your comments.** 
+<p class="longWarning">
+Every function/method/class of JavaScript code must have a comment explaining why it exists. Your lab will be evaluated on both the functionality of your code and the quality of your comments. Non-trivial lines should also have good, explanatory comments. <b>You will be marked on whether or not your comments convince the TA that you know why and how your code works.</b>
+</p>
 
 ## Examples
 
