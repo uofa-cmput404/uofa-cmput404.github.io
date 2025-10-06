@@ -915,12 +915,16 @@ After clicking the POST button you should see the updated value in the json stru
 ### Other cool things to know
 
 Use `ModelSerializer` first:
+
 If your serializer is just mirroring fields from a Django model, ModelSerializer saves you time. It will:
+
   - Automatically generate the fields from the model.
   - Provide default implementations for .create() and .update().
 
 Use `Serializer` when you need more control:
+
 For example, if your data doesn’t map directly to a model, or if you want to customize validation/representation. You can implement .create() and .update() yourself.
+
 ```python
 from rest_framework import serializers
 from .models import MultipleChoiceQuestion
@@ -948,10 +952,13 @@ class QuestionSerializer(serializers.Serializer):
 Here, you see the manual work that ModelSerializer normally handles automatically. This example also gives you model fields plus extra custom behavior, without touching the database model itself.
 
 Use `BaseSerializer` for complete control
+
 If you want to support alternative serialization and deserialization styles then you can inherit the `BaseSerializer` class and override these four functions depending on what functionality you want the serializer class to support:
+
   - `.to_representation()` - Override this to support serialization, for read operations
   - `.to_internal_value()` - Override this to support deserialization, for write operations
   - `.create()` and `.update()` - Override either or both of these to support saving instances.
+
 ```python
 from rest_framework.serializers import BaseSerializer
 from .models import MultipleChoiceQuestion
@@ -971,7 +978,9 @@ class QuestionTextSerializer(BaseSerializer):
         instance.save()
         return instance
 ```
+
 Here:
+
   - `.to_representation()` → controls how the model is turned into JSON. We only output `question_text`
   - `.to_internal_value()` → controls how incoming JSON is turned into Python data.
   - `.create()` and `.update()` → we still need to define these, just like with a normal `Serializer`

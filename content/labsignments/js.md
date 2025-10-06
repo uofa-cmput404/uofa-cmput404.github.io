@@ -164,6 +164,7 @@ Your code must include clear, helpful comments that demonstrate your understandi
 Comments should explain **why** the code exists and **why** it's written the way it is, not **what** the code is doing (which should be clear from reading the code itself).
 
 Good comments provide context about:
+
 * Why a particular approach was chosen
 * Why a conditional check is necessary and what would happen without it
 * Why a function is being called at this point in the code
