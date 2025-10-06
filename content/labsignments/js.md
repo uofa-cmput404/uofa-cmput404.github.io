@@ -14,11 +14,9 @@ In this lab you will make a JS Clock/Timer/Stopwatch/Countdown "single-page" app
 The app won't require any network traffic except loading a single HTML file.
 You will use DHTML, promises, and async/await to connect your code and make sure each piece of code runs at the same time, and that the Clock, Timer, Stopwatch, and Countdown functions all work at the same time, independently.
 
-<!-- ## Warning!
-
 <p class="longWarning">
-Due to the Thanksgiving holiday, there will be no walkthroughs for this lab. You will submit a single HTML file on eClass. Please ensure your code is well-commented so the TAs know that you understand your code. See the Heroku lab description for detailed examples of good vs bad comments.
-</p> -->
+Due to the Thanksgiving holiday, there will be no walkthroughs for this lab. You will submit a single HTML file on eClass. Please ensure your code is well-commented so the TAs know that you understand your code. See the Language Assignment for detailed examples of good vs bad comments.
+</p>
 
 ## Learning Goals
 
