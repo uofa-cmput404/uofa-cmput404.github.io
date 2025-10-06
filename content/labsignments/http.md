@@ -206,7 +206,7 @@ import pathlib
 Create a custom server class and make it inherit from the socketserver.TCPServer class. This is the first step in setting up a server, There are four basic servers available within the socketserver module namely TCPServer, UDPServer,UnixStreamServer and UnixDatagramServer
 
 ```python
-class LabHttpTcpServer(socketserver.TCPServer):
+class LabServer(socketserver.TCPServer):
    allow_reuse_address = True
 ```
 ## Create the custom HttpHandler class
@@ -214,7 +214,7 @@ class LabHttpTcpServer(socketserver.TCPServer):
 Create the custom HttpHandler class by inheriting the socketserver.StreamRequestHandler to handle incoming requests. We utilized the socketserver.StreamRequestHandler class, a subclass of socketserver.BaseRequestHandler  because it provides implementation for rfile and wfile.
 
 ```python
-class LabHttpTCPHandler(socketserver.StreamRequestHandler)
+class LabServerTCPHandler(socketserver.StreamRequestHandler)
 ```
 
 ## Implement the handle method
@@ -272,7 +272,7 @@ Start the server by calling the serve_forever method and pass the HOST, PORT
 
 ```python
 def main():
-   with LabHttpTcpServer((HOST,PORT),LabHttpTCPHandler) as server:
+   with LabServer((HOST,PORT),LabServerTCPHandler) as server:
        print("server is starting")
        print("running")
        server.serve_forever() 
@@ -344,7 +344,7 @@ Violation of the restrictions will result in a mark of zero.
 
 Make sure you push to GitHub classroom **BEFORE the deadline!** You will not be able to push after that!
 
-Submit a link to your repo in the form `https://github.com/uofa-cmput404/s25-labsignment-django-yourgithubname/commit/bunch-of-numbers` on eClass. **Do not** submit a link to a branch, a file, or the clone URL.
+Submit a link to your repo in the form `https://github.com/uofa-cmput404/f25-labsignment-http-yourgithubname/commit/bunch-of-numbers` on eClass. **Do not** submit a link to a branch, a file, or the clone URL.
 
 <p class="warning">If you do not submit a link to your COMMIT on Canvas on time using the correct format above, you will get a zero.</p>
 

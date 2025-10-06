@@ -399,9 +399,9 @@ You **can** break the CSS requirements listed above in order deliver on your ide
 
 So how can you be sure you'll get full marks for having 3 different layouts/styles if following the CSS requirements isn't enough? 
 
-The answer is to construct different user experiences. Once you have the Gutenberg content displaying with no CSS on your website, stop. The temptation for your first mode will be to 'make it look fancy/minimal/90s', this is a trap.
+The answer is to construct different user experiences. Once you have the Gutenberg content displaying with no CSS on your website, stop.
 
->The temptation for your first mode will be to 'make it look fancy/minimal/90s', this is a trap.
+The temptation for your first mode will be to 'make it look fancy/minimal/90s', this is a trap.
 
 Instead take some time and think about the content. They are books. Maybe you picked the books according to some theme. How might a user want to interact with this content?
 
@@ -597,7 +597,7 @@ Violation of the restrictions will result in a mark of zero.
 
 Make sure you push to GitHub classroom **BEFORE 4PM on Monday!** You will not be able to push after that!
 
-Submit a link to your repo in the form `https://github.com/uofa-cmput404/s25-labsignment-django-yourgithubname/commit/bunch-of-numbers` on eClass. **Do not** submit a link to a branch, a file, or the clone URL.
+Submit a link to your repo in the form `https://github.com/uofa-cmput404/f25-labsignment-pelican-yourgithubname/commit/bunch-of-numbers` on eClass. **Do not** submit a link to a branch, a file, or the clone URL.
 
 <p class="warning">If you do not submit a link to your COMMIT on Canvas on time using the correct format above, you will get a zero.</p>
 
