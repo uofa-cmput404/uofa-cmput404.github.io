@@ -144,6 +144,15 @@ All mental health & wellbeing supports offered to undergraduate students are lis
 
 If you are unsure how to access a resource, please contact the **[Office of the Dean of Students](https://www.ualberta.ca/dean-of-students/index.html)** for a full listing of services.
 
+* [Peer Support Center](https://www.su.ualberta.ca/these-are-your-resources/this-is-your-wellness/peer-support-centre/) - Offers a free, confidential, and non-judgemental place to talk to someone for support. Book an appointment or drop in. Appointments are booked online.
+* [Counselling and Clinical Services](https://www.ualberta.ca/en/current-students/counselling/index.html) - Offers a variety of free mental health related workshops. Students can find descriptions of all topics and register online through their webpage. CCS has a program, [One at a Time Therapy (OAATT)](https://www.ualberta.ca/en/current-students/counselling/individual-therapy-services/index.html) in addition to their other services. OAATT is a single session model that provides a faster route to therapy.
+* [Social Worker Support](https://www.ualberta.ca/en/current-students/wellness-supports/social-worker-support.html): Registered Social Worker to listen to students and connect to resources. Contact them at wellness@ualberta.ca
+
+## Financial Supports
+
+* [Student Financial Supports](https://www.ualberta.ca/en/registrar/scholarships-awards-financial-support/index.html) - Whether a student needs funding from the start or has suddenly encountered an unexpected financial shortfall during the school year, there are a variety of financial supports available to help meet student needs.
+* [Campus Food Bank](https://campusfoodbank.com/) - Provides assistance to our U of A community members experiencing food insecurity. Services include food hampers, cooking classes, low-cost groceries, and transportation to grocery stores.
+
 ## Need Help Now?
 
 It's normal for us to have different mental health experiences throughout the year. Know that there are people who want to help. You can reach out to your friends and access a variety of supports available on and off campus at the **[Need Help Now](https://www.ualberta.ca/current-students/need-help-now.html)** webpage or by calling the **24-hour Distress Line: 780-482-4357 (HELP)**. 
