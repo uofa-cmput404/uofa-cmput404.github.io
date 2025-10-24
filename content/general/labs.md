@@ -66,7 +66,7 @@ However, you still need to turn things in on Canvas:
 3. [Heroku]({filename}/labsignments/heroku.md)
 4. [Pelican]({filename}/labsignments/pelican.md)
 5. [JS]({filename}/labsignments/js.md)
-6. [Flask]({filename}/labsignments/flask.md)
+6. [Flask/AJAX]({filename}/labsignments/flask.md)
 
 
 [All labsignments]({category}labsignments)
