@@ -97,7 +97,9 @@ I, <span style="padding-top: 72pt;">______________________________</span> have r
 
 Signature: <span style="padding-top: 72pt;">______________________________</span>
 
-**It is not acceptable to type your name. I need your real signature!**
+<aside class="longWarning">
+<b>It is not acceptable to type your name. I need your real signature!**</b> Do <b>not</b> use the drawing/annotation tool in Canvas, it doesn't actually edit the PDF and whoever marks it will not see it, so it is not acceptable.
+</aside>
 
 # Question 2 - Comments
 
@@ -442,7 +444,7 @@ vii. Compare the two LLM generated test codes with the Question 3 test code. Lis
 
 * Double-check that it is clear what is your work and what is LLM output in your assignment before submitting.
 
-Submit a PDF to Canvas with your name both printed and your signature for question 1C. If your name or your signature are missing, you will recieve a zero on this assignment.
+Submit a PDF to Canvas with your name both printed and your signature for question 1C. If your name or your signature are missing, you will receive a zero on this assignment. Do not use the Canvas drawing tool, it does not actually change the PDF, so it's not acceptable, and whoever is marking won't see it.
 
 # Marking
 
