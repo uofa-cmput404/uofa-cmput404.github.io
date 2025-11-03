@@ -367,9 +367,11 @@ View Deleted           | pull |                |                         |      
 View Following         | pull | to `followers` | optional from           | optional from              | <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
 
 Notes on the above tables:
+
 * This can work entirely on push from the author's server to another author's inbox.
 * Yes, this means that only the local node (node where the entry came from) will have a complete list of comments/likes. Mastodon/Diaspora also have this problem.
-* "Unfollow" the API is missing this functionality.
+* "Unfollow" the node-to-node inbox API is missing this functionality, however it should work locally.
+    * When author1 on node1 unfollows author2 on node2: node1 should not add author2's posts to author1's stream, even though it will continue to recieve them from node2.
 * Yes, a node may have an out of date list of followers if a remote follower unfollows.
 * "View Friends-Only" the API is missing this functionality. 
 
@@ -1044,19 +1046,38 @@ Hint: In Django, set `unique=True` on the field. Then use `models.ForeignKey` wi
 }
 ```
 
+## Following API
+
+* This API is only for a local author managing who they follow through the API. All requests must be authenticated for AUTHOR_SERIAL.
+* URL: `://service/api/authors/{AUTHOR_SERIAL}/following` (must be authenticated)
+    * GET [local]: get a list of authors who `AUTHOR_SERIAL` is following
+* URL: `://service/api/authors/{AUTHOR_SERIAL}/following/{FOREIGN_AUTHOR_FQID}` (must be authenticated)
+    * Note: foreign author ID should be a percent encoded URL of the foreign author. An example URL would be:
+        * `http://example-node-1/api/authors/178aba49-ca39-4741-b227-f40d072b1222/following/http%3A%2F%2Fexample-node-2%2Fauthors%2F5f57808f-0bc9-4b3d-bdd1-bb07c976d12d`
+    * DELETE [local]: `AUTHOR_SERIAL` unfollows `FOREIGN_AUTHOR_FQID` (must be authenticated)
+    * GET [local] `AUTHOR_SERIAL` checks if they are following `FOREIGN_AUTHOR_FQID`
+    * PUT [local] `AUTHOR_SERIAL` generates a follow request (if none exists) for `FOREIGN_AUTHOR_FQID`. If foreign author is on a different node, author's node should generate a follow request and POST it to foreign author's inbox API endpoint. 
+
+
 ## Followers API
 
-* URL: `://service/api/authors/{AUTHOR_SERIAL}/followers`
-    * GET [local, remote]: get a list of authors who are `AUTHOR_SERIAL`'s followers
-* URL: `://service/api/authors/{AUTHOR_SERIAL}/followers/{FOREIGN_AUTHOR_FQID}`
+* All requests must be authenticated for AUTHOR_SERIAL [local] or FOREIGN_AUTHOR's server must be authenticated [remote].
+* URL: `://service/api/authors/{AUTHOR_SERIAL}/followers/{FOREIGN_AUTHOR_FQID}` (local author is being followed)
     * Note: foreign author ID should be a percent encoded URL of the foreign author. An example URL would be:
         * `http://example-node-1/api/authors/178aba49-ca39-4741-b227-f40d072b1222/followers/http%3A%2F%2Fexample-node-2%2Fauthors%2F5f57808f-0bc9-4b3d-bdd1-bb07c976d12d`
+    * PUT [local]: accept `FOREIGN_AUTHOR_FQID` as a follower of `AUTHOR_SERIAL` (must be authenticated)
+        * Used by `AUTHOR_SERIAL` to accept follow request.
+        * Must return 404 if there is no matching follow request.
     * DELETE [local]: remove `FOREIGN_AUTHOR_FQID` as a follower of `AUTHOR_SERIAL` (must be authenticated)
-    * PUT [local]: Add `FOREIGN_AUTHOR_FQID` as a follower of `AUTHOR_SERIAL` (must be authenticated)
+        * REQUIRED: Used by `AUTHOR_SERIAL` to deny follow request.
+        * OPTIONAL: Used to revoke follow request once it's already been accepted. (There's no user story for revoking follow requests after they're accepted.)
+        * Must return 404 if there is no matching follow request or follower.
     * GET [local, remote] check if `FOREIGN_AUTHOR_FQID` is a follower of `AUTHOR_SERIAL`
         * Should return 404 if they're not
-        * This is how you can check if follow request is accepted
-        
+        * This is how you can check if follow request is accepted 
+        * Use by remote server is optional: there's no need to know whether a follow request was accepted, but it can improve the UI.
+        * Implementation of the GET endpoint is required: only a different node actually using it is optional.
+
 * Example: GET `http://nodeaaa/api/authors/111/followers`
 
 ```js
@@ -1099,10 +1120,13 @@ Hint: In Django, set `unique=True` on the field. Then use `models.ForeignKey` wi
    
 ## Follow Request API
 
+* URL: `://service/api/authors/{AUTHOR_SERIAL}/follow_requests`
+    * `GET` [local]:
+        * Used by `AUTHOR_SERIAL` to check who wants to follow them through the API
 * URL: `://service/api/authors/{AUTHOR_SERIAL}/inbox`
     * `POST` [remote]: send a follow request to `AUTHOR_SERIAL`
         * `AUTHOR_SERIAL` will be the `object` below
-* When author 1 tries to follow author 2, author 1's node send the follow request to author 2's node.
+* When author 1 (actor) tries to follow author 2 (object), author 1's node send the follow request to author 2's node.
 * If the author 2 accepts the Follow Request then author 1 is following author 2.
     * If author 2 is also already following author 1, then they are now friends.
 * Author2's node does not need to tell Author1's node if follow was accepted or rejected.

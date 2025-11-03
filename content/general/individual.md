@@ -48,3 +48,16 @@ As of Fall 2025, [Wooclap](https://www.wooclap.com/) is used for lecture partici
 * [If you miss an exam]({filename}/general/outline.md#deferred-final-examination)
 * Exam date and time is on BearTracks when the registrar posts it. The registrar doesn't usually post exam dates and times until a few weeks before the end of the semester.
 
+# Requirements
+
+This is a software engineering class.
+
+One tiny mistake in software engineering is how you end up with a $2B AWS outage (last week), all air traffic halted (crowdstrike), 360 dead Boeing passengers <https://www.businessinsider.com/boeing-software-errors-jeopardized-starliner-spaceship-737-max-planes-2020-2>, 70,000 people's driver's licenses/IDs leaked (Discord), and so on. Most of the time something horrible happens that makes the news as a result of a software problem it is the result of either a functional requirement being violated (the code is 99.9999% working), or it is the result of a nonfunctional requirement being violated (the code is 100% working, but doesn't meet safety (Boeing), security (Discord), speed, latency, testing (Crowdstrike), quality, maintainability, complexity, etc. nonfunctional requirements. 
+
+A part of software engineering is being able to know when something is critical (a tiny mistake will hurt people or cost a lot of money or cause legal liability or crimes) and knowing when something isn't important and if that part isn't quite right, it'll be okay. If the requirements for a project say something is critical, then it is critical.
+
+If an assignment or project in this course says that you will get a mark of zero if you do something forbidden or fail to do something required, then you will get a mark of zero. These zeroes will be applied, even if your code is otherwise perfect.
+
+Please double-check, triple-check requirements before submitting code (not just at the start of an assignment) to ensure that you don't receive a zero. Continue to do so once you've graduated from solving my little assignments to help avoid writing code that hurts people.
+
+It is also your job as a software engineer to get clarification on the requirements if they are not clear.
