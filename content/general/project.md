@@ -1814,6 +1814,15 @@ https://github.com/uofa-cmput404/f24-project-orange/commit/8e2cac3a0c0fdd01f039e
 
 ## Project Part 3: Distribution
 
+Project part 3 includes user stories from part 1, user stories from part 2, and user stories marked with  ⧟ new user stories. All of them. 
+They should all be working with multiple nodes. All of them!
+
+If a user story could work with multiple nodes, it should work with multiple nodes! For example:
+
+* As an author, I want a "stream" which shows all the entries I should know about, so I don't have to switch between different pages.
+
+This user story now also includes entries from remote nodes. The same principle applies to every user story in the list of user stories.
+
 ### Requirements
 
 * Everyone on the team must be able to deploy their own *node* (using the same project code) to their own Heroku "app" with their own Heroku Postgres database.
