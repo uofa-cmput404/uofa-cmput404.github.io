@@ -43,7 +43,7 @@ Activity Pub is great, but too complex for a class project.
 We also won't be adding much in the way of encryption or security
 to this platform. We're keeping it simple and restful.
 
-Choose at least 4 other groups to work with!
+Choose at least 3 other groups to work with!
 
 ## Scenario 
 
@@ -1360,10 +1360,9 @@ Local APIs, such as "stream", that aren't specified here, are up to your design.
 * Implement the webservice as described in the user stories
 * Provide a webservice interface that is restful
 * Provide a web UI interface that is usable
-* Prove your project by connecting with at least 1 clone of your project. (Parts 3-5)
+* Prove your project by connecting with other teammate's clone of your project. (Parts 3-5)
 * Prove your project by connecting with at least 2 other groups. (Parts 4-5)
-* Show that you are making a serious effort to connect with at least 4 other groups. (Parts 4-5)
-* Prove your project by connecting with at least 3 other groups. (Part 5)
+* Show that you are making a serious effort to connect with at least 3 other groups. (Parts 4-5)
 * Make a video demo of your blog (desktop-recorder is ok) 
     * Your video may **not** be a part of your presentation.
 * Make a presentation about your blog 
@@ -2072,7 +2071,7 @@ During the other team's presentations:
     * **Presentation:** Presentation within time, shows excellent teamwork, promotes the application, uses the live application to show functionality.
     * **Video**: Video is well presented and not boring, less than 2 minutes. It is fun promotes your project. Makes people want to try your app out. Posted to the discussion forum thread to share it with everyone in the class.
     * Web Service Coordination: Team's node coordinates with **two** other team's nodes successfully. All user stories that could involve two nodes work node-to-node with **two** other teams nodes.
-    * Inter-Team Coordination: Significant progress in getting node coordinating with **three** other teams nodes. (Four includes the two teams above.)
+    * Inter-Team Coordination: Significant progress in getting node coordinating with **three** other teams nodes. (Three includes the two teams above.)
     * Addressing Feedback: TA's suggestions were implemented, TA approves of implementation set.
     * User Stories UI: All the user stories are usable using the UI. 
     * User Stories API: All the user stories with a relevant API are usable using the API. Adheres to the specification.
