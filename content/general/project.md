@@ -1193,13 +1193,13 @@ shortcut to get the image if authenticated to see it.
 
 * URL: `://service/api/authors/{AUTHOR_SERIAL}/inbox`
     * `POST` [remote]: comment on an entry by `AUTHOR_SERIAL`
-    * Body is a [comment object](#example-comment)
+    * Body is a [comment object](#example-comment-object)
 * URL: `://service/api/authors/{AUTHOR_SERIAL}/entries/{ENTRY_SERIAL}/comments`
     * `GET` [local, remote]: the comments on the entry
-    * Body is a ["comments" object](#example-comments)
+    * Body is a ["comments" object](#example-comments-object)
 * URL: `://service/api/entries/{ENTRY_FQID}/comments`
     * `GET` [local, remote]: the comments on the entry (that our server knows about)
-    * Body is a ["comments" object](#example-comments)
+    * Body is a ["comments" object](#example-comments-object)
 * URL: `://service/api/authors/{AUTHOR_SERIAL}/entries/{ENTRY_SERIAL}/comment/{REMOTE_COMMENT_FQID}`
     * GET [local, remote] get the comment
 * Example: GET `http://nodebbbb/api/authors/222/entries/249/comments/http%3A%2F%2Fnodeaaaa%2Fapi%2Fauthors%2F111%2Fcommented%2F130`:
