@@ -1621,8 +1621,8 @@ After you receive your grade, you can delete your Heroku app to save credits/mon
 
 # Tips
 
-Django is a complex framework and maybe overwhelming at times. You should consult the documentation should you run into any issues with the framework. 
+Django is a complex framework and may be overwhelming at times. You should consult the documentation should you run into any issues with the framework. 
 
 If you're unable to load a static file or resource, it maybe because you're not referencing it correctly. It may be in a different directory or you have a typo when you are referencing that particular resource using its path. 
 
-Another common problem is not being able to render the templates even though you're directory structure is correct. Make sure your app is registered in `settings.py` otherwise it may not render.
+Another common problem is not being able to render the templates even though your directory structure is correct. Make sure your app is registered in `settings.py` otherwise it may not render.
