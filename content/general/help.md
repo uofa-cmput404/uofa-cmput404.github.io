@@ -188,7 +188,7 @@ The only official communications are:
 * University of Alberta Google Apps (forms / gmail / etc.) (you must be signed in with your CCID)
 * Canvas University of Alberta
 
-Additionally, you can submit assignments/projects/labs/participation on GitHub Classroom and Mentimeter, but do not use them to ask questions.
+Additionally, you can submit assignments/projects/labs/participation on GitHub Classroom, but do not use them to ask questions.
 
 The instructor/TA are not responsible for and completely disown any unofficial communications.
 
