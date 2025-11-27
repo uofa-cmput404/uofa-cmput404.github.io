@@ -27,7 +27,7 @@ In order to connect to your flask server inside WSL or another VM from outside W
 
 * As a user, I want to add items to any existing item in the outline, so I can grow my outline.
 * As a user, I want to edit items in the outline, so I can update my outline.
-* As a user, I want to delete items from the outline, becuase I don't want them anymore.
+* As a user, I want to delete items from the outline, because I don't want them anymore.
 * As a user, I want to be able to delete a parent node, and all its children shall be deleted with it.
 * As a user, I want the outline to remember the order of outline items, because the order is important to me.
 * As a user, I want my friend to be able to edit the same outline that I am editing, so that we can collaborate.
