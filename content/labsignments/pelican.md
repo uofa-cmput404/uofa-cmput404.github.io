@@ -393,7 +393,7 @@ To be specific, the spirit of the assignment is to have you express yourself in 
 
 You should be proud of each mode, and leverage CSS *in combination* with your creativity to make each shine. Each should be a unique experience (more on this later). 
 
-You **can** break the CSS requirements listed above in order deliver on your ideas. Conversly, you can follow the CSS requirements perfectly and fail to recieve full marks if it seems like you tried to make as few changes between modes as possible. 
+You **can** break the CSS requirements listed above in order deliver on your ideas. Conversely, you can follow the CSS requirements perfectly and fail to receive full marks if it seems like you tried to make as few changes between modes as possible. 
 
 ## Different layouts arise from different user experiences
 
@@ -468,7 +468,7 @@ As mentioned before:
 
 It is a trap because after you do it, you're going to be tempted to take the one mode you've made, and just 'tweak' it to create the other 2. 
 
-The following 4 screenshots all show the same layout. A student submitting the modes below would recieve points for only 1 layout.
+The following 4 screenshots all show the same layout. A student submitting the modes below would receive points for only 1 layout.
 
 <img src="{attach}images/bad-1.png" alt="bad-layout-1" width="600"/>
 <img src="{attach}images/bad-2.png" alt="bad-layout-2" width="600"/>
