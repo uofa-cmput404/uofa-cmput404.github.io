@@ -161,7 +161,7 @@ You have several options to make sure this doesn't happen:
 
 ## Prepare your Repo
 
-1. Get the GitHub classroom link from eClass, create your assignment, and clone it.
+1. Get the GitHub classroom link from Canvas, create your assignment, and clone it.
 2. Create an appropriate `.gitignore` file, to prevent unwanted files being commited to your repository.
 
 Place this gitignore within the root of your project. You can combine [this one](https://github.com/github/gitignore/blob/main/Python.gitignore) and [this one](https://github.com/github/gitignore/blob/main/Node.gitignore) and [this one](https://github.com/django/django/blob/main/.gitignore) for your django+node project. Double check you're not staging any unwanted files before you commit. The `git status` command can help with that.
@@ -1603,7 +1603,7 @@ Violation of the restrictions will result in a mark of zero.
 
 Make sure you push to github classroom **BEFORE 4PM on Monday!** You will not be able to push after that!
 
-Submit a link to your repo in the form `https://github.com/uofa-cmput404/f25-labsignment-heroku-yourgithubname/commit/bunch-of-numbers` on eClass. **Do not** submit a link to a branch, a file, or the clone URL.
+Submit a link to your repo in the form `https://github.com/uofa-cmput404/f25-labsignment-heroku-yourgithubname/commit/bunch-of-numbers` on Canvas. **Do not** submit a link to a branch, a file, or the clone URL.
 
 <p class="warning">If you do not submit a link to your COMMIT on Canvas on time using the correct format above, you will get a zero.</p>
 
