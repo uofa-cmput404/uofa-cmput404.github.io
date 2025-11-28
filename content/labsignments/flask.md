@@ -15,7 +15,7 @@ Your task is to build a live, collaborative outline editing service.
 
 # Getting Started
 
-1. Get the github classroom link from eClass and clone it.
+1. Get the github classroom link from Canvas and clone it.
 2. Use virtualenv/pip to install flask.
 3. Create an appropriate `.gitignore` file to prevent unwanted files from being added to your repository.
 3. Follow the first steps of the [Flask Quickstart guide](https://flask.palletsprojects.com/en/latest/quickstart/): "A Minimal Application". 
@@ -208,7 +208,7 @@ Violation of the restrictions will result in a mark of zero.
 
 Make sure you push to GitHub classroom **BEFORE 4PM on the due date!** You will not be able to push after that!
 
-Submit a link to your repo in the form `https://github.com/uofa-cmput404/f25-labsignment-flask-yourgithubname/commit/bunch-of-numbers` on eClass. **Do not** submit a link to a branch, a file, or the clone URL.
+Submit a link to your repo in the form `https://github.com/uofa-cmput404/f25-labsignment-flask-yourgithubname/commit/bunch-of-numbers` on Canvas. **Do not** submit a link to a branch, a file, or the clone URL.
 
 <p class="warning">If you do not submit a link to your COMMIT on Canvas on time using the correct format above, you will get a zero.</p>
 
