@@ -55,7 +55,7 @@ However, you still need to turn things in on Canvas:
 * We have no way of tracking accessibility accommodations on GitHub. (Even if we did it would violate University policy for us to do so.)
 * We have no way of tracking grades on GitHub. (Even if we did it would violate University policy for us to do so.)
 * The GitHub due date thing does not always work correctly.
-* By University policy, GitHub (like Mentimeter) is not an approved platform. eClass/Canvas/Google Apps are the only approved platforms. So, instructors and TAs are not allowed to tell GitHub who you are, we have to allow you to be pseudonymous. For example, we are not allowed to tell GitHub/Mentimeter your name, your student ID#, your CCID, etc. This is also why Menti uses codenames.
+* By University policy, GitHub is not an approved platform. eClass/Canvas/Google Apps are the only approved platforms. So, instructors and TAs are not allowed to tell GitHub who you are, we have to allow you to be pseudonymous. For example, we are not allowed to tell GitHub your name, your student ID#, your CCID, etc.
 * Because of this policy we also cannot give grades or feedback on GitHub.
 * GitHub classroom is broken and does not handle due dates correctly.
 
