@@ -24,13 +24,13 @@ summary: Individual Assignments, Participation
 * A point can be earned by answering an instructor's question during class.
 * A point can be earned by asking a thoughtful question about the course material during class.
 * Points can be earned either in-person or by participating over Zoom.
-* Specifically no points will be awarded for asking/answering questions about the course itself, such as grades, submission requirements, due dates, etc.
+* Specifically, no points will be awarded for asking/answering questions about the course itself, such as grades, submission requirements, due dates, etc.
 * Additional opportunities may be added.
 -->
 
 Most participation marks will be in class during class. You can participate over Zoom or in-person. To participate in-person please bring a working cellphone, tablet, or laptop. There may be other participation marks from time to time. See *Missed Term Work: Participation* below.
 
-You can earn lecture participation credit by attending lecture on time. Instructions will be given during lecture.
+You can earn lecture participation credit by attending lectures on-time. Instructions will be given during lectures.
 
 As of Fall 2025, [Wooclap](https://www.wooclap.com/) is used for lecture participation.
 
@@ -52,9 +52,9 @@ As of Fall 2025, [Wooclap](https://www.wooclap.com/) is used for lecture partici
 
 This is a software engineering class.
 
-One tiny mistake in software engineering is how you end up with a $2B AWS outage (last week), all air traffic halted (crowdstrike), 360 dead Boeing passengers <https://www.businessinsider.com/boeing-software-errors-jeopardized-starliner-spaceship-737-max-planes-2020-2>, 70,000 people's driver's licenses/IDs leaked (Discord), and so on. Most of the time something horrible happens that makes the news as a result of a software problem it is the result of either a functional requirement being violated (the code is 99.9999% working), or it is the result of a nonfunctional requirement being violated (the code is 100% working, but doesn't meet safety (Boeing), security (Discord), speed, latency, testing (Crowdstrike), quality, maintainability, complexity, etc. nonfunctional requirements. 
+One tiny mistake in software engineering is how you end up with a $2B AWS outage (last week), all air traffic halted (crowdstrike), 360 dead Boeing passengers <https://www.businessinsider.com/boeing-software-errors-jeopardized-starliner-spaceship-737-max-planes-2020-2>, 70,000 people's driver's licenses/IDs leaked (Discord), and so on. Most of the time when something horrible happens that makes the news as a result of a software problem, it is the result of either a functional requirement being violated (the code is 99.9999% working), or it is the result of a nonfunctional requirement being violated (the code is 100% working, but doesn't meet safety (Boeing), security (Discord), speed, latency, testing (Crowdstrike), quality, maintainability, complexity, etc. nonfunctional requirements).
 
-A part of software engineering is being able to know when something is critical (a tiny mistake will hurt people or cost a lot of money or cause legal liability or crimes) and knowing when something isn't important and if that part isn't quite right, it'll be okay. If the requirements for a project say something is critical, then it is critical.
+A part of software engineering is being able to know when something is critical (a tiny mistake will hurt people or cost a lot of money or cause legal liability or crimes) and knowing when something isn't important and that if that part isn't quite right, it'll be okay. If the requirements for a project say something is critical, then it is critical.
 
 If an assignment or project in this course says that you will get a mark of zero if you do something forbidden or fail to do something required, then you will get a mark of zero. These zeroes will be applied, even if your code is otherwise perfect.
 
