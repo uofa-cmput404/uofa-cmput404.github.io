@@ -80,7 +80,7 @@ Some reference materials taken from https://github.com/vhf/free-programming-book
 *   [Google's Python Class](https://developers.google.com/edu/python/?hl=de-DE&csw=1)
 *   [A Guide to Python's Magic Methods](http://www.rafekettler.com/magicmethods.html) - Rafe Kettler
 *   [Hacking Secret Cyphers with Python](http://inventwithpython.com/hacking/chapters/) - Al Sweigart
-*   [Hitchiker's Guide to Python!](http://docs.python-guide.org/en/latest/)
+*   [Hitchhiker's Guide to Python!](http://docs.python-guide.org/en/latest/)
 *   [How to Think Like a Computer Scientist: Learning with Python](http://www.greenteapress.com/thinkpython/thinkCSpy/) - Allen B. Downey, Jeff Elkner and Chris Meyers
     *   [How to Think Like a Computer Scientist: Learning with Python, Interactive Edition](http://interactivepython.org/courselib/static/thinkcspy/index.html)
 *   [Introduction to Programming Using Python](http://python-ebook.blogspot.com) - Cody Jackson
