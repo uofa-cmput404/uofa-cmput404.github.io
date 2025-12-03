@@ -216,37 +216,42 @@ From older versions of CMPUT 410:
 
 *   [Safari Tech Books](http://www.library.ualberta.ca/databases/databaseinfo/index.cfm?ID=3618 "Safari Tech Books")
 *   [Books 24x7](http://www.library.ualberta.ca/databases/databaseinfo/index.cfm?ID=1729 "Books 24x7")
-*   http://proquest.safaribooksonline.com
+
+*   http://proquest.com
     
 
-*   [Software Project Survival Guide](http://proquest.safaribooksonline.com.login.ezproxy.library.ualberta.ca/book/software-engineering-and-development/project-management/1572316217 "Software Project Survival Guide")  
+*   [Software Project Survival Guide](https://login.ezproxy.library.ualberta.ca/login?url=https://www.proquest.com/trade-journals/books-software-project-survival-guide-ms-press/docview/219083842/se-2 "Software Project Survival Guide")  
     S. McConnell  
     Microsoft, 1997, ISBN 1-57231-621-7
-*   [The Build Master](http://proquest.safaribooksonline.com.login.ezproxy.library.ualberta.ca/book/operating-systems-and-server-administration/0321332059 "The Build Master")  
+*   [The Build Master](https://search.library.ualberta.ca/permalink/01UOA_INST/cgo409/alma991043837100609116 "The Build Master")  
     V. Maraia  
     Addison-Wesley, 2005, ISBN 0-321-33205-9
-*   [Extreme Programming Explained](http://proquest.safaribooksonline.com.login.ezproxy.library.ualberta.ca/book/software-engineering-and-development/extreme-programming/0321278658 "Extreme Programming")  
+    - You will need to login to O'Reilly Online Learning to access this online
+*   [Extreme Programming Explained](https://search.library.ualberta.ca/permalink/01UOA_INST/1lcd9n9/alma991043659856409116 "Extreme Programming")  
     Kent Beck  
     Addison-Wesley, 2004, ISBN 0-321-27865-8
-*   [Pair Programming Illuminated](http://proquest.safaribooksonline.com.login.ezproxy.library.ualberta.ca/book/software-engineering-and-development/0201745763 "Pair Programming Illuminated")  
+    - You will need to login to O'Reilly Online Learning to access this online
+*   [Pair Programming Illuminated](https://login.ezproxy.library.ualberta.ca/login?url=https://www.proquest.com/magazines/pair-programming-illuminated/docview/200031499/se-2 "Pair Programming Illuminated")  
     Laurie Williams, Robert Kessler  
     Addison-Wesley, 2002, ISBN 0-201-74576-3
-*   [Head First Object-Oriented Analysis and Design](http://proquest.safaribooksonline.com.login.ezproxy.library.ualberta.ca/book/software-engineering-and-development/object/0596008678 "Head First Object-Oriented Analysis and Design")  
+*   [Head First Object-Oriented Analysis and Design](https://login.ezproxy.library.ualberta.ca/login?url=https://www.proquest.com/magazines/head-first-object-oriented-analysis-design/docview/200172768/se-2 "Head First Object-Oriented Analysis and Design")  
     Brett McLaughlin, Gary Pollice, David West  
     O'Reilly, 2006, ISBN 0-596-00867-8
-*   [User Interface Design for Programmers](http://proquest.safaribooksonline.com.login.ezproxy.library.ualberta.ca/book/web-development/usability/9781893115941 "User Interface Design for Programmers")  
+*   [User Interface Design for Programmers](https://login.ezproxy.library.ualberta.ca/login?url=https://www.proquest.com/scholarly-journals/user-interface-design-programmers/docview/220993182/se-2 "User Interface Design for Programmers")  
     Joel Spolsky  
     Apress, 2006, ISBN 978-1-89311-594-1
-*   [User Stories Applied](http://proquest.safaribooksonline.com.login.ezproxy.library.ualberta.ca/book/software-engineering-and-development/agile-development/0321205685 "User Stories Applied")  
+*   [User Stories Applied](https://search.library.ualberta.ca/permalink/01UOA_INST/cgo409/alma991043659870509116 "User Stories Applied")  
     Mike Cohn  
     Addison-Wesley, 2004, ISBN 0-321-20568-5
-*   [Version Control with Subversion](http://proquest.safaribooksonline.com.login.ezproxy.library.ualberta.ca/book/software-engineering-and-development/version-control/9780596510336 "Version Control with Subversion")  
+    - You will need to login to O'Reilly Online Learning to access this online
+*   [Version Control with Subversion](https://www.proquest.com/docview/2148794176/705AE67227044C1DPQ/2?accountid=14474&sourcetype=Books "Version Control with Subversion")  
     C. Michael Pilato, Ben Collins-Sussman, Brian W. Fitzpatrick  
     O'Reilly, 2008, ISBN 978-0-596-51033-6
-*   [Test-Driven Development](http://proquest.safaribooksonline.com.login.ezproxy.library.ualberta.ca/book/software-engineering-and-development/software-testing/0321146530 "Test-Driven Development")  
+*   [Test-Driven Development](https://search.library.ualberta.ca/permalink/01UOA_INST/cgo409/alma991043746491609116 "Test-Driven Development")  
     Kent Beck  
     Addison-Wesley, 2002, ISBN 0-321-14653-0
-*   [GUI Bloopers](http://proquest.safaribooksonline.com.login.ezproxy.library.ualberta.ca/book/web-development/usability/9780123706430 "GUI Bloopers")  
+    - You will need to login to O'Reilly Online Learning to access this online
+*   [GUI Bloopers](https://login.ezproxy.library.ualberta.ca/login?url=https://www.proquest.com/trade-journals/gui-bloopers/docview/196745820/se-2 "GUI Bloopers")  
     Jeff Johnson  
     Morgan Kaufmann, 2007, ISBN 0-12-370643-2
 
