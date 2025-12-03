@@ -58,7 +58,7 @@ Some reference materials taken from https://github.com/vhf/free-programming-book
 *   [Djen of Django](http://agiliq.com/books/djenofdjango/)
 *   [Django by Example](http://www.lightbird.net/dbe/)
 *   [Django by Example for Django 1.5](http://lightbird.net/dbe2/)
-*   [Effective Django](http://effectivedjango.com/)
+*   [Effective Django](https://web.archive.org/web/20181130092020/http://www.effectivedjango.com/)
 *   [Tango With Django](http://www.tangowithdjango.com/book/)
 *   [Deploy Django](http://www.deploydjango.com)
 *   [The Django Book](http://www.djangobook.com)
@@ -73,22 +73,22 @@ Some reference materials taken from https://github.com/vhf/free-programming-book
 # Python
 
 *   [A Bit of Python and Other Things](http://jessenoller.com/good-to-great-python-reads/)
-*   [Byte of Python](http://www.swaroopch.com/notes/Python)
-*   [Data Structures and Algorithms in Python](http://www.brpreiss.com/books/opus7/html/book.html)
-*   [Dive into Python](http://www.diveintopython.net/) - Mark Pilgrim
+*   [Byte of Python](https://python.swaroopch.com/)
+*   [Data Structures and Algorithms in Python](https://thuvienso.dau.edu.vn:88/bitstream/DHKTDN/6992/1/6306.Data%20structures%20and%20algorithms%20in%20Python.pdf) - PDF
+*   [Dive into Python](https://book.diveintopython.org/) - Mark Pilgrim
 *   [Dive into Python 3](http://getpython3.com/diveintopython3/) - Mark Pilgrim
 *   [Google's Python Class](https://developers.google.com/edu/python/?hl=de-DE&csw=1)
-*   [A Guide to Python's Magic Methods](http://www.rafekettler.com/magicmethods.html) - Rafe Kettler
+*   [A Guide to Python's Magic Methods](https://rszalski.github.io/magicmethods/) - Rafe Kettler
 *   [Hacking Secret Cyphers with Python](http://inventwithpython.com/hacking/chapters/) - Al Sweigart
 *   [Hitchhiker's Guide to Python!](http://docs.python-guide.org/en/latest/)
 *   [How to Think Like a Computer Scientist: Learning with Python](http://www.greenteapress.com/thinkpython/thinkCSpy/) - Allen B. Downey, Jeff Elkner and Chris Meyers
-    *   [How to Think Like a Computer Scientist: Learning with Python, Interactive Edition](http://interactivepython.org/courselib/static/thinkcspy/index.html)
-*   [Introduction to Programming Using Python](http://python-ebook.blogspot.com) - Cody Jackson
+    *   [How to Think Like a Computer Scientist: Learning with Python, Interactive Edition](https://runestone.academy/ns/books/published/thinkcspy/index.html)
+*   [Learning to Program Using Python](https://cfm.ehu.es/ricardo/docs/python/Python_ebook/Python_ebook.pdf) - Cody Jackson (PDF)
 *   [Invent Your Own Computer Games With Python](http://inventwithpython.com/chapters/) - Al Sweigart
 *   [Learn Python The Hard Way](http://learnpythonthehardway.org/book/)
 *   [Lectures on scientific computing with python](https://github.com/jrjohansson/scientific-python-lectures) - J.R. Johansson
 *   [Making Games with Python & Pygame](http://inventwithpython.com/pygame/chapters/) - Al Sweigart
-*   [Modeling Creativity: Case Studies in Python](http://www.clips.ua.ac.be/sites/default/files/modeling-creativity.pdf) - Tom D. De Smedt
+*   [Modeling Creativity: Case Studies in Python](https://arxiv.org/pdf/1410.0281) - Tom D. De Smedt
 *   [Natural Language Processing with Python](http://www.nltk.org/book)
 *   [Porting to Python 3: An In-Depth Guide](http://python3porting.com/)
 *   [Program Arcade Games With Python And Pygame](http://programarcadegames.com/)
@@ -100,11 +100,11 @@ Some reference materials taken from https://github.com/vhf/free-programming-book
 *   [Python Practice Book](http://anandology.com/python-practice-book/index.html)
 *   [Python Programming](http://upload.wikimedia.org/wikipedia/commons/9/91/Python_Programming.pdf) - PDF
 *   [Python Scientific Lecture Notes](http://scipy-lectures.github.io/)
-*   [Snake Wrangling For Kids](http://www.briggs.net.nz/snake-wrangling-for-kids.html)
-*   [The Art and Craft of Programming](http://beastie.cs.ua.edu/cs150/book/index.html)
-*   [The Programming Historian](http://niche-canada.org/files/programming-historian-1.pdf) - William J. Turkel, Adam Crymble and Alan MacEachern
+*   [Snake Wrangling For Kids - Learning to Program with Python](https://theswissbay.ch/pdf/Gentoomen%20Library/Programming/Python/Snake%20Wrangling%20for%20Kids%20-%20Learning%20to%20Program%20with%20Python%202%2C%20win-v0.7.2%20%282007%29.pdf) - PDF
+*   [The Art and Craft of Programming](https://www.cs.cmu.edu/afs/cs/user/jcr/ftp/craftprog.pdf) - PDF
+*   [The Programming Historian](https://niche-canada.org/wp-content/uploads/2013/09/programming-historian-1.pdf) - William J. Turkel, Adam Crymble and Alan MacEachern (PDF)
 *   [Think Python](http://www.greenteapress.com/thinkpython/) - Allen B. Downey
-*   [Problem Solving with Algorithms and Data Structures](http://interactivepython.org/courselib/static/pythonds/index.html)
+*   [Problem Solving with Algorithms and Data Structures](https://runestone.academy/ns/books/published/pythonds/index.html)
 *   [Python Module of the Week](http://pymotw.com/2/)
 *   [Wikibooks: Python Programming](http://en.wikibooks.org/wiki/Python_Programming)
 *   [Python Koans](https://github.com/gregmalcolm/python_koans)
