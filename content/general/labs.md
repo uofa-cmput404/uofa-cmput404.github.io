@@ -130,7 +130,7 @@ Note that simply reading the code to the TA does **not** count as understanding.
 10. Example:
     * Your code works perfectly.
     * You can explain your code to the TA with no problem.
-    * But, you forgot to submit it on eClass.
+    * But, you forgot to submit it on Canvas.
     * Grade: no grade (but this counts the same as a 0)
 11. Example:
     * Your code works perfectly.

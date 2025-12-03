@@ -68,7 +68,7 @@ We will not tolerate harassment, bullying, threats, intimidation, insults, lying
 
 **Questions related to the course and course material, especially if the answer could help another student!**
 
-🚀 Posting to the discussion forum increases your changes of a **quick response** since any of the course staff or your classmates are able to answer. 🌠
+🚀 Posting to the discussion forum increases your chances of a **quick response** since any of the course staff or your classmates are able to answer. 🌠
 
 Unless your question is personal (E.g., you are feeling unwell and require an EA, you have a question about your mark), all questions should be posted on the Discussion Forum first. Please do not share code from your implementations (configuration settings are OK). 
 
@@ -205,4 +205,3 @@ People on unofficial discussion forums such as discord **sometimes lie**. There 
 Multiple lies like the above happen on Discord or another unofficial site for this class **every semester**.
 
 Behaviour such as harassment, bullying, threats, intimidation, insults, racism, lying are still subject to sanctions by the [Student Conduct Policy](https://policiesonline.ualberta.ca/PoliciesProcedures/Pages/DispPol.aspx?PID=190&s=https://policiesonline.ualberta.ca/PoliciesProcedures/Pages/Academic.aspx) and the [Student Academic Integrity Policy](https://policiesonline.ualberta.ca/PoliciesProcedures/Pages/DispPol.aspx?PID=193&s=https://policiesonline.ualberta.ca/PoliciesProcedures/Pages/Academic.aspx). However, because the instructor and University has no control of these platforms we also do not have any way to stop or control harassment, bullying, threats, intimidation, insults, racism, lying.
-

@@ -58,7 +58,7 @@ Some reference materials taken from https://github.com/vhf/free-programming-book
 *   [Djen of Django](http://agiliq.com/books/djenofdjango/)
 *   [Django by Example](http://www.lightbird.net/dbe/)
 *   [Django by Example for Django 1.5](http://lightbird.net/dbe2/)
-*   [Effective Django](http://effectivedjango.com/)
+*   [Effective Django](https://web.archive.org/web/20181130092020/http://www.effectivedjango.com/)
 *   [Tango With Django](http://www.tangowithdjango.com/book/)
 *   [Deploy Django](http://www.deploydjango.com)
 *   [The Django Book](http://www.djangobook.com)
@@ -73,22 +73,22 @@ Some reference materials taken from https://github.com/vhf/free-programming-book
 # Python
 
 *   [A Bit of Python and Other Things](http://jessenoller.com/good-to-great-python-reads/)
-*   [Byte of Python](http://www.swaroopch.com/notes/Python)
-*   [Data Structures and Algorithms in Python](http://www.brpreiss.com/books/opus7/html/book.html)
-*   [Dive into Python](http://www.diveintopython.net/) - Mark Pilgrim
+*   [Byte of Python](https://python.swaroopch.com/)
+*   [Data Structures and Algorithms in Python](https://thuvienso.dau.edu.vn:88/bitstream/DHKTDN/6992/1/6306.Data%20structures%20and%20algorithms%20in%20Python.pdf) - PDF
+*   [Dive into Python](https://book.diveintopython.org/) - Mark Pilgrim
 *   [Dive into Python 3](http://getpython3.com/diveintopython3/) - Mark Pilgrim
 *   [Google's Python Class](https://developers.google.com/edu/python/?hl=de-DE&csw=1)
-*   [A Guide to Python's Magic Methods](http://www.rafekettler.com/magicmethods.html) - Rafe Kettler
+*   [A Guide to Python's Magic Methods](https://rszalski.github.io/magicmethods/) - Rafe Kettler
 *   [Hacking Secret Cyphers with Python](http://inventwithpython.com/hacking/chapters/) - Al Sweigart
-*   [Hitchiker's Guide to Python!](http://docs.python-guide.org/en/latest/)
+*   [Hitchhiker's Guide to Python!](http://docs.python-guide.org/en/latest/)
 *   [How to Think Like a Computer Scientist: Learning with Python](http://www.greenteapress.com/thinkpython/thinkCSpy/) - Allen B. Downey, Jeff Elkner and Chris Meyers
-    *   [How to Think Like a Computer Scientist: Learning with Python, Interactive Edition](http://interactivepython.org/courselib/static/thinkcspy/index.html)
-*   [Introduction to Programming Using Python](http://python-ebook.blogspot.com) - Cody Jackson
+    *   [How to Think Like a Computer Scientist: Learning with Python, Interactive Edition](https://runestone.academy/ns/books/published/thinkcspy/index.html)
+*   [Learning to Program Using Python](https://cfm.ehu.es/ricardo/docs/python/Python_ebook/Python_ebook.pdf) - Cody Jackson (PDF)
 *   [Invent Your Own Computer Games With Python](http://inventwithpython.com/chapters/) - Al Sweigart
 *   [Learn Python The Hard Way](http://learnpythonthehardway.org/book/)
 *   [Lectures on scientific computing with python](https://github.com/jrjohansson/scientific-python-lectures) - J.R. Johansson
 *   [Making Games with Python & Pygame](http://inventwithpython.com/pygame/chapters/) - Al Sweigart
-*   [Modeling Creativity: Case Studies in Python](http://www.clips.ua.ac.be/sites/default/files/modeling-creativity.pdf) - Tom D. De Smedt
+*   [Modeling Creativity: Case Studies in Python](https://arxiv.org/pdf/1410.0281) - Tom D. De Smedt
 *   [Natural Language Processing with Python](http://www.nltk.org/book)
 *   [Porting to Python 3: An In-Depth Guide](http://python3porting.com/)
 *   [Program Arcade Games With Python And Pygame](http://programarcadegames.com/)
@@ -100,11 +100,11 @@ Some reference materials taken from https://github.com/vhf/free-programming-book
 *   [Python Practice Book](http://anandology.com/python-practice-book/index.html)
 *   [Python Programming](http://upload.wikimedia.org/wikipedia/commons/9/91/Python_Programming.pdf) - PDF
 *   [Python Scientific Lecture Notes](http://scipy-lectures.github.io/)
-*   [Snake Wrangling For Kids](http://www.briggs.net.nz/snake-wrangling-for-kids.html)
-*   [The Art and Craft of Programming](http://beastie.cs.ua.edu/cs150/book/index.html)
-*   [The Programming Historian](http://niche-canada.org/files/programming-historian-1.pdf) - William J. Turkel, Adam Crymble and Alan MacEachern
+*   [Snake Wrangling For Kids - Learning to Program with Python](https://theswissbay.ch/pdf/Gentoomen%20Library/Programming/Python/Snake%20Wrangling%20for%20Kids%20-%20Learning%20to%20Program%20with%20Python%202%2C%20win-v0.7.2%20%282007%29.pdf) - PDF
+*   [The Art and Craft of Programming](https://www.cs.cmu.edu/afs/cs/user/jcr/ftp/craftprog.pdf) - PDF
+*   [The Programming Historian](https://niche-canada.org/wp-content/uploads/2013/09/programming-historian-1.pdf) - William J. Turkel, Adam Crymble and Alan MacEachern (PDF)
 *   [Think Python](http://www.greenteapress.com/thinkpython/) - Allen B. Downey
-*   [Problem Solving with Algorithms and Data Structures](http://interactivepython.org/courselib/static/pythonds/index.html)
+*   [Problem Solving with Algorithms and Data Structures](https://runestone.academy/ns/books/published/pythonds/index.html)
 *   [Python Module of the Week](http://pymotw.com/2/)
 *   [Wikibooks: Python Programming](http://en.wikibooks.org/wiki/Python_Programming)
 *   [Python Koans](https://github.com/gregmalcolm/python_koans)
@@ -216,37 +216,42 @@ From older versions of CMPUT 410:
 
 *   [Safari Tech Books](http://www.library.ualberta.ca/databases/databaseinfo/index.cfm?ID=3618 "Safari Tech Books")
 *   [Books 24x7](http://www.library.ualberta.ca/databases/databaseinfo/index.cfm?ID=1729 "Books 24x7")
-*   http://proquest.safaribooksonline.com
+
+*   http://proquest.com
     
 
-*   [Software Project Survival Guide](http://proquest.safaribooksonline.com.login.ezproxy.library.ualberta.ca/book/software-engineering-and-development/project-management/1572316217 "Software Project Survival Guide")  
+*   [Software Project Survival Guide](https://login.ezproxy.library.ualberta.ca/login?url=https://www.proquest.com/trade-journals/books-software-project-survival-guide-ms-press/docview/219083842/se-2 "Software Project Survival Guide")  
     S. McConnell  
     Microsoft, 1997, ISBN 1-57231-621-7
-*   [The Build Master](http://proquest.safaribooksonline.com.login.ezproxy.library.ualberta.ca/book/operating-systems-and-server-administration/0321332059 "The Build Master")  
+*   [The Build Master](https://search.library.ualberta.ca/permalink/01UOA_INST/cgo409/alma991043837100609116 "The Build Master")  
     V. Maraia  
     Addison-Wesley, 2005, ISBN 0-321-33205-9
-*   [Extreme Programming Explained](http://proquest.safaribooksonline.com.login.ezproxy.library.ualberta.ca/book/software-engineering-and-development/extreme-programming/0321278658 "Extreme Programming")  
+    - You will need to login to O'Reilly Online Learning to access this online
+*   [Extreme Programming Explained](https://search.library.ualberta.ca/permalink/01UOA_INST/1lcd9n9/alma991043659856409116 "Extreme Programming")  
     Kent Beck  
     Addison-Wesley, 2004, ISBN 0-321-27865-8
-*   [Pair Programming Illuminated](http://proquest.safaribooksonline.com.login.ezproxy.library.ualberta.ca/book/software-engineering-and-development/0201745763 "Pair Programming Illuminated")  
+    - You will need to login to O'Reilly Online Learning to access this online
+*   [Pair Programming Illuminated](https://login.ezproxy.library.ualberta.ca/login?url=https://www.proquest.com/magazines/pair-programming-illuminated/docview/200031499/se-2 "Pair Programming Illuminated")  
     Laurie Williams, Robert Kessler  
     Addison-Wesley, 2002, ISBN 0-201-74576-3
-*   [Head First Object-Oriented Analysis and Design](http://proquest.safaribooksonline.com.login.ezproxy.library.ualberta.ca/book/software-engineering-and-development/object/0596008678 "Head First Object-Oriented Analysis and Design")  
+*   [Head First Object-Oriented Analysis and Design](https://login.ezproxy.library.ualberta.ca/login?url=https://www.proquest.com/magazines/head-first-object-oriented-analysis-design/docview/200172768/se-2 "Head First Object-Oriented Analysis and Design")  
     Brett McLaughlin, Gary Pollice, David West  
     O'Reilly, 2006, ISBN 0-596-00867-8
-*   [User Interface Design for Programmers](http://proquest.safaribooksonline.com.login.ezproxy.library.ualberta.ca/book/web-development/usability/9781893115941 "User Interface Design for Programmers")  
+*   [User Interface Design for Programmers](https://login.ezproxy.library.ualberta.ca/login?url=https://www.proquest.com/scholarly-journals/user-interface-design-programmers/docview/220993182/se-2 "User Interface Design for Programmers")  
     Joel Spolsky  
     Apress, 2006, ISBN 978-1-89311-594-1
-*   [User Stories Applied](http://proquest.safaribooksonline.com.login.ezproxy.library.ualberta.ca/book/software-engineering-and-development/agile-development/0321205685 "User Stories Applied")  
+*   [User Stories Applied](https://search.library.ualberta.ca/permalink/01UOA_INST/cgo409/alma991043659870509116 "User Stories Applied")  
     Mike Cohn  
     Addison-Wesley, 2004, ISBN 0-321-20568-5
-*   [Version Control with Subversion](http://proquest.safaribooksonline.com.login.ezproxy.library.ualberta.ca/book/software-engineering-and-development/version-control/9780596510336 "Version Control with Subversion")  
+    - You will need to login to O'Reilly Online Learning to access this online
+*   [Version Control with Subversion](https://www.proquest.com/docview/2148794176/705AE67227044C1DPQ/2?accountid=14474&sourcetype=Books "Version Control with Subversion")  
     C. Michael Pilato, Ben Collins-Sussman, Brian W. Fitzpatrick  
     O'Reilly, 2008, ISBN 978-0-596-51033-6
-*   [Test-Driven Development](http://proquest.safaribooksonline.com.login.ezproxy.library.ualberta.ca/book/software-engineering-and-development/software-testing/0321146530 "Test-Driven Development")  
+*   [Test-Driven Development](https://search.library.ualberta.ca/permalink/01UOA_INST/cgo409/alma991043746491609116 "Test-Driven Development")  
     Kent Beck  
     Addison-Wesley, 2002, ISBN 0-321-14653-0
-*   [GUI Bloopers](http://proquest.safaribooksonline.com.login.ezproxy.library.ualberta.ca/book/web-development/usability/9780123706430 "GUI Bloopers")  
+    - You will need to login to O'Reilly Online Learning to access this online
+*   [GUI Bloopers](https://login.ezproxy.library.ualberta.ca/login?url=https://www.proquest.com/trade-journals/gui-bloopers/docview/196745820/se-2 "GUI Bloopers")  
     Jeff Johnson  
     Morgan Kaufmann, 2007, ISBN 0-12-370643-2
 
