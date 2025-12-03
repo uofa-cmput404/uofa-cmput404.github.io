@@ -77,9 +77,9 @@ Click the appropriate link for your system to download the executable file: Wind
    
 2. Select the "Install launcher for all users" checkbox, which enables all users of the computer to access the Python launcher application.
    
-3. Select the Add python.exe to PATH checkbox, which enables users to launch Python from the command line.
+3. Select the "Add python.exe to PATH" checkbox, which enables users to launch Python from the command line.
 
-4. If you’re just getting started with Python and you want to install it with default features as described in the dialog, then click Install Now and go to Step 
+4. If you’re just getting started with Python and you want to install it with default features as described in the dialog, then click "Install Now" and go to Step 6.
 
 5. The Optional Features include common tools and resources for Python and you can install all of them, even if you don’t plan to use them.
 
@@ -113,15 +113,15 @@ Precompile standard library: not required, it might down the installation
 
 Download debugging symbols and Download debug binaries: recommended only if you plan to create C or C++ extensions
 
-Make note of the Python installation directory in case you need to reference it later.
+Make note of the Python installation directory in case you need to reference it later
 
 8. Click Install to start the installation.
    
-9. After the installation is complete, a Setup was successful message displays.
+9. After the installation is complete, a "Setup was successful" message displays.
 
 ## Step 3: Adding Python to the environment variables
 
-Skip this step if you selected Add Python to environment variables during installation.
+Skip this step if you selected "Add Python to environment variables" during installation.
 If you want to access Python through the command line, but you didn’t add Python to your environment variables during installation, then you can still do it manually.
 Before you start, locate the Python installation directory on your system. The following directories are examples of the default directory paths:
 
