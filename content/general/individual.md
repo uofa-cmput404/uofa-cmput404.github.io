@@ -30,7 +30,7 @@ summary: Individual Assignments, Participation
 
 Most participation marks will be in class during class. You can participate over Zoom or in-person. To participate in-person please bring a working cellphone, tablet, or laptop. There may be other participation marks from time to time. See *Missed Term Work: Participation* below.
 
-You can earn lecture participation credit by attending lectures on-time. Instructions will be given during lectures.
+You can earn lecture participation credit by attending lectures on time. Instructions will be given during lectures.
 
 As of Fall 2025, [Wooclap](https://www.wooclap.com/) is used for lecture participation.
 
