@@ -26,7 +26,7 @@ save_as: index.html
 
 # Canvas
 
-[The current Canvas page is here.](https://canvas.ualberta.ca/courses/28542)
+[The current Canvas page is here.](https://canvas.ualberta.ca/courses/32240)
 
 * Grades
 * Submissions
@@ -36,7 +36,7 @@ save_as: index.html
 
 ## News & Notices
 
-[The latest news and notices for students.](https://canvas.ualberta.ca/courses/28542/announcements) Check this regularly!
+[The latest news and notices for students.](https://canvas.ualberta.ca/courses/32240/announcements) Check this regularly!
 
 ## Lecture Zoom
 
@@ -47,6 +47,6 @@ save_as: index.html
 * You must be in Edmonton to take this course.
 * You must attend Zoom with your real name (as displayed in Canvas).
 * [How to use Zoom for Students](https://support.eclass.ualberta.ca/index.php?/Knowledgebase/Article/View/422/23/using-zoom-for-students)
-* [The lecture zoom is connected through Canvas.](https://canvas.ualberta.ca/courses/28542/external_tools/282)
-* [Direct Link](https://ualberta-ca.zoom.us/j/94338035500)
+* [The lecture zoom is connected through Canvas.](https://canvas.ualberta.ca/courses/32240/external_tools/282)
+* [Direct Link](https://ualberta-ca.zoom.us/j/93617389257)
 

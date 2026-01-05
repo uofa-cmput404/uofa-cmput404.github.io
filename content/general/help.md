@@ -79,7 +79,7 @@ Unless your question is personal (E.g., you are feeling unwell and require an EA
 * Be polite, this is not a complaint forum.
 * Follow the [online etiquette guidelines]({attach}online_etiquette_guidelines.pdf).
 
-[The discussion forum is on Canvas.](https://canvas.ualberta.ca/courses/28542/discussion_topics)
+[The discussion forum is on Canvas.](https://canvas.ualberta.ca/courses/32240/discussion_topics/222175)
 
 # Labs Office Hours
 
@@ -108,7 +108,7 @@ TAs are not allowed to change your marks. If you disagree with your marks, [cont
 * Please be polite and courteous.
 * TAs will not re-grade your work or deal with extensions, excuses, illness, etc.
 
-TA office hours are [on Canvas](https://canvas.ualberta.ca/courses/28542/pages/tas-and-office-hours).
+TA office hours are [on Canvas](https://canvas.ualberta.ca/courses/32240/pages/tas-and-office-hours).
 
 # Contact Instructor
 
