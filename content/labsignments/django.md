@@ -786,7 +786,7 @@ Ensure your repository contains only the necessary files, and your `.gitignore` 
 
 Make sure you push to GitHub classroom **BEFORE the deadline!** You will not be able to push after that!
 
-Submit a link to your repo in the form `https://github.com/uofa-cmput404/s25-labsignment-django-yourgithubname/commit/bunch-of-numbers` on eClass. **Do not** submit a link to a branch, a file, or the clone URL.
+Submit a link to your repo in the form `https://github.com/uofa-cmput404/s25-labsignment-django-yourgithubname/commit/bunch-of-numbers` on Canvas. **Do not** submit a link to a branch, a file, or the clone URL.
 
 <p class="warning">If you do not submit a link to your COMMIT on Canvas on time using the correct format above, you will get a zero.</p>
 

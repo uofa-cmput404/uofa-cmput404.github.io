@@ -393,7 +393,7 @@ To be specific, the spirit of the assignment is to have you express yourself in 
 
 You should be proud of each mode, and leverage CSS *in combination* with your creativity to make each shine. Each should be a unique experience (more on this later). 
 
-You **can** break the CSS requirements listed above in order deliver on your ideas. Conversly, you can follow the CSS requirements perfectly and fail to recieve full marks if it seems like you tried to make as few changes between modes as possible. 
+You **can** break the CSS requirements listed above in order deliver on your ideas. Conversely, you can follow the CSS requirements perfectly and fail to receive full marks if it seems like you tried to make as few changes between modes as possible. 
 
 ## Different layouts arise from different user experiences
 
@@ -468,7 +468,7 @@ As mentioned before:
 
 It is a trap because after you do it, you're going to be tempted to take the one mode you've made, and just 'tweak' it to create the other 2. 
 
-The following 4 screenshots all show the same layout. A student submitting the modes below would recieve points for only 1 layout.
+The following 4 screenshots all show the same layout. A student submitting the modes below would receive points for only 1 layout.
 
 <img src="{attach}images/bad-1.png" alt="bad-layout-1" width="600"/>
 <img src="{attach}images/bad-2.png" alt="bad-layout-2" width="600"/>
@@ -597,7 +597,7 @@ Violation of the restrictions will result in a mark of zero.
 
 Make sure you push to GitHub classroom **BEFORE 4PM on Monday!** You will not be able to push after that!
 
-Submit a link to your repo in the form `https://github.com/uofa-cmput404/f25-labsignment-pelican-yourgithubname/commit/bunch-of-numbers` on eClass. **Do not** submit a link to a branch, a file, or the clone URL.
+Submit a link to your repo in the form `https://github.com/uofa-cmput404/f25-labsignment-pelican-yourgithubname/commit/bunch-of-numbers` on Canvas. **Do not** submit a link to a branch, a file, or the clone URL.
 
 <p class="warning">If you do not submit a link to your COMMIT on Canvas on time using the correct format above, you will get a zero.</p>
 

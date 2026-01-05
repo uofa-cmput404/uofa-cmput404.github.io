@@ -28,7 +28,7 @@ The webserver will serve static content from the `www` directory in the same dir
 
 # Getting Started
 
-1. Clone the GitHub classroom repository from eClass.
+1. Clone the GitHub classroom repository from Canvas.
 2. Follow the instructions below to implement the client and server.
 
 # Collaboration
@@ -344,7 +344,7 @@ Violation of the restrictions will result in a mark of zero.
 
 Make sure you push to GitHub classroom **BEFORE the deadline!** You will not be able to push after that!
 
-Submit a link to your repo in the form `https://github.com/uofa-cmput404/f25-labsignment-http-yourgithubname/commit/bunch-of-numbers` on eClass. **Do not** submit a link to a branch, a file, or the clone URL.
+Submit a link to your repo in the form `https://github.com/uofa-cmput404/f25-labsignment-http-yourgithubname/commit/bunch-of-numbers` on Canvas. **Do not** submit a link to a branch, a file, or the clone URL.
 
 <p class="warning">If you do not submit a link to your COMMIT on Canvas on time using the correct format above, you will get a zero.</p>
 

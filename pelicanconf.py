@@ -13,7 +13,7 @@ TIMEZONE = 'America/Edmonton'
 
 DEFAULT_LANG = 'en'
 
-# Feed generation is ufally not desired when developing
+# Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
 CATEGORY_FEED_ATOM = None
 TRANSLATION_FEED_ATOM = None
