@@ -25,7 +25,7 @@ We will not tolerate harassment, bullying, threats, intimidation, insults, lying
     * Missed final exam:
         * Request a deferred exam from your faculty (Faculty of Science, Faculty of Arts, Faculty of Business, etc.)
     * Missed assignment/lab/project/quiz/lecture... everything except final exam:
-        * Fill in the [absence declaration form](https://docs.google.com/forms/d/e/1FAIpQLSemXP7Bn1zcscmKhKYfK4kckTxyufNl5Fbmr-DJJcqFjyzJ9g/viewform?usp=header) within 2 days of absence.
+        * Fill in the [absence declaration form](https://docs.google.com/forms/d/e/1FAIpQLSfdYgxAjGmNcdqs8c13v6UomZwviuIlHtP545qnUkl8-5VLnA/viewform?usp=dialog) within 2 days of absence.
 * Extensions
     * No individual extensions are ever granted for any reason.
 
@@ -112,7 +112,7 @@ TA office hours are [on Canvas](https://canvas.ualberta.ca/courses/32240/pages/t
 
 # Contact Instructor
 
-Do not email the instructor. Use [the contact instructor form](https://docs.google.com/forms/d/e/1FAIpQLSemXP7Bn1zcscmKhKYfK4kckTxyufNl5Fbmr-DJJcqFjyzJ9g/viewform?usp=header). 
+Do not email the instructor. Use [the contact instructor form](https://docs.google.com/forms/d/e/1FAIpQLSfdYgxAjGmNcdqs8c13v6UomZwviuIlHtP545qnUkl8-5VLnA/viewform?usp=dialog). 
 
 <!--Replies may take several days because there are hundreds of students. Currently, there are more than 600 students.-->
 Using the contact form helps us make sure no one is missed or forgotten about!
