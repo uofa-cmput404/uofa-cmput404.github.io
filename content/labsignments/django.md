@@ -792,6 +792,8 @@ Submit a link to your repo in the form `https://github.com/uofa-cmput404/s25-lab
 
 You can submit and then resubmit as many times as you want before the deadline, so submit early and often.
 
+Do not leave additional comments on the Canvas. Any comments made on the submission after the due date will be removed. Any submission attempt abusing Canvas by making a comment with your repo link after the due date will also be removed. If you have a question about your grade DO NOT comment here, instead, use the instructor contact form on the help page on the website within 10 days of getting your marks back. TAs are not allowed to change grades.
+
 ---
 
 ### Further Tips

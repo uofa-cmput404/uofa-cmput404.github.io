@@ -1633,7 +1633,8 @@ You must form a group with only students from your same lab section. You can hav
 Do not submit a clone link or a link to a branch or file.
 
 * 1 mark
-* Submitted on Canvas by all members
+* Join your team on canvas
+* Join your team's github via the github classroom link in the project part 0 assignment in canvas
 * 1 GitHub repo with a README and LICENSE
 * Team name is a CSS colour name
 
