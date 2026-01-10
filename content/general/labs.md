@@ -44,10 +44,10 @@ If you do not submit to Canvas on time:
 
 * We have no way of knowing which GitHub repo is yours.
 * We have no way of knowing if you intend to submit the lab/project.
-* We have no way of tracking which lab/project have been graded and which assignments still need to be graded.
+* We have no way of tracking which lab/project has been graded and which assignments still need to be graded.
 * We have no way of knowing if we missed someone's lab/project.
 
-Also, we use GitHub "Classroom" to make sure we can keep student's assignments for one year. Keeping things for one year is university policy. We may need to reference back to it if grades go missing, or if there's a grade dispute, or if something happens to a TA, or if there's a plagiarism concern.
+Also, we use GitHub "Classroom" to make sure we can keep student's assignments for one year. Keeping things for one year is University policy. We may need to reference back to it if grades go missing, or if there's a grade dispute, or if something happens to a TA, or if there's a plagiarism concern.
 
 However, you still need to turn things in on Canvas:
 
@@ -55,7 +55,7 @@ However, you still need to turn things in on Canvas:
 * We have no way of tracking accessibility accommodations on GitHub. (Even if we did it would violate University policy for us to do so.)
 * We have no way of tracking grades on GitHub. (Even if we did it would violate University policy for us to do so.)
 * The GitHub due date thing does not always work correctly.
-* By University policy, GitHub is not an approved platform. eClass/Canvas/Google Apps are the only approved platforms. So, instructors and TAs are not allowed to tell GitHub who you are, we have to allow you to be pseudonymous. For example, we are not allowed to tell GitHub your name, your student ID#, your CCID, etc.
+* By University policy, GitHub is not an approved platform. eClass/Canvas/Google Apps are the only approved platforms. So, instructors and TAs are not allowed to tell GitHub who you are. Instead, we have to allow you to be pseudonymous. For example, we are not allowed to tell GitHub your name, your student ID#, your CCID, etc.
 * Because of this policy we also cannot give grades or feedback on GitHub.
 * GitHub classroom is broken and does not handle due dates correctly.
 
@@ -125,15 +125,15 @@ Note that simply reading the code to the TA does **not** count as understanding.
     * Your code doesn't work at all.
     * Grade: 0
 9. Example:
-    * Your code looks like it isn't even for the current lab
+    * Your code looks like it isn't even for the current lab.
     * Grade: 0
 10. Example:
-    * Your code works perfectly
-    * You can explain your code to the TA with no problem
-    * But, you forgot to submit it on Canvas
+    * Your code works perfectly.
+    * You can explain your code to the TA with no problem.
+    * But, you forgot to submit it on Canvas.
     * Grade: no grade (but this counts the same as a 0)
 11. Example:
-    * Your code works perfectly
-    * You can explain your code to the TA with no problem
-    * But, you plagiarized, misrepresented your work, or other academic misconduct (cheating)
-    * Grade: 100, and you get interviewed by the instructor, and you get interviewed by the Dean's office, and you probably get sanctioned by the Dean's office, and you probably receive letter of reprimand, and the Dean's officer can set your grade to 0 anyway. Or the Dean's officer might fail you for the entire course, or whatever they decide, they have their own rules.
+    * Your code works perfectly.
+    * You can explain your code to the TA with no problem.
+    * But, you plagiarized, misrepresented your work, or other academic misconduct (cheating).
+    * Grade: 100, and you get interviewed by the instructor, and you get interviewed by the Dean's office, and you probably get sanctioned by the Dean's office, and you probably receive a letter of reprimand, and the Dean's officer can set your grade to 0 anyway. Or the Dean's officer might fail you for the entire course, or whatever they decide, because they have their own rules.
