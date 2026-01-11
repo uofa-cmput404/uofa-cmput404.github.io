@@ -351,7 +351,8 @@ document.getElementById('convert-btn').addEventListener('click', e => {
 This file (`webapp/markdown-editor.js`) depends on a node dependency and needs to be bundled with a tool called `esbuild` to make it ready to be able to run on a browser.
 
 In your **base repository directory**, run the following command to use `esbuild` to bundle your `markdown-editor.js` file.
-`npx esbuild ./webapp/markdown-editor.js --bundle --minify --sourcemap --outfile=./lab2/wiki/static/markdown-editor.min.js`
+
+```npx esbuild ./webapp/markdown-editor.js --bundle --minify --sourcemap --outfile=./lab2/wiki/static/markdown-editor.min.js```
 
 This command bundles your `markdown-editor.js` file and all the imports that it needs into one huge file called `markdown-editor.min.js`. It is now ready to be included into your Django application!
 
