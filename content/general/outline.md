@@ -89,6 +89,6 @@ Course outlines / course syllabuses have moved to the centralized UA syllabus re
 
     * <a href="https://ualberta.simplesyllabusca.com/doc/1v8nqck3q/Fall-2025-CMPUT-404-A1-%2854143%29-WEB-APPLICATIONS-AND-ARCHITECT?mode=view">UAlberta Syllabus Page</a> or <a href="https://ualberta.simplesyllabusca.com/api2/doc-pdf/1v8nqck3q/Fall-2025-CMPUT-404-A1-%2854143%29-WEB-APPLICATIONS-AND-ARCHITECT.pdf?locale=en-US">PDF</a>
 
-<h4> <a href = "/tag/outline.html">Older outlines</a> </h4>
+<h4> <a href = "/tag/outline.html">Older Outlines</a> </h4>
 
 ----
