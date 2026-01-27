@@ -11,7 +11,7 @@ summary: Resources, Reference Materials, Notes, Videos, Slides
 
 # Practice Exams & Review Materials
 
-* Practice Exams and Review Materials are available on Canvas. Do not share or upload these.
+* Practice Exams and Review Materials are available on [Canvas](https://canvas.ualberta.ca/courses/32240/pages/practice-finals-and-review-materials). Do not share or upload these.
 
 # Jihoon's Unofficial Class Notes D&D Style
 
