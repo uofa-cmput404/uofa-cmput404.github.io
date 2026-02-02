@@ -1285,7 +1285,7 @@ heroku run "python lab3/manage.py createsuperuser" --app APPNAME
 ```
 </aside>
 
-Then follow the instructions to [install PostgreSQL CLI locally](https://devcenter.heroku.com/articles/local-setup-heroku-postgres).
+Then follow the instructions to [install PostgreSQL CLI locally](https://devcenter.heroku.com/articles/local-setup-heroku-postgres). If you are using Ubuntu (in a VM like UTM or WSL2) you can simply run `sudo apt-get install postgresql`.
 
 After this you should be able to access your PostgreSQL database with SQL using the Heroku CLI:
 
