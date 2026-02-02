@@ -1278,7 +1278,21 @@ heroku run "python lab3/manage.py createsuperuser" --app APPNAME
 ```
 </aside>
 
-After this if you select your postgres database in the [Heroku dataclips interface](https://data.heroku.com/dataclips/create), you should see your polls_question and poll_choice tables.
+After this you should be able to access your postgres database with SQL using the Heroku CLI:
+
+```
+heroku pg:psql
+Connecting to .
+.
+.
+Type "help" for help.
+
+> \dt
+> \d polls_question
+> \d poll_choice
+> SELECT * FROM polls_question;
+> SELECT * FROM poll_choice;
+```
 
 Go to `/polls` on your Heroku deployed site, you should be able to use the Polls app from Heroku. 
 
