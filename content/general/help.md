@@ -179,6 +179,16 @@ Building a strong social network can greatly benefit your mental health.
 than over a cup of tea or coffee? You can book either a 1-on-1, or a 
 group tea time led by Unitea hosts. [Click here to learn more about Unitea](https://www.ualberta.ca/en/current-students/wellness-supports/community-engagement/unitea/index.html).
 
+## Career Help
+
+* Attend one of the many upcoming presentations by the [Career Center](https://www.ualberta.ca/en/career-centre/programs-services/presentations.html) to help you prepare for future career opportunities
+* Visit a [Hiring Fair](https://www.ualberta.ca/en/career-centre/connect-with-employers/career-fairs/index.html) on February 9 to meet employers looking to hire U of A students.
+* Visit the Festival of Undergraduate Research and Creative Activities in March to engage and explore resources that can support your exploration of future research
+* Access the [Student Financial Support](https://www.ualberta.ca/en/registrar/scholarships-awards-financial-support/index.html) for grants, scholarship and bursary information.
+* Browse [campusBRIDGE](https://campusbridge.ualberta.ca/home.htm) for employment opportunities
+* Check out [Internships, advising appointments and events](https://www.ualberta.ca/en/career-centre/programs-services/advising-appointments/index.html) from the Career Centre 
+* Explore research opportunities to support your future academic and career goals at the [Undergraduate Research Initiative (URI)](https://www.ualberta.ca/en/current-students/undergraduate-research-initiative/index.html)
+
 # Where to NOT get help
 
 <p class="warning">Do not ask for help on sites such as Discord, Telegram, WeChat, Snapchat... Ask on the <a href="#discussion-forum">Discussion Forum</a> instead! Or ask a TA!</p>
