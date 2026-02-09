@@ -10,6 +10,7 @@ summary: Lab Procedure, Lab Assignments, Lab Marking
 [TOC]
 
 * [Development Environment]({filename}environment.md)
+* [How to avoid Force Push & Rebase]({filename}/general/dontforcepush.md)
 
 # Lab Procedure
 
@@ -25,6 +26,8 @@ summary: Lab Procedure, Lab Assignments, Lab Marking
     * If your link doesn't have a git commit like the format below, you will get a zero.
 
 The TAs will do their best to keep strictly to the schedule on the walkthrough signup sheet.
+
+* [Working with the TAs]({filename}/general/respect.md)
 
 # Submission
 
@@ -55,9 +58,8 @@ However, you still need to turn things in on Canvas:
 * We have no way of tracking accessibility accommodations on GitHub. (Even if we did it would violate University policy for us to do so.)
 * We have no way of tracking grades on GitHub. (Even if we did it would violate University policy for us to do so.)
 * The GitHub due date thing does not always work correctly.
-* By University policy, GitHub is not an approved platform. eClass/Canvas/Google Apps are the only approved platforms. So, instructors and TAs are not allowed to tell GitHub who you are. Instead, we have to allow you to be pseudonymous. For example, we are not allowed to tell GitHub your name, your student ID#, your CCID, etc.
-* Because of this policy we also cannot give grades or feedback on GitHub.
 * GitHub classroom is broken and does not handle due dates correctly.
+* GitHub classroom only links your identity (class roster) to Canvas: GitHub Classroom and Canvas do not communicate about assignments, they only communicate about who is who. 
 
 # Labsignments (Lab Assignments)
 

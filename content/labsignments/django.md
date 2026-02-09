@@ -795,7 +795,7 @@ You can submit and then resubmit as many times as you want before the deadline, 
 
 Do not leave additional comments on the Canvas. Any comments made on the submission after the due date will be removed. Any submission attempt abusing Canvas by making a comment with your repo link after the due date will also be removed. If you have a question about your grade DO NOT comment here, instead, use the instructor contact form on the help page on the website within 10 days of getting your marks back. TAs are not allowed to change grades.
 
----
+* [How to avoid Force Push & Rebase]({filename}/general/dontforcepush.md)
 
 ### Further Tips
 - If you encounter issues with static files, ensure your file paths are correct and that Django’s `STATIC_URL` is configured properly.

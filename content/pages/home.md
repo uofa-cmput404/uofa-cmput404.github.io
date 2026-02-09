@@ -19,6 +19,7 @@ save_as: index.html
 * [Contact Info]({filename}/general/help.md#contact-instructor)
     * Students: see [How to get Help]({filename}/general/help.md)
     * [TAs]({filename}/general/help.md#TAs)
+* [How to avoid Force Push & Rebase]({filename}/general/dontforcepush.md)
 
 # Schedule 
 

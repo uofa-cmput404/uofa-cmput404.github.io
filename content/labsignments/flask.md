@@ -214,6 +214,8 @@ Submit a link to your repo in the form `https://github.com/uofa-cmput404/f25-lab
 
 You can submit and then resubmit as many times as you want before the deadline, so submit early and often.
 
+* [How to avoid Force Push & Rebase]({filename}/general/dontforcepush.md)
+
 # Collaboration
 
 * You may consult with others (exchange high-level ideas) but the submission should be your own source code.

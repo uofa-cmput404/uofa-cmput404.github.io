@@ -1,5 +1,5 @@
 Title: How to get Help
-date: 2025-05-05
+date: 2026-02-06
 tags: resources, policy, contact, wellness
 authors: Hazel Victoria Campbell
 status: published
@@ -8,6 +8,9 @@ summary: Communications Expectations
 ----
 
 [TOC]
+
+* [How to avoid Force Push & Rebase]({filename}/general/dontforcepush.md)
+
 
 # Communication Expectations
 
