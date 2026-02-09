@@ -20,6 +20,7 @@ save_as: index.html
     * Students: see [How to get Help]({filename}/general/help.md)
     * [TAs]({filename}/general/help.md#TAs)
 * [How to avoid Force Push & Rebase]({filename}/general/dontforcepush.md)
+* [Working with the TAs]({filename}/general/respect.md)
 
 # Schedule 
 

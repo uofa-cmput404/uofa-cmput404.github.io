@@ -7,7 +7,7 @@ summary: Lab Procedure, Lab Assignments, Project
 
 ---
 
-<img id="access-panel" alt="access panel" src="{attach}fork.jpg" style="width: 33%;"><br>
+<img id="access-panel" alt="access panel" src="{attach}fork.png" style="width: 33%;"><br>
 
 In general, students have two options. They can treat the TAs with respect, as required, with the understanding that the TAs are here to help them learn. Understanding that the TAs have their own courses and homework because the TAs are students too. That's the collegiate attitude. And in turn, the TAs are also required to act respectful and collegiate toward students. We are all here to learn and teach, and that's possible if we work together toward that end. That's the path that the vast majority (>95%) of students take, helping everyone in the course out by treating the TAs as allies.
 
