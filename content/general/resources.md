@@ -11,7 +11,7 @@ summary: Resources, Reference Materials, Notes, Videos, Slides
 
 # Practice Exams & Review Materials
 
-* Practice Exams and Review Materials are available on Canvas. Do not share or upload these.
+* Practice Exams and Review Materials are available on [Canvas](https://canvas.ualberta.ca/courses/32240/pages/practice-finals-and-review-materials). Do not share or upload these.
 
 # Jihoon's Unofficial Class Notes D&D Style
 
@@ -47,18 +47,18 @@ Some reference materials taken from https://github.com/vhf/free-programming-book
 
 ## Networking
 
-*   [Computer Networking: Principles, Protocols and Practice, 2nd edition (CNP3bis)](http://cnp3bis.info.ucl.ac.be/) (PDF, EPUB + [sources](https://github.com/obonaventure/cnp3/tree/master/book-2nd)) - O. Bonaventure (in progress)
+*   [Computer Networking: Principles, Protocols and Practice, 3rd edition (CNP3bis)](https://www.computer-networking.info/) ([Interactive e-Book](https://beta.computer-networking.info/syllabus/default/index.html) + [sources](https://github.com/CNP3/ebook)) - O. Bonaventure (in progress)
 *   [HTTP Succinctly, Syncfusion](http://www.syncfusion.com/resources/techportal/ebooks/http) (PDF, Kindle) _(Just fill the fields with any values)_
-*   [High-Performance Browser Networking](http://chimera.labs.oreilly.com/books/1230000000545/index.html)
+*   [High-Performance Browser Networking](https://search.library.ualberta.ca/permalink/01UOA_INST/cgo409/alma991043595402709116) (Available through UAlberta Library)
 *   [The TCP/IP Guide](http://www.tcpipguide.com/free/t_toc.htm)
 *   [Understanding IP Addressing: Everything you ever wanted to know](https://web.archive.org/web/20121006094535/http://www.apnic.net/__data/assets/pdf_file/0020/8147/501302.pdf) (PDF)
 
 ## Django
 
+<!-- *   [Django by Example](http://www.lightbird.net/dbe/) https://web.archive.org/web/20141221134804/https://lightbird.net/ -->
+<!-- *   [Django by Example for Django 1.5](http://lightbird.net/dbe2/) \https://web.archive.org/web/20141223005244/http://www.lightbird.net/dbe -->
 *   [Djen of Django](http://agiliq.com/books/djenofdjango/)
-*   [Django by Example](http://www.lightbird.net/dbe/)
-*   [Django by Example for Django 1.5](http://lightbird.net/dbe2/)
-*   [Effective Django](http://effectivedjango.com/)
+*   [Effective Django](https://web.archive.org/web/20181130092020/http://www.effectivedjango.com/)
 *   [Tango With Django](http://www.tangowithdjango.com/book/)
 *   [Deploy Django](http://www.deploydjango.com)
 *   [The Django Book](http://www.djangobook.com)
@@ -66,65 +66,64 @@ Some reference materials taken from https://github.com/vhf/free-programming-book
 
 ## Flask
 
-*   [Explore Flask](http://exploreflask.com/) (PDF)
+*   [Explore Flask](https://explore-flask.readthedocs.io/en/latest/) (Online/readthedocs) - Robert Picard
 *   [The Flask Mega-Tutorial](http://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world) - Miguel Grinberg
-*   [The Flask Blog tutorial](http://pypix.com/python/building-flask-blog-part-1/) - Pypi
 
 # Python
 
-*   [A Bit of Python and Other Things](http://jessenoller.com/good-to-great-python-reads/)
-*   [Byte of Python](http://www.swaroopch.com/notes/Python)
-*   [Data Structures and Algorithms in Python](http://www.brpreiss.com/books/opus7/html/book.html)
-*   [Dive into Python](http://www.diveintopython.net/) - Mark Pilgrim
-*   [Dive into Python 3](http://getpython3.com/diveintopython3/) - Mark Pilgrim
-*   [Google's Python Class](https://developers.google.com/edu/python/?hl=de-DE&csw=1)
-*   [A Guide to Python's Magic Methods](http://www.rafekettler.com/magicmethods.html) - Rafe Kettler
+<!-- *   [A Bit of Python and Other Things](http://jessenoller.com/good-to-great-python-reads/) -->
+<!-- *   [Python Standard Library](http://effbot.org/librarybook/) - Fredrik Lundh -->
+<!-- *   [Porting to Python 3: An In-Depth Guide](http://python3porting.com/) - Lennart Regebro -->
+<!-- *   [Program Arcade Games With Python And Pygame](http://programarcadegames.com/) -->
+*   [Byte of Python](https://python.swaroopch.com/)
+*   [Data Structures and Algorithms in Python](https://thuvienso.dau.edu.vn:88/bitstream/DHKTDN/6992/1/6306.Data%20structures%20and%20algorithms%20in%20Python.pdf) - PDF
+*   [Dive into Python](https://book.diveintopython.org/) - Mark Pilgrim
+*   [Dive into Python 3](https://diveintopython3.net/) - Mark Pilgrim
+*   [Google's Python Class](https://developers.google.com/edu/python/?csw=1)
+*   [A Guide to Python's Magic Methods](https://rszalski.github.io/magicmethods/) - Rafe Kettler
 *   [Hacking Secret Cyphers with Python](http://inventwithpython.com/hacking/chapters/) - Al Sweigart
-*   [Hitchiker's Guide to Python!](http://docs.python-guide.org/en/latest/)
+*   [Hitchhiker's Guide to Python!](http://docs.python-guide.org/en/latest/)
 *   [How to Think Like a Computer Scientist: Learning with Python](http://www.greenteapress.com/thinkpython/thinkCSpy/) - Allen B. Downey, Jeff Elkner and Chris Meyers
-    *   [How to Think Like a Computer Scientist: Learning with Python, Interactive Edition](http://interactivepython.org/courselib/static/thinkcspy/index.html)
-*   [Introduction to Programming Using Python](http://python-ebook.blogspot.com) - Cody Jackson
+    *   [How to Think Like a Computer Scientist: Learning with Python, Interactive Edition](https://runestone.academy/ns/books/published/thinkcspy/index.html)
+*   [Learning to Program Using Python](https://cfm.ehu.es/ricardo/docs/python/Python_ebook/Python_ebook.pdf) - Cody Jackson (PDF)
 *   [Invent Your Own Computer Games With Python](http://inventwithpython.com/chapters/) - Al Sweigart
 *   [Learn Python The Hard Way](http://learnpythonthehardway.org/book/)
 *   [Lectures on scientific computing with python](https://github.com/jrjohansson/scientific-python-lectures) - J.R. Johansson
 *   [Making Games with Python & Pygame](http://inventwithpython.com/pygame/chapters/) - Al Sweigart
-*   [Modeling Creativity: Case Studies in Python](http://www.clips.ua.ac.be/sites/default/files/modeling-creativity.pdf) - Tom D. De Smedt
+*   [Modeling Creativity: Case Studies in Python](https://arxiv.org/pdf/1410.0281) - Tom D. De Smedt
 *   [Natural Language Processing with Python](http://www.nltk.org/book)
-*   [Porting to Python 3: An In-Depth Guide](http://python3porting.com/)
-*   [Program Arcade Games With Python And Pygame](http://programarcadegames.com/)
 *   [Python Bibliotheca](http://openbookproject.net/pybiblio/)
-*   [Python Cookbook](http://chimera.labs.oreilly.com/books/1230000000393/index.html) - David Beazley
+*   [Python Cookbook](https://search.library.ualberta.ca/permalink/01UOA_INST/cgo409/alma991043659165109116) - David Beazley (Available through UAlberta library)
 *   [Python for Fun](http://www.openbookproject.net/py4fun/)
 *   [Python for Informatics: Exploring Information](http://www.pythonlearn.com/book.php)
 *   [Python for you and me](http://pymbook.readthedocs.org/en/latest/)
 *   [Python Practice Book](http://anandology.com/python-practice-book/index.html)
 *   [Python Programming](http://upload.wikimedia.org/wikipedia/commons/9/91/Python_Programming.pdf) - PDF
 *   [Python Scientific Lecture Notes](http://scipy-lectures.github.io/)
-*   [Snake Wrangling For Kids](http://www.briggs.net.nz/snake-wrangling-for-kids.html)
-*   [The Art and Craft of Programming](http://beastie.cs.ua.edu/cs150/book/index.html)
-*   [The Programming Historian](http://niche-canada.org/files/programming-historian-1.pdf) - William J. Turkel, Adam Crymble and Alan MacEachern
+*   [Snake Wrangling For Kids - Learning to Program with Python](https://theswissbay.ch/pdf/Gentoomen%20Library/Programming/Python/Snake%20Wrangling%20for%20Kids%20-%20Learning%20to%20Program%20with%20Python%202%2C%20win-v0.7.2%20%282007%29.pdf) - PDF
+*   [The Art and Craft of Programming](https://www.cs.cmu.edu/afs/cs/user/jcr/ftp/craftprog.pdf) - PDF
+*   [The Programming Historian](https://niche-canada.org/wp-content/uploads/2013/09/programming-historian-1.pdf) - William J. Turkel, Adam Crymble and Alan MacEachern (PDF)
 *   [Think Python](http://www.greenteapress.com/thinkpython/) - Allen B. Downey
-*   [Problem Solving with Algorithms and Data Structures](http://interactivepython.org/courselib/static/pythonds/index.html)
+*   [Problem Solving with Algorithms and Data Structures](https://runestone.academy/ns/books/published/pythonds/index.html)
 *   [Python Module of the Week](http://pymotw.com/2/)
 *   [Wikibooks: Python Programming](http://en.wikibooks.org/wiki/Python_Programming)
 *   [Python Koans](https://github.com/gregmalcolm/python_koans)
-*   [Test-Driven Web Development with Python](http://chimera.labs.oreilly.com/books/1234000000754/index.html)
-*   [Python Standard Library](http://effbot.org/librarybook/) - Fredrik Lundh
-*   [Building Skills in Python](http://www.itmaybeahack.com/book/python-2.6/latex/BuildingSkillsinPython.pdf)
-*   [Building Skills in Object-Oriented Design (Python)](http://www.itmaybeahack.com/book/oodesign-python-2.1/latex/BuildingSkillsinOODesign.pdf)
+*   [Test-Driven Web Development with Python, 3rd Edition](https://search.library.ualberta.ca/permalink/01UOA_INST/cgo409/alma991043996919609116) (Available through UAlberta Library)
+*   [Building Skills in Python](https://buildingskills.itmaybeahack.com/python.html)
+*   [Building Skills in Object-Oriented Design (Python)](https://buildingskills.itmaybeahack.com/oodesign.html)
 *   [Text Processing in Python](http://gnosis.cx/TPiP/) - David Mertz
-*   [Welcome to Problem Solving with Algorithms and Data Structures](http://interactivepython.org/runestone/static/pythonds/index.html) - Brad Miller and David Ranum
+*   [Welcome to Problem Solving with Algorithms and Data Structures](https://runestone.academy/ns/books/published/pythonds/index.html) - Brad Miller and David Ranum
 *   [Python in Hydrology](http://www.greenteapress.com/pythonhydro/pythonhydro.html) - Sat Kumar Tomer
 *   [Introduction to python](http://kracekumar.com/post/71171551647/introduction-to-python) - Kracekumar
 *   [Web2py: Complete Reference Manual, 6th Edition (pre-release)](http://web2py.com/book) - HTML
-*   [Web2py: Complete Reference Manual, 6th Edition (pre-release)](https://dl.dropbox.com/u/18065445/web2py/web2py_manual_5th.pdf) - PDF
-*   [Google's Python Style Guide](http://google-styleguide.googlecode.com/svn/trunk/pyguide.html)
+*   [Web2py: Complete Reference Manual, 6th Edition (pre-release)](https://mdipierro.github.io/web2py/web2py_manual_5th.pdf) - PDF
+*   [Google's Python Style Guide](https://google.github.io/styleguide/pyguide.html)
 *   [A Beginner's Python Book](http://en.wikibooks.org/wiki/A_Beginner%27s_Python_Tutorial)
 *   [Python For Fun](http://openbookproject.net//py4fun/) By Chris Meyers
 
 ## Web Services
 
-*   [RESTful Web Services](http://restfulwebapis.org/RESTful_Web_Services.pdf) (PDF)
+*   [RESTful Web Services](https://archive.org/details/RESTfulWebServices) (PDF) - Leonard Richardson, Sam Ruby
 
 ## JavaScript
 
@@ -133,62 +132,54 @@ Some reference materials taken from https://github.com/vhf/free-programming-book
 *   [Dev Docs](http://devdocs.io/)
 *   [Eloquent JavaScript](http://eloquentjavascript.net/) - Marijn Haverbeke
 *   [Eloquent JavaScript 2nd edition](https://github.com/marijnh/Eloquent-JavaScript) (work in progress)
-*   [JavaScript Allongé](https://leanpub.com/javascript-allonge/read)
+*   [JavaScript Allongé](https://leanpub.com/read/javascriptallongesix/) - Reg Braithwaite
 *   [JavaScript Bible](http://media.wiley.com/product_ancillary/28/07645334/DOWNLOAD/all.pdf) (PDF)
 *   [JavaScript Enlightenment](http://www.javascriptenlightenment.com/) - Cody Lindley
 *   [JavaScript Essentials](http://www.techotopia.com/index.php/JavaScript_Essentials)
-*   [JavaScript Garden](http://bonsaiden.github.io/JavaScript-Garden/) (Maintained by Tim Ruffles)
-*   [JavaScript Patterns Collection](http://shichuan.github.io/javascript-patterns/) - Shi Chuan
+*   [JavaScript Patterns Collection](https://chuanxshi.github.io/javascript-patterns/) - Shi Chuan
 *   [Javascript Succinctly, Syncfusion](http://www.syncfusion.com/resources/techportal/ebooks/javascript) (PDF, Kindle) _(Just fill the fields with any values)_
-*   [JS Robots](http://markdaggett.com/images/ExpertJavaScript-ch6.pdf)
-*   [jQuery Fundamentals](http://jqfundamentals.com/book/) (starts with JavaScript basics)
+*   [JS Robots](https://search.library.ualberta.ca/permalink/01UOA_INST/cgo409/alma991043752597309116) - Mark Daggett (Start from Ch. 6) (Available through UAlberta Library)
+*   [jQuery Fundamentals](https://upload.wikimedia.org/wikipedia/commons/2/2d/JQuery_Fundamentals.pdf) (starts with JavaScript basics)
 *   [Learn to Code JavaScript by Playing a Game](http://codecombat.com)
-*   [Learning JavaScript Design Patterns](http://www.addyosmani.com/resources/essentialjsdesignpatterns/book/) - Addy Osmani
+*   [Learning JavaScript Design Patterns](https://search.library.ualberta.ca/permalink/01UOA_INST/cgo409/alma991043836665409116) - Addy Osmani (Available through UAlberta Library)
 *   [Managing Space and Time with JavaScript - Book 1: The Basics](http://www.noelrappin.com/) - Noel Rappin
 *   [Mozilla Developer Network's JavaScript Guide](https://developer.mozilla.org/en/JavaScript/Guide)
-*   [O'Reilly Programming JavaScript Applications - Early Release](http://chimera.labs.oreilly.com/books/1234000000262/index.html)
+*   [O'Reilly Programming JavaScript Applications - Early Release](https://search.library.ualberta.ca/permalink/01UOA_INST/cgo409/alma991043755231109116) (Available through UAlberta Library)
 *   [The JavaScript Tutorial](http://javascript.info/)
-*   [The Problem with Native JavaScript APIs](http://chimera.labs.oreilly.com/books/1234000001655) (PDF)
+*   [The Problem with Native JavaScript APIs](https://search.library.ualberta.ca/permalink/01UOA_INST/cgo409/alma991043751533709116) (Available through UAlberta Library)
 *   [You Don't Know JS](https://github.com/getify/You-Dont-Know-JS)
 *   [Oh My JS](https://leanpub.com/ohmyjs/read) _(Leanpub, by Azat Mardanov)_
 
 ## Angular.js
 
-*   [AngularJS in 60 Minutes](http://fastandfluid.com/publicdownloads/AngularJSIn60MinutesIsh_DanWahlin_May2013.pdf) (PDF)
+<!-- *   [AngularJS in 60 Minutes](http://fastandfluid.com/publicdownloads/AngularJSIn60MinutesIsh_DanWahlin_May2013.pdf) (PDF) -->
 *   [Recipes with Angular.js](https://leanpub.com/recipes-with-angular-js/read) _(Leanpub, by Frederik Dietz)_
 
 ## Backbone.js
 
-*   [Developing Backbone.js Applications](http://addyosmani.github.io/backbone-fundamentals/)
-*   [A Complete guide for learning Backbone.js](http://www.codebeerstartups.com/2012/12/a-complete-guide-for-learning-backbone-js/)
+<!-- *   [Developing Backbone.js Applications](http://addyosmani.github.io/backbone-fundamentals/) -->
+<!-- *   [A Complete guide for learning Backbone.js](http://www.codebeerstartups.com/2012/12/a-complete-guide-for-learning-backbone-js/) -->
 *   [Backbonejs Tutorials](http://backbonetutorials.com/)
 *   [A pragmatic guide to Backbone.js apps](http://pragmatic-backbone.com/)
 
 ## D3.js
 
-*   [Interactive Data Visualization for the Web](http://chimera.labs.oreilly.com/books/1230000000345/index.html) - Scott Murray
-*   [D3 Tips and Tricks](https://leanpub.com/D3-Tips-and-Tricks)
-*   [Dashing D3.js](https://www.dashingd3js.com/table-of-contents)
-*   [Interactive Data Visualization with D3](http://alignedleft.com/tutorials/d3)
+*   [Interactive Data Visualization for the Web](https://search.library.ualberta.ca/permalink/01UOA_INST/cgo409/alma991043866128009116) - Scott Murray (Available through UAlberta Library)
+*   [D3 Tips and Tricks](https://leanpub.com/read/D3-Tips-and-Tricks)
+*   [Dashing D3.js](https://www.dashingd3js.com/)
 
 ## Dojo
 
-*   [Dojo: The Definitive Guide](http://chimera.labs.oreilly.com/books/1234000001819/index.html) - Matthew A. Russell
-
-## Express.js
-
-*   [Express.js Guide](https://leanpub.com/express/read) _(Leanpub, by Azat Mardanov)_
+*   [Dojo: The Definitive Guide](https://search.library.ualberta.ca/permalink/01UOA_INST/cgo409/alma991043727824009116) - Matthew A. Russell (Available through UAlberta Library)
 
 ## jQuery
 
 *   [jQuery Succinctly, Syncfusion](http://www.syncfusion.com/resources/techportal/ebooks/jquery) (PDF, Kindle) _(Just fill the fields with any values)_
-*   [jQuery Novice to Ninja](http://mediatheque.cite-musique.fr/MediaComposite/Debug/Dossier-Orchestre/ressources/jQuery.Novice.to.Ninja.2nd.Edition.pdf) (PDF)
+*   [jQuery Novice to Ninja](https://search.library.ualberta.ca/permalink/01UOA_INST/cgo409/alma991043660473209116) (Available through UAlberta Library)
 
 From older versions of CMPUT 410:
 
-*   (L2) [Youtube Video: What is Web 2.0?](http://www.youtube.com/watch?v=0LzQIUANnHc)
 *   (L2) [Youtube Video: Prometeus - The Media Revolution](http://www.youtube.com/watch?v=xj8ZadKgdC0)
-*   (L2) [As we may Think](https://eclass.srv.ualberta.ca/pluginfile.php/777875/mod_page/content/1/vbush.txt), by V. Bush
 *   (L3) [What is TCP/IP?](http://www.rloteck.com/Networkingtools/Networkingtools.html)
 *   (L3) Wikipedia: [Internet Protocol Suite](http://en.wikipedia.org/wiki/TCP/IP)
 *   (L4) Wikipedia: [XHTML](http://en.wikipedia.org/wiki/XHTML)
@@ -196,16 +187,15 @@ From older versions of CMPUT 410:
 *   (L4) [Colours and HTML](http://www.cs.ualberta.ca/%7Ezaiane/forhtml/colours.html)
 *   (L4) [Web-safe Colours](http://temp29-6.cs.ualberta.ca/mod/page/view.php?id=7629)
 *   (L4) W3 School [HTML Tutorial](http://www.w3schools.com/html/default.asp)
-*   (L4) W3 School [XHTML Tutorial](http://www.w3schools.com/xhtml/default.asp)
+*   (L4) W3 School [XHTML Tutorial](https://www.w3schools.com/xml/default.asp)
 *   (L4) W3 School [CSS Tutorial](http://www.w3schools.com/css/default.asp)
 *   (L4) [Page layout](http://htmldog.com/guides/cssadvanced/layout/)
-*   (L4) [Positioning Example with CSS](http://www.barelyfitz.com/screencast/html-training/css/positioning/)
+*   (L4) [Positioning Example with CSS](https://lorelle.wordpress.com/2015/04/20/wordpress-school-html-and-css-positioning/html-css-barelyfitz-designs-learn-css-positioning-div-blocks-representing-web-page-layout/)
 *   (L7) [Accessing layers with different browsers](http://www.cs.ualberta.ca/%7Ezaiane/courses/cmput410-04/work/examples/dynamicLayers.html)
 *   (L7) [Sliding Menu example](http://www.cs.ualberta.ca/%7Ezaiane/courses/cmput410-04/work/examples/slidingMenu1.html)
-*   (L7) [Tab Menus](http://www.dynamicdrive.com/dynamicindex1/ddtabmenu.htm)
 *   (L8) W3C [Document Object Model](http://www.w3.org/DOM/)
-*   (L8) W3 School [Form Validation with Javascript](http://www.w3schools.com/jS/js_form_validation.asp)
-*   (L8) Table sorting [http://tablesorter.com/docs/](http://tablesorter.com/docs/)
+*   (L8) W3 School [Form Validation with Javascript](https://www.w3schools.com/js/js_validation.asp)
+*   (L8) [Table sorting](https://mottie.github.io/tablesorter/docs/)
 *   (L10) Ajax [Example 1: Field auto-fill](http://www.cs.ualberta.ca/%7Ezaiane/courses/cmput410/examples/ajax1.html)
 *   (L10) Ajax [Example 2: Province/State selection](http://www.cs.ualberta.ca/%7Ezaiane/courses/cmput410/examples/ajax2.html)
 *   (L10) Ajax [Example 3: Simulated database access](http://www.cs.ualberta.ca/%7Ezaiane/courses/cmput410/examples/ajax3.html)
@@ -214,39 +204,41 @@ From older versions of CMPUT 410:
 
 # eBooks
 
-*   [Safari Tech Books](http://www.library.ualberta.ca/databases/databaseinfo/index.cfm?ID=3618 "Safari Tech Books")
+*   [O'Reilly Books](https://guides.library.ualberta.ca/az/oreilly-books "O'Reilly Books") - formerly Safari Books Online
 *   [Books 24x7](http://www.library.ualberta.ca/databases/databaseinfo/index.cfm?ID=1729 "Books 24x7")
-*   http://proquest.safaribooksonline.com
-    
-
-*   [Software Project Survival Guide](http://proquest.safaribooksonline.com.login.ezproxy.library.ualberta.ca/book/software-engineering-and-development/project-management/1572316217 "Software Project Survival Guide")  
+*   [http://proquest.com](http://proquest.com)
+*   [Software Project Survival Guide](https://login.ezproxy.library.ualberta.ca/login?url=https://www.proquest.com/trade-journals/books-software-project-survival-guide-ms-press/docview/219083842/se-2 "Software Project Survival Guide")  
     S. McConnell  
     Microsoft, 1997, ISBN 1-57231-621-7
-*   [The Build Master](http://proquest.safaribooksonline.com.login.ezproxy.library.ualberta.ca/book/operating-systems-and-server-administration/0321332059 "The Build Master")  
+*   [The Build Master](https://search.library.ualberta.ca/permalink/01UOA_INST/cgo409/alma991043837100609116 "The Build Master")  
     V. Maraia  
     Addison-Wesley, 2005, ISBN 0-321-33205-9
-*   [Extreme Programming Explained](http://proquest.safaribooksonline.com.login.ezproxy.library.ualberta.ca/book/software-engineering-and-development/extreme-programming/0321278658 "Extreme Programming")  
+    - You will need to login to O'Reilly Online Learning to access this online
+*   [Extreme Programming Explained](https://search.library.ualberta.ca/permalink/01UOA_INST/1lcd9n9/alma991043659856409116 "Extreme Programming")  
     Kent Beck  
     Addison-Wesley, 2004, ISBN 0-321-27865-8
-*   [Pair Programming Illuminated](http://proquest.safaribooksonline.com.login.ezproxy.library.ualberta.ca/book/software-engineering-and-development/0201745763 "Pair Programming Illuminated")  
+    - You will need to login to O'Reilly Online Learning to access this online
+*   [Pair Programming Illuminated](https://login.ezproxy.library.ualberta.ca/login?url=https://www.proquest.com/magazines/pair-programming-illuminated/docview/200031499/se-2 "Pair Programming Illuminated")  
     Laurie Williams, Robert Kessler  
     Addison-Wesley, 2002, ISBN 0-201-74576-3
-*   [Head First Object-Oriented Analysis and Design](http://proquest.safaribooksonline.com.login.ezproxy.library.ualberta.ca/book/software-engineering-and-development/object/0596008678 "Head First Object-Oriented Analysis and Design")  
+*   [Head First Object-Oriented Analysis and Design](https://login.ezproxy.library.ualberta.ca/login?url=https://www.proquest.com/magazines/head-first-object-oriented-analysis-design/docview/200172768/se-2 "Head First Object-Oriented Analysis and Design")  
     Brett McLaughlin, Gary Pollice, David West  
     O'Reilly, 2006, ISBN 0-596-00867-8
-*   [User Interface Design for Programmers](http://proquest.safaribooksonline.com.login.ezproxy.library.ualberta.ca/book/web-development/usability/9781893115941 "User Interface Design for Programmers")  
+*   [User Interface Design for Programmers](https://login.ezproxy.library.ualberta.ca/login?url=https://www.proquest.com/scholarly-journals/user-interface-design-programmers/docview/220993182/se-2 "User Interface Design for Programmers")  
     Joel Spolsky  
     Apress, 2006, ISBN 978-1-89311-594-1
-*   [User Stories Applied](http://proquest.safaribooksonline.com.login.ezproxy.library.ualberta.ca/book/software-engineering-and-development/agile-development/0321205685 "User Stories Applied")  
+*   [User Stories Applied](https://search.library.ualberta.ca/permalink/01UOA_INST/cgo409/alma991043659870509116 "User Stories Applied")  
     Mike Cohn  
     Addison-Wesley, 2004, ISBN 0-321-20568-5
-*   [Version Control with Subversion](http://proquest.safaribooksonline.com.login.ezproxy.library.ualberta.ca/book/software-engineering-and-development/version-control/9780596510336 "Version Control with Subversion")  
+    - You will need to login to O'Reilly Online Learning to access this online
+*   [Version Control with Subversion](https://www.proquest.com/docview/2148794176/705AE67227044C1DPQ/2?accountid=14474&sourcetype=Books "Version Control with Subversion")  
     C. Michael Pilato, Ben Collins-Sussman, Brian W. Fitzpatrick  
     O'Reilly, 2008, ISBN 978-0-596-51033-6
-*   [Test-Driven Development](http://proquest.safaribooksonline.com.login.ezproxy.library.ualberta.ca/book/software-engineering-and-development/software-testing/0321146530 "Test-Driven Development")  
+*   [Test-Driven Development](https://search.library.ualberta.ca/permalink/01UOA_INST/cgo409/alma991043746491609116 "Test-Driven Development")  
     Kent Beck  
     Addison-Wesley, 2002, ISBN 0-321-14653-0
-*   [GUI Bloopers](http://proquest.safaribooksonline.com.login.ezproxy.library.ualberta.ca/book/web-development/usability/9780123706430 "GUI Bloopers")  
+    - You will need to login to O'Reilly Online Learning to access this online
+*   [GUI Bloopers](https://login.ezproxy.library.ualberta.ca/login?url=https://www.proquest.com/trade-journals/gui-bloopers/docview/196745820/se-2 "GUI Bloopers")  
     Jeff Johnson  
     Morgan Kaufmann, 2007, ISBN 0-12-370643-2
 
@@ -259,8 +251,7 @@ From older versions of CMPUT 410:
 
 # User Interface Design Sites
 
-*   [Don Norman jnd.org Essays](http://www.jnd.org/dn.pubs.html "Don Norman")
-*   [Jakob Nielsen useit.com](http://www.useit.com/ "Jakob Nielsen")
+*   [Don Norman jnd.org Essays](https://jnd.org/essay-articles/ "Don Norman")
 *   [Bruce Tognazzini AskTog](http://www.asktog.com/)
 *   [Bringing Design to Software](http://hci.stanford.edu/publications/bds/ "Bringing Design to Software")
 *   [Task-Centered User Interface Design](http://hcibib.org/tcuid/ "Task-Centered User Interface Design")
@@ -268,7 +259,7 @@ From older versions of CMPUT 410:
 # Software Industry
 
 *   [Slashdot](http://slashdot.org/ "Slashdot")
-*   [TechRepublic](http://techrepublic.com.com/ "TechRepublic")
+*   [TechRepublic](http://techrepublic.com/ "TechRepublic")
 *   [The Daily WTF](http://thedailywtf.com/ "The Daily WTF")
 *   [RISKS Digest](http://catless.ncl.ac.uk/risks "RISKS Digest")
 *   [InfoWorld](http://www.infoworld.com/ "InfoWorld")
@@ -278,11 +269,11 @@ From older versions of CMPUT 410:
 
 ## Industry Trends
 
-*   [TIOBE Programming Community Index](http://www.tiobe.com/index.php/content/paperinfo/tpci/index.html "TIOBE Programming Community Index")
+*   [TIOBE Programming Community Index](https://www.tiobe.com/tiobe-index/ "TIOBE Programming Community Index")
 
 ## Job Trends
 
-*   Wall Street Journal—2011-01-04: [The Best and Worst Jobs](http://online.wsj.com/article/SB10001424052748704723104576062173458318658.html#printMode "The Best and Worst Jobs")
+*   Forbes; 2025-02-03: [Best Jobs For Growth In The Next 5 Years: Winners And Losers](https://www.forbes.com/sites/chriswestfall/2025/02/03/best-jobs-for-growth-in-the-next-5-years-winners-and-losers/ "Best Jobs For Growth In The Next 5 Years: Winners And Losers") - Chris Westfall
 
 ## Interviewing
 
@@ -297,7 +288,6 @@ From older versions of CMPUT 410:
 *   [The Joy of Tech](http://www.geekculture.com/joyoftech/index.html "The Joy of Tech")
 *   [Oatmeal](http://theoatmeal.com/comics)
     *   [How a Web Design Goes Straight to Hell](http://theoatmeal.com/comics/design_hell)
-*   [OK/Cancel](http://okcancel.com/ "OK/Cancel")
 *   [Project Cartoon](http://www.projectcartoon.com/ "Project Cartoon")
 *   [xkcd](http://xkcd.com/ "xkcd")
     *   844: [Good Code](http://xkcd.com/844/ "Good Code")

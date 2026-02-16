@@ -61,7 +61,7 @@ Steph's node will process events at her inbox and record the
 comments and likes appropriately.
 
 Then I write a public entry, a public service announcement (PSA)
-about how public service announcements are pretentious preformative
+about how public service announcements are pretentious performative
 social media, and you shouldn't make them. The irony is lost on me.
 I make an unlisted image entry that contains an image for the PSA
 and reference it from my PSA entry. Nonetheless, my node records my
@@ -406,7 +406,7 @@ If something is paginated it has query options:
 
 ## Who talks to Who
 
-* Required: The backends talk to each other, mostly trough POST requests to the `inbox` URLs for remote authors.
+* Required: The backends talk to each other, mostly through POST requests to the `inbox` URLs for remote authors.
 * Optional: The frontend talks to the backend for the same node.
 * Forbidden: The frontend talks to a backend of another node. 
  
@@ -557,7 +557,7 @@ Hint: In Django, set `unique=True` on the field. Then use `models.ForeignKey` wi
         "displayName":"Lara Croft",
         // URL of the user's HTML profile page
         "web":"http://nodebbbb/authors/222",
-        // HATEOS url for Github API
+        // HATEOAS url for Github API
         "github": "http://github.com/laracroft",
         "profileImage": "http://nodebbbb/api/authors/222/entries/217/image"
     },
@@ -1607,7 +1607,7 @@ The most successful teams:
 
 ## Overall Marking
 
-* Excellent 8 (A+): Clean code. Meets the requirements and ads extra polish. Everything is tested properly. Passes all tests. The API is documented in detail. The API is implemented as specified, and adds extra for compatibility. The UI meets all requirements, and has extra polish.
+* Excellent 8 (A+): Clean code. Meets the requirements and adds extra polish. Everything is tested properly. Passes all tests. The API is documented in detail. The API is implemented as specified, and adds extra for compatibility. The UI meets all requirements, and has extra polish.
 * Good 7 (B+): Code is mostly clean but has some rough spots. At most a couple of minor bugs. Almost all the requirements are met. Everything is tested. Passes almost all tests. Almost everything is documented. Almost all the API is implemented according to spec.
 * Satisfactory 6 (C+): Code is low quality but working. Some bugs. Inconsistency. ¾ of the requirements are met. Almost everything is tested. Passes most tests. Most things are documented. API is implemented but doesn't meet spec.
 * Unsatisfactory 4 (D): There are significant bugs and issues. ½ of the requirements are met. ½ the tests exist and pass. At least ½ of the documentation is present. At least ½ of the API exists and works. At least ½ of the UI exists and works. At least ½ of the API exists and works. <!-- @LT-IGNORE:ENGLISH_WORD_REPEAT_BEGINNING_RULE@ -->
@@ -1633,7 +1633,8 @@ You must form a group with only students from your same lab section. You can hav
 Do not submit a clone link or a link to a branch or file.
 
 * 1 mark
-* Submitted on Canvas by all members
+* Join your team on canvas
+* Join your team's github via the github classroom link in the project part 0 assignment in canvas
 * 1 GitHub repo with a README and LICENSE
 * Team name is a CSS colour name
 
@@ -1684,7 +1685,7 @@ https://github.com/uofa-cmput404/f24-project-orange/commit/8e2cac3a0c0fdd01f039e
     * Tool use: Use of Git, GitHub issues, etc. is Evidence and Obvious. Commits/merges/PRs are small and frequent. Commit messages are helpful information for teammates. All the teammates are working at the same time, and using GitHub **and git** to help communicate and improve teamwork. You laugh in the face of merge conflicts! Well organized repository and branches. 
     * TA Walkthrough: Able to walk through ½ user stories with UI and API. No snags, bugs, last second workarounds, or missing pieces. Code is easily located. Documentation is easily located.
     * Web Service API Documentation: Well documented. Highly detailed. Clear descriptions, has useful example requests and responses from your API for every use of the API and ½ of user stories. If using automated documentation generation, there is extra documentation added on top of that.
-    * Standards & Code Style: Adheres to standards, code is well organized and clean. Code is easy to read. Comments add to code readablility when necessary. Code meets Python, JS, HTML and CS style guides. Excellent indentation, naming. Code units only do one thing. It's easy to find the code responsible for handling any of the ½ user stories.
+    * Standards & Code Style: Adheres to standards, code is well organized and clean. Code is easy to read. Comments add to code readability when necessary. Code meets Python, JS, HTML and CS style guides. Excellent indentation, naming. Code units only do one thing. It's easy to find the code responsible for handling any of the ½ user stories.
 * Good
     * User Stories UI: Almost ½ of the user stories are usable using the UI.
     * User Stories API: Almost ½ of the user stories with a relevant API are usable using the API. Adheres to the specification.

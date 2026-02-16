@@ -1,5 +1,5 @@
 Title: How to get Help
-date: 2025-05-05
+date: 2026-02-06
 tags: resources, policy, contact, wellness
 authors: Hazel Victoria Campbell
 status: published
@@ -8,6 +8,9 @@ summary: Communications Expectations
 ----
 
 [TOC]
+
+* [How to avoid Force Push & Rebase]({filename}/general/dontforcepush.md)
+
 
 # Communication Expectations
 
@@ -25,7 +28,7 @@ We will not tolerate harassment, bullying, threats, intimidation, insults, lying
     * Missed final exam:
         * Request a deferred exam from your faculty (Faculty of Science, Faculty of Arts, Faculty of Business, etc.)
     * Missed assignment/lab/project/quiz/lecture... everything except final exam:
-        * Fill in the [absence declaration form](https://docs.google.com/forms/d/e/1FAIpQLSemXP7Bn1zcscmKhKYfK4kckTxyufNl5Fbmr-DJJcqFjyzJ9g/viewform?usp=header) within 2 days of absence.
+        * Fill in the [absence declaration form](https://docs.google.com/forms/d/e/1FAIpQLSfdYgxAjGmNcdqs8c13v6UomZwviuIlHtP545qnUkl8-5VLnA/viewform?usp=dialog) within 2 days of absence.
 * Extensions
     * No individual extensions are ever granted for any reason.
 
@@ -68,7 +71,7 @@ We will not tolerate harassment, bullying, threats, intimidation, insults, lying
 
 **Questions related to the course and course material, especially if the answer could help another student!**
 
-🚀 Posting to the discussion forum increases your changes of a **quick response** since any of the course staff or your classmates are able to answer. 🌠
+🚀 Posting to the discussion forum increases your chances of a **quick response** since any of the course staff or your classmates are able to answer. 🌠
 
 Unless your question is personal (E.g., you are feeling unwell and require an EA, you have a question about your mark), all questions should be posted on the Discussion Forum first. Please do not share code from your implementations (configuration settings are OK). 
 
@@ -79,7 +82,7 @@ Unless your question is personal (E.g., you are feeling unwell and require an EA
 * Be polite, this is not a complaint forum.
 * Follow the [online etiquette guidelines]({attach}online_etiquette_guidelines.pdf).
 
-[The discussion forum is on Canvas.](https://canvas.ualberta.ca/courses/28542/discussion_topics)
+[The discussion forum is on Canvas.](https://canvas.ualberta.ca/courses/32240/discussion_topics/222175)
 
 # Labs Office Hours
 
@@ -108,11 +111,11 @@ TAs are not allowed to change your marks. If you disagree with your marks, [cont
 * Please be polite and courteous.
 * TAs will not re-grade your work or deal with extensions, excuses, illness, etc.
 
-TA office hours are [on Canvas](https://canvas.ualberta.ca/courses/28542/pages/tas-and-office-hours).
+TA office hours are [on Canvas](https://canvas.ualberta.ca/courses/32240/pages/tas-and-office-hours).
 
 # Contact Instructor
 
-Do not email the instructor. Use [the contact instructor form](https://docs.google.com/forms/d/e/1FAIpQLSemXP7Bn1zcscmKhKYfK4kckTxyufNl5Fbmr-DJJcqFjyzJ9g/viewform?usp=header). 
+Do not email the instructor. Use [the contact instructor form](https://docs.google.com/forms/d/e/1FAIpQLSfdYgxAjGmNcdqs8c13v6UomZwviuIlHtP545qnUkl8-5VLnA/viewform?usp=dialog). 
 
 <!--Replies may take several days because there are hundreds of students. Currently, there are more than 600 students.-->
 Using the contact form helps us make sure no one is missed or forgotten about!
@@ -179,6 +182,16 @@ Building a strong social network can greatly benefit your mental health.
 than over a cup of tea or coffee? You can book either a 1-on-1, or a 
 group tea time led by Unitea hosts. [Click here to learn more about Unitea](https://www.ualberta.ca/en/current-students/wellness-supports/community-engagement/unitea/index.html).
 
+## Career Help
+
+* Attend one of the many upcoming presentations by the [Career Center](https://www.ualberta.ca/en/career-centre/programs-services/presentations.html) to help you prepare for future career opportunities
+* Visit a [Hiring Fair](https://www.ualberta.ca/en/career-centre/connect-with-employers/career-fairs/index.html) on February 9 to meet employers looking to hire U of A students.
+* Visit the Festival of Undergraduate Research and Creative Activities in March to engage and explore resources that can support your exploration of future research
+* Access the [Student Financial Support](https://www.ualberta.ca/en/registrar/scholarships-awards-financial-support/index.html) for grants, scholarship and bursary information.
+* Browse [campusBRIDGE](https://campusbridge.ualberta.ca/home.htm) for employment opportunities
+* Check out [Internships, advising appointments and events](https://www.ualberta.ca/en/career-centre/programs-services/advising-appointments/index.html) from the Career Centre 
+* Explore research opportunities to support your future academic and career goals at the [Undergraduate Research Initiative (URI)](https://www.ualberta.ca/en/current-students/undergraduate-research-initiative/index.html)
+
 # Where to NOT get help
 
 <p class="warning">Do not ask for help on sites such as Discord, Telegram, WeChat, Snapchat... Ask on the <a href="#discussion-forum">Discussion Forum</a> instead! Or ask a TA!</p>
@@ -205,4 +218,3 @@ People on unofficial discussion forums such as discord **sometimes lie**. There 
 Multiple lies like the above happen on Discord or another unofficial site for this class **every semester**.
 
 Behaviour such as harassment, bullying, threats, intimidation, insults, racism, lying are still subject to sanctions by the [Student Conduct Policy](https://policiesonline.ualberta.ca/PoliciesProcedures/Pages/DispPol.aspx?PID=190&s=https://policiesonline.ualberta.ca/PoliciesProcedures/Pages/Academic.aspx) and the [Student Academic Integrity Policy](https://policiesonline.ualberta.ca/PoliciesProcedures/Pages/DispPol.aspx?PID=193&s=https://policiesonline.ualberta.ca/PoliciesProcedures/Pages/Academic.aspx). However, because the instructor and University has no control of these platforms we also do not have any way to stop or control harassment, bullying, threats, intimidation, insults, racism, lying.
-

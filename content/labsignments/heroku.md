@@ -1181,24 +1181,31 @@ First, [create an app](https://dashboard.heroku.com/new-app) on your Heroku dash
 Commit your files and deploy the application using a the heroku command line tool. See [their article on how to do this](https://devcenter.heroku.com/articles/git). Follow the instructions for an existing app, not a new app. Use `heroku git:remote`, **NOT** `heroku create`.
 If you used `heroku create`, please see [this stackoverflow question](https://stackoverflow.com/questions/50421071/git-i-made-a-repository-inside-a-repository-and-now-i-just-want-the-one-big-rep) about how to return to a single repository.
 
-You should have a heroku app. You should see it if you run the `heroku list` command. **In the following, `APPNAME` refers to this heroku app's name.**
+You should have a Heroku app. You should see it if you run the `heroku list` command. **In the following, `APPNAME` refers to this Heroku app's name.**
 
 ### Using a Postgres Database on Heroku
 
-Heroku provides additional services in addition to project hosting. In this case, we will need to add a postgresql database to our app.
+Heroku provides additional services in addition to project hosting. In this case, we will need to add a PostgreSQL database to our app.
 
 ```bash
 heroku addons:create heroku-postgresql:essential-0 --app APPNAME
 ```
 
-You can manage your essentials-0 postgres on your heroku dashboard under the resources section > add-ons.
+For example, if your Heroku name was `lit-oasis-17400` you'd write:
+
+```bash
+heroku addons:create heroku-postgresql:essential-0 --app lit-oasis-17400
+```
+
+You can manage your essentials-0 PostgreSQL on your Heroku dashboard under the resources section > add-ons.
 <br><img id="access-panel" alt="access panel" src="{attach}postgres-add-on.png" style="width: 100%;">
 
-Check that heroku is configuring the database: (You may need to wait a bit for the add-on to be installed)
+Check that Heroku is configuring the database: (You may need to wait a bit for the add-on to be installed)
 
 ```bash
 heroku run "env" --app APPNAME
 ```
+
 
 You should get an output like that contains a line that starts with `DATABASE_URL=postgres://` followed by a username and a password.
 
@@ -1232,9 +1239,9 @@ else:
     }
 ```
 
-Commit your files and deploy the application again using the heroku command line tool.
+Commit your files and deploy the application again using the Heroku command line tool.
 
-Once it is deployed, check that django is now using your heroku postgres database:
+Once it is deployed, check that Django is now using your Heroku PostgreSQL database:
 
 <aside markdown="block" class="option1">
 ```bash
@@ -1278,7 +1285,33 @@ heroku run "python lab3/manage.py createsuperuser" --app APPNAME
 ```
 </aside>
 
-After this if you select your postgres database in the [Heroku dataclips interface](https://data.heroku.com/dataclips/create), you should see your polls_question and poll_choice tables.
+Then follow the instructions to [install PostgreSQL CLI locally](https://devcenter.heroku.com/articles/local-setup-heroku-postgres). If you are using Ubuntu (in a VM like UTM or WSL2) you can simply run `sudo apt-get install postgresql`.
+
+After this you should be able to access your PostgreSQL database with SQL using the Heroku CLI:
+
+```
+$heroku pg:psql --app APPNAME
+# or
+$heroku pg:psql
+Connecting to .
+.
+.
+Type "help" for help.
+
+> \dt
+> \d polls_question
+> \d poll_choice
+> SELECT * FROM polls_question;
+> SELECT * FROM poll_choice;
+```
+
+You may need to add `--app APPNAME` to the `heroku pg:psql` command if Heroku CLI doesn't detect it automatically.
+
+The `\dt` command lists all the tables in PostgreSQL database.
+
+The `\d` command shows the columns for a PostgreSQL table.
+
+The database may be queried using standard SQL as in CMPUT 291. 
 
 Go to `/polls` on your Heroku deployed site, you should be able to use the Polls app from Heroku. 
 
@@ -1610,6 +1643,8 @@ Submit a link to your repo in the form `https://github.com/uofa-cmput404/f25-lab
 You can submit and then resubmit as many times as you want before the deadline, so submit early and often.
 
 After you receive your grade, you can delete your Heroku app to save credits/money.
+
+* [How to avoid Force Push & Rebase]({filename}/general/dontforcepush.md)
 
 # Collaboration
 
