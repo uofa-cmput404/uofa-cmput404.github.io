@@ -35,7 +35,7 @@ You can earn lecture participation credit by attending lectures on time. Instruc
 As of Fall 2025, [Wooclap](https://www.wooclap.com/) is used for lecture participation.
 
 * You must login with your ualberta email address to get credit.
-    * You will not get credit for your using any other account.
+    * You will not get credit for you using any other account.
 * For lecture participation, some of the lowest marks are dropped. No extensions, excused absences, or weight transfers are possible. See the [outline]({filename}/general/outline.md#missed-term-work-participation) for more information.
 * Entering answers in Wooclap without attending the course, either in-person or on Zoom will be considered a violation of the Student Academic Integrity Policy.
     * Entering answers for someone else will be considered a violation of the SAIP.
