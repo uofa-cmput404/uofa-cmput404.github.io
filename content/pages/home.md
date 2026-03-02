@@ -30,7 +30,7 @@ save_as: index.html
 
 [The current Canvas page is here.](https://canvas.ualberta.ca/courses/32240)
 
-* Grades
+* [View your grades](https://canvas.ualberta.ca/courses/32240/grades)
 * Submissions
 * TA Hours
 * [Discussion Forum]({filename}/general/help.md#discussion-forum)
@@ -51,4 +51,5 @@ save_as: index.html
 * [How to use Zoom for Students](https://support.eclass.ualberta.ca/index.php?/Knowledgebase/Article/View/422/23/using-zoom-for-students)
 * [The lecture zoom is connected through Canvas.](https://canvas.ualberta.ca/courses/32240/external_tools/282)
 * [Direct Link](https://ualberta-ca.zoom.us/j/93617389257)
+
 
