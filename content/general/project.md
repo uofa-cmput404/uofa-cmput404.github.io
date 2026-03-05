@@ -1616,6 +1616,8 @@ The most successful teams:
 
 UI amount complete is marked by your TA testing user stories manually.
 
+If a user story is partially complete, it will count the same as being incomplete.
+
 # Project Parts
 
 ## <a id="part0" href="#part0">Project Part 0</a>: Group Formation
@@ -1667,7 +1669,7 @@ https://github.com/uofa-cmput404/f24-project-orange/commit/8e2cac3a0c0fdd01f039e
 
 * Every team member must submit the link to Canvas.
 * If you don't submit the link to Canvas you will get a zero for the project part regardless of what your team gets.
-* Submitted frontend framework form if using a frontend framework. (Link coming soon...)
+* Submitted frontend framework form if using a frontend framework.  <https://docs.google.com/forms/d/e/1FAIpQLSdB01QRXRJxnBJeFzYs9zAV7bj8IyWWGK7OanEhUyxpk9oWtw/viewform?usp=publish-editor>
 
 ### Marking
 
