@@ -28,7 +28,7 @@ summary: Individual Assignments, Participation
 * Additional opportunities may be added.
 -->
 
-Most participation marks will be in class during class. You can participate over Zoom or in-person. To participate in-person please bring a working cellphone, tablet, or laptop. There may be other participation marks from time to time. See *Missed Term Work: Participation* below.
+Most participation marks will be in class during class. You can participate over Zoom or in-person. To participate in-person please bring a working cellphone, tablet, or laptop. There may be other participation marks from time to time. See [Missed Term Work: Participation]({filename}/general/outline.md#missed-term-work-participation) in the syllabus.
 
 You can earn lecture participation credit by attending lectures on time. Instructions will be given during lectures.
 
