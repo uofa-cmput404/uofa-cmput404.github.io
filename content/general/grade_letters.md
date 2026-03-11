@@ -71,7 +71,7 @@ apply to everyone.
         * The class average can be an A.
 * Instructors can not decide to make the breakpoints just whatever they want. Breakpoints are validated by at least one of:
     * Associate Chair (Undergraduate Program)
-    * Associate Chain (Graduate Program)
+    * Associate Chair (Graduate Program)
     * Department Chair
 * Almost nothing in the course outline (syllabus) can be changed after the first day of class. Especially not component weights, like the weights of an exam.
 * Everyone in the class can get an A at the same time in the same semester.

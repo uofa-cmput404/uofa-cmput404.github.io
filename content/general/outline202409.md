@@ -1,4 +1,4 @@
-Title: Course Outline Winter 2024
+Title: Course Outline Fall 2024
 date: 2024-09-01
 tags: outline, policy, grading, contact
 authors: Hazel Victoria Campbell

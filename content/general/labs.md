@@ -9,7 +9,7 @@ summary: Lab Procedure, Lab Assignments, Lab Marking
 
 [TOC]
 
-* [Development Environment]({filename}environment.md)
+* [Development Environment]({filename}/general/environment.md)
 * [How to avoid Force Push & Rebase]({filename}/general/dontforcepush.md)
 
 # Lab Procedure

@@ -108,12 +108,6 @@
 }
 @font-face {
   font-family: "Atkinson Hyperlegible Next";
-  font-weight: 600;
-  font-style: normal;
-  src: url(hyperlegible/AtkinsonHyperlegibleNext-SemiBold.woff2);
-}
-@font-face {
-  font-family: "Atkinson Hyperlegible Next";
   font-weight: 1 1000;
   font-style: normal;
   src: url(hyperlegible/AtkinsonHyperlegibleNextVF-Variable.woff2);
