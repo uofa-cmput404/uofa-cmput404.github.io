@@ -354,6 +354,9 @@ Edited Friends Only    | push | from           | to `inbox`              |      
 Commented Public       | push | to `inbox`     | from                    | from                       | from <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
 Commented Unlisted     | push | to `inbox`     | from                    | from                       | from <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
 Commented Friends Only | push | to `inbox`     | from                    |                            | <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
+Commented Public       | push | from           | *not yet implemented*   | *not yet implemented*      | *not yet implemented* <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
+Commented Unlisted     | push | from           | *not yet implemented*   | *not yet implemented*      | <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
+Commented Friends Only | push | from           | *not yet implemented*   |                            | <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
 Liked Public           | push | to `inbox`     | from                    | from                       | from <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
 Liked Unlisted         | push | to `inbox`     | from                    | from                       | from <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
 Liked Friends Only     | push | to `inbox`     | from                    |                            | <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
