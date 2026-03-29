@@ -288,6 +288,7 @@ From older versions of CMPUT 410:
 *   [The Joy of Tech](http://www.geekculture.com/joyoftech/index.html "The Joy of Tech")
 *   [Oatmeal](http://theoatmeal.com/comics)
     *   [How a Web Design Goes Straight to Hell](http://theoatmeal.com/comics/design_hell)
-*   [Project Cartoon](http://www.projectcartoon.com/ "Project Cartoon")
+*   [Project Cartoon](http://www.projectcartoon.com/ "Project Cartoon") 
+*   <!-- http://www.projectcartoon.com/ -> Link does not lead to project cartoon, instead goes to a portfolio website. --!>
 *   [xkcd](http://xkcd.com/ "xkcd")
     *   844: [Good Code](http://xkcd.com/844/ "Good Code")
