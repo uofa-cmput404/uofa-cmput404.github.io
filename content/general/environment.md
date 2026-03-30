@@ -55,7 +55,7 @@ sudo apt install python3-venv
 python --version # should show something recent like 3.12
 ```
 
-Then you can proceed to [creating your virtual environment](#virtual-environment).
+Then you can proceed to [creating your virtual environment](#create-virtual-environment).
 
 # Running Python Directly on Windows
 
@@ -162,7 +162,7 @@ Set-ExecutionPolicy -Scope Process -ExecutionPolicy Unrestricted
 python --version # This should show the python version you installed above!
 ```
 
-Then you can proceed to [creating your virtual environment](#virtual-environment).
+Then you can proceed to [creating your virtual environment](#create-virtual-environment).
 
 
 #### Command Prompt
@@ -173,7 +173,7 @@ REM This should show the python version you installed above!
 python --version 
 ```
 
-Then you can proceed to [creating your virtual environment](#virtual-environment).
+Then you can proceed to [creating your virtual environment](#create-virtual-environment).
 
 
 ## Running Python directly on macOS

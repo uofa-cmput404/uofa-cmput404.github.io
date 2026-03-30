@@ -91,7 +91,7 @@ Introduction to modern web architecture, from user-facing applications to machin
 
 ## Course Schedule 
 
-The weekly topic schedule is likely to be updated during the term; please see [the live version]({filename}/pages/home.md#schedule).
+The weekly topic schedule is likely to be updated during the term; please see [the live version](/#schedule).
 
 ## Required Textbook and/or Other Major Course Materials
 
@@ -142,7 +142,7 @@ The [Faculty of Science Student Services](https://www.ualberta.ca/science/studen
 | Final Exam              | 30%    | [Solo Effort](#solo-effort) | See BearTracks <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
 | Extra Credit            | +1%    | [Solo Effort](#solo-effort) | Friday, November 29, 4PM <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
 
-* Please see the [live schedule]({filename}/pages/home.md#schedule) for exact due dates.
+* Please see the [live schedule](/#schedule) for exact due dates.
 * Students must verify the exam date on BearTracks when the Final Exam Schedule is posted.
 * Grades are unofficial until approved by the Department and/or Faculty offering the course.
 
@@ -652,4 +652,3 @@ Policy about course outlines can be found in [Course Requirements, Evaluations P
 
 Dr. Hazel Campbell, Department of Computing Science, Faculty of Science, University of Alberta (2023, 2024).
 Dr. Abram Hindle, Department of Computing Science, Faculty of Science, University of Alberta (2023).
-
