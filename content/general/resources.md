@@ -60,7 +60,7 @@ Some reference materials taken from https://github.com/vhf/free-programming-book
 *   [Djen of Django](http://agiliq.com/books/djenofdjango/)
 *   [Effective Django](https://web.archive.org/web/20181130092020/http://www.effectivedjango.com/)
 *   [Tango With Django](http://www.tangowithdjango.com/book/)
-*   [Deploy Django](http://www.deploydjango.com)
+*   [Deploy Django](https://docs.djangoproject.com/en/stable/howto/deployment/)
 *   [The Django Book](http://www.djangobook.com)
 *   [Tango With Django](http://www.tangowithdjango.com/)
 
@@ -180,7 +180,7 @@ Some reference materials taken from https://github.com/vhf/free-programming-book
 From older versions of CMPUT 410:
 
 *   (L2) [Youtube Video: Prometeus - The Media Revolution](http://www.youtube.com/watch?v=xj8ZadKgdC0)
-*   (L3) [What is TCP/IP?](http://www.rloteck.com/Networkingtools/Networkingtools.html)
+*   (L3) [What is TCP/IP?](https://www.ibm.com/think/topics/tcp-ip)
 *   (L3) Wikipedia: [Internet Protocol Suite](http://en.wikipedia.org/wiki/TCP/IP)
 *   (L4) Wikipedia: [XHTML](http://en.wikipedia.org/wiki/XHTML)
 *   (L4) [HTML 4.0 & XHTML 1.0 Reference](http://www.w3schools.com/tags/default.asp)
@@ -205,7 +205,6 @@ From older versions of CMPUT 410:
 # eBooks
 
 *   [O'Reilly Books](https://guides.library.ualberta.ca/az/oreilly-books "O'Reilly Books") - formerly Safari Books Online
-*   [Books 24x7](http://www.library.ualberta.ca/databases/databaseinfo/index.cfm?ID=1729 "Books 24x7")
 *   [http://proquest.com](http://proquest.com)
 *   [Software Project Survival Guide](https://login.ezproxy.library.ualberta.ca/login?url=https://www.proquest.com/trade-journals/books-software-project-survival-guide-ms-press/docview/219083842/se-2 "Software Project Survival Guide")  
     S. McConnell  
