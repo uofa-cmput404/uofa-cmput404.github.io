@@ -106,7 +106,7 @@ Every time `Ticker` notifies the `Clock`, use JS to update the element in the DO
 * When the stop button is clicked, the stop watch should **pause**.
 * When the stop watch is **not** running, the stop button should be disabled.
 * When the reset button is pressed, the stopwatch should start over from zero.
-* The stopwatch should display the elapsed time in h:mm:ss.sss seconds, with hours, minutes, seconds, and .miliseconds.
+* The stopwatch should display the elapsed time in h:mm:ss.sss seconds, with hours, minutes, seconds, and .milliseconds.
     * If there's less than 10 minutes or seconds it should show the leading zero.
     * If there's less than 100 ms, it should also show the leading zeroes.
 

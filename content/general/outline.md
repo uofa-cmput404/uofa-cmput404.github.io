@@ -77,17 +77,20 @@ Course outlines / course syllabuses have moved to the centralized UA syllabus re
 
 * <h4 id="winter2026b1">CMPUT 404 Winter 2026 B1</h4>
 
-    * <a href="https://ualberta.simplesyllabusca.com/doc/p7hcd8nsk/Winter-2026-CMPUT-404-B1-%2885293%29-WEB-APPLICATIONS-AND-ARCHITECT?mode=view">UAlberta Syllabus Page</a> or <a href="https://ualberta.simplesyllabusca.com/api2/doc-pdf/p7hcd8nsk/Winter-2026-CMPUT-404-B1-%2885293%29-WEB-APPLICATIONS-AND-ARCHITECT.pdf?locale=en-US">PDF</a>
+    * <a href="https://ualberta.simplesyllabusca.com/doc/p7hcd8nsk/Winter-2026-CMPUT-404-B1-%2885293%29-WEB-APPLICATIONS-AND-ARCHITECT?mode=view">UAlberta Syllabus Page</a> or
+    [PDF]({attach}b1_syllabus.pdf)
 
 * <h4 id="winter2026b2">CMPUT 404 Winter 2026 B2</h4>
 
-    * <a href="https://ualberta.simplesyllabusca.com/doc/tanb1qe44/Winter-2026-CMPUT-404-B2-%2889668%29-WEB-APPLICATIONS-AND-ARCHITECT?mode=view">UAlberta Syllabus Page</a> or <a href="https://ualberta.simplesyllabusca.com/api2/doc-pdf/tanb1qe44/Winter-2026-CMPUT-404-B2-%2889668%29-WEB-APPLICATIONS-AND-ARCHITECT.pdf?locale=en-US">PDF</a>
+    * <a href="https://ualberta.simplesyllabusca.com/doc/tanb1qe44/Winter-2026-CMPUT-404-B2-%2889668%29-WEB-APPLICATIONS-AND-ARCHITECT?mode=view">UAlberta Syllabus Page</a> or
+    [PDF]({attach}b2_syllabus.pdf)
 
 <h3 id="oldOutlines">Old Outlines</h3>
 
 * <h4 id="fall2025">CMPUT 404 Fall 2025</h4>
 
-    * <a href="https://ualberta.simplesyllabusca.com/doc/1v8nqck3q/Fall-2025-CMPUT-404-A1-%2854143%29-WEB-APPLICATIONS-AND-ARCHITECT?mode=view">UAlberta Syllabus Page</a> or <a href="https://ualberta.simplesyllabusca.com/api2/doc-pdf/1v8nqck3q/Fall-2025-CMPUT-404-A1-%2854143%29-WEB-APPLICATIONS-AND-ARCHITECT.pdf?locale=en-US">PDF</a>
+    * <a href="https://ualberta.simplesyllabusca.com/doc/1v8nqck3q/Fall-2025-CMPUT-404-A1-%2854143%29-WEB-APPLICATIONS-AND-ARCHITECT?mode=view">UAlberta Syllabus Page</a> or
+    [PDF]({attach}f2025_syllabus.pdf)
 
 <h4> <a href = "/tag/outline.html">Older Outlines</a> </h4>
 
