@@ -1,6 +1,6 @@
 # cmput404.github.io
 
-## Pull Requests
+### Pull Requests
 
 My github notifications are flooded and useless. Please contact via the contact form when you make a PR.
 
