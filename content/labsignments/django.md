@@ -100,7 +100,7 @@ A virtual environment is a tool for managing Python dependencies specific to you
 
 These commands are assuming you are using Linux or macOS. On Windows the commands need to be different.
 We recommend using WSL2 to run Ubuntu in a VM.
-You can install Ubuntu on Windows following [these instructions]({filename}http.md#ubuntu-on-windows).
+You can install Ubuntu on Windows following [these instructions]({filename}../general/environment.md#ubuntu-on-windows).
 
 ### Setting up Python
 
