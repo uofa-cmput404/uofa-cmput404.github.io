@@ -288,6 +288,6 @@ From older versions of CMPUT 410:
 *   [The Joy of Tech](http://www.geekculture.com/joyoftech/index.html "The Joy of Tech")
 *   [Oatmeal](http://theoatmeal.com/comics)
     *   [How a Web Design Goes Straight to Hell](http://theoatmeal.com/comics/design_hell)
-*   [Project Cartoon](http://www.projectcartoon.com/ "Project Cartoon")
+*   [Project Cartoon](https://project-cartoon.github.io/ "Project Cartoon") 
 *   [xkcd](http://xkcd.com/ "xkcd")
     *   844: [Good Code](http://xkcd.com/844/ "Good Code")
