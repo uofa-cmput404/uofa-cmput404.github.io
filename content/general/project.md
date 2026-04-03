@@ -140,7 +140,7 @@ Entries, likes, comments, follows are all sent to the inboxes of the authors tha
 * Reading
     * As an author, I want a "stream" which shows all the entries I should know about, so I don't have to switch between different pages.
         * As an author, I want my stream page to show me all the public entries my node knows about, so I can find new people to follow.
-        * As an author, I want my stream page to show me all the unlisted and friends-only entries of all the authors I follow.
+        * As an author, I want my stream page to show all entries from authors I follow: one-way follows show public and unlisted entries, while mutual follows (friends) show public, unlisted, and friends-only entries.
         * As an author, I want my stream page to show me the most recent version of an entry if it has been edited.
         * As an author, I want my stream page to **not** show me entries that have been deleted.
     * As an author, I want my "stream" page to be sorted with the most recent entries first. 
