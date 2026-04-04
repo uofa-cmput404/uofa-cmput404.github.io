@@ -47,7 +47,7 @@ summary: Lecture, Labs, Contact Information, Lecturer, Teaching Assistants, Cour
 
 ## Teaching Assistants
 
-Information about TAs and office hours is on [the help page]({filename}/general/help.md#tas).
+Information about TAs and office hours is on [the help page]({filename}/general/help.md#TAs).
 
 # Course Content
 
@@ -88,7 +88,7 @@ Introduction to modern web architecture, from user-facing applications to machin
 
 ## Course Schedule 
 
-The weekly topic schedule is likely to be updated during the term; please see [the live version](/#schedule).
+The weekly topic schedule is likely to be updated during the term; please see [the live version](https://docs.google.com/spreadsheets/d/1XEisEzQFf44S8bIOuceulka1w4y3ZN1HVs1z0UF3UU4/edit?usp=sharing).
 
 ## Required Textbook and/or Other Major Course Materials
 
@@ -140,7 +140,7 @@ The [Faculty of Science Student Services](https://www.ualberta.ca/science/studen
 | Final Exam              | 30%    | [Solo Effort](#solo-effort) | See BearTracks <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
 | Extra Credit            | +1%    | [Solo Effort](#solo-effort) | 4PM <!-- @LT-IGNORE:CONSECUTIVE_SPACES@ @LT-IGNORE:WHITESPACE_RULE@ -->
 
-* Please see the [live schedule](/#schedule) for exact due dates.
+* Please see the [live schedule]({filename}/pages/home.md#schedule) for exact due dates.
 * Students must verify the exam date on BearTracks when the Final Exam Schedule is posted.
 * Grades are unofficial until approved by the Department and/or Faculty offering the course.
 
@@ -667,3 +667,4 @@ Policy about course outlines can be found in [Course Requirements, Evaluations P
 
 Dr. Hazel Campbell, Department of Computing Science, Faculty of Science, University of Alberta (2023, 2024, 2025).
 Dr. Abram Hindle, Department of Computing Science, Faculty of Science, University of Alberta (2023).
+
