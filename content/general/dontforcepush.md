@@ -13,7 +13,7 @@ summary: How to Avoid Force Push and Rebase
 
 In this class, destructive git operations such as force push (`git push --force`) and rebase (`git rebase`, `git pull --rebase`) are forbidden because they remove git history that is important for marking. 
 
-Force push should never be used in any case, because it will break every one else's git repo that is working on the same project.
+Force push should never be used in any case, because it will break everyone else's git repo that is working on the same project.
 
 ## What about Rebase?
 
