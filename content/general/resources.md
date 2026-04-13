@@ -59,7 +59,8 @@ Some reference materials taken from https://github.com/vhf/free-programming-book
 <!-- *   [Django by Example for Django 1.5](http://lightbird.net/dbe2/) \https://web.archive.org/web/20141223005244/http://www.lightbird.net/dbe -->
 *   [Djen of Django](http://agiliq.com/books/djenofdjango/)
 *   [Effective Django](https://web.archive.org/web/20181130092020/http://www.effectivedjango.com/)
-*   [Deploy Django](https://docs.djangoproject.com/en/6.0/howto/deployment/)
+*   [Tango With Django](http://www.tangowithdjango.com/book/)
+*   [Deploy Django](https://docs.djangoproject.com/en/stable/howto/deployment/)
 *   [The Django Book](http://www.djangobook.com)
 *   [Tango With Django](http://www.tangowithdjango.com/)
 
@@ -179,7 +180,7 @@ Some reference materials taken from https://github.com/vhf/free-programming-book
 From older versions of CMPUT 410:
 
 *   (L2) [Youtube Video: Prometeus - The Media Revolution](http://www.youtube.com/watch?v=xj8ZadKgdC0)
-*   (L3) [What is TCP/IP?](http://www.rloteck.com/Networkingtools/Networkingtools.html)
+*   (L3) [What is TCP/IP?](https://www.ibm.com/think/topics/tcp-ip)
 *   (L3) Wikipedia: [Internet Protocol Suite](http://en.wikipedia.org/wiki/TCP/IP)
 *   (L4) Wikipedia: [XHTML](http://en.wikipedia.org/wiki/XHTML)
 *   (L4) [HTML 4.0 & XHTML 1.0 Reference](http://www.w3schools.com/tags/default.asp)
