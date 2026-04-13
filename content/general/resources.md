@@ -205,7 +205,7 @@ From older versions of CMPUT 410:
 # eBooks
 
 *   [O'Reilly Books](https://guides.library.ualberta.ca/az/oreilly-books "O'Reilly Books") - formerly Safari Books Online
-*   [Books 24x7](http://www.library.ualberta.ca/databases/databaseinfo/index.cfm?ID=1729 "Books 24x7")
+*   [Books 24x7](https://guides.library.ualberta.ca/computing-science "Books 24x7")
 *   [http://proquest.com](http://proquest.com)
 *   [Software Project Survival Guide](https://login.ezproxy.library.ualberta.ca/login?url=https://www.proquest.com/trade-journals/books-software-project-survival-guide-ms-press/docview/219083842/se-2 "Software Project Survival Guide")  
     S. McConnell  
