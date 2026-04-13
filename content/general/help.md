@@ -176,7 +176,7 @@ Building a strong social network can greatly benefit your mental health.
 
 -   **Students Groups: [BearsDen](https://alberta.campuslabs.ca/engage/)** is a one-stop online spot for all student groups on campus. Students can search for events or groups that suit their interests.
 
--   **Campus Events:** Campus events are posted by a variety of groups. Commonly, students can find events on **[uab.ca/events](https://www.ualberta.ca/en/events/index.html#sort=relevancy), [uasuevents.ca,](https://www.su.ualberta.ca/events/)**, [the Digest](https://apps.ualberta.ca/ezpost/archive) or go to their respective **[faculty association's web page](https://www2.su.ualberta.ca/governance/cofa/)** for upcoming events.
+-   **Campus Events:** Campus events are posted by a variety of groups. Commonly, students can find events on **[uab.ca/events](https://www.ualberta.ca/en/events/index.html#sort=relevancy)**, **[uasuevents.ca](https://www.su.ualberta.ca/events/)**, **[the Digest](https://apps.ualberta.ca/ezpost/archive)** or go to their respective **[faculty association's web page](https://www2.su.ualberta.ca/governance/cofa/)** for upcoming events.
 
 - **Unitea:** Connection starts with a conversation, and what better way to connect 
 than over a cup of tea or coffee? You can book either a 1-on-1, or a 
@@ -207,10 +207,10 @@ The instructor/TA are not responsible for and completely disown any unofficial c
 
 People on unofficial discussion forums such as discord **sometimes lie**. There is no way to verify the people on Discord are even actually in the class. Previously on unofficial communications like Discord:
 
-* Multiple times, someone lied about a due date was later than it was, leading to students missing deadline and getting a zero.
-* Multiple times, Someone lied about something being required that was not, leading to students doing extra work for no reason.
-* Multiple times, Someone lied about something not being required that actually was, leading to students failing assignments.
-* A student gave someone on discord access to their computer, leading to money from their bank account being stolen.
+* Multiple times, someone lied that a due date was later than it was, leading to students missing deadline and getting a zero.
+* Multiple times, someone lied about something being required that was not, leading to students doing extra work for no reason.
+* Multiple times, someone lied about something not being required that actually was, leading to students failing assignments.
+* A student gave someone on Discord access to their computer, leading to money from their bank account being stolen.
 * Multiple times, someone lied about an instructor retiring when they actually weren't.
 * Someone lied about something being impossible, when it was actually easy, leading to multiple students doing a bunch of extra work.
 * Multiple times, someone pasted code, leading to Plagiarism sanctions against multiple students by the University such as grade reductions, academic probation, being denied graduation.
