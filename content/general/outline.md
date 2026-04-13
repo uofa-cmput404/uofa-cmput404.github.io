@@ -71,6 +71,12 @@ summary: Lecture, Labs, Contact Information, Lecturer, Teaching Assistants, Cour
 * [Learning and Working Environment](#currentOutline)
 * [On-Campus Computer Labs](#currentOutline)
 
+<a id="contact-information"></a>
+<a id="missed-term-work-participation"></a>
+<a id="contract-cheating-cs-courses"></a>
+<a id="deferred-final-examination"></a>
+<a id="exam-conduct"></a>
+<a id="consultation-assignments-labs"></a>
 <h3 id="currentOutline">Course Outline Links</h3>
 
 Course outlines / course syllabuses have moved to the centralized UA syllabus repository. 
