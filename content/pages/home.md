@@ -43,7 +43,7 @@ save_as: index.html
 ## Lecture Zoom
 
 * You MUST be logged into your University of Alberta account to view the Zoom!
-* Zoom is provided as a convenience only. You are required to be in Edmonton and attend lectures lives.
+* Zoom is provided as a convenience only. You are required to be in Edmonton and attend lectures live.
 * You will be required to attend in person for some lectures, all labs, all presentations, and all exams.
 * You will be required to attend in person, on short notice, in the case of any technical difficulties with Zoom.
 * You must be in Edmonton to take this course.

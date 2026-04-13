@@ -107,34 +107,34 @@ Note that simply reading the code to the TA does **not** count as understanding.
     * Your code is halfway complete.
     * You can explain your code perfectly.
     * Grade: 50
-4. Example:
+5. Example:
     * Your code works perfectly.
     * You can only explain half of your code.
     * Grade: 50
-5. Example:
+6. Example:
     * Your code is halfway complete.
     * You can only explain half of your code.
     * Grade: 25
-6. Example:
+7. Example:
     * Your code works perfectly.
     * You can't explain any of your code, and it doesn't seem like you understand it at all.
     * Grade: 0
-7. Example:
+8. Example:
     * Your code mostly works. The TA estimates it is 80% done.
     * You can't explain any of your code, and it doesn't seem like you understand it at all.
     * Grade: 0
-8. Example:
+9. Example:
     * Your code doesn't work at all.
     * Grade: 0
-9. Example:
+10. Example:
     * Your code looks like it isn't even for the current lab.
     * Grade: 0
-10. Example:
+11. Example:
     * Your code works perfectly.
     * You can explain your code to the TA with no problem.
     * But, you forgot to submit it on Canvas.
     * Grade: no grade (but this counts the same as a 0)
-11. Example:
+12. Example:
     * Your code works perfectly.
     * You can explain your code to the TA with no problem.
     * But, you plagiarized, misrepresented your work, or other academic misconduct (cheating).

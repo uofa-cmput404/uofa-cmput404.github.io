@@ -13,7 +13,7 @@ In general, students have two options. They can treat the TAs with respect, as r
 
 The vast majority of students also respect the other students by not attempting to keep the TA beyond their time slot, or interrupt the TA while the TA is doing a walkthrough with another student or is between walkthroughs. They ask questions and get clarifications before the due date. They work with the TA and with their teammates and classmates.
 
-However, a handful of students decide to treat the TAs as adversaries, as opposition, as enemies. A handful of students decide to try to monopolize the TAs time, interrupt the TA when they're helping other students, argue with the TA, or worse, try to bully the TAs. If you choose this path not your grade will not improve, and you will make the course worse for everyone. Arguing with the TA and preventing them from continuing the walkthrough, or arguing with them over e-mail is not acceptable behaviour.
+However, a handful of students decide to treat the TAs as adversaries, as opposition, as enemies. A handful of students decide to try to monopolize the TAs time, interrupt the TA when they're helping other students, argue with the TA, or worse, try to bully the TAs. If you choose this path , your grade will not improve, and you will make the course worse for everyone. Arguing with the TA and preventing them from continuing the walkthrough, or arguing with them over e-mail is not acceptable behaviour.
 
 Any aggression or hostility towards the TAs, or harassment or bullying of the TAs will not be tolerated and will be reported to the University SSE team for investigation under the Student Conduct Policy (SCP). 
 

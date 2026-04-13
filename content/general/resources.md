@@ -59,8 +59,7 @@ Some reference materials taken from https://github.com/vhf/free-programming-book
 <!-- *   [Django by Example for Django 1.5](http://lightbird.net/dbe2/) \https://web.archive.org/web/20141223005244/http://www.lightbird.net/dbe -->
 *   [Djen of Django](http://agiliq.com/books/djenofdjango/)
 *   [Effective Django](https://web.archive.org/web/20181130092020/http://www.effectivedjango.com/)
-*   [Tango With Django](http://www.tangowithdjango.com/book/)
-*   [Deploy Django](http://www.deploydjango.com)
+*   [Deploy Django](https://docs.djangoproject.com/en/6.0/howto/deployment/)
 *   [The Django Book](http://www.djangobook.com)
 *   [Tango With Django](http://www.tangowithdjango.com/)
 
@@ -288,6 +287,6 @@ From older versions of CMPUT 410:
 *   [The Joy of Tech](http://www.geekculture.com/joyoftech/index.html "The Joy of Tech")
 *   [Oatmeal](http://theoatmeal.com/comics)
     *   [How a Web Design Goes Straight to Hell](http://theoatmeal.com/comics/design_hell)
-*   [Project Cartoon](http://www.projectcartoon.com/ "Project Cartoon")
+*   [Project Cartoon](https://project-cartoon.github.io/ "Project Cartoon") 
 *   [xkcd](http://xkcd.com/ "xkcd")
     *   844: [Good Code](http://xkcd.com/844/ "Good Code")

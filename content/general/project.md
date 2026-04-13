@@ -152,7 +152,7 @@ Entries, likes, comments, follows are all sent to the inboxes of the authors tha
     * As an author, I want anyone following me to see my unlisted and public entries in their stream.
     * As an author, I want everyone to see my public entries in their stream.
     * As an author, I want everyone to be able to see my public and unlisted entries, if they have a link to it.
-    * As an author, I don't anyone who isn't a friend to be able to see my friends-only entries and images, so I can feel safe about writing.
+    * As an author, I don't want anyone who isn't a friend to be able to see my friends-only entries and images, so I can feel safe about writing.
     * As an author, I don't want anyone except the node admin to see my deleted entries.
     * As an author, entries I create should always be visible to me until they are deleted, so I can find them to edit them or review them or get the link or whatever I want to do with them.
 
