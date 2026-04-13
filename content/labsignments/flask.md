@@ -41,7 +41,7 @@ In order to connect to your flask server inside WSL or another VM from outside W
 * Flask should serve the `ui.html` file at path `/`.
 * Flask should serve the `style.css` file at path `/style.css`.
 * Flask should serve the `main.js` file at path `/main.js`.
-* Flask should serve the `favicon.ico` file at path `favicon.ico`.
+* Flask should serve the `favicon.ico` file at path `/favicon.ico`.
 
 You will need to send the correct Content-Type with each file. 
 In flask you can do this by `from flask import Response` then returning from your handler like:
@@ -198,7 +198,7 @@ Violation of the restrictions will result in a mark of zero.
 * A git repository that does not contain built (compiled, transpiled, bundled) or downloaded artifacts, including but not limited to:
     * `virtualenv` `venv` etc.
     * `.pyc` files, `__pycache__` directories.
-* A flask app `outline.py` that serves the files `ui.html`, `main.js`, `favicon.ico`, and `style.css`.
+* A flask app `outliner.py` that serves the files `ui.html`, `main.js`, `favicon.ico`, and `style.css`.
     * Maintains a model of the outline in memory.
     * Makes the outline available by JSON API endpoints.
     * Demonstrates GET POST PUT and DELETE functionality.
