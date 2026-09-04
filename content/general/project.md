@@ -1549,7 +1549,7 @@ Frontend (Selenium, etc.) tests are not required. Code coverage (line coverage, 
             * <input type="checkbox"> Use [whitenoise](https://whitenoise.readthedocs.io/en/latest/) for static content.
         * Backend API
             * Use routes to distinguish.
-        * Use Python 3.11+
+        * Use Python 3.12+
     * Splitting frontend/backend hosting is strictly not allowed. Splitting static/dynamic is strictly not allowed.
         * They must be a part of the same Heroku + (Django or Flask) server.
         * Violation of this restriction will result in a mark of zero.

@@ -1,7 +1,7 @@
 Title: Django Lab
-date: 2024-09-05
+date: 2026-09-09
 tags: labs
-authors: Alireza Azimi, Mo Adel Abdelghany, William Qi
+authors: Alireza Azimi, Mo Adel Abdelghany, William Qi, Kalvin Eng
 status: Published
 summary: Lab Procedure, Lab Assignments, Lab Marking
 ----
@@ -116,11 +116,11 @@ hazelcam@innisfree:~>python3 --version
 Python 3.8.10
 hazelcam@innisfree:~>python3.8 --version
 Python 3.8.10
-hazelcam@innisfree:~>python3.11 --version
-Python 3.11.10
+hazelcam@innisfree:~>python3.12 --version
+Python 3.12.11
 ```
 
-So, to use Python 3.11 on the lab machines, we need to run it as `python3.11` not `python3` or `python`.
+So, to use Python 3.12 on the lab machines, we need to run it as `python3.12` not `python3` or `python`.
 
 ### Check for pip and venv/virtualenv:
 
@@ -188,14 +188,14 @@ We will use [Django](https://www.djangoproject.com/), a high-level Python web fr
 Make sure your virtual environment is created and activated as above.
 
 ```
-echo "Django>=5.0.1" > requirements.txt
+echo "Django>=6" > requirements.txt
 python -m pip install -r requirements.txt
 ```
 
 **If you are encountering an issue with this command in regards to a library called `html5lib` you will need to update your pip version first.**
 ```
 wget https://bootstrap.pypa.io/get-pip.py -O ./get-pip.py
-python3.11 ./get-pip.py
+python3.12 ./get-pip.py
 ```
 
 ### If you're using an Ubuntu VM (such as UTM or WSL)
@@ -228,7 +228,7 @@ I will need to put `http://172.23.110.83:8000/` into my browser, instead of `loc
 ### Follow the Django Tutorial
 
 This is optional (not graded), but it will help you get familiar with Django. 
-<https://docs.djangoproject.com/en/5.1/intro/tutorial01/>
+<https://docs.djangoproject.com/en/6.1/intro/tutorial01/>
 
 ### Start a new Django project
 
@@ -423,7 +423,7 @@ class Page(models.Model):
         return f"#{self.id} - {self.title}"
 ```
 
-After creating the model, run `python3.11 manage.py makemigrations` and `python3.11 manage.py migrate` to create/update and apply our database schema. This will additionally create a `db.sqlite3` file within your project directory, which stores all of your database data as an SQLite3 database.
+After creating the model, run `python3.12 manage.py makemigrations` and `python3.12 manage.py migrate` to create/update and apply our database schema. This will additionally create a `db.sqlite3` file within your project directory, which stores all of your database data as an SQLite3 database.
 
 ### TASK - Backend For Storing Wiki Pages
 
@@ -745,9 +745,9 @@ The database holds users and content (wiki pages people have made, posts, likes.
 
 ## Requirements
 
-* Must use Python3
-* Must run on Ubuntu (Use the undergrad lab machines, for example the ones in CSC 2-29 or install an Ubuntu VM to check this)
-* A working Django 5 application
+* Must use Python3.12+
+* Must run on Ubuntu (Use the undergrad lab machines, for example the ones in UCommons 2030 or install an Ubuntu VM to check this)
+* A working Django 6 application
     * using the latest Django version from [PyPI](https://pypi.org/)
         * downloaded with pip into a virtual environment
     * with a wiki homepage that displays all wiki pages created at `/wiki/`
@@ -785,7 +785,7 @@ Please confirm you have completed **the four tasks** in this lab and the [requir
 
 Ensure your repository contains only the necessary files, and your `.gitignore` excludes built files (`venv/`, `node_modules/`, `*.min.js`, `*.min.js.map`, `db.sqlite3`, etc).
 
-Make sure you push to GitHub classroom **BEFORE the deadline!** You will not be able to push after that!
+Make sure you push to your git repository **BEFORE the deadline!** You will not be able to push after that!
 
 Submit a link to your repo in the form `https://github.com/uofa-cmput404/s25-labsignment-django-yourgithubname/commit/bunch-of-numbers` on Canvas. **Do not** submit a link to a branch, a file, or the clone URL.
 
