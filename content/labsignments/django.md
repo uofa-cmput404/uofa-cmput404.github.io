@@ -1019,7 +1019,7 @@ Ensure you clean up build output before committing your repository. Below is a s
 ## Further Tips
 - If you encounter issues with static files, ensure your file paths are correct and that Django’s `STATIC_URL` is configured properly.
 - If you're still not seeing static files, did you run `python manage.py collectstatic`?
-- Consult the [Django Documentation](https://docs.djangoproject.com/en/5.1/).
+- Consult the [Django Documentation](https://docs.djangoproject.com/en/6.1/).
 
 ---
 
