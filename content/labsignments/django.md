@@ -231,7 +231,7 @@ python -m pip install -r requirements.txt
 
 <div class="longInfo pad-y">
   <p>
-    If you are encountering an issue with this command in regards to a library called `html5lib` you will need to update your pip version first.
+    If you are encountering an issue with this command in regards to a library called <code>html5lib</code> you will need to update your pip version first.
   </p>
 
   <pre><code>wget https://bootstrap.pypa.io/get-pip.py -O ./get-pip.py
