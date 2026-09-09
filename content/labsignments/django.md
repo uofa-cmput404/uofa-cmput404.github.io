@@ -1,7 +1,7 @@
 Title: Django Lab
-date: 2024-09-05
+date: 2026-09-09
 tags: labs
-authors: Alireza Azimi, Mo Adel Abdelghany, William Qi
+authors: Alireza Azimi, Mo Adel Abdelghany, William Qi, Kalvin Eng
 status: Published
 summary: Lab Procedure, Lab Assignments, Lab Marking
 ----
@@ -14,30 +14,36 @@ summary: Lab Procedure, Lab Assignments, Lab Marking
 
 The purpose of this lab is to familiarize you with setting up a virtual environment, developing with Django, and using NPM to incorporate external packages like an emoji picker and a markdown editor. By the end of this lab, you will build a simple wiki app where users can add emojis, likes, and edit content using Markdown.
 
-At the end of this lab, you will have built a fully functioning web app with the following features:
+### Expected Outcomes
+
+By the end of this lab, your web application will include:
+
 - An emoji picker using the `emoji-mart` NPM package.
 - A Markdown editor where users can write content and convert it to HTML.
 - Content storage in a Django model using the ORM.
-- A working wiki website
-- A working like system for each wiki page
+- A working wiki website.
+- A working like system for each wiki page.
 - Efficient serving of static files with WhiteNoise.
+
+---
 
 # Getting Started
 
-# Get an Environment with a Recent Python Version
+<details markdown="1">
+<summary><b>Click to expand/collapse setup instructions</b></summary>
+
+## 1. Environment & Prerequisites
 
 [Make sure you have a working development environment with these instructions!]({filename}/general/environment.md)
 
-
-### Introduction to HTML and JavaScript
+<details markdown="1">
+<summary><b>Refresher: Introduction to HTML & JavaScript (Click to Expand)</b></summary>
 
 Before diving into Django and NPM, let’s go over some basics of HTML and JavaScript.
 
 ### HTML Basics
-
 HTML is the structure of a webpage. It defines elements such as **headings** (`<h1>`, `<h2>`, etc.), **paragraphs** (`<p>`), and **divs** (`<div>`) to organize content.
 
-#### Example HTML Structure:
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -52,6 +58,7 @@ HTML is the structure of a webpage. It defines elements such as **headings** (`<
     </div>
 </body>
 </html>
+
 ```
 
 - **Headings** help organize content by importance. Use `<h1>` for the most important heading and `<h6>` for the least important.
@@ -61,7 +68,6 @@ HTML is the structure of a webpage. It defines elements such as **headings** (`<
 
 JavaScript is used to add interactivity to a web page. You can manipulate the **DOM** (Document Object Model), which represents the structure of the page, to change content, styles, or even add new elements.
 
-#### Example JavaScript:
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -81,127 +87,161 @@ JavaScript is used to add interactivity to a web page. You can manipulate the **
     </script>
 </body>
 </html>
+
 ```
+</details>
 
 ---
 
-## Prepare your Repo
+## 2. Prepare your Repo
 
 1. Get the GitHub classroom link from Canvas, create your assignment, and clone it.
-2. Create an appropriate `.gitignore` file to prevent unwanted files from being committed to your repository. 
+2. Create an appropriate `.gitignore` file in the root of your repository folder to prevent unwanted files from being committed.
 
-Place this `.gitignore` file in the root of your project. You can combine [this one](https://github.com/github/gitignore/blob/main/Python.gitignore), [this one](https://github.com/github/gitignore/blob/main/Node.gitignore), and [this one](https://github.com/django/django/blob/main/.gitignore) for your Django + Node project. Use `git status` to ensure you're not staging any unwanted files before committing.
+<div class="longInfo">
+  <p>
+    You can combine
+    <a href="https://github.com/github/gitignore/blob/main/Python.gitignore">Python.gitignore</a>,
+    <a href="https://github.com/github/gitignore/blob/main/Node.gitignore">Node.gitignore</a>,
+    and
+    <a href="https://github.com/django/django/blob/main/.gitignore">Django.gitignore</a>.
+  </p>
 
-## Create the Virtual Environment
+  <p>
+    Use <code>git status</code> to ensure you're not staging unwanted files
+    before committing.
+  </p>
+</div>
 
-A virtual environment is a tool for managing Python dependencies specific to your project. Each project may have different requirements, and a virtual environment helps you manage these dependencies independently.
 
-### Windows OS
+---
 
-These commands are assuming you are using Linux or macOS. On Windows the commands need to be different.
-We recommend using WSL2 to run Ubuntu in a VM.
-You can install Ubuntu on Windows following [these instructions]({filename}/general/environment.md#ubuntu-on-windows).
+## 3. Create the Virtual Environment
 
-### Setting up Python
+A virtual environment manages Python dependencies specific to your project independently. Each project may have different requirements, and a virtual environment helps you manage these dependencies independently.
 
-Check your Python version with `--version`.
+<div class="longInfo">
+  <p>
+    <strong>Windows Users Note:</strong>
+    The commands below assume Linux or macOS. On Windows, we strongly recommend
+    using WSL2 to run Ubuntu in a VM. Follow
+    <a href="{filename}/general/environment.md#ubuntu-on-windows">
+      these Ubuntu on Windows instructions
+    </a>.
+  </p>
+</div>
 
-If you have multiple versions of Python installed, always specify the version number.
-For example, on the lab machines there are multiple versions of Python installed.
 
-```txt
-hazelcam@innisfree:~>python --version
-Python 2.7.18
-hazelcam@innisfree:~>python3 --version
-Python 3.8.10
-hazelcam@innisfree:~>python3.8 --version
-Python 3.8.10
-hazelcam@innisfree:~>python3.11 --version
-Python 3.11.10
+### Check Python Version
+
+Check your Python version:
+
+```bash
+python3 --version
+
 ```
 
-So, to use Python 3.11 on the lab machines, we need to run it as `python3.11` not `python3` or `python`.
+If you have multiple versions of Python installed, always specify the version number.
+For example, on the lab machines there are multiple versions of Python installed. We can see for ourselves on the lab machines with these commands:
 
-### Check for pip and venv/virtualenv:
+```txt
+hazelcam@innisfree:~> python --version
+Python 2.7.18
+hazelcam@innisfree:~> python3 --version
+Python 3.8.10
+hazelcam@innisfree:~> python3.12 --version
+Python 3.12.11
 
-To check if `venv` or `virtualenv` is installed:
+```
+
+*To run Python 3.12 on lab machines, execute commands using `python3.12` instead of `python3` or `python`.*
+
+### Check & Install `venv` / `virtualenv`
+
+Check if `venv` or `virtualenv` is available:
 
 ```bash
 python -m venv --help
 python -m virtualenv --help
+
 ```
 
-Either `venv` or `virtualenv` will work. 
-
-If you don't have either, install `virtualenv` using pip.
+If missing, install `virtualenv` via pip:
 
 ```bash
 python -m pip install --user virtualenv
+
 ```
 
-If you don't have `pip` or `venv` or `virtualenv`, you need to install newer version of Python.
+### Create and Activate Virtual Environment
 
-### Create Virtual Environment
+Create the directory named `venv` with the following commands:
 
-Run `venv` or `virtualenv` and tell it to create a virtual environment directory, called `venv`.
-
-Note the first `venv` or `virtualenv` is the name of the Python module.
-The second `venv` is the name of a directory (folder) you'd like it to create.
-
-```bash
+```txt
 python -m venv venv
 # or
 python -m virtualenv venv
+
 ```
+Note the first `venv` or `virtualenv` is the name of the Python module.
+The second `venv` is the name of a directory (folder) you'd like it to create.
 
-### Activate Virtual Environment:
-
-To activate the virtual environment:
+Activate the environment:
 
 ```bash
 source venv/bin/activate
+
 ```
 
-If it is activated your command prompt should start with `(venv)` or whatever you called the directory virtualenv or venv made.
+When active, your prompt will show `(venv)`:
 
-```text
-hazelcam@innisfree:~>source venv/bin/activate
+```txt
+hazelcam@innisfree:~> source venv/bin/activate
 (venv) hazelcam@innisfree:~>
+
 ```
 
 <p class="warning">Remember to never commit your virtual environment directory (folder) to git.
 Make sure it is listed in the <code>.gitignore</code>.
 </p>
 
-## Installing Node.js and NPM
+---
 
-To install Node.js, download the LTS version from the [Node.js website](https://nodejs.org/en/download). The installation will include NPM as well, which we will use to manage JavaScript packages.
+## 4. Install Node.js & NPM
+
+Download and install the LTS version from the [Node.js website](https://nodejs.org/en/download). The installation will include NPM as well, which we will use to manage JavaScript packages.
+</details>
+
+---
 
 # Lab Instructions
 
 ## Django Setup
 
-We will use [Django](https://www.djangoproject.com/), a high-level Python web framework. It simplifies web development by providing a built-in ORM, an admin panel, and much more. The [official documentation](https://docs.djangoproject.com/en/5.1/) is a valuable resource, and **you will find it very helpful** to reference it during this lab for anything that is unclear.
-
+We will use [Django](https://www.djangoproject.com/), a high-level Python web framework. It simplifies web development by providing a built-in ORM, an admin panel, and much more. The [official documentation](https://docs.djangoproject.com/en/6.1/) is a valuable resource, and **you will find it very helpful** to reference it during this lab for anything that is unclear.
 ### Install Django
 
-Make sure your virtual environment is created and activated as above.
+With your virtual environment activated, run the following commands:
 
-```
-echo "Django>=5.0.1" > requirements.txt
+```bash
+echo "Django>=6" > requirements.txt
 python -m pip install -r requirements.txt
+
 ```
 
-**If you are encountering an issue with this command in regards to a library called `html5lib` you will need to update your pip version first.**
-```
-wget https://bootstrap.pypa.io/get-pip.py -O ./get-pip.py
-python3.11 ./get-pip.py
-```
+<div class="longInfo pad-y">
+  <p>
+    If you are encountering an issue with this command in regards to a library called <code>html5lib</code> you will need to update your pip version first.
+  </p>
 
-### If you're using an Ubuntu VM (such as UTM or WSL)
+  <pre><code>wget https://bootstrap.pypa.io/get-pip.py -O ./get-pip.py
+python3.12 ./get-pip.py</code></pre>
+</div>
 
-You will need to point your browser to the VM's IP address, not `127.0.0.1` or `localhost`.
-Here is an example from an Ubuntu WSL install on Windows:
+
+### Ubuntu VM / WSL Networking Note
+
+If using WSL or a VM (such as UTM), access your server via the VM's internal IP address instead of `localhost` or `127.0.0.1`. Find your IP using `ip addr show`:
 
 ```txt
 hazelcam@Roxanne:~$ ip addr show
@@ -225,34 +265,49 @@ In this case the VM's address is `172.23.110.83`.
 So later when I want to see my Django site,
 I will need to put `http://172.23.110.83:8000/` into my browser, instead of `localhost`.
 
-### Follow the Django Tutorial
+---
 
-This is optional (not graded), but it will help you get familiar with Django. 
-<https://docs.djangoproject.com/en/5.1/intro/tutorial01/>
+### Optional Django Warm-Up
 
-### Start a new Django project
+Follow the official [Django Tutorial](https://docs.djangoproject.com/en/6.1/intro/tutorial01/) (not graded).
 
-```
-django-admin startproject lab2
-cd lab2
+---
+
+### Start a New Django Project
+
+From the **root directory** of your repository:
+
+```bash
+django-admin startproject lab1-project lab1
+cd lab1
 python manage.py runserver 0.0.0.0:8000
-```
 
-You should see a "Congratulations!" page when visiting `localhost:8000`.
+```
+The command above creates a directory `lab1` with a project called `lab1-project`.
+By using `cd lab1` you are changing directory to the `lab1` directory.
+`python manage.py runserver 0.0.0.0:8000` starts a test web server to serve the Django project.
+
+Visiting `http://localhost:8000` in your browser should now display Django's "Congratulations!" landing page.
+
+---
 
 ### Creating a Django Webapp
 
 We will create a Django webapp called `wiki` to build a simple wiki app.
 
-**Create a new app:**
-```
+From inside the `lab1` directory:
+
+1\. **Create the app:**
+```bash
 python manage.py startapp wiki
+
 ```
 
-**Modify `lab2/settings.py` to register your new wiki app to Django**
-```py
+
+2\. **Register your new wiki app to Django in `lab1-project/settings.py`:**
+```python
 INSTALLED_APPS = [
-    'wiki', # Add this line!
+    'wiki',  # Add this line
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -260,44 +315,56 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+
 ```
 
-**In `wiki/views.py`, add the following code:**
 
-```py
+3\. **Add index request handling logic in `wiki/views.py`:**
+```python
 from django.http import HttpResponse
 
 def index(request):
     return HttpResponse("This is the wiki app.")
+
 ```
 
-**Create a `urls.py` file inside `wiki` and add the following code:**
-   
-```py
+
+4\. **Create `wiki/urls.py` to manage how app can be accessed from the browser via url:**
+```python
 from django.urls import path
 from . import views
 
 urlpatterns = [
     path("", views.index, name="index")
 ]
+
 ```
 
-**Update `lab2/urls.py` to include the new app:**
 
-```py
+5\. **Update the project root url handling in `lab1-project/urls.py`:**
+```python
 from django.urls import include, path
+
 urlpatterns = [
     path("wiki/", include("wiki.urls")),
     path("admin/", admin.site.urls),
 ]
+
 ```
+
+
+
+---
 
 ## Adding HTML Templates
 
 Django allows you to render HTML templates. Let’s create an HTML page to display a homepage.
 
-1. Inside the `wiki` directory, create a `templates` directory.
-2. Inside `templates`, create an `index.html` file with the following boilerplate:
+Working from inside the `lab1` directory:
+
+1\. Create a new `templates` directory inside the `wiki` directory, the structure should be `wiki/templates/`.
+
+2\. Inside the `templates` directory, create an `index.html` file with the following boilerplate:
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -309,33 +376,42 @@ Django allows you to render HTML templates. Let’s create an HTML page to displ
         <h1>Welcome to your wiki!</h1>
     </body>
 </html>
+
 ```
 
+
 3. Update `wiki/views.py` to render the template:
-```py
+```python
 from django.shortcuts import render
 
 def index(request):
     return render(request, "index.html")
+
 ```
 
-Now, visiting `localhost:8000/wiki/` will display the HTML template.
+
+
+Now when you visit `http://localhost:8000/wiki/`, it will render the HTML template you just created.
+
+---
 
 ## Adding Markdown Editor
 
-In this section, we will integrate a **Markdown editor** so that users can write content in Markdown format and see it rendered as HTML in the browser. We'll use the popular NPM package `marked` for parsing Markdown content and converting it to HTML.
+In this section, we will integrate a **Markdown editor** so that users can write content in Markdown format and see it rendered as HTML in the browser. We'll use the popular NPM package `marked` for parsing Markdown content and converting it to HTML. This involves bundling the package into a minified file that will be served by the Django app.
 
-### Steps to Add the Markdown Editor:
+### 1. Install & Bundle JS
 
-Install the `marked` and `esbuild` packages in the root directory of your repository:
+Run from the **root directory** of your repository:
+
 ```bash
 npm install --save-dev marked
 npm install --save-dev esbuild
+
 ```
+This will install the `marked` and `esbuild` into the `node_modules` folder in your root directory.
 
-Create a new directory in the root directory called `webapp` and create a `markdown-editor.js` file in it.
+Create a new folder `webapp/` at root and create a `webapp/markdown-editor.js` within it with the following code:
 
-Update your `markdown-editor.js` file to the following:
 ```js
 import { marked } from "marked"; // Import the markdown converter
 
@@ -352,13 +428,20 @@ This file (`webapp/markdown-editor.js`) depends on a node dependency and needs t
 
 In your **base repository directory**, run the following command to use `esbuild` to bundle your `markdown-editor.js` file.
 
-```npx esbuild ./webapp/markdown-editor.js --bundle --minify --sourcemap --outfile=./lab2/wiki/static/markdown-editor.min.js```
+```bash
+npx esbuild ./webapp/markdown-editor.js --bundle --minify --sourcemap --outfile=./lab1/wiki/static/markdown-editor.min.js
+
+```
 
 This command bundles your `markdown-editor.js` file and all the imports that it needs into one huge file called `markdown-editor.min.js`. It is now ready to be included into your Django application!
 
-### Django Integration
+---
 
-While we do have the JavaScript for our markdown editor, we still need the HTML for the editor! Create a new HTML file called `editor.html` in `lab2/wiki/templates/` and add the following content:
+### 2. Django Template & View Integration
+
+While we do have the JavaScript for our markdown editor, we still need the HTML for the editor!
+
+Create a new HTML file `lab1/wiki/templates/editor.html` and add the following content:
 
 ```html
 {% load static %}
@@ -385,15 +468,17 @@ While we do have the JavaScript for our markdown editor, we still need the HTML 
 </html>
 ```
 
-Add a new view function that will render this template in `wiki/views.py`
-```py
+Add a new view function that will render this template in `wiki/views.py`:
+
+```python
 def editor(request):
     return render(request, "editor.html")
+
 ```
 
 In `wiki/urls.py`, add the new route for our markdown editor:
 
-```py
+```python
 from django.urls import path
 from . import views
 
@@ -401,12 +486,18 @@ urlpatterns = [
     path("", views.index, name="index"),
     path("add/", views.editor, name="add"),
 ]
+
 ```
 
 If you navigate to `localhost:8000/wiki/add/` you should see your markdown editor!
+
 Examples of how to use markdown can be found [here](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax) if you would like to test it out yourself.
 
 We now have a visible markdown editor, but we have no way of actually storing data yet. So let’s store the content users create in a Django model.
+
+---
+
+### 3. Create Wiki Page Model
 
 Update `wiki/models.py` to create a model for storing user-created pages:
 
@@ -416,55 +507,83 @@ from django.db import models
 class Page(models.Model):
     id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=200)
-    content = models.TextField()  # Markdown content
+    content = models.TextField()  # Stores raw Markdown
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return f"#{self.id} - {self.title}"
+
 ```
 
-After creating the model, run `python3.11 manage.py makemigrations` and `python3.11 manage.py migrate` to create/update and apply our database schema. This will additionally create a `db.sqlite3` file within your project directory, which stores all of your database data as an SQLite3 database.
+After creating the model, the changes to the database are not automatically applied. You will have to manually apply database migrations:
 
-### TASK - Backend For Storing Wiki Pages
+```bash
+python3.12 manage.py makemigrations
+python3.12 manage.py migrate
 
-Replace the contents of `wiki/templates/editor.html` with this:
-```html
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>New Wiki Page</title>
-</head>
-<body>
-    <h1>Welcome to the Wiki App!</h1>
+```
 
-    <form id="save-form" method="POST" action="/wiki/save/">
-        <input type="text" name="title" id="page-title" placeholder="Page Title"><br>
-        <textarea id="markdown-editor" name="content" rows="10" cols="50"></textarea><br>
-        <button id="convert-btn">Convert to HTML</button><br>
-        <br>
-        <button id="save-btn" type="submit">Save Page</button>
+---
+
+<div class="longTaskbox" id="task1">
+  <p><strong>TASK 1: Backend for Storing Wiki Pages</strong></p>
+
+  <ol>
+    <li>
+      Replace the contents of <code>wiki/templates/editor.html</code> with:
+      <pre><code>{% load static %}
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;New Wiki Page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Welcome to the Wiki App!&lt;/h1&gt;
+
+    &lt;form id="save-form" method="POST" action="/wiki/save/"&gt;
+        &lt;input type="text" name="title" id="page-title" placeholder="Page Title"&gt;&lt;br&gt;
+        &lt;textarea id="markdown-editor" name="content" rows="10" cols="50"&gt;&lt;/textarea&gt;&lt;br&gt;
+        &lt;button id="convert-btn"&gt;Convert to HTML&lt;/button&gt;&lt;br&gt;
+        &lt;br&gt;
+        &lt;button id="save-btn" type="submit"&gt;Save Page&lt;/button&gt;
         {% csrf_token %}
-    </form>
+    &lt;/form&gt;
 
-    <h3>Output</h3>
-    <div id="markdown-output"></div> <!-- Rendered HTML output -->
-    
-    <script src="{% static 'markdown-editor.min.js' %}"></script> <!-- Load bundled JS -->
-</body>
-</html>
-```
+    &lt;h3&gt;Output&lt;/h3&gt;
+    &lt;div id="markdown-output"&gt;&lt;/div&gt; &lt;!-- Rendered HTML output --&gt;
 
-**Your task** is to create the backend logic for handling the submission of the add wiki page. Your logic **MUST** use the `Page` model that we created earlier in the lab and your logic **MUST** be run when sending a POST request to `/wiki/save/`. It **MUST** redirect to `/wiki/` after saving the page.
+    &lt;script src="{% static 'markdown-editor.min.js' %}"&gt;&lt;/script&gt; &lt;!-- Load bundled JS --&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+    </li>
+
+    <li>
+      Create the backend view logic to handle forms submitted via
+      <strong><code>POST /wiki/save/</code></strong>.
+    </li>
+
+    <li>
+      It <strong>MUST</strong> save the incoming data using the <code>Page</code> model created above.
+    </li>
+
+    <li>
+      It <strong>MUST</strong> redirect the request to <strong><code>/wiki/</code></strong> after saving the page.
+    </li>
+  </ol>
+</div>
+
+
+---
 
 ## Displaying Wiki Pages
 
 While it's great that we can store wiki pages, we need a way to access them ourselves.
 
-### Homepage
+### 1. Update Homepage Template & Views
 
-Change the `index.html` template in `wiki/templates`. Replace its contents with the following code snippet in it:
+Replace `wiki/templates/index.html` with the following code snippet:
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -482,17 +601,18 @@ Change the `index.html` template in `wiki/templates`. Replace its contents with 
         </ul>
     </body>
 </html>
+
 ```
 
 Modify `wiki/views.py` to replace the `index` function and also add a new function:
-```py
+
+```python
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
 from .models import Page
 
 def index(request):
     pages = []
-
     page_objects = Page.objects.all()
     for page in page_objects:
         pages.append({
@@ -504,16 +624,22 @@ def index(request):
 def view_page(request, id):
     page = get_object_or_404(Page, pk=id)
     return render(request, "page.html", { "title": page.title, "content": page.content, "id": id })
+
 ```
 
-Modify `wiki/urls.py` to include our new view function.
-```py
+Modify `wiki/urls.py` to include our new view function:
+
+```python
 path("page/<int:id>/", views.view_page, name="view")
+
 ```
 
-### Wiki Page
+---
+
+### 2. Client-Side Wiki Page Rendering Setup
 
 Create a new file `wiki/templates/page.html` and paste the following snippet in:
+
 ```html
 {% load static %}
 <!DOCTYPE html>
@@ -531,8 +657,9 @@ Create a new file `wiki/templates/page.html` and paste the following snippet in:
 </html>
 ```
 
-In the `webapp` folder, create a new file called `markdown-renderer.js` and paste the following snippet in:
-```js
+In the `webapp` folder that houses you markdown editor javascript code, create a new file called `markdown-renderer.js` and paste the following snippet in:
+
+```javascript
 import { marked } from "marked"; // Import the markdown converter
 
 // Handle rendering
@@ -545,196 +672,298 @@ window.addEventListener('load', () => {
 });
 ```
 
-Use `esbuild` to transpile it with this command and then your website should now have a functional wiki!
-`npx esbuild ./webapp/markdown-renderer.js --bundle --minify --sourcemap --outfile=./lab2/wiki/static/markdown-renderer.min.js`
+Use `esbuild` to transpile it with this command:
+```bash
+npx esbuild ./webapp/markdown-renderer.js --bundle --minify --sourcemap --outfile=./lab1/wiki/static/markdown-renderer.min.js
+
+```
+
+Your website should now have a functional wiki!
+
+---
 
 ## Serving Static Files with WhiteNoise
 
-Now that we have a Django app with Markdown editing and content storage, we need to configure our static hosting middleware. In a production environment, Django will not export static files which is why we need to use a static middleware. Changing the `DEBUG` variable in `lab2/settings.py` to `False`, running `python3 manage.py runserver`, and then navigating to `localhost:8000/wiki/add/` will not allow you to preview any Markdown code. (note that you will also have to update `ALLOWED_HOSTS` to `['*']` if you would like to see it yourself) We can use **WhiteNoise** (a static file middleware) to resolve this. You can learn more about [WhiteNoise here](https://whitenoise.readthedocs.io/en/latest/django.html). 
+Now that we have a Django app with Markdown editing and content storage, we need to configure our static hosting middleware. In a production environment, Django will not serve static files which is why we need to use a static file middleware such as **WhiteNoise** to resolve this. You can learn more about [WhiteNoise here](https://whitenoise.readthedocs.io/en/latest/django.html). 
 
-1. Install WhiteNoise:
-    ```
-    pip install whitenoise
-    ```
+To simulate a production environment for testing, you can change the `DEBUG` variable in `settings.py`. To do so, assume that you are in your Django `lab1` directory, and not your repository root directory. By changing the `DEBUG` variable in `lab1-project/settings.py` to `False`, running `python3 manage.py runserver`, and then navigating to `localhost:8000/wiki/add/` will not allow you to preview any Markdown code. 
 
-2. Navigate to the root directory in your repository and add WhiteNoise to your `requirements.txt`
-    
-    ```
-    pip freeze > requirements.txt
-    ```
+<div class="longInfo">
+<p>
+  Note that you will also have to update
+  <code>ALLOWED_HOSTS</code> to <code>['*']</code> if you would like to see it
+  yourself, as Django in production mode restricts the host/domain a site can
+  be served to.
+</p>
+</div>
 
-3. Update `lab2/settings.py` to use WhiteNoise:
 
-        :::python
-        MIDDLEWARE = [
-            # ...
-            'django.middleware.security.SecurityMiddleware',
-            'whitenoise.middleware.WhiteNoiseMiddleware',  # MAKE SURE IT'S AFTER THE SECURITY MIDDLEWARE!
-            # ...
-        ]
+1\. **Install WhiteNoise:**
+```bash
+pip install whitenoise
 
-        STATIC_URL = '/static/'
-        STATIC_ROOT = BASE_DIR / 'staticfiles'
+```
 
-4. Run `collectstatic` to gather all static files:
 
-        :::python
-        python manage.py collectstatic
+2\. Navigate to the root directory in your repository and add WhiteNoise to your `requirements.txt`
+```bash
+pip freeze > requirements.txt
 
-5. Restart the Django server, and now WhiteNoise will handle serving static files, including the JavaScript bundles.
+```
 
-## TASK - Emoji Picker
 
-Add a new file to `webapp` called `emoji-editor.js` and paste the following code in it:
-```js
-import { Picker } from "emoji-mart"; // Import the emoji picker
+3\. **Configure your project `lab1-project/settings.py` to use WhiteNoise:**
+```python
+MIDDLEWARE = [
+    # ...
+    'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware', # MAKE SURE IT'S AFTER THE SECURITY MIDDLEWARE!
+    # ...
+]
 
-const pickerOptions = { onEmojiSelect: (emoji) => {
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+```
+
+
+4. **Gather All Static Files for Django Project:**
+```bash
+python manage.py collectstatic
+
+```
+
+
+5. Restart your Django development server in production mode, , and now WhiteNoise will handle serving static files, including the JavaScript bundles.
+
+---
+
+<div class="longTaskbox" id="task2">
+  <p><strong>TASK 2: Emoji Picker</strong></p>
+
+  <p>
+    Add a new file to <code>webapp</code> called
+    <code>emoji-editor.js</code> and paste the following code into it:
+  </p>
+
+  <pre><code>import { Picker } from "emoji-mart"; // Import the emoji picker
+
+const pickerOptions = { onEmojiSelect: (emoji) =&gt; {
   const textarea = document.getElementById('markdown-editor');
   textarea.value += emoji.native; // Add selected emoji to the editor
 }};
 const picker = new Picker(pickerOptions);
-document.getElementById('emoji-picker').appendChild(picker); // Add emoji picker to the DOM
-```
+document.getElementById('emoji-picker').appendChild(picker); // Add emoji picker to the DOM</code></pre>
 
-Navigate to the root directory in your repository and then install `emoji-mart` from NPM.
-```bash
-npm install --save-dev emoji-mart
-```
+  <p>
+    Navigate to the root directory in your repository and install
+    <code>emoji-mart</code> from NPM:
+  </p>
 
-Update `wiki/templates/editor.html` to the following:
-```html
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>New Wiki Page</title>
-</head>
-<body>
-    <h1>Welcome to the Wiki App!</h1>
+  <pre><code>npm install --save-dev emoji-mart</code></pre>
 
-    <div id="emoji-picker"></div>
-    <br>
+  <p>
+    Update <code>wiki/templates/editor.html</code> to the following:
+  </p>
 
-    <form id="save-form" method="POST" action="/wiki/save/">
-        <input type="text" name="title" id="page-title" placeholder="Page Title"><br>
-        <textarea id="markdown-editor" name="content" rows="10" cols="50"></textarea><br>
-        <button id="convert-btn">Convert to HTML</button><br>
-        <br>
-        <button id="save-btn" type="submit">Save Page</button>
+  <pre><code>{% load static %}
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;New Wiki Page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Welcome to the Wiki App!&lt;/h1&gt;
+
+    &lt;div id="emoji-picker"&gt;&lt;/div&gt;
+    &lt;br&gt;
+
+    &lt;form id="save-form" method="POST" action="/wiki/save/"&gt;
+        &lt;input type="text" name="title" id="page-title" placeholder="Page Title"&gt;&lt;br&gt;
+        &lt;textarea id="markdown-editor" name="content" rows="10" cols="50"&gt;&lt;/textarea&gt;&lt;br&gt;
+        &lt;button id="convert-btn"&gt;Convert to HTML&lt;/button&gt;&lt;br&gt;
+        &lt;br&gt;
+        &lt;button id="save-btn" type="submit"&gt;Save Page&lt;/button&gt;
         {% csrf_token %}
-    </form>
+    &lt;/form&gt;
 
-    <h3>Output</h3>
-    <div id="markdown-output"></div> <!-- Rendered HTML output -->
-    
-    <script src="{% static 'markdown-editor.min.js' %}"></script>
-    <script src="{% static 'emoji-editor.min.js' %}"></script>
-</body>
-</html>
-```
+    &lt;h3&gt;Output&lt;/h3&gt;
+    &lt;div id="markdown-output"&gt;&lt;/div&gt; &lt;!-- Rendered HTML output --&gt;
 
-**Your task** is to transpile `emoji-editor.js` into `wiki/static/emoji-editor.min.js` using `esbuild`. After bundling, Check `localhost:8000/wiki/add/` to confirm that there is a working emoji picker.
+    &lt;script src="{% static 'markdown-editor.min.js' %}"&gt;&lt;/script&gt;
+    &lt;script src="{% static 'emoji-editor.min.js' %}"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
 
-## TASK - Adding Likes
+  <p>
+    Transpile <code>emoji-editor.js</code> into
+    <code>wiki/static/emoji-editor.min.js</code> using
+    <code>esbuild</code>. After bundling, visit
+    <code>http://localhost:8000/wiki/add/</code> to confirm that the emoji
+    picker works.
+  </p>
+</div>
 
-Update `wiki/templates/page.html` to the following:
-```html
-{% load static %}
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>{{ title }}</title>
-    </head>
-    <body> 
-        <div>
-            <form action="/wiki/page/{{ id }}/like/" method="POST">
-                <input type="submit" value="Like Post ({{ like_count }} likes)" />
+
+
+---
+
+<div class="longTaskbox" id="task3">
+  <p><strong>TASK 3: Adding Likes</strong></p>
+
+  <ol>
+    <li>
+    Replace the contents of <code>wiki/templates/page.html</code> with the following:
+  <pre><code>{% load static %}
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;{{ title }}&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div&gt;
+            &lt;form action="/wiki/page/{{ id }}/like/" method="POST"&gt;
+                &lt;input type="submit" value="Like Post ({{ like_count }} likes)" /&gt;&lt;br&gt;&lt;br&gt;
+                &lt;a href="/wiki/page/{{ id }}/likes/"&gt;View All Likes&lt;/a&gt;
                 {% csrf_token %}
-            </form>
-        </div>
-        <br>
-        <div id="content" style="display: none;">{{ content }}</div>
-        <div>
-            <a href="/wiki/">&lt; Go Back</a>
-        </div>
-    </body>
-    <script src="{% static 'markdown-renderer.min.js' %}"></script> <!-- Load bundled JS -->
-</html>
-```
+            &lt;/form&gt;
+        &lt;/div&gt;
+        &lt;br&gt;
+        &lt;div id="content" style="display: none;"&gt;{{ content }}&lt;/div&gt;
+        &lt;div&gt;
+            &lt;a href="/wiki/"&gt;&amp;lt; Go Back&lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/body&gt;
+    &lt;script src="{% static 'markdown-renderer.min.js' %}"&gt;&lt;/script&gt;
+    &lt;!-- Load bundled JS --&gt;
+&lt;/html&gt;</code></pre>
+    </li>
 
-**Your task** is to update the backend code to store likes and when each like was created. It should pass a `like_count` to the context dictionary when calling `render` in the `view_page` view. The route and logic to add a like should be accessible when a POST request is sent to `/wiki/page/<id>/like/`. After liking the page, it must redirect to the same wiki page.
+    <li>
+    Update the backend code to store likes and the time each like was created.
+    Pass a <code>like_count</code> value to the context dictionary when calling
+    <code>render</code> in the <code>view_page</code> view.
+    </li>
 
-If you are not sure what to do, consult the Django Tutorial and the Documentation linked above!
+    <li>
+    Add a route and view that handle a <code>POST</code> request to
+    <code>/wiki/page/&lt;id&gt;/like/</code>. After the page is liked, redirect
+    the user back to the same wiki page.
+    </li>
 
-## TASK - Displaying Likes
+    <li>
+    If you are unsure how to proceed, consult the Django Tutorial and the documentation linked above.
+    </li>
+   </ol>
+</div>
 
-Add a new file in `wiki/templates/` called `likes.html` and paste in the following:
-```html
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>{{ title }} | Likes</title>
-    </head>
-    <body>
-        <h1>Likes for {{ title }}</h1>
-        <ol>
+
+---
+
+<div class="longTaskbox" id="task4">
+  <p><strong>TASK 4: Displaying Likes</strong></p>
+  <p>
+  Render a list of every like received by a specific wiki page, including the
+  date and time when each like was created. The route must be accessible at
+  <code>/wiki/page/&lt;id&gt;/likes/</code> and must render the
+  <code>likes.html</code> template.
+</p>
+
+  <ol>
+    <li>
+      Add a new file in <code>wiki/templates/</code> called
+      <code>likes.html</code> and paste in the following:
+
+      <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;{{ title }} | Likes&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;h1&gt;Likes for {{ title }}&lt;/h1&gt;
+        &lt;ol&gt;
             {% for like_date in likes %}
-                <li>{{ like_date }}</li>
+                &lt;li&gt;{{ like_date }}&lt;/li&gt;
             {% endfor %}
-        </ol>
-        <br>
-        <a href="/wiki/page/{{ id }}/">&lt; Go Back</a>
-    </body>
-</html>
-```
+        &lt;/ol&gt;
+        &lt;br&gt;
+        &lt;a href="/wiki/page/{{ id }}/"&gt;&amp;lt; Go Back&lt;/a&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+    </li>
 
-Replace the contents of `wiki/templates/page.html` with
-```html
-{% load static %}
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>{{ title }}</title>
-    </head>
-    <body> 
-        <div>
-            <form action="/wiki/page/{{ id }}/like/" method="POST">
-                <input type="submit" value="Like Post ({{ like_count }} likes)" /><br><br>
-                <a href="/wiki/page/{{ id }}/likes/">View All Likes</a>
+    <li>
+      Replace the contents of <code>wiki/templates/page.html</code> with:
+
+      <pre><code>{% load static %}
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;{{ title }}&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div&gt;
+            &lt;form action="/wiki/page/{{ id }}/like/" method="POST"&gt;
+                &lt;input type="submit" value="Like Post ({{ like_count }} likes)" /&gt;&lt;br&gt;&lt;br&gt;
+                &lt;a href="/wiki/page/{{ id }}/likes/"&gt;View All Likes&lt;/a&gt;
                 {% csrf_token %}
-            </form>
-           
-        </div>
-        <br>
-        <div id="content" style="display: none;">{{ content }}</div>
-        <div>
-            <a href="/wiki/">&lt; Go Back</a>
-        </div>
-    </body>
-    <script src="{% static 'markdown-renderer.min.js' %}"></script> <!-- Load bundled JS -->
-</html>
-```
+            &lt;/form&gt;
+        &lt;/div&gt;
+        &lt;br&gt;
+        &lt;div id="content" style="display: none;"&gt;{{ content }}&lt;/div&gt;
+        &lt;div&gt;
+            &lt;a href="/wiki/"&gt;&amp;lt; Go Back&lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/body&gt;
+    &lt;script src="{% static 'markdown-renderer.min.js' %}"&gt;&lt;/script&gt; &lt;!-- Load bundled JS --&gt;
+&lt;/html&gt;</code></pre>
+    </li>
 
-**Your task** is to render a list of every single like a specific wiki page received and when they were created. This route should be accessible at `/wiki/page/<id>/likes/`, and it should render the `likes.html` template.
+    <li>
+      Add a route accessible at
+      <code>/wiki/page/&lt;id&gt;/likes/</code> that renders the
+      <code>likes.html</code> template.
+    </li>
 
-When rendering the `likes.html` template, you will need to pass in to the context argument the following:
-```json
-{
-    "id": 0,        // id of the wiki page
-    "title": "",    // title of the wiki page,
-    "likes": []     // list of STRING representations of the date of each like that was received for this specific wiki page
-}
-```
+    <li>
+      Update the backend logic to retrieve every like for the specified wiki
+      page, including the date and time when each like was created.
+    </li>
 
-## Making sure your `.gitignore` is good and your repo is clean
+    <li>
+      When rendering the <code>likes.html</code> template, pass the following values to the <code>likes.html</code> template context:
+
+      <pre><code>{
+    "id": 0,
+    "title": "",
+    "likes": []
+}</code></pre>
+
+      <ul>
+        <li><code>id</code>: The ID of the wiki page.</li>
+        <li><code>title</code>: The title of the wiki page.</li>
+        <li>
+          <code>likes</code>: A list of STRING representations of the dates
+          when likes were received for this specific wiki page.
+        </li>
+      </ul>
+    </li>
+  </ol>
+</div>
+
+
+---
+
+## Cleaning Repository & `.gitignore` Guidelines
 
 Generally there are two kinds of files:
 
 * Files which are rebuilt/generate/download with the standard build/deploy steps should NOT be in the repo and SHOULD be in `.gitignore`.
 * Files which are modified by developer or only generated once (not every build/deploy) SHOULD be in the repo and should NOT be in `.gitignore`.
 
+<details markdown="1">
+<summary><strong>Click here to find a detailed explanation of what you should be ignoring</strong></summary>
 The standard build/deploy steps for a C project would be something like `configure`, `make`, `make install`. For Java in CMPUT 301 that would be rebuilding from the IDE. For Django+NPM we have commands like `virtualenv venv`, `pip install -r requirements.txt`, `npm install` (with no arguments), `django-admin migrate` and `manage.py collectstatic`. 
 
 Generally commands like `npm install --save-dev somedependency` modifies the `package.json` and `package.lock` files, so their results need to be committed, and they're only run once (not every time we build/deploy). The same thing applies to `django-admin makemigrations`, which generates the migrations files that are needed to migrate an old database schema. This allows the database to follow the model updates. They would not be necessary if you plan on deleting the entire database and its contents (all users, all posts...) every time you update your app, but usually you don't want to lose all of your users and content! Also, the migrations are different depending on when you run `makemigrations` (they are based on the previous migrations generated by previous `makemigrations`). Each migration is only generated once ever, so we should keep them in git.
@@ -742,12 +971,25 @@ Generally commands like `npm install --save-dev somedependency` modifies the `pa
 It's not immediately clear whether the static files for the admin site should be committed or not, and it's not immediately clear to me either. However, the test remains the same: will a standard build/deploy command like `collectstatic` recreate them? If so, we should add them to `.gitignore` and remove them from our repository. So, if my `STATIC_ROOT` is set to `staticfiles` then `collectstatic` will create files such as `./staticfiles/admin/img/icon-no.svg`. And, if I delete it, and run `collectstatic` again, it reappears. So I should ignore `./staticfiles/admin/img/icon-no.svg` and remove it from my repository.
 
 The database holds users and content (wiki pages people have made, posts, likes...). The users and content will be different on every different server, even if the source code is the same. Later, when we deploy to Heroku, we will have our local sqlite database, and our production postgres database (which is not held in a file) on Heroku. They will contain different users and content. The local sqlite database will contain testing data, and the production postgres database will contain production data. Our python source code should be the same on our local machine and a production webserver once we deploy. So, we **do** want the model source code in git, but we **do not** want the database in git. But we **do** want the migrations required to update the database to match the model in our source code.
+</details>
+
+Ensure you clean up build output before committing your repository. Below is a summary table of files and folders to keep/ignore.
+
+| Ignore from Git (`.gitignore`) | Commit to Git Repository |
+| --- | --- |
+| Rebuilt/generated files (`venv/`, `node_modules/`) | Modified source files (`*.py`, `*.js`, `templates/`) |
+| Compiled bundles (`*.min.js`, `*.min.js.map`) | Source dependencies list (`package.json`, `package-lock.json`) |
+| Local database files (`db.sqlite3`) | Database migration files (`wiki/migrations/`) |
+| Collected static assets (`staticfiles/`) | Raw configuration files (`settings.py`, `urls.py`) |
+
+---
 
 ## Requirements
 
-* Must use Python3
-* Must run on Ubuntu (Use the undergrad lab machines, for example the ones in CSC 2-29 or install an Ubuntu VM to check this)
-* A working Django 5 application
+* Must use Python3.12+
+* Must run on Ubuntu (Use the undergrad lab machines, for example the ones in UCommons 2030 or install an Ubuntu VM to check this)
+* Must checkout the big hex commit (e.g. `git checkout 95df41a777e5a5b5cda1e5d6c38953d26549f702`) and successfully be able to run the app
+* A working Django 6 application
     * using the latest Django version from [PyPI](https://pypi.org/)
         * downloaded with pip into a virtual environment
     * with a wiki homepage that displays all wiki pages created at `/wiki/`
@@ -772,31 +1014,52 @@ The database holds users and content (wiki pages people have made, posts, likes.
 * Your git repository SHOULD contain:
     * The code you worked on during the lab.
 
-## Conclusion and Submission
+---
+
+## Further Tips
+- If you encounter issues with static files, ensure your file paths are correct and that Django’s `STATIC_URL` is configured properly.
+- If you're still not seeing static files, did you run `python manage.py collectstatic`?
+- Consult the [Django Documentation](https://docs.djangoproject.com/en/6.1/).
+
+---
+
+## Conclusion & Submission
 
 Please confirm you have completed **the four tasks** in this lab and the [requirements](#requirements).
 
-- Creating the backend for storing wiki pages
-- Adding an emoji picker to the markdown editor
-- Adding support for liking wiki pages
-- Adding support for viewing all the likes a wiki page received (and when they were created)
+* [**Task 1:**](#task1) Creating the backend for storing wiki pages
+* [**Task 2:**](#task2) Adding an emoji picker to the markdown editor
+* [**Task 3:**](#task3) Adding support for liking wiki pages
+* [**Task 4:**](#task4) Adding support for viewing all the likes a wiki page received (and when they were created)
+* [**Clean Repo:**](#cleaning-repository-gitignore-guidelines) Ensure your repository contains only the necessary files, and your `.gitignore` excludes built files (`venv/`, `node_modules/`, `*.min.js`, `*.min.js.map`, `db.sqlite3`, etc).
 
 ### Submission Instructions
 
-Ensure your repository contains only the necessary files, and your `.gitignore` excludes built files (`venv/`, `node_modules/`, `*.min.js`, `*.min.js.map`, `db.sqlite3`, etc).
-
-Make sure you push to GitHub classroom **BEFORE the deadline!** You will not be able to push after that!
-
-Submit a link to your repo in the form `https://github.com/uofa-cmput404/s25-labsignment-django-yourgithubname/commit/bunch-of-numbers` on Canvas. **Do not** submit a link to a branch, a file, or the clone URL.
-
-<p class="warning">If you do not submit a link to your COMMIT on Canvas on time using the correct format above, you will get a zero.</p>
+1. Push your final updates to your git repository **BEFORE the deadline**.
+2. Submit a link to your repository in the form `https://github.com/uofa-cmput404/s25-labsignment-django-yourgithubname/commit/bunch-of-numbers` on Canvas. When you click the link you should see the files that were changed in the commit. **Do not** submit a link to a branch, a file, or the clone URL.
 
 You can submit and then resubmit as many times as you want before the deadline, so submit early and often.
 
-Do not leave additional comments on the Canvas. Any comments made on the submission after the due date will be removed. Any submission attempt abusing Canvas by making a comment with your repo link after the due date will also be removed. If you have a question about your grade DO NOT comment here, instead, use the instructor contact form on the help page on the website within 10 days of getting your marks back. TAs are not allowed to change grades.
+* Refer to [How to avoid Force Push & Rebase]({filename}/general/dontforcepush.md) if needed.
 
-* [How to avoid Force Push & Rebase]({filename}/general/dontforcepush.md)
+<div class="warning pad-y">If you do not submit a link to your COMMIT on Canvas on time using the correct format in step 2 above, you will get a zero.</div>
 
-### Further Tips
-- If you encounter issues with static files, ensure your file paths are correct and that Django’s `STATIC_URL` is configured properly.
-- Consult the [Django Documentation](https://docs.djangoproject.com/en/5.1/).
+<div class="longInfo pad-y">
+  <p>
+    <strong>Important:</strong>
+    Do not leave additional comments on Canvas. Any comments made on the
+    submission after the due date will be removed.
+  </p>
+
+  <p>
+    Any submission attempt that abuses Canvas by adding a comment containing
+    your repository link after the due date will also be removed.
+  </p>
+
+  <p>
+    If you have a question about your grade, do not comment on the canvas assignment page. Instead, use
+    the instructor contact form on the website's help page within 10 days of
+    receiving your marks back. TAs are not allowed to change grades.
+  </p>
+</div>
+

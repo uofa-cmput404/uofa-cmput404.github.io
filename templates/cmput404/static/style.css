@@ -324,6 +324,18 @@ var
     line-break: strict;
     word-break: normal;
     font-size: 87%;
+    color: #cf222e;
+    background: #f8f9fa;
+}
+
+summary {
+  margin-top: 1ex;
+  margin-bottom: 1ex;
+}
+
+hr {
+  margin-top: 2ex;
+  margin-bottom: 2ex;
 }
 
 /* pre code {
@@ -519,6 +531,53 @@ p>img {
 
 .warning {
   font-weight: bolder;
+}
+
+.info, .longInfo {
+  border-width: 0.5ch;
+  border-style: dashed;
+  border-color: #2196f3;
+  background-color: #eaf4ff;
+  border-image-source: repeating-linear-gradient(
+    -45deg,
+    #1565c0,
+    #1565c0 10px,
+    #90caf9 10px,
+    #90caf9 20px
+  );
+  border-image-repeat: round;
+  padding: 0.5ch 1ch;
+  border-image-slice: 5;
+}
+
+.info {
+  font-weight: bolder;
+}
+
+.taskbox, .longTaskbox {
+  border-width: 0.5ch;
+  border-style: dashed;
+  border-color: #4caf50;
+  background-color: #f1f8f1;
+  border-image-source: repeating-linear-gradient(
+    -45deg,
+    #2e7d32,
+    #2e7d32 10px,
+    #a5d6a7 10px,
+    #a5d6a7 20px
+  );
+  border-image-repeat: round;
+  padding: 0.5ch 1ch;
+  border-image-slice: 5;
+}
+
+.taskbox {
+  font-weight: bolder;
+}
+
+.pad-y {
+  margin-top: 2ex;
+  margin-bottom: 2ex;
 }
 
 /** Code Highlighting **/

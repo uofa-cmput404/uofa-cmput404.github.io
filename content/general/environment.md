@@ -1,7 +1,7 @@
 Title: Labs
 date: 2024-01-06
 tags: labs, policy, grading
-authors: Hazel Victoria Campbell
+authors: Hazel Victoria Campbell, Kalvin Eng
 status: published
 summary: Lab Procedure, Lab Assignments, Lab Marking
 
@@ -9,8 +9,22 @@ summary: Lab Procedure, Lab Assignments, Lab Marking
 
 # Standard Environment
 
-Our standard marking for this course is on Ubuntu, with python3.11+ and Firefox.
-You should be able to install a recent version of Django (currently 5.1).
+Our standard marking for this course is on Ubuntu, with python3.12+ and Firefox.
+You should be able to install a recent version of Django (currently 6.1.1).
+
+There are many ways to run Ubuntu. Here we present a few options on how you
+can setup Ubuntu on macOS and Windows along with how to install Python.
+You can also use a Docker container, but the instructions to use Docker
+are not outlined in this document. Please note that there are instructions 
+to run Python directly on Windows and macOS, we recommend using a Ubuntu
+environment as that is how you will be scored.
+
+Alternatively you can also connect remotely to the Ubuntu lab computers, but this
+is not recommended due to unreliable connectivity.
+
+Although you may program in Python at home or outside the lab, your implementations will 
+be scored based on their behaviour on a standard Ubuntu Linux machine, such as the CS 
+department lab computers, or an Ubuntu VM. Firefox will be used for scoring frontend (HTML/CSS/JS).
 
 ## Ubuntu on macOS ARM
 
@@ -59,7 +73,7 @@ Then you can proceed to [creating your virtual environment](#create-virtual-envi
 
 # Running Python Directly on Windows
 
-**This will cause differences for some instructions, because windows doesn't have a Unix shell.**
+**This will cause differences for some instructions, because Windows doesn't have a Unix shell.**
 
 Installing Python for Windows
 
@@ -267,7 +281,7 @@ curl -s url | more
 ```sh
 python --version # shows python 2, wrong
 python3 --version # shows old python 3.8 or something, wrong
-python3.11 --version # ah finally a modern python
+python3.12 --version # ah finally a modern python
 ```
 
 ### Remote GUI Connection

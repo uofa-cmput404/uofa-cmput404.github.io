@@ -115,7 +115,7 @@ TA office hours are [on Canvas](https://canvas.ualberta.ca/courses/32240/pages/t
 
 # Contact Instructor
 
-Do not email the instructor. Use [the contact instructor form](https://docs.google.com/forms/d/e/1FAIpQLSfdYgxAjGmNcdqs8c13v6UomZwviuIlHtP545qnUkl8-5VLnA/viewform?usp=dialog). 
+Do not email the instructor. Use [the contact instructor form](https://forms.gle/29E1eHpdUH9scMWz9). 
 
 <!--Replies may take several days because there are hundreds of students. Currently, there are more than 600 students.-->
 Using the contact form helps us make sure no one is missed or forgotten about!
