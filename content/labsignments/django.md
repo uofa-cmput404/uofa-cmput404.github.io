@@ -1040,7 +1040,7 @@ Please confirm you have completed **the four tasks** in this lab and the [requir
 
 You can submit and then resubmit as many times as you want before the deadline, so submit early and often.
 
-* Refer to [How to avoid Force Push & Rebase](https://www.google.com/search?q=%7Bfilename%7D/general/dontforcepush.md) if needed.
+* Refer to [How to avoid Force Push & Rebase]({filename}/general/dontforcepush.md) if needed.
 
 <div class="warning pad-y">If you do not submit a link to your COMMIT on Canvas on time using the correct format in step 2 above, you will get a zero.</div>
 
