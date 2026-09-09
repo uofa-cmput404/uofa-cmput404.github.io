@@ -15,7 +15,9 @@ You should be able to install a recent version of Django (currently 6.1.1).
 There are many ways to run Ubuntu. Here we present a few options on how you
 can setup Ubuntu on macOS and Windows along with how to install Python.
 You can also use a Docker container, but the instructions to use Docker
-are not outlined in this document.
+are not outlined in this document. Please note that there are instructions 
+to run Python directly on Windows and macOS, we recommend using a Ubuntu
+environment as that is how you will be scored.
 
 Alternatively you can also connect remotely to the Ubuntu lab computers, but this
 is not recommended due to unreliable connectivity.

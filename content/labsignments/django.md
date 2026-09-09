@@ -232,9 +232,11 @@ This is optional (not graded), but it will help you get familiar with Django.
 
 ### Start a new Django project
 
+Assume that you are in the root directory of your repository.
+
 ```
-django-admin startproject lab2
-cd lab2
+django-admin startproject lab1
+cd lab1
 python manage.py runserver 0.0.0.0:8000
 ```
 
@@ -243,13 +245,14 @@ You should see a "Congratulations!" page when visiting `localhost:8000`.
 ### Creating a Django Webapp
 
 We will create a Django webapp called `wiki` to build a simple wiki app.
+Assume that you are now in the `lab1` directory and you are no longer in the root directory of your repository.
 
 **Create a new app:**
 ```
 python manage.py startapp wiki
 ```
 
-**Modify `lab2/settings.py` to register your new wiki app to Django**
+**Modify `lab1/settings.py` to register your new wiki app to Django**
 ```py
 INSTALLED_APPS = [
     'wiki', # Add this line!
@@ -282,7 +285,7 @@ urlpatterns = [
 ]
 ```
 
-**Update `lab2/urls.py` to include the new app:**
+**Update `lab1/urls.py` to include the new app:**
 
 ```py
 from django.urls import include, path
@@ -294,7 +297,7 @@ urlpatterns = [
 
 ## Adding HTML Templates
 
-Django allows you to render HTML templates. Let’s create an HTML page to display a homepage.
+Django allows you to render HTML templates. Let’s create an HTML page to display a homepage. Assume that you are in the `lab1` directory and you are no longer in the root directory of your repository.
 
 1. Inside the `wiki` directory, create a `templates` directory.
 2. Inside `templates`, create an `index.html` file with the following boilerplate:
@@ -352,13 +355,13 @@ This file (`webapp/markdown-editor.js`) depends on a node dependency and needs t
 
 In your **base repository directory**, run the following command to use `esbuild` to bundle your `markdown-editor.js` file.
 
-```npx esbuild ./webapp/markdown-editor.js --bundle --minify --sourcemap --outfile=./lab2/wiki/static/markdown-editor.min.js```
+```npx esbuild ./webapp/markdown-editor.js --bundle --minify --sourcemap --outfile=./lab1/wiki/static/markdown-editor.min.js```
 
 This command bundles your `markdown-editor.js` file and all the imports that it needs into one huge file called `markdown-editor.min.js`. It is now ready to be included into your Django application!
 
 ### Django Integration
 
-While we do have the JavaScript for our markdown editor, we still need the HTML for the editor! Create a new HTML file called `editor.html` in `lab2/wiki/templates/` and add the following content:
+While we do have the JavaScript for our markdown editor, we still need the HTML for the editor! Create a new HTML file called `editor.html` in `lab1/wiki/templates/` and add the following content:
 
 ```html
 {% load static %}
@@ -546,11 +549,13 @@ window.addEventListener('load', () => {
 ```
 
 Use `esbuild` to transpile it with this command and then your website should now have a functional wiki!
-`npx esbuild ./webapp/markdown-renderer.js --bundle --minify --sourcemap --outfile=./lab2/wiki/static/markdown-renderer.min.js`
+`npx esbuild ./webapp/markdown-renderer.js --bundle --minify --sourcemap --outfile=./lab1/wiki/static/markdown-renderer.min.js`
 
 ## Serving Static Files with WhiteNoise
 
-Now that we have a Django app with Markdown editing and content storage, we need to configure our static hosting middleware. In a production environment, Django will not export static files which is why we need to use a static middleware. Changing the `DEBUG` variable in `lab2/settings.py` to `False`, running `python3 manage.py runserver`, and then navigating to `localhost:8000/wiki/add/` will not allow you to preview any Markdown code. (note that you will also have to update `ALLOWED_HOSTS` to `['*']` if you would like to see it yourself) We can use **WhiteNoise** (a static file middleware) to resolve this. You can learn more about [WhiteNoise here](https://whitenoise.readthedocs.io/en/latest/django.html). 
+Now that we have a Django app with Markdown editing and content storage, we need to configure our static hosting middleware. In a production environment, Django will not serve static files which is why we need to use a static file middleware such as **WhiteNoise** to resolve this. You can learn more about [WhiteNoise here](https://whitenoise.readthedocs.io/en/latest/django.html). 
+
+To simulate a production environment for testing, you can change the `DEBUG` variable in `settings.py`. To do so, assume that you are in your Django project `lab1` directory, and not your repository root directory. By changing the `DEBUG` variable in `lab1/settings.py` to `False`, running `python3 manage.py runserver`, and then navigating to `localhost:8000/wiki/add/` will not allow you to preview any Markdown code. Note that you will also have to update `ALLOWED_HOSTS` to `['*']` if you would like to see it yourself as Django in production mode restricts the host/domain a site can be served to.
 
 1. Install WhiteNoise:
     ```
@@ -563,7 +568,7 @@ Now that we have a Django app with Markdown editing and content storage, we need
     pip freeze > requirements.txt
     ```
 
-3. Update `lab2/settings.py` to use WhiteNoise:
+3. Update `lab1/lab1/settings.py` to use WhiteNoise:
 
         :::python
         MIDDLEWARE = [
@@ -747,6 +752,7 @@ The database holds users and content (wiki pages people have made, posts, likes.
 
 * Must use Python3.12+
 * Must run on Ubuntu (Use the undergrad lab machines, for example the ones in UCommons 2030 or install an Ubuntu VM to check this)
+* Must checkout the big hex commit (e.g. `git checkout 95df41a777e5a5b5cda1e5d6c38953d26549f702`) and successfully be able to run the app
 * A working Django 6 application
     * using the latest Django version from [PyPI](https://pypi.org/)
         * downloaded with pip into a virtual environment
