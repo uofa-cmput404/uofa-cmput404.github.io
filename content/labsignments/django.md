@@ -234,11 +234,14 @@ This is optional (not graded), but it will help you get familiar with Django.
 
 Assume that you are in the root directory of your repository.
 
-```
-django-admin startproject lab1
+```sh
+django-admin startproject lab1-project lab1
 cd lab1
 python manage.py runserver 0.0.0.0:8000
 ```
+The command above creates a directory `lab1` with a project called `lab1-project`.
+By using `cd lab1` you are changing directory to the `lab1` directory.
+`python manage.py runserver 0.0.0.0:8000` starts a test web server to serve the Django project.
 
 You should see a "Congratulations!" page when visiting `localhost:8000`.
 
@@ -252,7 +255,7 @@ Assume that you are now in the `lab1` directory and you are no longer in the roo
 python manage.py startapp wiki
 ```
 
-**Modify `lab1/settings.py` to register your new wiki app to Django**
+**Modify `lab1-project/settings.py` to register your new wiki app to Django**
 ```py
 INSTALLED_APPS = [
     'wiki', # Add this line!
@@ -285,7 +288,7 @@ urlpatterns = [
 ]
 ```
 
-**Update `lab1/urls.py` to include the new app:**
+**Update `lab1-project/urls.py` to include the new app:**
 
 ```py
 from django.urls import include, path
@@ -555,7 +558,7 @@ Use `esbuild` to transpile it with this command and then your website should now
 
 Now that we have a Django app with Markdown editing and content storage, we need to configure our static hosting middleware. In a production environment, Django will not serve static files which is why we need to use a static file middleware such as **WhiteNoise** to resolve this. You can learn more about [WhiteNoise here](https://whitenoise.readthedocs.io/en/latest/django.html). 
 
-To simulate a production environment for testing, you can change the `DEBUG` variable in `settings.py`. To do so, assume that you are in your Django project `lab1` directory, and not your repository root directory. By changing the `DEBUG` variable in `lab1/settings.py` to `False`, running `python3 manage.py runserver`, and then navigating to `localhost:8000/wiki/add/` will not allow you to preview any Markdown code. Note that you will also have to update `ALLOWED_HOSTS` to `['*']` if you would like to see it yourself as Django in production mode restricts the host/domain a site can be served to.
+To simulate a production environment for testing, you can change the `DEBUG` variable in `settings.py`. To do so, assume that you are in your Django `lab1` directory, and not your repository root directory. By changing the `DEBUG` variable in `lab1-project/settings.py` to `False`, running `python3 manage.py runserver`, and then navigating to `localhost:8000/wiki/add/` will not allow you to preview any Markdown code. Note that you will also have to update `ALLOWED_HOSTS` to `['*']` if you would like to see it yourself as Django in production mode restricts the host/domain a site can be served to.
 
 1. Install WhiteNoise:
     ```
@@ -568,7 +571,7 @@ To simulate a production environment for testing, you can change the `DEBUG` var
     pip freeze > requirements.txt
     ```
 
-3. Update `lab1/lab1/settings.py` to use WhiteNoise:
+3. Update `lab1-project/settings.py` to use WhiteNoise:
 
         :::python
         MIDDLEWARE = [
